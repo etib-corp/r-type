@@ -3,8 +3,6 @@ name: Mirror for project R-Type
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 env:
   MIRROR_URL: ${{ secrets.REPO_URL }}
