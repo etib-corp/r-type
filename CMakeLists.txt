@@ -25,11 +25,11 @@ FetchContent_MakeAvailable(Boost)
 
 message(STATUS "Boost source dir: ${boost_SOURCE_DIR}")
 
-include_directories(${boost_SOURCE_DIR})
+include_directories(asio INTERFACE ${boost_asio_SOURCE_DIR}/include)
 
 add_executable(r-type_server ${SERVER_SOURCES})
 add_executable(r-type_client ${CLIENT_SOURCES})
 
-target_link_libraries(r-type_server PRIVATE Boost::system)
+target_link_libraries(r-type_server PRIVATE Boost::system Boost::asio)
 
-target_link_libraries(r-type_client PRIVATE Boost::system)
+target_link_libraries(r-type_client PRIVATE Boost::system Boost::asio)
