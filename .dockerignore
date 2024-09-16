@@ -1,0 +1,9 @@
+/.github/
+/build/
+.gitignore
+docker-compose.yml
+Dockerfile
+Doxfile
+/r-type_client
+/r-type_server
+README.md
