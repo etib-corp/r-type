@@ -9,10 +9,10 @@
 
 LoaderLib::LoaderLib(const std::string &NetworkModule, const std::string &CoreModule)
 {
-    this->_pathNetworkModule = NetworkModule;
-    this->_pathCoreModule = CoreModule;
-    this->_handleNetworkModule = nullptr;
-    this->_handleCoreModule = nullptr;
+    _pathNetworkModule = NetworkModule;
+    _pathCoreModule = CoreModule;
+    _handleNetworkModule = nullptr;
+    _handleCoreModule = nullptr;
 }
 
 LoaderLib::~LoaderLib()
@@ -21,17 +21,17 @@ LoaderLib::~LoaderLib()
 
 void LoaderLib::LoadModule(void)
 {
-    // OPEN_SYM(this->_pathCoreModule, this->_handleCoreModule);
-    // if (this->_handleCoreModule == nullptr)
+    // OPEN_SYM(_pathCoreModule, _handleCoreModule);
+    // if (_handleCoreModule == nullptr)
     //     throw LoaderLibError("Can't load the module CORE");
 
-    OPEN_SYM(this->_pathNetworkModule, this->_handleNetworkModule);
-    if (this->_handleNetworkModule == nullptr)
+    OPEN_SYM(_pathNetworkModule, _handleNetworkModule);
+    if (_handleNetworkModule == nullptr)
         throw LoaderLibError("Can't load the module NETWORK");
-    LOAD_SYM(this->_handleNetworkModule, this->_createNetworkModule, "createNetworkModule", INetworkModule*(*)());
+    LOAD_SYM(_handleNetworkModule, _createNetworkModule, "createNetworkModule", INetworkModule*(*)());
 }
 
 INetworkModule *LoaderLib::createNetworkModule(void)
 {
-    return this->_createNetworkModule();
+    return _createNetworkModule();
 }
