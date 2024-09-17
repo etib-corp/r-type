@@ -7,5 +7,6 @@ var searchData=
   ['c4_4',['C4',['../classC4.html',1,'']]],
   ['c5_5',['C5',['../classC5.html',1,'']]],
   ['car_6',['Car',['../structCar.html',1,'']]],
-  ['coordstruct_7',['CoordStruct',['../structCoordStruct.html',1,'']]]
+  ['consumer_7',['Consumer',['../classConsumer.html',1,'']]],
+  ['coordstruct_8',['CoordStruct',['../structCoordStruct.html',1,'']]]
 ];

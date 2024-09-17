@@ -9,6 +9,7 @@ var searchData=
   ['car_6',['Car',['../structCar.html',1,'Car'],['../manual_8c.html#a00b00bef7a37e8519a62cb3671105c4b',1,'Car:&#160;manual.c']]],
   ['classvar_7',['classVar',['../classpyexample_1_1PyClass.html#abd17aff54e5b0ca194020c796c733546',1,'pyexample::PyClass']]],
   ['close_8',['close',['../structcmd_8h.html#ae152484c890a24e4d9b4980e7b965be0',1,'structcmd.h']]],
-  ['coord_9',['Coord',['../restypedef_8cpp.html#a013489fb99c6a5b012db8ec66544a507',1,'restypedef.cpp']]],
-  ['coordstruct_10',['CoordStruct',['../structCoordStruct.html',1,'']]]
+  ['consumer_9',['Consumer',['../classConsumer.html',1,'']]],
+  ['coord_10',['Coord',['../restypedef_8cpp.html#a013489fb99c6a5b012db8ec66544a507',1,'restypedef.cpp']]],
+  ['coordstruct_11',['CoordStruct',['../structCoordStruct.html',1,'']]]
 ];

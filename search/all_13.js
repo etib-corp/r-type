@@ -8,5 +8,6 @@ var searchData=
   ['strcmp_5',['strcmp',['../classString.html#a7ceb7d379a52f7e26418e7a446b4a41a',1,'String']]],
   ['string_6',['String',['../classString.html',1,'']]],
   ['stringdebug_7',['stringDebug',['../classString.html#a5c07384b505d25ae6f61fc7abf0b0e61',1,'String']]],
-  ['structcmd_2eh_8',['structcmd.h',['../structcmd_8h.html',1,'']]]
+  ['stringmessage_8',['StringMessage',['../classStringMessage.html',1,'']]],
+  ['structcmd_2eh_9',['structcmd.h',['../structcmd_8h.html',1,'']]]
 ];

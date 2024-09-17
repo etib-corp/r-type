@@ -11,11 +11,13 @@ var hierarchy =
     [ "B", "classB.html", [
       [ "D", "classD.html", null ]
     ] ],
+    [ "Broker", "classBroker.html", null ],
     [ "C1", "classC1.html", null ],
     [ "C2", "classC2.html", null ],
     [ "C3", "classC3.html", null ],
     [ "C4", "classC4.html", null ],
     [ "C5", "classC5.html", null ],
+    [ "Consumer", "classConsumer.html", null ],
     [ "CoordStruct", "structCoordStruct.html", null ],
     [ "Enum_Test", "classEnum__Test.html", null ],
     [ "Example_Test", "classExample__Test.html", [
@@ -25,6 +27,11 @@ var hierarchy =
     [ "Include_Test", "classInclude__Test.html", null ],
     [ "Javadoc_Test", "classJavadoc__Test.html", null ],
     [ "Memgrp_Test", "classMemgrp__Test.html", null ],
+    [ "Message", "classMessage.html", [
+      [ "BinaryMessage", "classBinaryMessage.html", null ],
+      [ "StringMessage", "classStringMessage.html", null ],
+      [ "StringMessage", "classStringMessage.html", null ]
+    ] ],
     [ "Object", "structObject.html", [
       [ "Vehicle", "structVehicle.html", [
         [ "Car", "structCar.html", null ],
@@ -33,6 +40,7 @@ var hierarchy =
     ] ],
     [ "Overload_Test", "classOverload__Test.html", null ],
     [ "Par_Test", "classPar__Test.html", null ],
+    [ "Producer", "classProducer.html", null ],
     [ "docstring.PyClass", "classdocstring_1_1PyClass.html", null ],
     [ "pyexample.PyClass", "classpyexample_1_1PyClass.html", null ],
     [ "QTstyle_Test", "classQTstyle__Test.html", null ],
@@ -41,5 +49,6 @@ var hierarchy =
     [ "Test< T, i >", "classTest.html", null ],
     [ "Test< void *, 200 >", "classTest_3_01void_01_5_00_01200_01_4.html", [
       [ "Test< T * >", "classTest_3_01T_01_5_01_4.html", null ]
-    ] ]
+    ] ],
+    [ "Topic", "classTopic.html", null ]
 ];
