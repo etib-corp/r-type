@@ -2,10 +2,12 @@
 ** EPITECH PROJECT, 2024
 ** r-type
 ** File description:
-** main.cpp
+** main
 */
 
-int main(int argc, char **argv)
+#include "LoaderLib.hpp"
+
+int main(void)
 {
     return 0;
 }
