@@ -17,8 +17,8 @@ LE::SceneManager::~SceneManager()
 
 void LE::SceneManager::play()
 {
-    if (this->_currentScene) {
-        this->_currentScene->play();
+    if (_currentScene) {
+        _currentScene->play();
     } else {
         throw SceneManagerError("No current scene to play.");
     }
@@ -26,17 +26,17 @@ void LE::SceneManager::play()
 
 void LE::SceneManager::play(const std::string &sceneName)
 {
-    auto it = this->_scenes.find(sceneName);
+    auto it = _scenes.find(sceneName);
 
-    if (it != this->_scenes.end()) {
-        if (this->_currentScene) {
-            _previousScene = this->_currentScene;
-            _previousSceneName = this->_currentSceneName;
-            this->_currentScene->stop();
+    if (it != _scenes.end()) {
+        if (_currentScene) {
+            _previousScene = _currentScene;
+            _previousSceneName = _currentSceneName;
+            _currentScene->stop();
         }
-        this->_currentScene = it->second;
-        this->_currentSceneName = sceneName;
-        this->_currentScene->play();
+        _currentScene = it->second;
+        _currentSceneName = sceneName;
+        _currentScene->play();
     } else {
         throw SceneManagerError("Scene not found: " + sceneName);
     }
@@ -44,8 +44,8 @@ void LE::SceneManager::play(const std::string &sceneName)
 
 void LE::SceneManager::stop()
 {
-    if (this->_currentScene) {
-        this->_currentScene->stop();
+    if (_currentScene) {
+        _currentScene->stop();
     } else {
         throw SceneManagerError("No current scene to stop.");
     }
