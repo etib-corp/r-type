@@ -45,6 +45,11 @@ namespace LE {
             };
 
             /**
+             * @brief Default constructor for Scene.
+             */
+            Scene() = default;
+
+            /**
              * @brief Virtual destructor for Scene.
              */
             virtual ~Scene() = default;
@@ -56,6 +61,14 @@ namespace LE {
              * the behavior when the scene is played.
              */
             virtual void play() = 0;
+
+            /**
+             * @brief Pure virtual function to draw the scene.
+             *
+             * This function must be implemented by derived classes to define
+             * how the scene is rendered.
+             */
+            void draw();
 
             /**
              * @brief Pure virtual function to stop the scene.
