@@ -6,11 +6,14 @@
 */
 
 #include "LoaderLib.hpp"
+#include "ResolvingLib.hpp"
 
 int main(void)
 {
+    std::string pathLib = getPathOfNetworkDynLib() + getExtensionKernel();
+
     try {
-        LoaderLib lb("./build/server/NetworkModule/libNetworkModule.so", "");
+        LoaderLib lb(pathLib, "");
 
         lb.LoadModule();
 
