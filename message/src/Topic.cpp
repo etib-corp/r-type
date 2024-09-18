@@ -5,7 +5,7 @@
 ** Topic.cpp
 */
 
-#include "message/Topic.hpp"
+#include "Topic.hpp"
 
 Topic::Topic(std::string name) : _name(name)
 {

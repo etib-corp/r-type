@@ -5,7 +5,7 @@
 ** StringMessage.hpp
 */
 
-#include "message/Message.hpp"
+#include "Message.hpp"
 
 class StringMessage : public Message
 {
