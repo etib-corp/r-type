@@ -8,6 +8,8 @@ var searchData=
   ['c5_5',['C5',['../classC5.html',1,'']]],
   ['car_6',['Car',['../structCar.html',1,'']]],
   ['clock_7',['Clock',['../classLE_1_1Clock.html',1,'LE']]],
-  ['consumer_8',['Consumer',['../classConsumer.html',1,'']]],
-  ['coordstruct_9',['CoordStruct',['../structCoordStruct.html',1,'']]]
+  ['connectiontcp_8',['ConnectionTCP',['../classConnectionTCP.html',1,'']]],
+  ['connectionudp_9',['ConnectionUDP',['../classConnectionUDP.html',1,'']]],
+  ['consumer_10',['Consumer',['../classConsumer.html',1,'']]],
+  ['coordstruct_11',['CoordStruct',['../structCoordStruct.html',1,'']]]
 ];
