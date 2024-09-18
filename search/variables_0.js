@@ -11,9 +11,11 @@ var searchData=
   ['_5fio_5fcontext_8',['_io_context',['../classConnectionTCP.html#a32dd546e87e5df02400557b384514304',1,'ConnectionTCP::_io_context'],['../classConnectionUDP.html#a4c157d7f2f57dbf43f9615bc1ea6386c',1,'ConnectionUDP::_io_context']]],
   ['_5fmemvar_9',['_memVar',['../classpyexample_1_1PyClass.html#a52fff5f5883084b3930be400ae4495a0',1,'pyexample::PyClass']]],
   ['_5fmessage_10',['_message',['../classLE_1_1Error.html#a40b6560d4ecb9100fbc5e80a3c6a168c',1,'LE::Error']]],
-  ['_5fpathcoremodule_11',['_pathCoreModule',['../classLoaderLib.html#a632821f3a54132b1b73d67f5ebea68fd',1,'LoaderLib']]],
-  ['_5fpathnetworkmodule_12',['_pathNetworkModule',['../classLoaderLib.html#a35d6f22c7ae3cb659531c7dac09dbc3d',1,'LoaderLib']]],
-  ['_5fport_13',['_port',['../classConnectionTCP.html#a1d85f9b4e72558d89dc3db5ef9fff2e5',1,'ConnectionTCP']]],
-  ['_5fsessions_14',['_sessions',['../classConnectionTCP.html#a81339e542b52ce4cae6a422f3b43a985',1,'ConnectionTCP']]],
-  ['_5fthreadcontext_15',['_threadContext',['../classConnectionTCP.html#a7ebe5505bad4d40ac58f7caa5e4cbeb0',1,'ConnectionTCP']]]
+  ['_5fmutex_11',['_mutex',['../classBroker.html#a7af6aeeb7a69c6f62ad497ae01fc0bf7',1,'Broker']]],
+  ['_5fpathcoremodule_12',['_pathCoreModule',['../classLoaderLib.html#a632821f3a54132b1b73d67f5ebea68fd',1,'LoaderLib']]],
+  ['_5fpathnetworkmodule_13',['_pathNetworkModule',['../classLoaderLib.html#a35d6f22c7ae3cb659531c7dac09dbc3d',1,'LoaderLib']]],
+  ['_5fport_14',['_port',['../classConnectionTCP.html#a1d85f9b4e72558d89dc3db5ef9fff2e5',1,'ConnectionTCP']]],
+  ['_5fsessions_15',['_sessions',['../classConnectionTCP.html#a81339e542b52ce4cae6a422f3b43a985',1,'ConnectionTCP']]],
+  ['_5fthreadcontext_16',['_threadContext',['../classConnectionTCP.html#a7ebe5505bad4d40ac58f7caa5e4cbeb0',1,'ConnectionTCP']]],
+  ['_5ftopics_17',['_topics',['../classBroker.html#a6b9f00e34013ed160b85614ab21c1feb',1,'Broker']]]
 ];

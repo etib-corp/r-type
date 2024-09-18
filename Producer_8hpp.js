@@ -1,4 +1,4 @@
 var Producer_8hpp =
 [
-    [ "Producer", "classProducer.html", "classProducer" ]
+    [ "Producer< BrokerType >", "classProducer.html", "classProducer" ]
 ];

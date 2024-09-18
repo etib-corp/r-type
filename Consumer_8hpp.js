@@ -1,4 +1,4 @@
 var Consumer_8hpp =
 [
-    [ "Consumer", "classConsumer.html", "classConsumer" ]
+    [ "Consumer< BrokerType >", "classConsumer.html", "classConsumer" ]
 ];

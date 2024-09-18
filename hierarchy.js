@@ -11,7 +11,10 @@ var hierarchy =
     [ "B", "classB.html", [
       [ "D", "classD.html", null ]
     ] ],
-    [ "Broker", "classBroker.html", null ],
+    [ "Broker", "classBroker.html", [
+      [ "ClientBroker", "classClientBroker.html", null ],
+      [ "ServerBroker", "classServerBroker.html", null ]
+    ] ],
     [ "C1", "classC1.html", null ],
     [ "C2", "classC2.html", null ],
     [ "C3", "classC3.html", null ],
@@ -20,7 +23,7 @@ var hierarchy =
     [ "LE::Clock", "classLE_1_1Clock.html", null ],
     [ "ConnectionTCP", "classConnectionTCP.html", null ],
     [ "ConnectionUDP", "classConnectionUDP.html", null ],
-    [ "Consumer", "classConsumer.html", null ],
+    [ "Consumer< BrokerType >", "classConsumer.html", null ],
     [ "CoordStruct", "structCoordStruct.html", null ],
     [ "LE::Engine", "classLE_1_1Engine.html", null ],
     [ "Enum_Test", "classEnum__Test.html", null ],
@@ -60,7 +63,7 @@ var hierarchy =
     ] ],
     [ "Overload_Test", "classOverload__Test.html", null ],
     [ "Par_Test", "classPar__Test.html", null ],
-    [ "Producer", "classProducer.html", null ],
+    [ "Producer< BrokerType >", "classProducer.html", null ],
     [ "docstring.PyClass", "classdocstring_1_1PyClass.html", null ],
     [ "pyexample.PyClass", "classpyexample_1_1PyClass.html", null ],
     [ "QTstyle_Test", "classQTstyle__Test.html", null ],

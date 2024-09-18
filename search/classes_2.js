@@ -7,9 +7,10 @@ var searchData=
   ['c4_4',['C4',['../classC4.html',1,'']]],
   ['c5_5',['C5',['../classC5.html',1,'']]],
   ['car_6',['Car',['../structCar.html',1,'']]],
-  ['clock_7',['Clock',['../classLE_1_1Clock.html',1,'LE']]],
-  ['connectiontcp_8',['ConnectionTCP',['../classConnectionTCP.html',1,'']]],
-  ['connectionudp_9',['ConnectionUDP',['../classConnectionUDP.html',1,'']]],
-  ['consumer_10',['Consumer',['../classConsumer.html',1,'']]],
-  ['coordstruct_11',['CoordStruct',['../structCoordStruct.html',1,'']]]
+  ['clientbroker_7',['ClientBroker',['../classClientBroker.html',1,'']]],
+  ['clock_8',['Clock',['../classLE_1_1Clock.html',1,'LE']]],
+  ['connectiontcp_9',['ConnectionTCP',['../classConnectionTCP.html',1,'']]],
+  ['connectionudp_10',['ConnectionUDP',['../classConnectionUDP.html',1,'']]],
+  ['consumer_11',['Consumer',['../classConsumer.html',1,'']]],
+  ['coordstruct_12',['CoordStruct',['../structCoordStruct.html',1,'']]]
 ];

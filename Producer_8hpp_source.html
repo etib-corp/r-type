@@ -105,27 +105,39 @@ $(function(){initNavTree('Producer_8hpp_source.html',''); initResizable(true); }
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="Message_8hpp.html">Message.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="foldopen" id="foldopen00026" data-start="{" data-end="};">
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classProducer.html">   26</a></span><span class="keyword">class </span><a class="code hl_class" href="classProducer.html">Producer</a></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>{</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_function" href="classProducer.html#a2f400ba86239146e4a9fe2d686ecac84">Producer</a>(std::string topicName);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <a class="code hl_function" href="classProducer.html#a947e8b91237e9a8fe586084b6677231c">~Producer</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classProducer.html#ae3b7c224d85690b5915aef0b715cc9e1">produceMessage</a>(std::unique_ptr&lt;Message&gt; message);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    std::string _topicName;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>};</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="Broker_8hpp.html">Broker.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="Message_8hpp.html">Message.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> BrokerType&gt;</div>
+<div class="foldopen" id="foldopen00028" data-start="{" data-end="};">
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classProducer.html">   28</a></span><span class="keyword">class </span><a class="code hl_class" href="classProducer.html">Producer</a></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>{</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">static_assert</span>(std::is_base_of&lt;Broker, BrokerType&gt;::value, <span class="stringliteral">&quot;BrokerType must inherit from Broker&quot;</span>);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <a class="code hl_function" href="classProducer.html#a42adb5ce9a3608c9be239fcca5aa13e5">Producer</a>(std::string topicName);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <a class="code hl_function" href="classProducer.html#aa9b2a9ed9ff083ba651b977688331117">~Producer</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="foldopen" id="foldopen00050" data-start="{" data-end="}">
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classProducer.html#a31ece73824bc34f00ff9b73254ab6fbc">   50</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classProducer.html#a31ece73824bc34f00ff9b73254ab6fbc">produceMessage</a>(std::unique_ptr&lt;Message&gt; message)</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        BrokerType::GetInstance()-&gt;getTopic(_topicName).produceMessage(std::move(message));</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    }</div>
 </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    std::shared_ptr&lt;Broker&gt; _broker;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    std::string _topicName;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>};</div>
+</div>
+<div class="ttc" id="aBroker_8hpp_html"><div class="ttname"><a href="Broker_8hpp.html">Broker.hpp</a></div><div class="ttdoc">Singleton class that manages topics.</div></div>
 <div class="ttc" id="aMessage_8hpp_html"><div class="ttname"><a href="Message_8hpp.html">Message.hpp</a></div><div class="ttdoc">Defines the Message class.</div></div>
-<div class="ttc" id="aclassProducer_html"><div class="ttname"><a href="classProducer.html">Producer</a></div><div class="ttdoc">A class to produce messages to a specific topic.</div><div class="ttdef"><b>Definition</b> Producer.hpp:27</div></div>
-<div class="ttc" id="aclassProducer_html_a2f400ba86239146e4a9fe2d686ecac84"><div class="ttname"><a href="classProducer.html#a2f400ba86239146e4a9fe2d686ecac84">Producer::Producer</a></div><div class="ttdeci">Producer(std::string topicName)</div><div class="ttdoc">Constructs a new Producer object with a specified topic name.</div><div class="ttdef"><b>Definition</b> Producer.cpp:11</div></div>
-<div class="ttc" id="aclassProducer_html_a947e8b91237e9a8fe586084b6677231c"><div class="ttname"><a href="classProducer.html#a947e8b91237e9a8fe586084b6677231c">Producer::~Producer</a></div><div class="ttdeci">~Producer(void)</div><div class="ttdoc">Destroys the Producer object.</div><div class="ttdef"><b>Definition</b> Producer.cpp:16</div></div>
-<div class="ttc" id="aclassProducer_html_ae3b7c224d85690b5915aef0b715cc9e1"><div class="ttname"><a href="classProducer.html#ae3b7c224d85690b5915aef0b715cc9e1">Producer::produceMessage</a></div><div class="ttdeci">void produceMessage(std::unique_ptr&lt; Message &gt; message)</div><div class="ttdoc">Produces a message to the topic.</div><div class="ttdef"><b>Definition</b> Producer.cpp:20</div></div>
+<div class="ttc" id="aclassProducer_html"><div class="ttname"><a href="classProducer.html">Producer</a></div><div class="ttdoc">A class to produce messages to a specific topic.</div><div class="ttdef"><b>Definition</b> Producer.hpp:29</div></div>
+<div class="ttc" id="aclassProducer_html_a31ece73824bc34f00ff9b73254ab6fbc"><div class="ttname"><a href="classProducer.html#a31ece73824bc34f00ff9b73254ab6fbc">Producer::produceMessage</a></div><div class="ttdeci">void produceMessage(std::unique_ptr&lt; Message &gt; message)</div><div class="ttdoc">Produces a message to the topic.</div><div class="ttdef"><b>Definition</b> Producer.hpp:50</div></div>
+<div class="ttc" id="aclassProducer_html_a42adb5ce9a3608c9be239fcca5aa13e5"><div class="ttname"><a href="classProducer.html#a42adb5ce9a3608c9be239fcca5aa13e5">Producer::Producer</a></div><div class="ttdeci">Producer(std::string topicName)</div><div class="ttdoc">Constructs a new Producer object with a specified topic name.</div><div class="ttdef"><b>Definition</b> Producer.cpp:12</div></div>
+<div class="ttc" id="aclassProducer_html_aa9b2a9ed9ff083ba651b977688331117"><div class="ttname"><a href="classProducer.html#aa9b2a9ed9ff083ba651b977688331117">Producer::~Producer</a></div><div class="ttdeci">~Producer(void)</div><div class="ttdoc">Destroys the Producer object.</div><div class="ttdef"><b>Definition</b> Producer.cpp:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
