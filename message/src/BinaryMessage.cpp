@@ -5,7 +5,7 @@
 ** BinaryMessage.cpp
 */
 
-#include "message/BinaryMessage.hpp"
+#include "BinaryMessage.hpp"
 
 BinaryMessage::BinaryMessage(void)
 {
