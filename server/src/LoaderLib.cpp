@@ -28,10 +28,10 @@ void LoaderLib::LoadModule(void)
     OPEN_SYM(_pathNetworkModule, _handleNetworkModule);
     if (_handleNetworkModule == nullptr)
         throw LoaderLibError("Can't load the module NETWORK");
-    LOAD_SYM(_handleNetworkModule, _createNetworkModule, "createNetworkModule", INetworkModule*(*)());
+    LOAD_SYM(_handleNetworkModule, _createNetworkModule, "createNetworkModule", INetworkModule*(*)(int));
 }
 
-INetworkModule *LoaderLib::createNetworkModule(void)
+INetworkModule *LoaderLib::createNetworkModule(int port)
 {
-    return _createNetworkModule();
+    return _createNetworkModule(port);
 }

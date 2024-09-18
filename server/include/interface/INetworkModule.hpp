@@ -8,6 +8,12 @@
 #ifndef ANETWORKMODULE_HPP_
 #define ANETWORKMODULE_HPP_
 
+#include "interface/IListenerTCP.hpp"
+#include <queue>
+#include <memory>
+#include "interface/IListenerUDP.hpp"
+#include <iostream>
+
 /**
  * @class INetworkModule
  * @brief Abstract base class for network modules.
@@ -22,7 +28,54 @@ class INetworkModule {
 
         virtual void run() = 0;
 
+        virtual void addClient(std::shared_ptr<IClient> client)
+        {
+            _clients.push(client);
+        }
+
+        virtual std::queue<std::shared_ptr<IClient>> &getClients()
+        {
+            return _clients;
+        }
+
+        virtual std::shared_ptr<IClient> getClientById(int id)
+        {
+            std::queue<std::shared_ptr<IClient>> clients = _clients;
+            while (!clients.empty()) {
+                if (clients.front()->getId() == id)
+                    return clients.front();
+                clients.pop();
+            }
+            return nullptr;
+        }
+
+        /**
+         * @brief A queue that holds shared pointers to IClient sessions.
+         *
+         * This queue is used to manage and store client sessions in a
+         * thread-safe manner. Each session is represented by a shared
+         * pointer to an IClient object, ensuring proper memory management
+         * and reference counting.
+         */
+        std::queue<std::shared_ptr<IClient>> _clients;
     protected:
+
+         /**
+         * @brief A shared pointer to a ConnectionTCP object.
+         *
+         * This member variable holds a shared pointer to an instance of the ConnectionTCP class,
+         * which manages a TCP connection. The use of std::shared_ptr ensures that the
+         * ConnectionTCP object is properly managed and deallocated when no longer in use.
+         */
+        std::shared_ptr<IListenerTCP> _listenerTCP;
+
+        /**
+         * @brief A shared pointer to a ConnectionUDP object.
+         *
+         * This member variable holds a shared pointer to an instance of the ConnectionUDP class,
+         * which is used to manage UDP connections within the network module.
+         */
+        std::shared_ptr<IListenerUDP> _listenerUDP;
     private:
 };
 
