@@ -7,8 +7,11 @@
 
 #pragma once
 
-#include "Error.hpp"
 #include <memory>
+
+#include "SceneManager.hpp"
+#include "Window.hpp"
+#include "Error.hpp"
 
 /**
  * @file Engine.hpp
@@ -54,7 +57,7 @@ namespace LE {
              *
              * @return A shared pointer to the Engine instance.
              */
-            static std::shared_ptr<Engine> getInstance();
+            static Engine *getInstance();
 
             /**
              * @brief Runs the engine.
@@ -85,6 +88,10 @@ namespace LE {
              */
             ~Engine();
 
-            static std::shared_ptr<Engine> _instance; ///< The singleton instance of the Engine class.
+            static Engine* _instance; ///< The singleton instance of the Engine class.
+
+            std::shared_ptr<LE::Window> _window; ///< Shared pointer to the Window instance.
+            std::shared_ptr<LE::SceneManager> _sceneManager; ///< Shared pointer to the SceneManager instance.
+            bool _debugMode; ///< Flag indicating whether debug mode is enabled.
     };
 }

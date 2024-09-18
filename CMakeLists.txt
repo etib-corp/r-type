@@ -17,3 +17,5 @@ add_executable(r-type_server ${SERVER_SOURCES})
 # add_executable(r-type_client ${CLIENT_SOURCES})
 
 # target_link_libraries(r-type_client PRIVATE Boost::system Boost::asio)
+
+add_subdirectory(graphical)

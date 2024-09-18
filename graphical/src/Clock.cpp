@@ -21,5 +21,6 @@ std::size_t LE::Clock::restart()
 
 std::size_t LE::Clock::getElapsedTime() const
 {
-    return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - _lastFrame).count();
+    auto now = std::chrono::high_resolution_clock::now();
+    return std::chrono::duration_cast<std::chrono::milliseconds>(now - _lastFrame).count();
 }
