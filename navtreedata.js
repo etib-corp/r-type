@@ -68,7 +68,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "BinaryMessage_8hpp.html",
-"classLE_1_1Vector4.html#af3263abc0e14645aacfb74dd5e2ff35b"
+"classLE_1_1Vector4.html#af1f7e795a8a0c8bac9c46d81482ce788"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"classLE_1_1Vector4.html#af1f7e795a8a0c8bac9c46d81482ce788":[5,0,1,7,6],
 "classLE_1_1Vector4.html#af3263abc0e14645aacfb74dd5e2ff35b":[5,0,1,7,26],
 "classLE_1_1Vector4.html#af8778d1ade7e629ea0ac14232e2c6522":[5,0,1,7,27],
 "classLE_1_1Vector4.html#af9bda12b7c86aab9f4d71af7d5296b10":[5,0,1,7,12],

@@ -19,6 +19,7 @@ var NAVTREEINDEX0 =
 "Message_8hpp_source.html":[6,0,2,0,3],
 "Producer_8hpp.html":[6,0,2,0,4],
 "Producer_8hpp_source.html":[6,0,2,0,4],
+"ResolvingLib_8hpp_source.html":[6,0,3,0,2],
 "SceneManager_8hpp_source.html":[6,0,1,0,6],
 "Scene_8hpp.html":[6,0,1,0,5],
 "Scene_8hpp_source.html":[6,0,1,0,5],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "classLE_1_1Vector4.html#ad6e8992223a358a86af7080f658b8ba6":[5,0,1,7,1],
 "classLE_1_1Vector4.html#ad9e6ae2fbe94a2faad82317e02b7f8a7":[5,0,1,7,28],
 "classLE_1_1Vector4.html#adef9576221d782e200fb0d7ba2914bb1":[5,0,1,7,16],
-"classLE_1_1Vector4.html#ae2418de92ab2a2d525bdd622458fd8b7":[5,0,1,7,25],
-"classLE_1_1Vector4.html#af1f7e795a8a0c8bac9c46d81482ce788":[5,0,1,7,6]
+"classLE_1_1Vector4.html#ae2418de92ab2a2d525bdd622458fd8b7":[5,0,1,7,25]
 };
