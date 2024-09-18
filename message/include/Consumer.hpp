@@ -1,19 +1,21 @@
 /**
  * @file Consumer.hpp
  * @brief Defines the Consumer class for consuming messages from a specific topic.
- * 
+ *
  * This file contains the declaration of the Consumer class, which is responsible
  * for consuming messages from a specified topic. The class provides methods to
  * initialize the consumer with a topic name and to consume messages.
- * 
+ *
  */
 
 #pragma once
 
 #include <string>
 #include <memory>
+#include <type_traits>
 
 #include "Broker.hpp"
+#include "Message.hpp"
 
 /**
  * @class Consumer
@@ -22,8 +24,12 @@
  * The Consumer class provides functionality to consume messages from a given topic.
  * It manages the topic name and provides a method to consume messages.
  */
+
+template <typename BrokerType>
 class Consumer
 {
+    static_assert(std::is_base_of<Broker, BrokerType>::value, "BrokerType must inherit from Broker");
+
 public:
     /**
      * @brief Constructs a Consumer object with the specified topic name.
@@ -42,7 +48,10 @@ public:
      *
      * @return A unique pointer to the consumed Message object.
      */
-    std::unique_ptr<Message> consumeMessage(void);
+    std::unique_ptr<Message> consumeMessage(void)
+    {
+        return BrokerType::GetInstance()->getTopic(_topicName).consumeMessage();
+    }
 
 private:
     /**

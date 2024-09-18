@@ -8,16 +8,12 @@
 #include "Consumer.hpp"
 #include "Broker.hpp"
 
-Consumer::Consumer(std::string topicName)
-    : _topicName(topicName)
+template <typename BrokerType>
+Consumer<BrokerType>::Consumer(std::string topicName) : _topicName(topicName)
 {
 }
 
-Consumer::~Consumer(void)
+template <typename BrokerType>
+Consumer<BrokerType>::~Consumer(void)
 {
-}
-
-std::unique_ptr<Message> Consumer::consumeMessage(void)
-{
-    return Broker::getInstance().getTopic(_topicName)->consumeMessage();
 }

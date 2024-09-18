@@ -7,12 +7,6 @@
 
 #include "Broker.hpp"
 
-Broker &Broker::getInstance(void)
-{
-    static Broker instance;
-    return instance;
-}
-
 void Broker::addTopic(const std::string &name)
 {
     std::lock_guard<std::mutex> lock(_mutex);
@@ -32,12 +26,4 @@ void Broker::removeTopic(const std::string &topicName)
 {
     std::lock_guard<std::mutex> lock(_mutex);
     _topics.erase(topicName);
-}
-
-Broker::Broker(void)
-{
-}
-
-Broker::~Broker(void)
-{
 }

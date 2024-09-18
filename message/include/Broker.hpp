@@ -30,23 +30,6 @@ class Broker
 {
 public:
     /**
-     * @brief Deleted copy constructor.
-     */
-    Broker(const Broker &) = delete;
-
-    /**
-     * @brief Deleted copy assignment operator.
-     */
-    Broker &operator=(const Broker &) = delete;
-
-    /**
-     * @brief Get the singleton instance of the Broker.
-     *
-     * @return Broker& Reference to the singleton instance.
-     */
-    static Broker &getInstance(void);
-
-    /**
      * @brief Add a new topic.
      *
      * @param name The name of the topic to add.
@@ -68,17 +51,7 @@ public:
      */
     void removeTopic(const std::string &topicName);
 
-private:
-    /**
-     * @brief Private constructor to prevent instantiation.
-     */
-    Broker(void);
-
-    /**
-     * @brief Private destructor.
-     */
-    ~Broker(void);
-
+protected:
     /**
      * @brief Mutex to ensure thread safety.
      */

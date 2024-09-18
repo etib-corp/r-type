@@ -8,16 +8,12 @@
 #include "Producer.hpp"
 #include "Broker.hpp"
 
-Producer::Producer(std::string topicName)
-    : _topicName(topicName)
+template <typename BrokerType>
+Producer<BrokerType>::Producer(std::string topicName) : _topicName(topicName)
 {
 }
 
-Producer::~Producer(void)
+template <typename BrokerType>
+Producer<BrokerType>::~Producer(void)
 {
-}
-
-void Producer::produceMessage(std::unique_ptr<Message> message)
-{
-    Broker::getInstance().getTopic(_topicName)->produceMessage(std::move(message));
 }
