@@ -34,14 +34,41 @@
 
 #endif // __linux__
 
-#ifdef __WIN32
+#ifdef __APPLE__
+    #include <dlfcn.h>
+
+    /**
+     * @brief Opens a library.
+     */
+    #define OPEN_SYM(path, var) \
+        var = dlopen(path.c_str(), RTLD_LAZY)
+
+    /**
+     * @brief Loads a symbol from a library.
+     */
+    #define LOAD_SYM(libHandle, var, sym, type) \
+        if ((type)dlsym(libHandle, sym) != NULL) \
+                var = (type)dlsym(libHandle, sym);
+
+#endif // __APPLE__
+
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
     #include <windows.h>
 
-    #define OPEN_SYM()
+    /**
+     * @brief Opens a library.
+     */
+    #define OPEN_SYM(path, var) \
+        var = LoadLibrary(path.c_str())
 
-    #define LOAD_SYM()
+    /**
+     * @brief Loads a symbol from a library.
+     */
+    #define LOAD_SYM(libHandle, var, sym, type) \
+        if ((type)GetProcAddress(libHandle, sym) != NULL) \
+                var = (type)GetProcAddress(libHandle, sym);
 
-#endif
+#endif // __WIN__
 
 class LoaderLibError : public std::exception {
     public:
