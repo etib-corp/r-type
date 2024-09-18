@@ -3,6 +3,17 @@ var annotated_dup =
     [ "docstring", "namespacedocstring.html", [
       [ "PyClass", "classdocstring_1_1PyClass.html", "classdocstring_1_1PyClass" ]
     ] ],
+    [ "LE", null, [
+      [ "Clock", "classLE_1_1Clock.html", "classLE_1_1Clock" ],
+      [ "Engine", "classLE_1_1Engine.html", "classLE_1_1Engine" ],
+      [ "Error", "classLE_1_1Error.html", "classLE_1_1Error" ],
+      [ "Scene", "classLE_1_1Scene.html", "classLE_1_1Scene" ],
+      [ "SceneManager", "classLE_1_1SceneManager.html", "classLE_1_1SceneManager" ],
+      [ "Vector2", "classLE_1_1Vector2.html", "classLE_1_1Vector2" ],
+      [ "Vector3", "classLE_1_1Vector3.html", "classLE_1_1Vector3" ],
+      [ "Vector4", "classLE_1_1Vector4.html", "classLE_1_1Vector4" ],
+      [ "Window", "classLE_1_1Window.html", "classLE_1_1Window" ]
+    ] ],
     [ "pyexample", "namespacepyexample.html", [
       [ "PyClass", "classpyexample_1_1PyClass.html", "classpyexample_1_1PyClass" ]
     ] ],
