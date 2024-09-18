@@ -19,12 +19,19 @@
 #ifdef __linux__
     #include <dlfcn.h>
 
+    /**
+     * @brief Opens a library.
+     */
     #define OPEN_SYM(path, var) \
         var = dlopen(path.c_str(), RTLD_LAZY)
 
+    /**
+     * @brief Loads a symbol from a library.
+     */
     #define LOAD_SYM(libHandle, var, sym, type) \
         if ((type)dlsym(libHandle, sym) != NULL) \
                 var = (type)dlsym(libHandle, sym);
+
 #endif // __linux__
 
 #ifdef __WIN32
@@ -81,12 +88,30 @@ class LoaderLib {
         INetworkModule *createNetworkModule(void);
 
     protected:
+
+        /**
+         * @brief Path to the network module.
+         */
         std::string _pathNetworkModule;
+
+        /**
+         * @brief Path to the core module.
+         */
         std::string _pathCoreModule;
 
+        /**
+         * @brief Function to create a network module.
+         */
         std::function<INetworkModule*()> _createNetworkModule;
 
+        /**
+         * @brief Contains the handle to the network module.
+         */
         void *_handleNetworkModule;
+
+        /**
+         * @brief Contains the handle to the core module.
+         */
         void *_handleCoreModule;
     private:
 };

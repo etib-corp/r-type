@@ -18,6 +18,7 @@ ConnectionTCP::~ConnectionTCP()
 {
 }
 
+
 void ConnectionTCP::WaitForConnection()
 {
     _asioAcceptor.async_accept(
@@ -32,6 +33,7 @@ void ConnectionTCP::WaitForConnection()
             WaitForConnection();
         });
 }
+
 
 void ConnectionTCP::run()
 {

@@ -46,5 +46,3 @@ void TCPSession::write(const std::string &message)
             }
         });
 }
-
-
