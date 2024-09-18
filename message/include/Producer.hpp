@@ -33,7 +33,6 @@ public:
     /**
      * @brief Constructs a new Producer object with a specified topic name.
      *
-     * @param broker A shared pointer to the broker instance.
      * @param topicName The name of the topic to which messages will be produced.
      */
     Producer(std::string topicName);

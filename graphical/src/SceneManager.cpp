@@ -50,3 +50,13 @@ void LE::SceneManager::stop()
         throw SceneManagerError("No current scene to stop.");
     }
 }
+
+std::shared_ptr<LE::Scene> LE::SceneManager::getCurrentScene() const
+{
+    return _currentScene;
+}
+
+std::shared_ptr<LE::Scene> LE::SceneManager::getPreviousScene() const
+{
+    return _previousScene;
+}

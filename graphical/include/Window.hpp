@@ -16,6 +16,13 @@
 #include <string>
 #include <GLFW/glfw3.h>
 
+using Color = union {
+    unsigned int value;
+    struct {
+        unsigned char r, g, b, a;
+    };
+};
+
 /**
  * @file Window.hpp
  * @brief Defines the Window class.
@@ -65,6 +72,39 @@ namespace LE {
              * @param scene A shared pointer to the scene to be rendered.
              */
             void render(std::shared_ptr<LE::Scene> scene);
+
+            /**
+             * @brief Checks if the window is open.
+             *
+             * @return True if the window is open, false otherwise.
+             */
+            bool isOpen();
+
+            /**
+             * @brief Close the window.
+             */
+            void close();
+
+            /**
+             * @brief Sets the frame rate limit for the window.
+             *
+             * @param limit The frame rate limit.
+             */
+            void setFramerateLimit(std::size_t limit);
+
+            /**
+             * @brief Clears the window to the specified color.
+             *
+             * @param color The color to clear the window to (default is black).
+             */
+            void clear();
+
+            /**
+             * @brief Sets the clear color for the window.
+             *
+             * @param color The color to set as the clear color.
+             */
+            void setClearColor(Color color);
         private:
 
             /**

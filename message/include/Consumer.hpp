@@ -24,6 +24,7 @@
  * The Consumer class provides functionality to consume messages from a given topic.
  * It manages the topic name and provides a method to consume messages.
  */
+
 template <typename BrokerType>
 class Consumer
 {
@@ -33,7 +34,6 @@ public:
     /**
      * @brief Constructs a Consumer object with the specified topic name.
      *
-     * @param broker A shared pointer to the broker instance.
      * @param topicName The name of the topic from which messages will be consumed.
      */
     Consumer(std::string topicName);
