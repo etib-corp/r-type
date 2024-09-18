@@ -10,7 +10,7 @@
 int main(void)
 {
     try {
-        LoaderLib lb("/home/sleo/Documents/interfaceRtype/networkmodule.so", "");
+        LoaderLib lb("./build/server/NetworkModule/libNetworkModule.so", "");
 
         lb.LoadModule();
 

@@ -26,10 +26,11 @@ void TCPSession::read()
     _socket.async_read_some(
         boost::asio::buffer(_data, _max_length),
         [this](boost::system::error_code ec, std::size_t length) {
-            (void)length;
             if (!ec) {
-                std::cout << "Received: " << _data << std::endl;
+                std::cout << "Received: " << _data;
+                std::cout << "Size: " << length << std::endl;
             }
+            std::memset(_data, 0, _max_length);
             read();
         });
 }

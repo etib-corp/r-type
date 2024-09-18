@@ -19,8 +19,8 @@ module::~module()
 
 void module::run()
 {
-    _connectionTCP->WaitForConnection();
-    _connectionTCP->run();
+    // _connectionTCP->WaitForConnection();
+    // _connectionTCP->run();
     _connectionUDP->run();
 }
 

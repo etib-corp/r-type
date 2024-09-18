@@ -23,21 +23,16 @@ void ConnectionUDP::run()
     _threadContext = std::thread([this]() {
         _io_context.run();
     });
-    while (true)
-    {
-        sleep(1);
-        startReceive();
-    }
-
+    _threadContext.join();
 }
 
 void ConnectionUDP::startReceive()
 {
     _udpSocket.async_receive_from(
-        boost::asio::buffer(this->_recvBuffer), _remoteEndpoint,
-        [this](const boost::system::error_code &error, std::size_t bytes_transferred) {
-            handleReceive(error, bytes_transferred);
-        });
+    boost::asio::buffer(_recvBuffer), _remoteEndpoint,
+    [this](const boost::system::error_code &error, std::size_t bytes_transferred) {
+        handleReceive(error, bytes_transferred);
+    });
 }
 
 void ConnectionUDP::handleReceive(const boost::system::error_code &error, std::size_t bytes_transferred)
