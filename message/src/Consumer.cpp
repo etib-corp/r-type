@@ -19,5 +19,5 @@ Consumer::~Consumer(void)
 
 std::unique_ptr<Message> Consumer::consumeMessage(void)
 {
-    return Broker::getInstance().getTopic(_topicName).consumeMessage();
+    return Broker::getInstance().getTopic(_topicName)->consumeMessage();
 }

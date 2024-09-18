@@ -19,5 +19,5 @@ Producer::~Producer(void)
 
 void Producer::produceMessage(std::unique_ptr<Message> message)
 {
-    Broker::getInstance().getTopic(_topicName).produceMessage(std::move(message));
+    Broker::getInstance().getTopic(_topicName)->produceMessage(std::move(message));
 }
