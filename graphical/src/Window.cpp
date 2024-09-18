@@ -33,6 +33,7 @@ LE::Window::Window(const std::string& title, std::size_t width, std::size_t heig
     glFrontFace(GL_CW);
 
     glfwSwapInterval(1);
+    _clock = std::make_unique<LE::Clock>();
 }
 
 LE::Window::~Window()
@@ -44,7 +45,11 @@ LE::Window::~Window()
 
 void LE::Window::render(std::shared_ptr<LE::Scene> scene)
 {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    if (_clock->getElapsedTime() < (1000.0f / _framerateLimit))
+        return;
+    LE::Engine::getInstance()->debug("Rendering frame...");
+    _clock->restart();
+    clear();
     scene->draw();
     glfwSwapBuffers(_window);
 }
@@ -69,4 +74,29 @@ void LE::Window::_initGLFW()
 
     _monitor = glfwGetPrimaryMonitor();
     _mode = glfwGetVideoMode(_monitor);
+}
+
+bool LE::Window::isOpen()
+{
+    return !glfwWindowShouldClose(_window);
+}
+
+void LE::Window::close()
+{
+    glfwSetWindowShouldClose(_window, GLFW_TRUE);
+}
+
+void LE::Window::setFramerateLimit(std::size_t limit)
+{
+    _framerateLimit = limit;
+}
+
+void LE::Window::clear()
+{
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
+void LE::Window::setClearColor(Color color)
+{
+    glClearColor(color.r / 255.0f, color.g / 255.0f, color.b / 255.0f, color.a);
 }

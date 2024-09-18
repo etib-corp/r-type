@@ -95,12 +95,26 @@ namespace LE {
              */
             void stop();
 
+            /**
+             * @brief Gets the current scene.
+             *
+             * @return A shared pointer to the currently playing scene.
+             */
+            std::shared_ptr<Scene> getCurrentScene() const;
+
+            /**
+             * @brief Gets the previous scene.
+             *
+             * @return A shared pointer to the previously played scene.
+             */
+            std::shared_ptr<Scene> getPreviousScene() const;
+
         private:
-            std::unordered_map<std::string, std::shared_ptr<Scene>> _scenes;
-            std::string _currentSceneName;
-            std::shared_ptr<Scene> _currentScene;
-            std::string _previousSceneName;
-            std::shared_ptr<Scene> _previousScene;
+            std::unordered_map<std::string, std::shared_ptr<Scene>> _scenes;    ///< Collection of scenes managed by the SceneManager.
+            std::string _currentSceneName;                                      ///< Name of the currently playing scene.
+            std::shared_ptr<Scene> _currentScene;                               ///< Pointer to the currently playing scene.
+            std::string _previousSceneName;                                     ///< Name of the previously played scene.
+            std::shared_ptr<Scene> _previousScene;                              ///< Pointer to the previously played scene.
     };
 }
 
