@@ -151,9 +151,11 @@ var NAVTREEINDEX0 =
 "classLE_1_1SceneManager.html":[5,0,1,4],
 "classLE_1_1SceneManager.html#a01212af68739ebd8c25b39a98a663207":[5,0,1,4,1],
 "classLE_1_1SceneManager.html#a12ae75e4e6f28b65d157bea55347afbf":[5,0,1,4,2],
-"classLE_1_1SceneManager.html#a3d07ba4d6d0c71bd17b077b90f3b5e52":[5,0,1,4,4],
-"classLE_1_1SceneManager.html#a596be2cf35f37c78d613336928a5b8c7":[5,0,1,4,5],
-"classLE_1_1SceneManager.html#ad49d9cd81f3361a307adfc357e9fb18d":[5,0,1,4,3],
+"classLE_1_1SceneManager.html#a3d07ba4d6d0c71bd17b077b90f3b5e52":[5,0,1,4,6],
+"classLE_1_1SceneManager.html#a596be2cf35f37c78d613336928a5b8c7":[5,0,1,4,7],
+"classLE_1_1SceneManager.html#a6b1e5fc621a6e9c55a71a623737b0ec5":[5,0,1,4,4],
+"classLE_1_1SceneManager.html#ad49d9cd81f3361a307adfc357e9fb18d":[5,0,1,4,5],
+"classLE_1_1SceneManager.html#ae5ccdfada6a2f4a5b17b34770d60dca2":[5,0,1,4,3],
 "classLE_1_1SceneManager_1_1SceneManagerError.html":[5,0,1,4,0],
 "classLE_1_1SceneManager_1_1SceneManagerError.html#ade52e450d47e2b33189a7b102978ddf4":[5,0,1,4,0,0],
 "classLE_1_1Scene_1_1SceneError.html":[5,0,1,3,0],
@@ -247,7 +249,5 @@ var NAVTREEINDEX0 =
 "classLE_1_1Vector4.html#ad9e6ae2fbe94a2faad82317e02b7f8a7":[5,0,1,7,28],
 "classLE_1_1Vector4.html#adef9576221d782e200fb0d7ba2914bb1":[5,0,1,7,16],
 "classLE_1_1Vector4.html#ae2418de92ab2a2d525bdd622458fd8b7":[5,0,1,7,25],
-"classLE_1_1Vector4.html#af1f7e795a8a0c8bac9c46d81482ce788":[5,0,1,7,6],
-"classLE_1_1Vector4.html#af3263abc0e14645aacfb74dd5e2ff35b":[5,0,1,7,26],
-"classLE_1_1Vector4.html#af8778d1ade7e629ea0ac14232e2c6522":[5,0,1,7,27]
+"classLE_1_1Vector4.html#af1f7e795a8a0c8bac9c46d81482ce788":[5,0,1,7,6]
 };

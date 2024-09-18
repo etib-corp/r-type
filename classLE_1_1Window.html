@@ -127,6 +127,22 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a58b7cf193c989213b49d8610660380f8" id="r_a58b7cf193c989213b49d8610660380f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a58b7cf193c989213b49d8610660380f8">render</a> (std::shared_ptr&lt; <a class="el" href="classLE_1_1Scene.html">LE::Scene</a> &gt; scene)</td></tr>
 <tr class="memdesc:a58b7cf193c989213b49d8610660380f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the specified scene in the window.  <br /></td></tr>
 <tr class="separator:a58b7cf193c989213b49d8610660380f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2e4e728d73e6bbc090e7e770ac45e6a" id="r_ad2e4e728d73e6bbc090e7e770ac45e6a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2e4e728d73e6bbc090e7e770ac45e6a">isOpen</a> ()</td></tr>
+<tr class="memdesc:ad2e4e728d73e6bbc090e7e770ac45e6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the window is open.  <br /></td></tr>
+<tr class="separator:ad2e4e728d73e6bbc090e7e770ac45e6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70330c9b2fe40cd644e380c32c0745fe" id="r_a70330c9b2fe40cd644e380c32c0745fe"><td class="memItemLeft" align="right" valign="top"><a id="a70330c9b2fe40cd644e380c32c0745fe" name="a70330c9b2fe40cd644e380c32c0745fe"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> ()</td></tr>
+<tr class="memdesc:a70330c9b2fe40cd644e380c32c0745fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the window. <br /></td></tr>
+<tr class="separator:a70330c9b2fe40cd644e380c32c0745fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a914ea4e40a923055811b653fdcec876f" id="r_a914ea4e40a923055811b653fdcec876f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a914ea4e40a923055811b653fdcec876f">setFramerateLimit</a> (std::size_t limit)</td></tr>
+<tr class="memdesc:a914ea4e40a923055811b653fdcec876f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the frame rate limit for the window.  <br /></td></tr>
+<tr class="separator:a914ea4e40a923055811b653fdcec876f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6524a040fe62e63b6d5cdc9a6e5f3e59" id="r_a6524a040fe62e63b6d5cdc9a6e5f3e59"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6524a040fe62e63b6d5cdc9a6e5f3e59">clear</a> ()</td></tr>
+<tr class="memdesc:a6524a040fe62e63b6d5cdc9a6e5f3e59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the window to the specified color.  <br /></td></tr>
+<tr class="separator:a6524a040fe62e63b6d5cdc9a6e5f3e59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2aba26df7da586df6850fd172fa57a2b" id="r_a2aba26df7da586df6850fd172fa57a2b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2aba26df7da586df6850fd172fa57a2b">setClearColor</a> (Color color)</td></tr>
+<tr class="memdesc:a2aba26df7da586df6850fd172fa57a2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the clear color for the window.  <br /></td></tr>
+<tr class="separator:a2aba26df7da586df6850fd172fa57a2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="classLE_1_1Window.html" title="The Window class is responsible for creating and managing a graphical window.">Window</a> class is responsible for creating and managing a graphical window. </p>
@@ -169,6 +185,51 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a6524a040fe62e63b6d5cdc9a6e5f3e59" name="a6524a040fe62e63b6d5cdc9a6e5f3e59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6524a040fe62e63b6d5cdc9a6e5f3e59">&#9670;&#160;</a></span>clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LE::Window::clear </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Clears the window to the specified color. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">color</td><td>The color to clear the window to (default is black). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad2e4e728d73e6bbc090e7e770ac45e6a" name="ad2e4e728d73e6bbc090e7e770ac45e6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2e4e728d73e6bbc090e7e770ac45e6a">&#9670;&#160;</a></span>isOpen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool LE::Window::isOpen </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if the window is open. </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the window is open, false otherwise. </dd></dl>
+
+</div>
+</div>
 <a id="a58b7cf193c989213b49d8610660380f8" name="a58b7cf193c989213b49d8610660380f8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a58b7cf193c989213b49d8610660380f8">&#9670;&#160;</a></span>render()</h2>
 
@@ -188,6 +249,56 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">scene</td><td><a class="el" href="classA.html">A</a> shared pointer to the scene to be rendered. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2aba26df7da586df6850fd172fa57a2b" name="a2aba26df7da586df6850fd172fa57a2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2aba26df7da586df6850fd172fa57a2b">&#9670;&#160;</a></span>setClearColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LE::Window::setClearColor </td>
+          <td>(</td>
+          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the clear color for the window. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">color</td><td>The color to set as the clear color. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a914ea4e40a923055811b653fdcec876f" name="a914ea4e40a923055811b653fdcec876f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a914ea4e40a923055811b653fdcec876f">&#9670;&#160;</a></span>setFramerateLimit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LE::Window::setFramerateLimit </td>
+          <td>(</td>
+          <td class="paramtype">std::size_t</td>          <td class="paramname"><span class="paramname"><em>limit</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the frame rate limit for the window. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">limit</td><td>The frame rate limit. </td></tr>
   </table>
   </dd>
 </dl>

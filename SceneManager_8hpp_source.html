@@ -137,17 +137,21 @@ $(function(){initNavTree('SceneManager_8hpp_source.html',''); initResizable(true
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classLE_1_1SceneManager.html#a596be2cf35f37c78d613336928a5b8c7">stop</a>();</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            std::unordered_map&lt;std::string, std::shared_ptr&lt;Scene&gt;&gt; _scenes;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            std::string _currentSceneName;</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            std::shared_ptr&lt;Scene&gt; _currentScene;</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            std::string _previousSceneName;</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            std::shared_ptr&lt;Scene&gt; _previousScene;</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    };</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            std::shared_ptr&lt;Scene&gt; <a class="code hl_function" href="classLE_1_1SceneManager.html#ae5ccdfada6a2f4a5b17b34770d60dca2">getCurrentScene</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            std::shared_ptr&lt;Scene&gt; <a class="code hl_function" href="classLE_1_1SceneManager.html#a6b1e5fc621a6e9c55a71a623737b0ec5">getPreviousScene</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            std::unordered_map&lt;std::string, std::shared_ptr&lt;Scene&gt;&gt; _scenes;    </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>            std::string _currentSceneName;                                      </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            std::shared_ptr&lt;Scene&gt; _currentScene;                               </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>            std::string _previousSceneName;                                     </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>            std::shared_ptr&lt;Scene&gt; _previousScene;                              </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    };</div>
 </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>}</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="preprocessor">#endif </span><span class="comment">/* !SCENEMANAGER_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>}</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="preprocessor">#endif </span><span class="comment">/* !SCENEMANAGER_HPP_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="aScene_8hpp_html"><div class="ttname"><a href="Scene_8hpp.html">Scene.hpp</a></div><div class="ttdoc">Defines the Scene class and its associated error handling.</div></div>
 <div class="ttc" id="aclassLE_1_1Error_html"><div class="ttname"><a href="classLE_1_1Error.html">LE::Error</a></div><div class="ttdoc">The Error class represents an exception that can be thrown in the Lion engine.</div><div class="ttdef"><b>Definition</b> Error.hpp:20</div></div>
 <div class="ttc" id="aclassLE_1_1SceneManager_1_1SceneManagerError_html"><div class="ttname"><a href="classLE_1_1SceneManager_1_1SceneManagerError.html">LE::SceneManager::SceneManagerError</a></div><div class="ttdoc">A custom exception class for handling errors specific to the SceneManager.</div><div class="ttdef"><b>Definition</b> SceneManager.hpp:44</div></div>
@@ -156,7 +160,9 @@ $(function(){initNavTree('SceneManager_8hpp_source.html',''); initResizable(true
 <div class="ttc" id="aclassLE_1_1SceneManager_html_a01212af68739ebd8c25b39a98a663207"><div class="ttname"><a href="classLE_1_1SceneManager.html#a01212af68739ebd8c25b39a98a663207">LE::SceneManager::SceneManager</a></div><div class="ttdeci">SceneManager()</div><div class="ttdoc">Constructs a new SceneManager object.</div><div class="ttdef"><b>Definition</b> SceneManager.cpp:10</div></div>
 <div class="ttc" id="aclassLE_1_1SceneManager_html_a12ae75e4e6f28b65d157bea55347afbf"><div class="ttname"><a href="classLE_1_1SceneManager.html#a12ae75e4e6f28b65d157bea55347afbf">LE::SceneManager::~SceneManager</a></div><div class="ttdeci">~SceneManager()</div><div class="ttdoc">Destructor for the SceneManager class.</div><div class="ttdef"><b>Definition</b> SceneManager.cpp:14</div></div>
 <div class="ttc" id="aclassLE_1_1SceneManager_html_a596be2cf35f37c78d613336928a5b8c7"><div class="ttname"><a href="classLE_1_1SceneManager.html#a596be2cf35f37c78d613336928a5b8c7">LE::SceneManager::stop</a></div><div class="ttdeci">void stop()</div><div class="ttdoc">Stops the currently playing scene.</div><div class="ttdef"><b>Definition</b> SceneManager.cpp:45</div></div>
+<div class="ttc" id="aclassLE_1_1SceneManager_html_a6b1e5fc621a6e9c55a71a623737b0ec5"><div class="ttname"><a href="classLE_1_1SceneManager.html#a6b1e5fc621a6e9c55a71a623737b0ec5">LE::SceneManager::getPreviousScene</a></div><div class="ttdeci">std::shared_ptr&lt; Scene &gt; getPreviousScene() const</div><div class="ttdoc">Gets the previous scene.</div><div class="ttdef"><b>Definition</b> SceneManager.cpp:59</div></div>
 <div class="ttc" id="aclassLE_1_1SceneManager_html_ad49d9cd81f3361a307adfc357e9fb18d"><div class="ttname"><a href="classLE_1_1SceneManager.html#ad49d9cd81f3361a307adfc357e9fb18d">LE::SceneManager::play</a></div><div class="ttdeci">void play()</div><div class="ttdoc">Starts playing the default scene.</div><div class="ttdef"><b>Definition</b> SceneManager.cpp:18</div></div>
+<div class="ttc" id="aclassLE_1_1SceneManager_html_ae5ccdfada6a2f4a5b17b34770d60dca2"><div class="ttname"><a href="classLE_1_1SceneManager.html#ae5ccdfada6a2f4a5b17b34770d60dca2">LE::SceneManager::getCurrentScene</a></div><div class="ttdeci">std::shared_ptr&lt; Scene &gt; getCurrentScene() const</div><div class="ttdoc">Gets the current scene.</div><div class="ttdef"><b>Definition</b> SceneManager.cpp:54</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

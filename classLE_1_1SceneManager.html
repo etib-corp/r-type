@@ -132,6 +132,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a596be2cf35f37c78d613336928a5b8c7" id="r_a596be2cf35f37c78d613336928a5b8c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a596be2cf35f37c78d613336928a5b8c7">stop</a> ()</td></tr>
 <tr class="memdesc:a596be2cf35f37c78d613336928a5b8c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the currently playing scene.  <br /></td></tr>
 <tr class="separator:a596be2cf35f37c78d613336928a5b8c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5ccdfada6a2f4a5b17b34770d60dca2" id="r_ae5ccdfada6a2f4a5b17b34770d60dca2"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classLE_1_1Scene.html">Scene</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5ccdfada6a2f4a5b17b34770d60dca2">getCurrentScene</a> () const</td></tr>
+<tr class="memdesc:ae5ccdfada6a2f4a5b17b34770d60dca2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current scene.  <br /></td></tr>
+<tr class="separator:ae5ccdfada6a2f4a5b17b34770d60dca2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b1e5fc621a6e9c55a71a623737b0ec5" id="r_a6b1e5fc621a6e9c55a71a623737b0ec5"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classLE_1_1Scene.html">Scene</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b1e5fc621a6e9c55a71a623737b0ec5">getPreviousScene</a> () const</td></tr>
+<tr class="memdesc:a6b1e5fc621a6e9c55a71a623737b0ec5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the previous scene.  <br /></td></tr>
+<tr class="separator:a6b1e5fc621a6e9c55a71a623737b0ec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Manages scenes within the application. </p>
@@ -180,6 +186,46 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae5ccdfada6a2f4a5b17b34770d60dca2" name="ae5ccdfada6a2f4a5b17b34770d60dca2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5ccdfada6a2f4a5b17b34770d60dca2">&#9670;&#160;</a></span>getCurrentScene()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classLE_1_1Scene.html">LE::Scene</a> &gt; LE::SceneManager::getCurrentScene </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the current scene. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classA.html">A</a> shared pointer to the currently playing scene. </dd></dl>
+
+</div>
+</div>
+<a id="a6b1e5fc621a6e9c55a71a623737b0ec5" name="a6b1e5fc621a6e9c55a71a623737b0ec5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b1e5fc621a6e9c55a71a623737b0ec5">&#9670;&#160;</a></span>getPreviousScene()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classLE_1_1Scene.html">LE::Scene</a> &gt; LE::SceneManager::getPreviousScene </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the previous scene. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classA.html">A</a> shared pointer to the previously played scene. </dd></dl>
+
+</div>
+</div>
 <a id="ad49d9cd81f3361a307adfc357e9fb18d" name="ad49d9cd81f3361a307adfc357e9fb18d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad49d9cd81f3361a307adfc357e9fb18d">&#9670;&#160;</a></span>play() <span class="overload">[1/2]</span></h2>
 

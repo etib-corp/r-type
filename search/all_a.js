@@ -5,5 +5,6 @@ var searchData=
   ['include_5ftest_2',['Include_Test',['../classInclude__Test.html',1,'']]],
   ['inetworkmodule_3',['INetworkModule',['../classINetworkModule.html',1,'']]],
   ['is_20a_20section_20in_20group_205_4',['This is a section in group 5',['../group__group5.html',1,'']]],
-  ['is_20another_20section_20in_20group_205_5',['This is another section in group 5',['../group__group5.html',1,'']]]
+  ['is_20another_20section_20in_20group_205_5',['This is another section in group 5',['../group__group5.html',1,'']]],
+  ['isopen_6',['isOpen',['../classLE_1_1Window.html#ad2e4e728d73e6bbc090e7e770ac45e6a',1,'LE::Window']]]
 ];
