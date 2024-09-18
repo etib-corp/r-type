@@ -5,8 +5,8 @@
 ** Producer.cpp
 */
 
-#include "message/Producer.hpp"
-#include "message/Broker.hpp"
+#include "Producer.hpp"
+#include "Broker.hpp"
 
 Producer::Producer(std::string topicName)
     : _topicName(topicName)

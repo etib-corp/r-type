@@ -5,8 +5,8 @@
 ** Consumer.cpp
 */
 
-#include "message/Consumer.hpp"
-#include "message/Broker.hpp"
+#include "Consumer.hpp"
+#include "Broker.hpp"
 
 Consumer::Consumer(std::string topicName)
     : _topicName(topicName)

@@ -5,7 +5,7 @@
 ** Broker.cpp
 */
 
-#include "message/Broker.hpp"
+#include "Broker.hpp"
 
 Broker::Broker(void)
 {
