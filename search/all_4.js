@@ -11,11 +11,11 @@ var searchData=
   ['clock_8',['Clock',['../classLE_1_1Clock.html',1,'LE::Clock'],['../classLE_1_1Clock.html#a1ae994eca63459eb75f21d6e045d5bd2',1,'LE::Clock::Clock()']]],
   ['clock_2ehpp_9',['Clock.hpp',['../Clock_8hpp.html',1,'']]],
   ['close_10',['close',['../structcmd_8h.html#ae152484c890a24e4d9b4980e7b965be0',1,'structcmd.h']]],
-  ['connectiontcp_11',['ConnectionTCP',['../classConnectionTCP.html',1,'']]],
-  ['connectionudp_12',['ConnectionUDP',['../classConnectionUDP.html',1,'']]],
+  ['connectiontcp_11',['ConnectionTCP',['../classConnectionTCP.html',1,'ConnectionTCP'],['../classConnectionTCP.html#a95a4181836b3c53d67908ca682511815',1,'ConnectionTCP::ConnectionTCP()']]],
+  ['connectionudp_12',['ConnectionUDP',['../classConnectionUDP.html',1,'ConnectionUDP'],['../classConnectionUDP.html#a4b13f39e3503cb2efd9a7c2e23a8bab7',1,'ConnectionUDP::ConnectionUDP()']]],
   ['consumer_13',['Consumer',['../classConsumer.html',1,'']]],
   ['coord_14',['Coord',['../restypedef_8cpp.html#a013489fb99c6a5b012db8ec66544a507',1,'restypedef.cpp']]],
   ['coordstruct_15',['CoordStruct',['../structCoordStruct.html',1,'']]],
-  ['createnetworkmodule_16',['createNetworkModule',['../classLoaderLib.html#ab704dc739fb98dabfbac0db89aec4a01',1,'LoaderLib']]],
+  ['createnetworkmodule_16',['createNetworkModule',['../classLoaderLib.html#ab704dc739fb98dabfbac0db89aec4a01',1,'LoaderLib::createNetworkModule()'],['../module_8cpp.html#a136ccff494522c98157d6e9b5dda3353',1,'createNetworkModule():&#160;module.cpp']]],
   ['cross_17',['cross',['../classLE_1_1Vector2.html#a5a678af1a336c427dfdeba29df739f4e',1,'LE::Vector2::cross()'],['../classLE_1_1Vector3.html#ae075e1d18e5d0370a1b454cb384994ad',1,'LE::Vector3::cross()'],['../classLE_1_1Vector4.html#a13c12bedc66addd584f5695e45e7bebe',1,'LE::Vector4::cross()']]]
 ];

@@ -104,43 +104,239 @@ $(function(){initNavTree('classConnectionTCP.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">ConnectionTCP Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Manages TCP connections for the server.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="ConnectionTCP_8hpp_source.html">ConnectionTCP.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a95a4181836b3c53d67908ca682511815" id="r_a95a4181836b3c53d67908ca682511815"><td class="memItemLeft" align="right" valign="top"><a id="a95a4181836b3c53d67908ca682511815" name="a95a4181836b3c53d67908ca682511815"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ConnectionTCP</b> (int port)</td></tr>
+<tr class="memitem:a95a4181836b3c53d67908ca682511815" id="r_a95a4181836b3c53d67908ca682511815"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95a4181836b3c53d67908ca682511815">ConnectionTCP</a> (int port)</td></tr>
+<tr class="memdesc:a95a4181836b3c53d67908ca682511815"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classConnectionTCP.html" title="Manages TCP connections for the server.">ConnectionTCP</a> object.  <br /></td></tr>
 <tr class="separator:a95a4181836b3c53d67908ca682511815"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a5213ff7c384d3394637991c81579e9" id="r_a0a5213ff7c384d3394637991c81579e9"><td class="memItemLeft" align="right" valign="top"><a id="a0a5213ff7c384d3394637991c81579e9" name="a0a5213ff7c384d3394637991c81579e9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>WaitForConnection</b> ()</td></tr>
+<tr class="memitem:a0a5213ff7c384d3394637991c81579e9" id="r_a0a5213ff7c384d3394637991c81579e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a5213ff7c384d3394637991c81579e9">WaitForConnection</a> ()</td></tr>
+<tr class="memdesc:a0a5213ff7c384d3394637991c81579e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asynchronously waits for incoming TCP connections.  <br /></td></tr>
 <tr class="separator:a0a5213ff7c384d3394637991c81579e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a615f83bc47740a8a2abfaafdb77bfcf0" id="r_a615f83bc47740a8a2abfaafdb77bfcf0"><td class="memItemLeft" align="right" valign="top"><a id="a615f83bc47740a8a2abfaafdb77bfcf0" name="a615f83bc47740a8a2abfaafdb77bfcf0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> ()</td></tr>
+<tr class="memitem:a615f83bc47740a8a2abfaafdb77bfcf0" id="r_a615f83bc47740a8a2abfaafdb77bfcf0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a615f83bc47740a8a2abfaafdb77bfcf0">run</a> ()</td></tr>
+<tr class="memdesc:a615f83bc47740a8a2abfaafdb77bfcf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the TCP connection by running the I/O context in a separate thread.  <br /></td></tr>
 <tr class="separator:a615f83bc47740a8a2abfaafdb77bfcf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a81339e542b52ce4cae6a422f3b43a985" id="r_a81339e542b52ce4cae6a422f3b43a985"><td class="memItemLeft" align="right" valign="top"><a id="a81339e542b52ce4cae6a422f3b43a985" name="a81339e542b52ce4cae6a422f3b43a985"></a>
-std::queue&lt; std::shared_ptr&lt; <a class="el" href="classTCPSession.html">TCPSession</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_sessions</b></td></tr>
+<tr class="memitem:a81339e542b52ce4cae6a422f3b43a985" id="r_a81339e542b52ce4cae6a422f3b43a985"><td class="memItemLeft" align="right" valign="top">std::queue&lt; std::shared_ptr&lt; <a class="el" href="classTCPSession.html">TCPSession</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a81339e542b52ce4cae6a422f3b43a985">_sessions</a></td></tr>
+<tr class="memdesc:a81339e542b52ce4cae6a422f3b43a985"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classA.html">A</a> queue that holds shared pointers to <a class="el" href="classTCPSession.html" title="Manages a TCP session using Boost.Asio.">TCPSession</a> objects.  <br /></td></tr>
 <tr class="separator:a81339e542b52ce4cae6a422f3b43a985"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a32dd546e87e5df02400557b384514304" id="r_a32dd546e87e5df02400557b384514304"><td class="memItemLeft" align="right" valign="top"><a id="a32dd546e87e5df02400557b384514304" name="a32dd546e87e5df02400557b384514304"></a>
-boost::asio::io_context&#160;</td><td class="memItemRight" valign="bottom"><b>_io_context</b></td></tr>
+<tr class="memitem:a32dd546e87e5df02400557b384514304" id="r_a32dd546e87e5df02400557b384514304"><td class="memItemLeft" align="right" valign="top">boost::asio::io_context&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a32dd546e87e5df02400557b384514304">_io_context</a></td></tr>
+<tr class="memdesc:a32dd546e87e5df02400557b384514304"><td class="mdescLeft">&#160;</td><td class="mdescRight">The io_context object provides core I/O functionality for asynchronous operations.  <br /></td></tr>
 <tr class="separator:a32dd546e87e5df02400557b384514304"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2eb245387bf5b0434b0c01cfeed2378" id="r_ab2eb245387bf5b0434b0c01cfeed2378"><td class="memItemLeft" align="right" valign="top"><a id="ab2eb245387bf5b0434b0c01cfeed2378" name="ab2eb245387bf5b0434b0c01cfeed2378"></a>
-boost::asio::ip::tcp::acceptor&#160;</td><td class="memItemRight" valign="bottom"><b>_asioAcceptor</b></td></tr>
+<tr class="memitem:ab2eb245387bf5b0434b0c01cfeed2378" id="r_ab2eb245387bf5b0434b0c01cfeed2378"><td class="memItemLeft" align="right" valign="top">boost::asio::ip::tcp::acceptor&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab2eb245387bf5b0434b0c01cfeed2378">_asioAcceptor</a></td></tr>
+<tr class="memdesc:ab2eb245387bf5b0434b0c01cfeed2378"><td class="mdescLeft">&#160;</td><td class="mdescRight">An acceptor used to listen for and accept incoming TCP connections.  <br /></td></tr>
 <tr class="separator:ab2eb245387bf5b0434b0c01cfeed2378"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a919c3296079be74442166a04912117e7" id="r_a919c3296079be74442166a04912117e7"><td class="memItemLeft" align="right" valign="top"><a id="a919c3296079be74442166a04912117e7" name="a919c3296079be74442166a04912117e7"></a>
-boost::asio::ip::tcp::endpoint&#160;</td><td class="memItemRight" valign="bottom"><b>_endpoint</b></td></tr>
+<tr class="memitem:a919c3296079be74442166a04912117e7" id="r_a919c3296079be74442166a04912117e7"><td class="memItemLeft" align="right" valign="top">boost::asio::ip::tcp::endpoint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a919c3296079be74442166a04912117e7">_endpoint</a></td></tr>
+<tr class="memdesc:a919c3296079be74442166a04912117e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a TCP endpoint which includes an IP address and a port number.  <br /></td></tr>
 <tr class="separator:a919c3296079be74442166a04912117e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ebe5505bad4d40ac58f7caa5e4cbeb0" id="r_a7ebe5505bad4d40ac58f7caa5e4cbeb0"><td class="memItemLeft" align="right" valign="top"><a id="a7ebe5505bad4d40ac58f7caa5e4cbeb0" name="a7ebe5505bad4d40ac58f7caa5e4cbeb0"></a>
-std::thread&#160;</td><td class="memItemRight" valign="bottom"><b>_threadContext</b></td></tr>
+<tr class="memitem:a7ebe5505bad4d40ac58f7caa5e4cbeb0" id="r_a7ebe5505bad4d40ac58f7caa5e4cbeb0"><td class="memItemLeft" align="right" valign="top">std::thread&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7ebe5505bad4d40ac58f7caa5e4cbeb0">_threadContext</a></td></tr>
+<tr class="memdesc:a7ebe5505bad4d40ac58f7caa5e4cbeb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Thread object for managing the context of the connection.  <br /></td></tr>
 <tr class="separator:a7ebe5505bad4d40ac58f7caa5e4cbeb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d85f9b4e72558d89dc3db5ef9fff2e5" id="r_a1d85f9b4e72558d89dc3db5ef9fff2e5"><td class="memItemLeft" align="right" valign="top"><a id="a1d85f9b4e72558d89dc3db5ef9fff2e5" name="a1d85f9b4e72558d89dc3db5ef9fff2e5"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>_port</b></td></tr>
+<tr class="memdesc:a1d85f9b4e72558d89dc3db5ef9fff2e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The port number used for the TCP connection. <br /></td></tr>
 <tr class="separator:a1d85f9b4e72558d89dc3db5ef9fff2e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Manages TCP connections for the server. </p>
+<p>This class is responsible for handling TCP connections using Boost.Asio. It provides methods to wait for incoming connections and to run the connection handling loop. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a95a4181836b3c53d67908ca682511815" name="a95a4181836b3c53d67908ca682511815"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95a4181836b3c53d67908ca682511815">&#9670;&#160;</a></span>ConnectionTCP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ConnectionTCP::ConnectionTCP </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>port</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a new <a class="el" href="classConnectionTCP.html" title="Manages TCP connections for the server.">ConnectionTCP</a> object. </p>
+<p>This constructor initializes the TCP connection acceptor with the specified port. It sets up the ASIO acceptor to listen on the given port using the IPv4 protocol.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>The port number on which the TCP connection will be accepted. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a615f83bc47740a8a2abfaafdb77bfcf0" name="a615f83bc47740a8a2abfaafdb77bfcf0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a615f83bc47740a8a2abfaafdb77bfcf0">&#9670;&#160;</a></span>run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConnectionTCP::run </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Starts the TCP connection by running the I/O context in a separate thread. </p>
+<p>This function initializes a new thread that runs the I/O context associated with the TCP connection. It ensures that the I/O operations are handled asynchronously. </p>
+
+</div>
+</div>
+<a id="a0a5213ff7c384d3394637991c81579e9" name="a0a5213ff7c384d3394637991c81579e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a5213ff7c384d3394637991c81579e9">&#9670;&#160;</a></span>WaitForConnection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConnectionTCP::WaitForConnection </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Asynchronously waits for incoming TCP connections. </p>
+<p>This function initiates an asynchronous accept operation to wait for incoming TCP connections. When a connection is established, it creates a new <a class="el" href="classTCPSession.html" title="Manages a TCP session using Boost.Asio.">TCPSession</a>, starts it, sends a welcome message, and stores the session. The function then recursively calls itself to continue waiting for new connections.</p>
+<dl class="section note"><dt>Note</dt><dd>This function uses Boost.Asio for asynchronous operations. </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ab2eb245387bf5b0434b0c01cfeed2378" name="ab2eb245387bf5b0434b0c01cfeed2378"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab2eb245387bf5b0434b0c01cfeed2378">&#9670;&#160;</a></span>_asioAcceptor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">boost::asio::ip::tcp::acceptor ConnectionTCP::_asioAcceptor</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>An acceptor used to listen for and accept incoming TCP connections. </p>
+<p>This member utilizes Boost.Asio's TCP acceptor to manage incoming connection requests. It is responsible for accepting new connections on a specific endpoint. </p>
+
+</div>
+</div>
+<a id="a919c3296079be74442166a04912117e7" name="a919c3296079be74442166a04912117e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a919c3296079be74442166a04912117e7">&#9670;&#160;</a></span>_endpoint</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">boost::asio::ip::tcp::endpoint ConnectionTCP::_endpoint</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Represents a TCP endpoint which includes an IP address and a port number. </p>
+<p>This member variable is used to specify the remote endpoint for a TCP connection. It is part of the Boost.Asio library, which provides a consistent asynchronous model using a modern C++ approach. </p>
+
+</div>
+</div>
+<a id="a32dd546e87e5df02400557b384514304" name="a32dd546e87e5df02400557b384514304"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32dd546e87e5df02400557b384514304">&#9670;&#160;</a></span>_io_context</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">boost::asio::io_context ConnectionTCP::_io_context</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The io_context object provides core I/O functionality for asynchronous operations. </p>
+<p>This object is used to initiate and manage asynchronous operations. It is the main entry point for all I/O operations in the Boost.Asio library. The io_context object runs the event loop that processes asynchronous operations. </p>
+
+</div>
+</div>
+<a id="a81339e542b52ce4cae6a422f3b43a985" name="a81339e542b52ce4cae6a422f3b43a985"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81339e542b52ce4cae6a422f3b43a985">&#9670;&#160;</a></span>_sessions</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::queue&lt;std::shared_ptr&lt;<a class="el" href="classTCPSession.html">TCPSession</a>&gt; &gt; ConnectionTCP::_sessions</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classA.html">A</a> queue that holds shared pointers to <a class="el" href="classTCPSession.html" title="Manages a TCP session using Boost.Asio.">TCPSession</a> objects. </p>
+<p>This queue is used to manage and store active TCP sessions. Each session is represented by a shared pointer to a <a class="el" href="classTCPSession.html" title="Manages a TCP session using Boost.Asio.">TCPSession</a> object, ensuring proper memory management and reference counting. </p>
+
+</div>
+</div>
+<a id="a7ebe5505bad4d40ac58f7caa5e4cbeb0" name="a7ebe5505bad4d40ac58f7caa5e4cbeb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ebe5505bad4d40ac58f7caa5e4cbeb0">&#9670;&#160;</a></span>_threadContext</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::thread ConnectionTCP::_threadContext</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Thread object for managing the context of the connection. </p>
+<p>This thread is responsible for handling the operations and communication for the TCP connection in a separate execution context to ensure non-blocking behavior and efficient handling of network tasks. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>server/NetworkModule/include/<a class="el" href="ConnectionTCP_8hpp_source.html">ConnectionTCP.hpp</a></li>
 <li>server/NetworkModule/<b>ConnectionTCP.cpp</b></li>

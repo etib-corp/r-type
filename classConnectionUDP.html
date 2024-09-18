@@ -104,32 +104,37 @@ $(function(){initNavTree('classConnectionUDP.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">ConnectionUDP Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Manages a UDP connection for network communication.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="ConnectionUDP_8hpp_source.html">ConnectionUDP.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4b13f39e3503cb2efd9a7c2e23a8bab7" id="r_a4b13f39e3503cb2efd9a7c2e23a8bab7"><td class="memItemLeft" align="right" valign="top"><a id="a4b13f39e3503cb2efd9a7c2e23a8bab7" name="a4b13f39e3503cb2efd9a7c2e23a8bab7"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ConnectionUDP</b> (int port)</td></tr>
+<tr class="memitem:a4b13f39e3503cb2efd9a7c2e23a8bab7" id="r_a4b13f39e3503cb2efd9a7c2e23a8bab7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b13f39e3503cb2efd9a7c2e23a8bab7">ConnectionUDP</a> (int port)</td></tr>
+<tr class="memdesc:a4b13f39e3503cb2efd9a7c2e23a8bab7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classConnectionUDP.html" title="Manages a UDP connection for network communication.">ConnectionUDP</a> object.  <br /></td></tr>
 <tr class="separator:a4b13f39e3503cb2efd9a7c2e23a8bab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a579ab6c923ba70ad99d8eb8d8c774f09" id="r_a579ab6c923ba70ad99d8eb8d8c774f09"><td class="memItemLeft" align="right" valign="top"><a id="a579ab6c923ba70ad99d8eb8d8c774f09" name="a579ab6c923ba70ad99d8eb8d8c774f09"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> ()</td></tr>
+<tr class="memitem:a579ab6c923ba70ad99d8eb8d8c774f09" id="r_a579ab6c923ba70ad99d8eb8d8c774f09"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a579ab6c923ba70ad99d8eb8d8c774f09">run</a> ()</td></tr>
+<tr class="memdesc:a579ab6c923ba70ad99d8eb8d8c774f09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the UDP connection and runs the IO context in a separate thread.  <br /></td></tr>
 <tr class="separator:a579ab6c923ba70ad99d8eb8d8c774f09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3505db21c49e04159fed56ea600f613" id="r_af3505db21c49e04159fed56ea600f613"><td class="memItemLeft" align="right" valign="top"><a id="af3505db21c49e04159fed56ea600f613" name="af3505db21c49e04159fed56ea600f613"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>startReceive</b> ()</td></tr>
+<tr class="memitem:af3505db21c49e04159fed56ea600f613" id="r_af3505db21c49e04159fed56ea600f613"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3505db21c49e04159fed56ea600f613">startReceive</a> ()</td></tr>
+<tr class="memdesc:af3505db21c49e04159fed56ea600f613"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiates an asynchronous receive operation on the UDP socket.  <br /></td></tr>
 <tr class="separator:af3505db21c49e04159fed56ea600f613"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc1a2d796f63caaa6b357d38bf5fbaa9" id="r_abc1a2d796f63caaa6b357d38bf5fbaa9"><td class="memItemLeft" align="right" valign="top"><a id="abc1a2d796f63caaa6b357d38bf5fbaa9" name="abc1a2d796f63caaa6b357d38bf5fbaa9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>handleReceive</b> (const boost::system::error_code &amp;error, std::size_t bytes_transferred)</td></tr>
+<tr class="memitem:abc1a2d796f63caaa6b357d38bf5fbaa9" id="r_abc1a2d796f63caaa6b357d38bf5fbaa9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc1a2d796f63caaa6b357d38bf5fbaa9">handleReceive</a> (const boost::system::error_code &amp;error, std::size_t bytes_transferred)</td></tr>
+<tr class="memdesc:abc1a2d796f63caaa6b357d38bf5fbaa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the reception of data over UDP.  <br /></td></tr>
 <tr class="separator:abc1a2d796f63caaa6b357d38bf5fbaa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:ab975b9faf3cd8569e6d0bae4c45411c0" id="r_ab975b9faf3cd8569e6d0bae4c45411c0"><td class="memItemLeft" align="right" valign="top"><a id="ab975b9faf3cd8569e6d0bae4c45411c0" name="ab975b9faf3cd8569e6d0bae4c45411c0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Send</b> (const std::string &amp;message)</td></tr>
+<tr class="memitem:ab975b9faf3cd8569e6d0bae4c45411c0" id="r_ab975b9faf3cd8569e6d0bae4c45411c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab975b9faf3cd8569e6d0bae4c45411c0">Send</a> (const std::string &amp;message)</td></tr>
+<tr class="memdesc:ab975b9faf3cd8569e6d0bae4c45411c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a message to the remote endpoint.  <br /></td></tr>
 <tr class="separator:ab975b9faf3cd8569e6d0bae4c45411c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a4c157d7f2f57dbf43f9615bc1ea6386c" id="r_a4c157d7f2f57dbf43f9615bc1ea6386c"><td class="memItemLeft" align="right" valign="top"><a id="a4c157d7f2f57dbf43f9615bc1ea6386c" name="a4c157d7f2f57dbf43f9615bc1ea6386c"></a>
-boost::asio::io_context&#160;</td><td class="memItemRight" valign="bottom"><b>_io_context</b></td></tr>
+<tr class="memitem:a4c157d7f2f57dbf43f9615bc1ea6386c" id="r_a4c157d7f2f57dbf43f9615bc1ea6386c"><td class="memItemLeft" align="right" valign="top">boost::asio::io_context&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4c157d7f2f57dbf43f9615bc1ea6386c">_io_context</a></td></tr>
+<tr class="memdesc:a4c157d7f2f57dbf43f9615bc1ea6386c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The io_context object provides core I/O functionality for asynchronous operations.  <br /></td></tr>
 <tr class="separator:a4c157d7f2f57dbf43f9615bc1ea6386c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3586b2bc2f2ac8257a126aa996bbbcd" id="r_ac3586b2bc2f2ac8257a126aa996bbbcd"><td class="memItemLeft" align="right" valign="top"><a id="ac3586b2bc2f2ac8257a126aa996bbbcd" name="ac3586b2bc2f2ac8257a126aa996bbbcd"></a>
 boost::asio::ip::udp::socket&#160;</td><td class="memItemRight" valign="bottom"><b>_udpSocket</b></td></tr>
@@ -147,6 +152,170 @@ std::thread&#160;</td><td class="memItemRight" valign="bottom"><b>_threadContext
 int&#160;</td><td class="memItemRight" valign="bottom"><b>_port</b></td></tr>
 <tr class="separator:a7b1b22fe6f0ff95b0b780d97da130cbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Manages a UDP connection for network communication. </p>
+<p>The <a class="el" href="classConnectionUDP.html" title="Manages a UDP connection for network communication.">ConnectionUDP</a> class encapsulates the functionality required to manage a UDP connection, including sending and receiving messages. It utilizes Boost.Asio for asynchronous network operations.</p>
+<dl class="section note"><dt>Note</dt><dd>This class is designed to be used in a server environment where multiple clients may connect and communicate via UDP.</dd></dl>
+<p>The <a class="el" href="classConnectionUDP.html" title="Manages a UDP connection for network communication.">ConnectionUDP</a> class provides methods to start receiving messages, handle received messages, and send messages to a remote endpoint. It operates on a separate thread to ensure non-blocking network operations. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a4b13f39e3503cb2efd9a7c2e23a8bab7" name="a4b13f39e3503cb2efd9a7c2e23a8bab7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b13f39e3503cb2efd9a7c2e23a8bab7">&#9670;&#160;</a></span>ConnectionUDP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ConnectionUDP::ConnectionUDP </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>port</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a new <a class="el" href="classConnectionUDP.html" title="Manages a UDP connection for network communication.">ConnectionUDP</a> object. </p>
+<p>This constructor initializes a UDP socket bound to the specified port.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>The port number to bind the UDP socket to. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="abc1a2d796f63caaa6b357d38bf5fbaa9" name="abc1a2d796f63caaa6b357d38bf5fbaa9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc1a2d796f63caaa6b357d38bf5fbaa9">&#9670;&#160;</a></span>handleReceive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConnectionUDP::handleReceive </td>
+          <td>(</td>
+          <td class="paramtype">const boost::system::error_code &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::size_t</td>          <td class="paramname"><span class="paramname"><em>bytes_transferred</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Handles the reception of data over UDP. </p>
+<p>This function is called when data is received on the UDP connection. It processes the received data, sends a response back to the sender, and initiates the next receive operation.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">error</td><td>The error code indicating the result of the receive operation. </td></tr>
+    <tr><td class="paramname">bytes_transferred</td><td>The number of bytes received. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a579ab6c923ba70ad99d8eb8d8c774f09" name="a579ab6c923ba70ad99d8eb8d8c774f09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a579ab6c923ba70ad99d8eb8d8c774f09">&#9670;&#160;</a></span>run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConnectionUDP::run </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Starts the UDP connection and runs the IO context in a separate thread. </p>
+<p>This function initiates the receiving process and then creates a new thread to run the IO context. The thread is joined to ensure that the function waits for the thread to complete before returning. </p>
+
+</div>
+</div>
+<a id="ab975b9faf3cd8569e6d0bae4c45411c0" name="ab975b9faf3cd8569e6d0bae4c45411c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab975b9faf3cd8569e6d0bae4c45411c0">&#9670;&#160;</a></span>Send()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConnectionUDP::Send </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>message</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sends a message to the remote endpoint. </p>
+<p>This function sends a message to the remote endpoint using the UDP socket. It uses Boost.Asio's async_send_to method to send the message asynchronously.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>The message to send. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af3505db21c49e04159fed56ea600f613" name="af3505db21c49e04159fed56ea600f613"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3505db21c49e04159fed56ea600f613">&#9670;&#160;</a></span>startReceive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ConnectionUDP::startReceive </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initiates an asynchronous receive operation on the UDP socket. </p>
+<p>This function starts an asynchronous receive operation using Boost.Asio's async_receive_from method. When data is received, the provided lambda function is called, which in turn calls the handleReceive method with the error code and the number of bytes transferred. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a4c157d7f2f57dbf43f9615bc1ea6386c" name="a4c157d7f2f57dbf43f9615bc1ea6386c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c157d7f2f57dbf43f9615bc1ea6386c">&#9670;&#160;</a></span>_io_context</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">boost::asio::io_context ConnectionUDP::_io_context</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The io_context object provides core I/O functionality for asynchronous operations. </p>
+<p>This object is used to initiate and manage asynchronous operations. It is the main entry point for all I/O operations in the Boost.Asio library. The io_context object runs the event loop that processes asynchronous operations. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>server/NetworkModule/include/<a class="el" href="ConnectionUDP_8hpp_source.html">ConnectionUDP.hpp</a></li>
 <li>server/NetworkModule/<b>ConnectionUDP.cpp</b></li>

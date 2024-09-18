@@ -104,20 +104,25 @@ $(function(){initNavTree('classTCPSession.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">TCPSession Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Manages a TCP session using Boost.Asio.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="TCPSession_8hpp_source.html">TCPSession.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aca3b08d459909758cff37044d5ee0723" id="r_aca3b08d459909758cff37044d5ee0723"><td class="memItemLeft" align="right" valign="top"><a id="aca3b08d459909758cff37044d5ee0723" name="aca3b08d459909758cff37044d5ee0723"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>TCPSession</b> (boost::asio::ip::tcp::socket socket)</td></tr>
+<tr class="memitem:aca3b08d459909758cff37044d5ee0723" id="r_aca3b08d459909758cff37044d5ee0723"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aca3b08d459909758cff37044d5ee0723">TCPSession</a> (boost::asio::ip::tcp::socket socket)</td></tr>
+<tr class="memdesc:aca3b08d459909758cff37044d5ee0723"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classTCPSession.html" title="Manages a TCP session using Boost.Asio.">TCPSession</a> object.  <br /></td></tr>
 <tr class="separator:aca3b08d459909758cff37044d5ee0723"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7282906b5a2be4375899bdb5289346ec" id="r_a7282906b5a2be4375899bdb5289346ec"><td class="memItemLeft" align="right" valign="top"><a id="a7282906b5a2be4375899bdb5289346ec" name="a7282906b5a2be4375899bdb5289346ec"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>start</b> ()</td></tr>
+<tr class="memitem:a7282906b5a2be4375899bdb5289346ec" id="r_a7282906b5a2be4375899bdb5289346ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7282906b5a2be4375899bdb5289346ec">start</a> ()</td></tr>
+<tr class="memdesc:a7282906b5a2be4375899bdb5289346ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the TCP session by initiating the read operation.  <br /></td></tr>
 <tr class="separator:a7282906b5a2be4375899bdb5289346ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ecb5d099352a0db841c379e9fb51d2e" id="r_a9ecb5d099352a0db841c379e9fb51d2e"><td class="memItemLeft" align="right" valign="top"><a id="a9ecb5d099352a0db841c379e9fb51d2e" name="a9ecb5d099352a0db841c379e9fb51d2e"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>read</b> ()</td></tr>
+<tr class="memitem:a9ecb5d099352a0db841c379e9fb51d2e" id="r_a9ecb5d099352a0db841c379e9fb51d2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ecb5d099352a0db841c379e9fb51d2e">read</a> ()</td></tr>
+<tr class="memdesc:a9ecb5d099352a0db841c379e9fb51d2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiates an asynchronous read operation on the TCP socket.  <br /></td></tr>
 <tr class="separator:a9ecb5d099352a0db841c379e9fb51d2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20c4c3dccb13dd3ec89c0de7c62d27c3" id="r_a20c4c3dccb13dd3ec89c0de7c62d27c3"><td class="memItemLeft" align="right" valign="top"><a id="a20c4c3dccb13dd3ec89c0de7c62d27c3" name="a20c4c3dccb13dd3ec89c0de7c62d27c3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>write</b> (const std::string &amp;message)</td></tr>
+<tr class="memitem:a20c4c3dccb13dd3ec89c0de7c62d27c3" id="r_a20c4c3dccb13dd3ec89c0de7c62d27c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20c4c3dccb13dd3ec89c0de7c62d27c3">write</a> (const std::string &amp;message)</td></tr>
+<tr class="memdesc:a20c4c3dccb13dd3ec89c0de7c62d27c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asynchronously writes a message to the TCP socket.  <br /></td></tr>
 <tr class="separator:a20c4c3dccb13dd3ec89c0de7c62d27c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-types" name="pro-types"></a>
@@ -135,6 +140,105 @@ boost::asio::ip::tcp::socket&#160;</td><td class="memItemRight" valign="bottom">
 char&#160;</td><td class="memItemRight" valign="bottom"><b>_data</b> [_max_length]</td></tr>
 <tr class="separator:a6219f9e51e5b3ca22786fcdc7bf74b11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Manages a TCP session using Boost.Asio. </p>
+<p>The <a class="el" href="classTCPSession.html" title="Manages a TCP session using Boost.Asio.">TCPSession</a> class handles the lifecycle of a TCP session, including reading from and writing to the socket. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aca3b08d459909758cff37044d5ee0723" name="aca3b08d459909758cff37044d5ee0723"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca3b08d459909758cff37044d5ee0723">&#9670;&#160;</a></span>TCPSession()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCPSession::TCPSession </td>
+          <td>(</td>
+          <td class="paramtype">boost::asio::ip::tcp::socket</td>          <td class="paramname"><span class="paramname"><em>socket</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a new <a class="el" href="classTCPSession.html" title="Manages a TCP session using Boost.Asio.">TCPSession</a> object. </p>
+<p>This constructor initializes a <a class="el" href="classTCPSession.html" title="Manages a TCP session using Boost.Asio.">TCPSession</a> with a given TCP socket.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">socket</td><td>The TCP socket to be used for the session. The socket is moved into the <a class="el" href="classTCPSession.html" title="Manages a TCP session using Boost.Asio.">TCPSession</a> object. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a9ecb5d099352a0db841c379e9fb51d2e" name="a9ecb5d099352a0db841c379e9fb51d2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ecb5d099352a0db841c379e9fb51d2e">&#9670;&#160;</a></span>read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TCPSession::read </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initiates an asynchronous read operation on the TCP socket. </p>
+<p>This function starts an asynchronous read operation using Boost.Asio's <code>async_read_some</code> method. It reads data into the <code>_data</code> buffer up to <code>_max_length</code> bytes. Upon completion of the read operation, the provided lambda function is called.</p>
+<p>The lambda function checks for errors and, if none are found, prints the received data and its size to the standard output. It then clears the <code>_data</code> buffer and recursively calls <code><a class="el" href="#a9ecb5d099352a0db841c379e9fb51d2e" title="Initiates an asynchronous read operation on the TCP socket.">read()</a></code> to continue reading data.</p>
+<dl class="section note"><dt>Note</dt><dd>This function is designed to be called repeatedly to handle continuous data reception. </dd></dl>
+
+</div>
+</div>
+<a id="a7282906b5a2be4375899bdb5289346ec" name="a7282906b5a2be4375899bdb5289346ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7282906b5a2be4375899bdb5289346ec">&#9670;&#160;</a></span>start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TCPSession::start </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Starts the TCP session by initiating the read operation. </p>
+<p>This function begins the TCP session by calling the <a class="el" href="#a9ecb5d099352a0db841c379e9fb51d2e" title="Initiates an asynchronous read operation on the TCP socket.">read()</a> method, which is responsible for handling incoming data from the network. </p>
+
+</div>
+</div>
+<a id="a20c4c3dccb13dd3ec89c0de7c62d27c3" name="a20c4c3dccb13dd3ec89c0de7c62d27c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20c4c3dccb13dd3ec89c0de7c62d27c3">&#9670;&#160;</a></span>write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TCPSession::write </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>message</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Asynchronously writes a message to the TCP socket. </p>
+<p>This function sends the provided message over the TCP socket using Boost.Asio's asynchronous write operation. It logs the message to the standard output upon successful transmission.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>The message to be sent over the TCP socket. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>server/NetworkModule/include/<a class="el" href="TCPSession_8hpp_source.html">TCPSession.hpp</a></li>
 <li>server/NetworkModule/<b>TCPSession.cpp</b></li>

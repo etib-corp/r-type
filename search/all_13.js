@@ -8,12 +8,15 @@ var searchData=
   ['second_20group_5',['The Second Group',['../group__group2.html',1,'']]],
   ['section_20in_20group_205_6',['section in group 5',['../group__group5.html',1,'This is a section in group 5'],['../group__group5.html',1,'This is another section in group 5']]],
   ['sel_7',['sel',['../classmux__using__with.html#ac474329b8f25c575e4376d65f6a3e43f',1,'mux_using_with']]],
-  ['someniceclass_8',['SomeNiceClass',['../classSomeNiceClass.html',1,'']]],
-  ['std_5flogic_5f1164_9',['std_logic_1164',['../classmux__using__with.html#ae984d6918908b859c4f9c9a950a0cfee',1,'mux_using_with']]],
-  ['stop_10',['stop',['../classLE_1_1Scene.html#af8b5b81dab98324cdc32169b95294ece',1,'LE::Scene::stop()'],['../classLE_1_1SceneManager.html#a596be2cf35f37c78d613336928a5b8c7',1,'LE::SceneManager::stop()']]],
-  ['strcmp_11',['strcmp',['../classString.html#a7ceb7d379a52f7e26418e7a446b4a41a',1,'String']]],
-  ['string_12',['String',['../classString.html',1,'']]],
-  ['stringdebug_13',['stringDebug',['../classString.html#a5c07384b505d25ae6f61fc7abf0b0e61',1,'String']]],
-  ['stringmessage_14',['StringMessage',['../classStringMessage.html',1,'']]],
-  ['structcmd_2eh_15',['structcmd.h',['../structcmd_8h.html',1,'']]]
+  ['send_8',['Send',['../classConnectionUDP.html#ab975b9faf3cd8569e6d0bae4c45411c0',1,'ConnectionUDP']]],
+  ['someniceclass_9',['SomeNiceClass',['../classSomeNiceClass.html',1,'']]],
+  ['start_10',['start',['../classTCPSession.html#a7282906b5a2be4375899bdb5289346ec',1,'TCPSession']]],
+  ['startreceive_11',['startReceive',['../classConnectionUDP.html#af3505db21c49e04159fed56ea600f613',1,'ConnectionUDP']]],
+  ['std_5flogic_5f1164_12',['std_logic_1164',['../classmux__using__with.html#ae984d6918908b859c4f9c9a950a0cfee',1,'mux_using_with']]],
+  ['stop_13',['stop',['../classLE_1_1Scene.html#af8b5b81dab98324cdc32169b95294ece',1,'LE::Scene::stop()'],['../classLE_1_1SceneManager.html#a596be2cf35f37c78d613336928a5b8c7',1,'LE::SceneManager::stop()']]],
+  ['strcmp_14',['strcmp',['../classString.html#a7ceb7d379a52f7e26418e7a446b4a41a',1,'String']]],
+  ['string_15',['String',['../classString.html',1,'']]],
+  ['stringdebug_16',['stringDebug',['../classString.html#a5c07384b505d25ae6f61fc7abf0b0e61',1,'String']]],
+  ['stringmessage_17',['StringMessage',['../classStringMessage.html',1,'']]],
+  ['structcmd_2eh_18',['structcmd.h',['../structcmd_8h.html',1,'']]]
 ];
