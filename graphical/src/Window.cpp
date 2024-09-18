@@ -7,6 +7,8 @@
 
 #include "Window.hpp"
 
+#include "Engine.hpp"
+
 LE::Window::Window(const std::string& title, std::size_t width, std::size_t height)
     : _title(title), _width(width), _height(height), _window(nullptr), _framerateLimit(60), _monitor(nullptr), _mode(nullptr) {
     _initGLFW();
