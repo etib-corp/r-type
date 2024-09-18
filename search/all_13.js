@@ -17,6 +17,7 @@ var searchData=
   ['strcmp_14',['strcmp',['../classString.html#a7ceb7d379a52f7e26418e7a446b4a41a',1,'String']]],
   ['string_15',['String',['../classString.html',1,'']]],
   ['stringdebug_16',['stringDebug',['../classString.html#a5c07384b505d25ae6f61fc7abf0b0e61',1,'String']]],
-  ['stringmessage_17',['StringMessage',['../classStringMessage.html',1,'']]],
-  ['structcmd_2eh_18',['structcmd.h',['../structcmd_8h.html',1,'']]]
+  ['stringmessage_17',['StringMessage',['../classStringMessage.html',1,'StringMessage'],['../classStringMessage.html#a0361a2c827cda23a9b9bcdd0a392a4ed',1,'StringMessage::StringMessage()']]],
+  ['stringmessage_2ehpp_18',['StringMessage.hpp',['../StringMessage_8hpp.html',1,'']]],
+  ['structcmd_2eh_19',['structcmd.h',['../structcmd_8h.html',1,'']]]
 ];

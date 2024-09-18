@@ -102,19 +102,83 @@ $(function(){initNavTree('classProducer.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">Producer Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="classA.html">A</a> class to produce messages to a specific topic.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="Producer_8hpp_source.html">Producer.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2f400ba86239146e4a9fe2d686ecac84" id="r_a2f400ba86239146e4a9fe2d686ecac84"><td class="memItemLeft" align="right" valign="top"><a id="a2f400ba86239146e4a9fe2d686ecac84" name="a2f400ba86239146e4a9fe2d686ecac84"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Producer</b> (std::string topicName)</td></tr>
+<tr class="memitem:a2f400ba86239146e4a9fe2d686ecac84" id="r_a2f400ba86239146e4a9fe2d686ecac84"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f400ba86239146e4a9fe2d686ecac84">Producer</a> (std::string topicName)</td></tr>
+<tr class="memdesc:a2f400ba86239146e4a9fe2d686ecac84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classProducer.html" title="A class to produce messages to a specific topic.">Producer</a> object with a specified topic name.  <br /></td></tr>
 <tr class="separator:a2f400ba86239146e4a9fe2d686ecac84"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3b7c224d85690b5915aef0b715cc9e1" id="r_ae3b7c224d85690b5915aef0b715cc9e1"><td class="memItemLeft" align="right" valign="top"><a id="ae3b7c224d85690b5915aef0b715cc9e1" name="ae3b7c224d85690b5915aef0b715cc9e1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>produceMessage</b> (std::unique_ptr&lt; <a class="el" href="classMessage.html">Message</a> &gt; message)</td></tr>
+<tr class="memitem:a947e8b91237e9a8fe586084b6677231c" id="r_a947e8b91237e9a8fe586084b6677231c"><td class="memItemLeft" align="right" valign="top"><a id="a947e8b91237e9a8fe586084b6677231c" name="a947e8b91237e9a8fe586084b6677231c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>~Producer</b> (void)</td></tr>
+<tr class="memdesc:a947e8b91237e9a8fe586084b6677231c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="classProducer.html" title="A class to produce messages to a specific topic.">Producer</a> object. <br /></td></tr>
+<tr class="separator:a947e8b91237e9a8fe586084b6677231c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3b7c224d85690b5915aef0b715cc9e1" id="r_ae3b7c224d85690b5915aef0b715cc9e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae3b7c224d85690b5915aef0b715cc9e1">produceMessage</a> (std::unique_ptr&lt; <a class="el" href="classMessage.html">Message</a> &gt; message)</td></tr>
+<tr class="memdesc:ae3b7c224d85690b5915aef0b715cc9e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Produces a message to the topic.  <br /></td></tr>
 <tr class="separator:ae3b7c224d85690b5915aef0b715cc9e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="classA.html">A</a> class to produce messages to a specific topic. </p>
+<p>The <a class="el" href="classProducer.html" title="A class to produce messages to a specific topic.">Producer</a> class allows for the creation of a producer that can send messages to a specified topic. It manages the topic name and provides a method to produce messages. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a2f400ba86239146e4a9fe2d686ecac84" name="a2f400ba86239146e4a9fe2d686ecac84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f400ba86239146e4a9fe2d686ecac84">&#9670;&#160;</a></span>Producer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Producer::Producer </td>
+          <td>(</td>
+          <td class="paramtype">std::string</td>          <td class="paramname"><span class="paramname"><em>topicName</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a new <a class="el" href="classProducer.html" title="A class to produce messages to a specific topic.">Producer</a> object with a specified topic name. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">topicName</td><td>The name of the topic to which messages will be produced. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae3b7c224d85690b5915aef0b715cc9e1" name="ae3b7c224d85690b5915aef0b715cc9e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3b7c224d85690b5915aef0b715cc9e1">&#9670;&#160;</a></span>produceMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Producer::produceMessage </td>
+          <td>(</td>
+          <td class="paramtype">std::unique_ptr&lt; <a class="el" href="classMessage.html">Message</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>message</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Produces a message to the topic. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td><a class="el" href="classA.html">A</a> unique pointer to the <a class="el" href="classMessage.html" title="A class representing a message.">Message</a> object to be produced. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>include/message/<a class="el" href="Producer_8hpp_source.html">Producer.hpp</a></li>
-<li>src/message/<b>Producer.cpp</b></li>
+<li>message/include/<a class="el" href="Producer_8hpp_source.html">Producer.hpp</a></li>
+<li>message/src/<b>Producer.cpp</b></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['engine_0',['Engine',['../classLE_1_1Engine.html#a0edd7d3599fd95d26c787ec141180d21',1,'LE::Engine']]],
-  ['engineerror_1',['EngineError',['../classLE_1_1Engine_1_1EngineError.html#a121df004bfffc0b22957e4e4554ee226',1,'LE::Engine::EngineError']]],
-  ['error_2',['Error',['../classLE_1_1Error.html#ab2ed200b714e9dbd8d9be341d80673b5',1,'LE::Error']]],
-  ['example_3',['example',['../classExample__Test.html#a22a62b12c65fd5e43b6eadaabb21ebb0',1,'Example_Test::example()'],['../classInclude__Test.html#aa286655e8f7f6a8ad203ef5fd8548b81',1,'Include_Test::example()'],['../classTag.html#acc641ffae34e2c4c03a6edf0a513be28',1,'Tag::example()']]]
+  ['debug_0',['debug',['../classLE_1_1Engine.html#a0fef957b623c93811c0c4b7e7c9a7ec5',1,'LE::Engine']]],
+  ['distance_1',['distance',['../classLE_1_1Vector2.html#a9a50a39aa890af26a9fbae329337313b',1,'LE::Vector2::distance()'],['../classLE_1_1Vector3.html#aaab2554016e3718cd307f5ba2770664c',1,'LE::Vector3::distance()'],['../classLE_1_1Vector4.html#af1f7e795a8a0c8bac9c46d81482ce788',1,'LE::Vector4::distance()']]],
+  ['dot_2',['dot',['../classLE_1_1Vector2.html#a3895240c039ce11740f89422648993aa',1,'LE::Vector2::dot()'],['../classLE_1_1Vector3.html#a2825df2a127d675b0e2122f4bae66ed1',1,'LE::Vector3::dot()'],['../classLE_1_1Vector4.html#aafb596e5202d5930ea457eaa6e522365',1,'LE::Vector4::dot()']]],
+  ['draw_3',['draw',['../classLE_1_1Scene.html#af5d25aaaf934f29ac5bda644aa1ac6a2',1,'LE::Scene']]],
+  ['drawrect_4',['drawRect',['../classOverload__Test.html#a840305784a1944b4de9826a1f4204365',1,'Overload_Test::drawRect(int, int, int, int)'],['../classOverload__Test.html#a7a613f50092cbc0ef830a818d9f3409c',1,'Overload_Test::drawRect(const Rect &amp;r)']]]
 ];

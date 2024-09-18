@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: include/message/Broker.hpp Source File</title>
+<title>My Project: message/include/Broker.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -99,69 +99,56 @@ $(function(){initNavTree('Broker_8hpp_source.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">Broker.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">** EPITECH PROJECT, 2024</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">** r-type</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">** File description:</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">** Broker.hpp</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;map&gt;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;mutex&gt;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;message/Topic.hpp&quot;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classBroker.html">   16</a></span><span class="keyword">class </span><a class="code hl_class" href="classBroker.html">Broker</a></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <a class="code hl_class" href="classBroker.html">Broker</a>(<span class="keyword">const</span> <a class="code hl_class" href="classBroker.html">Broker</a> &amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <a class="code hl_class" href="classBroker.html">Broker</a> &amp;operator=(<span class="keyword">const</span> <a class="code hl_class" href="classBroker.html">Broker</a> &amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">static</span> <a class="code hl_class" href="classBroker.html">Broker</a> &amp;getInstance(<span class="keywordtype">void</span>)</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    {</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keyword">static</span> <a class="code hl_class" href="classBroker.html">Broker</a> instance;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keywordflow">return</span> instance;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    }</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordtype">void</span> addTopic(<span class="keyword">const</span> std::string &amp;name)</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    {</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        std::lock_guard&lt;std::mutex&gt; lock(_mutex);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        _topics[name] = <a class="code hl_class" href="classTopic.html">Topic</a>(name);</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    }</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_class" href="classTopic.html">Topic</a> &amp;getTopic(<span class="keyword">const</span> std::string &amp;topicName)</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    {</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        std::lock_guard&lt;std::mutex&gt; lock(_mutex);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordflow">return</span> _topics[topicName];</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    }</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">void</span> removeTopic(<span class="keyword">const</span> std::string &amp;topicName)</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    {</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        std::lock_guard&lt;std::mutex&gt; lock(_mutex);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        _topics.erase(topicName);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    }</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <a class="code hl_class" href="classBroker.html">Broker</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <a class="code hl_class" href="classBroker.html">~Broker</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    std::mutex _mutex;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    std::map&lt;std::string, Topic&gt; _topics;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>};</div>
+<a href="Broker_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;mutex&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="Topic_8hpp.html">Topic.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="foldopen" id="foldopen00029" data-start="{" data-end="};">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classBroker.html">   29</a></span><span class="keyword">class </span><a class="code hl_class" href="classBroker.html">Broker</a></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classBroker.html#a9bdd6a11cb357c3d1a86f304a86907d1">   35</a></span>    <a class="code hl_function" href="classBroker.html#a9bdd6a11cb357c3d1a86f304a86907d1">Broker</a>(<span class="keyword">const</span> <a class="code hl_class" href="classBroker.html">Broker</a> &amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classBroker.html#a703144bb7bf0ce8ec295202c600e0d73">   40</a></span>    <a class="code hl_class" href="classBroker.html">Broker</a> &amp;<a class="code hl_function" href="classBroker.html#a703144bb7bf0ce8ec295202c600e0d73">operator=</a>(<span class="keyword">const</span> <a class="code hl_class" href="classBroker.html">Broker</a> &amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keyword">static</span> <a class="code hl_class" href="classBroker.html">Broker</a> &amp;<a class="code hl_function" href="classBroker.html#a7de4472be429b34b5b665f934f85d30a">getInstance</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classBroker.html#a5b382c4cb43994d4ef1f9f428c0bd4ca">addTopic</a>(<span class="keyword">const</span> std::string &amp;name);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    std::unique_ptr&lt;Topic&gt; &amp;<a class="code hl_function" href="classBroker.html#ac930bbd18ef31e4120441dded4e193cd">getTopic</a>(<span class="keyword">const</span> std::string &amp;topicName);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classBroker.html#a28f27133ff950c8c0a7dfd4f8a0b81cd">removeTopic</a>(<span class="keyword">const</span> std::string &amp;topicName);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <a class="code hl_class" href="classBroker.html">Broker</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <a class="code hl_class" href="classBroker.html">~Broker</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    std::mutex _mutex;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    std::map&lt;std::string, std::unique_ptr&lt;Topic&gt;&gt; _topics;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>};</div>
 </div>
-<div class="ttc" id="aclassBroker_html"><div class="ttname"><a href="classBroker.html">Broker</a></div><div class="ttdef"><b>Definition</b> Broker.hpp:17</div></div>
-<div class="ttc" id="aclassTopic_html"><div class="ttname"><a href="classTopic.html">Topic</a></div><div class="ttdef"><b>Definition</b> Topic.hpp:18</div></div>
+<div class="ttc" id="aTopic_8hpp_html"><div class="ttname"><a href="Topic_8hpp.html">Topic.hpp</a></div><div class="ttdoc">Defines the Topic class for managing message queues.</div></div>
+<div class="ttc" id="aclassBroker_html"><div class="ttname"><a href="classBroker.html">Broker</a></div><div class="ttdoc">Singleton class that manages topics.</div><div class="ttdef"><b>Definition</b> Broker.hpp:30</div></div>
+<div class="ttc" id="aclassBroker_html_a28f27133ff950c8c0a7dfd4f8a0b81cd"><div class="ttname"><a href="classBroker.html#a28f27133ff950c8c0a7dfd4f8a0b81cd">Broker::removeTopic</a></div><div class="ttdeci">void removeTopic(const std::string &amp;topicName)</div><div class="ttdoc">Remove a topic by name.</div><div class="ttdef"><b>Definition</b> Broker.cpp:31</div></div>
+<div class="ttc" id="aclassBroker_html_a5b382c4cb43994d4ef1f9f428c0bd4ca"><div class="ttname"><a href="classBroker.html#a5b382c4cb43994d4ef1f9f428c0bd4ca">Broker::addTopic</a></div><div class="ttdeci">void addTopic(const std::string &amp;name)</div><div class="ttdoc">Add a new topic.</div><div class="ttdef"><b>Definition</b> Broker.cpp:16</div></div>
+<div class="ttc" id="aclassBroker_html_a703144bb7bf0ce8ec295202c600e0d73"><div class="ttname"><a href="classBroker.html#a703144bb7bf0ce8ec295202c600e0d73">Broker::operator=</a></div><div class="ttdeci">Broker &amp; operator=(const Broker &amp;)=delete</div><div class="ttdoc">Deleted copy assignment operator.</div></div>
+<div class="ttc" id="aclassBroker_html_a7de4472be429b34b5b665f934f85d30a"><div class="ttname"><a href="classBroker.html#a7de4472be429b34b5b665f934f85d30a">Broker::getInstance</a></div><div class="ttdeci">static Broker &amp; getInstance(void)</div><div class="ttdoc">Get the singleton instance of the Broker.</div><div class="ttdef"><b>Definition</b> Broker.cpp:10</div></div>
+<div class="ttc" id="aclassBroker_html_a9bdd6a11cb357c3d1a86f304a86907d1"><div class="ttname"><a href="classBroker.html#a9bdd6a11cb357c3d1a86f304a86907d1">Broker::Broker</a></div><div class="ttdeci">Broker(const Broker &amp;)=delete</div><div class="ttdoc">Deleted copy constructor.</div></div>
+<div class="ttc" id="aclassBroker_html_ac930bbd18ef31e4120441dded4e193cd"><div class="ttname"><a href="classBroker.html#ac930bbd18ef31e4120441dded4e193cd">Broker::getTopic</a></div><div class="ttdeci">std::unique_ptr&lt; Topic &gt; &amp; getTopic(const std::string &amp;topicName)</div><div class="ttdoc">Get a topic by name.</div><div class="ttdef"><b>Definition</b> Broker.cpp:23</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_cf76b7275fdef9e3414f4bd80b878e49.html">message</a></li><li class="navelem"><b>Broker.hpp</b></li>
+    <li class="navelem"><a class="el" href="dir_d06cd19e7b0a7bd71ca3f88af4ac0d59.html">message</a></li><li class="navelem"><a class="el" href="dir_a6076a770b2fcf500b134dd4b5eda5a3.html">include</a></li><li class="navelem"><a class="el" href="Broker_8hpp.html">Broker.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
