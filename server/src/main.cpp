@@ -17,7 +17,7 @@ int main(void)
 
         lb.LoadModule();
 
-        INetworkModule *test = lb.createNetworkModule();
+        INetworkModule *test = lb.createNetworkModule(8080);
         test->run();
     }
     catch(const std::exception& e) {

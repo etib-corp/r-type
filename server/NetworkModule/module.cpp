@@ -7,22 +7,20 @@
 
 #include "module.hpp"
 
-module::module()
+module::module(int port)
 {
-    _connectionTCP = std::make_shared<ConnectionTCP>(8080);
-    _connectionUDP = std::make_shared<ConnectionUDP>(8081);
+    _listenerTCP = std::make_shared<ListenerTCP>(port);
+    _listenerUDP = std::make_shared<ListenerUDP>(port);
 }
 
 module::~module()
 {
 }
 
-
 void module::run()
 {
-    _connectionTCP->WaitForConnection();
-    _connectionTCP->run();
-    _connectionUDP->run();
+    _listenerTCP->run(this);
+    _listenerUDP->run(this);
 }
 
 /**
@@ -42,7 +40,7 @@ extern "C" {
      *
      * @return INetworkModule* Pointer to the newly created network module.
      */
-    INetworkModule *createNetworkModule() {
-        return new module();
+    INetworkModule *createNetworkModule(int port) {
+        return new module(port);
     }
 }

@@ -2,41 +2,44 @@
 ** EPITECH PROJECT, 2024
 ** interfaceRtype
 ** File description:
-** ConnectionTCP
+** ListenerTCP
 */
 
-#include "ConnectionTCP.hpp"
+#include "ListenerTCP.hpp"
+#include "interface/INetworkModule.hpp"
 
-ConnectionTCP::ConnectionTCP(int port) :
+static int id = 1;
+
+ListenerTCP::ListenerTCP(int port) :
     _asioAcceptor(_io_context, boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), port))
 {
     _endpoint = _asioAcceptor.local_endpoint();
     _port = port;
 }
 
-ConnectionTCP::~ConnectionTCP()
+ListenerTCP::~ListenerTCP()
 {
 }
 
-
-void ConnectionTCP::WaitForConnection()
+void ListenerTCP::WaitForConnection()
 {
     _asioAcceptor.async_accept(
         [this](boost::system::error_code ec, boost::asio::ip::tcp::socket socket) {
             if (!ec) {
                 std::cout << "Connection established" << std::endl;
-                std::shared_ptr<TCPSession> newSession = std::make_shared<TCPSession>(std::move(socket));
-                newSession->start();
-                newSession->write("Hello from server");
-                _sessions.push(newSession);
+                std::shared_ptr<Session> newSession = std::make_shared<Session>(std::move(socket));
+                newSession->setId(id++);
+                _module->addClient(newSession);
+                newSession->sendTCP(std::to_string(newSession->getId()));
             }
             WaitForConnection();
         });
 }
 
-
-void ConnectionTCP::run()
+void ListenerTCP::run(INetworkModule* module)
 {
+    _module = module;
+    this->WaitForConnection();
     _threadContext = std::thread([this]() {
         _io_context.run();
     });
