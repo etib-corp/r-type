@@ -6,7 +6,7 @@
 */
 
 #include "Window.hpp"
-
+#include "Scene.hpp"
 #include "Engine.hpp"
 
 LE::Window::Window(const std::string& title, std::size_t width, std::size_t height)
@@ -99,4 +99,9 @@ void LE::Window::clear()
 void LE::Window::setClearColor(Color color)
 {
     glClearColor(color.r / 255.0f, color.g / 255.0f, color.b / 255.0f, color.a);
+}
+
+GLFWwindow* LE::Window::getWindow()
+{
+    return _window;
 }

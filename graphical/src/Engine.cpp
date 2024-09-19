@@ -6,12 +6,15 @@
 */
 
 #include "Engine.hpp"
+#include "SceneManager.hpp"
+#include <iostream>
 
 LE::Engine *LE::Engine::_instance{nullptr};
 
 LE::Engine::Engine()
 {
     _debugMode = false;
+    _throwError = false;
     _sceneManager = std::make_shared<SceneManager>();
 }
 
@@ -29,6 +32,7 @@ LE::Engine* LE::Engine::getInstance()
 
 void LE::Engine::run(bool throwError)
 {
+    _throwError = throwError;
     srand(static_cast<unsigned int>(time(nullptr)));
     debug("Initializing engine...");
     _window = std::make_shared<LE::Window>("Game Window", 800, 600);
@@ -67,4 +71,11 @@ void LE::Engine::addScene(std::shared_ptr<Scene> scene, const std::string &scene
 void LE::Engine::removeScene(const std::string& sceneName)
 {
     _sceneManager->removeScene(sceneName);
+}
+
+void LE::Engine::throwError(const LE::Error& error)
+{
+    if (_throwError) {
+        throw error;
+    }
 }

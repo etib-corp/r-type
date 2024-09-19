@@ -11,6 +11,12 @@
 
 #include "Error.hpp"
 #include "GUI/Manager.hpp"
+#include "EventManager.hpp"
+
+/**
+ * @file Scene.hpp
+ * @brief Defines the Scene class and its associated error handling.
+ */
 
 namespace LE {
     /**
@@ -38,6 +44,12 @@ namespace LE {
                      */
                     SceneError(const std::string &message) : Error(message) {}
             };
+
+            /**
+             * @brief Default constructor for Scene.
+             */
+            Scene();
+
             /**
              * @brief Virtual destructor for Scene.
              */
@@ -75,6 +87,6 @@ namespace LE {
              */
             std::shared_ptr<void *> _ecs;
             std::shared_ptr<LE::GUI::Manager> _guiManager; ///< Shared pointer to the GUI Manager instance.
-
+            std::shared_ptr<LE::EventManager> _eventManager;
     };
 }

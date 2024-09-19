@@ -38,7 +38,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g3 -ggdb")
 endif()
 
-include_directories(include include/GUI ${OPENGL_INCLUDE_DIRS} ${GLUT_INCLUDE_DIRS})
+include_directories(include build/_deps/glfw-src/include include/GUI ${OPENGL_INCLUDE_DIRS} ${GLUT_INCLUDE_DIRS})
 
 file(GLOB SOURCES src/*.cpp src/GUI/*.cpp)
 
