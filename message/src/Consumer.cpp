@@ -5,8 +5,8 @@
 ** Consumer.cpp
 */
 
-#include "message/Consumer.hpp"
-#include "message/Broker.hpp"
+#include "Consumer.hpp"
+#include "Broker.hpp"
 
 Consumer::Consumer(std::string topicName)
     : _topicName(topicName)
@@ -19,5 +19,5 @@ Consumer::~Consumer(void)
 
 std::unique_ptr<Message> Consumer::consumeMessage(void)
 {
-    return Broker::getInstance().getTopic(_topicName).consumeMessage();
+    return Broker::getInstance().getTopic(_topicName)->consumeMessage();
 }
