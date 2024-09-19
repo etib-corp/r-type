@@ -43,7 +43,7 @@ LE::Window::~Window()
     glfwTerminate();
 }
 
-void LE::Window::render(std::shared_ptr<LE::Scene> scene)
+void LE::Window::render(std::shared_ptr<Scene> scene)
 {
     if (_clock->getElapsedTime() < (1000.0f / _framerateLimit))
         return;

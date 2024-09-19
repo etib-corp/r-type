@@ -5,8 +5,7 @@
 ** Component
 */
 
-#ifndef COMPONENT_HPP_
-#define COMPONENT_HPP_
+#pragma once
 
 #include <string>
 
@@ -24,9 +23,8 @@ namespace LE {
 
             protected:
                 size_t _id;
-                // Vector2<unsigned int> _position;
+                unsigned int _x;
+                unsigned int _y;
         };
     }
 }
-
-#endif /* !COMPONENT_HPP_ */

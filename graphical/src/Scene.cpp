@@ -10,4 +10,5 @@
 void LE::Scene::draw()
 {
     // Drawing logic from ECS
+    _guiManager->draw();
 }

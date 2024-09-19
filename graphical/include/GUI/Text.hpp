@@ -5,13 +5,13 @@
 ** Text
 */
 
-#ifndef TEXT_HPP_
-#define TEXT_HPP_
+#pragma once
 
 #include "GUI/Component.hpp"
 
 #include <GLFW/glfw3.h>
 #include "GL/glut.h"
+#include "GL/freeglut.h"
 
 namespace LE {
     namespace GUI {
@@ -28,5 +28,3 @@ namespace LE {
         };
     }
 }
-
-#endif /* !TEXT_HPP_ */

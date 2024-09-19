@@ -8,6 +8,7 @@
 #pragma once
 
 #include <memory>
+#include <iostream>
 
 #include "SceneManager.hpp"
 #include "Window.hpp"
@@ -77,6 +78,11 @@ namespace LE {
              * @param message The debug message to output.
              */
             void debug(const std::string& message);
+
+            void addScene(std::shared_ptr<Scene> scene, const std::string &sceneName);
+
+            void removeScene(const std::string& sceneName);
+
         private:
             /**
              * @brief Private constructor for the Engine class.
@@ -91,7 +97,7 @@ namespace LE {
             static Engine* _instance; ///< The singleton instance of the Engine class.
 
             std::shared_ptr<LE::Window> _window; ///< Shared pointer to the Window instance.
-            std::shared_ptr<LE::SceneManager> _sceneManager; ///< Shared pointer to the SceneManager instance.
+            std::shared_ptr<SceneManager> _sceneManager; ///< Shared pointer to the SceneManager instance.
             bool _debugMode; ///< Flag indicating whether debug mode is enabled.
     };
 }

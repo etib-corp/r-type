@@ -5,8 +5,7 @@
 ** Container
 */
 
-#ifndef CONTAINER_HPP_
-#define CONTAINER_HPP_
+#pragma once
 
 #include <vector>
 
@@ -20,12 +19,12 @@ namespace LE {
 
                 void addChildren(Component *child);
                 void removeChildren(unsigned int id);
-                void draw() override;
+                void draw();
 
             protected:
                 std::vector<Component *> _children;
+                unsigned int _width;
+                unsigned int _height;
         };
     }
 }
-
-#endif /* !CONTAINER_HPP_ */
