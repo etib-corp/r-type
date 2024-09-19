@@ -11,7 +11,7 @@
 #include <boost/asio.hpp>
 #include <memory>
 #include <iostream>
-#include "interface/IClient.hpp"
+#include "interface/ISession.hpp"
 
 /**
  * @class Session
@@ -20,7 +20,7 @@
  * The Session class handles the lifecycle of a  session, including
  * reading from and writing to the socket.
  */
-class Session : public IClient {
+class Session : public ISession {
     public:
         /**
          * @brief Constructs a new Session object.

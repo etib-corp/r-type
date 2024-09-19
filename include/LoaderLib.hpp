@@ -15,6 +15,7 @@
 #include <map>
 #include <functional>
 #include "interface/INetworkModule.hpp"
+#include "interface/IClient.hpp"
 
 #ifdef __linux__
     #include <dlfcn.h>
@@ -118,6 +119,8 @@ class LoaderLib {
          */
         INetworkModule *createNetworkModule(int port);
 
+        IClient *createClient();
+
     protected:
 
         /**
@@ -134,6 +137,11 @@ class LoaderLib {
          * @brief Function to create a network module.
          */
         std::function<INetworkModule*(int)> _createNetworkModule;
+
+        /**
+         * @brief Function to create a client.
+         */
+        std::function<IClient*()> _createClient;
 
         /**
          * @brief Contains the handle to the network module.

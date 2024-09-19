@@ -8,6 +8,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})
 
 file(GLOB_RECURSE MODULES_SOURCES src/*.cpp)
 
+message(STATUS "current folder is ${CMAKE_CURRENT_SOURCE_DIR}")
+
 include_directories(include)
 include_directories(../include)
 include(FetchContent)

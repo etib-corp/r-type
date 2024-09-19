@@ -17,16 +17,16 @@ class Client : public IClient {
         Client();
         ~Client();
 
-        void connectToServer(const std::string &ip, const int &port);
+        void connectToServer(const std::string &ip, const int &port) override;
 
-        void readTCP();
+        void readTCP() override;
 
         void sendTCP(const std::string &message) override;
 
-        void sendUDP(const std::string &message) override
+        void sendUDP(const std::string &message) override;
 
     protected:
-        boost::asio::io_service _io_service;
+        boost::asio::io_service _ioService;
 
         boost::asio::ip::tcp::endpoint _endpointTCPServer;
         boost::asio::ip::udp::endpoint _endpointUDPServer;
