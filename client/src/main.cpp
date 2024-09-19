@@ -1,10 +1,3 @@
-/*
-** EPITECH PROJECT, 2024
-** r-type
-** File description:
-** main
-*/
-
 #include "LoaderLib.hpp"
 #include "ResolvingLib.hpp"
 
@@ -17,8 +10,10 @@ int main(void)
 
         lb.LoadModule();
 
-        INetworkModule *test = lb.createNetworkModule(8080);
-        test->run();
+        IClient *client = lb.createClient();
+
+        client->connectToServer("127.0.0.1", 8080);
+
     }
     catch(const std::exception& e) {
         std::cerr << e.what() << '\n';

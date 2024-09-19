@@ -42,7 +42,7 @@ include_directories(include build/_deps/glfw-src/include include/GUI ${OPENGL_IN
 
 file(GLOB SOURCES src/*.cpp src/GUI/*.cpp)
 
-add_executable(r-type ${SOURCES})
+add_executable(r-type_client ${SOURCES})
 
 target_link_libraries(r-type glfw ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES})
 
