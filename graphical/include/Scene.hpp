@@ -11,6 +11,7 @@
 #include <memory>
 
 #include "Error.hpp"
+#include "EventManager.hpp"
 
 /**
  * @file Scene.hpp
@@ -47,7 +48,7 @@ namespace LE {
             /**
              * @brief Default constructor for Scene.
              */
-            Scene() = default;
+            Scene();
 
             /**
              * @brief Virtual destructor for Scene.
@@ -85,6 +86,8 @@ namespace LE {
              * which is used to manage entities and components within the scene.
              */
             std::shared_ptr<void *> _ecs;
+
+            std::shared_ptr<LE::EventManager> _eventManager;
     };
 }
 
