@@ -117,9 +117,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af0465b9373edc1925fbdb342ea0cfdea" id="r_af0465b9373edc1925fbdb342ea0cfdea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0465b9373edc1925fbdb342ea0cfdea">LoadModule</a> (void)</td></tr>
 <tr class="memdesc:af0465b9373edc1925fbdb342ea0cfdea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the loader is currently loading.  <br /></td></tr>
 <tr class="separator:af0465b9373edc1925fbdb342ea0cfdea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab704dc739fb98dabfbac0db89aec4a01" id="r_ab704dc739fb98dabfbac0db89aec4a01"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classINetworkModule.html">INetworkModule</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab704dc739fb98dabfbac0db89aec4a01">createNetworkModule</a> (void)</td></tr>
-<tr class="memdesc:ab704dc739fb98dabfbac0db89aec4a01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a network module.  <br /></td></tr>
-<tr class="separator:ab704dc739fb98dabfbac0db89aec4a01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a549cfe628f6577253a676ebee1c15246" id="r_a549cfe628f6577253a676ebee1c15246"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classINetworkModule.html">INetworkModule</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a549cfe628f6577253a676ebee1c15246">createNetworkModule</a> (int port)</td></tr>
+<tr class="memdesc:a549cfe628f6577253a676ebee1c15246"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a network module instance.  <br /></td></tr>
+<tr class="separator:a549cfe628f6577253a676ebee1c15246"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -131,10 +131,10 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_pathNetworkMo
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_pathCoreModule</b></td></tr>
 <tr class="memdesc:a632821f3a54132b1b73d67f5ebea68fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Path to the core module. <br /></td></tr>
 <tr class="separator:a632821f3a54132b1b73d67f5ebea68fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb5faa90f2e4f9ab09d455f004004056" id="r_abb5faa90f2e4f9ab09d455f004004056"><td class="memItemLeft" align="right" valign="top"><a id="abb5faa90f2e4f9ab09d455f004004056" name="abb5faa90f2e4f9ab09d455f004004056"></a>
-std::function&lt; <a class="el" href="classINetworkModule.html">INetworkModule</a> *()&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_createNetworkModule</b></td></tr>
-<tr class="memdesc:abb5faa90f2e4f9ab09d455f004004056"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to create a network module. <br /></td></tr>
-<tr class="separator:abb5faa90f2e4f9ab09d455f004004056"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab47c687e8e2ab3e6dcee27bdbfef32ed" id="r_ab47c687e8e2ab3e6dcee27bdbfef32ed"><td class="memItemLeft" align="right" valign="top"><a id="ab47c687e8e2ab3e6dcee27bdbfef32ed" name="ab47c687e8e2ab3e6dcee27bdbfef32ed"></a>
+std::function&lt; <a class="el" href="classINetworkModule.html">INetworkModule</a> *(int)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_createNetworkModule</b></td></tr>
+<tr class="memdesc:ab47c687e8e2ab3e6dcee27bdbfef32ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to create a network module. <br /></td></tr>
+<tr class="separator:ab47c687e8e2ab3e6dcee27bdbfef32ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7c6b6545b909cce12205b0f37700547" id="r_ae7c6b6545b909cce12205b0f37700547"><td class="memItemLeft" align="right" valign="top"><a id="ae7c6b6545b909cce12205b0f37700547" name="ae7c6b6545b909cce12205b0f37700547"></a>
 void *&#160;</td><td class="memItemRight" valign="bottom"><b>_handleNetworkModule</b></td></tr>
 <tr class="memdesc:ae7c6b6545b909cce12205b0f37700547"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains the handle to the network module. <br /></td></tr>
@@ -180,8 +180,8 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><b>_handleCoreModule</
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab704dc739fb98dabfbac0db89aec4a01" name="ab704dc739fb98dabfbac0db89aec4a01"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab704dc739fb98dabfbac0db89aec4a01">&#9670;&#160;</a></span>createNetworkModule()</h2>
+<a id="a549cfe628f6577253a676ebee1c15246" name="a549cfe628f6577253a676ebee1c15246"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a549cfe628f6577253a676ebee1c15246">&#9670;&#160;</a></span>createNetworkModule()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -189,14 +189,21 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><b>_handleCoreModule</
         <tr>
           <td class="memname"><a class="el" href="classINetworkModule.html">INetworkModule</a> * LoaderLib::createNetworkModule </td>
           <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>port</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Creates a network module. </p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to an <a class="el" href="classINetworkModule.html" title="Abstract base class for network modules.">INetworkModule</a> object. </dd></dl>
+<p>Creates a network module instance. </p>
+<p>This function creates and returns a new instance of a network module using the specified port.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>The port number to be used by the network module. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>INetworkModule* Pointer to the created network module instance. </dd></dl>
 
 </div>
 </div>

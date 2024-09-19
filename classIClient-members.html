@@ -70,7 +70,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('classConnectionTCP.html',''); initResizable(true); });
+$(function(){initNavTree('classIClient.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -96,22 +96,19 @@ $(function(){initNavTree('classConnectionTCP.html',''); initResizable(true); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">ConnectionTCP Member List</div></div>
+  <div class="headertitle"><div class="title">IClient Member List</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>This is the complete list of members for <a class="el" href="classConnectionTCP.html">ConnectionTCP</a>, including all inherited members.</p>
+<p>This is the complete list of members for <a class="el" href="classIClient.html">IClient</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="classConnectionTCP.html#ab2eb245387bf5b0434b0c01cfeed2378">_asioAcceptor</a></td><td class="entry"><a class="el" href="classConnectionTCP.html">ConnectionTCP</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classConnectionTCP.html#a919c3296079be74442166a04912117e7">_endpoint</a></td><td class="entry"><a class="el" href="classConnectionTCP.html">ConnectionTCP</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classConnectionTCP.html#a32dd546e87e5df02400557b384514304">_io_context</a></td><td class="entry"><a class="el" href="classConnectionTCP.html">ConnectionTCP</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classConnectionTCP.html#a1d85f9b4e72558d89dc3db5ef9fff2e5">_port</a></td><td class="entry"><a class="el" href="classConnectionTCP.html">ConnectionTCP</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classConnectionTCP.html#a81339e542b52ce4cae6a422f3b43a985">_sessions</a></td><td class="entry"><a class="el" href="classConnectionTCP.html">ConnectionTCP</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classConnectionTCP.html#a7ebe5505bad4d40ac58f7caa5e4cbeb0">_threadContext</a></td><td class="entry"><a class="el" href="classConnectionTCP.html">ConnectionTCP</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classConnectionTCP.html#a95a4181836b3c53d67908ca682511815">ConnectionTCP</a>(int port)</td><td class="entry"><a class="el" href="classConnectionTCP.html">ConnectionTCP</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classConnectionTCP.html#a615f83bc47740a8a2abfaafdb77bfcf0">run</a>()</td><td class="entry"><a class="el" href="classConnectionTCP.html">ConnectionTCP</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classConnectionTCP.html#a0a5213ff7c384d3394637991c81579e9">WaitForConnection</a>()</td><td class="entry"><a class="el" href="classConnectionTCP.html">ConnectionTCP</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>~ConnectionTCP</b>() (defined in <a class="el" href="classConnectionTCP.html">ConnectionTCP</a>)</td><td class="entry"><a class="el" href="classConnectionTCP.html">ConnectionTCP</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>_id</b> (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>getId</b>() const (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>read</b>()=0 (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>sendTCP</b>(const std::string &amp;message)=0 (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>sendUDP</b>(const std::string &amp;message)=0 (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>setId</b>(int id) (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~IClient</b>()=default (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

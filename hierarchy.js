@@ -21,8 +21,6 @@ var hierarchy =
     [ "C4", "classC4.html", null ],
     [ "C5", "classC5.html", null ],
     [ "LE::Clock", "classLE_1_1Clock.html", null ],
-    [ "ConnectionTCP", "classConnectionTCP.html", null ],
-    [ "ConnectionUDP", "classConnectionUDP.html", null ],
     [ "Consumer< BrokerType >", "classConsumer.html", null ],
     [ "CoordStruct", "structCoordStruct.html", null ],
     [ "LE::Engine", "classLE_1_1Engine.html", null ],
@@ -43,6 +41,15 @@ var hierarchy =
       [ "LoaderLibError", "classLoaderLibError.html", null ]
     ] ],
     [ "Fn_Test", "classFn__Test.html", null ],
+    [ "IClient", "classIClient.html", [
+      [ "Session", "classSession.html", null ]
+    ] ],
+    [ "IListenerTCP", "classIListenerTCP.html", [
+      [ "ListenerTCP", "classListenerTCP.html", null ]
+    ] ],
+    [ "IListenerUDP", "classIListenerUDP.html", [
+      [ "ListenerUDP", "classListenerUDP.html", null ]
+    ] ],
     [ "Include_Test", "classInclude__Test.html", null ],
     [ "INetworkModule", "classINetworkModule.html", [
       [ "module", "classmodule.html", null ]
@@ -71,7 +78,6 @@ var hierarchy =
     [ "LE::SceneManager", "classLE_1_1SceneManager.html", null ],
     [ "SomeNiceClass", "classSomeNiceClass.html", null ],
     [ "String", "classString.html", null ],
-    [ "TCPSession", "classTCPSession.html", null ],
     [ "Test< T, i >", "classTest.html", null ],
     [ "Test< void *, 200 >", "classTest_3_01void_01_5_00_01200_01_4.html", [
       [ "Test< T * >", "classTest_3_01T_01_5_01_4.html", null ]

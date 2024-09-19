@@ -27,6 +27,7 @@ var NAVTREE =
   [ "My Project", "index.html", [
     [ "pag_example", "pag_example.html", null ],
     [ "r-type", "md_README.html", null ],
+    [ "README", "md_server_2NetworkModule_2README.html", null ],
     [ "Bug List", "bug.html", null ],
     [ "Topics", "topics.html", "topics" ],
     [ "Namespaces", "namespaces.html", [
@@ -68,8 +69,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "BinaryMessage_8hpp.html",
-"classLE_1_1Vector4.html#ab3ee46ac61d8865c12a8469cbf736ca1",
-"structcmd_8h.html#ae1e6edbbc26d6fbc71a90190d0266018"
+"classLE_1_1Vector4.html#af1f7e795a8a0c8bac9c46d81482ce788",
+"structcmd_8h.html#a2c4414339f388561554c2deab11a1a07"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
