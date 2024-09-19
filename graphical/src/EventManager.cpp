@@ -7,6 +7,7 @@
 
 #include "EventManager.hpp"
 #include "Engine.hpp"
+#include "Window.hpp"
 
 LE::EventManager::EventManager()
 {
@@ -16,7 +17,7 @@ LE::EventManager::~EventManager()
 {
 }
 
-Status LE::EventManager::addEventListener(Key key, std::function<void(LE::Engine *)> callback)
+LE::Status LE::EventManager::addEventListener(const LE::Key& key, std::function<void(LE::Engine *)> callback)
 {
     auto newKey = std::make_shared<Key>(key);
     auto it = _eventCallbacks.find(newKey);
@@ -27,7 +28,7 @@ Status LE::EventManager::addEventListener(Key key, std::function<void(LE::Engine
     return {true, "Event listener added successfully."};
 }
 
-void LE::EventManager::removeEventListener(Key key, std::function<void(LE::Engine *)> callback)
+void LE::EventManager::removeEventListener(const LE::Key& key, std::function<void(LE::Engine *)> callback)
 {
     auto it = _eventCallbacks.find(std::make_shared<Key>(key));
     if (it != _eventCallbacks.end() && it->second.target<void(LE::Engine *)>() == callback.target<void(LE::Engine *)>()) {
@@ -38,6 +39,7 @@ void LE::EventManager::removeEventListener(Key key, std::function<void(LE::Engin
 void LE::EventManager::pollEvents()
 {
     // TODO manage multiple joysticks
+    glfwPollEvents();
     int keyCurrentState = -1;
     static int joystickCount = 0;
     static const float *axis = glfwGetJoystickAxes(GLFW_JOYSTICK_1, &joystickCount);
@@ -63,12 +65,15 @@ void LE::EventManager::pollEvents()
         } else if (keyCurrentState == GLFW_RELEASE && key->type == Type::RELEASED) {
             callback(LE::Engine::getInstance());
         } else if (keyCurrentState == GLFW_PRESS && key->type == Type::JUST_PRESSED && !key->_alreadyPressed) {
-            const_cast<std::shared_ptr<Key>&>(key)->_alreadyPressed = true;
             callback(LE::Engine::getInstance());
         } else if (keyCurrentState == GLFW_RELEASE && key->type == Type::JUST_RELEASED && key->_alreadyPressed) {
-            const_cast<std::shared_ptr<Key>&>(key)->_alreadyPressed = false;
             callback(LE::Engine::getInstance());
         } else {
+        }
+        if (keyCurrentState == GLFW_RELEASE) {
+            const_cast<std::shared_ptr<Key>&>(key)->_alreadyPressed = false;
+        } else if (keyCurrentState == GLFW_PRESS) {
+            const_cast<std::shared_ptr<Key>&>(key)->_alreadyPressed = true;
         }
         keyCurrentState = -1;
     }

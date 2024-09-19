@@ -13,10 +13,19 @@
 
 class GameScene : public LE::Scene {
     public:
-        GameScene() : LE::Scene() {}
+        GameScene() : LE::Scene()
+        {
+            _eventManager->addEventListener({LE::Input::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::Type::PRESSED}, [this](LE::Engine *engine) {
+                std::cout << "Left click pressed" << std::endl;
+            });
+            _eventManager->addEventListener({LE::Input::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::Type::RELEASED}, [this](LE::Engine *engine) {
+                std::cout << "Left click released" << std::endl;
+            });
+        }
         void play() override
         {
-            std::cout << "Game scene updated." << std::endl;
+            // std::cout << "Game scene updated." << std::endl;
+            _eventManager->pollEvents();
         }
         void stop() override
         {
@@ -24,33 +33,13 @@ class GameScene : public LE::Scene {
         }
 };
 
-class MyScene : public LE::Scene {
-    public:
-        MyScene() {
-            // Initialize GUI Manager
-            _guiManager = std::make_shared<LE::GUI::Manager>(800, 600);
-        }
-
-        void play() override {}
-
-        void stop() override {}
-
-};
-
 int main(int ac, char **av)
 {
     // Initialize the engine
     glutInit(&ac, av);
     auto engine = LE::Engine::getInstance();
-    auto scene = std::make_shared<MyScene>();
-
-    // Add the scene to the engine
-    engine->addScene(scene, "GUI");
-    // Run the engine
-    try {
-        engine->runWithDebug(); // Change to true to simulate an error
-    } catch (const LE::Engine::EngineError &e) {
-        std::cerr << "Engine error: " << e.what() << std::endl;
-    }
+    auto scene = std::make_shared<GameScene>();
+    engine->addScene("game", scene);
+    engine->run(true);
     return 0;
 }

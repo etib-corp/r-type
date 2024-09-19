@@ -7,7 +7,8 @@
 
 #pragma once
 
-namespace LE {
+namespace LE
+{
     class Engine;
 }
 #include "Error.hpp"
@@ -19,50 +20,54 @@ namespace LE {
 #include <string>
 #include <map>
 
-using Status = struct {
-    bool success;
-    std::string message;
-};
+namespace LE
+{
+    typedef struct
+    {
+        bool success;
+        std::string message;
+    } Status;
 
-using Type = enum {
-    PRESSED,
-    RELEASED,
-    JUST_PRESSED,
-    JUST_RELEASED
-};
+    typedef enum
+    {
+        PRESSED,
+        RELEASED,
+        JUST_PRESSED,
+        JUST_RELEASED
+    } Type;
 
-using Input = enum {
-    KEYBOARD,
-    MOUSE,
-    JOYSTICK_BUTTON,
-    JOYSTICK_AXIS
-};
+    typedef enum
+    {
+        KEYBOARD,
+        MOUSE,
+        JOYSTICK_BUTTON,
+        JOYSTICK_AXIS
+    } Input;
 
-typedef struct {
-    int key;
-    bool _alreadyPressed;
-    Type type;
-    Input input;
-} Key;
-
-
-
-namespace LE {
-    class EventManager {
+    typedef struct
+    {
+        Input input;
+        int key;
+        Type type;
+        bool _alreadyPressed = false;
+    } Key;
+    class EventManager
+    {
+    public:
+        class EventManagerError : public Error
+        {
         public:
-            class EventManagerError : public Error {
-                public:
-                    EventManagerError(const std::string &message) : Error(message) {}
-            };
-            EventManager();
-            ~EventManager();
+            EventManagerError(const std::string &message) : Error(message) {}
+        };
+        EventManager();
+        ~EventManager();
 
-            Status addEventListener(Key key, std::function<void(LE::Engine *)> callback);
-            void removeEventListener(Key key, std::function<void(LE::Engine *)> callback);
+        Status addEventListener(const LE::Key &key, std::function<void(LE::Engine *)> callback);
+        void removeEventListener(const LE::Key &key, std::function<void(LE::Engine *)> callback);
 
-            void pollEvents();
+        void pollEvents();
 
-        private:
-            std::map<std::shared_ptr<Key>, std::function<void(LE::Engine *engine)>> _eventCallbacks;     ///< List of event callbacks.
+    private:
+        std::map<std::shared_ptr<LE::Key>, std::function<void(LE::Engine *engine)>> _eventCallbacks; ///< List of event callbacks.
     };
 }

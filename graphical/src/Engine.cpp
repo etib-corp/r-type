@@ -7,6 +7,7 @@
 
 #include "Engine.hpp"
 #include "SceneManager.hpp"
+#include "Window.hpp"
 #include <iostream>
 
 LE::Engine *LE::Engine::_instance{nullptr};
@@ -61,7 +62,7 @@ void LE::Engine::debug(const std::string& message)
     }
 }
 
-void LE::Engine::addScene(std::shared_ptr<Scene> scene, const std::string &sceneName)
+void LE::Engine::addScene(const std::string &sceneName, const std::shared_ptr<Scene> &scene)
 {
     debug("Adding scene in engine: " + sceneName);
     _sceneManager->addScene(scene, sceneName);

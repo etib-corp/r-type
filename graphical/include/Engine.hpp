@@ -10,6 +10,7 @@
 namespace LE {
     class Window;
     class SceneManager;
+    class Scene;
 }
 
 #include <memory>
@@ -81,8 +82,19 @@ namespace LE {
              */
             void debug(const std::string& message);
 
-            void addScene(std::shared_ptr<Scene> scene, const std::string &sceneName);
+            /**
+             * @brief Adds a scene to the SceneManager in the Engine.
+             *
+             * @param sceneName The name of the scene.
+             * @param scene The scene to add.
+             */
+            void addScene(const std::string &sceneName, const std::shared_ptr<Scene> &scene);
 
+            /**
+             * @brief Removes a scene from the SceneManager in the Engine.
+             *
+             * @param sceneName The name of the scene to remove.
+             */
             void removeScene(const std::string& sceneName);
 
             /**

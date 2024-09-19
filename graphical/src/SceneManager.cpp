@@ -27,7 +27,6 @@ void LE::SceneManager::play()
     LE::Engine *engineInstance = LE::Engine::getInstance();
 
     engineInstance->debug("SceneManager::play()");
-    std::cout << _currentScene.get() << std::endl;
     if (!_currentScene) {
         engineInstance->debug("SceneManager::play() - No current scene, selecting first scene.");
         engineInstance->debug("SceneManager::play() - Number of scenes: " + std::to_string(_scenes.size()));
