@@ -17,6 +17,8 @@
 
 #include "Topic.hpp"
 
+#define LISTEN_PORT 4242
+
 /**
  * @class Broker
  *

@@ -10,6 +10,7 @@
 #pragma once
 
 #include <mutex>
+#include <memory>
 
 #include "Broker.hpp"
 #include "LoaderLib.hpp"
@@ -23,25 +24,30 @@
 class ServerBroker : public Broker
 {
 private:
-    static ServerBroker* _instance;
+    static ServerBroker *_instance;
     static std::mutex _mutex;
 
     /**
      * @brief Constructs a new ServerBroker object.
-     * 
+     *
      * The constructor is private to prevent direct construction.
      */
-    ServerBroker(void) = default;
+    ServerBroker(void);
 
     /**
      * @brief Destroys the ServerBroker object.
      */
-    ~ServerBroker(void) = default;
+    ~ServerBroker(void);
 
     /**
-     * @brief LoaderLib object to load network and core modules.
+     * @brief Pointer to the LoaderLib object.
      */
-    LoaderLib _loader;
+    std::unique_ptr<LoaderLib> _loader_lib;
+
+    /**
+     * @brief Pointer to the INetworkModule object.
+     */
+    std::unique_ptr<INetworkModule> _network_module;
 
 public:
     /**
@@ -58,10 +64,10 @@ public:
      * @brief This method controls access to the singleton instance.
      * On the first run, it creates the singleton object and stores it in the static pointer.
      * Subsequent calls return the same instance.
-     * 
+     *
      * @return A pointer to the singleton instance of ServerBroker.
      */
-    static ServerBroker* GetInstance()
+    static ServerBroker *GetInstance()
     {
         std::lock_guard<std::mutex> lock(_mutex);
         if (_instance == nullptr)
@@ -71,5 +77,3 @@ public:
         return _instance;
     }
 };
-
-

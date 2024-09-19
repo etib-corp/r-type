@@ -24,25 +24,30 @@
 class ClientBroker : public Broker
 {
 private:
-    static ClientBroker* _instance;
+    static ClientBroker *_instance;
     static std::mutex _mutex;
 
     /**
      * @brief Constructs a new ClientBroker object.
-     * 
+     *
      * The constructor is private to prevent direct construction.
      */
-    ClientBroker() = default;
+    ClientBroker(void);
 
     /**
      * @brief Destroys the ClientBroker object.
      */
-    ~ClientBroker() = default;
+    ~ClientBroker(void);
 
     /**
-     * @brief LoaderLib object to load network and core modules.
+     * @brief Pointer to the LoaderLib object.
      */
-    LoaderLib _loader;
+    std::unique_ptr<LoaderLib> _loader_lib;
+
+    /**
+     * @brief Pointer to the INetworkModule object.
+     */
+    std::unique_ptr<INetworkModule> _network_module;
 
 public:
     /**
@@ -59,10 +64,10 @@ public:
      * @brief This method controls access to the singleton instance.
      * On the first run, it creates the singleton object and stores it in the static pointer.
      * Subsequent calls return the same instance.
-     * 
+     *
      * @return A pointer to the singleton instance of ClientBroker.
      */
-    static ClientBroker* GetInstance()
+    static ClientBroker *GetInstance()
     {
         std::lock_guard<std::mutex> lock(_mutex);
         if (_instance == nullptr)
@@ -72,4 +77,3 @@ public:
         return _instance;
     }
 };
-
