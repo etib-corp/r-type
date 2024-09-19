@@ -3,17 +3,9 @@ file(GLOB_RECURSE ASIO_NETWORK_MODULE_SOURCES src/*.cpp)
 include_directories(../../include/)
 include_directories(include)
 
-include(FetchContent)
+add_subdirectory(lib/boost-1.86.0)
 
-FetchContent_Declare(
-    Boost
-    GIT_REPOSITORY https://github.com/boostorg/boost.git
-    GIT_TAG boost-1.86.0
-)
-
-FetchContent_MakeAvailable(Boost)
-
-include_directories(asio INTERFACE ${boost_asio_SOURCE_DIR}/include)
+include_directories(${boost_asio_SOURCE_DIR}/include)
 
 add_library(AsioNetworkModule SHARED ${ASIO_NETWORK_MODULE_SOURCES})
 
