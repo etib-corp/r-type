@@ -108,10 +108,38 @@ namespace LE {
              */
             std::shared_ptr<Scene> getPreviousScene() const;
 
+            /**
+             * @brief Adds a new scene to the SceneManager.
+             *
+             * This method adds a new scene to the SceneManager, making it available for playback.
+             * The scene is identified by a unique name, which can be used to reference the scene
+             * when playing or stopping it.
+             *
+             * @param scene A shared pointer to the scene to add.
+             * @param name The name to associate with the scene. This name should be unique
+             *             and used to reference the scene when playing or stopping it.
+             */
             void addScene(std::shared_ptr<Scene> scene, const std::string &name);
 
+            /**
+             * @brief Removes a scene from the SceneManager.
+             *
+             * This method removes a scene from the SceneManager, making it unavailable for playback.
+             * The scene is identified by its name, which should match the name of the scene that was
+             * previously added to the SceneManager.
+             *
+             * @param sceneName The name of the scene to remove.
+             */
             void removeScene(const std::string &sceneName);
 
+            /**
+             * @brief Selects a scene to play.
+             *
+             * This method selects a scene to play based on its name. If the scene is not found
+             * in the SceneManager, an exception is thrown.
+             *
+             * @param sceneName The name of the scene to play.
+             */
             void selectScene(const std::string &sceneName);
 
         private:

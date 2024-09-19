@@ -86,7 +86,7 @@ namespace LE {
              * which is used to manage entities and components within the scene.
              */
             std::shared_ptr<void *> _ecs;
-            std::shared_ptr<LE::GUI::Manager> _guiManager; ///< Shared pointer to the GUI Manager instance.
-            std::shared_ptr<LE::EventManager> _eventManager;
+            std::shared_ptr<LE::GUI::Manager> _guiManager;      ///< Shared pointer to the GUI Manager instance.
+            std::shared_ptr<LE::EventManager> _eventManager;    ///< Shared pointer to the Event Manager instance.
     };
 }
