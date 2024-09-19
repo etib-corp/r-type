@@ -42,7 +42,7 @@ var hierarchy =
     ] ],
     [ "Fn_Test", "classFn__Test.html", null ],
     [ "IClient", "classIClient.html", [
-      [ "Session", "classSession.html", null ]
+      [ "Client", "classClient.html", null ]
     ] ],
     [ "IListenerTCP", "classIListenerTCP.html", [
       [ "ListenerTCP", "classListenerTCP.html", null ]
@@ -52,7 +52,10 @@ var hierarchy =
     ] ],
     [ "Include_Test", "classInclude__Test.html", null ],
     [ "INetworkModule", "classINetworkModule.html", [
-      [ "module", "classmodule.html", null ]
+      [ "AsioNetworkModule", "classAsioNetworkModule.html", null ]
+    ] ],
+    [ "ISession", "classISession.html", [
+      [ "Session", "classSession.html", null ]
     ] ],
     [ "Javadoc_Test", "classJavadoc__Test.html", null ],
     [ "LoaderLib", "classLoaderLib.html", null ],

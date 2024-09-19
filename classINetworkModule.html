@@ -115,7 +115,7 @@ Inheritance diagram for INetworkModule:</div>
  <div class="center">
   <img src="classINetworkModule.png" usemap="#INetworkModule_map" alt=""/>
   <map id="INetworkModule_map" name="INetworkModule_map">
-<area href="classmodule.html" title="A class that implements the INetworkModule interface." alt="module" shape="rect" coords="0,56,103,80"/>
+<area href="classAsioNetworkModule.html" title="A class that implements the INetworkModule interface." alt="AsioNetworkModule" shape="rect" coords="0,56,125,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -123,21 +123,21 @@ Inheritance diagram for INetworkModule:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab4efa37debf8e4db9dd2daa250975663" id="r_ab4efa37debf8e4db9dd2daa250975663"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab4efa37debf8e4db9dd2daa250975663">run</a> ()=0</td></tr>
 <tr class="separator:ab4efa37debf8e4db9dd2daa250975663"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af15a9e62ce9db55b1c576dc72ea7ebd6" id="r_af15a9e62ce9db55b1c576dc72ea7ebd6"><td class="memItemLeft" align="right" valign="top"><a id="af15a9e62ce9db55b1c576dc72ea7ebd6" name="af15a9e62ce9db55b1c576dc72ea7ebd6"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>addClient</b> (std::shared_ptr&lt; <a class="el" href="classIClient.html">IClient</a> &gt; client)</td></tr>
-<tr class="separator:af15a9e62ce9db55b1c576dc72ea7ebd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0f13655142665bc215c4ba2951f77b5" id="r_af0f13655142665bc215c4ba2951f77b5"><td class="memItemLeft" align="right" valign="top"><a id="af0f13655142665bc215c4ba2951f77b5" name="af0f13655142665bc215c4ba2951f77b5"></a>
-virtual std::queue&lt; std::shared_ptr&lt; <a class="el" href="classIClient.html">IClient</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getClients</b> ()</td></tr>
-<tr class="separator:af0f13655142665bc215c4ba2951f77b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ea6f90c9abb43a49efac8da076d8957" id="r_a0ea6f90c9abb43a49efac8da076d8957"><td class="memItemLeft" align="right" valign="top"><a id="a0ea6f90c9abb43a49efac8da076d8957" name="a0ea6f90c9abb43a49efac8da076d8957"></a>
-virtual std::shared_ptr&lt; <a class="el" href="classIClient.html">IClient</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getClientById</b> (int id)</td></tr>
-<tr class="separator:a0ea6f90c9abb43a49efac8da076d8957"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc9b25432cc71437c739c2342d32368b" id="r_afc9b25432cc71437c739c2342d32368b"><td class="memItemLeft" align="right" valign="top"><a id="afc9b25432cc71437c739c2342d32368b" name="afc9b25432cc71437c739c2342d32368b"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>addClient</b> (std::shared_ptr&lt; <a class="el" href="classISession.html">ISession</a> &gt; client)</td></tr>
+<tr class="separator:afc9b25432cc71437c739c2342d32368b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9b64053afd5c2d9a6362e6c3d7884c2" id="r_ae9b64053afd5c2d9a6362e6c3d7884c2"><td class="memItemLeft" align="right" valign="top"><a id="ae9b64053afd5c2d9a6362e6c3d7884c2" name="ae9b64053afd5c2d9a6362e6c3d7884c2"></a>
+virtual std::queue&lt; std::shared_ptr&lt; <a class="el" href="classISession.html">ISession</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getClients</b> ()</td></tr>
+<tr class="separator:ae9b64053afd5c2d9a6362e6c3d7884c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7833419494c59d0edfe534e958eb5da" id="r_af7833419494c59d0edfe534e958eb5da"><td class="memItemLeft" align="right" valign="top"><a id="af7833419494c59d0edfe534e958eb5da" name="af7833419494c59d0edfe534e958eb5da"></a>
+virtual std::shared_ptr&lt; <a class="el" href="classISession.html">ISession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getClientById</b> (int id)</td></tr>
+<tr class="separator:af7833419494c59d0edfe534e958eb5da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a0cd140f306ba0b3b4e2e73246fbdecb3" id="r_a0cd140f306ba0b3b4e2e73246fbdecb3"><td class="memItemLeft" align="right" valign="top">std::queue&lt; std::shared_ptr&lt; <a class="el" href="classIClient.html">IClient</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0cd140f306ba0b3b4e2e73246fbdecb3">_clients</a></td></tr>
-<tr class="memdesc:a0cd140f306ba0b3b4e2e73246fbdecb3"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classA.html">A</a> queue that holds shared pointers to <a class="el" href="classIClient.html" title="Interface for client communication.">IClient</a> sessions.  <br /></td></tr>
-<tr class="separator:a0cd140f306ba0b3b4e2e73246fbdecb3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a820b95db035c79808e9dc4d1731881d6" id="r_a820b95db035c79808e9dc4d1731881d6"><td class="memItemLeft" align="right" valign="top">std::queue&lt; std::shared_ptr&lt; <a class="el" href="classISession.html">ISession</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a820b95db035c79808e9dc4d1731881d6">_sessions</a></td></tr>
+<tr class="memdesc:a820b95db035c79808e9dc4d1731881d6"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classA.html">A</a> queue that holds shared pointers to <a class="el" href="classIClient.html">IClient</a> sessions.  <br /></td></tr>
+<tr class="separator:a820b95db035c79808e9dc4d1731881d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -175,28 +175,11 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classmodule.html#aae010a39ed2a876c0b4d0e8c3a3aa528">module</a>.</p>
+<p>Implemented in <a class="el" href="classAsioNetworkModule.html#adb423ee10ed62f3f237a56b4fbca0b9c">AsioNetworkModule</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a0cd140f306ba0b3b4e2e73246fbdecb3" name="a0cd140f306ba0b3b4e2e73246fbdecb3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0cd140f306ba0b3b4e2e73246fbdecb3">&#9670;&#160;</a></span>_clients</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::queue&lt;std::shared_ptr&lt;<a class="el" href="classIClient.html">IClient</a>&gt; &gt; INetworkModule::_clients</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p><a class="el" href="classA.html">A</a> queue that holds shared pointers to <a class="el" href="classIClient.html" title="Interface for client communication.">IClient</a> sessions. </p>
-<p>This queue is used to manage and store client sessions in a thread-safe manner. Each session is represented by a shared pointer to an <a class="el" href="classIClient.html" title="Interface for client communication.">IClient</a> object, ensuring proper memory management and reference counting. </p>
-
-</div>
-</div>
 <a id="afaa31a4331a2df0c37d7e4e3ced11d82" name="afaa31a4331a2df0c37d7e4e3ced11d82"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afaa31a4331a2df0c37d7e4e3ced11d82">&#9670;&#160;</a></span>_listenerTCP</h2>
 
@@ -247,8 +230,25 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a820b95db035c79808e9dc4d1731881d6" name="a820b95db035c79808e9dc4d1731881d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a820b95db035c79808e9dc4d1731881d6">&#9670;&#160;</a></span>_sessions</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::queue&lt;std::shared_ptr&lt;<a class="el" href="classISession.html">ISession</a>&gt; &gt; INetworkModule::_sessions</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classA.html">A</a> queue that holds shared pointers to <a class="el" href="classIClient.html">IClient</a> sessions. </p>
+<p>This queue is used to manage and store client sessions in a thread-safe manner. Each session is represented by a shared pointer to an <a class="el" href="classIClient.html">IClient</a> object, ensuring proper memory management and reference counting. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>server/include/interface/<a class="el" href="INetworkModule_8hpp_source.html">INetworkModule.hpp</a></li>
+<li>include/interface/INetworkModule/<a class="el" href="INetworkModule_8hpp_source.html">INetworkModule.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

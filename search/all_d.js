@@ -9,9 +9,7 @@ var searchData=
   ['message_6',['Message',['../classMessage.html',1,'']]],
   ['message_2ehpp_7',['Message.hpp',['../Message_8hpp.html',1,'']]],
   ['min_8',['MIN',['../define_8h.html#a74e75242132eaabbc1c512488a135926',1,'define.h']]],
-  ['module_9',['module',['../classmodule.html',1,'']]],
-  ['module_2ecpp_10',['module.cpp',['../module_8cpp.html',1,'']]],
-  ['mux_2evhdl_11',['mux.vhdl',['../mux_8vhdl.html',1,'']]],
-  ['mux_5fout_12',['mux_out',['../classmux__using__with.html#a6258515f40573285292fdb0b9663c422',1,'mux_using_with']]],
-  ['mux_5fusing_5fwith_13',['mux_using_with',['../classmux__using__with.html',1,'']]]
+  ['mux_2evhdl_9',['mux.vhdl',['../mux_8vhdl.html',1,'']]],
+  ['mux_5fout_10',['mux_out',['../classmux__using__with.html#a6258515f40573285292fdb0b9663c422',1,'mux_using_with']]],
+  ['mux_5fusing_5fwith_11',['mux_using_with',['../classmux__using__with.html',1,'']]]
 ];

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: server/include/LoaderLib.hpp Source File</title>
+<title>My Project: include/LoaderLib.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -115,97 +115,104 @@ $(function(){initNavTree('LoaderLib_8hpp_source.html',''); initResizable(true); 
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;map&gt;</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;functional&gt;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;interface/INetworkModule.hpp&quot;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#ifdef __linux__</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">    #include &lt;dlfcn.h&gt;</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">    #define OPEN_SYM(path, var) \</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">        var = dlopen(path.c_str(), RTLD_LAZY)</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">    #define LOAD_SYM(libHandle, var, sym, type) \</span></div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">        if ((type)dlsym(libHandle, sym) != NULL) \</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">                var = (type)dlsym(libHandle, sym);</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#endif </span><span class="comment">// __linux__</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#ifdef __APPLE__</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">    #include &lt;dlfcn.h&gt;</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="preprocessor">    #define OPEN_SYM(path, var) \</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">        var = dlopen(path.c_str(), RTLD_LAZY)</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">    #define LOAD_SYM(libHandle, var, sym, type) \</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">        if ((type)dlsym(libHandle, sym) != NULL) \</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">                var = (type)dlsym(libHandle, sym);</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="preprocessor">#endif </span><span class="comment">// __APPLE__</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">    #include &lt;windows.h&gt;</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">    #define OPEN_SYM(path, var) \</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">        var = LoadLibrary(path.c_str())</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">    #define LOAD_SYM(libHandle, var, sym, type) \</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">        if ((type)GetProcAddress(libHandle, sym) != NULL) \</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">                var = (type)GetProcAddress(libHandle, sym);</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#endif </span><span class="comment">// __WIN__</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="foldopen" id="foldopen00073" data-start="{" data-end="};">
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classLoaderLibError.html">   73</a></span><span class="keyword">class </span><a class="code hl_class" href="classLoaderLibError.html">LoaderLibError</a> : <span class="keyword">public</span> std::exception {</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <a class="code hl_class" href="classLoaderLibError.html">LoaderLibError</a>(<span class="keyword">const</span> std::string&amp; message): _message(message) {};</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="keyword">const</span> <span class="keywordtype">char</span> *what() <span class="keyword">const</span> <span class="keyword">noexcept</span> <span class="keyword">override</span> { <span class="keywordflow">return</span> _message.c_str(); }</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        std::string _message;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>};</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;interface/INetworkModule/INetworkModule.hpp&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;interface/INetworkModule/IClient.hpp&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#ifdef __linux__</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">    #include &lt;dlfcn.h&gt;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">    #define OPEN_SYM(path, var) \</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">        var = dlopen(path.c_str(), RTLD_LAZY)</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">    #define LOAD_SYM(libHandle, var, sym, type) \</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">        if ((type)dlsym(libHandle, sym) != NULL) \</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">                var = (type)dlsym(libHandle, sym);</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#endif </span><span class="comment">// __linux__</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#ifdef __APPLE__</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">    #include &lt;dlfcn.h&gt;</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">    #define OPEN_SYM(path, var) \</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">        var = dlopen(path.c_str(), RTLD_LAZY)</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="preprocessor">    #define LOAD_SYM(libHandle, var, sym, type) \</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">        if ((type)dlsym(libHandle, sym) != NULL) \</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">                var = (type)dlsym(libHandle, sym);</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#endif </span><span class="comment">// __APPLE__</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="preprocessor">    #include &lt;windows.h&gt;</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">    #define OPEN_SYM(path, var) \</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">        var = LoadLibrary(path.c_str())</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">    #define LOAD_SYM(libHandle, var, sym, type) \</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">        if ((type)GetProcAddress(libHandle, sym) != NULL) \</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">                var = (type)GetProcAddress(libHandle, sym);</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#endif </span><span class="comment">// __WIN__</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="foldopen" id="foldopen00074" data-start="{" data-end="};">
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classLoaderLibError.html">   74</a></span><span class="keyword">class </span><a class="code hl_class" href="classLoaderLibError.html">LoaderLibError</a> : <span class="keyword">public</span> std::exception {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <a class="code hl_class" href="classLoaderLibError.html">LoaderLibError</a>(<span class="keyword">const</span> std::string&amp; message): _message(message) {};</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keyword">const</span> <span class="keywordtype">char</span> *what() <span class="keyword">const</span> <span class="keyword">noexcept</span> <span class="keyword">override</span> { <span class="keywordflow">return</span> _message.c_str(); }</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        std::string _message;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>};</div>
 </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="foldopen" id="foldopen00090" data-start="{" data-end="};">
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="classLoaderLib.html">   90</a></span><span class="keyword">class </span><a class="code hl_class" href="classLoaderLib.html">LoaderLib</a> {</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <a class="code hl_function" href="classLoaderLib.html#a5fe57eca180f419caf517a7e6d79a194">LoaderLib</a>(<span class="keyword">const</span> std::string&amp; NetworkModule, <span class="keyword">const</span> std::string&amp; CoreModule);</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <a class="code hl_class" href="classLoaderLib.html">~LoaderLib</a>();</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classLoaderLib.html#af0465b9373edc1925fbdb342ea0cfdea">LoadModule</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <a class="code hl_class" href="classINetworkModule.html">INetworkModule</a> *<a class="code hl_function" href="classLoaderLib.html#a549cfe628f6577253a676ebee1c15246">createNetworkModule</a>(<span class="keywordtype">int</span> port);</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="classLoaderLib.html#a35d6f22c7ae3cb659531c7dac09dbc3d">  126</a></span>        std::string <a class="code hl_variable" href="classLoaderLib.html#a35d6f22c7ae3cb659531c7dac09dbc3d">_pathNetworkModule</a>;</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="classLoaderLib.html#a632821f3a54132b1b73d67f5ebea68fd">  131</a></span>        std::string <a class="code hl_variable" href="classLoaderLib.html#a632821f3a54132b1b73d67f5ebea68fd">_pathCoreModule</a>;</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno"><a class="line" href="classLoaderLib.html#ab47c687e8e2ab3e6dcee27bdbfef32ed">  136</a></span>        std::function&lt;<a class="code hl_class" href="classINetworkModule.html">INetworkModule</a>*(int)&gt; <a class="code hl_variable" href="classLoaderLib.html#ab47c687e8e2ab3e6dcee27bdbfef32ed">_createNetworkModule</a>;</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno"><a class="line" href="classLoaderLib.html#ae7c6b6545b909cce12205b0f37700547">  141</a></span>        <span class="keywordtype">void</span> *<a class="code hl_variable" href="classLoaderLib.html#ae7c6b6545b909cce12205b0f37700547">_handleNetworkModule</a>;</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno"><a class="line" href="classLoaderLib.html#aef54062304d08bdf69fcb4be1b2a28f9">  146</a></span>        <span class="keywordtype">void</span> *<a class="code hl_variable" href="classLoaderLib.html#aef54062304d08bdf69fcb4be1b2a28f9">_handleCoreModule</a>;</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>};</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="foldopen" id="foldopen00091" data-start="{" data-end="};">
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="classLoaderLib.html">   91</a></span><span class="keyword">class </span><a class="code hl_class" href="classLoaderLib.html">LoaderLib</a> {</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <a class="code hl_function" href="classLoaderLib.html#a5fe57eca180f419caf517a7e6d79a194">LoaderLib</a>(<span class="keyword">const</span> std::string&amp; NetworkModule, <span class="keyword">const</span> std::string&amp; CoreModule);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <a class="code hl_class" href="classLoaderLib.html">~LoaderLib</a>();</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classLoaderLib.html#af0465b9373edc1925fbdb342ea0cfdea">LoadModule</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <a class="code hl_class" href="classINetworkModule.html">INetworkModule</a> *<a class="code hl_function" href="classLoaderLib.html#a549cfe628f6577253a676ebee1c15246">createNetworkModule</a>(<span class="keywordtype">int</span> port);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <a class="code hl_class" href="classIClient.html">IClient</a> *createClient();</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="classLoaderLib.html#a35d6f22c7ae3cb659531c7dac09dbc3d">  129</a></span>        std::string <a class="code hl_variable" href="classLoaderLib.html#a35d6f22c7ae3cb659531c7dac09dbc3d">_pathNetworkModule</a>;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="classLoaderLib.html#a632821f3a54132b1b73d67f5ebea68fd">  134</a></span>        std::string <a class="code hl_variable" href="classLoaderLib.html#a632821f3a54132b1b73d67f5ebea68fd">_pathCoreModule</a>;</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno"><a class="line" href="classLoaderLib.html#ab47c687e8e2ab3e6dcee27bdbfef32ed">  139</a></span>        std::function&lt;<a class="code hl_class" href="classINetworkModule.html">INetworkModule</a>*(int)&gt; <a class="code hl_variable" href="classLoaderLib.html#ab47c687e8e2ab3e6dcee27bdbfef32ed">_createNetworkModule</a>;</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno"><a class="line" href="classLoaderLib.html#a16f569540b4b73919e407dec451d60b3">  144</a></span>        std::function&lt;<a class="code hl_class" href="classIClient.html">IClient</a>*()&gt; <a class="code hl_variable" href="classLoaderLib.html#a16f569540b4b73919e407dec451d60b3">_createClient</a>;</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno"><a class="line" href="classLoaderLib.html#ae7c6b6545b909cce12205b0f37700547">  149</a></span>        <span class="keywordtype">void</span> *<a class="code hl_variable" href="classLoaderLib.html#ae7c6b6545b909cce12205b0f37700547">_handleNetworkModule</a>;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno"><a class="line" href="classLoaderLib.html#aef54062304d08bdf69fcb4be1b2a28f9">  154</a></span>        <span class="keywordtype">void</span> *<a class="code hl_variable" href="classLoaderLib.html#aef54062304d08bdf69fcb4be1b2a28f9">_handleCoreModule</a>;</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>};</div>
 </div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="preprocessor">#endif </span><span class="comment">/* !LOADERLIB_HPP_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="aclassINetworkModule_html"><div class="ttname"><a href="classINetworkModule.html">INetworkModule</a></div><div class="ttdoc">Abstract base class for network modules.</div><div class="ttdef"><b>Definition</b> INetworkModule.hpp:25</div></div>
-<div class="ttc" id="aclassLoaderLibError_html"><div class="ttname"><a href="classLoaderLibError.html">LoaderLibError</a></div><div class="ttdef"><b>Definition</b> LoaderLib.hpp:73</div></div>
-<div class="ttc" id="aclassLoaderLib_html"><div class="ttname"><a href="classLoaderLib.html">LoaderLib</a></div><div class="ttdoc">The LoaderLib class is responsible for loading network and core modules dynamically.</div><div class="ttdef"><b>Definition</b> LoaderLib.hpp:90</div></div>
-<div class="ttc" id="aclassLoaderLib_html_a35d6f22c7ae3cb659531c7dac09dbc3d"><div class="ttname"><a href="classLoaderLib.html#a35d6f22c7ae3cb659531c7dac09dbc3d">LoaderLib::_pathNetworkModule</a></div><div class="ttdeci">std::string _pathNetworkModule</div><div class="ttdoc">Path to the network module.</div><div class="ttdef"><b>Definition</b> LoaderLib.hpp:126</div></div>
-<div class="ttc" id="aclassLoaderLib_html_a549cfe628f6577253a676ebee1c15246"><div class="ttname"><a href="classLoaderLib.html#a549cfe628f6577253a676ebee1c15246">LoaderLib::createNetworkModule</a></div><div class="ttdeci">INetworkModule * createNetworkModule(int port)</div><div class="ttdoc">Creates a network module instance.</div><div class="ttdef"><b>Definition</b> LoaderLib.cpp:34</div></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="preprocessor">#endif </span><span class="comment">/* !LOADERLIB_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="aclassIClient_html"><div class="ttname"><a href="classIClient.html">IClient</a></div><div class="ttdef"><b>Definition</b> IClient.hpp:14</div></div>
+<div class="ttc" id="aclassINetworkModule_html"><div class="ttname"><a href="classINetworkModule.html">INetworkModule</a></div><div class="ttdoc">Abstract base class for network modules.</div><div class="ttdef"><b>Definition</b> INetworkModule.hpp:27</div></div>
+<div class="ttc" id="aclassLoaderLibError_html"><div class="ttname"><a href="classLoaderLibError.html">LoaderLibError</a></div><div class="ttdef"><b>Definition</b> LoaderLib.hpp:74</div></div>
+<div class="ttc" id="aclassLoaderLib_html"><div class="ttname"><a href="classLoaderLib.html">LoaderLib</a></div><div class="ttdoc">The LoaderLib class is responsible for loading network and core modules dynamically.</div><div class="ttdef"><b>Definition</b> LoaderLib.hpp:91</div></div>
+<div class="ttc" id="aclassLoaderLib_html_a16f569540b4b73919e407dec451d60b3"><div class="ttname"><a href="classLoaderLib.html#a16f569540b4b73919e407dec451d60b3">LoaderLib::_createClient</a></div><div class="ttdeci">std::function&lt; IClient *()&gt; _createClient</div><div class="ttdoc">Function to create a client.</div><div class="ttdef"><b>Definition</b> LoaderLib.hpp:144</div></div>
+<div class="ttc" id="aclassLoaderLib_html_a35d6f22c7ae3cb659531c7dac09dbc3d"><div class="ttname"><a href="classLoaderLib.html#a35d6f22c7ae3cb659531c7dac09dbc3d">LoaderLib::_pathNetworkModule</a></div><div class="ttdeci">std::string _pathNetworkModule</div><div class="ttdoc">Path to the network module.</div><div class="ttdef"><b>Definition</b> LoaderLib.hpp:129</div></div>
+<div class="ttc" id="aclassLoaderLib_html_a549cfe628f6577253a676ebee1c15246"><div class="ttname"><a href="classLoaderLib.html#a549cfe628f6577253a676ebee1c15246">LoaderLib::createNetworkModule</a></div><div class="ttdeci">INetworkModule * createNetworkModule(int port)</div><div class="ttdoc">Creates a network module instance.</div><div class="ttdef"><b>Definition</b> LoaderLib.cpp:42</div></div>
 <div class="ttc" id="aclassLoaderLib_html_a5fe57eca180f419caf517a7e6d79a194"><div class="ttname"><a href="classLoaderLib.html#a5fe57eca180f419caf517a7e6d79a194">LoaderLib::LoaderLib</a></div><div class="ttdeci">LoaderLib(const std::string &amp;NetworkModule, const std::string &amp;CoreModule)</div><div class="ttdoc">Constructs a LoaderLib object with the specified network module and core module.</div><div class="ttdef"><b>Definition</b> LoaderLib.cpp:10</div></div>
-<div class="ttc" id="aclassLoaderLib_html_a632821f3a54132b1b73d67f5ebea68fd"><div class="ttname"><a href="classLoaderLib.html#a632821f3a54132b1b73d67f5ebea68fd">LoaderLib::_pathCoreModule</a></div><div class="ttdeci">std::string _pathCoreModule</div><div class="ttdoc">Path to the core module.</div><div class="ttdef"><b>Definition</b> LoaderLib.hpp:131</div></div>
-<div class="ttc" id="aclassLoaderLib_html_ab47c687e8e2ab3e6dcee27bdbfef32ed"><div class="ttname"><a href="classLoaderLib.html#ab47c687e8e2ab3e6dcee27bdbfef32ed">LoaderLib::_createNetworkModule</a></div><div class="ttdeci">std::function&lt; INetworkModule *(int)&gt; _createNetworkModule</div><div class="ttdoc">Function to create a network module.</div><div class="ttdef"><b>Definition</b> LoaderLib.hpp:136</div></div>
-<div class="ttc" id="aclassLoaderLib_html_ae7c6b6545b909cce12205b0f37700547"><div class="ttname"><a href="classLoaderLib.html#ae7c6b6545b909cce12205b0f37700547">LoaderLib::_handleNetworkModule</a></div><div class="ttdeci">void * _handleNetworkModule</div><div class="ttdoc">Contains the handle to the network module.</div><div class="ttdef"><b>Definition</b> LoaderLib.hpp:141</div></div>
-<div class="ttc" id="aclassLoaderLib_html_aef54062304d08bdf69fcb4be1b2a28f9"><div class="ttname"><a href="classLoaderLib.html#aef54062304d08bdf69fcb4be1b2a28f9">LoaderLib::_handleCoreModule</a></div><div class="ttdeci">void * _handleCoreModule</div><div class="ttdoc">Contains the handle to the core module.</div><div class="ttdef"><b>Definition</b> LoaderLib.hpp:146</div></div>
-<div class="ttc" id="aclassLoaderLib_html_af0465b9373edc1925fbdb342ea0cfdea"><div class="ttname"><a href="classLoaderLib.html#af0465b9373edc1925fbdb342ea0cfdea">LoaderLib::LoadModule</a></div><div class="ttdeci">void LoadModule(void)</div><div class="ttdoc">Checks if the loader is currently loading.</div><div class="ttdef"><b>Definition</b> LoaderLib.cpp:22</div></div>
+<div class="ttc" id="aclassLoaderLib_html_a632821f3a54132b1b73d67f5ebea68fd"><div class="ttname"><a href="classLoaderLib.html#a632821f3a54132b1b73d67f5ebea68fd">LoaderLib::_pathCoreModule</a></div><div class="ttdeci">std::string _pathCoreModule</div><div class="ttdoc">Path to the core module.</div><div class="ttdef"><b>Definition</b> LoaderLib.hpp:134</div></div>
+<div class="ttc" id="aclassLoaderLib_html_ab47c687e8e2ab3e6dcee27bdbfef32ed"><div class="ttname"><a href="classLoaderLib.html#ab47c687e8e2ab3e6dcee27bdbfef32ed">LoaderLib::_createNetworkModule</a></div><div class="ttdeci">std::function&lt; INetworkModule *(int)&gt; _createNetworkModule</div><div class="ttdoc">Function to create a network module.</div><div class="ttdef"><b>Definition</b> LoaderLib.hpp:139</div></div>
+<div class="ttc" id="aclassLoaderLib_html_ae7c6b6545b909cce12205b0f37700547"><div class="ttname"><a href="classLoaderLib.html#ae7c6b6545b909cce12205b0f37700547">LoaderLib::_handleNetworkModule</a></div><div class="ttdeci">void * _handleNetworkModule</div><div class="ttdoc">Contains the handle to the network module.</div><div class="ttdef"><b>Definition</b> LoaderLib.hpp:149</div></div>
+<div class="ttc" id="aclassLoaderLib_html_aef54062304d08bdf69fcb4be1b2a28f9"><div class="ttname"><a href="classLoaderLib.html#aef54062304d08bdf69fcb4be1b2a28f9">LoaderLib::_handleCoreModule</a></div><div class="ttdeci">void * _handleCoreModule</div><div class="ttdoc">Contains the handle to the core module.</div><div class="ttdef"><b>Definition</b> LoaderLib.hpp:154</div></div>
+<div class="ttc" id="aclassLoaderLib_html_af0465b9373edc1925fbdb342ea0cfdea"><div class="ttname"><a href="classLoaderLib.html#af0465b9373edc1925fbdb342ea0cfdea">LoaderLib::LoadModule</a></div><div class="ttdeci">void LoadModule(void)</div><div class="ttdoc">Checks if the loader is currently loading.</div><div class="ttdef"><b>Definition</b> LoaderLib.cpp:24</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a class="el" href="dir_2b32f7736d6a65027d17676f6279053c.html">include</a></li><li class="navelem"><b>LoaderLib.hpp</b></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><b>LoaderLib.hpp</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>

@@ -4,5 +4,6 @@ var searchData=
   ['ilistenertcp_1',['IListenerTCP',['../classIListenerTCP.html',1,'']]],
   ['ilistenerudp_2',['IListenerUDP',['../classIListenerUDP.html',1,'']]],
   ['include_5ftest_3',['Include_Test',['../classInclude__Test.html',1,'']]],
-  ['inetworkmodule_4',['INetworkModule',['../classINetworkModule.html',1,'']]]
+  ['inetworkmodule_4',['INetworkModule',['../classINetworkModule.html',1,'']]],
+  ['isession_5',['ISession',['../classISession.html',1,'']]]
 ];

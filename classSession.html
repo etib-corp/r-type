@@ -115,7 +115,7 @@ Inheritance diagram for Session:</div>
  <div class="center">
   <img src="classSession.png" usemap="#Session_map" alt=""/>
   <map id="Session_map" name="Session_map">
-<area href="classIClient.html" title="Interface for client communication." alt="IClient" shape="rect" coords="0,0,56,24"/>
+<area href="classISession.html" title="Interface for Session communication." alt="ISession" shape="rect" coords="0,0,59,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -134,13 +134,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a869697db5c17f31e2876fbdbc43ab536" id="r_a869697db5c17f31e2876fbdbc43ab536"><td class="memItemLeft" align="right" valign="top"><a id="a869697db5c17f31e2876fbdbc43ab536" name="a869697db5c17f31e2876fbdbc43ab536"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setUdpEndpoint</b> (boost::asio::ip::udp::endpoint udp_endpoint)</td></tr>
 <tr class="separator:a869697db5c17f31e2876fbdbc43ab536"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_classIClient"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classIClient')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classIClient.html">IClient</a></td></tr>
-<tr class="memitem:ad34a56efea3690460c65bd28f6627ac0 inherit pub_methods_classIClient" id="r_ad34a56efea3690460c65bd28f6627ac0"><td class="memItemLeft" align="right" valign="top">
+<tr class="inherit_header pub_methods_classISession"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classISession')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classISession.html">ISession</a></td></tr>
+<tr class="memitem:a0a3e48090308f492d8d9017c48fd1f2a inherit pub_methods_classISession" id="r_a0a3e48090308f492d8d9017c48fd1f2a"><td class="memItemLeft" align="right" valign="top">
 int&#160;</td><td class="memItemRight" valign="bottom"><b>getId</b> () const</td></tr>
-<tr class="separator:ad34a56efea3690460c65bd28f6627ac0 inherit pub_methods_classIClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac41f6e30c1ce15ce09b3da7f813b5e49 inherit pub_methods_classIClient" id="r_ac41f6e30c1ce15ce09b3da7f813b5e49"><td class="memItemLeft" align="right" valign="top">
+<tr class="separator:a0a3e48090308f492d8d9017c48fd1f2a inherit pub_methods_classISession"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff5050d9eb23db8aa33c4c87f4727b4c inherit pub_methods_classISession" id="r_aff5050d9eb23db8aa33c4c87f4727b4c"><td class="memItemLeft" align="right" valign="top">
 void&#160;</td><td class="memItemRight" valign="bottom"><b>setId</b> (int id)</td></tr>
-<tr class="separator:ac41f6e30c1ce15ce09b3da7f813b5e49 inherit pub_methods_classIClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:aff5050d9eb23db8aa33c4c87f4727b4c inherit pub_methods_classISession"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-types" name="pro-types"></a>
 Protected Types</h2></td></tr>
@@ -168,10 +168,10 @@ boost::asio::ip::udp::endpoint&#160;</td><td class="memItemRight" valign="bottom
 <tr class="memitem:a2194383abc34af8620e86fe7249d6a22" id="r_a2194383abc34af8620e86fe7249d6a22"><td class="memItemLeft" align="right" valign="top"><a id="a2194383abc34af8620e86fe7249d6a22" name="a2194383abc34af8620e86fe7249d6a22"></a>
 char&#160;</td><td class="memItemRight" valign="bottom"><b>_data</b> [_max_length]</td></tr>
 <tr class="separator:a2194383abc34af8620e86fe7249d6a22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_attribs_classIClient"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classIClient')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classIClient.html">IClient</a></td></tr>
-<tr class="memitem:a1ad82d7b9e4246d3c84232df38e947d5 inherit pro_attribs_classIClient" id="r_a1ad82d7b9e4246d3c84232df38e947d5"><td class="memItemLeft" align="right" valign="top">
+<tr class="inherit_header pro_attribs_classISession"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classISession')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classISession.html">ISession</a></td></tr>
+<tr class="memitem:adc596f3d0f355fa685518622cf852da0 inherit pro_attribs_classISession" id="r_adc596f3d0f355fa685518622cf852da0"><td class="memItemLeft" align="right" valign="top">
 int&#160;</td><td class="memItemRight" valign="bottom"><b>_id</b></td></tr>
-<tr class="separator:a1ad82d7b9e4246d3c84232df38e947d5 inherit pro_attribs_classIClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:adc596f3d0f355fa685518622cf852da0 inherit pro_attribs_classISession"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Manages a session using Boost.Asio. </p>
@@ -232,7 +232,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>_id</b></td></tr>
 <p>The lambda function checks for errors and, if none are found, prints the received data and its size to the standard output. It then clears the <code>_data</code> buffer and recursively calls <code><a class="el" href="#a8af7ea5fb236ceb581e39d215b4c0811" title="Initiates an asynchronous read operation on the socket.">read()</a></code> to continue reading data.</p>
 <dl class="section note"><dt>Note</dt><dd>This function is designed to be called repeatedly to handle continuous data reception. </dd></dl>
 
-<p>Implements <a class="el" href="classIClient.html">IClient</a>.</p>
+<p>Implements <a class="el" href="classISession.html">ISession</a>.</p>
 
 </div>
 </div>
@@ -259,7 +259,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>_id</b></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classIClient.html">IClient</a>.</p>
+<p>Implements <a class="el" href="classISession.html">ISession</a>.</p>
 
 </div>
 </div>
@@ -286,13 +286,13 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>_id</b></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classIClient.html">IClient</a>.</p>
+<p>Implements <a class="el" href="classISession.html">ISession</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>server/NetworkModule/include/<a class="el" href="Session_8hpp_source.html">Session.hpp</a></li>
-<li>server/NetworkModule/<b>Session.cpp</b></li>
+<li>lib/AsioNetworkModule/include/<a class="el" href="Session_8hpp_source.html">Session.hpp</a></li>
+<li>lib/AsioNetworkModule/src/<b>Session.cpp</b></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

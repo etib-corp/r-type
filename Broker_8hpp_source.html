@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: message/include/Broker.hpp Source File</title>
+<title>My Project: include/message/Broker.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -107,37 +107,39 @@ $(function(){initNavTree('Broker_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="Topic_8hpp.html">Topic.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="Topic_8hpp.html">message/Topic.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="foldopen" id="foldopen00029" data-start="{" data-end="};">
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classBroker.html">   29</a></span><span class="keyword">class </span><a class="code hl_class" href="classBroker.html">Broker</a></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classBroker.html#a5b382c4cb43994d4ef1f9f428c0bd4ca">addTopic</a>(<span class="keyword">const</span> std::string &amp;name);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    std::unique_ptr&lt;Topic&gt; &amp;<a class="code hl_function" href="classBroker.html#ac930bbd18ef31e4120441dded4e193cd">getTopic</a>(<span class="keyword">const</span> std::string &amp;topicName);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classBroker.html#a28f27133ff950c8c0a7dfd4f8a0b81cd">removeTopic</a>(<span class="keyword">const</span> std::string &amp;topicName);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classBroker.html#a7af6aeeb7a69c6f62ad497ae01fc0bf7">   58</a></span>    std::mutex <a class="code hl_variable" href="classBroker.html#a7af6aeeb7a69c6f62ad497ae01fc0bf7">_mutex</a>;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classBroker.html#a6b9f00e34013ed160b85614ab21c1feb">   63</a></span>    std::map&lt;std::string, std::unique_ptr&lt;Topic&gt;&gt; <a class="code hl_variable" href="classBroker.html#a6b9f00e34013ed160b85614ab21c1feb">_topics</a>;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>};</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#define LISTEN_PORT 4242</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="foldopen" id="foldopen00031" data-start="{" data-end="};">
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classBroker.html">   31</a></span><span class="keyword">class </span><a class="code hl_class" href="classBroker.html">Broker</a></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>{</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classBroker.html#a5b382c4cb43994d4ef1f9f428c0bd4ca">addTopic</a>(<span class="keyword">const</span> std::string &amp;name);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    std::unique_ptr&lt;Topic&gt; &amp;<a class="code hl_function" href="classBroker.html#ac930bbd18ef31e4120441dded4e193cd">getTopic</a>(<span class="keyword">const</span> std::string &amp;topicName);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classBroker.html#a28f27133ff950c8c0a7dfd4f8a0b81cd">removeTopic</a>(<span class="keyword">const</span> std::string &amp;topicName);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classBroker.html#a7af6aeeb7a69c6f62ad497ae01fc0bf7">   60</a></span>    std::mutex <a class="code hl_variable" href="classBroker.html#a7af6aeeb7a69c6f62ad497ae01fc0bf7">_mutex</a>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classBroker.html#a6b9f00e34013ed160b85614ab21c1feb">   65</a></span>    std::map&lt;std::string, std::unique_ptr&lt;Topic&gt;&gt; <a class="code hl_variable" href="classBroker.html#a6b9f00e34013ed160b85614ab21c1feb">_topics</a>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>};</div>
 </div>
 <div class="ttc" id="aTopic_8hpp_html"><div class="ttname"><a href="Topic_8hpp.html">Topic.hpp</a></div><div class="ttdoc">Defines the Topic class for managing message queues.</div></div>
-<div class="ttc" id="aclassBroker_html"><div class="ttname"><a href="classBroker.html">Broker</a></div><div class="ttdoc">Singleton class that manages topics.</div><div class="ttdef"><b>Definition</b> Broker.hpp:30</div></div>
+<div class="ttc" id="aclassBroker_html"><div class="ttname"><a href="classBroker.html">Broker</a></div><div class="ttdoc">Singleton class that manages topics.</div><div class="ttdef"><b>Definition</b> Broker.hpp:32</div></div>
 <div class="ttc" id="aclassBroker_html_a28f27133ff950c8c0a7dfd4f8a0b81cd"><div class="ttname"><a href="classBroker.html#a28f27133ff950c8c0a7dfd4f8a0b81cd">Broker::removeTopic</a></div><div class="ttdeci">void removeTopic(const std::string &amp;topicName)</div><div class="ttdoc">Remove a topic by name.</div><div class="ttdef"><b>Definition</b> Broker.cpp:25</div></div>
 <div class="ttc" id="aclassBroker_html_a5b382c4cb43994d4ef1f9f428c0bd4ca"><div class="ttname"><a href="classBroker.html#a5b382c4cb43994d4ef1f9f428c0bd4ca">Broker::addTopic</a></div><div class="ttdeci">void addTopic(const std::string &amp;name)</div><div class="ttdoc">Add a new topic.</div><div class="ttdef"><b>Definition</b> Broker.cpp:10</div></div>
-<div class="ttc" id="aclassBroker_html_a6b9f00e34013ed160b85614ab21c1feb"><div class="ttname"><a href="classBroker.html#a6b9f00e34013ed160b85614ab21c1feb">Broker::_topics</a></div><div class="ttdeci">std::map&lt; std::string, std::unique_ptr&lt; Topic &gt; &gt; _topics</div><div class="ttdoc">Map of topics.</div><div class="ttdef"><b>Definition</b> Broker.hpp:63</div></div>
-<div class="ttc" id="aclassBroker_html_a7af6aeeb7a69c6f62ad497ae01fc0bf7"><div class="ttname"><a href="classBroker.html#a7af6aeeb7a69c6f62ad497ae01fc0bf7">Broker::_mutex</a></div><div class="ttdeci">std::mutex _mutex</div><div class="ttdoc">Mutex to ensure thread safety.</div><div class="ttdef"><b>Definition</b> Broker.hpp:58</div></div>
+<div class="ttc" id="aclassBroker_html_a6b9f00e34013ed160b85614ab21c1feb"><div class="ttname"><a href="classBroker.html#a6b9f00e34013ed160b85614ab21c1feb">Broker::_topics</a></div><div class="ttdeci">std::map&lt; std::string, std::unique_ptr&lt; Topic &gt; &gt; _topics</div><div class="ttdoc">Map of topics.</div><div class="ttdef"><b>Definition</b> Broker.hpp:65</div></div>
+<div class="ttc" id="aclassBroker_html_a7af6aeeb7a69c6f62ad497ae01fc0bf7"><div class="ttname"><a href="classBroker.html#a7af6aeeb7a69c6f62ad497ae01fc0bf7">Broker::_mutex</a></div><div class="ttdeci">std::mutex _mutex</div><div class="ttdoc">Mutex to ensure thread safety.</div><div class="ttdef"><b>Definition</b> Broker.hpp:60</div></div>
 <div class="ttc" id="aclassBroker_html_ac930bbd18ef31e4120441dded4e193cd"><div class="ttname"><a href="classBroker.html#ac930bbd18ef31e4120441dded4e193cd">Broker::getTopic</a></div><div class="ttdeci">std::unique_ptr&lt; Topic &gt; &amp; getTopic(const std::string &amp;topicName)</div><div class="ttdoc">Get a topic by name.</div><div class="ttdef"><b>Definition</b> Broker.cpp:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d06cd19e7b0a7bd71ca3f88af4ac0d59.html">message</a></li><li class="navelem"><a class="el" href="dir_a6076a770b2fcf500b134dd4b5eda5a3.html">include</a></li><li class="navelem"><a class="el" href="Broker_8hpp.html">Broker.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_cf76b7275fdef9e3414f4bd80b878e49.html">message</a></li><li class="navelem"><a class="el" href="Broker_8hpp.html">Broker.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>

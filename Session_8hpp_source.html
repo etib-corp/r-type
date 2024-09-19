@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: server/NetworkModule/include/Session.hpp Source File</title>
+<title>My Project: lib/AsioNetworkModule/include/Session.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -112,10 +112,10 @@ $(function(){initNavTree('Session_8hpp_source.html',''); initResizable(true); })
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;boost/asio.hpp&gt;</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;interface/IClient.hpp&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;interface/INetworkModule/ISession.hpp&quot;</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
 <div class="foldopen" id="foldopen00023" data-start="{" data-end="};">
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classSession.html">   23</a></span><span class="keyword">class </span><a class="code hl_class" href="classSession.html">Session</a> : <span class="keyword">public</span> <a class="code hl_class" href="classIClient.html">IClient</a> {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classSession.html">   23</a></span><span class="keyword">class </span><a class="code hl_class" href="classSession.html">Session</a> : <span class="keyword">public</span> <a class="code hl_class" href="classISession.html">ISession</a> {</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <a class="code hl_function" href="classSession.html#a88d71461f1203f0ae3d1eece46c9466c">Session</a>(boost::asio::ip::tcp::socket socket);</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <a class="code hl_class" href="classSession.html">~Session</a>();</div>
@@ -145,7 +145,7 @@ $(function(){initNavTree('Session_8hpp_source.html',''); initResizable(true); })
 </div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">#endif </span><span class="comment">/* !SESSION_HPP_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="aclassIClient_html"><div class="ttname"><a href="classIClient.html">IClient</a></div><div class="ttdoc">Interface for client communication.</div><div class="ttdef"><b>Definition</b> IClient.hpp:20</div></div>
+<div class="ttc" id="aclassISession_html"><div class="ttname"><a href="classISession.html">ISession</a></div><div class="ttdoc">Interface for Session communication.</div><div class="ttdef"><b>Definition</b> ISession.hpp:20</div></div>
 <div class="ttc" id="aclassSession_html"><div class="ttname"><a href="classSession.html">Session</a></div><div class="ttdoc">Manages a session using Boost.Asio.</div><div class="ttdef"><b>Definition</b> Session.hpp:23</div></div>
 <div class="ttc" id="aclassSession_html_a88d71461f1203f0ae3d1eece46c9466c"><div class="ttname"><a href="classSession.html#a88d71461f1203f0ae3d1eece46c9466c">Session::Session</a></div><div class="ttdeci">Session(boost::asio::ip::tcp::socket socket)</div><div class="ttdoc">Constructs a new Session object.</div><div class="ttdef"><b>Definition</b> Session.cpp:10</div></div>
 <div class="ttc" id="aclassSession_html_a8af7ea5fb236ceb581e39d215b4c0811"><div class="ttname"><a href="classSession.html#a8af7ea5fb236ceb581e39d215b4c0811">Session::read</a></div><div class="ttdeci">void read() override</div><div class="ttdoc">Initiates an asynchronous read operation on the socket.</div><div class="ttdef"><b>Definition</b> Session.cpp:22</div></div>
@@ -154,7 +154,7 @@ $(function(){initNavTree('Session_8hpp_source.html',''); initResizable(true); })
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li><li class="navelem"><a class="el" href="dir_fa222adcd01071686405905b690bc487.html">NetworkModule</a></li><li class="navelem"><a class="el" href="dir_5c50e49c1e508dd6c94e00a65b567065.html">include</a></li><li class="navelem"><b>Session.hpp</b></li>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_10225bba2420e0ea1d7191b4a3a90d0d.html">AsioNetworkModule</a></li><li class="navelem"><a class="el" href="dir_34019e10031912c0c24ad466a1e2ebbd.html">include</a></li><li class="navelem"><b>Session.hpp</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>

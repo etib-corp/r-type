@@ -103,37 +103,36 @@ $(function(){initNavTree('classIClient.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">IClient Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>Interface for client communication.  
- <a href="#details">More...</a></p>
-
-<p><code>#include &lt;<a class="el" href="IClient_8hpp_source.html">IClient.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for IClient:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classIClient.png" usemap="#IClient_map" alt=""/>
   <map id="IClient_map" name="IClient_map">
-<area href="classSession.html" title="Manages a session using Boost.Asio." alt="Session" shape="rect" coords="0,56,56,80"/>
+<area href="classClient.html" alt="Client" shape="rect" coords="0,56,47,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a22cc5ef3360751b8d716a031c08169f6" id="r_a22cc5ef3360751b8d716a031c08169f6"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a22cc5ef3360751b8d716a031c08169f6">read</a> ()=0</td></tr>
-<tr class="separator:a22cc5ef3360751b8d716a031c08169f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a681238b2f6cfe934761bdef4e514a213" id="r_a681238b2f6cfe934761bdef4e514a213"><td class="memItemLeft" align="right" valign="top"><a id="a681238b2f6cfe934761bdef4e514a213" name="a681238b2f6cfe934761bdef4e514a213"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>connectToServer</b> (const std::string &amp;ip, const int &amp;port)=0</td></tr>
+<tr class="separator:a681238b2f6cfe934761bdef4e514a213"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8671c952c70dab4f52772bbf3e34de37" id="r_a8671c952c70dab4f52772bbf3e34de37"><td class="memItemLeft" align="right" valign="top"><a id="a8671c952c70dab4f52772bbf3e34de37" name="a8671c952c70dab4f52772bbf3e34de37"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>readTCP</b> ()=0</td></tr>
+<tr class="separator:a8671c952c70dab4f52772bbf3e34de37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e03107a0bd604ad179218cb18c2adc7" id="r_a5e03107a0bd604ad179218cb18c2adc7"><td class="memItemLeft" align="right" valign="top"><a id="a5e03107a0bd604ad179218cb18c2adc7" name="a5e03107a0bd604ad179218cb18c2adc7"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>sendTCP</b> (const std::string &amp;message)=0</td></tr>
 <tr class="separator:a5e03107a0bd604ad179218cb18c2adc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3b40420949d1fff306a7cb04c880092" id="r_ab3b40420949d1fff306a7cb04c880092"><td class="memItemLeft" align="right" valign="top"><a id="ab3b40420949d1fff306a7cb04c880092" name="ab3b40420949d1fff306a7cb04c880092"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>sendUDP</b> (const std::string &amp;message)=0</td></tr>
 <tr class="separator:ab3b40420949d1fff306a7cb04c880092"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad34a56efea3690460c65bd28f6627ac0" id="r_ad34a56efea3690460c65bd28f6627ac0"><td class="memItemLeft" align="right" valign="top"><a id="ad34a56efea3690460c65bd28f6627ac0" name="ad34a56efea3690460c65bd28f6627ac0"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getId</b> () const</td></tr>
-<tr class="separator:ad34a56efea3690460c65bd28f6627ac0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac41f6e30c1ce15ce09b3da7f813b5e49" id="r_ac41f6e30c1ce15ce09b3da7f813b5e49"><td class="memItemLeft" align="right" valign="top"><a id="ac41f6e30c1ce15ce09b3da7f813b5e49" name="ac41f6e30c1ce15ce09b3da7f813b5e49"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setId</b> (int id)</td></tr>
-<tr class="separator:ac41f6e30c1ce15ce09b3da7f813b5e49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff88c98c2549e78859dbf1d7e2a06945" id="r_aff88c98c2549e78859dbf1d7e2a06945"><td class="memItemLeft" align="right" valign="top"><a id="aff88c98c2549e78859dbf1d7e2a06945" name="aff88c98c2549e78859dbf1d7e2a06945"></a>
+virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>getId</b> () const</td></tr>
+<tr class="separator:aff88c98c2549e78859dbf1d7e2a06945"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a024ea301c77e74890eee6ef9becb7dca" id="r_a024ea301c77e74890eee6ef9becb7dca"><td class="memItemLeft" align="right" valign="top"><a id="a024ea301c77e74890eee6ef9becb7dca" name="a024ea301c77e74890eee6ef9becb7dca"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setId</b> (int id)</td></tr>
+<tr class="separator:a024ea301c77e74890eee6ef9becb7dca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -141,39 +140,8 @@ Protected Attributes</h2></td></tr>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>_id</b></td></tr>
 <tr class="separator:a1ad82d7b9e4246d3c84232df38e947d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Interface for client communication. </p>
-<p>This interface defines the basic operations for a client, including reading data and sending messages over TCP and UDP protocols. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a22cc5ef3360751b8d716a031c08169f6" name="a22cc5ef3360751b8d716a031c08169f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a22cc5ef3360751b8d716a031c08169f6">&#9670;&#160;</a></span>read()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual void IClient::read </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Implemented in <a class="el" href="classSession.html#a8af7ea5fb236ceb581e39d215b4c0811">Session</a>.</p>
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>server/include/interface/<a class="el" href="IClient_8hpp_source.html">IClient.hpp</a></li>
+<li>include/interface/INetworkModule/<a class="el" href="IClient_8hpp_source.html">IClient.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

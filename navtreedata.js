@@ -26,8 +26,8 @@ var NAVTREE =
 [
   [ "My Project", "index.html", [
     [ "pag_example", "pag_example.html", null ],
-    [ "r-type", "md_README.html", null ],
-    [ "README", "md_server_2NetworkModule_2README.html", null ],
+    [ "README", "md_lib_2AsioNetworkModule_2README.html", null ],
+    [ "<strong>R-Type</strong>", "md_README.html", null ],
     [ "Bug List", "bug.html", null ],
     [ "Topics", "topics.html", "topics" ],
     [ "Namespaces", "namespaces.html", [
@@ -68,9 +68,9 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"BinaryMessage_8hpp.html",
-"classLE_1_1Vector4.html#af1f7e795a8a0c8bac9c46d81482ce788",
-"structcmd_8h.html#a2c4414339f388561554c2deab11a1a07"
+"AsioNetworkModule_8hpp_source.html",
+"classLE_1_1Vector4.html#aa8367a442ad61c4bf056857c6d62c962",
+"namespacepyexample.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
