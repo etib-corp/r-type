@@ -8,7 +8,6 @@
 #ifndef ILISTENERTCP_HPP_
 #define ILISTENERTCP_HPP_
 
-#include "interface/IClient.hpp"
 #include <queue>
 #include <memory>
 

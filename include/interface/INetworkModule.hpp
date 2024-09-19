@@ -12,6 +12,7 @@
 #include <queue>
 #include <memory>
 #include "interface/IListenerUDP.hpp"
+#include "interface/ISession.hpp"
 #include <iostream>
 
 /**
@@ -28,19 +29,19 @@ class INetworkModule {
 
         virtual void run() = 0;
 
-        virtual void addClient(std::shared_ptr<IClient> client)
+        virtual void addClient(std::shared_ptr<ISession> client)
         {
-            _clients.push(client);
+            _sessions.push(client);
         }
 
-        virtual std::queue<std::shared_ptr<IClient>> &getClients()
+        virtual std::queue<std::shared_ptr<ISession>> &getClients()
         {
-            return _clients;
+            return _sessions;
         }
 
-        virtual std::shared_ptr<IClient> getClientById(int id)
+        virtual std::shared_ptr<ISession> getClientById(int id)
         {
-            std::queue<std::shared_ptr<IClient>> clients = _clients;
+            std::queue<std::shared_ptr<ISession>> clients = _sessions;
             while (!clients.empty()) {
                 if (clients.front()->getId() == id)
                     return clients.front();
@@ -57,7 +58,7 @@ class INetworkModule {
          * pointer to an IClient object, ensuring proper memory management
          * and reference counting.
          */
-        std::queue<std::shared_ptr<IClient>> _clients;
+        std::queue<std::shared_ptr<ISession>> _sessions;
     protected:
 
          /**
