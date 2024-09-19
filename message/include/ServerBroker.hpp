@@ -9,8 +9,10 @@
 
 #pragma once
 
-#include "Broker.hpp"
 #include <mutex>
+
+#include "Broker.hpp"
+#include "LoaderLib.hpp"
 
 /**
  * @class ServerBroker
@@ -35,6 +37,11 @@ private:
      * @brief Destroys the ServerBroker object.
      */
     ~ServerBroker(void) = default;
+
+    /**
+     * @brief LoaderLib object to load network and core modules.
+     */
+    LoaderLib _loader;
 
 public:
     /**

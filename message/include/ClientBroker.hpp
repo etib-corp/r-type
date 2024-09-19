@@ -9,8 +9,10 @@
 
 #pragma once
 
-#include "Broker.hpp"
 #include <mutex>
+
+#include "Broker.hpp"
+#include "LoaderLib.hpp"
 
 /**
  * @class ClientBroker
@@ -36,6 +38,11 @@ private:
      * @brief Destroys the ClientBroker object.
      */
     ~ClientBroker() = default;
+
+    /**
+     * @brief LoaderLib object to load network and core modules.
+     */
+    LoaderLib _loader;
 
 public:
     /**
@@ -63,14 +70,6 @@ public:
             _instance = new ClientBroker();
         }
         return _instance;
-    }
-
-    /**
-     * @brief Defines some business logic specific to ClientBroker.
-     */
-    void SomeBusinessLogic()
-    {
-        // Implement client-specific logic here
     }
 };
 

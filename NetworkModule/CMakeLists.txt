@@ -6,7 +6,7 @@ set(BOOST_ENABLE_CMAKE ON)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})
 
-file(GLOB_RECURSE MODULES_SOURCES *.cpp)
+file(GLOB_RECURSE MODULES_SOURCES src/*.cpp)
 
 include_directories(include)
 include_directories(../include)
