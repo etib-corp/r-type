@@ -13,8 +13,8 @@ namespace LE {
 }
 
 #include <memory>
+#include <iostream>
 #include "Error.hpp"
-#include "Window.hpp"
 
 /**
  * @file Engine.hpp
@@ -81,6 +81,10 @@ namespace LE {
              */
             void debug(const std::string& message);
 
+            void addScene(std::shared_ptr<Scene> scene, const std::string &sceneName);
+
+            void removeScene(const std::string& sceneName);
+
             /**
              * @brief Throws an error.
              *
@@ -102,7 +106,7 @@ namespace LE {
             static Engine* _instance; ///< The singleton instance of the Engine class.
 
             std::shared_ptr<LE::Window> _window; ///< Shared pointer to the Window instance.
-            std::shared_ptr<LE::SceneManager> _sceneManager; ///< Shared pointer to the SceneManager instance.
+            std::shared_ptr<SceneManager> _sceneManager; ///< Shared pointer to the SceneManager instance.
             bool _debugMode; ///< Flag indicating whether debug mode is enabled.
             bool _throwError; ///< Flag indicating whether to throw an error.
             friend class EventManager; ///< Friend class EventManager.

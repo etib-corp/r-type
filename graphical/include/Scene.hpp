@@ -5,12 +5,12 @@
 ** Scene
 */
 
-#ifndef SCENE_HPP_
-#define SCENE_HPP_
+#pragma once
 
 #include <memory>
 
 #include "Error.hpp"
+#include "GUI/Manager.hpp"
 #include "EventManager.hpp"
 
 /**
@@ -86,9 +86,7 @@ namespace LE {
              * which is used to manage entities and components within the scene.
              */
             std::shared_ptr<void *> _ecs;
-
+            std::shared_ptr<LE::GUI::Manager> _guiManager; ///< Shared pointer to the GUI Manager instance.
             std::shared_ptr<LE::EventManager> _eventManager;
     };
 }
-
-#endif /* !SCENE_HPP_ */

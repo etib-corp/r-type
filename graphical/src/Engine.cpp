@@ -15,6 +15,7 @@ LE::Engine::Engine()
 {
     _debugMode = false;
     _throwError = false;
+    _sceneManager = std::make_shared<SceneManager>();
 }
 
 LE::Engine::~Engine()
@@ -36,11 +37,13 @@ void LE::Engine::run(bool throwError)
     debug("Initializing engine...");
     _window = std::make_shared<LE::Window>("Game Window", 800, 600);
     debug("Window created successfully.");
-    _sceneManager = std::make_shared<LE::SceneManager>();
-    debug("Scene manager initialized.");
+    debug("Running engine...");
     while (_window->isOpen()) {
+        debug("Engine running...");
         _sceneManager->play();
+        debug("Scene playing...");
         _window->render(_sceneManager->getCurrentScene());
+        debug("Scene rendered...");
     }
 }
 
@@ -56,6 +59,18 @@ void LE::Engine::debug(const std::string& message)
     if (_debugMode) {
         std::cout << "DEBUG: " << message << std::endl;
     }
+}
+
+void LE::Engine::addScene(std::shared_ptr<Scene> scene, const std::string &sceneName)
+{
+    debug("Adding scene in engine: " + sceneName);
+    _sceneManager->addScene(scene, sceneName);
+    debug("Scene added in engine: " + sceneName);
+}
+
+void LE::Engine::removeScene(const std::string& sceneName)
+{
+    _sceneManager->removeScene(sceneName);
 }
 
 void LE::Engine::throwError(const LE::Error& error)

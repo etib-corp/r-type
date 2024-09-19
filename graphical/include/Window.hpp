@@ -74,7 +74,7 @@ namespace LE {
              *
              * @param scene A shared pointer to the scene to be rendered.
              */
-            void render(std::shared_ptr<LE::Scene> scene);
+            void render(std::shared_ptr<Scene> scene);
 
             /**
              * @brief Checks if the window is open.

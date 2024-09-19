@@ -5,8 +5,7 @@
 ** SceneManager
 */
 
-#ifndef SCENEMANAGER_HPP_
-#define SCENEMANAGER_HPP_
+#pragma once
 
 #include <unordered_map>
 #include <memory>
@@ -109,6 +108,12 @@ namespace LE {
              */
             std::shared_ptr<Scene> getPreviousScene() const;
 
+            void addScene(std::shared_ptr<Scene> scene, const std::string &name);
+
+            void removeScene(const std::string &sceneName);
+
+            void selectScene(const std::string &sceneName);
+
         private:
             std::unordered_map<std::string, std::shared_ptr<Scene>> _scenes;    ///< Collection of scenes managed by the SceneManager.
             std::string _currentSceneName;                                      ///< Name of the currently playing scene.
@@ -118,4 +123,3 @@ namespace LE {
     };
 }
 
-#endif /* !SCENEMANAGER_HPP_ */
