@@ -14,8 +14,8 @@
 #include <memory>
 #include <map>
 #include <functional>
-#include "interface/INetworkModule.hpp"
-#include "interface/IClient.hpp"
+#include "interface/INetworkModule/INetworkModule.hpp"
+#include "interface/INetworkModule/IClient.hpp"
 
 #ifdef __linux__
     #include <dlfcn.h>

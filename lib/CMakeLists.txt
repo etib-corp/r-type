@@ -1,0 +1,4 @@
+add_subdirectory(AsioNetworkModule)
+add_subdirectory(CoreModule)
+add_subdirectory(TestCoreModule)
+add_subdirectory(TestNetworkModule)
