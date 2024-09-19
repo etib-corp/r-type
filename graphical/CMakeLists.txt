@@ -26,7 +26,7 @@ find_package(OpenGL REQUIRED)
 
 set(CMAKE_CXX_STANDARD 20)
 
-include_directories(include)
+include_directories(include build/_deps/glfw-src/include)
 
 file(GLOB SOURCES src/*.cpp)
 
