@@ -13,9 +13,13 @@ int main(void)
         IClient *client = lb.createClient();
 
         client->connectToServer("127.0.0.1", 8080);
+        client->sendTCP("Hello from client TCP\n");
+        client->sendUDP("Hello from client UDP\n");
+        while (true)
+        {
+        }
 
-    }
-    catch(const std::exception& e) {
+    } catch(const std::exception& e) {
         std::cerr << e.what() << '\n';
     }
 

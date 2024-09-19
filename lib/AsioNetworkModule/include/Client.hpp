@@ -21,12 +21,14 @@ class Client : public IClient {
 
         void readTCP() override;
 
+        void readUDP() override;
+
         void sendTCP(const std::string &message) override;
 
         void sendUDP(const std::string &message) override;
 
     protected:
-        boost::asio::io_service _ioService;
+        boost::asio::io_context _ioContext;
 
         boost::asio::ip::tcp::endpoint _endpointTCPServer;
         boost::asio::ip::udp::endpoint _endpointUDPServer;
@@ -36,6 +38,10 @@ class Client : public IClient {
         boost::asio::ip::udp::socket _socketUDP;
 
         std::thread _thread;
+
+        char _dataTCP[1024];
+
+        char _dataUDP[1024];
 
     private:
 };

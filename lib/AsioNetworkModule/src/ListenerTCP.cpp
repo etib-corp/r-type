@@ -30,6 +30,7 @@ void ListenerTCP::WaitForConnection()
                 std::shared_ptr<Session> newSession = std::make_shared<Session>(std::move(socket));
                 newSession->setId(id++);
                 _module->addClient(newSession);
+                newSession->read();
                 newSession->sendTCP(std::to_string(newSession->getId()));
             }
             WaitForConnection();

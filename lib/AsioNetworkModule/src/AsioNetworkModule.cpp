@@ -40,7 +40,7 @@ extern "C" {
      *
      * @return INetworkModule* Pointer to the newly created network module.
      */
-    INetworkModule *createAsioNetworkModule(int port) {
+    INetworkModule *createNetworkModule(int port) {
         return new AsioNetworkModule(port);
     }
 }
