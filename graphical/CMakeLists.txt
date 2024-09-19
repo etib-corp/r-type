@@ -30,7 +30,7 @@ include_directories(include)
 
 file(GLOB SOURCES src/*.cpp)
 
-add_executable(r-type ${SOURCES})
+add_executable(r-type_client ${SOURCES})
 
 target_link_libraries(r-type glfw ${OPENGL_LIBRARIES})
 
