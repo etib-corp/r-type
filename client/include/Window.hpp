@@ -7,14 +7,17 @@
 
 #pragma once
 
+namespace LE {
+    class Scene;
+}
+
 #include "Clock.hpp"
 #include "Error.hpp"
-#include "Scene.hpp"
 
 #include <cmath>
 #include <memory>
 #include <string>
-#include <GLFW/glfw3.h>
+#include "GLFW/glfw3.h"
 
 using Color = union {
     unsigned int value;
@@ -71,7 +74,7 @@ namespace LE {
              *
              * @param scene A shared pointer to the scene to be rendered.
              */
-            void render(std::shared_ptr<LE::Scene> scene);
+            void render(std::shared_ptr<Scene> scene);
 
             /**
              * @brief Checks if the window is open.
@@ -105,6 +108,13 @@ namespace LE {
              * @param color The color to set as the clear color.
              */
             void setClearColor(Color color);
+
+            /**
+             * @brief Gets the GLFW window pointer.
+             *
+             * @return The GLFW window pointer.
+             */
+            GLFWwindow* getWindow();
         private:
 
             /**

@@ -7,10 +7,14 @@
 
 #pragma once
 
-#include <memory>
+namespace LE {
+    class Window;
+    class SceneManager;
+    class Scene;
+}
 
-#include "SceneManager.hpp"
-#include "Window.hpp"
+#include <memory>
+#include <iostream>
 #include "Error.hpp"
 
 /**
@@ -77,6 +81,29 @@ namespace LE {
              * @param message The debug message to output.
              */
             void debug(const std::string& message);
+
+            /**
+             * @brief Adds a scene to the SceneManager in the Engine.
+             *
+             * @param sceneName The name of the scene.
+             * @param scene The scene to add.
+             */
+            void addScene(const std::string &sceneName, const std::shared_ptr<Scene> &scene);
+
+            /**
+             * @brief Removes a scene from the SceneManager in the Engine.
+             *
+             * @param sceneName The name of the scene to remove.
+             */
+            void removeScene(const std::string& sceneName);
+
+            /**
+             * @brief Throws an error.
+             *
+             * @param error The error to throw.
+             * @note This function is use to throw an error from the Engine class only if the throwError flag is set to true.
+             */
+            void throwError(const LE::Error& error);
         private:
             /**
              * @brief Private constructor for the Engine class.
@@ -91,7 +118,9 @@ namespace LE {
             static Engine* _instance; ///< The singleton instance of the Engine class.
 
             std::shared_ptr<LE::Window> _window; ///< Shared pointer to the Window instance.
-            std::shared_ptr<LE::SceneManager> _sceneManager; ///< Shared pointer to the SceneManager instance.
+            std::shared_ptr<SceneManager> _sceneManager; ///< Shared pointer to the SceneManager instance.
             bool _debugMode; ///< Flag indicating whether debug mode is enabled.
+            bool _throwError; ///< Flag indicating whether to throw an error.
+            friend class EventManager; ///< Friend class EventManager.
     };
 }
