@@ -19,6 +19,8 @@ class IClient {
 
         virtual void readTCP() = 0;
 
+        virtual void readUDP() = 0;
+
         virtual void sendTCP(const std::string &message) = 0;
 
         virtual void sendUDP(const std::string &message) = 0;

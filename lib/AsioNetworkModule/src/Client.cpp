@@ -7,9 +7,11 @@
 
 #include "Client.hpp"
 
-Client::Client() : _socketTCP(_ioService), _socketUDP(_ioService)
+Client::Client() : _socketTCP(_ioContext), _socketUDP(_ioContext)
 {
     _socketUDP.open(boost::asio::ip::udp::v4());
+    std::memset(_dataTCP, 0, 1024);
+    std::memset(_dataUDP, 0, 1024);
 }
 
 Client::~Client()
@@ -23,11 +25,37 @@ void Client::connectToServer(const std::string &ip, const int &port)
     _endpointUDPServer = boost::asio::ip::udp::endpoint(
         boost::asio::ip::address::from_string(ip), port);
     _socketTCP.connect(_endpointTCPServer);
-    _thread = std::thread([this]() { _ioService.run(); });
+    readTCP();
+    _thread = std::thread([this]() { _ioContext.run(); });
 }
 
 void Client::readTCP()
 {
+    _socketTCP.async_read_some(
+        boost::asio::buffer(_dataTCP, 1024),
+        [this](const boost::system::error_code &error, std::size_t bytes_transferred) {
+            (void)bytes_transferred;
+            if (!error) {
+                std::cout << "Received: " << _dataTCP << std::endl;
+            } else {
+                std::cerr << "Error: " << error.message() << std::endl;
+            }
+            std::memset(this->_dataTCP, 0, 1024);
+            this->readTCP();
+        });
+}
+
+void Client::readUDP()
+{
+    _socketUDP.async_receive(
+        boost::asio::buffer(_dataUDP, 1024),
+        [this](const boost::system::error_code &error, std::size_t bytes_transferred) {
+            (void)bytes_transferred;
+            if (!error) {
+                std::cout << "Received: " << _dataUDP << std::endl;
+                readUDP();
+            }
+        });
 }
 
 void Client::sendTCP(const std::string &message)
