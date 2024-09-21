@@ -10,3 +10,44 @@ BODY
 
 OX02 | 1 | INPUT | 8 | [CLEMENT]
 
+ALL ACTIONS (SERVER TO CLIENT)
+0x01 : NEW CONNECTION
+0x05 : NEW ENTITY
+
+ALL ACTIONS (CLIENT TO SERVER)
+0x02 : INPUT
+0x01 : NEW CONNECTION
+0x04 : USERNAME
+0x06 : DELETE ENTITY
+
+
+```cpp
+struct Header {
+    uint16_t MagicNumber;
+    uint8_t ECS_CLIENT_ID;
+    uint8_t Action;
+    uint32_t BodyLength;
+};
+
+void *body = malloc(header.BodyLength);
+```
+
+For the first connection, the server will send the id of the client on TCP
+
+```cpp
+header.MagicNumber = 0x7777;
+header.ECS_CLIENT_ID = NEW_ID;
+header.Action = 0x01;
+header.BodyLength = 0;
+body = NULL;
+```
+
+And after the client will send the ID of himself on UDP
+
+```cpp
+header.MagicNumber = 0x7777;
+header.ECS_CLIENT_ID = CLIENT_ID;
+header.Action = 0x01;
+header.BodyLength = 0;
+body = NULL;
+```
