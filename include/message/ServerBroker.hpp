@@ -1,79 +1,36 @@
-
-/**
- * @file ServerBroker.hpp
- * @brief Header file for the ServerBroker class.
- *
- * This file contains the declaration of the ServerBroker class, which inherits from the Broker class,
- * and is responsible for handling server-specific broker operations.
- */
-
 #pragma once
 
-#include <mutex>
-#include <memory>
+#include <cstdint>
 
 #include "message/Broker.hpp"
-#include "LoaderLib.hpp"
 
-/**
- * @class ServerBroker
- * @brief A thread-safe singleton class representing a server-side broker.
- *
- * The ServerBroker class is responsible for handling server-specific broker operations.
- */
+#include "ResolvingLib.hpp"
+#include "LoaderLib.hpp"
+#include "interface/INetworkModule/INetworkModule.hpp"
+
 class ServerBroker : public Broker
 {
-private:
-    static ServerBroker *_instance;
-    static std::mutex _mutex;
-
-    /**
-     * @brief Constructs a new ServerBroker object.
-     *
-     * The constructor is private to prevent direct construction.
-     */
-    ServerBroker(void);
-
-    /**
-     * @brief Destroys the ServerBroker object.
-     */
-    ~ServerBroker(void);
-
-    /**
-     * @brief Pointer to the LoaderLib object.
-     */
-    std::unique_ptr<LoaderLib> _loader_lib;
-
-    /**
-     * @brief Pointer to the INetworkModule object.
-     */
-    std::unique_ptr<INetworkModule> _network_module;
-
 public:
-    /**
-     * @brief Singletons should not be cloneable.
-     */
-    ServerBroker(ServerBroker &other) = delete;
-
-    /**
-     * @brief Singletons should not be assignable.
-     */
-    void operator=(const ServerBroker &) = delete;
-
-    /**
-     * @brief This method controls access to the singleton instance.
-     * On the first run, it creates the singleton object and stores it in the static pointer.
-     * Subsequent calls return the same instance.
-     *
-     * @return A pointer to the singleton instance of ServerBroker.
-     */
-    static ServerBroker *GetInstance()
+    ServerBroker(std::uint32_t ecs_id, std::uint16_t listen_port) : _listen_port(listen_port)
     {
-        std::lock_guard<std::mutex> lock(_mutex);
-        if (_instance == nullptr)
-        {
-            _instance = new ServerBroker();
-        }
-        return _instance;
+        setECSId(ecs_id);
+        
+        std::string network_module_path = getPathOfNetworkDynLib() + getExtensionKernel();
+        std::string core_module_path = "";
+        
+        _loader_lib = std::make_unique<LoaderLib>(network_module_path, std::string());
+
+        _loader_lib->LoadModule();
     }
+
+    ~ServerBroker(void)
+    {
+        delete _network_module;
+    }
+
+    void addMessage(std::uint32_t ecs_id, const std::string &topic_name, std::unique_ptr<Message> message) override;
+
+private:
+    std::uint16_t _listen_port;
+    std::unique_ptr<LoaderLib> _loader_lib;
 };
