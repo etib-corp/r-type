@@ -1,79 +1,37 @@
-/**
- * @file ClientBroker.hpp
- * @brief Defines the ClientBroker class which inherits from Broker.
- *
- * This file contains the declaration of the ClientBroker class which is responsible
- * for handling client-specific broker functionalities. The class inherits from the
- * base Broker class.
- */
-
 #pragma once
 
-#include <mutex>
+#include <cstdint>
+#include <string>
 
 #include "message/Broker.hpp"
+
+#include "ResolvingLib.hpp"
 #include "LoaderLib.hpp"
 
-/**
- * @class ClientBroker
- * @brief A thread-safe singleton class representing a client-side broker.
- *
- * The ClientBroker class is responsible for handling client-specific
- * broker functionalities. It inherits from the base Broker class.
- */
+
 class ClientBroker : public Broker
 {
-private:
-    static ClientBroker *_instance;
-    static std::mutex _mutex;
-
-    /**
-     * @brief Constructs a new ClientBroker object.
-     *
-     * The constructor is private to prevent direct construction.
-     */
-    ClientBroker(void);
-
-    /**
-     * @brief Destroys the ClientBroker object.
-     */
-    ~ClientBroker(void);
-
-    /**
-     * @brief Pointer to the LoaderLib object.
-     */
-    std::unique_ptr<LoaderLib> _loader_lib;
-
-    /**
-     * @brief Pointer to the INetworkModule object.
-     */
-    std::unique_ptr<INetworkModule> _network_module;
-
 public:
-    /**
-     * @brief Singletons should not be cloneable.
-     */
-    ClientBroker(ClientBroker &other) = delete;
-
-    /**
-     * @brief Singletons should not be assignable.
-     */
-    void operator=(const ClientBroker &) = delete;
-
-    /**
-     * @brief This method controls access to the singleton instance.
-     * On the first run, it creates the singleton object and stores it in the static pointer.
-     * Subsequent calls return the same instance.
-     *
-     * @return A pointer to the singleton instance of ClientBroker.
-     */
-    static ClientBroker *GetInstance()
+    ClientBroker(std::uint32_t ecs_id, std::string connect_address, std::uint16_t connect_port) : _connect_address(connect_address), _connect_port(connect_port)
     {
-        std::lock_guard<std::mutex> lock(_mutex);
-        if (_instance == nullptr)
-        {
-            _instance = new ClientBroker();
-        }
-        return _instance;
+        setECSId(ecs_id);
+
+        std::string network_module_path = getPathOfNetworkDynLib() + getExtensionKernel();
+        std::string core_module_path = "";
+        
+        _loader_lib = std::make_unique<LoaderLib>(network_module_path, std::string());
+
+        _loader_lib->LoadModule();
     }
+
+    ~ClientBroker(void)
+    {
+    }
+
+    void addMessage(std::uint32_t ecs_id, const std::string &topic_name, std::unique_ptr<Message> message) override;
+
+private:
+    std::string _connect_address;
+    std::uint16_t _connect_port;
+    std::unique_ptr<LoaderLib> _loader_lib;
 };

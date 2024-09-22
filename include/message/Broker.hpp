@@ -1,66 +1,46 @@
-/**
- * @file Broker.hpp
- * @brief Singleton class that manages topics.
- *
- * This file contains the declaration of the Broker class, which is responsible
- * for managing topics in a thread-safe manner. The class provides methods to add,
- * retrieve, and remove topics. The Broker class cannot be copied or assigned.
- *
- */
-
 #pragma once
 
+#include <cstdint>
 #include <map>
-#include <mutex>
+#include <string>
 #include <memory>
-#include <stdexcept>
 
 #include "message/Topic.hpp"
 
-#define LISTEN_PORT 4242
-
-/**
- * @class Broker
- *
- * @brief Singleton class that manages topics.
- *
- * The Broker class is responsible for managing topics in a thread-safe manner.
- * It provides methods to add, retrieve, and remove topics.
- * This class cannot be copied or assigned.
- */
 class Broker
 {
 public:
-    /**
-     * @brief Add a new topic.
-     *
-     * @param name The name of the topic to add.
-     */
-    void addTopic(const std::string &name);
+    ~Broker(void) = default;
 
-    /**
-     * @brief Get a topic by name.
-     *
-     * @param topicName The name of the topic to retrieve.
-     * @return Topic& Reference to the topic.
-     */
-    std::unique_ptr<Topic> &getTopic(const std::string &topicName);
+    void setECSId(std::uint32_t ecs_id) { _ecs_id = ecs_id; }
 
-    /**
-     * @brief Remove a topic by name.
-     *
-     * @param topicName The name of the topic to remove.
-     */
-    void removeTopic(const std::string &topicName);
+    std::uint32_t getECSId(void) const { return _ecs_id; }
 
-protected:
-    /**
-     * @brief Mutex to ensure thread safety.
-     */
-    std::mutex _mutex;
+    void addTopic(std::uint32_t ecs_id, const std::string &name)
+    {
+        _topics[std::make_pair(ecs_id, name)] = std::make_unique<Topic>(ecs_id, name);
+    }
 
-    /**
-     * @brief Map of topics.
-     */
-    std::map<std::string, std::unique_ptr<Topic>> _topics;
+    std::unique_ptr<Topic> &getTopic(std::uint32_t ecs_id, const std::string &name)
+    {
+        if (_topics.find(std::make_pair(ecs_id, name)) == _topics.end())
+            throw std::runtime_error("Topic not found");
+        return _topics[std::make_pair(ecs_id, name)];
+    }
+
+    void removeTopic(std::uint32_t ecs_id, const std::string &name)
+    {
+        _topics.erase(std::make_pair(ecs_id, name));
+    }
+
+    virtual void addMessage(std::uint32_t ecs_id, const std::string &topic_name, std::unique_ptr<Message> message) = 0;
+
+    std::unique_ptr<Message> getMessage(std::uint32_t ecs_id, const std::string &topic_name)
+    {
+        return getTopic(ecs_id, topic_name)->getMessage();
+    }
+
+private:
+    std::uint32_t _ecs_id;
+    std::map<std::pair<std::uint32_t, std::string>, std::unique_ptr<Topic>> _topics;
 };

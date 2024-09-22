@@ -1,26 +1,27 @@
-
-
-/**
- * @file Message.hpp
- * @brief Defines the Message class.
- *
- * This file contains the declaration of the Message class, which is a base class
- * for messages. The class provides a common interface for all message types.
- */
-
 #pragma once
 
-/**
- * @class Message
- * @brief A class representing a message.
- *
- * The Message class provides a base class for messages.
- */
+#include <cstdint>
+#include <string>
+
 class Message
 {
 public:
-    /**
-     * @brief The default destructor.
-     */
     ~Message(void) = default;
+
+    void setId(std::uint32_t id) { _id = id; }
+
+    std::uint32_t getId(void) const { return _id; }
+
+    void setECSId(std::uint32_t ecs_id) { _ecs_id = ecs_id; }
+
+    std::uint32_t getECSId(void) const { return _ecs_id; }
+
+    void setTopicName(const std::string topic_name) { _topic_name = topic_name; }
+
+    const std::string &getTopicName(void) const { return _topic_name; }
+
+private:
+    std::uint32_t _id;
+    std::uint32_t _ecs_id;
+    std::string _topic_name;
 };
