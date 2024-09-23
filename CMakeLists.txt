@@ -23,8 +23,17 @@ add_subdirectory(client)
 # add_executable(r-type_client ${CLIENT_SOURCES})
 # target_link_libraries(r-type_client r-type)
 
+find_package(ZLIB REQUIRED)
+
+if (ZLIB_FOUND)
+    include_directories(${ZLIB_INCLUDE_DIRS})
+    message(STATUS "Zlib found: ${ZLIB_INCLUDE_DIRS}")
+else()
+    message(FATAL_ERROR "Please install Zlib !")
+endif()
+
 file(GLOB_RECURSE SERVER_SOURCES server/src/*.cpp)
 include_directories(server/include)
 add_executable(r-type_server ${SERVER_SOURCES})
-target_link_libraries(r-type_server r-type)
+target_link_libraries(r-type_server r-type z)
 
