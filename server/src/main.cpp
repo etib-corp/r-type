@@ -7,23 +7,11 @@
 
 #include "LoaderLib.hpp"
 #include "ResolvingLib.hpp"
+#include "message/ServerBroker.hpp"
 
 int main(void)
 {
-    std::string pathLib = getPathOfNetworkDynLib() + getExtensionKernel();
-
-    try {
-        LoaderLib lb(pathLib, "");
-
-        lb.LoadModule();
-
-        INetworkModule *test = lb.createNetworkModule();
-        IServer *server = test->createServer(8080);
-        server->run();
-    }
-    catch(const std::exception& e) {
-        std::cerr << e.what() << '\n';
-    }
+    std::unique_ptr<ServerBroker> server_broker = std::make_unique<ServerBroker>(1, 4242);
 
     return 0;
 }

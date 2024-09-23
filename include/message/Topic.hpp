@@ -10,9 +10,10 @@
 class Topic
 {
 public:
-    Topic(std::uint32_t ecs_id, const std::string name);
+    Topic(std::uint32_t ecs_id, const std::string name)
+        : _ecs_id(ecs_id), _name(name) {}
 
-    ~Topic(void);
+    ~Topic(void) {}
 
     void addMessage(std::unique_ptr<Message> message)
     {

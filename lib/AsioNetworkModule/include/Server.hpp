@@ -17,7 +17,7 @@ class Server : public IServer {
         Server(int port);
         ~Server();
 
-        void run(void) override;
+        void routine(void) override;
 
     protected:
     private:

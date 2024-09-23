@@ -16,7 +16,7 @@ add_compile_options(-ggdb)
 
 add_library(r-type STATIC ${SOURCES})
 
-add_subdirectory(client)
+# add_subdirectory(client)
 
 # file(GLOB_RECURSE CLIENT_SOURCES client/src/**/*.cpp)
 # include_directories(client/include client/include/GUI)
@@ -27,4 +27,5 @@ file(GLOB_RECURSE SERVER_SOURCES server/src/*.cpp)
 include_directories(server/include)
 add_executable(r-type_server ${SERVER_SOURCES})
 target_link_libraries(r-type_server r-type)
+
 

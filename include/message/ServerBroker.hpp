@@ -7,6 +7,7 @@
 #include "ResolvingLib.hpp"
 #include "LoaderLib.hpp"
 #include "interface/INetworkModule/INetworkModule.hpp"
+#include "interface/INetworkModule/IServer.hpp"
 
 class ServerBroker : public Broker
 {
@@ -18,9 +19,15 @@ public:
         std::string network_module_path = getPathOfNetworkDynLib() + getExtensionKernel();
         std::string core_module_path = "";
         
-        _loader_lib = std::make_unique<LoaderLib>(network_module_path, std::string());
+        _loader_lib = std::make_unique<LoaderLib>(network_module_path, core_module_path);
 
         _loader_lib->LoadModule();
+
+        _network_module = _loader_lib->createNetworkModule();
+
+        _server = _network_module->createServer(_listen_port);
+
+        _network_thread = std::thread(&ServerBroker::_run, this);
     }
 
     ~ServerBroker(void)
@@ -31,5 +38,11 @@ public:
 
 private:
     std::uint16_t _listen_port;
-    std::unique_ptr<LoaderLib> _loader_lib;
+    IServer *_server;
+
+    void _networkRoutine(void) override;
+
+    void _logicalRoutine(void) override;
+
+    void _run(void) override;
 };

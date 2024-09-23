@@ -4,8 +4,11 @@
 #include <map>
 #include <string>
 #include <memory>
+#include <thread>
 
 #include "message/Topic.hpp"
+
+#include "LoaderLib.hpp"
 
 class Broker
 {
@@ -40,7 +43,17 @@ public:
         return getTopic(ecs_id, topic_name)->getMessage();
     }
 
-private:
+protected:
     std::uint32_t _ecs_id;
+    std::unique_ptr<LoaderLib> _loader_lib;
+    INetworkModule *_network_module;
     std::map<std::pair<std::uint32_t, std::string>, std::unique_ptr<Topic>> _topics;
+    std::thread _network_thread;
+    bool _is_thread_running = true;
+
+    virtual void _networkRoutine(void) = 0;
+
+    virtual void _logicalRoutine(void) = 0;
+
+    virtual void _run(void) = 0;
 };
