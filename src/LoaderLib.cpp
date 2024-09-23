@@ -14,7 +14,6 @@ LoaderLib::LoaderLib(const std::string &NetworkModule, const std::string &CoreMo
     _handleNetworkModule = nullptr;
     _handleCoreModule = nullptr;
     _createNetworkModule = nullptr;
-    _createClient = nullptr;
 }
 
 LoaderLib::~LoaderLib()
@@ -30,21 +29,12 @@ void LoaderLib::LoadModule(void)
     OPEN_SYM(_pathNetworkModule, _handleNetworkModule);
     if (_handleNetworkModule == nullptr)
         throw LoaderLibError("Can't load the module NETWORK");
-    LOAD_SYM(_handleNetworkModule, _createNetworkModule, "createNetworkModule", INetworkModule*(*)(int));
+    LOAD_SYM(_handleNetworkModule, _createNetworkModule, "createNetworkModule", INetworkModule*(*)());
     if (_createNetworkModule == nullptr)
         throw LoaderLibError("Can't load the symbol createNetworkModule");
-    LOAD_SYM(_handleNetworkModule, _createClient, "createClient", IClient*(*)());
-    if (_createClient == nullptr)
-        throw LoaderLibError("Can't load the symbol createClient");
-
 }
 
-INetworkModule *LoaderLib::createNetworkModule(int port)
+INetworkModule *LoaderLib::createNetworkModule()
 {
-    return _createNetworkModule(port);
-}
-
-IClient *LoaderLib::createClient()
-{
-    return _createClient();
+    return _createNetworkModule();
 }

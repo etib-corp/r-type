@@ -6,7 +6,7 @@
 */
 
 #include "ListenerTCP.hpp"
-#include "interface/INetworkModule/INetworkModule.hpp"
+#include "interface/INetworkModule/IServer.hpp"
 
 static int id = 1;
 
@@ -29,17 +29,20 @@ void ListenerTCP::WaitForConnection()
                 std::cout << "Connection established" << std::endl;
                 std::shared_ptr<Session> newSession = std::make_shared<Session>(std::move(socket));
                 newSession->setId(id++);
-                _module->addClient(newSession);
-                newSession->read();
+                _server->addClient(newSession);
+                newSession->read([this](ISession *session) {
+                    std::cout << "Client disconnected: " << session->getId() << std::endl;
+                    this->_server->removeClientById(session->getId());
+                });
                 newSession->sendTCP(std::to_string(newSession->getId()));
             }
             WaitForConnection();
         });
 }
 
-void ListenerTCP::run(INetworkModule* module)
+void ListenerTCP::run(IServer* server)
 {
-    _module = module;
+    _server = server;
     this->WaitForConnection();
     _threadContext = std::thread([this]() {
         _io_context.run();

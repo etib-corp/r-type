@@ -49,7 +49,7 @@ class ListenerUDP : public IListenerUDP {
          * to run the IO context. The thread is joined to ensure that the function waits
          * for the thread to complete before returning.
          */
-        void run(INetworkModule *_networkModule) override;
+        void run(IServer *server) override;
 
         /**
          * @brief Initiates an asynchronous receive operation on the UDP socket.

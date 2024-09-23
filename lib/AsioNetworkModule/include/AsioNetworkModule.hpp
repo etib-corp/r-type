@@ -14,6 +14,8 @@
 #include "ListenerTCP.hpp"
 #include <memory>
 #include "ListenerUDP.hpp"
+#include "Client.hpp"
+#include "Server.hpp"
 
 /**
  * @class AsioNetworkModule
@@ -24,15 +26,12 @@
  */
 class AsioNetworkModule : public INetworkModule {
     public:
-        AsioNetworkModule(int port);
+        AsioNetworkModule();
         ~AsioNetworkModule();
 
-        /**
-         * @brief Runs the network module.
-         *
-         * This function waits for a TCP connection and then runs both the TCP and UDP connection handlers.
-         */
-        void run() override;
+        IServer *createServer(int port) override;
+
+        IClient *createClient(const std::string& ip, int port) override;
 
     protected:
 
