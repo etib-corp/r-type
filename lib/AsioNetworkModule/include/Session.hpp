@@ -47,7 +47,7 @@ class Session : public ISession {
          * @note This function is designed to be called repeatedly to handle continuous
          *       data reception.
          */
-        void read() override;
+        void read(std::function<void(ISession *)> onDisconnected) override;
 
         void sendTCP(const std::string &message) override;
 

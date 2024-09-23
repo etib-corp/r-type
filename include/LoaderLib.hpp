@@ -117,9 +117,7 @@ class LoaderLib {
          * @param port The port number to be used by the network module.
          * @return INetworkModule* Pointer to the created network module instance.
          */
-        INetworkModule *createNetworkModule(int port);
-
-        IClient *createClient();
+        INetworkModule *createNetworkModule();
 
     protected:
 
@@ -136,12 +134,11 @@ class LoaderLib {
         /**
          * @brief Function to create a network module.
          */
-        std::function<INetworkModule*(int)> _createNetworkModule;
+        std::function<INetworkModule*()> _createNetworkModule;
 
         /**
          * @brief Function to create a client.
          */
-        std::function<IClient*()> _createClient;
 
         /**
          * @brief Contains the handle to the network module.

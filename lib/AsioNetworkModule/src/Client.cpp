@@ -7,23 +7,23 @@
 
 #include "Client.hpp"
 
-Client::Client() : _socketTCP(_ioContext), _socketUDP(_ioContext)
+Client::Client(const std::string &ip, const int &port) : _socketTCP(_ioContext), _socketUDP(_ioContext)
 {
     _socketUDP.open(boost::asio::ip::udp::v4());
     std::memset(_dataTCP, 0, 1024);
     std::memset(_dataUDP, 0, 1024);
+    _endpointTCPServer = boost::asio::ip::tcp::endpoint(
+        boost::asio::ip::address::from_string(ip), port);
+    _endpointUDPServer = boost::asio::ip::udp::endpoint(
+        boost::asio::ip::address::from_string(ip), port);
 }
 
 Client::~Client()
 {
 }
 
-void Client::connectToServer(const std::string &ip, const int &port)
+void Client::connectToServer()
 {
-    _endpointTCPServer = boost::asio::ip::tcp::endpoint(
-        boost::asio::ip::address::from_string(ip), port);
-    _endpointUDPServer = boost::asio::ip::udp::endpoint(
-        boost::asio::ip::address::from_string(ip), port);
     _socketTCP.connect(_endpointTCPServer);
     readTCP();
     _thread = std::thread([this]() { _ioContext.run(); });
@@ -66,11 +66,4 @@ void Client::sendTCP(const std::string &message)
 void Client::sendUDP(const std::string &message)
 {
     _socketUDP.send_to(boost::asio::buffer(message), _endpointUDPServer);
-}
-
-extern "C" {
-    IClient *createClient()
-    {
-        return new Client();
-    }
 }
