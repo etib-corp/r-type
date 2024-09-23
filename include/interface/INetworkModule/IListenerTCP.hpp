@@ -11,7 +11,7 @@
 #include <queue>
 #include <memory>
 
-class INetworkModule;
+class IServer;
 
 class IListenerTCP {
     public:
@@ -19,10 +19,10 @@ class IListenerTCP {
 
         virtual void WaitForConnection() = 0;
 
-        virtual void run(INetworkModule* module) = 0;
+        virtual void run(IServer* module) = 0;
 
     protected:
-        INetworkModule *_module;
+        IServer *_server;
     private:
 };
 

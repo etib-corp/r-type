@@ -50,12 +50,13 @@ class ListenerTCP : public IListenerTCP {
         void WaitForConnection() override;
 
         /**
-         * @brief Starts the TCP Listener by running the I/O context in a separate thread.
+         * @brief Runs the TCP Listener.
          *
-         * This function initializes a new thread that runs the I/O context associated with the TCP Listener.
-         * It ensures that the I/O operations are handled asynchronously.
+         * This function starts the TCP Listener and runs the Listener handling loop.
+         * It sets up the Listener to wait for incoming Listeners and starts the
+         * ASIO context to handle the Listener operations.
          */
-        void run(INetworkModule *module) override;
+        void run(IServer *module) override;
 
     protected:
         /**

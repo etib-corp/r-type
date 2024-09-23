@@ -15,7 +15,7 @@ class IClient {
     public:
         virtual ~IClient() = default;
 
-        virtual void connectToServer(const std::string &ip, const int &port) = 0;
+        virtual void connectToServer(void) = 0;
 
         virtual void readTCP() = 0;
 

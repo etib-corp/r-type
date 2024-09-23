@@ -7,20 +7,23 @@
 
 #include "AsioNetworkModule.hpp"
 
-AsioNetworkModule::AsioNetworkModule(int port)
+AsioNetworkModule::AsioNetworkModule()
 {
-    _listenerTCP = std::make_shared<ListenerTCP>(port);
-    _listenerUDP = std::make_shared<ListenerUDP>(port);
+
 }
 
 AsioNetworkModule::~AsioNetworkModule()
 {
 }
 
-void AsioNetworkModule::run()
+IServer *AsioNetworkModule::createServer(int port)
 {
-    _listenerTCP->run(this);
-    _listenerUDP->run(this);
+    return new Server(port);
+}
+
+IClient *AsioNetworkModule::createClient(const std::string &ip, int port)
+{
+    return new Client(ip, port);
 }
 
 /**
@@ -40,7 +43,7 @@ extern "C" {
      *
      * @return INetworkModule* Pointer to the newly created network module.
      */
-    INetworkModule *createNetworkModule(int port) {
-        return new AsioNetworkModule(port);
+    INetworkModule *createNetworkModule() {
+        return new AsioNetworkModule();
     }
 }

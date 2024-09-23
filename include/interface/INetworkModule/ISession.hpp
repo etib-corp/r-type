@@ -9,6 +9,7 @@
 #define ISession_HPP_
 
 #include <string>
+#include <functional>
 
 /**
  * @class ISession
@@ -21,7 +22,7 @@ class ISession {
     public:
         virtual ~ISession() = default;
 
-        virtual void read() = 0;
+        virtual void read(std::function<void(ISession *)> onDisconnected) = 0;
 
         virtual void sendTCP(const std::string &message) = 0;
 
@@ -31,8 +32,13 @@ class ISession {
 
         void setId(int id) { _id = id; }
 
+        bool isConnected() const { return _isConnected; }
+
+        void setConnected(bool connected) { _isConnected = connected; }
+
     protected:
         int _id;
+        bool _isConnected;
     private:
 };
 

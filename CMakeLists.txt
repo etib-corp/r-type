@@ -14,6 +14,8 @@ file(GLOB_RECURSE SOURCES src/*.cpp)
 
 include_directories(include)
 
+add_compile_options(-ggdb)
+
 add_library(r-type STATIC ${SOURCES})
 
 file(GLOB_RECURSE CLIENT_SOURCES client/src/**/*.cpp)
