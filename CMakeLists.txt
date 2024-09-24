@@ -34,5 +34,6 @@ else()
 endif()
 
 file(GLOB_RECURSE SERVER_SOURCES server/src/*.cpp)
-include_directories(server/include) add_executable(r-type_server ${SERVER_SOURCES})
+include_directories(server/include)
+add_executable(r-type_server ${SERVER_SOURCES})
 target_link_libraries(r-type_server r-type z)
