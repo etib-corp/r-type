@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include "GLFW/glfw3.h"
+#include "Window.hpp"
 
 #define LE_EVENT_NONE               0x0000
 
