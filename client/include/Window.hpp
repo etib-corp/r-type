@@ -17,7 +17,9 @@ namespace LE {
 #include <cmath>
 #include <memory>
 #include <string>
+#define GL_GLEXT_PROTOTYPES
 #include "GLFW/glfw3.h"
+#include <GL/gl.h>
 
 using Color = union {
     unsigned int value;
