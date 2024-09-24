@@ -8,10 +8,6 @@ class Message
 public:
     ~Message(void) = default;
 
-    void setId(std::uint32_t id) { _id = id; }
-
-    std::uint32_t getId(void) const { return _id; }
-
     void setECSId(std::uint32_t ecs_id) { _ecs_id = ecs_id; }
 
     std::uint32_t getECSId(void) const { return _ecs_id; }
@@ -21,7 +17,6 @@ public:
     const std::string &getTopicName(void) const { return _topic_name; }
 
 private:
-    std::uint32_t _id;
     std::uint32_t _ecs_id;
     std::string _topic_name;
 };
