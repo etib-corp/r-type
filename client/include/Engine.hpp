@@ -108,6 +108,8 @@ namespace LE {
              * @note This function is use to throw an error from the Engine class only if the throwError flag is set to true.
              */
             void throwError(const LE::Error& error);
+
+            void setConfig(std::function<void()> func);
         private:
             /**
              * @brief Private constructor for the Engine class.
@@ -126,5 +128,6 @@ namespace LE {
             bool _debugMode; ///< Flag indicating whether debug mode is enabled.
             bool _throwError; ///< Flag indicating whether to throw an error.
             friend class EventManager; ///< Friend class EventManager.
+            std::function<void ()> _configFunc;
     };
 }
