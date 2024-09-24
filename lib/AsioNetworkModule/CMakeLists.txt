@@ -1,4 +1,4 @@
-file(GLOB_RECURSE ASIO_NETWORK_MODULE_SOURCES src/*.cpp)
+file(GLOB_RECURSE ASIO_NETWORK_MODULE_SOURCES src/*.cpp ../../src/*.cpp)
 
 include_directories(../../include/)
 include_directories(include)

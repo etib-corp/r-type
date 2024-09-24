@@ -12,6 +12,7 @@
 #include <memory>
 #include <iostream>
 #include "interface/INetworkModule/ISession.hpp"
+#include "PackUnpack.hpp"
 
 /**
  * @class Session
@@ -50,6 +51,8 @@ class Session : public ISession {
         void read(std::function<void(ISession *)> onDisconnected) override;
 
         void sendTCP(const std::string &message) override;
+
+        void sendTCP(const Request &request);
 
         void sendUDP(const std::string &message) override;
 

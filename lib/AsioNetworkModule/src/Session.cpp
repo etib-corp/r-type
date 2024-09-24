@@ -46,7 +46,19 @@ void Session::sendTCP(const std::string &message)
         _socketTCP, boost::asio::buffer(message),
         [this, message](boost::system::error_code ec, std::size_t length) {
             if (!ec) {
-                std::cout << "Sent: " << message;
+                std::cout << "Sent: " << message << std::endl;
+                std::cout << "Size: " << length << std::endl;
+            }
+        });
+}
+
+void Session::sendTCP(const Request &request)
+{
+    boost::asio::async_write(
+        _socketTCP, boost::asio::buffer(&request, sizeof(Request)),
+        [this, request](boost::system::error_code ec, std::size_t length) {
+            if (!ec) {
+                std::cout << "Sent: " << request << std::endl;
                 std::cout << "Size: " << length << std::endl;
             }
         });

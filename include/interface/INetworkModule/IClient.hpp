@@ -9,6 +9,7 @@
 #define ICLIENT_HPP_
 
 #include <iostream>
+#include "PackUnpack.hpp"
 
 
 class IClient {
@@ -37,6 +38,9 @@ class IClient {
         int _id;
         char _dataTCP[1024] = {0};
         char _dataUDP[1024] = {0};
+
+        Request _requestTCP = {};
+        Request _requestUDP = {};
     private:
 };
 

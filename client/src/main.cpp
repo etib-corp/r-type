@@ -51,8 +51,6 @@ class GameScene : public LE::Scene {
 #include <sstream>
 #include "PackUnpack.hpp"
 
-
-
 int main(void)
 {
     std::string pathLib = getPathOfNetworkDynLib() + getExtensionKernel();
@@ -72,13 +70,6 @@ int main(void)
         client->sendTCP("Hello from client TCP\n");
         client->sendUDP("Hello from client UDP\n");
         while (true) {
-            if (::strlen(client->getDataTCP())) {
-                iss.str(client->getDataTCP());
-                iss >> request;
-                showRequest(request);
-                showBody(reinterpret_cast<Entity *>(request.Body));
-                ::memset(client->getDataTCP(), 0, 1024);
-            }
         }
 
     } catch(const std::exception& e) {

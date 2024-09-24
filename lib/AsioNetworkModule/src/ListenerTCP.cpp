@@ -34,7 +34,8 @@ void ListenerTCP::WaitForConnection()
                     std::cout << "Client disconnected: " << session->getId() << std::endl;
                     this->_server->removeClientById(session->getId());
                 });
-                newSession->sendTCP(std::to_string(newSession->getId()));
+                Request request = {0x0, 0x01, 0x05, 0x13, 0x0};
+                newSession->sendTCP(request);
             }
             WaitForConnection();
         });

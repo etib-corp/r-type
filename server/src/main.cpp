@@ -26,14 +26,9 @@ int main(void)
 
         INetworkModule *test = lb.createNetworkModule();
         IServer *server = test->createServer(8080);
+
         server->run();
         while (1) {
-            if (server->_sessions.size() > 0) {
-                std::shared_ptr<ISession> session = server->getClientById(1);
-                std::cout << "Sending: " << oss.str() << std::endl;
-                session->sendTCP(oss.str());
-                sleep(5);
-            }
         }
     }
     catch(const std::exception& e) {
