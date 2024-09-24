@@ -17,6 +17,8 @@ namespace LE {
             public:
                 Manager(unsigned int width, unsigned int height);
                 ~Manager();
+
+                void init();
         };
     }
 }

@@ -67,6 +67,8 @@ namespace LE {
              */
             virtual void stop() = 0;
 
+            virtual void init() = 0;
+
             /**
              * @brief Shared pointer to an ECS (Entity Component System) instance.
              *

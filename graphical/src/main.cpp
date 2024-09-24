@@ -6,7 +6,6 @@
 */
 
 #include <iostream>
-#include <GL/glut.h>
 #include "Engine.hpp"
 
 class MyScene : public LE::Scene {
@@ -14,9 +13,16 @@ class MyScene : public LE::Scene {
         MyScene() {
             // Initialize GUI Manager
             _guiManager = std::make_shared<LE::GUI::Manager>(800, 600);
+            _guiManager->addChildren(new LE::GUI::Text(42, "assets/fonts/ARIAL.TTF", 80, "Hello World !"));
         }
 
-        void play() override {}
+        void play() override {
+            _guiManager->draw();
+        }
+
+        void init() override {
+            _guiManager->init();
+        }
 
         void stop() override {}
 
@@ -25,7 +31,7 @@ class MyScene : public LE::Scene {
 int main(int ac, char **av)
 {
     // Initialize the engine
-    glutInit(&ac, av);
+    // glutInit(&ac, av);
     auto engine = LE::Engine::getInstance();
     auto scene = std::make_shared<MyScene>();
 
@@ -33,7 +39,7 @@ int main(int ac, char **av)
     engine->addScene(scene, "GUI");
     // Run the engine
     try {
-        engine->runWithDebug(); // Change to true to simulate an error
+        engine->run(); // Change to true to simulate an error
     } catch (const LE::Engine::EngineError &e) {
         std::cerr << "Engine error: " << e.what() << std::endl;
     }
