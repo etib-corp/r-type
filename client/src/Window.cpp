@@ -20,6 +20,8 @@ LE::Window::Window(const std::string& title, std::size_t width, std::size_t heig
 
     glfwMakeContextCurrent(_window);
 
+
+
     glfwSetInputMode(_window, GLFW_STICKY_KEYS, GL_TRUE);
 
     glEnable(GL_BLEND);

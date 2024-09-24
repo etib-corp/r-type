@@ -10,6 +10,7 @@
 #include "Engine.hpp"
 #include "Scene.hpp"
 #include <iostream>
+#include "ECS/Ecs.hpp"
 
 class GameScene : public LE::Scene {
     public:
@@ -33,14 +34,26 @@ class GameScene : public LE::Scene {
         }
 };
 
+struct Position {
+    float x;
+    float y;
+};
+
 int main(int ac, char **av)
 {
     // Initialize the engine
-    glutInit(&ac, av);
-    auto engine = LE::Engine::getInstance();
-    auto scene = std::make_shared<GameScene>();
-    engine->addScene("game", scene);
-    engine->run(true);
+    // glutInit(&ac, av);
+    // auto engine = LE::Engine::getInstance();
+    // auto scene = std::make_shared<GameScene>();
+    // engine->addScene("game", scene);
+    // engine->run(true);
+    Ecs ecs;
+    Entity entity = ecs.createEntity();
+    ecs.registerComponent<Position>();
+    ecs.addComponent<Position>(entity, {10, 20});
+
+    auto pos = ecs.getComponent<Position>(entity);
+    std::cout << pos.x << " " << pos.y << std::endl;
     return 0;
 }
 

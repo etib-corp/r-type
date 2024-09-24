@@ -37,11 +37,11 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g3 -ggdb")
 endif()
 
-include_directories(include build/_deps/glfw-src/include include/GUI ${OPENGL_INCLUDE_DIRS})
+include_directories(include build/_deps/glfw-src/include include/GUI ../include/ ${OPENGL_INCLUDE_DIRS})
 
-file(GLOB SOURCES src/*.cpp src/GUI/*.cpp)
+file(GLOB SOURCES src/*.cpp src/GUI/*.cpp ../src/ECS/*.cpp)
 
 add_executable(r-type_client ${SOURCES})
 
-target_link_libraries(r-type glfw ${OPENGL_LIBRARIES})
+target_link_libraries(r-type_client glfw ${OPENGL_LIBRARIES})
 
