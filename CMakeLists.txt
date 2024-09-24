@@ -8,6 +8,8 @@ set(CMAKE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/)
 
 add_subdirectory(dependencies/glfw-3.4)
 
+find_package(OpenGL REQUIRED)
+
 add_subdirectory(lib)
 
 file(GLOB_RECURSE SOURCES src/*.cpp)
@@ -18,11 +20,10 @@ add_compile_options(-ggdb)
 
 add_library(r-type STATIC ${SOURCES})
 
-file(GLOB_RECURSE CLIENT_SOURCES client/src/**/*.cpp)
+file(GLOB_RECURSE CLIENT_SOURCES client/src/*.cpp)
 include_directories(client/include client/include/GUI)
 add_executable(r-type_client ${CLIENT_SOURCES})
-target_link_libraries(r-type_client r-type)
-target_link_libraries(r-type_client glfw)
+target_link_libraries(r-type_client r-type glfw ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES})
 
 find_package(ZLIB REQUIRED)
 

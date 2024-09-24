@@ -10,8 +10,8 @@
 #include "GUI/Component.hpp"
 
 #include <GLFW/glfw3.h>
-#include "GL/glut.h"
-#include "GL/freeglut.h"
+// #include "GL/glut.h"
+// #include "GL/freeglut.h"
 
 namespace LE {
     namespace GUI {

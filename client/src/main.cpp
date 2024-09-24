@@ -6,7 +6,7 @@
 */
 
 #include <iostream>
-#include <GL/glut.h>
+// #include <GL/glut.h>
 #include "Engine.hpp"
 #include "Scene.hpp"
 #include <iostream>
@@ -36,7 +36,7 @@ class GameScene : public LE::Scene {
 int main(int ac, char **av)
 {
     // Initialize the engine
-    glutInit(&ac, av);
+    // glutInit(&ac, av);
     auto engine = LE::Engine::getInstance();
     auto scene = std::make_shared<GameScene>();
     engine->addScene("game", scene);
