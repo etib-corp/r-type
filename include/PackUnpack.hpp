@@ -61,5 +61,27 @@ class PackUnpack {
     private:
 };
 
+struct Request {
+    uint8_t MagicNumber;
+    uint8_t ECS_CLIENT_ID;
+    uint8_t Action;
+    uint32_t BodyLength;
+    uint8_t Body[1024];
+};
+
+struct Entity {
+    char type[256];
+    char action[256];
+    int life;
+};
+
+
+std::ostream& operator<<(std::ostream& os, const Request& req);
+
+std::istream& operator>>(std::istream& is, Request& req);
+
+void showRequest(Request header);
+
+void showBody(Entity *entity);
 
 #endif /* !PACKUNPACK_HPP_ */

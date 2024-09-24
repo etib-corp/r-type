@@ -40,7 +40,6 @@ void Client::readTCP()
             } else {
                 std::cerr << "Error: " << error.message() << std::endl;
             }
-            std::memset(this->_dataTCP, 0, 1024);
             this->readTCP();
         });
 }

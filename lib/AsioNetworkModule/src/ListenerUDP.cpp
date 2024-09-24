@@ -26,7 +26,6 @@ void ListenerUDP::run(IServer *server)
     _threadContext = std::thread([this]() {
         _io_context.run();
     });
-    _threadContext.join();
 }
 
 void ListenerUDP::startReceive()

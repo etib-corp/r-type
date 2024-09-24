@@ -23,7 +23,7 @@ add_library(r-type STATIC ${SOURCES})
 file(GLOB_RECURSE CLIENT_SOURCES client/src/*.cpp)
 include_directories(client/include client/include/GUI)
 add_executable(r-type_client ${CLIENT_SOURCES})
-target_link_libraries(r-type_client r-type glfw ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES})
+target_link_libraries(r-type_client r-type glfw ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} z)
 
 find_package(ZLIB REQUIRED)
 

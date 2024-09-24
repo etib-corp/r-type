@@ -29,8 +29,14 @@ class IClient {
 
         virtual void setId(int id) { _id = id; }
 
+        virtual char *getDataTCP() { return _dataTCP; }
+
+        virtual char *getDataUDP() { return _dataUDP; }
+
     protected:
         int _id;
+        char _dataTCP[1024] = {0};
+        char _dataUDP[1024] = {0};
     private:
 };
 

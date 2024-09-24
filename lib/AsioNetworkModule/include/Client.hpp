@@ -40,10 +40,6 @@ class Client : public IClient {
 
         std::thread _thread;
 
-        char _dataTCP[1024];
-
-        char _dataUDP[1024];
-
     private:
 };
 

@@ -33,37 +33,52 @@ class GameScene : public LE::Scene {
         }
 };
 
-int main(int ac, char **av)
-{
-    // Initialize the engine
-    // glutInit(&ac, av);
-    auto engine = LE::Engine::getInstance();
-    auto scene = std::make_shared<GameScene>();
-    engine->addScene("game", scene);
-    engine->run(true);
-    return 0;
-}
+// int main(int ac, char **av)
+// {
+//     // Initialize the engine
+//     // glutInit(&ac, av);
+//     auto engine = LE::Engine::getInstance();
+//     auto scene = std::make_shared<GameScene>();
+//     engine->addScene("game", scene);
+//     engine->run(true);
+//     return 0;
+// }
 
-/*
 #include "LoaderLib.hpp"
 #include "ResolvingLib.hpp"
+#include "interface/INetworkModule/INetworkModule.hpp"
+#include <cstring>
+#include <sstream>
+#include "PackUnpack.hpp"
 
-int main1(void)
+
+
+int main(void)
 {
     std::string pathLib = getPathOfNetworkDynLib() + getExtensionKernel();
 
     try {
+        Request request;
+        Entity entity;
         LoaderLib lb(pathLib, "");
-
+        std::istringstream iss;
         lb.LoadModule();
 
-        IClient *client = lb.createClient();
+        INetworkModule *module = lb.createNetworkModule();
 
-        client->connectToServer("127.0.0.1", 8080);
+        IClient *client = module->createClient("127.0.0.1", 8080);
+
+        client->connectToServer();
         client->sendTCP("Hello from client TCP\n");
         client->sendUDP("Hello from client UDP\n");
-        while (true)
-        {
+        while (true) {
+            if (::strlen(client->getDataTCP())) {
+                iss.str(client->getDataTCP());
+                iss >> request;
+                showRequest(request);
+                showBody(reinterpret_cast<Entity *>(request.Body));
+                ::memset(client->getDataTCP(), 0, 1024);
+            }
         }
 
     } catch(const std::exception& e) {
@@ -72,4 +87,3 @@ int main1(void)
 
     return 0;
 }
-*/

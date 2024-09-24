@@ -7,20 +7,6 @@
 #include <zlib.h>
 #include "PackUnpack.hpp"
 
-struct Request {
-    uint8_t MagicNumber;
-    uint8_t ECS_CLIENT_ID;
-    uint8_t Action;
-    uint32_t BodyLength;
-    uint8_t Body[1024];
-};
-
-struct Entity {
-    char type[256];
-    char action[256];
-    int life;
-};
-
 void showRequest(Request header)
 {
     std::cout << "Header:" << std::endl;
@@ -56,27 +42,27 @@ std::istream& operator>>(std::istream& is, Request& req)
     return is;
 }
 
-int _main(void)
-{
-    std::ostringstream oss;
-    std::istringstream iss;
-    Request requestFromSocket;
-    Entity entity = {.type = "Avion", .action = "Voler", .life = 3};
-    Request request = {0x0, 0x01, 0x05, 0x13, 0x0};
-    ::memmove(request.Body, &entity, sizeof(Entity));
+// int _main(void)
+// {
+//     std::ostringstream oss;
+//     std::istringstream iss;
+//     Request requestFromSocket;
+//     Entity entity = {.type = "Avion", .action = "Voler", .life = 3};
+//     Request request = {0x0, 0x01, 0x05, 0x13, 0x0};
+//     ::memmove(request.Body, &entity, sizeof(Entity));
 
-    std::cout << (sizeof(Entity) + strlen(entity.type) + strlen(entity.action) + 2 * sizeof(char)) << std::endl;
+//     std::cout << (sizeof(Entity) + strlen(entity.type) + strlen(entity.action) + 2 * sizeof(char)) << std::endl;
 
-    oss << request;
-    std::cout << oss.str().size() << std::endl;
-    iss.str(oss.str());
-    iss >> requestFromSocket;
+//     oss << request;
+//     std::cout << oss.str().size() << std::endl;
+//     iss.str(oss.str());
+//     iss >> requestFromSocket;
 
-    showRequest(request);
-    showBody(&entity);
-    showRequest(requestFromSocket);
-    Entity *entityFromSocket = reinterpret_cast<Entity *>(requestFromSocket.Body);
-    showBody(entityFromSocket);
+//     showRequest(request);
+//     showBody(&entity);
+//     showRequest(requestFromSocket);
+//     Entity *entityFromSocket = reinterpret_cast<Entity *>(requestFromSocket.Body);
+//     showBody(entityFromSocket);
 
-    return 0;
-}
+//     return 0;
+// }
