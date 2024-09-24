@@ -7,15 +7,17 @@
 
 #pragma once
 
+namespace LE {
+    class Scene;
+}
+
 #include "Clock.hpp"
 #include "Error.hpp"
-#include "Scene.hpp"
 
 #include <cmath>
 #include <memory>
 #include <string>
-// #define GLEW_INTERNAL
-// #include <GL/glew.h>
+
 #define GL_GLEXT_PROTOTYPES
 #include "GLFW/glfw3.h"
 #include <GL/gl.h>
@@ -115,6 +117,13 @@ namespace LE {
              * @param color The color to set as the clear color.
              */
             void setClearColor(Color color);
+
+            /**
+             * @brief Gets the GLFW window pointer.
+             *
+             * @return The GLFW window pointer.
+             */
+            GLFWwindow* getWindow();
         private:
 
             /**

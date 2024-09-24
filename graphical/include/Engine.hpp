@@ -7,12 +7,18 @@
 
 #pragma once
 
+namespace LE {
+    class Window;
+    class SceneManager;
+}
+
 #include <memory>
 #include <iostream>
 
 #include "GUI/Text.hpp"
 #include "SceneManager.hpp"
 #include "Window.hpp"
+
 #include "Error.hpp"
 
 /**
@@ -84,6 +90,13 @@ namespace LE {
 
             void removeScene(const std::string& sceneName);
 
+            /**
+             * @brief Throws an error.
+             *
+             * @param error The error to throw.
+             * @note This function is use to throw an error from the Engine class only if the throwError flag is set to true.
+             */
+            void throwError(const LE::Error& error);
         private:
             /**
              * @brief Private constructor for the Engine class.
@@ -100,5 +113,7 @@ namespace LE {
             std::shared_ptr<LE::Window> _window; ///< Shared pointer to the Window instance.
             std::shared_ptr<SceneManager> _sceneManager; ///< Shared pointer to the SceneManager instance.
             bool _debugMode; ///< Flag indicating whether debug mode is enabled.
+            bool _throwError; ///< Flag indicating whether to throw an error.
+            friend class EventManager; ///< Friend class EventManager.
     };
 }

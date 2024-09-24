@@ -109,3 +109,8 @@ void LE::Window::setClearColor(Color color)
 {
     glClearColor(color.r / 255.0f, color.g / 255.0f, color.b / 255.0f, color.a);
 }
+
+GLFWwindow* LE::Window::getWindow()
+{
+    return _window;
+}

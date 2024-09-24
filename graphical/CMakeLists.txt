@@ -40,7 +40,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 endif()
 
 
-include_directories(include include/GUI ${OPENGL_INCLUDE_DIRS} ${FREETYPE_INCLUDE_DIRS})
+include_directories(include build/_deps/glfw-src/include include/GUI ${OPENGL_INCLUDE_DIRS} ${FREETYPE_INCLUDE_DIRS})
 
 file(GLOB SOURCES src/*.cpp src/GUI/*.cpp)
 
