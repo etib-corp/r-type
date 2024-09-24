@@ -35,16 +35,12 @@ void LE::Engine::run(bool throwError)
 {
     _throwError = throwError;
     srand(static_cast<unsigned int>(time(nullptr)));
-    debug("Initializing engine...");
     _window = std::make_shared<LE::Window>("Game Window", 800, 600);
-    debug("Window created successfully.");
-    debug("Running engine...");
+
+    _sceneManager->init();
     while (_window->isOpen()) {
-        debug("Engine running...");
         _sceneManager->play();
-        debug("Scene playing...");
         _window->render(_sceneManager->getCurrentScene());
-        debug("Scene rendered...");
     }
 }
 

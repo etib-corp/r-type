@@ -142,6 +142,8 @@ namespace LE {
              */
             void selectScene(const std::string &sceneName);
 
+            void init();
+
         private:
             std::unordered_map<std::string, std::shared_ptr<Scene>> _scenes;    ///< Collection of scenes managed by the SceneManager.
             std::string _currentSceneName;                                      ///< Name of the currently playing scene.

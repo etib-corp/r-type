@@ -21,6 +21,8 @@ namespace LE {
 
                 size_t getId() const { return _id; }
 
+                virtual void init() = 0;
+
             protected:
                 size_t _id;
                 unsigned int _x;

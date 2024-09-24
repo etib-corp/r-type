@@ -17,7 +17,16 @@ namespace LE {
 #include <cmath>
 #include <memory>
 #include <string>
+
+#define GL_GLEXT_PROTOTYPES
 #include "GLFW/glfw3.h"
+#include <GL/gl.h>
+#include <GL/glext.h>
+
+namespace LE {
+    class Shader;
+}
+extern LE::Shader *fontShader;
 
 using Color = union {
     unsigned int value;

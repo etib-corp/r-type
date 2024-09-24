@@ -23,12 +23,13 @@ if(NOT glfw_POPULATED)
     add_subdirectory(${glfw_SOURCE_DIR} ${glfw_BINARY_DIR})
 endif()
 
-find_package(OpenGL REQUIRED)
-find_package(GLUT REQUIRED)
+set(OpenGL_GL_PREFERENCE "LEGACY")
+
+find_package(OpenGL 2 REQUIRED)
+find_package(Freetype REQUIRED)
 
 set(CMAKE_CXX_STANDARD 20)
 
-# Set default build type to Debug if not specified
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Debug)
 endif()
@@ -38,11 +39,11 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g3 -ggdb")
 endif()
 
-include_directories(include build/_deps/glfw-src/include include/GUI ${OPENGL_INCLUDE_DIRS} ${GLUT_INCLUDE_DIRS})
+include_directories(include include/GUI ${OPENGL_INCLUDE_DIRS} ${FREETYPE_INCLUDE_DIRS})
 
 file(GLOB SOURCES src/*.cpp src/GUI/*.cpp)
 
 add_executable(r-type_client ${SOURCES})
 
-target_link_libraries(r-type glfw ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES})
+target_link_libraries(r-type GL glfw ${OPENGL_LIBRARIES} ${FREETYPE_LIBRARIES})
 
