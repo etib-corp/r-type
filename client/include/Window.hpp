@@ -17,12 +17,12 @@ namespace LE {
 #include <cmath>
 #include <memory>
 #include <string>
-// #define GLEW_INTERNAL
+// #define GLEW_STATIC
 // #include <GL/glew.h>
 #define GL_GLEXT_PROTOTYPES
-#include "GLFW/glfw3.h"
 #include <GL/gl.h>
 #include <GL/glext.h>
+#include "GLFW/glfw3.h"
 
 namespace LE {
     class Shader;
