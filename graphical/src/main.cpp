@@ -48,10 +48,15 @@ int main(int ac, char **av)
     // Initialize the engine
     // glutInit(&ac, av);
     auto engine = LE::Engine::getInstance();
-    auto scene = std::make_shared<MyScene>();
 
+    std::function f = [&]() {
+        auto scene = std::make_shared<MyScene>();
+
+        LE::Engine::getInstance()->addScene(scene, "GUI");
+    };
+
+    engine->setConfig(f);
     // Add the scene to the engine
-    engine->addScene(scene, "GUI");
     // Run the engine
     try {
         engine->run(); // Change to true to simulate an error

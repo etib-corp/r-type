@@ -13,8 +13,9 @@ namespace LE {
 #include "Error.hpp"
 #include "Keys.hpp"
 
+#include "Window.hpp"
+
 #include <functional>
-#include "GLFW/glfw3.h"
 #include <memory>
 #include <string>
 #include <map>

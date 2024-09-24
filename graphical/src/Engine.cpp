@@ -36,6 +36,9 @@ void LE::Engine::run(bool throwError)
     srand(static_cast<unsigned int>(time(nullptr)));
     _window = std::make_shared<LE::Window>("Game Window", 800, 600);
 
+    if (_configFunc) {
+        _configFunc();
+    }
     _sceneManager->init();
     while (_window->isOpen()) {
         _sceneManager->play();
@@ -74,4 +77,9 @@ void LE::Engine::throwError(const LE::Error& error)
     if (_throwError) {
         throw error;
     }
+}
+
+void LE::Engine::setConfig(std::function<void()> func)
+{
+    _configFunc = func;
 }

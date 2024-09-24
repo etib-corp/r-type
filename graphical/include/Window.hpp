@@ -17,7 +17,8 @@ namespace LE {
 #include <cmath>
 #include <memory>
 #include <string>
-
+// #define GLEW_INTERNAL
+// #include <GL/glew.h>
 #define GL_GLEXT_PROTOTYPES
 #include "GLFW/glfw3.h"
 #include <GL/gl.h>
