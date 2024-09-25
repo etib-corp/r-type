@@ -81,30 +81,30 @@ int main(void)
         IClient *client = module->createClient("127.0.0.1", 8080);
 
         client->connectToServer();
-        client->sendTCP("Hello from client TCP\n");
+        // client->sendTCP("Hello 0from client TCP\n");
         client->sendUDP("Hello from client UDP\n");
         while (true) {
-            char *data = client->getDataTCP();
-            if (::strlen(data)) {
-                ::memmove(&request.header, data, sizeof(Header));
-                std::cout << sizeof(Header) << std::endl;
-                // showHeader(request.header);
-                // deserializeRequest(data + sizeof(Header), 2048, &iss);
-                // ::memmove(&iss.str(), data + sizeof(Header), 2048);
-                showHeader(request.header);
-                char *request_body = data + sizeof(Header);
-                std::istringstream sub_iss;
-                sub_iss.str(request_body);
-                // header = request.header;
-                // std::cout << header.BodyLength << std::endl;
-                // static_cast<std::istringstream>(request.body) >> body;
-                // iss.str(client->getDataTCP());
-                // iss >> body;
-                sub_iss >> body;
-                // showHeader(header);
-                showBody(reinterpret_cast<Entity *>(&body));
-                ::memset(client->getDataTCP(), 0, 1024);
-            }
+            // char *data = client->getDataTCP();
+            // if (::strlen(data)) {
+            //     ::memmove(&request.header, data, sizeof(Header));
+            //     std::cout << sizeof(Header) << std::endl;
+            //     // showHeader(request.header);
+            //     // deserializeRequest(data + sizeof(Header), 2048, &iss);
+            //     // ::memmove(&iss.str(), data + sizeof(Header), 2048);
+            //     showHeader(request.header);
+            //     char *request_body = data + sizeof(Header);
+            //     std::istringstream sub_iss;
+            //     sub_iss.str(request_body);
+            //     // header = request.header;
+            //     // std::cout << header.BodyLength << std::endl;
+            //     // static_cast<std::istringstream>(request.body) >> body;
+            //     // iss.str(client->getDataTCP());
+            //     // iss >> body;
+            //     sub_iss >> body;
+            //     // showHeader(header);
+            //     showBody(reinterpret_cast<Entity *>(&body));
+            //     ::memset(client->getDataTCP(), 0, 1024);
+            // }
         }
 
     } catch(const std::exception& e) {

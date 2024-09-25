@@ -9,7 +9,7 @@
 #include "ResolvingLib.hpp"
 #include "PackUnpack.hpp"
 
-std::string serializeRequest(const Request &request)
+std::string serializeRequest(Request &request)
 {
     std::ostringstream oss;
 
@@ -54,6 +54,8 @@ int main(void)
                 ::memmove(&request.body, oss.str().c_str(), sizeof(Body));
                 // showHeader(request.header);
                 // std::cout << "Sending: " << serializeRequest(request)[0] << std::endl;
+                request.header.BodyLength = oss.str().size();
+                std::cout << "Sending: " << request.header.BodyLength << std::endl;
                 session->sendTCP(serializeRequest(request));
                 sleep(5);
             }

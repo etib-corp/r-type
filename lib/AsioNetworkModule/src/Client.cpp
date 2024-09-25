@@ -33,14 +33,19 @@ void Client::readTCP()
         boost::asio::buffer(&_requestTCP.header, sizeof(Header)),
         [this](const boost::system::error_code &error, std::size_t bytes_transferred) {
             (void)bytes_transferred;
-            std::istringstream iss;
             if (!error) {
+                char *_bodyStr = new char[_requestTCP.header.BodyLength - 1];
+                ::memset(_bodyStr, 0, _requestTCP.header.BodyLength);
+                std::istringstream iss;
                 showHeader(_requestTCP.header);
-                this->_socketTCP.receive(boost::asio::buffer(&iss, _requestTCP.header.BodyLength));
+                _socketTCP.receive(boost::asio::buffer(_bodyStr, _requestTCP.header.BodyLength));
+                iss.str(_bodyStr);
                 iss >> _requestTCP.body;
                 showBody(reinterpret_cast<Entity *>(&_requestTCP.body));
-                readTCP();
+                delete _bodyStr;
             }
+            ::memset(&_requestTCP, 0, sizeof(Request));
+            readTCP();
         });
 }
 

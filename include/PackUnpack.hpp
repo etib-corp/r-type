@@ -69,7 +69,7 @@ struct Header {
 };
 
 struct Body {
-    uint8_t body[1024];
+    uint8_t _buffer[1024];
 };
 
 struct Request {
