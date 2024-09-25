@@ -37,6 +37,7 @@ void LE::Engine::run(bool throwError)
     srand(static_cast<unsigned int>(time(nullptr)));
     _window = std::make_shared<LE::Window>("Game Window", 800, 600);
 
+    std::cout << "Engine running." << std::endl;
     if (_configFunc) {
         _configFunc();
     }
@@ -61,7 +62,7 @@ void LE::Engine::debug(const std::string& message)
     }
 }
 
-void LE::Engine::addScene(const std::string &sceneName, const std::shared_ptr<Scene> &scene)
+void LE::Engine::addScene(const std::string &sceneName, const std::shared_ptr<Scene> scene)
 {
     debug("Adding scene in engine: " + sceneName);
     _sceneManager->addScene(scene, sceneName);

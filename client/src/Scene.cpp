@@ -14,10 +14,12 @@ LE::Scene::Scene()
 
 void LE::Scene::draw()
 {
-    _guiManager->draw();
+    if (_guiManager)
+        _guiManager->draw();
 }
 
 void LE::Scene::init()
 {
-    _guiManager->init();
+    if (_guiManager)
+        _guiManager->init();
 }

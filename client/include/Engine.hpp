@@ -92,7 +92,7 @@ namespace LE {
              * @param scene A shared pointer to the scene to add.
              * @param sceneName The name of the scene to add.
              */
-            void addScene(std::shared_ptr<Scene> scene, const std::string &sceneName);
+            void addScene(const std::string &sceneName, const std::shared_ptr<Scene> scene);
 
             /**
              * @brief Removes a scene from the engine.

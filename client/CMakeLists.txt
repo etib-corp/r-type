@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.28)
 
-project(r-type)
+project(r-type_client)
 
 include(FetchContent)
 
@@ -45,5 +45,4 @@ file(GLOB SOURCES src/*.cpp src/GUI/*.cpp)
 
 add_executable(r-type_client ${SOURCES})
 
-target_link_libraries(r-type GL glfw ${OPENGL_LIBRARIES} ${FREETYPE_LIBRARIES})
-
+target_link_libraries(r-type_client GL glfw ${OPENGL_LIBRARIES} ${FREETYPE_LIBRARIES})

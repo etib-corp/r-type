@@ -78,7 +78,6 @@ void LE::Window::_initGLFW()
 
     glfwWindowHint(GLFW_DOUBLEBUFFER, GL_TRUE);
 
-
     _monitor = glfwGetPrimaryMonitor();
     _mode = glfwGetVideoMode(_monitor);
 }
