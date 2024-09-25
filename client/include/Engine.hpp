@@ -15,6 +15,9 @@ namespace LE {
 
 #include <memory>
 #include <iostream>
+
+#include "SceneManager.hpp"
+#include "Window.hpp"
 #include "Error.hpp"
 
 /**
@@ -83,15 +86,15 @@ namespace LE {
             void debug(const std::string& message);
 
             /**
-             * @brief Adds a scene to the SceneManager in the Engine.
+             * @brief Adds a scene to the engine.
              *
-             * @param sceneName The name of the scene.
-             * @param scene The scene to add.
+             * @param scene A shared pointer to the scene to add.
+             * @param sceneName The name of the scene to add.
              */
-            void addScene(const std::string &sceneName, const std::shared_ptr<Scene> &scene);
+            void addScene(const std::string &sceneName, const std::shared_ptr<Scene> scene);
 
             /**
-             * @brief Removes a scene from the SceneManager in the Engine.
+             * @brief Removes a scene from the engine.
              *
              * @param sceneName The name of the scene to remove.
              */
@@ -104,6 +107,16 @@ namespace LE {
              * @note This function is use to throw an error from the Engine class only if the throwError flag is set to true.
              */
             void throwError(const LE::Error& error);
+
+            /**
+             * @brief Sets the configuration function.
+             *
+             * This function is used to set a configuration function that will be called before the engine starts running.
+             *
+             * @param func The configuration function to set.
+             */
+            void setConfig(std::function<void()> func);
+
         private:
             /**
              * @brief Private constructor for the Engine class.
@@ -122,5 +135,6 @@ namespace LE {
             bool _debugMode; ///< Flag indicating whether debug mode is enabled.
             bool _throwError; ///< Flag indicating whether to throw an error.
             friend class EventManager; ///< Friend class EventManager.
+            std::function<void ()> _configFunc; ///< Configuration function. This function is called before the engine starts running.
     };
 }
