@@ -41,6 +41,7 @@ int main(void)
 
         INetworkModule *test = lb.createNetworkModule();
         IServer *server = test->createServer(8080);
+
         server->run();
         while (1) {
             if (server->_sessions.size() > 0) {
