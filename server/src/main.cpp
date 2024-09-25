@@ -14,7 +14,7 @@ std::string serializeRequest(Request &request)
     std::ostringstream oss;
 
     oss.write(reinterpret_cast<const char*>(&request.header), sizeof(request.header));
-    oss.write(reinterpret_cast<const char*>(&request.body), sizeof(request.body));
+    oss.write(reinterpret_cast<const char*>(&request.body), sizeof(uint8_t) * request.header.BodyLength);
     return oss.str();
 }
 
@@ -28,7 +28,7 @@ int main(void)
         Request request;
         Header header = {.MagicNumber = 0x21, .ECS_CLIENT_ID = 0x01, .Action = 0x05, .BodyLength = 0x13};
         Body body;
-        Entity entity = {.type = "Avion", .action = "Voler", .life = 3};
+        Entity entity = {.type = "Avion[PADING][PADING][PADING][PADING][PADING]", .action = "Voler[PADING][PADING][PADING][PADING][PADING][PADING][PADING]", .life = 3};
         ::memmove(&body, &entity, sizeof(Entity));
 
         showHeader(header);
@@ -56,6 +56,7 @@ int main(void)
                 // std::cout << "Sending: " << serializeRequest(request)[0] << std::endl;
                 request.header.BodyLength = oss.str().size();
                 std::cout << "Sending: " << request.header.BodyLength << std::endl;
+                std::cout << "seriaize request size" << serializeRequest(request).size() << std::endl;
                 session->sendTCP(serializeRequest(request));
                 sleep(5);
             }
