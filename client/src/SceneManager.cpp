@@ -7,8 +7,6 @@
 
 #include "SceneManager.hpp"
 
-#include "Engine.hpp"
-
 LE::SceneManager::SceneManager()
 {
     _currentScene = nullptr;
@@ -23,18 +21,10 @@ LE::SceneManager::~SceneManager()
 
 void LE::SceneManager::play()
 {
-
-    LE::Engine *engineInstance = LE::Engine::getInstance();
-
-    engineInstance->debug("SceneManager::play()");
     if (!_currentScene) {
-        engineInstance->debug("SceneManager::play() - No current scene, selecting first scene.");
-        engineInstance->debug("SceneManager::play() - Number of scenes: " + std::to_string(_scenes.size()));
         _currentScene = _scenes.begin()->second;
         _currentSceneName = _scenes.begin()->first;
-        engineInstance->debug("SceneManager::play() - first scene selected: " + _currentSceneName);
     }
-    engineInstance->debug("SceneManager::play() - Playing selected scene");
     _currentScene->play();
 }
 
@@ -79,9 +69,6 @@ void LE::SceneManager::addScene(std::shared_ptr<LE::Scene> scene, const std::str
 {
     _scenes[name] = scene;
 
-    std::cout << "Scene name added: " << name << std::endl;
-    std::cout << "Scene added: " << scene.get() << std::endl;
-    std::cout << "Current scene :" << _currentScene.get() << std::endl;
     if (!_currentScene) {
         _currentScene = scene;
         _currentSceneName = name;
@@ -111,5 +98,12 @@ void LE::SceneManager::selectScene(const std::string &sceneName)
         _currentSceneName = sceneName;
     } else {
         throw SceneManagerError("Scene not found: " + sceneName);
+    }
+}
+
+void LE::SceneManager::init()
+{
+    for (auto& scene : _scenes) {
+        scene.second->init();
     }
 }

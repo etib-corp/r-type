@@ -14,6 +14,12 @@ LE::Scene::Scene()
 
 void LE::Scene::draw()
 {
-    // Drawing logic from ECS
-    // _guiManager->draw();
+    if (_guiManager)
+        _guiManager->draw();
+}
+
+void LE::Scene::init()
+{
+    if (_guiManager)
+        _guiManager->init();
 }
