@@ -21,7 +21,7 @@ class IServer {
     public:
         virtual ~IServer() = default;
 
-        virtual void routine(void) = 0;
+        virtual void run(void) = 0;
 
         virtual void addClient(std::shared_ptr<ISession> client)
         {
