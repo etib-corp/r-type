@@ -70,6 +70,7 @@ class Ecs {
             auto signature = _entityManager->getSignature(entity);
             signature.set(_componentManager->getComponentType<T>(), true);
             _entityManager->setSignature(entity, signature);
+            _systemManager->entitySignatureChanged(entity, signature);
         }
 
         /**
@@ -84,6 +85,7 @@ class Ecs {
             auto signature = _entityManager->getSignature(entity);
             signature.set(_componentManager->getComponentType<T>(), false);
             _entityManager->setSignature(entity, signature);
+            _systemManager->entitySignatureChanged(entity, signature);
         }
 
         /**
@@ -108,6 +110,40 @@ class Ecs {
         {
             return _componentManager->getComponentType<T>();
         }
+
+        /**
+         * @brief Registers a new system of type T.
+         *
+         * This function registers a new system with the system manager and returns a shared pointer to the newly registered system.
+         *
+         * @tparam T The type of the system to be registered.
+         * @return std::shared_ptr<T> A shared pointer to the newly registered system.
+         */
+        template <typename T>
+        std::shared_ptr<T> registerSystem()
+        {
+            return _systemManager->registerSystem<T>();
+        }
+
+        /**
+         * @brief Set the signature of a system
+         *
+         * @tparam T The system to set the signature of
+         * @param signature The signature to set
+         */
+        template <typename T>
+        void setSignature(Signature signature)
+        {
+            _systemManager->setSignature<T>(signature);
+        }
+
+        /**
+         * @brief Update the ECS
+         *
+         * This function will be used to update the ECS by calling the update function of the system manager
+         * @param dt The delta time
+         */
+        void update(float dt);
     private:
         std::unique_ptr<ComponentManager> _componentManager;        ///< The component manager
         std::unique_ptr<EntityManager> _entityManager;              ///< The entity manager

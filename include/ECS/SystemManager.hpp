@@ -19,7 +19,7 @@ class System {
          * @brief Update the system
          * This function will be used to update the system
          */
-        virtual void update() = 0;
+        virtual void update(float dt) = 0;
         std::set<Entity> _entities;         ///< The entities that the system is responsible for
 };
 
@@ -118,6 +118,37 @@ class SystemManager {
                 } else {
                     system->_entities.erase(entity);
                 }
+            }
+        }
+
+        /**
+         * @brief Delete a system
+         *
+         * This function will be used to delete a system
+         */
+        template <typename T>
+        void deleteSystem()
+        {
+            const char *typeName = typeid(T).name();
+
+            if (_systems.find(typeName) == _systems.end()) {
+                throw SystemManagerError("System not registered before deleting");
+            }
+
+            _systems.erase(typeName);
+        }
+
+        /**
+         * @brief Update the systems
+         *
+         * This function will be used to update the systems
+         */
+        void update(float dt)
+        {
+            for (auto const &pair : _systems) {
+                auto const &system = pair.second;
+
+                system->update(dt);
             }
         }
     private:
