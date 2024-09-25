@@ -16,7 +16,6 @@ namespace LE {
 #include <memory>
 #include <iostream>
 
-#include "GUI/Text.hpp"
 #include "SceneManager.hpp"
 #include "Window.hpp"
 #include "Error.hpp"
