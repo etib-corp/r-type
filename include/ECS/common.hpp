@@ -14,20 +14,14 @@
 #include <map>
 #include <memory>
 #include <queue>
+#include <set>
 #include <unordered_map>
 
-typedef unsigned int Entity;
-const Entity MAX_ENTITIES = 5000;
+typedef unsigned int Entity;                    ///< An entity is a unique identifier for an object in the ECS
+const Entity MAX_ENTITIES = 5000;               ///< The maximum number of entities
 
-typedef unsigned int ComponentType;
-const ComponentType MAX_COMPONENTS = 64;
+typedef unsigned int ComponentType;             ///< A component type is a unique identifier for a component
+const ComponentType MAX_COMPONENTS = 64;        ///< The maximum number of components
 
-typedef std::bitset<MAX_COMPONENTS> Signature;
+typedef std::bitset<MAX_COMPONENTS> Signature;  ///< A signature is a bitset that represents the components an entity has
 
-/**
- * @brief Define a component
- *
- * @param name The name of the component
- * @return struct name##Component
- */
-#define COMPONENT(name) struct name##Component

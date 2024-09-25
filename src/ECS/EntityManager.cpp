@@ -30,6 +30,18 @@ Entity EntityManager::createEntity(void)
     return entity;
 }
 
+Entity EntityManager::createEntity(Entity entity)
+{
+    if (entity >= MAX_ENTITIES || entity < 0) {
+        throw EntityManagerError("Entity out of range");
+    }
+    if (_livingEntityCount >= MAX_ENTITIES) {
+        throw EntityManagerError("Maximum number of entities reached");
+    }
+    _livingEntityCount++;
+    return entity;
+}
+
 void EntityManager::destroyEntity(Entity entity)
 {
     if (entity >= MAX_ENTITIES || entity < 0) {

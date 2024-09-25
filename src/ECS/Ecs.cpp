@@ -22,6 +22,11 @@ Entity Ecs::createEntity()
     return _entityManager->createEntity();
 }
 
+Entity Ecs::createEntity(Entity entity)
+{
+    return _entityManager->createEntity(entity);
+}
+
 void Ecs::destroyEntity(Entity entity)
 {
     _entityManager->destroyEntity(entity);
