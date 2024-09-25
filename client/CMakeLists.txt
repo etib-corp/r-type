@@ -24,7 +24,6 @@ if(NOT glfw_POPULATED)
 endif()
 
 find_package(OpenGL REQUIRED)
-find_package(GLUT REQUIRED)
 
 set(CMAKE_CXX_STANDARD 20)
 
@@ -38,11 +37,11 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g3 -ggdb")
 endif()
 
-include_directories(include build/_deps/glfw-src/include include/GUI ${OPENGL_INCLUDE_DIRS} ${GLUT_INCLUDE_DIRS})
+include_directories(include build/_deps/glfw-src/include include/GUI ${OPENGL_INCLUDE_DIRS})
 
 file(GLOB SOURCES src/*.cpp src/GUI/*.cpp)
 
 add_executable(r-type_client ${SOURCES})
 
-target_link_libraries(r-type glfw ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES})
+target_link_libraries(r-type glfw ${OPENGL_LIBRARIES})
 
