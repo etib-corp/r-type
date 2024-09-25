@@ -86,8 +86,19 @@ namespace LE {
              */
             void debug(const std::string& message);
 
+            /**
+             * @brief Adds a scene to the engine.
+             *
+             * @param scene A shared pointer to the scene to add.
+             * @param sceneName The name of the scene to add.
+             */
             void addScene(std::shared_ptr<Scene> scene, const std::string &sceneName);
 
+            /**
+             * @brief Removes a scene from the engine.
+             *
+             * @param sceneName The name of the scene to remove.
+             */
             void removeScene(const std::string& sceneName);
 
             /**
@@ -98,7 +109,15 @@ namespace LE {
              */
             void throwError(const LE::Error& error);
 
+            /**
+             * @brief Sets the configuration function.
+             *
+             * This function is used to set a configuration function that will be called before the engine starts running.
+             *
+             * @param func The configuration function to set.
+             */
             void setConfig(std::function<void()> func);
+
         private:
             /**
              * @brief Private constructor for the Engine class.
@@ -117,6 +136,6 @@ namespace LE {
             bool _debugMode; ///< Flag indicating whether debug mode is enabled.
             bool _throwError; ///< Flag indicating whether to throw an error.
             friend class EventManager; ///< Friend class EventManager.
-            std::function<void ()> _configFunc;
+            std::function<void ()> _configFunc; ///< Configuration function. This function is called before the engine starts running.
     };
 }

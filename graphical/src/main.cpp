@@ -32,11 +32,7 @@ class MyScene : public LE::Scene {
         }
 
         void play() override {
-            _guiManager->draw();
-        }
-
-        void init() override {
-            _guiManager->init();
+            draw();
         }
 
         void stop() override {}
