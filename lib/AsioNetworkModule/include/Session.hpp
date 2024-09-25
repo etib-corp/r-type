@@ -67,8 +67,7 @@ class Session : public ISession {
         boost::asio::ip::udp::socket _socketUDP;
         boost::asio::ip::udp::endpoint _udp_endpoint;
 
-        enum { _max_length = 1024 };
-        char _data[_max_length];
+        Request _data;
 
     private:
 };

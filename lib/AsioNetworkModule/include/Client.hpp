@@ -27,6 +27,10 @@ class Client : public IClient {
 
         void sendUDP(const std::string &message) override;
 
+        void sendTCP(const Request& request) override;
+
+        void sendUDP(const Request& request) override;
+
     protected:
 
         boost::asio::io_context _ioContext;

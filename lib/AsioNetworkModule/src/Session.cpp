@@ -12,7 +12,6 @@ Session::Session(boost::asio::ip::tcp::socket socket)
 {
     _endpoint = _socketTCP.remote_endpoint();
     _socketUDP.open(boost::asio::ip::udp::v4());
-    std::memset(_data, 0, _max_length);
 }
 
 Session::~Session()
@@ -21,21 +20,18 @@ Session::~Session()
 
 void Session::read(std::function<void(ISession *)> onDisconnected)
 {
-    _socketTCP.async_read_some(
-        boost::asio::buffer(_data, _max_length),
-        [this, onDisconnected](boost::system::error_code ec, std::size_t length) {
-            if (!ec) {
-                std::cout << "Received: " << _data;
-                std::cout << "Size: " << length << std::endl;
-                std::memset(_data, 0, _max_length);
+    _socketTCP.async_receive(
+        boost::asio::buffer(&_data.header, sizeof(Header)),
+        [this, onDisconnected](const boost::system::error_code &error, std::size_t bytes_transferred) {
+            if (!error) {
+                std::istringstream iss;
+                showHeader(_data.header);
+                this->_socketTCP.receive(boost::asio::buffer(&iss, _data.header.BodyLength));
+                iss >> _data.body;
+                showBody(reinterpret_cast<Entity *>(&_data.body));
                 read(onDisconnected);
             } else {
-                if (ec == boost::asio::error::eof) {
-                    this->setConnected(false);
-                    onDisconnected(this);
-                } else {
-                    std::cerr << "Error: " << ec.message() << std::endl;
-                }
+                onDisconnected(this);
             }
         });
 }
@@ -58,7 +54,6 @@ void Session::sendTCP(const Request &request)
         _socketTCP, boost::asio::buffer(&request, sizeof(Request)),
         [this, request](boost::system::error_code ec, std::size_t length) {
             if (!ec) {
-                std::cout << "Sent: " << request << std::endl;
                 std::cout << "Size: " << length << std::endl;
             }
         });

@@ -30,11 +30,15 @@ void Client::connectToServer()
 void Client::readTCP()
 {
     _socketTCP.async_receive(
-        boost::asio::buffer(&_requestTCP, sizeof(Request)),
+        boost::asio::buffer(&_requestTCP.header, sizeof(Header)),
         [this](const boost::system::error_code &error, std::size_t bytes_transferred) {
             (void)bytes_transferred;
+            std::istringstream iss;
             if (!error) {
-                showRequest(_requestTCP);
+                showHeader(_requestTCP.header);
+                this->_socketTCP.receive(boost::asio::buffer(&iss, _requestTCP.header.BodyLength));
+                iss >> _requestTCP.body;
+                showBody(reinterpret_cast<Entity *>(&_requestTCP.body));
                 readTCP();
             }
         });
@@ -61,4 +65,14 @@ void Client::sendTCP(const std::string &message)
 void Client::sendUDP(const std::string &message)
 {
     _socketUDP.send_to(boost::asio::buffer(message), _endpointUDPServer);
+}
+
+void Client::sendTCP(const Request &request)
+{
+    boost::asio::write(_socketTCP, boost::asio::buffer(&request, sizeof(Request)));
+}
+
+void Client::sendUDP(const Request &request)
+{
+    _socketUDP.send_to(boost::asio::buffer(&request, sizeof(Request)), _endpointUDPServer);
 }

@@ -11,7 +11,6 @@
 #include <iostream>
 #include "PackUnpack.hpp"
 
-
 class IClient {
     public:
         virtual ~IClient() = default;
@@ -25,6 +24,10 @@ class IClient {
         virtual void sendTCP(const std::string &message) = 0;
 
         virtual void sendUDP(const std::string &message) = 0;
+
+        virtual void sendTCP(const Request& request) = 0;
+
+        virtual void sendUDP(const Request& request) = 0;
 
         virtual int getId() const { return _id; }
 
