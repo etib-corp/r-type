@@ -23,9 +23,7 @@ if(NOT glfw_POPULATED)
     add_subdirectory(${glfw_SOURCE_DIR} ${glfw_BINARY_DIR})
 endif()
 
-set(OpenGL_GL_PREFERENCE "LEGACY")
-
-find_package(OpenGL 2 REQUIRED)
+find_package(OpenGL REQUIRED)
 find_package(Freetype REQUIRED)
 
 set(CMAKE_CXX_STANDARD 20)
