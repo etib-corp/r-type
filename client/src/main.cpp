@@ -9,6 +9,7 @@
 #include "Engine.hpp"
 #include "Scene.hpp"
 #include <iostream>
+#include "ECS/Ecs.hpp"
 
 class GameScene : public LE::Scene {
     public:
@@ -30,6 +31,11 @@ class GameScene : public LE::Scene {
         {
             std::cout << "Game scene ended." << std::endl;
         }
+};
+
+struct Position {
+    float x;
+    float y;
 };
 
 int main(int ac, char **av)
