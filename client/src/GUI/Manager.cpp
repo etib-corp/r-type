@@ -18,3 +18,10 @@ LE::GUI::Manager::Manager(unsigned int width, unsigned int height)
 LE::GUI::Manager::~Manager()
 {
 }
+
+void LE::GUI::Manager::init()
+{
+    for (auto &child : _children) {
+        child->init();
+    }
+}

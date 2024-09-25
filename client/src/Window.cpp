@@ -6,8 +6,11 @@
 */
 
 #include "Window.hpp"
+
 #include "Scene.hpp"
-#include "Engine.hpp"
+#include "Shader.hpp"
+
+LE::Shader *fontShader{nullptr};
 
 LE::Window::Window(const std::string& title, std::size_t width, std::size_t height)
     : _title(title), _width(width), _height(height), _window(nullptr), _framerateLimit(60), _monitor(nullptr), _mode(nullptr) {
@@ -33,7 +36,12 @@ LE::Window::Window(const std::string& title, std::size_t width, std::size_t heig
     glFrontFace(GL_CW);
 
     glfwSwapInterval(1);
+
     _clock = std::make_unique<LE::Clock>();
+    fontShader = new LE::Shader("assets/shaders/font.vert", "assets/shaders/font.frag");
+    fontShader->use();
+    glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(width), 0.0f, static_cast<float>(height));
+    glUniformMatrix4fv(glGetUniformLocation(fontShader->getID(), "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 }
 
 LE::Window::~Window()
@@ -47,7 +55,6 @@ void LE::Window::render(std::shared_ptr<Scene> scene)
 {
     if (_clock->getElapsedTime() < (1000.0f / _framerateLimit))
         return;
-    LE::Engine::getInstance()->debug("Rendering frame...");
     _clock->restart();
     clear();
     scene->draw();
@@ -70,7 +77,6 @@ void LE::Window::_initGLFW()
     glfwWindowHint(GLFW_SAMPLES, 4);
 
     glfwWindowHint(GLFW_DOUBLEBUFFER, GL_TRUE);
-
 
     _monitor = glfwGetPrimaryMonitor();
     _mode = glfwGetVideoMode(_monitor);
