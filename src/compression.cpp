@@ -7,14 +7,14 @@
 #include <zlib.h>
 #include "PackUnpack.hpp"
 
-void showRequest(Request header)
+void showHeader(Header header)
 {
     std::cout << "Header:" << std::endl;
     std::cout << "\tMagicNumber: " << +header.MagicNumber << std::endl;
     std::cout << "\tECS_CLIENT_ID: " << +header.ECS_CLIENT_ID << std::endl;
     std::cout << "\tAction: " << +header.Action << std::endl;
     std::cout << "\tBodyLength: " << header.BodyLength << std::endl;
-    std::cout << "\tBodyCorp: " << header.Body << std::endl;
+    // std::cout << "\tBodyCorp: " << header.Body << std::endl;
 }
 
 void showBody(Entity *entity)
@@ -25,7 +25,7 @@ void showBody(Entity *entity)
     std::cout << "\t" << entity->life << std::endl;
 }
 
-std::ostream& operator<<(std::ostream& os, const Request& req)
+std::ostream& operator<<(std::ostream& os, const Body& req)
 {
     std::vector<uint8_t> serializedData = PackUnpack::serialize(req);
     std::vector<uint8_t> packedData = PackUnpack::pack(serializedData);
@@ -33,12 +33,12 @@ std::ostream& operator<<(std::ostream& os, const Request& req)
     return os;
 }
 
-std::istream& operator>>(std::istream& is, Request& req)
+std::istream& operator>>(std::istream& is, Body& req)
 {
-    size_t originalSize = sizeof(Request);
+    size_t originalSize = sizeof(Body);
     std::vector<uint8_t> compressedData((std::istreambuf_iterator<char>(is)), std::istreambuf_iterator<char>());
     std::vector<uint8_t> decompressedData = PackUnpack::unPack(compressedData, originalSize);
-    req = PackUnpack::deserialize<Request>(decompressedData);
+    req = PackUnpack::deserialize<Body>(decompressedData);
     return is;
 }
 

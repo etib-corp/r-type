@@ -61,12 +61,20 @@ class PackUnpack {
     private:
 };
 
-struct Request {
+struct Header {
     uint8_t MagicNumber;
     uint8_t ECS_CLIENT_ID;
     uint8_t Action;
     uint32_t BodyLength;
-    uint8_t Body[1024];
+};
+
+struct Body {
+    uint8_t body[1024];
+};
+
+struct Request {
+    Header header;
+    Body body;
 };
 
 struct Entity {
@@ -75,12 +83,11 @@ struct Entity {
     int life;
 };
 
+std::ostream& operator<<(std::ostream& os, const Body& req);
 
-std::ostream& operator<<(std::ostream& os, const Request& req);
+std::istream& operator>>(std::istream& is, Body& req);
 
-std::istream& operator>>(std::istream& is, Request& req);
-
-void showRequest(Request header);
+void showHeader(Header header);
 
 void showBody(Entity *entity);
 
