@@ -17,7 +17,13 @@ FetchContent_Declare(
   GIT_TAG        v3.2.5
 )
 
-FetchContent_MakeAvailable(xerces)
+FetchContent_Declare(
+  freetype
+  GIT_REPOSITORY git@github.com:freetype/freetype.git
+  GIT_TAG        VER-2-13-3
+)
+
+FetchContent_MakeAvailable(xerces freetype)
 
 add_subdirectory(dependencies/glfw-3.4)
 
