@@ -112,12 +112,19 @@ namespace LE {
              * @brief Adds a new scene to the SceneManager.
              *
              * This method adds a new scene to the SceneManager, making it available for playback.
+<<<<<<< HEAD:client/include/SceneManager.hpp
              * The scene is identified by a unique name, which can be used to reference the scene
              * when playing or stopping it.
              *
              * @param scene A shared pointer to the scene to add.
              * @param name The name to associate with the scene. This name should be unique
              *             and used to reference the scene when playing or stopping it.
+=======
+             * The scene is identified by its name, which should be unique within the SceneManager.
+             *
+             * @param scene A shared pointer to the scene to be added.
+             * @param name The name of the scene. This should be unique within the SceneManager.
+>>>>>>> 330609da (chore: add missing documentation):graphical/include/SceneManager.hpp
              */
             void addScene(std::shared_ptr<Scene> scene, const std::string &name);
 
@@ -125,10 +132,17 @@ namespace LE {
              * @brief Removes a scene from the SceneManager.
              *
              * This method removes a scene from the SceneManager, making it unavailable for playback.
+<<<<<<< HEAD:client/include/SceneManager.hpp
              * The scene is identified by its name, which should match the name of the scene that was
              * previously added to the SceneManager.
              *
              * @param sceneName The name of the scene to remove.
+=======
+             * The scene is identified by its name, which should match the name of a scene
+             * that has been previously added to the SceneManager.
+             *
+             * @param name The name of the scene to be removed.
+>>>>>>> 330609da (chore: add missing documentation):graphical/include/SceneManager.hpp
              */
             void removeScene(const std::string &sceneName);
 
@@ -142,6 +156,12 @@ namespace LE {
              */
             void selectScene(const std::string &sceneName);
 
+            /**
+             * @brief Initializes the SceneManager.
+             *
+             * This method initializes the SceneManager, setting up any necessary resources
+             * or configurations required for managing scenes within the application.
+             */
             void init();
 
         private:

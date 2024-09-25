@@ -64,10 +64,10 @@ namespace LE {
             virtual void play() = 0;
 
             /**
-             * @brief Pure virtual function to draw the scene.
+             * @brief Function to draw the scene.
              *
-             * This function must be implemented by derived classes to define
-             * how the scene is rendered.
+             * This function is used to draw the scene. It is implemented by
+             * the base class to draw the GUI elements of the scene.
              */
             void draw();
 
@@ -79,7 +79,13 @@ namespace LE {
              */
             virtual void stop() = 0;
 
-            virtual void init() = 0;
+            /**
+             * @brief Function to initialize the scene.
+             *
+             * This function is used to initialize the scene. It is implemented
+             * by the base class to initialize the GUI elements of the scene.
+             */
+            void init();
 
             /**
              * @brief Shared pointer to an ECS (Entity Component System) instance.

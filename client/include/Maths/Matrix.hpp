@@ -20,14 +20,6 @@
  * @file Matrix.hpp
  * @brief Defines the Matrix class for representing 4D vectors.
  */
-
-/**
-    * @namespace EGE
-    * @brief Namespace for the ETIB Game Engine.
-    *
-    * The EGE namespace contains all the classes, functions, and variables
-    * related to the ETIB Game Engine.
-    */
 namespace LE {
         /**
          * @class Matrix

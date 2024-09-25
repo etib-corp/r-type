@@ -24,6 +24,14 @@
 #include <string>
 
 namespace LE {
+    /**
+     * @class Shader
+     * @brief The Shader class is responsible for managing OpenGL shaders.
+     *
+     * The Shader class provides functionalities for compiling and using OpenGL shaders.
+     *
+     * @note All shaders files are stored in `client/assets/shaders/`.
+     */
     class Shader {
         public:
             /**

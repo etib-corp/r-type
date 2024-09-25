@@ -17,8 +17,7 @@ namespace LE {
 #include <cmath>
 #include <memory>
 #include <string>
-// #define GLEW_STATIC
-// #include <GL/glew.h>
+
 #define GL_GLEXT_PROTOTYPES
 #include <GL/gl.h>
 #include <GL/glext.h>
