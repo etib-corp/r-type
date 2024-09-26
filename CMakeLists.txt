@@ -18,11 +18,13 @@ add_subdirectory(dependencies/xerces-c-3.2.5)
 add_subdirectory(dependencies/freetype-VER-2-13-3)
 add_subdirectory(dependencies/glm)
 
+
 file(GLOB_RECURSE SOURCES src/*.cpp)
 include_directories(include)
 add_library(r-type STATIC ${SOURCES})
 
 include_directories(${OPENGL_INCLUDE_DIRS})
+include_directories(dependencies/glm/)
 
 file(GLOB_RECURSE CLIENT_SOURCES client/src/*.cpp)
 include_directories(client/include client/include/GUI)
@@ -34,14 +36,13 @@ include_directories(${OPENGL_INCLUDE_DIRS})
 add_executable(r-type_client ${CLIENT_SOURCES})
 
 target_link_libraries(r-type_client r-type)
-
 target_link_libraries(r-type_client glfw)
 target_link_libraries(r-type_client ${OPENGL_LIBRARIES})
 target_link_libraries(r-type_client ${GLUT_LIBRARIES})
 target_link_libraries(r-type_client zlib)
 target_link_libraries(r-type_client freetype)
 target_link_libraries(r-type_client xerces-c)
-target_link_libraries(r-type_client glm-header-only)
+target_link_libraries(r-type_client glm)
 
 file(GLOB_RECURSE SERVER_SOURCES server/src/*.cpp)
 include_directories(server/include)
