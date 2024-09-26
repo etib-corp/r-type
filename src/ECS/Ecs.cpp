@@ -11,6 +11,7 @@ Ecs::Ecs()
 {
     _componentManager = std::make_unique<ComponentManager>();
     _entityManager = std::make_unique<EntityManager>();
+    _systemManager = std::make_unique<SystemManager>();
 }
 
 Ecs::~Ecs()
@@ -31,4 +32,9 @@ void Ecs::destroyEntity(Entity entity)
 {
     _entityManager->destroyEntity(entity);
     _componentManager->entityDestroyed(entity);
+}
+
+void Ecs::update(float dt)
+{
+    _systemManager->update(this, dt);
 }

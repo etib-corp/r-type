@@ -15,27 +15,30 @@ class GameScene : public LE::Scene {
     public:
         GameScene() : LE::Scene()
         {
-            _eventManager->addEventListener({LE::Input::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::Type::PRESSED}, [this](LE::Engine *engine) {
-                std::cout << "Left click pressed" << std::endl;
-            });
-            _eventManager->addEventListener({LE::Input::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::Type::RELEASED}, [this](LE::Engine *engine) {
-                std::cout << "Left click released" << std::endl;
-            });
+            _ecs = std::make_shared<Ecs>();
+            Entity entity = _ecs->createEntity();
+            _ecs->registerComponent<TransformComponent>();
+            _ecs->registerComponent<SpriteComponent>();
+            Signature signature;
+            signature.set(_ecs->getComponentType<TransformComponent>());
+            signature.set(_ecs->getComponentType<SpriteComponent>());
+            _ecs->registerSystem<Render2DSystem>();
+            _ecs->setSignature<Render2DSystem>(signature);
+
+            _ecs->addComponent<TransformComponent>(entity, (TransformComponent){{100, 100, 1}, {0, 0, 0}, {0.5f, 0.5f}});
+            auto sprite = createSpriteComponent("assets/images/character.png");
+            _ecs->addComponent<SpriteComponent>(entity, *sprite);
         }
         void play() override
         {
             // std::cout << "Game scene updated." << std::endl;
             _eventManager->pollEvents();
+            _ecs->update(0.0f);
         }
         void stop() override
         {
             std::cout << "Game scene ended." << std::endl;
         }
-};
-
-struct Position {
-    float x;
-    float y;
 };
 
 int main(int ac, char **av)

@@ -9,6 +9,8 @@
 
 #include "ECS/common.hpp"
 
+class Ecs;
+
 /**
  * @class System
  * @brief The System class is the base
@@ -19,7 +21,7 @@ class System {
          * @brief Update the system
          * This function will be used to update the system
          */
-        virtual void update(float dt) = 0;
+        virtual void update(Ecs *ecs, float dt) = 0;
         std::set<Entity> _entities;         ///< The entities that the system is responsible for
 };
 
@@ -143,12 +145,12 @@ class SystemManager {
          *
          * This function will be used to update the systems
          */
-        void update(float dt)
+        void update(Ecs *ecs, float dt)
         {
             for (auto const &pair : _systems) {
                 auto const &system = pair.second;
 
-                system->update(dt);
+                system->update(ecs, dt);
             }
         }
     private:
