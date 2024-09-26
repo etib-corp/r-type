@@ -18,9 +18,21 @@ namespace LE {
 #include <memory>
 #include <string>
 
-#define GL_GLEXT_PROTOTYPES
-#include <OpenGL/gl.h>
-#include <OpenGL/glext.h>
+#ifdef __linux__
+    #include <GL/gl.h>
+    #include <GL/glext.h>
+#endif
+
+#ifdef __APPLE__
+    #include <OpenGL/gl.h>
+    #include <OpenGL/glext.h>
+#endif
+
+#ifdef _WIN32
+    #include <GL/gl.h>
+    #include <GL/glext.h>
+#endif
+
 #include "GLFW/glfw3.h"
 
 namespace LE {
