@@ -19,16 +19,19 @@ namespace LE {
 #include <string>
 
 #ifdef __linux__
+    #define GL_GLEXT_PROTOTYPES
     #include <GL/gl.h>
     #include <GL/glext.h>
 #endif
 
 #ifdef __APPLE__
+    #define GL_GLEXT_PROTOTYPES
     #include <OpenGL/gl.h>
     #include <OpenGL/glext.h>
 #endif
 
 #ifdef _WIN32
+    #define GL_GLEXT_PROTOTYPES
     #include <GL/gl.h>
     #include <GL/glext.h>
 #endif
