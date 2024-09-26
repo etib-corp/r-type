@@ -54,7 +54,7 @@ class SystemManager {
         template <typename T>
         std::shared_ptr<T> registerSystem()
         {
-            const char *typeName = typeid(T).name();
+            std::string typeName = typeid(T).name();
 
             if (_systems.find(typeName) != _systems.end()) {
                 throw SystemManagerError("System already registered");
@@ -75,7 +75,7 @@ class SystemManager {
         template <typename T>
         void setSignature(Signature signature)
         {
-            const char *typeName = typeid(T).name();
+            std::string typeName = typeid(T).name();
 
             if (_systems.find(typeName) == _systems.end()) {
                 throw SystemManagerError("System not registered before setting signature");
@@ -129,7 +129,7 @@ class SystemManager {
         template <typename T>
         void deleteSystem()
         {
-            const char *typeName = typeid(T).name();
+            std::string typeName = typeid(T).name();
 
             if (_systems.find(typeName) == _systems.end()) {
                 throw SystemManagerError("System not registered before deleting");
@@ -152,6 +152,6 @@ class SystemManager {
             }
         }
     private:
-        std::unordered_map<const char *, Signature> _signatures;                ///< Map of signatures
-        std::unordered_map<const char *, std::shared_ptr<System>> _systems;     ///< Map of systems
+        std::unordered_map<std::string, Signature> _signatures;                ///< Map of signatures
+        std::unordered_map<std::string, std::shared_ptr<System>> _systems;     ///< Map of systems
 };
