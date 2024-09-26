@@ -10,6 +10,7 @@
 #include "Engine.hpp"
 #include "Scene.hpp"
 #include <iostream>
+#include "ECS/Ecs.hpp"
 
 class GameScene : public LE::Scene {
     public:
@@ -33,16 +34,20 @@ class GameScene : public LE::Scene {
         }
 };
 
-// int main(int ac, char **av)
-// {
-//     // Initialize the engine
-//     // glutInit(&ac, av);
-//     auto engine = LE::Engine::getInstance();
-//     auto scene = std::make_shared<GameScene>();
-//     engine->addScene("game", scene);
-//     engine->run(true);
-//     return 0;
-// }
+struct Position {
+    float x;
+    float y;
+};
+
+int main(int ac, char **av)
+{
+    // Initialize the engine
+    auto engine = LE::Engine::getInstance();
+    auto scene = std::make_shared<GameScene>();
+    engine->addScene("game", scene);
+    engine->run(true);
+    return 0;
+}
 
 #include "LoaderLib.hpp"
 #include "ResolvingLib.hpp"
@@ -63,7 +68,7 @@ bool deserializeRequest(const char* data, std::size_t length, std::istringstream
     return true;
 }
 
-int main(void)
+int _main(void)
 {
     std::string pathLib = getPathOfNetworkDynLib() + getExtensionKernel();
 
