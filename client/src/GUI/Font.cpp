@@ -58,7 +58,7 @@ void LE::GUI::Font::init()
             texture,
             glm::ivec2(_face->glyph->bitmap.width, _face->glyph->bitmap.rows),
             glm::ivec2(_face->glyph->bitmap_left, _face->glyph->bitmap_top),
-            _face->glyph->advance.x
+            static_cast<unsigned int>(_face->glyph->advance.x)
         };
         _characters.insert(std::pair<char, Character>(c, character));
     }

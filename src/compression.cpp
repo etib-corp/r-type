@@ -17,7 +17,7 @@ void showHeader(Header header)
     // std::cout << "\tBodyCorp: " << header.Body << std::endl;
 }
 
-void showBody(Entity *entity)
+void showBody(_Entity *entity)
 {
     std::cout << "Body:" << std::endl;
     std::cout << "\t" << entity->type << std::endl;

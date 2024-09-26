@@ -77,7 +77,7 @@ struct Request {
     Body body;
 };
 
-struct Entity {
+struct _Entity {
     char type[256];
     char action[256];
     int life;
@@ -89,6 +89,6 @@ std::istream& operator>>(std::istream& is, Body& req);
 
 void showHeader(Header header);
 
-void showBody(Entity *entity);
+void showBody(_Entity *entity);
 
 #endif /* !PACKUNPACK_HPP_ */

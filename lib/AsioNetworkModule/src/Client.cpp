@@ -41,7 +41,7 @@ void Client::readTCP()
                 _socketTCP.receive(boost::asio::buffer(_bodyStr, _requestTCP.header.BodyLength));
                 iss.str(_bodyStr);
                 iss >> _requestTCP.body;
-                showBody(reinterpret_cast<Entity *>(&_requestTCP.body));
+                showBody(reinterpret_cast<_Entity *>(&_requestTCP.body));
                 delete _bodyStr;
             }
             ::memset(&_requestTCP, 0, sizeof(Request));
