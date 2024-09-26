@@ -21,6 +21,7 @@ SpriteComponent *createSpriteComponent(std::string path)
     glBindTexture(GL_TEXTURE_2D, sprite->id);
     if (!sprite->data)
         throw std::runtime_error("Failed to load image: " + path);
+    std::cout << "channels: " << sprite->channels << std::endl;
     switch (sprite->channels) {
         case 3:
             sprite->internalFormat = GL_RGB;

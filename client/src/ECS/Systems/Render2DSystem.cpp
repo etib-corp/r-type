@@ -24,10 +24,6 @@ void Render2DSystem::update(Ecs *ecs, float dt)
     for (auto entity : _entities) {
         auto sprite = ecs->getComponent<SpriteComponent>(entity);
         auto transform = ecs->getComponent<TransformComponent>(entity);
-        std::cout << "INFO : Rendering sprite " << sprite.id << " at position " << transform.position.x << ", " << transform.position.y << std::endl;
-        std::cout << "INFO : Sprite rect : " << sprite.rect[0] << ", " << sprite.rect[1] << ", " << sprite.rect[2] << ", " << sprite.rect[3] << std::endl;
-        std::cout << "INFO HEIGHT : " << sprite.height << std::endl;
-        std::cout << "INFO WIDTH : " << sprite.width << std::endl;
         float vertices[] {
         0.0f, 0.0f,                     sprite.rect[0], sprite.rect[1], // top-left
         static_cast<float>(sprite.width), 0.0f,                       sprite.rect[0] + sprite.rect[2], sprite.rect[1], // top-right
@@ -41,7 +37,7 @@ void Render2DSystem::update(Ecs *ecs, float dt)
         glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
 
         glEnableVertexAttribArray(0);
-        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void *)0);
+        glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void *)0);
 
         _shader->use();
 
