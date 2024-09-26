@@ -45,7 +45,7 @@ int main(void)
         server->run();
         while (1) {
             if (server->_sessions.size() > 0) {
-                std::shared_ptr<ISession> session = server->getClientById(1);
+                std::shared_ptr<ISession> session = server->_sessions[0];
                 // std::cout << "Sending: " << oss.str() << std::endl;
                 // request.header = header;
                 // request.body = body;
@@ -55,9 +55,7 @@ int main(void)
                 // showHeader(request.header);
                 // std::cout << "Sending: " << serializeRequest(request)[0] << std::endl;
                 request.header.BodyLength = oss.str().size();
-                std::cout << "Sending: " << request.header.BodyLength << std::endl;
-                std::cout << "seriaize request size" << serializeRequest(request).size() << std::endl;
-                session->sendTCP(serializeRequest(request));
+                // session->sendTCP(serializeRequest(request));
                 sleep(5);
             }
         }

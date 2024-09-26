@@ -22,6 +22,7 @@ Client::~Client()
 
 void Client::connectToServer()
 {
+    readUDP();
     _socketTCP.connect(_endpointTCPServer);
     readTCP();
     _thread = std::thread([this]() { _ioContext.run(); });
