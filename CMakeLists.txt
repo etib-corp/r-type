@@ -11,6 +11,8 @@ find_package(OpenGL REQUIRED)
 
 add_subdirectory(dependencies/glfw-3.4)
 
+find_package(OpenGL REQUIRED)
+
 add_subdirectory(lib)
 
 file(GLOB_RECURSE SOURCES src/*.cpp)
@@ -23,6 +25,16 @@ file(GLOB_RECURSE CLIENT_SOURCES client/src/*.cpp)
 include_directories(client/include client/include/GUI)
 include_directories(${OPENGL_INCLUDE_DIRS})
 add_executable(r-type_client ${CLIENT_SOURCES})
+target_link_libraries(r-type_client r-type glfw ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} z)
+
+find_package(ZLIB REQUIRED)
+
+if (ZLIB_FOUND)
+    include_directories(${ZLIB_INCLUDE_DIRS})
+    message(STATUS "Zlib found: ${ZLIB_INCLUDE_DIRS}")
+else()
+    message(FATAL_ERROR "Please install Zlib !")
+endif()
 target_link_libraries(r-type_client r-type)
 target_link_libraries(r-type_client glfw)
 target_link_libraries(r-type_client ${OPENGL_LIBRARIES})
@@ -30,4 +42,4 @@ target_link_libraries(r-type_client ${OPENGL_LIBRARIES})
 file(GLOB_RECURSE SERVER_SOURCES server/src/*.cpp)
 include_directories(server/include)
 add_executable(r-type_server ${SERVER_SOURCES})
-target_link_libraries(r-type_server r-type)
+target_link_libraries(r-type_server r-type z)
