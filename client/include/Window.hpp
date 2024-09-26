@@ -110,7 +110,7 @@ namespace LE {
              *
              * @param color The color to set as the clear color.
              */
-            void setClearColor(Color color);
+            void setClearColor(Color *color);
 
             /**
              * @brief Gets the GLFW window pointer.
