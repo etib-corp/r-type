@@ -12,7 +12,7 @@ set(OpenGL_GL_PREFERENCE GLVND)
 find_package(OpenGL REQUIRED)
 
 FetchContent_Declare(
-  xerces
+  xerces-c
   GIT_REPOSITORY git@github.com:apache/xerces-c.git
   GIT_TAG        v3.2.5
 )
@@ -23,7 +23,7 @@ FetchContent_Declare(
   GIT_TAG        VER-2-13-3
 )
 
-FetchContent_MakeAvailable(xerces freetype)
+FetchContent_MakeAvailable(xerces-c freetype)
 
 add_subdirectory(dependencies/glfw-3.4)
 
@@ -37,12 +37,15 @@ add_library(r-type STATIC ${SOURCES})
 
 file(GLOB_RECURSE CLIENT_SOURCES client/src/*.cpp)
 include_directories(client/include client/include/GUI)
+include_directories(${CMAKE_CURRENT_BINARY_DIR}/_deps/freetype-src/include ${CMAKE_CURRENT_BINARY_DIR}/_deps/freetype-src/include/freetype)
+include_directories(${CMAKE_CURRENT_BINARY_DIR}/_deps/xerces-c-src/src/xercesc/include ${CMAKE_CURRENT_BINARY_DIR}/_deps/xerces-c-src/src/xercesc/include/xercesc)
 include_directories(${OPENGL_INCLUDE_DIRS})
 add_executable(r-type_client ${CLIENT_SOURCES})
 target_link_libraries(r-type_client r-type)
 
 target_link_libraries(r-type_client glfw)
 target_link_libraries(r-type_client ${OPENGL_LIBRARIES})
+target_link_libraries(r-type_client freetype xerces-c)
 
 file(GLOB_RECURSE SERVER_SOURCES server/src/*.cpp)
 include_directories(server/include)
