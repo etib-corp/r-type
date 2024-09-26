@@ -28,7 +28,7 @@ void Session::read(std::function<void(ISession *)> onDisconnected)
                 showHeader(_data.header);
                 this->_socketTCP.receive(boost::asio::buffer(&iss, _data.header.BodyLength));
                 iss >> _data.body;
-                showBody(reinterpret_cast<Entity *>(&_data.body));
+                showBody(reinterpret_cast<_Entity *>(&_data.body));
                 read(onDisconnected);
             } else {
                 onDisconnected(this);
