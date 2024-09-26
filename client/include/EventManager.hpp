@@ -15,7 +15,6 @@ namespace LE
 #include "Keys.hpp"
 
 #include <functional>
-#include "GLFW/glfw3.h"
 #include <memory>
 #include <string>
 #include <map>

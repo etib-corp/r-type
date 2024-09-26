@@ -9,7 +9,7 @@
 #define ICLIENT_HPP_
 
 #include <iostream>
-
+#include "PackUnpack.hpp"
 
 class IClient {
     public:
@@ -25,12 +25,25 @@ class IClient {
 
         virtual void sendUDP(const std::string &message) = 0;
 
+        virtual void sendTCP(const Request& request) = 0;
+
+        virtual void sendUDP(const Request& request) = 0;
+
         virtual int getId() const { return _id; }
 
         virtual void setId(int id) { _id = id; }
 
+        virtual char *getDataTCP() { return _dataTCP; }
+
+        virtual char *getDataUDP() { return _dataUDP; }
+
     protected:
         int _id;
+        char _dataTCP[1024] = {0};
+        char _dataUDP[1024] = {0};
+
+        Request _requestTCP = {};
+        Request _requestUDP = {};
     private:
 };
 
