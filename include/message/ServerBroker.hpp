@@ -5,31 +5,35 @@
 #include "message/Broker.hpp"
 
 #include "ResolvingLib.hpp"
-#include "LoaderLib.hpp"
 #include "interface/INetworkModule/INetworkModule.hpp"
+#include "interface/INetworkModule/IServer.hpp"
 
+/**
+ * @class ServerBroker
+ * @brief A class that extends Broker to manage server-side network communication.
+ *
+ * The ServerBroker class is responsible for handling network operations on the server side.
+ * It listens on a specified port and manages network routines.
+ */
 class ServerBroker : public Broker
 {
 public:
-    ServerBroker(std::uint32_t ecs_id, std::uint16_t listen_port) : _listen_port(listen_port)
-    {
-        setECSId(ecs_id);
-        
-        std::string network_module_path = getPathOfNetworkDynLib() + getExtensionKernel();
-        std::string core_module_path = "";
-        
-        _loader_lib = std::make_unique<LoaderLib>(network_module_path, std::string());
+    /**
+     * @brief Constructs a new ServerBroker object.
+     *
+     * @param ecs_id The ID of the ECS (Entity Component System).
+     * @param listen_port The port on which the server will listen for incoming connections.
+     */
+    ServerBroker(std::uint32_t ecs_id, std::uint16_t listen_port);
 
-        _loader_lib->LoadModule();
-    }
-
-    ~ServerBroker(void)
-    {
-    }
-
-    void addMessage(std::uint32_t ecs_id, const std::string &topic_name, std::unique_ptr<Message> message) override;
+    /**
+     * @brief Destroys the ServerBroker object.
+     */
+    ~ServerBroker(void);
 
 private:
     std::uint16_t _listen_port;
-    std::unique_ptr<LoaderLib> _loader_lib;
+    IServer *_server;
+
+    void _networkRoutine(void) override;
 };

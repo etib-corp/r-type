@@ -48,32 +48,11 @@ int main(int ac, char **av)
     return 0;
 }
 
-/*
-#include "LoaderLib.hpp"
-#include "ResolvingLib.hpp"
+#include "message/ClientBroker.hpp"
 
 int main1(void)
 {
-    std::string pathLib = getPathOfNetworkDynLib() + getExtensionKernel();
-
-    try {
-        LoaderLib lb(pathLib, "");
-
-        lb.LoadModule();
-
-        IClient *client = lb.createClient();
-
-        client->connectToServer("127.0.0.1", 8080);
-        client->sendTCP("Hello from client TCP\n");
-        client->sendUDP("Hello from client UDP\n");
-        while (true)
-        {
-        }
-
-    } catch(const std::exception& e) {
-        std::cerr << e.what() << '\n';
-    }
+    std::unique_ptr<ClientBroker> client_broker = std::make_unique<ClientBroker>("127.0.0.1", 4242);
 
     return 0;
 }
-*/

@@ -17,11 +17,8 @@ Server::~Server()
 {
 }
 
-
 void Server::run()
 {
     _listenerTCP->run(this);
     _listenerUDP->run(this);
-    while (true) {
-    }
 }
