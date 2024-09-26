@@ -14,7 +14,6 @@ find_package(OpenGL REQUIRED)
 
 add_subdirectory(dependencies/glfw-3.4)
 add_subdirectory(dependencies/zlib-1.3.1)
-add_subdirectory(dependencies/xerces-c-3.2.5)
 add_subdirectory(dependencies/freetype-VER-2-13-3)
 add_subdirectory(dependencies/glm)
 
@@ -29,8 +28,6 @@ include_directories(dependencies/glm/)
 file(GLOB_RECURSE CLIENT_SOURCES client/src/*.cpp)
 include_directories(client/include client/include/GUI)
 
-include_directories(${CMAKE_CURRENT_BINARY_DIR}/_deps/freetype-src/include ${CMAKE_CURRENT_BINARY_DIR}/_deps/freetype-src/include/freetype)
-include_directories(${CMAKE_CURRENT_BINARY_DIR}/_deps/xerces-c-src/src/xercesc/include ${CMAKE_CURRENT_BINARY_DIR}/_deps/xerces-c-src/src/xercesc/include/xercesc)
 include_directories(${OPENGL_INCLUDE_DIRS})
 
 add_executable(r-type_client ${CLIENT_SOURCES})
@@ -41,7 +38,6 @@ target_link_libraries(r-type_client ${OPENGL_LIBRARIES})
 target_link_libraries(r-type_client ${GLUT_LIBRARIES})
 target_link_libraries(r-type_client zlib)
 target_link_libraries(r-type_client freetype)
-target_link_libraries(r-type_client xerces-c)
 target_link_libraries(r-type_client glm)
 
 file(GLOB_RECURSE SERVER_SOURCES server/src/*.cpp)
