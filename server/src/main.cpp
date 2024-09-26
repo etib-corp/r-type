@@ -28,11 +28,11 @@ int main(void)
         Request request;
         Header header = {.MagicNumber = 0x21, .ECS_CLIENT_ID = 0x01, .Action = 0x05, .BodyLength = 0x13};
         Body body;
-        Entity entity = {.type = "Avion[PADING][PADING][PADING][PADING][PADING]", .action = "Voler[PADING][PADING][PADING][PADING][PADING][PADING][PADING]", .life = 3};
-        ::memmove(&body, &entity, sizeof(Entity));
+        _Entity entity = {.type = "Avion[PADING][PADING][PADING][PADING][PADING]", .action = "Voler[PADING][PADING][PADING][PADING][PADING][PADING][PADING]", .life = 3};
+        ::memmove(&body, &entity, sizeof(_Entity));
 
         showHeader(header);
-        showBody(reinterpret_cast<Entity *>(&body));
+        showBody(reinterpret_cast<_Entity *>(&body));
 
 
         oss << body;
