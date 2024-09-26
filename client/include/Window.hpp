@@ -19,8 +19,8 @@ namespace LE {
 #include <string>
 
 #define GL_GLEXT_PROTOTYPES
-#include <GL/gl.h>
-#include <GL/glext.h>
+#include <OpenGL/gl.h>
+#include <OpenGL/glext.h>
 #include "GLFW/glfw3.h"
 
 namespace LE {

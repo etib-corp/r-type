@@ -16,11 +16,11 @@ file(GLOB_RECURSE SOURCES src/*.cpp)
 include_directories(include)
 add_library(r-type STATIC ${SOURCES})
 
+include_directories(${OPENGL_INCLUDE_DIRS})
+
 file(GLOB_RECURSE CLIENT_SOURCES client/src/*.cpp)
 include_directories(client/include client/include/GUI)
 add_executable(r-type_client ${CLIENT_SOURCES})
-
-include_directories(${OPENGL_INCLUDE_DIRS})
 
 target_link_libraries(r-type_client r-type)
 target_link_libraries(r-type_client glfw)
