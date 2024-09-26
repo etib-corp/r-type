@@ -17,7 +17,6 @@ Server::~Server()
 {
 }
 
-
 void Server::run()
 {
     _listenerTCP->run(this);

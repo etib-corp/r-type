@@ -55,6 +55,7 @@ int main(int ac, char **av)
 #include <cstring>
 #include <sstream>
 #include "PackUnpack.hpp"
+#include "message/ClientBroker.hpp"
 
 bool deserializeRequest(const char* data, std::size_t length, std::istringstream *request)
 {
@@ -115,6 +116,7 @@ int _main(void)
     } catch(const std::exception& e) {
         std::cerr << e.what() << '\n';
     }
+    std::unique_ptr<ClientBroker> client_broker = std::make_unique<ClientBroker>("127.0.0.1", 4242);
 
     return 0;
 }
