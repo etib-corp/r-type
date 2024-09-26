@@ -13,6 +13,7 @@ namespace LE {
 
 #include "Clock.hpp"
 #include "Error.hpp"
+#include "Color.hpp"
 
 #include <cmath>
 #include <memory>
@@ -27,13 +28,6 @@ namespace LE {
     class Shader;
 }
 extern LE::Shader *fontShader;
-
-using Color = union {
-    unsigned int value;
-    struct {
-        unsigned char r, g, b, a;
-    };
-};
 
 /**
  * @file Window.hpp
