@@ -41,7 +41,7 @@ target_link_libraries(r-type_client ${GLUT_LIBRARIES})
 target_link_libraries(r-type_client zlib)
 target_link_libraries(r-type_client freetype)
 target_link_libraries(r-type_client xerces-c)
-target_link_libraries(r-type_client glm)
+target_link_libraries(r-type_client glm-header-only)
 
 file(GLOB_RECURSE SERVER_SOURCES server/src/*.cpp)
 include_directories(server/include)
