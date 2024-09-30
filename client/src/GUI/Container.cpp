@@ -24,6 +24,8 @@ void LE::GUI::Container::removeChildren(unsigned int id)
 
 void LE::GUI::Container::draw()
 {
+    if (_triangle)
+        _triangle->draw();
     for (auto child : _children) {
         child->draw();
     }

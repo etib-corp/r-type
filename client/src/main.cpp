@@ -10,25 +10,43 @@
 #include "Scene.hpp"
 #include <iostream>
 
-class GameScene : public LE::Scene {
+class MyContainer : public LE::GUI::Container {
     public:
-        GameScene() : LE::Scene()
-        {
-            _eventManager->addEventListener({LE::Input::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::Type::PRESSED}, [this](LE::Engine *engine) {
-                std::cout << "Left click pressed" << std::endl;
-            });
-            _eventManager->addEventListener({LE::Input::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::Type::RELEASED}, [this](LE::Engine *engine) {
-                std::cout << "Left click released" << std::endl;
-            });
+        MyContainer() {
+            _triangle = new LE::Shapes::Triangle(LE::Vector3<float>(0.0f, 0.0f, 0.0f), LE::Vector3<float>(0.5f, 0.5f, 0.0f), LE::Vector3<float>(0.0f, 0.5f, 0.0f));
         }
-        void play() override
-        {
-            // std::cout << "Game scene updated." << std::endl;
-            _eventManager->pollEvents();
+
+        ~MyContainer() {
+            delete _triangle;
         }
-        void stop() override
-        {
-            std::cout << "Game scene ended." << std::endl;
+
+        void init() {
+            _triangle->init();
+        }
+};
+
+class MyScene : public LE::Scene {
+    public:
+        MyScene() {
+            _guiManager = std::make_shared<LE::GUI::Manager>(800, 600);
+
+            auto container = new MyContainer();
+            _guiManager->addChildren(container);
+        }
+
+        void init() {
+            _guiManager->init();
+        }
+
+        void draw() {
+            _guiManager->draw();
+        }
+
+        void play() {
+            draw();
+        }
+
+        void stop() {
         }
 };
 
@@ -36,9 +54,16 @@ int main(int ac, char **av)
 {
     // Initialize the engine
     auto engine = LE::Engine::getInstance();
-    auto scene = std::make_shared<GameScene>();
-    engine->addScene("game", scene);
-    engine->run(true);
+
+    auto scene = std::make_shared<MyScene>();
+
+    engine->addScene("main", scene);
+    // Run the engine
+    try {
+        engine->runWithDebug(); // Change to true to simulate an error
+    } catch (const LE::Engine::EngineError &e) {
+        std::cerr << "Engine error: " << e.what() << std::endl;
+    }
     return 0;
 }
 

@@ -10,6 +10,8 @@
 #include <vector>
 
 #include "GUI/Component.hpp"
+#include "Color.hpp"
+#include "Shapes/Triangle.hpp"
 
 namespace LE {
     namespace GUI {
@@ -60,6 +62,8 @@ namespace LE {
                 std::vector<Component *> _children; /**< The container's children components. @note Similar to React components. */
                 unsigned int _width; /**< The container's width (In pixels`px`) */
                 unsigned int _height; /**< The container's height (In pixels`px`) */
+                Color *_backgroundColor = new Color(0x000000, 0.0f); /**< The container's background color. */
+                Shapes::Triangle *_triangle;
         };
     }
 }

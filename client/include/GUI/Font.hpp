@@ -8,7 +8,7 @@
 #pragma once
 
 #include <map>
-#include <ft2build.h>
+#include "ft2build.h"
 
 #include "glm.hpp"
 
