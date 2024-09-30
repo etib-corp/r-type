@@ -10,6 +10,9 @@
 #include "Scene.hpp"
 #include "Shader.hpp"
 
+#include "Shapes/Triangle.hpp"
+#include "GUI/Text.hpp"
+
 LE::Shader *fontShader{nullptr};
 LE::Shader *triangleShader{nullptr};
 

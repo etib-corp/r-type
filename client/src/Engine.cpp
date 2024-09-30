@@ -8,6 +8,10 @@
 #include "Engine.hpp"
 #include "SceneManager.hpp"
 #include "Window.hpp"
+
+#include "Shapes/Triangle.hpp"
+#include "GUI/Text.hpp"
+
 #include <iostream>
 
 LE::Engine *LE::Engine::_instance{nullptr};

@@ -58,12 +58,16 @@ namespace LE {
                  */
                 void draw();
 
+                /**
+                 * @brief Function to initialize the container.
+                 *
+                 * This function is responsible for initializing the container before engine rendering.
+                 */
+                void init() override;
+
             protected:
                 std::vector<Component *> _children; /**< The container's children components. @note Similar to React components. */
-                unsigned int _width; /**< The container's width (In pixels`px`) */
-                unsigned int _height; /**< The container's height (In pixels`px`) */
-                Color *_backgroundColor = new Color(0x000000, 0.0f); /**< The container's background color. */
-                Shapes::Rectangle *_rectangle;
+                Shapes::Rectangle *_background; /**< The container's background. */
         };
     }
 }

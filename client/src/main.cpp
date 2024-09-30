@@ -10,18 +10,23 @@
 #include "Scene.hpp"
 #include <iostream>
 
+#include "GUI/Text.hpp"
+
 class MyContainer : public LE::GUI::Container {
     public:
         MyContainer() {
-            _rectangle = new LE::Shapes::Rectangle(0.5, 0.5, 0.0, 0.0);
+            _width = 500;
+            _height = 100;
+            _x = 0.0;
+            _y = 0;
+
+            LE::GUI::Text *text = new LE::GUI::Text(85, "assets/fonts/ARIAL.TTF", 24, "Hello World !");
+
+            addChildren(text);
         }
 
         ~MyContainer() {
-            delete _rectangle;
-        }
-
-        void init() {
-            _rectangle->init();
+            delete _background;
         }
 };
 
@@ -31,6 +36,7 @@ class MyScene : public LE::Scene {
             _guiManager = std::make_shared<LE::GUI::Manager>(800, 600);
 
             auto container = new MyContainer();
+
             _guiManager->addChildren(container);
         }
 

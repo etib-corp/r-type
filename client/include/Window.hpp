@@ -26,7 +26,14 @@ namespace LE {
 
 namespace LE {
     class Shader;
+    namespace Shapes {
+        class Triangle;
+    }
+    namespace GUI {
+        class Text;
+    }
 }
+
 extern LE::Shader *fontShader;
 extern LE::Shader *triangleShader;
 
@@ -136,5 +143,7 @@ namespace LE {
             GLFWmonitor* _monitor;              ///< Pointer to the monitor.
             const GLFWvidmode* _mode;           ///< Pointer to the video mode.
             std::unique_ptr<Clock> _clock;      ///< Unique pointer to the Clock object.
+            friend class LE::Shapes::Triangle;
+            friend class LE::GUI::Text;
     };
 }
