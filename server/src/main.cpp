@@ -55,7 +55,7 @@ int main(void)
                 // showHeader(request.header);
                 // std::cout << "Sending: " << serializeRequest(request)[0] << std::endl;
                 request.header.BodyLength = oss.str().size();
-                // session->sendTCP(serializeRequest(request));
+                session->sendTCP(serializeRequest(request));
                 sleep(5);
             }
         }
