@@ -5,8 +5,7 @@
 ** Client
 */
 
-#ifndef CLIENT_HPP_
-#define CLIENT_HPP_
+#pragma once
 
 #include "interface/INetworkModule/IClient.hpp"
 #include <boost/asio.hpp>
@@ -47,4 +46,3 @@ class Client : public IClient {
     private:
 };
 
-#endif /* !CLIENT_HPP_ */

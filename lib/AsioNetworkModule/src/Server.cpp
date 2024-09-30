@@ -9,16 +9,17 @@
 
 Server::Server(int port)
 {
-    _listenerTCP = std::make_shared<ListenerTCP>(port);
-    _listenerUDP = std::make_shared<ListenerUDP>(port);
+    _listenerTCP = std::make_unique<ListenerTCP>(port);
+    _listenerUDP = std::make_unique<ListenerUDP>(port);
+    _sessionsManager = std::make_shared<SessionManager>();
 }
 
 Server::~Server()
 {
 }
 
-void Server::run()
+void Server::run(void)
 {
-    _listenerTCP->run(this);
-    _listenerUDP->run(this);
+    _listenerTCP->run(_sessionsManager);
+    _listenerUDP->run(_sessionsManager);
 }

@@ -42,7 +42,7 @@ void Client::readTCP()
                 iss.str(_bodyStr);
                 iss >> _requestTCP.body;
                 showBody(reinterpret_cast<_Entity *>(&_requestTCP.body));
-                delete _bodyStr;
+                delete[] _bodyStr;
             }
             ::memset(&_requestTCP, 0, sizeof(Request));
             readTCP();

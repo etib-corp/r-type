@@ -142,15 +142,6 @@ void LE::Shader::setInt(const std::string& name, int value) const
     glUniform1i(location, value);
 }
 
-void LE::Shader::setUInt(const std::string& name, unsigned int value) const
-{
-    unsigned int location = glGetUniformLocation(this->_ID, name.c_str());
-
-    if (location == -1)
-        throw ShaderError("ERROR\n\tUNIFORM NOT FOUND\n\t\twhile trying to set " + name + " to " + std::to_string(value) + "\n");
-    glUniform1ui(location, value);
-}
-
 template<>
     void LE::Shader::setVec2(const std::string& name, const LE::Vector2<bool>& value) const
 {
@@ -189,16 +180,6 @@ template<>
     if (location == -1)
         throw ShaderError("ERROR\n\tUNIFORM NOT FOUND\n\t\twhile trying to set " + name + " to " + std::to_string(value.x) + ", " + std::to_string(value.y) + "\n");
     glUniform2i(location, value.x, value.y);
-}
-
-template<>
-    void LE::Shader::setVec2(const std::string& name, const LE::Vector2<unsigned int>& value) const
-{
-    unsigned int location = glGetUniformLocation(this->_ID, name.c_str());
-
-    if (location == -1)
-        throw ShaderError("ERROR\n\tUNIFORM NOT FOUND\n\t\twhile trying to set " + name + " to " + std::to_string(value.x) + ", " + std::to_string(value.y) + "\n");
-    glUniform2ui(location, value.x, value.y);
 }
 
 template<>
@@ -242,16 +223,6 @@ template<>
 }
 
 template<>
-    void LE::Shader::setVec3(const std::string& name, const LE::Vector3<unsigned int>& value) const
-{
-    unsigned int location = glGetUniformLocation(this->_ID, name.c_str());
-
-    if (location == -1)
-        throw ShaderError("ERROR\n\tUNIFORM NOT FOUND\n\t\twhile trying to set " + name + " to " + std::to_string(value.x) + ", " + std::to_string(value.y) + "\n");
-    glUniform3ui(location, value.x, value.y, value.z);
-}
-
-template<>
     void LE::Shader::setVec4(const std::string& name, const LE::Vector4<bool>& value) const
 {
     unsigned int location = glGetUniformLocation(this->_ID, name.c_str());
@@ -289,14 +260,4 @@ template<>
     if (location == -1)
         throw ShaderError("ERROR\n\tUNIFORM NOT FOUND\n\t\twhile trying to set " + name + " to " + std::to_string(value.x) + ", " + std::to_string(value.y) + "\n");
     glUniform4i(location, value.x, value.y, value.z, value.w);
-}
-
-template<>
-    void LE::Shader::setVec4(const std::string& name, const LE::Vector4<unsigned int>& value) const
-{
-    unsigned int location = glGetUniformLocation(this->_ID, name.c_str());
-
-    if (location == -1)
-        throw ShaderError("ERROR\n\tUNIFORM NOT FOUND\n\t\twhile trying to set " + name + " to " + std::to_string(value.x) + ", " + std::to_string(value.y) + "\n");
-    glUniform4ui(location, value.x, value.y, value.z, value.w);
 }
