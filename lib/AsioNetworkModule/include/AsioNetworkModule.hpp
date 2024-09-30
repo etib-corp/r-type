@@ -5,8 +5,7 @@
 ** module
 */
 
-#ifndef MODULE_HPP_
-#define MODULE_HPP_
+#pragma once
 
 #include "interface/INetworkModule/INetworkModule.hpp"
 #include <iostream>
@@ -37,5 +36,3 @@ class AsioNetworkModule : public INetworkModule {
 
     private:
 };
-
-#endif /* !MODULE_HPP_ */

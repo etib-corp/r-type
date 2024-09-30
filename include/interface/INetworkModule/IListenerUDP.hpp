@@ -8,19 +8,20 @@
 #ifndef ILISTENERUDP_HPP_
 #define ILISTENERUDP_HPP_
 
-class IServer;
+#include <memory>
+#include "ISessionManager.hpp"
 
 class IListenerUDP {
     public:
         virtual ~IListenerUDP() = default;
 
-        void virtual run(IServer *server) = 0;
+        void virtual run(std::shared_ptr<SessionManager> sessionManager) = 0;
 
         void virtual startReceive() = 0;
 
     protected:
         int _port;
-        IServer *_server;
+        std::shared_ptr<SessionManager> _sessionManager;
     private:
 };
 

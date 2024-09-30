@@ -5,8 +5,7 @@
 ** ListenerTCP
 */
 
-#ifndef ListenerTCP_HPP_
-    #define ListenerTCP_HPP_
+#pragma once
 
 #include <boost/asio.hpp>
 #include <iostream>
@@ -57,7 +56,7 @@ class ListenerTCP : public IListenerTCP {
          * It sets up the Listener to wait for incoming Listeners and starts the
          * ASIO context to handle the Listener operations.
          */
-        void run(IServer *module) override;
+        void run(std::shared_ptr<SessionManager> sessionManager) override;
 
     protected:
         /**
@@ -102,5 +101,3 @@ class ListenerTCP : public IListenerTCP {
         int _port;
     private:
 };
-
-#endif /* !ListenerTCP_HPP_ */

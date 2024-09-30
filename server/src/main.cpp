@@ -44,8 +44,8 @@ int main(void)
 
         server->run();
         while (1) {
-            if (server->_sessions.size() > 0) {
-                std::shared_ptr<ISession> session = server->_sessions[0];
+            if (server->_sessionsManager->_sessions.size() > 0) {
+                std::shared_ptr<ISession> session = server->_sessionsManager->_sessions[0];
                 // std::cout << "Sending: " << oss.str() << std::endl;
                 // request.header = header;
                 // request.body = body;
