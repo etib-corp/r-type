@@ -27,7 +27,7 @@ include_directories(${OPENGL_INCLUDE_DIRS})
 include_directories(dependencies/glm/)
 
 file(GLOB_RECURSE CLIENT_SOURCES client/src/*.cpp)
-include_directories(client/include client/include/GUI client/include/Maths dependencies/stb/include)
+include_directories(client/include client/include/GUI client/include/Maths dependencies/stb/include dependencies/rapidobj/include)
 
 
 include_directories(${OPENGL_INCLUDE_DIRS})

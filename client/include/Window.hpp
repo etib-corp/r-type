@@ -37,6 +37,7 @@ namespace LE {
 #endif
 
 #include "GLFW/glfw3.h"
+#include "MacGL.hpp"
 
 namespace LE {
     class Shader;
