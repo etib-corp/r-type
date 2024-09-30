@@ -5,8 +5,7 @@
 ** ISession
 */
 
-#ifndef ISession_HPP_
-#define ISession_HPP_
+#pragma once
 
 #include <string>
 #include <functional>
@@ -42,4 +41,3 @@ class ISession {
     private:
 };
 
-#endif /* !ISession_HPP_ */

@@ -114,14 +114,6 @@ namespace LE {
             void setInt(const std::string &name, int value) const;
 
             /**
-             * @brief Set a unsigned int uniform value in the shader
-             *
-             * @param name The name of the uniform
-             * @param value The value of the uniform
-            */
-            void setUInt(const std::string &name, unsigned int value) const;
-
-            /**
              * @brief Set a vec2 uniform value in the shader
              *
              * @param name The name of the uniform

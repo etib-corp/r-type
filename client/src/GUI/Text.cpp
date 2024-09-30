@@ -6,6 +6,7 @@
 */
 
 #include "GUI/Text.hpp"
+#include "MacGL.hpp"
 
 LE::GUI::Text::Text(unsigned int id, const std::string &fontPath, unsigned int fontHeight, const std::string &content, unsigned int fontWidth )
 {
@@ -59,7 +60,6 @@ void LE::GUI::Text::draw()
             { xpos,     ypos + h,   0.0f, 0.0f },
             { xpos,     ypos,       0.0f, 1.0f },
             { xpos + w, ypos,       1.0f, 1.0f },
-
             { xpos,     ypos + h,   0.0f, 0.0f },
             { xpos + w, ypos,       1.0f, 1.0f },
             { xpos + w, ypos + h,   1.0f, 0.0f }
