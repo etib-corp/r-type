@@ -6,32 +6,38 @@
 #include "message/Broker.hpp"
 
 #include "ResolvingLib.hpp"
-#include "LoaderLib.hpp"
 
+#include "interface/INetworkModule/INetworkModule.hpp"
+#include "interface/INetworkModule/IServer.hpp"
 
+/**
+ * @class ClientBroker
+ * @brief A class that handles client-side network communication.
+ *
+ * ClientBroker is responsible for connecting to a server and managing the network routine
+ * for client-side operations. It inherits from the Broker class.
+ */
 class ClientBroker : public Broker
 {
 public:
-    ClientBroker(std::uint32_t ecs_id, std::string connect_address, std::uint16_t connect_port) : _connect_address(connect_address), _connect_port(connect_port)
-    {
-        setECSId(ecs_id);
+    /**
+     * @brief Constructs a new ClientBroker object.
+     *
+     * @param connect_address The address to connect to.
+     * @param connect_port The port to connect to.
+     */
+    ClientBroker(std::string connect_address, std::uint16_t connect_port);
 
-        std::string network_module_path = getPathOfNetworkDynLib() + getExtensionKernel();
-        std::string core_module_path = "";
-        
-        _loader_lib = std::make_unique<LoaderLib>(network_module_path, std::string());
+    /**
+     * @brief Destroys the ClientBroker object.
+     */
 
-        _loader_lib->LoadModule();
-    }
-
-    ~ClientBroker(void)
-    {
-    }
-
-    void addMessage(std::uint32_t ecs_id, const std::string &topic_name, std::unique_ptr<Message> message) override;
+    ~ClientBroker(void);
 
 private:
     std::string _connect_address;
     std::uint16_t _connect_port;
-    std::unique_ptr<LoaderLib> _loader_lib;
+    IClient *_client;
+
+    void _networkRoutine(void) override;
 };

@@ -5,12 +5,11 @@
 ** Server
 */
 
-#ifndef SERVER_HPP_
-#define SERVER_HPP_
+#pragma once
 
+#include "interface/INetworkModule/IServer.hpp"
 #include "ListenerTCP.hpp"
 #include "ListenerUDP.hpp"
-#include "interface/INetworkModule/IServer.hpp"
 
 class Server : public IServer {
     public:
@@ -22,5 +21,3 @@ class Server : public IServer {
     protected:
     private:
 };
-
-#endif /* !SERVER_HPP_ */

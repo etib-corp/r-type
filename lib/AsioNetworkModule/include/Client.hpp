@@ -5,8 +5,7 @@
 ** Client
 */
 
-#ifndef CLIENT_HPP_
-#define CLIENT_HPP_
+#pragma once
 
 #include "interface/INetworkModule/IClient.hpp"
 #include <boost/asio.hpp>
@@ -27,6 +26,10 @@ class Client : public IClient {
 
         void sendUDP(const std::string &message) override;
 
+        void sendTCP(const Request& request) override;
+
+        void sendUDP(const Request& request) override;
+
     protected:
 
         boost::asio::io_context _ioContext;
@@ -40,11 +43,6 @@ class Client : public IClient {
 
         std::thread _thread;
 
-        char _dataTCP[1024];
-
-        char _dataUDP[1024];
-
     private:
 };
 
-#endif /* !CLIENT_HPP_ */
