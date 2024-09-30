@@ -39,7 +39,7 @@ struct Position {
     float y;
 };
 
-int main(int ac, char **av)
+int _main(int ac, char **av)
 {
     // Initialize the engine
     auto engine = LE::Engine::getInstance();
@@ -69,7 +69,7 @@ bool deserializeRequest(const char* data, std::size_t length, std::istringstream
     return true;
 }
 
-int _main(void)
+int main(void)
 {
     std::string pathLib = getPathOfNetworkDynLib() + getExtensionKernel();
 

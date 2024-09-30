@@ -11,7 +11,7 @@
 #include <queue>
 #include <memory>
 
-class IServer;
+#include "ISessionManager.hpp"
 
 class IListenerTCP {
     public:
@@ -19,10 +19,10 @@ class IListenerTCP {
 
         virtual void WaitForConnection() = 0;
 
-        virtual void run(IServer* module) = 0;
+        virtual void run(std::shared_ptr<SessionManager> module) = 0;
 
     protected:
-        IServer *_server;
+        std::shared_ptr<SessionManager> _sessionManager;
     private:
 };
 

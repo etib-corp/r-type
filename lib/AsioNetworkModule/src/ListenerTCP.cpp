@@ -29,10 +29,10 @@ void ListenerTCP::WaitForConnection()
                 std::cout << "Connection established" << std::endl;
                 std::shared_ptr<Session> newSession = std::make_shared<Session>(std::move(socket));
                 newSession->setId(id++);
-                _server->addClient(newSession);
+                _sessionManager->addClient(newSession);
                 newSession->read([this](ISession *session) {
                     std::cout << "Client disconnected: " << session->getId() << std::endl;
-                    this->_server->removeClientById(session->getId());
+                    this->_sessionManager->removeClientById(session->getId());
                 });
                 // Request request = {0x0, 0x01, 0x05, 0x13, 0x0};
                 // newSession->sendTCP(request);
@@ -41,9 +41,9 @@ void ListenerTCP::WaitForConnection()
         });
 }
 
-void ListenerTCP::run(IServer* server)
+void ListenerTCP::run(std::shared_ptr<SessionManager> sessionManager)
 {
-    _server = server;
+    _sessionManager = sessionManager;
     this->WaitForConnection();
     _threadContext = std::thread([this]() {
         _io_context.run();

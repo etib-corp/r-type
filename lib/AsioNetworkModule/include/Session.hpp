@@ -5,8 +5,7 @@
 ** Session
 */
 
-#ifndef SESSION_HPP_
-#define SESSION_HPP_
+#pragma once
 
 #include <boost/asio.hpp>
 #include <memory>
@@ -72,4 +71,3 @@ class Session : public ISession {
     private:
 };
 
-#endif /* !SESSION_HPP_ */

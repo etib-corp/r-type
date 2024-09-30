@@ -5,17 +5,17 @@
 ** IServer
 */
 
-#ifndef ISERVER_HPP_
-#define ISERVER_HPP_
+#pragma once
 
 #include <queue>
 #include <memory>
 #include <iostream>
 #include <deque>
 
+#include "interface/INetworkModule/ISession.hpp"
 #include "interface/INetworkModule/IListenerTCP.hpp"
 #include "interface/INetworkModule/IListenerUDP.hpp"
-#include "interface/INetworkModule/ISession.hpp"
+#include "interface/INetworkModule/ISessionManager.hpp"
 
 class IServer {
     public:
@@ -23,38 +23,7 @@ class IServer {
 
         virtual void run(void) = 0;
 
-        virtual void addClient(std::shared_ptr<ISession> client)
-        {
-            _sessions.push_back(client);
-        }
-
-        virtual std::deque<std::shared_ptr<ISession>> &getClients()
-        {
-            return _sessions;
-        }
-
-        virtual std::shared_ptr<ISession> getClientById(int id)
-        {
-            std::deque<std::shared_ptr<ISession>> clients = _sessions;
-            while (!clients.empty()) {
-                if (clients.front()->getId() == id)
-                    return clients.front();
-                clients.pop_front();
-            }
-            return nullptr;
-        }
-
-        virtual void removeClientById(int id)
-        {
-            for (auto it = _sessions.begin(); it != _sessions.end(); it++) {
-                if ((*it)->getId() == id) {
-                    _sessions.erase(it);
-                    return;
-                }
-            }
-        }
-
-        std::deque<std::shared_ptr<ISession>> _sessions;
+        std::shared_ptr<SessionManager> _sessionsManager;
 
     protected:
 
@@ -62,5 +31,3 @@ class IServer {
         std::shared_ptr<IListenerUDP> _listenerUDP;
     private:
 };
-
-#endif /* !ISERVER_HPP_ */

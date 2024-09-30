@@ -1,6 +1,6 @@
 file(GLOB_RECURSE ASIO_NETWORK_MODULE_SOURCES src/*.cpp ../../src/*.cpp)
 
-include_directories(../../include/)
+include_directories(../../include)
 include_directories(include)
 
 add_subdirectory(dependencies/boost-1.86.0)
