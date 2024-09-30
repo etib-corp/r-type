@@ -28,6 +28,7 @@ namespace LE {
     class Shader;
 }
 extern LE::Shader *fontShader;
+extern LE::Shader *triangleShader;
 
 /**
  * @file Window.hpp
