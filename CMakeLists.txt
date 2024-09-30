@@ -13,17 +13,6 @@ set(OPENGL_SILENT TRUE)
 set(OpenGL_GL_PREFERENCE GLVND)
 find_package(OpenGL REQUIRED)
 
-include(FetchContent)
-
-FetchContent_Declare(
-  freetype
-  GIT_REPOSITORY https://github.com/freetype/freetype.git
-  GIT_TAG        VER-2-13-3
-)
-
-FetchContent_MakeAvailable(freetype)
-
-
 add_subdirectory(dependencies/glfw-3.4)
 add_subdirectory(dependencies/zlib-1.3.1)
 add_subdirectory(dependencies/freetype-VER-2-13-3)
@@ -31,9 +20,7 @@ add_subdirectory(dependencies/glm)
 
 
 file(GLOB_RECURSE SOURCES src/*.cpp)
-
-include_directories(include client/include  server/include)
-
+include_directories(include)
 add_library(r-type STATIC ${SOURCES})
 
 include_directories(${OPENGL_INCLUDE_DIRS})
@@ -41,12 +28,14 @@ include_directories(dependencies/glm/)
 
 file(GLOB_RECURSE CLIENT_SOURCES client/src/*.cpp)
 include_directories(client/include client/include/GUI client/include/Maths dependencies/stb/include)
+
+
 include_directories(${OPENGL_INCLUDE_DIRS})
 
 add_executable(r-type_client ${CLIENT_SOURCES})
 
 target_link_libraries(r-type_client r-type)
-target_link_libraries(r-type_client glfw freetype)
+target_link_libraries(r-type_client glfw)
 target_link_libraries(r-type_client ${OPENGL_LIBRARIES})
 target_link_libraries(r-type_client ${GLUT_LIBRARIES})
 target_link_libraries(r-type_client zlib)
