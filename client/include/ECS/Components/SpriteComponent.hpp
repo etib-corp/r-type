@@ -25,7 +25,7 @@ struct SpriteComponent {
     unsigned int quadVAO = 0;
     unsigned int quadVBO = 0;
     unsigned char *data = nullptr;
-    LE::Vector4<int> rect = {0, 0, 1, 1};
+    LE::Vector4<float> rect = {0.0f, 0.0f, 1.0f, 1.0f};
 };
 
 SpriteComponent *createSpriteComponent(std::string path);
