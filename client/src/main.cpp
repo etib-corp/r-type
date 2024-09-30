@@ -25,7 +25,7 @@ class GameScene : public LE::Scene {
             _ecs->registerSystem<Render2DSystem>();
             _ecs->setSignature<Render2DSystem>(signature);
 
-            _ecs->addComponent<TransformComponent>(entity, (TransformComponent){{100, 100, 1}, {0, 0, 0}, {0.5f, 0.5f}});
+            _ecs->addComponent<TransformComponent>(entity, (TransformComponent){{400, 400, 0}, {0, 0, 180}, {0.5f, 0.5f}});
             auto sprite = createSpriteComponent("assets/images/character.png");
             _ecs->addComponent<SpriteComponent>(entity, *sprite);
         }

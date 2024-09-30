@@ -16,7 +16,7 @@ LE::Engine::Engine()
 {
     _debugMode = false;
     _throwError = false;
-    _window = std::make_shared<LE::Window>("Game Window", 800, 600);
+    _window = std::make_shared<LE::Window>("Game Window", 1920, 1080);
     _sceneManager = std::make_shared<SceneManager>();
 }
 

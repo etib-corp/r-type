@@ -43,13 +43,18 @@ void Render2DSystem::update(Ecs *ecs, float dt)
 
         _shader->setInt("image", 0);
 
-        glm::mat4 projection = glm::ortho(0.0f, 800.0f, 600.0f, 0.0f, -100.0f, 100.0f);
+        glm::mat4 projection = glm::ortho(0.0f, 1920.0f, 1080.0f, 0.0f, -100.0f, 100.0f);
         _shader->setMat<4>("projection", projection);
 
         glm::mat4 model = glm::mat4(1.0f);
         model = glm::translate(model, transform.position.toGlmVec3());
+
+        model = glm::translate(model, glm::vec3(0.5f * sprite.width * transform.scale.x, 0.5f * sprite.height * transform.scale.y, 0.0f));
+        model = glm::rotate(model, glm::radians(transform.rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
+        model = glm::translate(model, glm::vec3(-0.5f * sprite.width * transform.scale.x , -0.5f * sprite.height * transform.scale.y, 0.0f));
+
         model = glm::scale(model, glm::vec3(transform.scale.toGlmVec2(), 1.0f));
-        _shader->setMat<4>("model", model);
+         _shader->setMat<4>("model", model);
         _shader->setVec3("spriteColor", LE::Vector3<float>(1.0f, 1.0f, 1.0f));
 
         glActiveTexture(GL_TEXTURE0);
