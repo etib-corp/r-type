@@ -13,15 +13,15 @@
 class MyContainer : public LE::GUI::Container {
     public:
         MyContainer() {
-            _triangle = new LE::Shapes::Triangle(LE::Vector3<float>(0.0f, 0.0f, 0.0f), LE::Vector3<float>(0.5f, 0.5f, 0.0f), LE::Vector3<float>(0.0f, 0.5f, 0.0f));
+            _rectangle = new LE::Shapes::Rectangle(0.5, 0.5, 0.0, 0.0);
         }
 
         ~MyContainer() {
-            delete _triangle;
+            delete _rectangle;
         }
 
         void init() {
-            _triangle->init();
+            _rectangle->init();
         }
 };
 

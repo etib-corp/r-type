@@ -11,7 +11,7 @@
 
 #include "GUI/Component.hpp"
 #include "Color.hpp"
-#include "Shapes/Triangle.hpp"
+#include "Shapes/Rectangle.hpp"
 
 namespace LE {
     namespace GUI {
@@ -63,7 +63,7 @@ namespace LE {
                 unsigned int _width; /**< The container's width (In pixels`px`) */
                 unsigned int _height; /**< The container's height (In pixels`px`) */
                 Color *_backgroundColor = new Color(0x000000, 0.0f); /**< The container's background color. */
-                Shapes::Triangle *_triangle;
+                Shapes::Rectangle *_rectangle;
         };
     }
 }
