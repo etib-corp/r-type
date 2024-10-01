@@ -103,6 +103,9 @@ int main(int ac, char **av)
 int main1(void)
 {
     std::string pathLib = getPathOfNetworkDynLib() + getExtensionKernel();
+    LoaderLib loader_lib(pathLib, "");
+    INetworkModule *network_module = nullptr;
+    ClientBroker *client_broker = nullptr;
 
     try {
         LoaderLib lb(pathLib, "");

@@ -18,13 +18,23 @@ class Topic
 {
 public:
     /**
+     * @brief The type of the topic.
+     */
+    enum class Type
+    {
+        TCP = 0,
+        UDP = 1,
+        RECEIVE = 2,
+    };
+
+    /**
      * @brief Constructs a new Topic object.
      *
      * @param ecs_id The ID associated with the topic.
      * @param name The name of the topic.
      */
 
-    Topic(std::uint32_t ecs_id, const std::string name);
+    Topic(std::uint32_t ecs_id, const std::string name, Type type);
 
     /**
      * @brief Destroys the Topic object.
@@ -36,9 +46,9 @@ public:
      *
      * @param message A unique pointer to the message to be added.
      */
-    void addMessage(std::unique_ptr<Message> message)
+    void addMessage(Message *message)
     {
-        _messages.push(std::move(message));
+        _messages.push(message);
     }
 
     /**
@@ -46,17 +56,20 @@ public:
      *
      * @return A unique pointer to the next message, or nullptr if the queue is empty.
      */
-    std::unique_ptr<Message> getMessage(void)
+    Message *getMessage(void)
     {
         if (_messages.empty())
             return nullptr;
-        auto message = std::move(_messages.front());
+        Message *message = _messages.front();
         _messages.pop();
         return message;
     }
 
+    Type getType(void) const { return _type; }
+
 private:
     std::uint32_t _ecs_id;
     std::string _name;
-    std::queue<std::unique_ptr<Message>> _messages;
+    std::queue<Message *> _messages;
+    Type _type;
 };
