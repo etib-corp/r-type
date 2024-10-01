@@ -18,6 +18,19 @@ std::string serializeRequest(Request &request)
     return oss.str();
 }
 
+std::string compressAndPrepare(Header header, Body body)
+{
+    Request request;
+    std::ostringstream oss;
+
+    oss << body;
+    // ::memset(&request, 0, sizeof(Request));
+    ::memmove(&request.header, &header, sizeof(Header));
+    ::memmove(&request.body, oss.str().c_str(), sizeof(Body));
+    request.header.BodyLength = oss.str().size();
+    return serializeRequest(request);
+}
+
 int main(void)
 {
     std::string pathLib = getPathOfNetworkDynLib() + getExtensionKernel();
@@ -46,16 +59,7 @@ int main(void)
         while (1) {
             if (server->_sessionsManager->_sessions.size() > 0) {
                 std::shared_ptr<ISession> session = server->_sessionsManager->_sessions[0];
-                // std::cout << "Sending: " << oss.str() << std::endl;
-                // request.header = header;
-                // request.body = body;
-                ::memset(&request, 0, sizeof(Request));
-                ::memmove(&request.header, &header, sizeof(Header));
-                ::memmove(&request.body, oss.str().c_str(), sizeof(Body));
-                // showHeader(request.header);
-                // std::cout << "Sending: " << serializeRequest(request)[0] << std::endl;
-                request.header.BodyLength = oss.str().size();
-                session->sendTCP(serializeRequest(request));
+                session->sendTCP(compressAndPrepare(header, body));
                 sleep(5);
             }
         }
