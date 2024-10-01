@@ -117,6 +117,11 @@ class MyScene : public LE::Scene {
             _eventManager->pollEvents();
             _ecs->update(0.0f);
         }
+
+        void stop() override
+        {
+            std::cout << "Game scene ended." << std::endl;
+        }
 };
 
 int main(int ac, char **av)
