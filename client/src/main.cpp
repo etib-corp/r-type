@@ -10,6 +10,7 @@
 #include "Engine.hpp"
 #include "Scene.hpp"
 #include <iostream>
+#include "PackUnpack.hpp"
 #include "ECS/Ecs.hpp"
 
 class GameScene : public LE::Scene

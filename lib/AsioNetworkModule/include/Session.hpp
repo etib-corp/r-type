@@ -11,7 +11,6 @@
 #include <memory>
 #include <iostream>
 #include "interface/INetworkModule/ISession.hpp"
-#include "PackUnpack.hpp"
 
 /**
  * @class Session
@@ -47,13 +46,11 @@ class Session : public ISession {
          * @note This function is designed to be called repeatedly to handle continuous
          *       data reception.
          */
-        void read(std::function<void(ISession *)> onDisconnected) override;
+        void read(std::function<void(ISession *)> onDisconnected, std::function<void(const Request& request)> onReceive) override;
 
-        void sendTCP(const std::string &message) override;
+        void sendTCP(const std::string& request) override;
 
-        void sendTCP(const Request &request);
-
-        void sendUDP(const std::string &message) override;
+        void sendUDP(const std::string& request) override;
 
         void setUdpEndpoint(boost::asio::ip::udp::endpoint udp_endpoint) { _udp_endpoint = udp_endpoint; }
 

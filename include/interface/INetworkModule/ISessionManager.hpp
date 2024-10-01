@@ -11,6 +11,8 @@
 #include "ISession.hpp"
 #include <deque>
 #include <memory>
+#include "PackUnpack.hpp"
+#include <functional>
 
 class SessionManager {
     public:
@@ -49,9 +51,16 @@ class SessionManager {
                 }
             }
         }
+        
+        void setOnReceive(std::function<void(const Request &)> onReceive) { _onReceive = onReceive; }
+
+        std::function<void(const Request &)> getOnReceive() { return _onReceive; }
+
 
         std::deque<std::shared_ptr<ISession>> _sessions;
     protected:
+        std::function<void(const Request &)> _onReceive;
+
     private:
 };
 

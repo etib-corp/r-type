@@ -7,11 +7,18 @@ void Broker::_networkRoutine(void)
 void Broker::_logicalRoutine(void)
 {
     Message *message = nullptr;
+    Message *message = nullptr;
     while (!_incomming_messages.empty())
     {
         _mutex.lock();
         message = _incomming_messages.front();
+        _mutex.lock();
+        message = _incomming_messages.front();
         _incomming_messages.pop();
+        if (_topics.find(std::make_pair(message->getECSId(), message->getTopicName())) == _topics.end())
+            _topics[std::make_pair(message->getECSId(), message->getTopicName())] = std::make_unique<Topic>(message->getECSId(), message->getTopicName(), Topic::Type::RECEIVE);
+        _topics[std::make_pair(message->getECSId(), message->getTopicName())]->addMessage(message);
+        _mutex.unlock();
         if (_topics.find(std::make_pair(message->getECSId(), message->getTopicName())) == _topics.end())
             _topics[std::make_pair(message->getECSId(), message->getTopicName())] = std::make_unique<Topic>(message->getECSId(), message->getTopicName(), Topic::Type::RECEIVE);
         _topics[std::make_pair(message->getECSId(), message->getTopicName())]->addMessage(message);
@@ -27,6 +34,8 @@ void Broker::_routine(void)
 
 void Broker::_run(void)
 {
+    _is_running = true;
+    _mutex.unlock();
     _is_running = true;
     _mutex.unlock();
     while (_is_running)
