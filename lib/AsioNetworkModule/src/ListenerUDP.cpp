@@ -47,7 +47,6 @@ void ListenerUDP::handleReceive(const boost::system::error_code &error, std::siz
             std::shared_ptr<ISession> client = _sessionManager->_sessions[0];
             if (client != nullptr) {
                 dynamic_cast<Session *>(client.get())->setUdpEndpoint(_remoteEndpoint);
-                client->sendUDP("Hello from toto");
             }
         } catch (const std::exception &e) {
             std::cerr << e.what() << '\n';

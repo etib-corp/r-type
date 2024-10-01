@@ -10,7 +10,17 @@
 #include "Engine.hpp"
 #include "Scene.hpp"
 #include <iostream>
+#include "PackUnpack.hpp"
 #include "ECS/Ecs.hpp"
+
+std::string serializeRequest(Request &request)
+{
+    std::ostringstream oss;
+
+    oss.write(reinterpret_cast<const char*>(&request.header), sizeof(request.header));
+    oss.write(reinterpret_cast<const char*>(&request.body), sizeof(uint8_t) * request.header.BodyLength);
+    return oss.str();
+}
 
 class GameScene : public LE::Scene {
     public:
@@ -75,20 +85,35 @@ int main(void)
 
     try {
         Request request;
-        Header header;
-        Body body;
-        Entity entity;
         LoaderLib lb(pathLib, "");
         std::istringstream iss;
         lb.LoadModule();
+        std::ostringstream oss;
 
         INetworkModule *module = lb.createNetworkModule();
 
         IClient *client = module->createClient("127.0.0.1", 8080);
 
         client->connectToServer();
-        // client->sendTCP("Hello 0from client TCP\n");
-        client->sendUDP("Hello from client UDP\n");
+        client->setOnReceive([&request](const Request &req) {
+            ::memmove(&request, &req, sizeof(Request));
+            showHeader(request.header);
+            std::cout << request.body._buffer << std::endl;
+        });
+
+        // Request req;
+        // Header header = {.MagicNumber = 0x21, .ECS_CLIENT_ID = 0x01, .Action = 0x05, .BodyLength = 0x13};
+        // Body body;
+        // std::string test = "Hello";
+        // ::memmove(&body._buffer, test.c_str(), test.size());
+        // oss << body;
+
+        // ::memset(&req, 0, sizeof(Request));
+        // ::memmove(&req.header, &header, sizeof(Header));
+        // ::memmove(&req.body, oss.str().c_str(), sizeof(Body));
+        // req.header.BodyLength = oss.str().size();
+
+        // client->sendTCP(serializeRequest(req));
         while (true) {
             // char *data = client->getDataTCP();
             // if (::strlen(data)) {

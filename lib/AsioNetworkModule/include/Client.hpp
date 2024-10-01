@@ -22,13 +22,9 @@ class Client : public IClient {
 
         void readUDP() override;
 
-        void sendTCP(const std::string &message) override;
+        void sendTCP(const std::string& request) override;
 
-        void sendUDP(const std::string &message) override;
-
-        void sendTCP(const Request& request) override;
-
-        void sendUDP(const Request& request) override;
+        void sendUDP(const std::string& request) override;
 
     protected:
 
