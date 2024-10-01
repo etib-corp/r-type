@@ -111,6 +111,7 @@ int main1(void)
         LoaderLib lb(pathLib, "");
 
         lb.LoadModule();
+        std::ostringstream oss;
 
         IClient *client = lb.createClient();
 

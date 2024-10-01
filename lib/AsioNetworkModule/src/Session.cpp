@@ -18,46 +18,35 @@ Session::~Session()
 {
 }
 
-void Session::read(std::function<void(ISession *)> onDisconnected)
+void Session::read(std::function<void(ISession *)> onDisconnected, std::function<void(const Request &request)> onReceive)
 {
     _socketTCP.async_receive(
-        boost::asio::buffer(&_data, sizeof(Request)),
-        [this, onDisconnected](const boost::system::error_code &error, std::size_t bytes_transferred) {
+        boost::asio::buffer(&_data, sizeof(Header)),
+        [this, onDisconnected, onReceive](const boost::system::error_code &error, std::size_t bytes_transferred) {
             if (!error) {
+                char *_bodyStr = new char[_data.header.BodyLength];
+                std::cout << "Received: " << _data.header.BodyLength << std::endl;
+                ::memset(_bodyStr, 0, _data.header.BodyLength);
                 std::istringstream iss;
-                showHeader(_data.header);
-                this->_socketTCP.receive(boost::asio::buffer(&iss, _data.header.BodyLength));
+                this->_socketTCP.receive(boost::asio::buffer(_bodyStr, _data.header.BodyLength));
+                iss.str(_bodyStr);
                 iss >> _data.body;
-                showBody(reinterpret_cast<_Entity *>(&_data.body));
-                read(onDisconnected);
+                onReceive(_data);
+                ::memset(&_data, 0, sizeof(Request));
+                delete[] _bodyStr;
+                read(onDisconnected, onReceive);
             } else {
                 onDisconnected(this);
             }
         });
 }
 
-void Session::sendTCP(const std::string &message)
+void Session::sendTCP(const std::string& request)
 {
-    boost::asio::async_write(
-        _socketTCP, boost::asio::buffer(message),
-        [this, message](boost::system::error_code ec, std::size_t length) {
-            if (!ec) {
-                std::cout << "Sent: " << message << std::endl;
-                std::cout << "Size: " << length << std::endl;
-            }
-        });
+    _socketTCP.send(boost::asio::buffer(request));
 }
 
-void Session::sendUDP(const std::string &message)
+void Session::sendUDP(const std::string& request)
 {
-    std::cout << "Send udp endpoint: " << _udp_endpoint << std::endl;
-    std::cout << "Send Address socket: " << _socketUDP.local_endpoint() << std::endl;
-    _socketUDP.async_send_to(
-        boost::asio::buffer(message), _udp_endpoint,
-        [this, message](boost::system::error_code ec, std::size_t length) {
-            if (!ec) {
-                std::cout << "Sent: " << message << std::endl;
-                std::cout << "Size: " << length << std::endl;
-            }
-        });
+    _socketUDP.send_to(boost::asio::buffer(request), _udp_endpoint);
 }
