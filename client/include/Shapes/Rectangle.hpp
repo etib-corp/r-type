@@ -17,7 +17,7 @@ namespace LE {
          *
          * The Rectangle class provides functionalities for drawing and moving OpenGL rectangles.
          */
-        class Rectangle final {
+        class Rectangle final : public Shape {
             public:
                 /**
                  * @brief Construct a new Rectangle object

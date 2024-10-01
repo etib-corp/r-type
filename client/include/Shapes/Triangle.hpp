@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include "Shader.hpp"
+#include "Shapes/Shape.hpp"
 
 namespace LE {
     class Engine;
@@ -21,7 +21,7 @@ namespace LE {
          *
          * The Triangle class provides functionalities for drawing and moving OpenGL triangles.
          */
-        class Triangle final {
+        class Triangle final : public Shape {
             public:
                 /**
                  * @brief Construct a new Triangle object
