@@ -33,7 +33,6 @@ public:
      * @return The ECS ID.
      */
     int getECSId(void) const { return _ecs_id; }
-    int getECSId(void) const { return _ecs_id; }
 
     /**
      * @brief Retrieves a topic from the broker.
@@ -68,7 +67,6 @@ public:
      * @param message A unique pointer to the message.
      */
     void addMessage(std::uint32_t ecs_id, const std::string &topic_name, Message *message, Topic::Type type)
-    void addMessage(std::uint32_t ecs_id, const std::string &topic_name, Message *message, Topic::Type type)
     {
         std::lock_guard<std::mutex> lock(_mutex);
         message->setECSId(ecs_id);
@@ -86,7 +84,6 @@ public:
      * @return A unique pointer to the message.
      */
     Message *getMessage(std::uint32_t ecs_id, const std::string &topic_name)
-    Message *getMessage(std::uint32_t ecs_id, const std::string &topic_name)
     {
         std::lock_guard<std::mutex> lock(_mutex);
         return getTopic(ecs_id, topic_name)->getMessage();
@@ -94,23 +91,11 @@ public:
 
 protected:
     int _ecs_id;
-    int _ecs_id;
     INetworkModule *_network_module;
     std::map<std::pair<std::uint32_t, std::string>, std::unique_ptr<Topic>> _topics;
     std::thread _thread;
     std::mutex _mutex;
     bool _is_running = true;
-    std::queue<std::pair<Message *, Topic::Type>> _outgoing_messages;
-    std::queue<Message *> _incomming_messages;
-    std::function<void(Message *)> _sendFunction;
-
-    void _setNetworkModule(INetworkModule *network_module) { _network_module = network_module; }
-
-    void _setECSId(int ecs_id) { _ecs_id = ecs_id; }
-
-    void _setSendFunction(std::function<void(Message *)> sendFunction) { _sendFunction = sendFunction; }
-
-    void _networkRoutine(void);
     std::queue<std::pair<Message *, Topic::Type>> _outgoing_messages;
     std::queue<Message *> _incomming_messages;
     std::function<void(Message *)> _sendFunction;

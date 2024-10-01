@@ -28,6 +28,5 @@ ClientBroker::~ClientBroker(void)
 
 void ClientBroker::_sendMessage(Message *message)
 {
-    std::unique_ptr<Request> request = std::move(message->serialize());
-    _client->sendTCP(*request);
+    std::unique_ptr<Request> request = std::move(message->serialize()); 
 }
