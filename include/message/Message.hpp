@@ -2,6 +2,9 @@
 
 #include <cstdint>
 #include <string>
+#include <map>
+
+#include "PackUnpack.hpp"
 
 /**
  * @class Message
@@ -15,7 +18,15 @@
 class Message
 {
 public:
-    ~Message(void) = default;
+    /**
+     * @brief Constructs a new Message object.
+     */
+    Message(void);
+
+    /**
+     * @brief Destroys the Message object.
+     */
+    ~Message(void);
 
     /**
      * @brief Sets the ECS ID for the message.
@@ -45,7 +56,36 @@ public:
      */
     const std::string &getTopicName(void) const { return _topic_name; }
 
+    /**
+     * @brief Sets the action for the message.
+     *
+     * @param action The action to be set.
+     */
+    void setAction(std::uint8_t action) { _action = action; }
+
+    /**
+     * @brief Gets the action of the message.
+     *
+     * @return The action of the message.
+     */
+    std::uint8_t getAction(void) const { return _action; }
+
+    /**
+     * @brief Serializes the message.
+     *
+     * @return A unique pointer to the serialized request.
+     */
+    std::unique_ptr<Request> serialize(void) const;
+
+    /**
+     * @brief Deserializes the message.
+     *
+     * @param request A unique pointer to the request to be deserialized.
+     */
+    void deserialize(std::unique_ptr<Request> request);
+
 private:
     std::uint32_t _ecs_id;
     std::string _topic_name;
+    std::uint8_t _action;
 };
