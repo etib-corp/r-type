@@ -78,6 +78,24 @@ namespace LE {
                  */
                 float getHeight() const { return _height; }
 
+                /**
+                 * @brief Function to get the component's X position.
+                 *
+                 * This function returns the X position of the component.
+                 *
+                 * @return The X position of the component.
+                 */
+                float getX() const { return _x; }
+
+                /**
+                 * @brief Function to get the component's Y position.
+                 *
+                 * This function returns the Y position of the component.
+                 *
+                 * @return The Y position of the component.
+                 */
+                float getY() const { return _y; }
+
             protected:
                 size_t _id; /** The component's ID. @note Unique for each component. */
                 float _x; /**< The component's X position on the screen. */

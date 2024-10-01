@@ -67,7 +67,8 @@ namespace LE {
 
             protected:
                 std::vector<Component *> _children; /**< The container's children components. @note Similar to React components. */
-                Shapes::Rectangle *_background; /**< The container's background. */
+                Shapes::Shape *_background; /**< The container's background. */
+                friend class Engine;
         };
     }
 }
