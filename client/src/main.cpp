@@ -81,6 +81,23 @@ int main(void)
     network_module = loader_lib.createNetworkModule();
     client_broker = new ClientBroker(network_module, "127.0.0.1", 8080);
 
+    Message *message = nullptr;
+
+    while (1)
+    {
+        try {
+            message = client_broker->getMessage(0, 1);
+            std::cout << "Message received from server" << std::endl;
+            delete message;
+        } catch (const std::exception &e) {
+            std::cerr << e.what() << std::endl;
+            std::cout << "No message received. Waiting..." << std::endl;
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+        }
+    }
+
+    std::cout << "ClientBroker is stopping" << std::endl;
+
     delete client_broker;
     delete network_module;
 

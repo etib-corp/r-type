@@ -22,8 +22,10 @@ void Session::read(std::function<void(ISession *)> onDisconnected, std::function
 {
     _socketTCP.async_receive(
         boost::asio::buffer(&_data, sizeof(Header)),
-        [this, onDisconnected, onReceive](const boost::system::error_code &error, std::size_t bytes_transferred) {
-            if (!error) {
+        [this, onDisconnected, onReceive](const boost::system::error_code &error, std::size_t bytes_transferred)
+        {
+            if (!error)
+            {
                 char *_bodyStr = new char[_data.header.BodyLength];
                 std::cout << "Received: " << _data.header.BodyLength << std::endl;
                 ::memset(_bodyStr, 0, _data.header.BodyLength);
@@ -35,18 +37,20 @@ void Session::read(std::function<void(ISession *)> onDisconnected, std::function
                 ::memset(&_data, 0, sizeof(Request));
                 delete[] _bodyStr;
                 read(onDisconnected, onReceive);
-            } else {
+            }
+            else
+            {
                 onDisconnected(this);
             }
         });
 }
 
-void Session::sendTCP(const std::string& request)
+void Session::sendTCP(const std::string &request)
 {
     _socketTCP.send(boost::asio::buffer(request));
 }
 
-void Session::sendUDP(const std::string& request)
+void Session::sendUDP(const std::string &request)
 {
     _socketUDP.send_to(boost::asio::buffer(request), _udp_endpoint);
 }

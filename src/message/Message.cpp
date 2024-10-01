@@ -1,6 +1,6 @@
 #include "message/Message.hpp"
 
-Message::Message(void) : _ecs_id(0), _topic_name(0), _action(0)
+Message::Message(void) : _emmiter_id(0), _receiver_id(0), _topic_id(0), _action(0)
 {
 }
 
@@ -8,22 +8,36 @@ Message::~Message(void)
 {
 }
 
-std::unique_ptr<Request> Message::serialize(void) const
+static std::string serializeRequest(Request &request)
 {
-    std::unique_ptr<Request> request = std::make_unique<Request>();
+    std::ostringstream oss;
 
-    request->header.MagicNumber = 0x77;
-    request->header.ECS_CLIENT_ID = _ecs_id;
-    request->header.Action = _action;
-    request->header.BodyLength = 0;
-    std::memset(request->body._buffer, 0, 1024);
-    return std::move(request);
+    oss.write(reinterpret_cast<const char*>(&request.header), sizeof(request.header));
+    oss.write(reinterpret_cast<const char*>(&request.body), sizeof(uint8_t) * request.header.BodyLength);
+    return oss.str();
 }
 
-void Message::deserialize(std::unique_ptr<Request> request)
+static std::string compressAndPrepare(Header header, Body body)
 {
-    if (request->header.MagicNumber != 0x77)
-        throw std::runtime_error("Invalid magic number");
-    _ecs_id = request->header.ECS_CLIENT_ID;
-    _action = request->header.Action;
+    Request request;
+    std::ostringstream oss;
+
+    oss << body;
+    ::memmove(&request.header, &header, sizeof(Header));
+    ::memmove(&request.body, oss.str().c_str(), sizeof(Body));
+    request.header.BodyLength = oss.str().size();
+    return serializeRequest(request);
+}
+
+std::string Message::serialize(void) const
+{
+    Header header = {0};
+    Body body = {0};
+
+    header.EmmiterdID = _emmiter_id;
+    header.ReceiverID = _receiver_id;
+    header.Action = _action;
+    header.BodyLength = 0;
+    std::memset(body._buffer, 0, 1024);
+    return compressAndPrepare(header, body);
 }

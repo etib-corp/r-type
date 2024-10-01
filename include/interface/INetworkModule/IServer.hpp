@@ -17,17 +17,18 @@
 #include "interface/INetworkModule/IListenerUDP.hpp"
 #include "interface/INetworkModule/ISessionManager.hpp"
 
-class IServer {
-    public:
-        virtual ~IServer() = default;
+class IServer
+{
+public:
+    virtual ~IServer() = default;
 
-        virtual void run(void) = 0;
+    virtual void run(void) = 0;
 
-        std::shared_ptr<SessionManager> _sessionsManager;
+    std::shared_ptr<SessionManager> _sessionsManager;
 
-    protected:
+protected:
+    std::shared_ptr<IListenerTCP> _listenerTCP;
+    std::shared_ptr<IListenerUDP> _listenerUDP;
 
-        std::shared_ptr<IListenerTCP> _listenerTCP;
-        std::shared_ptr<IListenerUDP> _listenerUDP;
-    private:
+private:
 };

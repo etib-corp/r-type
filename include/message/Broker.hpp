@@ -41,12 +41,12 @@ public:
      * @return A unique pointer to the topic.
      * @throws std::runtime_error if the topic is not found.
      */
-    std::unique_ptr<Topic> &getTopic(std::uint32_t ecs_id, const std::string &name)
+    std::unique_ptr<Topic> &getTopic(std::uint32_t ecs_id, std::uint8_t id)
     {
         std::lock_guard<std::mutex> lock(_mutex);
-        if (_topics.find(std::make_pair(ecs_id, name)) == _topics.end())
+        if (_topics.find(std::make_pair(ecs_id, id)) == _topics.end())
             throw std::runtime_error("Topic not found");
-        return _topics[std::make_pair(ecs_id, name)];
+        return _topics[std::make_pair(ecs_id, id)];
     }
 
     /**
@@ -54,10 +54,10 @@ public:
      * @param ecs_id The ECS ID associated with the topic.
      * @param name The name of the topic.
      */
-    void removeTopic(std::uint32_t ecs_id, const std::string &name)
+    void removeTopic(std::uint32_t ecs_id, std::uint8_t id)
     {
         std::lock_guard<std::mutex> lock(_mutex);
-        _topics.erase(std::make_pair(ecs_id, name));
+        _topics.erase(std::make_pair(ecs_id, id));
     }
 
     /**
@@ -66,15 +66,15 @@ public:
      * @param topic_name The name of the topic.
      * @param message A unique pointer to the message.
      */
-    void addMessage(std::uint32_t ecs_id, const std::string &topic_name, Message *message, Topic::Type type)
+    void addMessage(std::uint32_t ecs_id, std::uint8_t topic_id, Message *message)
     {
         std::lock_guard<std::mutex> lock(_mutex);
-        message->setECSId(ecs_id);
-        message->setTopicName(topic_name);
-        _outgoing_messages.push(std::make_pair(message, type));
-        message->setECSId(ecs_id);
-        message->setTopicName(topic_name);
-        _outgoing_messages.push(std::make_pair(message, type));
+    
+        message->setEmmiterID(_ecs_id);
+        message->setReceiverID(ecs_id);
+        message->setTopicID(topic_id);
+        message->setAction(topic_id);
+        _outgoing_messages.push(message);
     }
 
     /**
@@ -83,20 +83,19 @@ public:
      * @param topic_name The name of the topic.
      * @return A unique pointer to the message.
      */
-    Message *getMessage(std::uint32_t ecs_id, const std::string &topic_name)
+    Message *getMessage(std::uint32_t ecs_id, std::uint8_t topic_id)
     {
-        std::lock_guard<std::mutex> lock(_mutex);
-        return getTopic(ecs_id, topic_name)->getMessage();
+        return getTopic(ecs_id, topic_id)->getMessage();
     }
 
 protected:
-    int _ecs_id;
+    std::uint32_t _ecs_id;
     INetworkModule *_network_module;
-    std::map<std::pair<std::uint32_t, std::string>, std::unique_ptr<Topic>> _topics;
+    std::map<std::pair<std::uint32_t, std::uint8_t>, std::unique_ptr<Topic>> _topics;
     std::thread _thread;
     std::mutex _mutex;
     bool _is_running = true;
-    std::queue<std::pair<Message *, Topic::Type>> _outgoing_messages;
+    std::queue<Message *> _outgoing_messages;
     std::queue<Message *> _incomming_messages;
     std::function<void(Message *)> _sendFunction;
 

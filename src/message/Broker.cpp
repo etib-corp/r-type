@@ -4,17 +4,22 @@ void Broker::_networkRoutine(void)
 {
     _sendMessages();
 }
-void Broker::_logicalRoutine(void)
+
+void Broker::_logicalRoutine()
 {
-    Message *message = nullptr;
     while (!_incomming_messages.empty())
     {
         _mutex.lock();
-        message = _incomming_messages.front();
+        auto message = _incomming_messages.front();
+
         _incomming_messages.pop();
-        if (_topics.find(std::make_pair(message->getECSId(), message->getTopicName())) == _topics.end())
-            _topics[std::make_pair(message->getECSId(), message->getTopicName())] = std::make_unique<Topic>(message->getECSId(), message->getTopicName(), Topic::Type::RECEIVE);
-        _topics[std::make_pair(message->getECSId(), message->getTopicName())]->addMessage(message);
+        auto key = std::make_pair(message->getEmmiterID(), message->getTopicID());
+        if (_topics.find(key) == _topics.end())
+        {
+            _topics[key] = std::make_unique<Topic>(message->getEmmiterID(), message->getTopicID());
+        }
+        _topics[key]->addMessage(message);
+        std::cout << "Message received from " << message->getEmmiterID() << " on topic " << message->getTopicID() << std::endl;
         _mutex.unlock();
     }
 }
@@ -51,9 +56,10 @@ void Broker::_sendMessages(void)
     while (!_outgoing_messages.empty())
     {
         _mutex.lock();
-        message = _outgoing_messages.front().first;
+        message = _outgoing_messages.front();
         _outgoing_messages.pop();
         _sendFunction(message);
+        std::cout << "Message sent to " << message->getReceiverID() << std::endl;
         _mutex.unlock();
     }
 }

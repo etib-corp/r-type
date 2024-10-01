@@ -1,7 +1,7 @@
 #include "message/Topic.hpp"
 
-Topic::Topic(std::uint32_t ecs_id, const std::string name, Type type)
-    : _ecs_id(ecs_id), _name(name), _type(type)
+Topic::Topic(std::uint32_t ecs_id, std::uint8_t id)
+    : _ecs_id(ecs_id), _id(id)
 {
 }
 

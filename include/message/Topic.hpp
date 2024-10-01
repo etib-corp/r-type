@@ -18,23 +18,12 @@ class Topic
 {
 public:
     /**
-     * @brief The type of the topic.
-     */
-    enum class Type
-    {
-        TCP = 0,
-        UDP = 1,
-        RECEIVE = 2,
-    };
-
-    /**
      * @brief Constructs a new Topic object.
      *
      * @param ecs_id The ID associated with the topic.
-     * @param name The name of the topic.
+     * @param id The ID of the topic.
      */
-
-    Topic(std::uint32_t ecs_id, const std::string name, Type type);
+    Topic(std::uint32_t ecs_id, std::uint8_t id);
 
     /**
      * @brief Destroys the Topic object.
@@ -65,11 +54,8 @@ public:
         return message;
     }
 
-    Type getType(void) const { return _type; }
-
 private:
     std::uint32_t _ecs_id;
-    std::string _name;
+    std::uint8_t _id;
     std::queue<Message *> _messages;
-    Type _type;
 };

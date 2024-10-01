@@ -41,4 +41,6 @@ private:
     IClient *_client;
 
     void _sendMessage(Message *message) override;
+
+    void _onReceiveRequestCallback(const Request &request);
 };
