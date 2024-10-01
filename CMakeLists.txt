@@ -17,6 +17,7 @@ add_subdirectory(dependencies/glfw-3.4)
 add_subdirectory(dependencies/zlib-1.3.1)
 add_subdirectory(dependencies/freetype-VER-2-13-3)
 add_subdirectory(dependencies/glm)
+add_subdirectory(dependencies/assimp-5.4.3)
 
 
 file(GLOB_RECURSE SOURCES src/*.cpp)
@@ -41,6 +42,7 @@ target_link_libraries(r-type_client ${GLUT_LIBRARIES})
 target_link_libraries(r-type_client zlib)
 target_link_libraries(r-type_client freetype)
 target_link_libraries(r-type_client glm)
+target_link_libraries(r-type_client assimp)
 
 file(GLOB_RECURSE SERVER_SOURCES server/src/*.cpp)
 include_directories(server/include)
