@@ -16,6 +16,7 @@ LE::Engine::Engine()
 {
     _debugMode = false;
     _throwError = false;
+    _window = std::make_shared<LE::Window>("Game Window", 1920, 1080);
     _sceneManager = std::make_shared<SceneManager>();
 }
 
@@ -34,8 +35,6 @@ LE::Engine* LE::Engine::getInstance()
 void LE::Engine::run(bool throwError)
 {
     _throwError = throwError;
-    srand(static_cast<unsigned int>(time(nullptr)));
-    _window = std::make_shared<LE::Window>("Game Window", 800, 600);
 
     std::cout << "Engine running." << std::endl;
     if (_configFunc) {

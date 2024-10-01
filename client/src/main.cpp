@@ -16,17 +16,38 @@ class GameScene : public LE::Scene {
     public:
         GameScene() : LE::Scene()
         {
-            _eventManager->addEventListener({LE::Input::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::Type::PRESSED}, [this](LE::Engine *engine) {
-                std::cout << "Left click pressed" << std::endl;
-            });
-            _eventManager->addEventListener({LE::Input::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::Type::RELEASED}, [this](LE::Engine *engine) {
-                std::cout << "Left click released" << std::endl;
-            });
+            _ecs = std::make_shared<Ecs>();
+            _ecs->registerComponent<TransformComponent>();
+            _ecs->registerComponent<SpriteComponent>();
+            // _ecs->registerComponent<ModelComponent>();
+            Signature signatureRender2D;
+            signatureRender2D.set(_ecs->getComponentType<TransformComponent>());
+            signatureRender2D.set(_ecs->getComponentType<SpriteComponent>());
+            _ecs->registerSystem<Render2DSystem>();
+            _ecs->setSignature<Render2DSystem>(signatureRender2D);
+
+            Signature signatureRender3D;
+            signatureRender3D.set(_ecs->getComponentType<TransformComponent>());
+            // signatureRender3D.set(_ecs->getComponentType<ModelComponent>());
+            // _ecs->registerSystem<Render3DSystem>();
+            // _ecs->setSignature<Render3DSystem>(signatureRender3D);
+
+            Entity entity = _ecs->createEntity();
+            _ecs->addComponent<TransformComponent>(entity, (TransformComponent){{400, 400, 0}, {0, 0, 0}, {0.5f, 0.5f, 0.5f}});
+            auto sprite = createSpriteComponent("assets/images/character.png");
+            _ecs->addComponent<SpriteComponent>(entity, *sprite);
+
+            // Entity entity2 = _ecs->createEntity();
+            // auto model = createModelComponent("assets/models/buttercup/buttercup.obj");
+            // _ecs->addComponent<ModelComponent>(entity2, *model);
+            // _ecs->addComponent<TransformComponent>(entity2, (TransformComponent){{400, 400, 0}, {0, 0, 0}, {0.5f, 0.5f, 0.5f}});
+
         }
         void play() override
         {
             // std::cout << "Game scene updated." << std::endl;
             _eventManager->pollEvents();
+            _ecs->update(0.0f);
         }
         void stop() override
         {
@@ -34,12 +55,7 @@ class GameScene : public LE::Scene {
         }
 };
 
-struct Position {
-    float x;
-    float y;
-};
-
-int _main(int ac, char **av)
+int main(int ac, char **av)
 {
     // Initialize the engine
     auto engine = LE::Engine::getInstance();
@@ -69,7 +85,7 @@ bool deserializeRequest(const char* data, std::size_t length, std::istringstream
     return true;
 }
 
-int main(void)
+int _main(void)
 {
     std::string pathLib = getPathOfNetworkDynLib() + getExtensionKernel();
 

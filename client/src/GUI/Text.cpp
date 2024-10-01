@@ -6,7 +6,6 @@
 */
 
 #include "GUI/Text.hpp"
-#include "MacGL.hpp"
 
 LE::GUI::Text::Text(unsigned int id, const std::string &fontPath, unsigned int fontHeight, const std::string &content, unsigned int fontWidth )
 {
