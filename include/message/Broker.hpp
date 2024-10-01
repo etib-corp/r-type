@@ -114,5 +114,7 @@ protected:
 
     virtual void _sendMessage(Message *message) = 0;
 
-    void _sendMessages(void);
+    void _sendMessages(std::function<void(Message *)> sendFunction);
+
+    void _receiveMessages(std::function<Message *(void)> receiveFunction);
 };
