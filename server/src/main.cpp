@@ -10,14 +10,37 @@
 #include "PackUnpack.hpp"
 #include "message/ServerBroker.hpp"
 
-// std::string serializeRequest(Request &request)
-// {
-//     std::ostringstream oss;
+std::string serializeRequest(Request &request)
+{
+    std::ostringstream oss;
 
-//     oss.write(reinterpret_cast<const char*>(&request.header), sizeof(request.header));
-//     oss.write(reinterpret_cast<const char*>(&request.body), sizeof(uint8_t) * request.header.BodyLength);
-//     return oss.str();
-// }
+    oss.write(reinterpret_cast<const char*>(&request.header), sizeof(request.header));
+    oss.write(reinterpret_cast<const char*>(&request.body), sizeof(uint8_t) * request.header.BodyLength);
+    return oss.str();
+}
+
+void coreCompute(void)
+{
+    // Header testHeader1 = {.MagicNumber = 0X7777, .ECS_CLIENT_ID = 2, .Action = 'T'};
+    // Header testHeader2 = {.MagicNumber = 0X7777, .ECS_CLIENT_ID = 2, .Action = 'L'};
+    // Header testHeader3 = {.MagicNumber = 0X7777, .ECS_CLIENT_ID = 2, .Action = 'R'};
+    // Header testHeader4 = {.MagicNumber = 0X7777, .ECS_CLIENT_ID = 2, .Action = 'F'};
+
+
+}
+
+std::string compressAndPrepare(Header header, Body body)
+{
+    Request request;
+    std::ostringstream oss;
+
+    oss << body;
+    // ::memset(&request, 0, sizeof(Request));
+    ::memmove(&request.header, &header, sizeof(Header));
+    ::memmove(&request.body, oss.str().c_str(), sizeof(Body));
+    request.header.BodyLength = oss.str().size();
+    return serializeRequest(request);
+}
 
 int main(void)
 {
@@ -29,52 +52,30 @@ int main(void)
     loader_lib.LoadModule();
     network_module = loader_lib.createNetworkModule();
     server_broker = new ServerBroker(network_module, 1, 8080);
-
     delete server_broker;
     delete network_module;
 
-    // try {
-    //     LoaderLib lb(pathLib, "");
-    //     std::ostringstream oss;
-    //     Request request;
-    //     Header header = {.MagicNumber = 0x21, .ECS_CLIENT_ID = 0x01, .Action = 0x05, .BodyLength = 0x13};
-    //     Body body;
-    //     _Entity entity = {.type = "Avion[PADING][PADING][PADING][PADING][PADING]", .action = "Voler[PADING][PADING][PADING][PADING][PADING][PADING][PADING]", .life = 3};
-    //     ::memmove(&body, &entity, sizeof(_Entity));
+    try {
+        LoaderLib lb(pathLib, "");
+        std::ostringstream oss;
+        Request request;
+        Header header = {.MagicNumber = 0x21, .ECS_CLIENT_ID = 0x01, .Action = 0x05, .BodyLength = 0x13};
+        Body body;
+        _Entity entity = {.type = "Avion[PADING][PADING][PADING][PADING][PADING][PADING][PADING][PADING][PADING][PADING]", .action = "Voler[PADING][PADING][PADING][PADING][PADING][PADING][PADING]Voler[PADING][PADING][PADING][PADING][PADING][PADING][PADING]Voler[PADING][PADING][PADING][PADING][PADING][PADING][PADING]", .life = 3};
+        ::memmove(&body, &entity, sizeof(_Entity));
 
-    //     showHeader(header);
-    //     showBody(reinterpret_cast<_Entity *>(&body));
+        server->run();
+        while (false) {
+            if (server->_sessionsManager->_sessions.size() > 0) {
+                std::shared_ptr<ISession> session = server->_sessionsManager->_sessions[0];
+                session->sendTCP(compressAndPrepare(header, body));
+                sleep(5);
+                coreCompute();
 
-
-    //     oss << body;
-
-    //     lb.LoadModule();
-
-    //     INetworkModule *network_module = lb.createNetworkModule();
-
-    //     std::unique_ptr<ServerBroker> serverBroker = std::make_unique<ServerBroker>(network_module, "127.0.0.1", 8080);
-
-    //     IServer *server = network_module->createServer(8080);
-
-    //     server->run();
-    //     while (1) {
-    //         if (server->_sessionsManager->_sessions.size() > 0) {
-    //             std::shared_ptr<ISession> session = server->_sessionsManager->_sessions[0];
-    //             // std::cout << "Sending: " << oss.str() << std::endl;
-    //             // request.header = header;
-    //             // request.body = body;
-    //             ::memset(&request, 0, sizeof(Request));
-    //             ::memmove(&request.header, &header, sizeof(Header));
-    //             ::memmove(&request.body, oss.str().c_str(), sizeof(Body));
-    //             // showHeader(request.header);
-    //             // std::cout << "Sending: " << serializeRequest(request)[0] << std::endl;
-    //             request.header.BodyLength = oss.str().size();
-    //             session->sendTCP(serializeRequest(request));
-    //             sleep(5);
-    //         }
-    //     }
-    // }
-    // catch(const std::exception& e) {
-    //     std::cerr << e.what() << '\n';
-    // }
+            }
+        }
+    }
+    catch(const std::exception& e) {
+        std::cerr << e.what() << '\n';
+    }
 }
