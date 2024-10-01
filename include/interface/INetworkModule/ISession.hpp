@@ -11,7 +11,6 @@
 #include <functional>
 #include "PackUnpack.hpp"
 
-
 /**
  * @class ISession
  * @brief Interface for Session communication.
@@ -19,27 +18,28 @@
  * This interface defines the basic operations for a Session, including reading
  * data and sending messages over TCP and UDP protocols.
  */
-class ISession {
-    public:
-        virtual ~ISession() = default;
+class ISession
+{
+public:
+    virtual ~ISession() = default;
 
-        virtual void read(std::function<void(ISession *)> onDisconnected, std::function<void(const Request& request)> onReceive) = 0;
+    virtual void read(std::function<void(ISession *)> onDisconnected, std::function<void(const Request &request)> onReceive) = 0;
 
-        virtual void sendTCP(const std::string& request) = 0;
+    virtual void sendTCP(const std::string &request) = 0;
 
-        virtual void sendUDP(const std::string& request) = 0;
+    virtual void sendUDP(const std::string &request) = 0;
 
-        int getId() const { return _id; }
+    int getId() const { return _id; }
 
-        void setId(int id) { _id = id; }
+    void setId(std::uint32_t id) { _id = id; }
 
-        bool isConnected() const { return _isConnected; }
+    bool isConnected() const { return _isConnected; }
 
-        void setConnected(bool connected) { _isConnected = connected; }
+    void setConnected(bool connected) { _isConnected = connected; }
 
-    protected:
-        int _id;
-        bool _isConnected;
-    private:
+protected:
+    std::uint32_t _id;
+    bool _isConnected;
+
+private:
 };
-

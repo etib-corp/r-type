@@ -12,34 +12,36 @@
 #include "PackUnpack.hpp"
 #include <functional>
 
-class IClient {
-    public:
-        virtual ~IClient() = default;
+class IClient
+{
+public:
+    virtual ~IClient() = default;
 
-        virtual void connectToServer(void) = 0;
+    virtual void connectToServer(void) = 0;
 
-        virtual void setOnReceive(std::function<void(const Request &)> onReceive) { _onReceive = onReceive; }
+    virtual void setOnReceive(std::function<void(const Request &)> onReceive) { _onReceive = onReceive; }
 
-        virtual void readTCP() = 0;
+    virtual void readTCP() = 0;
 
-        virtual void readUDP() = 0;
+    virtual void readUDP() = 0;
 
-        virtual void sendTCP(const std::string& request) = 0;
+    virtual void sendTCP(const std::string &request) = 0;
 
-        virtual void sendUDP(const std::string& request) = 0;
+    virtual void sendUDP(const std::string &request) = 0;
 
-        virtual int getId() const { return _id; }
+    virtual int getId() const { return _id; }
 
-        virtual void setId(int id) { _id = id; }
+    virtual void setId(std::uint32_t id) { _id = id; }
 
-    protected:
-        int _id;
+protected:
+    std::uint32_t _id;
 
-        std::function<void(const Request &)> _onReceive;
+    std::function<void(const Request &)> _onReceive;
 
-        Request _requestTCP = {};
-        Request _requestUDP = {};
-    private:
+    Request _requestTCP = {};
+    Request _requestUDP = {};
+
+private:
 };
 
 #endif /* !ICLIENT_HPP_ */

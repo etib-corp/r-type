@@ -33,28 +33,42 @@ public:
      *
      * @param ecs_id The ECS ID to be set.
      */
-    void setECSId(std::uint32_t ecs_id) { _ecs_id = ecs_id; }
+    void setEmmiterID(std::uint32_t emmiter_id) { _emmiter_id = emmiter_id; }
 
     /**
      * @brief Gets the ECS ID of the message.
      *
      * @return The ECS ID of the message.
      */
-    std::uint32_t getECSId(void) const { return _ecs_id; }
+    std::uint32_t getEmmiterID(void) const { return _emmiter_id; }
 
     /**
-     * @brief Sets the topic name for the message.
+     * @brief Sets the receiver ID for the message.
      *
-     * @param topic_name The topic name to be set.
+     * @param receiver_id The receiver ID to be set.
      */
-    void setTopicName(const std::string topic_name) { _topic_name = topic_name; }
+    void setReceiverID(std::uint32_t receiver_id) { _receiver_id = receiver_id; }
 
     /**
-     * @brief Gets the topic name of the message.
+     * @brief Gets the receiver ID of the message.
      *
-     * @return A constant reference to the topic name of the message.
+     * @return The receiver ID of the message.
      */
-    const std::string &getTopicName(void) const { return _topic_name; }
+    std::uint32_t getReceiverID(void) const { return _receiver_id; }
+
+    /**
+     * @brief Sets the topic id for the message.
+     *
+     * @param topic_name The topic id to be set.
+     */
+    void setTopicID(std::uint8_t topic_id) { _topic_id = topic_id; }
+
+    /**
+     * @brief Gets the topic id of the message.
+     * 
+     * @return The topic id of the message.
+     */
+    std::uint8_t getTopicID(void) const { return _topic_id; }
 
     /**
      * @brief Sets the action for the message.
@@ -75,17 +89,18 @@ public:
      *
      * @return A unique pointer to the serialized request.
      */
-    std::unique_ptr<Request> serialize(void) const;
+    std::string serialize(void) const;
 
     /**
      * @brief Deserializes the message.
      *
      * @param request A unique pointer to the request to be deserialized.
      */
-    void deserialize(std::unique_ptr<Request> request);
+    void deserialize(std::string raw_request);
 
 private:
-    std::uint32_t _ecs_id;
-    std::string _topic_name;
+    std::uint32_t _emmiter_id;
+    std::uint32_t _receiver_id;
+    std::uint8_t _topic_id;
     std::uint8_t _action;
 };

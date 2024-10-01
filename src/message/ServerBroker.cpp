@@ -11,6 +11,8 @@ ServerBroker::ServerBroker(INetworkModule *network_module, std::uint32_t ecs_id,
     _server = _network_module->createServer(_listen_port);
     std::cout << "ServerBroker network server created" << std::endl;
 
+    _server->_sessionsManager->setOnReceive(std::bind(&ServerBroker::_onReceiveRequestCallback, this, std::placeholders::_1));
+
     _server->run();
     std::cout << "ServerBroker is running" << std::endl;
 
@@ -27,5 +29,23 @@ ServerBroker::~ServerBroker(void)
 
 void ServerBroker::_sendMessage(Message *message)
 {
-    std::unique_ptr<Request> request = std::move(message->serialize());
+    std::string compress_request = message->serialize();
+
+    _server->_sessionsManager->getClientById(message->getReceiverID())->sendTCP(compress_request);
+}
+
+void ServerBroker::_onReceiveRequestCallback(const Request &request)
+{
+    Message *message = new Message();
+
+    message->setEmmiterID(request.header.EmmiterdID);
+    message->setReceiverID(request.header.ReceiverID);
+    message->setAction(request.header.Action);
+    message->setTopicID(request.header.Action);
+    _incomming_messages.push(message);
+}
+
+void ServerBroker::_onClientDisconnectedCallback(ISession *session)
+{
+    std::cout << session->getId() << " disconnect" << std::endl;
 }

@@ -15,6 +15,8 @@ ClientBroker::ClientBroker(INetworkModule *network_module, std::string connect_a
 
     _setECSId(_client->getId());
 
+    _client->setOnReceive(std::bind(&ClientBroker::_onReceiveRequestCallback, this, std::placeholders::_1));
+
     std::cout << "ClientBroker thread started" << std::endl;
     _thread = std::thread(&ClientBroker::_run, this);
 }
@@ -28,5 +30,18 @@ ClientBroker::~ClientBroker(void)
 
 void ClientBroker::_sendMessage(Message *message)
 {
-    std::unique_ptr<Request> request = std::move(message->serialize()); 
+    std::string compressed_request = message->serialize();
+
+    _client->sendTCP(compressed_request);
+}
+
+void ClientBroker::_onReceiveRequestCallback(const Request &request)
+{
+    Message *message = new Message();
+
+    message->setEmmiterID(request.header.EmmiterdID);
+    message->setReceiverID(request.header.ReceiverID);
+    message->setAction(request.header.Action);
+    message->setTopicID(request.header.Action);
+    _incomming_messages.push(message);
 }

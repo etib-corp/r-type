@@ -32,9 +32,20 @@ public:
      */
     ~ServerBroker(void);
 
+    /**
+     * @brief Get all clients id connected to the server.
+     * 
+     * @return The list of clients id.
+     */
+    std::deque<std::shared_ptr<ISession>> getClientsSessions(void) const { return _server->_sessionsManager->getClients(); }
+
 private:
     std::uint16_t _listen_port;
     IServer *_server;
 
     void _sendMessage(Message *message) override;
+
+    void _onReceiveRequestCallback(const Request &request);
+
+    void _onClientDisconnectedCallback(ISession *session);
 };

@@ -11,18 +11,20 @@
 #include <memory>
 #include "ISessionManager.hpp"
 
-class IListenerUDP {
-    public:
-        virtual ~IListenerUDP() = default;
+class IListenerUDP
+{
+public:
+    virtual ~IListenerUDP() = default;
 
-        void virtual run(std::shared_ptr<SessionManager> sessionManager) = 0;
+    void virtual run(std::shared_ptr<SessionManager> sessionManager) = 0;
 
-        void virtual startReceive() = 0;
+    void virtual startReceive() = 0;
 
-    protected:
-        int _port;
-        std::shared_ptr<SessionManager> _sessionManager;
-    private:
+protected:
+    int _port;
+    std::shared_ptr<SessionManager> _sessionManager;
+
+private:
 };
 
 #endif /* !ILISTENERUDP_HPP_ */

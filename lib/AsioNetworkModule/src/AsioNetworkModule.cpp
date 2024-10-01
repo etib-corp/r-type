@@ -9,7 +9,6 @@
 
 AsioNetworkModule::AsioNetworkModule()
 {
-
 }
 
 AsioNetworkModule::~AsioNetworkModule()
@@ -34,7 +33,8 @@ IClient *AsioNetworkModule::createClient(const std::string &ip, int port)
  * of the network module.
  */
 
-extern "C" {
+extern "C"
+{
     /**
      * @brief Creates a new instance of the network module.
      *
@@ -43,7 +43,8 @@ extern "C" {
      *
      * @return INetworkModule* Pointer to the newly created network module.
      */
-    INetworkModule *createNetworkModule() {
+    INetworkModule *createNetworkModule()
+    {
         return new AsioNetworkModule();
     }
 }

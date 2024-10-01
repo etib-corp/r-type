@@ -10,14 +10,6 @@
 #include "PackUnpack.hpp"
 #include "message/ServerBroker.hpp"
 
-// std::string serializeRequest(Request &request)
-// {
-//     std::ostringstream oss;
-
-//     oss.write(reinterpret_cast<const char*>(&request.header), sizeof(request.header));
-//     oss.write(reinterpret_cast<const char*>(&request.body), sizeof(uint8_t) * request.header.BodyLength);
-//     return oss.str();
-// }
 
 int main(void)
 {
@@ -28,7 +20,26 @@ int main(void)
 
     loader_lib.LoadModule();
     network_module = loader_lib.createNetworkModule();
-    server_broker = new ServerBroker(network_module, 1, 8080);
+    server_broker = new ServerBroker(network_module, 0, 8080);
+
+    Message *message = nullptr;
+    auto sessions = server_broker->getClientsSessions();
+
+    while (1) {
+        sessions = server_broker->getClientsSessions();
+        if (sessions.size() <= 0) {
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+            std::cout << "No clients connected. Waiting..." << std::endl;
+            continue;
+        }
+        for (auto &session : sessions) {
+            message = new Message();
+            server_broker->addMessage(session->getId(), 1, message);
+            std::this_thread::sleep_for(std::chrono::seconds(1));
+            std::cout << "Message sent to client " << session->getId() << std::endl;
+            delete message;
+        }
+    }
 
     delete server_broker;
     delete network_module;
