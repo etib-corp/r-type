@@ -9,5 +9,10 @@
 
 #include "BoxComponent.hpp"
 
+/**
+ * @brief A hit box component.
+ *
+ * This component represents a hit box.
+ */
 struct HitBox : public Box {
 };

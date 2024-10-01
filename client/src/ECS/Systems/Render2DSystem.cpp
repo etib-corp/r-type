@@ -53,7 +53,7 @@ void Render2DSystem::update(Ecs *ecs, float dt)
         model = glm::rotate(model, glm::radians(transform.rotation.z), glm::vec3(0.0f, 0.0f, 1.0f));
         model = glm::translate(model, glm::vec3(-0.5f * sprite.width * transform.scale.x , -0.5f * sprite.height * transform.scale.y, 0.0f));
 
-        model = glm::scale(model, glm::vec3(transform.scale.toGlmVec2(), 1.0f));
+        model = glm::scale(model, glm::vec3(transform.scale.toGlmVec3()));
          _shader->setMat<4>("model", model);
         _shader->setVec3("spriteColor", LE::Vector3<float>(1.0f, 1.0f, 1.0f));
 

@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2024
 ** Visual Studio Live Share (Workspace)
 ** File description:
-** Render3DSystem
+** ModelComponent
 */
 
-#include "ECS/Systems/Render3DSystem.hpp"
+#include "ECS/Components/ModelComponent.hpp"

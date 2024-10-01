@@ -13,5 +13,5 @@
 struct TransformComponent {
     LE::Vector3<float> position;
     LE::Vector3<float> rotation;
-    LE::Vector2<float> scale;
+    LE::Vector3<float> scale;
 };
