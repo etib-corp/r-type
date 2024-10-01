@@ -10,7 +10,11 @@
 #include "Scene.hpp"
 #include "Shader.hpp"
 
+#include "Shapes/Triangle.hpp"
+#include "GUI/Text.hpp"
+
 LE::Shader *fontShader{nullptr};
+LE::Shader *triangleShader{nullptr};
 
 LE::Window::Window(const std::string& title, std::size_t width, std::size_t height)
     : _title(title), _width(width), _height(height), _window(nullptr), _framerateLimit(60), _monitor(nullptr), _mode(nullptr) {
@@ -39,6 +43,7 @@ LE::Window::Window(const std::string& title, std::size_t width, std::size_t heig
 
     _clock = std::make_unique<LE::Clock>();
     fontShader = new LE::Shader("assets/shaders/font.vert", "assets/shaders/font.frag");
+    triangleShader = new Shader("assets/shaders/triangle.vert", "assets/shaders/triangle.frag");
     fontShader->use();
     glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(width), 0.0f, static_cast<float>(height));
     glUniformMatrix4fv(glGetUniformLocation(fontShader->getID(), "projection"), 1, GL_FALSE, glm::value_ptr(projection));
@@ -102,9 +107,9 @@ void LE::Window::clear()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void LE::Window::setClearColor(Color color)
+void LE::Window::setClearColor(Color *color)
 {
-    glClearColor(color.r / 255.0f, color.g / 255.0f, color.b / 255.0f, color.a);
+    glClearColor(color->_r, color->_g, color->_b, color->_a);
 }
 
 GLFWwindow* LE::Window::getWindow()

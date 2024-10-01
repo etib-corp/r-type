@@ -13,6 +13,7 @@ namespace LE {
 
 #include "Clock.hpp"
 #include "Error.hpp"
+#include "Color.hpp"
 
 #include <cmath>
 #include <memory>
@@ -41,15 +42,16 @@ namespace LE {
 
 namespace LE {
     class Shader;
+    namespace Shapes {
+        class Triangle;
+    }
+    namespace GUI {
+        class Text;
+    }
 }
-extern LE::Shader *fontShader;
 
-using Color = union {
-    unsigned int value;
-    struct {
-        unsigned char r, g, b, a;
-    };
-};
+extern LE::Shader *fontShader;
+extern LE::Shader *triangleShader;
 
 /**
  * @file Window.hpp
@@ -132,7 +134,7 @@ namespace LE {
              *
              * @param color The color to set as the clear color.
              */
-            void setClearColor(Color color);
+            void setClearColor(Color *color);
 
             /**
              * @brief Gets the GLFW window pointer.
@@ -157,5 +159,7 @@ namespace LE {
             GLFWmonitor* _monitor;              ///< Pointer to the monitor.
             const GLFWvidmode* _mode;           ///< Pointer to the video mode.
             std::unique_ptr<Clock> _clock;      ///< Unique pointer to the Clock object.
+            friend class LE::Shapes::Triangle;
+            friend class LE::GUI::Text;
     };
 }

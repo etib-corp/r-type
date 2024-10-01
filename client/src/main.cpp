@@ -12,9 +12,49 @@
 #include <iostream>
 #include "ECS/Ecs.hpp"
 
-class GameScene : public LE::Scene {
+#include "GUI/Text.hpp"
+
+class MyContainer : public LE::GUI::Container {
     public:
-        GameScene() : LE::Scene()
+        MyContainer(const std::string &content) {
+            _width = 500;
+            _height = 100;
+            _x = 0.0;
+            _y = 0;
+
+            LE::GUI::Text *text = new LE::GUI::Text(85, "assets/fonts/ARIAL.TTF", 24, content);
+
+            addChildren(text);
+        }
+
+        ~MyContainer() {
+            delete _background;
+        }
+};
+
+class MyParentContainer : public LE::GUI::Container {
+    public:
+        MyParentContainer() {
+            _width = 500;
+            _height = 100;
+            _x = 100.0;
+            _y = 0;
+
+            auto firstSubContainer = new MyContainer("Hello World !");
+            auto secondSubContainer = new MyContainer("Hi Marvin !");
+
+            addChildren(firstSubContainer);
+            addChildren(secondSubContainer);
+        }
+
+        ~MyParentContainer() {
+            delete _background;
+        }
+};
+
+class MyScene : public LE::Scene {
+    public:
+        MyScene()
         {
             _ecs = std::make_shared<Ecs>();
             _ecs->registerComponent<TransformComponent>();
@@ -49,19 +89,22 @@ class GameScene : public LE::Scene {
             _eventManager->pollEvents();
             _ecs->update(0.0f);
         }
-        void stop() override
-        {
-            std::cout << "Game scene ended." << std::endl;
-        }
 };
 
 int main(int ac, char **av)
 {
     // Initialize the engine
     auto engine = LE::Engine::getInstance();
-    auto scene = std::make_shared<GameScene>();
-    engine->addScene("game", scene);
-    engine->run(true);
+
+    auto scene = std::make_shared<MyScene>();
+
+    engine->addScene("main", scene);
+    // Run the engine
+    try {
+        engine->runWithDebug(); // Change to true to simulate an error
+    } catch (const LE::Engine::EngineError &e) {
+        std::cerr << "Engine error: " << e.what() << std::endl;
+    }
     return 0;
 }
 
