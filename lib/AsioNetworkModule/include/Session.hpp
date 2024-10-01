@@ -5,13 +5,13 @@
 ** Session
 */
 
-#ifndef SESSION_HPP_
-#define SESSION_HPP_
+#pragma once
 
 #include <boost/asio.hpp>
 #include <memory>
 #include <iostream>
 #include "interface/INetworkModule/ISession.hpp"
+#include "PackUnpack.hpp"
 
 /**
  * @class Session
@@ -51,6 +51,8 @@ class Session : public ISession {
 
         void sendTCP(const std::string &message) override;
 
+        void sendTCP(const Request &request);
+
         void sendUDP(const std::string &message) override;
 
         void setUdpEndpoint(boost::asio::ip::udp::endpoint udp_endpoint) { _udp_endpoint = udp_endpoint; }
@@ -64,10 +66,8 @@ class Session : public ISession {
         boost::asio::ip::udp::socket _socketUDP;
         boost::asio::ip::udp::endpoint _udp_endpoint;
 
-        enum { _max_length = 1024 };
-        char _data[_max_length];
+        Request _data;
 
     private:
 };
 
-#endif /* !SESSION_HPP_ */

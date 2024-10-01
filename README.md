@@ -7,9 +7,6 @@
 - **`client/`**  
   Contains the source code and header files for the client.
 
-- **`graphical/`**  
-  Currently under development.
-
 - **`include/`**  
   Shared header files used by both server and client.
 
@@ -19,7 +16,30 @@
 - **`server/`**  
   Contains the source code and header files for the server.
 
-- **`include/`**  
-  Shared source files used by both server and client.
+- **`dependencies/`**  
+  Dependencies for the current CMakeLists.txt.
+
+
+---
+
+### **Module**
+
+- **`AsioNetworkModule`**  
+  Module for networking using the Asio library.
+
+- **`ClientCoreModule`**
+  Module for the client core.
+
+- **`ServerCoreModule`**
+  Module for the server core.
+
+- **`TestClientCoreModule`**
+  Module for the test client core.
+
+- **`TestNetworkModule`**
+  Module for the test network.
+
+- **`TestServerCoreModule`**
+  Module for the test server core.
 
 ---

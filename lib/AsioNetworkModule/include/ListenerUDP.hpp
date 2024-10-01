@@ -5,13 +5,13 @@
 ** ListenerUDP
 */
 
-#ifndef ListenerUDP_HPP_
-#define ListenerUDP_HPP_
+#pragma once
 
 #include <boost/asio.hpp>
 #include <iostream>
 #include <memory>
 #include <thread>
+
 #include "interface/INetworkModule/IListenerUDP.hpp"
 
 /**
@@ -49,7 +49,7 @@ class ListenerUDP : public IListenerUDP {
          * to run the IO context. The thread is joined to ensure that the function waits
          * for the thread to complete before returning.
          */
-        void run(IServer *server) override;
+        void run(std::shared_ptr<SessionManager> sessionManager) override;
 
         /**
          * @brief Initiates an asynchronous receive operation on the UDP socket.
@@ -89,5 +89,3 @@ class ListenerUDP : public IListenerUDP {
         std::thread _threadContext;
     private:
 };
-
-#endif /* !ListenerUDP_HPP_ */

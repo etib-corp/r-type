@@ -32,12 +32,12 @@ LE::Window::Window(const std::string& title, std::size_t width, std::size_t heig
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LESS);
+    // glEnable(GL_DEPTH_TEST);
+    // glDepthFunc(GL_LESS);
 
-    glEnable(GL_CULL_FACE);
-    glCullFace(GL_FRONT);
-    glFrontFace(GL_CW);
+    // glEnable(GL_CULL_FACE);
+    // glCullFace(GL_FRONT);
+    // glFrontFace(GL_CW);
 
     glfwSwapInterval(1);
 
@@ -61,9 +61,9 @@ void LE::Window::render(std::shared_ptr<Scene> scene)
     if (_clock->getElapsedTime() < (1000.0f / _framerateLimit))
         return;
     _clock->restart();
-    clear();
     scene->draw();
     glfwSwapBuffers(_window);
+    clear();
 }
 
 void LE::Window::_initGLFW()

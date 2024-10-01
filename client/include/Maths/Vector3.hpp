@@ -5,6 +5,7 @@
 ** Vector3
 */
 
+#pragma once
 
 #include "Error.hpp"
 #include <glm.hpp>
