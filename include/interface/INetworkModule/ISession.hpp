@@ -9,6 +9,8 @@
 
 #include <string>
 #include <functional>
+#include "PackUnpack.hpp"
+
 
 /**
  * @class ISession
@@ -21,11 +23,11 @@ class ISession {
     public:
         virtual ~ISession() = default;
 
-        virtual void read(std::function<void(ISession *)> onDisconnected) = 0;
+        virtual void read(std::function<void(ISession *)> onDisconnected, std::function<void(const Request& request)> onReceive) = 0;
 
-        virtual void sendTCP(const std::string &message) = 0;
+        virtual void sendTCP(const std::string& request) = 0;
 
-        virtual void sendUDP(const std::string &message) = 0;
+        virtual void sendUDP(const std::string& request) = 0;
 
         int getId() const { return _id; }
 
