@@ -77,6 +77,11 @@ class MyScene : public LE::Scene {
 
         void stop() {
         }
+
+        void stop() override
+        {
+            std::cout << "Game scene ended." << std::endl;
+        }
 };
 
 int main(int ac, char **av)
