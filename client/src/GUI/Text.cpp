@@ -50,7 +50,6 @@ void LE::GUI::Text::init()
     }
     _width = xpos - _x;
     _height = ypos - _y;
-    
 }
 
 void LE::GUI::Text::draw()
@@ -95,8 +94,6 @@ void LE::GUI::Text::draw()
         glDrawArrays(GL_TRIANGLES, 0, 6);
         x += (ch.Advance >> 6);
     }
-    _width = xpos - _x;
-    _height = ypos - _y;
     glBindVertexArray(0);
     glBindTexture(GL_TEXTURE_2D, 0);
 }

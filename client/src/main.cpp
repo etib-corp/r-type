@@ -14,13 +14,13 @@
 
 class MyContainer : public LE::GUI::Container {
     public:
-        MyContainer() {
+        MyContainer(const std::string &content) {
             _width = 500;
             _height = 100;
             _x = 0.0;
             _y = 0;
 
-            LE::GUI::Text *text = new LE::GUI::Text(85, "assets/fonts/ARIAL.TTF", 24, "Hello World !");
+            LE::GUI::Text *text = new LE::GUI::Text(85, "assets/fonts/ARIAL.TTF", 24, content);
 
             addChildren(text);
         }
@@ -30,12 +30,32 @@ class MyContainer : public LE::GUI::Container {
         }
 };
 
+class MyParentContainer : public LE::GUI::Container {
+    public:
+        MyParentContainer() {
+            _width = 500;
+            _height = 100;
+            _x = 100.0;
+            _y = 0;
+
+            auto firstSubContainer = new MyContainer("Hello World !");
+            auto secondSubContainer = new MyContainer("Hi Marvin !");
+
+            addChildren(firstSubContainer);
+            addChildren(secondSubContainer);
+        }
+
+        ~MyParentContainer() {
+            delete _background;
+        }
+};
+
 class MyScene : public LE::Scene {
     public:
         MyScene() {
             _guiManager = std::make_shared<LE::GUI::Manager>(800, 600);
 
-            auto container = new MyContainer();
+            auto container = new MyParentContainer();
 
             _guiManager->addChildren(container);
         }

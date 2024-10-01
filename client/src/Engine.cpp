@@ -10,7 +10,7 @@
 #include "Window.hpp"
 
 #include "Shapes/Triangle.hpp"
-#include "GUI/Text.hpp"
+#include "GUI/Component.hpp"
 
 #include <iostream>
 
