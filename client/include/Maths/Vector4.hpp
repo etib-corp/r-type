@@ -9,6 +9,7 @@
 
 #include "Error.hpp"
 #include <glm.hpp>
+#include "Vector3.hpp"
 
 #include <cmath>
 #include <cxxabi.h>

@@ -34,6 +34,8 @@ LE::Shader::Shader(const std::string& vertexPath, const std::string& fragmentPat
     vertexFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
     fragmentFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
     try {
+        std::cout << "Reading vertex shader file: " << vertexPath << std::endl;
+        std::cout << "Reading fragment shader file: " << fragmentPath << std::endl;
         vertexFile.open(vertexPath);
         fragmentFile.open(fragmentPath);
         std::stringstream vertexStream, fragmentStream;

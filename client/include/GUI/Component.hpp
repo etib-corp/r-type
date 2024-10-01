@@ -50,10 +50,58 @@ namespace LE {
                  */
                 virtual void init() = 0;
 
+                /**
+                 * @brief Function to set the component's position.
+                 *
+                 * This function sets the X and Y position of the component on the screen.
+                 *
+                 * @param x The X position of the component.
+                 * @param y The Y position of the component.
+                 */
+                void setPos(float x, float y) { _x = x; _y = y; }
+
+                /**
+                 * @brief Function to set the component's width.
+                 *
+                 * This function sets the width of the component.
+                 *
+                 * @param width The width of the component.
+                 */
+                float getWidth() const { return _width; }
+
+                /**
+                 * @brief Function to set the component's height.
+                 *
+                 * This function sets the height of the component.
+                 *
+                 * @param height The height of the component.
+                 */
+                float getHeight() const { return _height; }
+
+                /**
+                 * @brief Function to get the component's X position.
+                 *
+                 * This function returns the X position of the component.
+                 *
+                 * @return The X position of the component.
+                 */
+                float getX() const { return _x; }
+
+                /**
+                 * @brief Function to get the component's Y position.
+                 *
+                 * This function returns the Y position of the component.
+                 *
+                 * @return The Y position of the component.
+                 */
+                float getY() const { return _y; }
+
             protected:
                 size_t _id; /** The component's ID. @note Unique for each component. */
-                unsigned int _x; /**< The component's X position on the screen. */
-                unsigned int _y; /**< The component's Y position on the screen. */
+                float _x; /**< The component's X position on the screen. */
+                float _y; /**< The component's Y position on the screen. */
+                float _width; /**< The component's width. */
+                float _height; /**< The component's height. */
         };
     }
 }
