@@ -1,26 +1,65 @@
 #include "message/Broker.hpp"
 
-void Broker::_logicalRoutine(void)
+void Broker::_networkRoutine(void)
 {
-    std::unique_ptr<Message> message;
+    _sendMessages();
+}
+
+void Broker::_logicalRoutine()
+{
     while (!_incomming_messages.empty())
     {
-        message = std::move(_incomming_messages.front());
+        _mutex.lock();
+        auto message = _incomming_messages.front();
+
         _incomming_messages.pop();
-        std::lock_guard<std::mutex> lock(_mutex);
-        _topics[std::make_pair(message->getECSId(), message->getTopicName())]->addMessage(std::move(message));
+        auto key = std::make_pair(message->getEmmiterID(), message->getTopicID());
+        if (_topics.find(key) == _topics.end())
+        {
+            _topics[key] = std::make_unique<Topic>(message->getEmmiterID(), message->getTopicID());
+        }
+        _topics[key]->addMessage(message);
+        std::cout << "Message received from " << message->getEmmiterID() << " on topic " << message->getTopicID() << std::endl;
+        _mutex.unlock();
     }
 }
 
 void Broker::_routine(void)
 {
-    std::lock_guard<std::mutex> lock(_mutex);
     _networkRoutine();
     _logicalRoutine();
 }
 
 void Broker::_run(void)
 {
+    _is_running = true;
+    _mutex.unlock();
     while (_is_running)
         _routine();
+    std::cout << "Broker routine stopped" << std::endl;
+}
+
+void Broker::_stop(void)
+{
+    std::cout << "Broker is stopping" << std::endl;
+    _mutex.lock();
+    _is_running = false;
+    _mutex.unlock();
+    std::cout << "Broker is joining thread" << std::endl;
+    _thread.join();
+    std::cout << "Broker thread joined" << std::endl;
+}
+
+void Broker::_sendMessages(void)
+{
+    Message *message = nullptr;
+    while (!_outgoing_messages.empty())
+    {
+        _mutex.lock();
+        message = _outgoing_messages.front();
+        _outgoing_messages.pop();
+        _sendFunction(message);
+        std::cout << "Message sent to " << message->getReceiverID() << std::endl;
+        _mutex.unlock();
+    }
 }

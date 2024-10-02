@@ -13,17 +13,19 @@
 
 #include "ISessionManager.hpp"
 
-class IListenerTCP {
-    public:
-        virtual ~IListenerTCP() = default;
+class IListenerTCP
+{
+public:
+    virtual ~IListenerTCP() = default;
 
-        virtual void WaitForConnection() = 0;
+    virtual void WaitForConnection() = 0;
 
-        virtual void run(std::shared_ptr<SessionManager> module) = 0;
+    virtual void run(std::shared_ptr<SessionManager> module) = 0;
 
-    protected:
-        std::shared_ptr<SessionManager> _sessionManager;
-    private:
+protected:
+    std::shared_ptr<SessionManager> _sessionManager;
+
+private:
 };
 
 #endif /* !ILISTENERTCP_HPP_ */

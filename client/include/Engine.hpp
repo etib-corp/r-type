@@ -20,6 +20,15 @@ namespace LE {
 #include "Window.hpp"
 #include "Error.hpp"
 
+namespace LE {
+    namespace Shapes {
+        class Triangle;
+    }
+    namespace GUI {
+        class Text;
+    }
+}
+
 /**
  * @file Engine.hpp
  * @brief Defines the Engine class.
@@ -136,5 +145,7 @@ namespace LE {
             bool _throwError; ///< Flag indicating whether to throw an error.
             friend class EventManager; ///< Friend class EventManager.
             std::function<void ()> _configFunc; ///< Configuration function. This function is called before the engine starts running.
+            friend class LE::Shapes::Triangle;
+            friend class LE::GUI::Text;
     };
 }

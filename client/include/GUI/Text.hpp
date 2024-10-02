@@ -12,6 +12,12 @@
 #include "GUI/Font.hpp"
 
 namespace LE {
+    namespace Shapes {
+        class Triangle;
+    }
+}
+
+namespace LE {
     namespace GUI {
         /**
          * @class Text

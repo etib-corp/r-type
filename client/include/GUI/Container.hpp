@@ -10,6 +10,8 @@
 #include <vector>
 
 #include "GUI/Component.hpp"
+#include "Color.hpp"
+#include "Shapes/Rectangle.hpp"
 
 namespace LE {
     namespace GUI {
@@ -56,10 +58,17 @@ namespace LE {
                  */
                 void draw();
 
+                /**
+                 * @brief Function to initialize the container.
+                 *
+                 * This function is responsible for initializing the container before engine rendering.
+                 */
+                void init() override;
+
             protected:
                 std::vector<Component *> _children; /**< The container's children components. @note Similar to React components. */
-                unsigned int _width; /**< The container's width (In pixels`px`) */
-                unsigned int _height; /**< The container's height (In pixels`px`) */
+                Shapes::Shape *_background; /**< The container's background. */
+                friend class Engine;
         };
     }
 }

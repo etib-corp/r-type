@@ -11,20 +11,17 @@
 #include "ECS/Ecs.hpp"
 #include "ECS/Components/TransformComponent.hpp"
 #include "GameClock.hpp"
+#include "message/ServerBroker.hpp"
 
-std::string serializeRequest(Request &request)
+
+
+
+void callbackInputUp(const Header& header, std::shared_ptr<Ecs> _ecs)
 {
-    std::ostringstream oss;
-
-    oss.write(reinterpret_cast<const char*>(&request.header), sizeof(request.header));
-    oss.write(reinterpret_cast<const char*>(&request.body), sizeof(uint8_t) * request.header.BodyLength);
-    return oss.str();
-}
-
-
-void callbackInputT1(const Header& header, std::shared_ptr<Ecs> _ecs)
-{
-    std::cout << "Callback Input T1 executed." << std::endl;
+    std::cout << "Callback Input UP executed." << std::endl;
+    std::cout << "Before" << _ecs->getComponent<TransformComponent>(header.EmmiterdEcsId).position << std::endl;
+    _ecs->getComponent<TransformComponent>(header.EmmiterdEcsId).position[1] += 1;
+    std::cout << "After" << _ecs->getComponent<TransformComponent>(header.EmmiterdEcsId).position << std::endl;
 }
 
 void callbackInputT2(const Header& header, std::shared_ptr<Ecs> _ecs)
@@ -96,104 +93,107 @@ void processHeader(const Header& header, std::shared_ptr<Ecs> _ecs, const std::u
     }
 }
 
+static void receiveFromClient( Message *message, ServerBroker *server_broker)
+{
+    try {
+        message = server_broker->getMessage(0, 1);
+        std::cout << "Message received from server" << std::endl;
+        delete message;
+    } catch (const std::exception &e) {
+        std::cerr << e.what() << std::endl;
+        std::cout << "No message received. Waiting..." << std::endl;
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
+}
+
+static void sendToAllClient(auto sessions, ServerBroker *server_broker, Message *message)
+{
+    sessions = server_broker->getClientsSessions();
+    if (sessions.size() <= 0)
+    {
+        // std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::cout << "No clients connected. Waiting..." << std::endl;
+        return;
+    }
+    for (auto &session : sessions)
+    {
+        message = new Message();
+        server_broker->addMessage(session->getId(), 1, message);
+        // std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::cout << "Message sent to client " << session->getId() << std::endl;
+        // delete message;
+    }
+}
+
+static void receivedFromAllClient(void)
+{
+    while (true) {}
+}
+
 int main(void)
 {
     GameClock clock;
     std::string pathLib = getPathOfNetworkDynLib() + getExtensionKernel();
+    LoaderLib loader_lib(pathLib, "");
+    loader_lib.LoadModule();
+    Message *message = nullptr;
+    INetworkModule *network_module = loader_lib.createNetworkModule();
+    ServerBroker *server_broker = new ServerBroker(network_module, 0, 8080);
+    auto sessions = server_broker->getClientsSessions();
+
     std::unordered_map<char, std::vector<std::function<void(const Header& header, std::shared_ptr<Ecs> _ecs)>>> actionCallbacks = {
-        {'U', {checkMagicNumber, callbackInputT1, callbackInputT2, callbackInputT3}},
+        {'U', {checkMagicNumber, callbackInputUp}},
         {'D', {checkMagicNumber, callbackInputL1, callbackInputL2}},
         {'R', {checkMagicNumber, callbackInputR}},
         {'L', {checkMagicNumber, callbackInputF}}
     };
 
-    Header testHeader1 = {.MagicNumber = 0xFF, .ECS_CLIENT_ID = 1, .Action = 'U', .BodyLength = 0};
-    Header testHeader2 = {.MagicNumber = 0xFF, .ECS_CLIENT_ID = 1, .Action = 'D', .BodyLength = 0};
-    Header testHeader3 = {.MagicNumber = 0xFF, .ECS_CLIENT_ID = 1, .Action = 'R', .BodyLength = 0};
-    Header testHeader4 = {.MagicNumber = 0xFF, .ECS_CLIENT_ID = 1, .Action = 'L', .BodyLength = 0};
+    Header testHeader1 = {.MagicNumber = 0xFF, .EmmiterdEcsId = 1, .ReceiverEcsId = 0, .Action = 'U', .BodyLength = 0};
+    Header testHeader2 = {.MagicNumber = 0xFF, .EmmiterdEcsId = 1, .ReceiverEcsId = 0, .Action = 'D', .BodyLength = 0};
+    Header testHeader3 = {.MagicNumber = 0xFF, .EmmiterdEcsId = 1, .ReceiverEcsId = 0, .Action = 'R', .BodyLength = 0};
+    Header testHeader4 = {.MagicNumber = 0xFF, .EmmiterdEcsId = 1, .ReceiverEcsId = 0, .Action = 'L', .BodyLength = 0};
 
-    clock.addCallback([]()
+    clock.addCallback([sessions, server_broker, message]()
     {
-        std::cout << "Callback A: send data on all client 100 ms" << std::endl;
+        std::cout << "All 100 ms : ";
+        sendToAllClient(sessions, server_broker, message);
     }, 100);
 
-    clock.addCallback([]()
-    {
-        std::cout << "Callback B: test 1000 ms" << std::endl;
-    }, 1000);
+    clock.start();
 
-    // clock.start();
-
-
-    // try {
-    //     LoaderLib lb(pathLib, "");
-    //     std::ostringstream oss;
-    //     Request request;
-    //     Header header = {.MagicNumber = 0x21, .ECS_CLIENT_ID = 0x01, .Action = 0x05, .BodyLength = 0x13};
-    //     Body body;
-    //     _Entity entity = {.type = "Avion[PADING][PADING][PADING][PADING][PADING]", .action = "Voler[PADING][PADING][PADING][PADING][PADING][PADING][PADING]", .life = 3};
-    //     ::memmove(&body, &entity, sizeof(_Entity));
-
-    //     showHeader(header);
-    //     showBody(reinterpret_cast<_Entity *>(&body));
-
-
-    //     oss << body;
-
-    //     lb.LoadModule();
-
-    //     INetworkModule *test = lb.createNetworkModule();
-    //     IServer *server = test->createServer(8080);
-
-    //     server->run();
-    //     while (1) {
-    //         if (server->_sessionsManager->_sessions.size() > 0) {
-    //             std::shared_ptr<ISession> session = server->_sessionsManager->_sessions[0];
-    //             // std::cout << "Sending: " << oss.str() << std::endl;
-    //             // request.header = header;
-    //             // request.body = body;
-    //             ::memset(&request, 0, sizeof(Request));
-    //             ::memmove(&request.header, &header, sizeof(Header));
-    //             ::memmove(&request.body, oss.str().c_str(), sizeof(Body));
-    //             // showHeader(request.header);
-    //             // std::cout << "Sending: " << serializeRequest(request)[0] << std::endl;
-    //             request.header.BodyLength = oss.str().size();
-    //             session->sendTCP(serializeRequest(request));
-    //             sleep(5);
-    //         }
-    //     }
-    // }
-    // catch(const std::exception& e) {
-    //     std::cerr << e.what() << '\n';
-    // }
     std::shared_ptr<Ecs> _ecs = std::make_shared<Ecs>();
     Entity entity = _ecs->createEntity();
     _ecs->registerComponent<TransformComponent>();
 
     _ecs->addComponent<TransformComponent>(entity, {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}});
 
+    receivedFromAllClient();
 
-    while (true) {
-        sleep(5);
-        processHeader(testHeader1, _ecs, actionCallbacks);
-        processHeader(testHeader2, _ecs, actionCallbacks);
-        processHeader(testHeader3, _ecs, actionCallbacks);
-        processHeader(testHeader4, _ecs, actionCallbacks);
-    }
+    delete server_broker;
+    delete network_module;
+
+
+    // while (true) {
+    //     sleep(5);
+    //     processHeader(testHeader1, _ecs, actionCallbacks);
+    //     processHeader(testHeader2, _ecs, actionCallbacks);
+    //     processHeader(testHeader3, _ecs, actionCallbacks);
+    //     processHeader(testHeader4, _ecs, actionCallbacks);
+    // }
 
     Request req;
     req.header.Action = 'U';
-    req.header.ECS_CLIENT_ID = entity;
+    req.header.EmmiterdEcsId = entity;
 
     if (req.header.Action == 'U')
     {
-        std::cout << "Before" << _ecs->getComponent<TransformComponent>(req.header.ECS_CLIENT_ID).position << std::endl;
-        _ecs->getComponent<TransformComponent>(req.header.ECS_CLIENT_ID).position[1] += 1;
-        std::cout << "After" << _ecs->getComponent<TransformComponent>(req.header.ECS_CLIENT_ID).position << std::endl;
+        std::cout << "Before" << _ecs->getComponent<TransformComponent>(req.header.EmmiterdEcsId).position << std::endl;
+        _ecs->getComponent<TransformComponent>(req.header.EmmiterdEcsId).position[1] += 1;
+        std::cout << "After" << _ecs->getComponent<TransformComponent>(req.header.EmmiterdEcsId).position << std::endl;
     }
     // _ecs->registerComponent<SpriteComponent>();
     // _ecs->registerComponent<ModelComponent>();
-    clock.stop();
 
+    clock.stop();
     return 0;
 }
