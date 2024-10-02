@@ -34,8 +34,8 @@ std::string Message::serialize(void) const
 {
     Header header = {0};
 
-    header.EmmiterdID = _emmiter_id;
-    header.ReceiverID = _receiver_id;
+    header.EmmiterdEcsId = _emmiter_id;
+    header.ReceiverEcsId = _receiver_id;
     header.Action = _action;
     return compressAndPrepare(header, _body);   
 }

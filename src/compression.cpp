@@ -11,8 +11,8 @@ void showHeader(Header header)
 {
     std::cout << "Header:" << std::endl;
     std::cout << "\tMagicNumber: " << +header.MagicNumber << std::endl;
-    std::cout << "\tEmmiter id: " << +header.EmmiterdID << std::endl;
-    std::cout << "\tReceiver id: " << +header.ReceiverID << std::endl;
+    std::cout << "\tEmmiter id: " << +header.EmmiterdEcsId << std::endl;
+    std::cout << "\tReceiver id: " << +header.ReceiverEcsId << std::endl;
     std::cout << "\tAction: " << +header.Action << std::endl;
     std::cout << "\tBodyLength: " << header.BodyLength << std::endl;
     // std::cout << "\tBodyCorp: " << header.Body << std::endl;
