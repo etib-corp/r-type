@@ -19,7 +19,7 @@ class GameScene : public LE::Scene {
             _ecs = std::make_shared<Ecs>();
             _ecs->registerComponent<TransformComponent>();
             _ecs->registerComponent<SpriteComponent>();
-            // _ecs->registerComponent<ModelComponent>();
+            _ecs->registerComponent<ModelComponent>();
             Signature signatureRender2D;
             signatureRender2D.set(_ecs->getComponentType<TransformComponent>());
             signatureRender2D.set(_ecs->getComponentType<SpriteComponent>());
@@ -28,19 +28,19 @@ class GameScene : public LE::Scene {
 
             Signature signatureRender3D;
             signatureRender3D.set(_ecs->getComponentType<TransformComponent>());
-            // signatureRender3D.set(_ecs->getComponentType<ModelComponent>());
-            // _ecs->registerSystem<Render3DSystem>();
-            // _ecs->setSignature<Render3DSystem>(signatureRender3D);
+            signatureRender3D.set(_ecs->getComponentType<ModelComponent>());
+            _ecs->registerSystem<Render3DSystem>();
+            _ecs->setSignature<Render3DSystem>(signatureRender3D);
 
-            Entity entity = _ecs->createEntity();
-            _ecs->addComponent<TransformComponent>(entity, (TransformComponent){{400, 400, 0}, {0, 0, 0}, {0.5f, 0.5f, 0.5f}});
-            auto sprite = createSpriteComponent("assets/images/character.png");
-            _ecs->addComponent<SpriteComponent>(entity, *sprite);
+            // Entity entity = _ecs->createEntity();
+            // _ecs->addComponent<TransformComponent>(entity, (TransformComponent){{400, 400, 0}, {0, 0, 0}, {0.5f, 0.5f, 0.5f}});
+            // auto sprite = createSpriteComponent("assets/images/character.png");
+            // _ecs->addComponent<SpriteComponent>(entity, *sprite);
 
-            // Entity entity2 = _ecs->createEntity();
-            // auto model = createModelComponent("assets/models/buttercup/buttercup.obj");
-            // _ecs->addComponent<ModelComponent>(entity2, *model);
-            // _ecs->addComponent<TransformComponent>(entity2, (TransformComponent){{400, 400, 0}, {0, 0, 0}, {0.5f, 0.5f, 0.5f}});
+            Entity entity2 = _ecs->createEntity();
+            auto model = createModelComponent("assets/models/buttercup/buttercup.obj");
+            _ecs->addComponent<ModelComponent>(entity2, *model);
+            _ecs->addComponent<TransformComponent>(entity2, (TransformComponent){{0, 0, 2}, {0, 0, 0}, {0.5f, 0.5f, 0.5f}});
 
         }
         void play() override

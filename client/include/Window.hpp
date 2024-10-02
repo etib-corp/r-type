@@ -44,12 +44,12 @@ namespace LE {
 }
 extern LE::Shader *fontShader;
 
-using Color = union {
+typedef union {
     unsigned int value;
     struct {
         unsigned char r, g, b, a;
     };
-};
+} Color;
 
 /**
  * @file Window.hpp
