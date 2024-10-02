@@ -41,7 +41,7 @@ void ServerBroker::_onReceiveRequestCallback(const Request &request)
     message->setEmmiterID(request.header.EmmiterdEcsId);
     message->setReceiverID(request.header.ReceiverEcsId);
     message->setAction(request.header.Action);
-    message->setTopicID(request.header.Action);
+    message->setTopicID(request.header.TopicID);
     message->setBody(request.body);
     _incomming_messages.push(message);
 }
