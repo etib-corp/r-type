@@ -37,6 +37,5 @@ std::string Message::serialize(void) const
     header.EmmiterdID = _emmiter_id;
     header.ReceiverID = _receiver_id;
     header.Action = _action;
-    header.BodyLength = sizeof(Body);
-    return compressAndPrepare(header, _body);
+    return compressAndPrepare(header, _body);   
 }
