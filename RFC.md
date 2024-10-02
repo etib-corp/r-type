@@ -118,6 +118,11 @@ Upon successful connection, the server assigns a unique client ID and sends the 
 
 ```cpp
 header.MagicNumber = 0x77;
+header.ECS_CLIENT_ID = CLIENT_ID;
+header.Action = 0x01;  // NEW CONNECTION
+header.BodyLength = 0;
+body = NULL;
+```
 
 #### 4.1.2 Client Acknowledges ID (UDP)
 
