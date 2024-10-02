@@ -65,7 +65,7 @@ public:
 
     /**
      * @brief Gets the topic id of the message.
-     * 
+     *
      * @return The topic id of the message.
      */
     std::uint8_t getTopicID(void) const { return _topic_id; }
