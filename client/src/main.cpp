@@ -174,6 +174,11 @@ static void receiveFromServer( Message *message, ClientBroker *client_broker)
     }
 }
 
+static void sendToServer(void)
+{
+
+}
+
 int main(void)
 {
     std::string pathLib = getPathOfNetworkDynLib() + getExtensionKernel();
@@ -188,6 +193,18 @@ int main(void)
     Message *message = nullptr;
 
     message = new Message();
+
+    Body bodyTest = {._buffer = "|test|test|test|test|"};
+    message->setAction('D');
+    message->setBody(bodyTest);
+    while (true)
+    {
+        client_broker->addMessage(0, 1, message);
+        sleep(3);
+    }
+
+
+
     // while (true)
     // {
     //     receiveFromServer(message, client_broker);
