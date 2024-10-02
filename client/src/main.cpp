@@ -84,7 +84,7 @@ class MyScene : public LE::Scene {
         }
 };
 
-int main(int ac, char **av)
+int __main__(int ac, char **av)
 {
     // Initialize the engine
     auto engine = LE::Engine::getInstance();
@@ -105,7 +105,32 @@ int main(int ac, char **av)
 #include "LoaderLib.hpp"
 #include "ResolvingLib.hpp"
 
-int main1(void)
+// bool deserializeRequest(const char *data, std::size_t length, std::istringstream *request)
+// {
+//     if (length < sizeof(std::istringstream))
+//     {
+//         std::cerr << "Erreur: Données reçues trop courtes." << std::endl;
+//         return false;
+//     }
+
+//     ::memmove(request, data, sizeof(std::istringstream));
+//     return true;
+// }
+
+static void receiveFromServer( Message *message, ClientBroker *client_broker)
+{
+    try {
+        message = client_broker->getMessage(0, 1);
+        std::cout << "Message received from server" << std::endl;
+        delete message;
+    } catch (const std::exception &e) {
+        std::cerr << e.what() << std::endl;
+        std::cout << "No message received. Waiting..." << std::endl;
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
+}
+
+int main(void)
 {
     std::string pathLib = getPathOfNetworkDynLib() + getExtensionKernel();
     LoaderLib loader_lib(pathLib, "");
@@ -118,18 +143,12 @@ int main1(void)
         lb.LoadModule();
         std::ostringstream oss;
 
-        IClient *client = lb.createClient();
-
-        client->connectToServer("127.0.0.1", 8080);
-        client->sendTCP("Hello from client TCP\n");
-        client->sendUDP("Hello from client UDP\n");
-        while (true)
-        {
-        }
-
-    } catch(const std::exception& e) {
-        std::cerr << e.what() << '\n';
-    }
+    message = new Message();
+    // while (true)
+    // {
+    //     receiveFromServer(message, client_broker);
+    // }
+    // client_broker->addMessage(0, 1, message);
 
     return 0;
 }
