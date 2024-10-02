@@ -14,44 +14,51 @@
 #include "message/ServerBroker.hpp"
 
 
+enum class EcsMovement {
+    UP      = 0,
+    DOWN    = 1,
+    RIGHT   = 2,
+    LEFT    = 3
+};
 
+enum class Axes3D {
+    X       = 0,
+    Y       = 1,
+    Z       = 2,
+};
+
+using CallBackFunc = std::function<void(const Header&, std::shared_ptr<Ecs>)>;
 
 void callbackInputUp(const Header& header, std::shared_ptr<Ecs> _ecs)
 {
     std::cout << "Callback Input UP executed." << std::endl;
     std::cout << "Before" << _ecs->getComponent<TransformComponent>(header.EmmiterdEcsId).position << std::endl;
-    _ecs->getComponent<TransformComponent>(header.EmmiterdEcsId).position[1] += 1;
+    _ecs->getComponent<TransformComponent>(header.EmmiterdEcsId).position[static_cast<int>(Axes3D::Y)] += 1;
     std::cout << "After" << _ecs->getComponent<TransformComponent>(header.EmmiterdEcsId).position << std::endl;
 }
 
-void callbackInputT2(const Header& header, std::shared_ptr<Ecs> _ecs)
+void callbackInputDown(const Header& header, std::shared_ptr<Ecs> _ecs)
 {
-    std::cout << "Callback Input T2 executed." << std::endl;
+    std::cout << "Callback Input Down executed." << std::endl;
+    std::cout << "Before" << _ecs->getComponent<TransformComponent>(header.EmmiterdEcsId).position << std::endl;
+    _ecs->getComponent<TransformComponent>(header.EmmiterdEcsId).position[static_cast<int>(Axes3D::Y)] -= 1;
+    std::cout << "After" << _ecs->getComponent<TransformComponent>(header.EmmiterdEcsId).position << std::endl;
 }
 
-void callbackInputT3(const Header& header, std::shared_ptr<Ecs> _ecs)
+void callbackInputLeft(const Header& header, std::shared_ptr<Ecs> _ecs)
 {
-    std::cout << "Callback Input T3 executed." << std::endl;
+    std::cout << "Callback Input Down executed." << std::endl;
+    std::cout << "Before" << _ecs->getComponent<TransformComponent>(header.EmmiterdEcsId).position << std::endl;
+    _ecs->getComponent<TransformComponent>(header.EmmiterdEcsId).position[static_cast<int>(Axes3D::X)] -= 1;
+    std::cout << "After" << _ecs->getComponent<TransformComponent>(header.EmmiterdEcsId).position << std::endl;
 }
 
-void callbackInputL1(const Header& header, std::shared_ptr<Ecs> _ecs)
+void callbackInputRight(const Header& header, std::shared_ptr<Ecs> _ecs)
 {
-    std::cout << "Callback Input L1 executed (Login step 1)." << std::endl;
-}
-
-void callbackInputL2(const Header& header, std::shared_ptr<Ecs> _ecs)
-{
-    std::cout << "Callback Input L2 executed (Login step 2)." << std::endl;
-}
-
-void callbackInputR(const Header& header, std::shared_ptr<Ecs> _ecs)
-{
-    std::cout << "Action R triggered (Register)." << std::endl;
-}
-
-void callbackInputF(const Header& header, std::shared_ptr<Ecs> _ecs)
-{
-    std::cout << "Action F triggered (Fetch)." << std::endl;
+    std::cout << "Callback Input Right executed." << std::endl;
+    std::cout << "Before" << _ecs->getComponent<TransformComponent>(header.EmmiterdEcsId).position << std::endl;
+    _ecs->getComponent<TransformComponent>(header.EmmiterdEcsId).position[static_cast<int>(Axes3D::X)] += 1;
+    std::cout << "After" << _ecs->getComponent<TransformComponent>(header.EmmiterdEcsId).position << std::endl;
 }
 
 void checkMagicNumber(const Header& header, std::shared_ptr<Ecs> _ecs)
@@ -79,7 +86,7 @@ void executeCallbacks(
     }
 }
 
-void processHeader(const Header& header, std::shared_ptr<Ecs> _ecs, const std::unordered_map<char, std::vector<std::function<void(const Header& header, std::shared_ptr<Ecs> _ecs)>>>& actionCallbacks)
+void processHeader(const Header& header, std::shared_ptr<Ecs> _ecs, const std::unordered_map<char, std::vector<CallBackFunc>>& actionCallbacks)
 {
     auto it = actionCallbacks.find(header.Action);
 
@@ -93,11 +100,22 @@ void processHeader(const Header& header, std::shared_ptr<Ecs> _ecs, const std::u
     }
 }
 
-static void receiveFromClient( Message *message, ServerBroker *server_broker)
+static void receiveFromClient(Message *message, ServerBroker *server_broker, std::shared_ptr<Ecs> _ecs, std::unordered_map<char, std::vector<CallBackFunc>> actionCallbacks)
 {
     try {
         message = server_broker->getMessage(0, 1);
-        std::cout << "Message received from server" << std::endl;
+        if (message == nullptr)
+            return;
+        std::cout << "Message received from client" << std::endl;
+        std::cout << "acion=" << (int)message->getAction() << std::endl;
+        Header header = {
+            .Action = message->getAction(),
+            .EmmiterdEcsId = (uint8_t)(message)->getEmmiterID(),
+            .BodyLength = 0,
+            .MagicNumber = 0x77,
+            .ReceiverEcsId = (uint8_t)message->getReceiverID()
+        };
+        processHeader(header, _ecs, actionCallbacks);
         delete message;
     } catch (const std::exception &e) {
         std::cerr << e.what() << std::endl;
@@ -106,12 +124,11 @@ static void receiveFromClient( Message *message, ServerBroker *server_broker)
     }
 }
 
-static void sendToAllClient(auto sessions, ServerBroker *server_broker, Message *message)
+static void sendToAllClient(std::deque<std::shared_ptr<ISession>> sessions, ServerBroker *server_broker, Message *message)
 {
     sessions = server_broker->getClientsSessions();
     if (sessions.size() <= 0)
     {
-        // std::this_thread::sleep_for(std::chrono::seconds(1));
         std::cout << "No clients connected. Waiting..." << std::endl;
         return;
     }
@@ -119,15 +136,18 @@ static void sendToAllClient(auto sessions, ServerBroker *server_broker, Message 
     {
         message = new Message();
         server_broker->addMessage(session->getId(), 1, message);
-        // std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::this_thread::sleep_for(std::chrono::seconds(1));
         std::cout << "Message sent to client " << session->getId() << std::endl;
-        // delete message;
+        delete message;
     }
 }
 
-static void receivedFromAllClient(void)
+static void receivedFromAllClient(Message *message, ServerBroker *server_broker, std::shared_ptr<Ecs> _ecs, std::unordered_map<char, std::vector<CallBackFunc>> actionCallbacks)
 {
-    while (true) {}
+    while (true)
+    {
+        receiveFromClient(message, server_broker, _ecs, actionCallbacks);
+    }
 }
 
 int main(void)
@@ -141,22 +161,25 @@ int main(void)
     ServerBroker *server_broker = new ServerBroker(network_module, 0, 8080);
     auto sessions = server_broker->getClientsSessions();
 
-    std::unordered_map<char, std::vector<std::function<void(const Header& header, std::shared_ptr<Ecs> _ecs)>>> actionCallbacks = {
-        {'U', {checkMagicNumber, callbackInputUp}},
-        {'D', {checkMagicNumber, callbackInputL1, callbackInputL2}},
-        {'R', {checkMagicNumber, callbackInputR}},
-        {'L', {checkMagicNumber, callbackInputF}}
+    std::unordered_map<char, std::vector<CallBackFunc>> actionCallbacks = {
+        {'U', {checkMagicNumber, callbackInputUp, [sessions, server_broker, message](const Header &header, std::__1::shared_ptr<Ecs> _ecs){
+            sendToAllClient(sessions, server_broker, message);
+        }}},
+        {'D', {checkMagicNumber, callbackInputDown, [sessions, server_broker, message](const Header &header, std::__1::shared_ptr<Ecs> _ecs){
+            sendToAllClient(sessions, server_broker, message);
+        }}},
+        {'R', {checkMagicNumber, callbackInputRight, [sessions, server_broker, message](const Header &header, std::__1::shared_ptr<Ecs> _ecs){
+            sendToAllClient(sessions, server_broker, message);
+        }}},
+        {'L', {checkMagicNumber, callbackInputLeft, [sessions, server_broker, message](const Header &header, std::__1::shared_ptr<Ecs> _ecs){
+            sendToAllClient(sessions, server_broker, message);
+        }}}
     };
-
-    Header testHeader1 = {.MagicNumber = 0xFF, .EmmiterdEcsId = 1, .ReceiverEcsId = 0, .Action = 'U', .BodyLength = 0};
-    Header testHeader2 = {.MagicNumber = 0xFF, .EmmiterdEcsId = 1, .ReceiverEcsId = 0, .Action = 'D', .BodyLength = 0};
-    Header testHeader3 = {.MagicNumber = 0xFF, .EmmiterdEcsId = 1, .ReceiverEcsId = 0, .Action = 'R', .BodyLength = 0};
-    Header testHeader4 = {.MagicNumber = 0xFF, .EmmiterdEcsId = 1, .ReceiverEcsId = 0, .Action = 'L', .BodyLength = 0};
 
     clock.addCallback([sessions, server_broker, message]()
     {
-        std::cout << "All 100 ms : ";
-        sendToAllClient(sessions, server_broker, message);
+        std::cout << "All 100 ms : " << std::endl;;
+        // sendToAllClient(sessions, server_broker, message);
     }, 100);
 
     clock.start();
@@ -167,32 +190,10 @@ int main(void)
 
     _ecs->addComponent<TransformComponent>(entity, {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}});
 
-    receivedFromAllClient();
+    receivedFromAllClient(message, server_broker, _ecs, actionCallbacks);
 
     delete server_broker;
     delete network_module;
-
-
-    // while (true) {
-    //     sleep(5);
-    //     processHeader(testHeader1, _ecs, actionCallbacks);
-    //     processHeader(testHeader2, _ecs, actionCallbacks);
-    //     processHeader(testHeader3, _ecs, actionCallbacks);
-    //     processHeader(testHeader4, _ecs, actionCallbacks);
-    // }
-
-    Request req;
-    req.header.Action = 'U';
-    req.header.EmmiterdEcsId = entity;
-
-    if (req.header.Action == 'U')
-    {
-        std::cout << "Before" << _ecs->getComponent<TransformComponent>(req.header.EmmiterdEcsId).position << std::endl;
-        _ecs->getComponent<TransformComponent>(req.header.EmmiterdEcsId).position[1] += 1;
-        std::cout << "After" << _ecs->getComponent<TransformComponent>(req.header.EmmiterdEcsId).position << std::endl;
-    }
-    // _ecs->registerComponent<SpriteComponent>();
-    // _ecs->registerComponent<ModelComponent>();
 
     clock.stop();
     return 0;
