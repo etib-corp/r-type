@@ -68,11 +68,11 @@ public:
     void addMessage(std::uint32_t ecs_id, std::uint8_t topic_id, Message *message)
     {
         std::lock_guard<std::mutex> lock(_mutex);
-    
+
         message->setEmmiterID(_ecs_id);
         message->setReceiverID(ecs_id);
         message->setTopicID(topic_id);
-        message->setAction(topic_id);
+        // message->setAction(topic_id);
         _outgoing_messages.push(message);
     }
 
