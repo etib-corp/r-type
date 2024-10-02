@@ -10,8 +10,8 @@
 
 class CallBack {
     public:
-        CallBack();
-        ~CallBack();
+        CallBack() = default;
+        ~CallBack() =  default;
 
     protected:
     private:
