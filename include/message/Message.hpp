@@ -85,6 +85,20 @@ public:
     std::uint8_t getAction(void) const { return _action; }
 
     /**
+     * @brief Sets the body for the message.
+     *
+     * @param body The body to be set.
+     */
+    void setBody(Body body) { _body = body; }
+
+    /**
+     * @brief Gets the body of the message.
+     *
+     * @return The body of the message.
+     */
+    Body getBody(void) const { return _body; }
+
+    /**
      * @brief Serializes the message.
      *
      * @return A unique pointer to the serialized request.
@@ -103,4 +117,5 @@ private:
     std::uint32_t _receiver_id;
     std::uint8_t _topic_id;
     std::uint8_t _action;
+    Body _body;
 };

@@ -43,5 +43,6 @@ void ClientBroker::_onReceiveRequestCallback(const Request &request)
     message->setReceiverID(request.header.ReceiverID);
     message->setAction(request.header.Action);
     message->setTopicID(request.header.Action);
+    message->setBody(request.body);
     _incomming_messages.push(message);
 }
