@@ -67,6 +67,7 @@ struct Header {
     uint8_t MagicNumber;
     uint8_t EmmiterdEcsId;
     uint8_t ReceiverEcsId;
+    uint8_t TopicID;
     uint8_t Action;
     uint32_t BodyLength;
 };
