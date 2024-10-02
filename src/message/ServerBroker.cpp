@@ -38,8 +38,8 @@ void ServerBroker::_onReceiveRequestCallback(const Request &request)
 {
     Message *message = new Message();
 
-    message->setEmmiterID(request.header.EmmiterdID);
-    message->setReceiverID(request.header.ReceiverID);
+    message->setEmmiterID(request.header.EmmiterdEcsId);
+    message->setReceiverID(request.header.ReceiverEcsId);
     message->setAction(request.header.Action);
     message->setTopicID(request.header.Action);
     message->setBody(request.body);

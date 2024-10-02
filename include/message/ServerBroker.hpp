@@ -34,7 +34,7 @@ public:
 
     /**
      * @brief Get all clients id connected to the server.
-     * 
+     *
      * @return The list of clients id.
      */
     std::deque<std::shared_ptr<ISession>> getClientsSessions(void) const { return _server->_sessionsManager->getClients(); }
