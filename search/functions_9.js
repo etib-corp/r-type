@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['isopen_0',['isOpen',['../classLE_1_1Window.html#ad2e4e728d73e6bbc090e7e770ac45e6a',1,'LE::Window']]]
+  ['javadoc_5ftest_0',['Javadoc_Test',['../classJavadoc__Test.html#a17313327932ae97596b0a455ba8342cc',1,'Javadoc_Test']]]
 ];

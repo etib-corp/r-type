@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: IListenerUDP Class Reference</title>
+<title>R-Type: IListenerUDP Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">R-Type
    </div>
   </td>
  </tr>
@@ -115,8 +115,8 @@ Inheritance diagram for IListenerUDP:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:af36d9dff37aea59908bb1546b3804a62" id="r_af36d9dff37aea59908bb1546b3804a62"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af36d9dff37aea59908bb1546b3804a62">run</a> (<a class="el" href="classINetworkModule.html">INetworkModule</a> *_networkModule)=0</td></tr>
-<tr class="separator:af36d9dff37aea59908bb1546b3804a62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d8d6e239d8d6737ccb1377eea06d3b5" id="r_a2d8d6e239d8d6737ccb1377eea06d3b5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d8d6e239d8d6737ccb1377eea06d3b5">run</a> (std::shared_ptr&lt; <a class="el" href="classSessionManager.html">SessionManager</a> &gt; sessionManager)=0</td></tr>
+<tr class="separator:a2d8d6e239d8d6737ccb1377eea06d3b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a485a3112410e94de15c00df4c74f7f31" id="r_a485a3112410e94de15c00df4c74f7f31"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a485a3112410e94de15c00df4c74f7f31">startReceive</a> ()=0</td></tr>
 <tr class="separator:a485a3112410e94de15c00df4c74f7f31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -125,13 +125,13 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:ad439bff53341687f509198045b061c4e" id="r_ad439bff53341687f509198045b061c4e"><td class="memItemLeft" align="right" valign="top"><a id="ad439bff53341687f509198045b061c4e" name="ad439bff53341687f509198045b061c4e"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>_port</b></td></tr>
 <tr class="separator:ad439bff53341687f509198045b061c4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98e72c4a427adac324651e03bd90e3de" id="r_a98e72c4a427adac324651e03bd90e3de"><td class="memItemLeft" align="right" valign="top"><a id="a98e72c4a427adac324651e03bd90e3de" name="a98e72c4a427adac324651e03bd90e3de"></a>
-<a class="el" href="classINetworkModule.html">INetworkModule</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_networkModule</b></td></tr>
-<tr class="separator:a98e72c4a427adac324651e03bd90e3de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c6b6c5880945b8457e3079b7bb10613" id="r_a0c6b6c5880945b8457e3079b7bb10613"><td class="memItemLeft" align="right" valign="top"><a id="a0c6b6c5880945b8457e3079b7bb10613" name="a0c6b6c5880945b8457e3079b7bb10613"></a>
+std::shared_ptr&lt; <a class="el" href="classSessionManager.html">SessionManager</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_sessionManager</b></td></tr>
+<tr class="separator:a0c6b6c5880945b8457e3079b7bb10613"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="af36d9dff37aea59908bb1546b3804a62" name="af36d9dff37aea59908bb1546b3804a62"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af36d9dff37aea59908bb1546b3804a62">&#9670;&#160;</a></span>run()</h2>
+<a id="a2d8d6e239d8d6737ccb1377eea06d3b5" name="a2d8d6e239d8d6737ccb1377eea06d3b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d8d6e239d8d6737ccb1377eea06d3b5">&#9670;&#160;</a></span>run()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -142,7 +142,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>_port</b></td></tr>
         <tr>
           <td class="memname">virtual void IListenerUDP::run </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classINetworkModule.html">INetworkModule</a> *</td>          <td class="paramname"><span class="paramname"><em>_networkModule</em></span></td><td>)</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classSessionManager.html">SessionManager</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>sessionManager</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -153,7 +153,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>_port</b></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classListenerUDP.html#acfc9ae249da1a634aa15cbecda410f55">ListenerUDP</a>.</p>
+<p>Implemented in <a class="el" href="classListenerUDP.html#ad95e62ccb817752d8214f0bdeaa976b9">ListenerUDP</a>.</p>
 
 </div>
 </div>

@@ -1,5 +1,6 @@
 var classServerBroker =
 [
-    [ "ServerBroker", "classServerBroker.html#a47cc960e4e9c9b3488b98e824c5ba6b3", null ],
-    [ "operator=", "classServerBroker.html#a4481d5ba29d6f118c347ac8b0f19a7ee", null ]
+    [ "ServerBroker", "classServerBroker.html#a6406a1d8a63955e1a5d7f1836438a51f", null ],
+    [ "~ServerBroker", "classServerBroker.html#a1acdd5ecffd8164cff971683ad9ba00c", null ],
+    [ "getClientsSessions", "classServerBroker.html#af7d98b859a32e513f47d3e1ab9b18811", null ]
 ];

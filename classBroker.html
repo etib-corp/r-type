@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: Broker Class Reference</title>
+<title>R-Type: Broker Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">R-Type
    </div>
   </td>
  </tr>
@@ -98,13 +98,14 @@ $(function(){initNavTree('classBroker.html',''); initResizable(true); });
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classBroker-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">Broker Class Reference</div></div>
+  <div class="headertitle"><div class="title">Broker Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>Singleton class that manages topics.  
+<p>Manages topics and messages in a multi-threaded environment.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Broker_8hpp_source.html">Broker.hpp</a>&gt;</code></p>
@@ -114,108 +115,288 @@ Inheritance diagram for Broker:</div>
  <div class="center">
   <img src="classBroker.png" usemap="#Broker_map" alt=""/>
   <map id="Broker_map" name="Broker_map">
-<area href="classClientBroker.html" title="A thread-safe singleton class representing a client-side broker." alt="ClientBroker" shape="rect" coords="0,56,89,80"/>
-<area href="classServerBroker.html" title="A thread-safe singleton class representing a server-side broker." alt="ServerBroker" shape="rect" coords="99,56,188,80"/>
+<area href="classClientBroker.html" title="A class that handles client-side network communication." alt="ClientBroker" shape="rect" coords="0,56,89,80"/>
+<area href="classServerBroker.html" title="A class that extends Broker to manage server-side network communication." alt="ServerBroker" shape="rect" coords="99,56,188,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5b382c4cb43994d4ef1f9f428c0bd4ca" id="r_a5b382c4cb43994d4ef1f9f428c0bd4ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b382c4cb43994d4ef1f9f428c0bd4ca">addTopic</a> (const std::string &amp;name)</td></tr>
-<tr class="memdesc:a5b382c4cb43994d4ef1f9f428c0bd4ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new topic.  <br /></td></tr>
-<tr class="separator:a5b382c4cb43994d4ef1f9f428c0bd4ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac930bbd18ef31e4120441dded4e193cd" id="r_ac930bbd18ef31e4120441dded4e193cd"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classTopic.html">Topic</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac930bbd18ef31e4120441dded4e193cd">getTopic</a> (const std::string &amp;topicName)</td></tr>
-<tr class="memdesc:ac930bbd18ef31e4120441dded4e193cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a topic by name.  <br /></td></tr>
-<tr class="separator:ac930bbd18ef31e4120441dded4e193cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28f27133ff950c8c0a7dfd4f8a0b81cd" id="r_a28f27133ff950c8c0a7dfd4f8a0b81cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28f27133ff950c8c0a7dfd4f8a0b81cd">removeTopic</a> (const std::string &amp;topicName)</td></tr>
-<tr class="memdesc:a28f27133ff950c8c0a7dfd4f8a0b81cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a topic by name.  <br /></td></tr>
-<tr class="separator:a28f27133ff950c8c0a7dfd4f8a0b81cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76e5f13b99d99c6acd145e51b8ebaf66" id="r_a76e5f13b99d99c6acd145e51b8ebaf66"><td class="memItemLeft" align="right" valign="top"><a id="a76e5f13b99d99c6acd145e51b8ebaf66" name="a76e5f13b99d99c6acd145e51b8ebaf66"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>~Broker</b> (void)=default</td></tr>
+<tr class="memdesc:a76e5f13b99d99c6acd145e51b8ebaf66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for the <a class="el" href="classBroker.html" title="Manages topics and messages in a multi-threaded environment.">Broker</a> class. <br /></td></tr>
+<tr class="separator:a76e5f13b99d99c6acd145e51b8ebaf66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a134305d4a07353208c6d32c363865f17" id="r_a134305d4a07353208c6d32c363865f17"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a134305d4a07353208c6d32c363865f17">getECSId</a> (void) const</td></tr>
+<tr class="memdesc:a134305d4a07353208c6d32c363865f17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the ECS ID of the broker.  <br /></td></tr>
+<tr class="separator:a134305d4a07353208c6d32c363865f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0eebc1f2290bcbe3ec2da17303dd336e" id="r_a0eebc1f2290bcbe3ec2da17303dd336e"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classTopic.html">Topic</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0eebc1f2290bcbe3ec2da17303dd336e">getTopic</a> (std::uint32_t ecs_id, std::uint8_t id)</td></tr>
+<tr class="memdesc:a0eebc1f2290bcbe3ec2da17303dd336e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a topic from the broker.  <br /></td></tr>
+<tr class="separator:a0eebc1f2290bcbe3ec2da17303dd336e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a306bf7b8864bdbdccdb5a5eaf8f1453f" id="r_a306bf7b8864bdbdccdb5a5eaf8f1453f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a306bf7b8864bdbdccdb5a5eaf8f1453f">removeTopic</a> (std::uint32_t ecs_id, std::uint8_t id)</td></tr>
+<tr class="memdesc:a306bf7b8864bdbdccdb5a5eaf8f1453f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a topic from the broker.  <br /></td></tr>
+<tr class="separator:a306bf7b8864bdbdccdb5a5eaf8f1453f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36d748b8bb218f84c6aafe9358ee7259" id="r_a36d748b8bb218f84c6aafe9358ee7259"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36d748b8bb218f84c6aafe9358ee7259">addMessage</a> (std::uint32_t ecs_id, std::uint8_t topic_id, <a class="el" href="classMessage.html">Message</a> *message)</td></tr>
+<tr class="memdesc:a36d748b8bb218f84c6aafe9358ee7259"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a message to a topic.  <br /></td></tr>
+<tr class="separator:a36d748b8bb218f84c6aafe9358ee7259"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52789b945668416dc4fbfedd58eb06d1" id="r_a52789b945668416dc4fbfedd58eb06d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMessage.html">Message</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52789b945668416dc4fbfedd58eb06d1">getMessage</a> (std::uint32_t ecs_id, std::uint8_t topic_id)</td></tr>
+<tr class="memdesc:a52789b945668416dc4fbfedd58eb06d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a message from a topic.  <br /></td></tr>
+<tr class="separator:a52789b945668416dc4fbfedd58eb06d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a38c7dfd1e912414e9559fc7b7bc62762" id="r_a38c7dfd1e912414e9559fc7b7bc62762"><td class="memItemLeft" align="right" valign="top"><a id="a38c7dfd1e912414e9559fc7b7bc62762" name="a38c7dfd1e912414e9559fc7b7bc62762"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>_setNetworkModule</b> (<a class="el" href="classINetworkModule.html">INetworkModule</a> *network_module)</td></tr>
+<tr class="separator:a38c7dfd1e912414e9559fc7b7bc62762"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d8e56718893f6bb0408c0c74d885c95" id="r_a1d8e56718893f6bb0408c0c74d885c95"><td class="memItemLeft" align="right" valign="top"><a id="a1d8e56718893f6bb0408c0c74d885c95" name="a1d8e56718893f6bb0408c0c74d885c95"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>_setECSId</b> (int ecs_id)</td></tr>
+<tr class="separator:a1d8e56718893f6bb0408c0c74d885c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a872f471d1542f1844600eeb40f5320c5" id="r_a872f471d1542f1844600eeb40f5320c5"><td class="memItemLeft" align="right" valign="top"><a id="a872f471d1542f1844600eeb40f5320c5" name="a872f471d1542f1844600eeb40f5320c5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>_setSendFunction</b> (std::function&lt; void(<a class="el" href="classMessage.html">Message</a> *)&gt; sendFunction)</td></tr>
+<tr class="separator:a872f471d1542f1844600eeb40f5320c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee581cb8cf45e214ee5da37c7dc7c9a4" id="r_aee581cb8cf45e214ee5da37c7dc7c9a4"><td class="memItemLeft" align="right" valign="top"><a id="aee581cb8cf45e214ee5da37c7dc7c9a4" name="aee581cb8cf45e214ee5da37c7dc7c9a4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>_networkRoutine</b> (void)</td></tr>
+<tr class="separator:aee581cb8cf45e214ee5da37c7dc7c9a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa65bf41542d11bb9754448f8dcb6ee2a" id="r_aa65bf41542d11bb9754448f8dcb6ee2a"><td class="memItemLeft" align="right" valign="top"><a id="aa65bf41542d11bb9754448f8dcb6ee2a" name="aa65bf41542d11bb9754448f8dcb6ee2a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>_logicalRoutine</b> (void)</td></tr>
+<tr class="separator:aa65bf41542d11bb9754448f8dcb6ee2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ecffdfb02c1b0870cfb7bf2b2a81b87" id="r_a2ecffdfb02c1b0870cfb7bf2b2a81b87"><td class="memItemLeft" align="right" valign="top"><a id="a2ecffdfb02c1b0870cfb7bf2b2a81b87" name="a2ecffdfb02c1b0870cfb7bf2b2a81b87"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>_routine</b> (void)</td></tr>
+<tr class="separator:a2ecffdfb02c1b0870cfb7bf2b2a81b87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe3d0028269df7f591d0a26e8e6e166e" id="r_afe3d0028269df7f591d0a26e8e6e166e"><td class="memItemLeft" align="right" valign="top"><a id="afe3d0028269df7f591d0a26e8e6e166e" name="afe3d0028269df7f591d0a26e8e6e166e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>_run</b> (void)</td></tr>
+<tr class="separator:afe3d0028269df7f591d0a26e8e6e166e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac48fb4ae710d47a5450f374d259b23ed" id="r_ac48fb4ae710d47a5450f374d259b23ed"><td class="memItemLeft" align="right" valign="top"><a id="ac48fb4ae710d47a5450f374d259b23ed" name="ac48fb4ae710d47a5450f374d259b23ed"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>_stop</b> (void)</td></tr>
+<tr class="separator:ac48fb4ae710d47a5450f374d259b23ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07ecf3534ba414a967f21239b986c683" id="r_a07ecf3534ba414a967f21239b986c683"><td class="memItemLeft" align="right" valign="top"><a id="a07ecf3534ba414a967f21239b986c683" name="a07ecf3534ba414a967f21239b986c683"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>_sendMessage</b> (<a class="el" href="classMessage.html">Message</a> *message)=0</td></tr>
+<tr class="separator:a07ecf3534ba414a967f21239b986c683"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a299af8e30bc753fdb230b70125196c0c" id="r_a299af8e30bc753fdb230b70125196c0c"><td class="memItemLeft" align="right" valign="top"><a id="a299af8e30bc753fdb230b70125196c0c" name="a299af8e30bc753fdb230b70125196c0c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>_sendMessages</b> (void)</td></tr>
+<tr class="separator:a299af8e30bc753fdb230b70125196c0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
+<tr class="memitem:a797e32d4e24ebc7c961f4891d1de1b5a" id="r_a797e32d4e24ebc7c961f4891d1de1b5a"><td class="memItemLeft" align="right" valign="top"><a id="a797e32d4e24ebc7c961f4891d1de1b5a" name="a797e32d4e24ebc7c961f4891d1de1b5a"></a>
+std::uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>_ecs_id</b></td></tr>
+<tr class="separator:a797e32d4e24ebc7c961f4891d1de1b5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47763ae7ad630f3c530b287b2d6c045e" id="r_a47763ae7ad630f3c530b287b2d6c045e"><td class="memItemLeft" align="right" valign="top"><a id="a47763ae7ad630f3c530b287b2d6c045e" name="a47763ae7ad630f3c530b287b2d6c045e"></a>
+<a class="el" href="classINetworkModule.html">INetworkModule</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_network_module</b></td></tr>
+<tr class="separator:a47763ae7ad630f3c530b287b2d6c045e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa96229cf64bd2c917276808987643415" id="r_aa96229cf64bd2c917276808987643415"><td class="memItemLeft" align="right" valign="top"><a id="aa96229cf64bd2c917276808987643415" name="aa96229cf64bd2c917276808987643415"></a>
+std::map&lt; std::pair&lt; std::uint32_t, std::uint8_t &gt;, std::unique_ptr&lt; <a class="el" href="classTopic.html">Topic</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_topics</b></td></tr>
+<tr class="separator:aa96229cf64bd2c917276808987643415"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d880a071d1925f688e5784fc09f2d64" id="r_a4d880a071d1925f688e5784fc09f2d64"><td class="memItemLeft" align="right" valign="top"><a id="a4d880a071d1925f688e5784fc09f2d64" name="a4d880a071d1925f688e5784fc09f2d64"></a>
+std::thread&#160;</td><td class="memItemRight" valign="bottom"><b>_thread</b></td></tr>
+<tr class="separator:a4d880a071d1925f688e5784fc09f2d64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7af6aeeb7a69c6f62ad497ae01fc0bf7" id="r_a7af6aeeb7a69c6f62ad497ae01fc0bf7"><td class="memItemLeft" align="right" valign="top"><a id="a7af6aeeb7a69c6f62ad497ae01fc0bf7" name="a7af6aeeb7a69c6f62ad497ae01fc0bf7"></a>
 std::mutex&#160;</td><td class="memItemRight" valign="bottom"><b>_mutex</b></td></tr>
-<tr class="memdesc:a7af6aeeb7a69c6f62ad497ae01fc0bf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutex to ensure thread safety. <br /></td></tr>
 <tr class="separator:a7af6aeeb7a69c6f62ad497ae01fc0bf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b9f00e34013ed160b85614ab21c1feb" id="r_a6b9f00e34013ed160b85614ab21c1feb"><td class="memItemLeft" align="right" valign="top"><a id="a6b9f00e34013ed160b85614ab21c1feb" name="a6b9f00e34013ed160b85614ab21c1feb"></a>
-std::map&lt; std::string, std::unique_ptr&lt; <a class="el" href="classTopic.html">Topic</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_topics</b></td></tr>
-<tr class="memdesc:a6b9f00e34013ed160b85614ab21c1feb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map of topics. <br /></td></tr>
-<tr class="separator:a6b9f00e34013ed160b85614ab21c1feb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32048e06907ce1aded0aa826f129ce5f" id="r_a32048e06907ce1aded0aa826f129ce5f"><td class="memItemLeft" align="right" valign="top"><a id="a32048e06907ce1aded0aa826f129ce5f" name="a32048e06907ce1aded0aa826f129ce5f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_is_running</b> = true</td></tr>
+<tr class="separator:a32048e06907ce1aded0aa826f129ce5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a692e06340f2bab6d268f2d1892c483" id="r_a4a692e06340f2bab6d268f2d1892c483"><td class="memItemLeft" align="right" valign="top"><a id="a4a692e06340f2bab6d268f2d1892c483" name="a4a692e06340f2bab6d268f2d1892c483"></a>
+std::queue&lt; <a class="el" href="classMessage.html">Message</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_outgoing_messages</b></td></tr>
+<tr class="separator:a4a692e06340f2bab6d268f2d1892c483"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78a68723f886af5be86c7e446924f8a5" id="r_a78a68723f886af5be86c7e446924f8a5"><td class="memItemLeft" align="right" valign="top"><a id="a78a68723f886af5be86c7e446924f8a5" name="a78a68723f886af5be86c7e446924f8a5"></a>
+std::queue&lt; <a class="el" href="classMessage.html">Message</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_incomming_messages</b></td></tr>
+<tr class="separator:a78a68723f886af5be86c7e446924f8a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2aae9f3af6e16d3bb23794d6fbce10a1" id="r_a2aae9f3af6e16d3bb23794d6fbce10a1"><td class="memItemLeft" align="right" valign="top"><a id="a2aae9f3af6e16d3bb23794d6fbce10a1" name="a2aae9f3af6e16d3bb23794d6fbce10a1"></a>
+std::function&lt; void(<a class="el" href="classMessage.html">Message</a> *)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_sendFunction</b></td></tr>
+<tr class="separator:a2aae9f3af6e16d3bb23794d6fbce10a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Singleton class that manages topics. </p>
-<p>The <a class="el" href="classBroker.html" title="Singleton class that manages topics.">Broker</a> class is responsible for managing topics in a thread-safe manner. It provides methods to add, retrieve, and remove topics. This class cannot be copied or assigned. </p>
+<div class="textblock"><p>Manages topics and messages in a multi-threaded environment. </p>
+<p>The <a class="el" href="classBroker.html" title="Manages topics and messages in a multi-threaded environment.">Broker</a> class is responsible for managing topics and messages. It provides methods to add, retrieve, and remove topics, as well as to add and retrieve messages. It ensures thread safety using mutex locks. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a5b382c4cb43994d4ef1f9f428c0bd4ca" name="a5b382c4cb43994d4ef1f9f428c0bd4ca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5b382c4cb43994d4ef1f9f428c0bd4ca">&#9670;&#160;</a></span>addTopic()</h2>
+<a id="a36d748b8bb218f84c6aafe9358ee7259" name="a36d748b8bb218f84c6aafe9358ee7259"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36d748b8bb218f84c6aafe9358ee7259">&#9670;&#160;</a></span>addMessage()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Broker::addTopic </td>
+          <td class="memname">void Broker::addMessage </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span></td><td>)</td>
+          <td class="paramtype">std::uint32_t</td>          <td class="paramname"><span class="paramname"><em>ecs_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::uint8_t</td>          <td class="paramname"><span class="paramname"><em>topic_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classMessage.html">Message</a> *</td>          <td class="paramname"><span class="paramname"><em>message</em></span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>Add a new topic. </p>
+<p>Adds a message to a topic. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">name</td><td>The name of the topic to add. </td></tr>
+    <tr><td class="paramname">ecs_id</td><td>The ECS ID associated with the topic. </td></tr>
+    <tr><td class="paramname">topic_name</td><td>The name of the topic. </td></tr>
+    <tr><td class="paramname">message</td><td><a class="el" href="classA.html">A</a> unique pointer to the message. </td></tr>
   </table>
   </dd>
 </dl>
 
 </div>
 </div>
-<a id="ac930bbd18ef31e4120441dded4e193cd" name="ac930bbd18ef31e4120441dded4e193cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac930bbd18ef31e4120441dded4e193cd">&#9670;&#160;</a></span>getTopic()</h2>
+<a id="a134305d4a07353208c6d32c363865f17" name="a134305d4a07353208c6d32c363865f17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a134305d4a07353208c6d32c363865f17">&#9670;&#160;</a></span>getECSId()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Broker::getECSId </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the ECS ID of the broker. </p>
+<dl class="section return"><dt>Returns</dt><dd>The ECS ID. </dd></dl>
+
+</div>
+</div>
+<a id="a52789b945668416dc4fbfedd58eb06d1" name="a52789b945668416dc4fbfedd58eb06d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52789b945668416dc4fbfedd58eb06d1">&#9670;&#160;</a></span>getMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMessage.html">Message</a> * Broker::getMessage </td>
+          <td>(</td>
+          <td class="paramtype">std::uint32_t</td>          <td class="paramname"><span class="paramname"><em>ecs_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::uint8_t</td>          <td class="paramname"><span class="paramname"><em>topic_id</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves a message from a topic. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ecs_id</td><td>The ECS ID associated with the topic. </td></tr>
+    <tr><td class="paramname">topic_name</td><td>The name of the topic. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classA.html">A</a> unique pointer to the message. </dd></dl>
+
+</div>
+</div>
+<a id="a0eebc1f2290bcbe3ec2da17303dd336e" name="a0eebc1f2290bcbe3ec2da17303dd336e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0eebc1f2290bcbe3ec2da17303dd336e">&#9670;&#160;</a></span>getTopic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::unique_ptr&lt; <a class="el" href="classTopic.html">Topic</a> &gt; &amp; Broker::getTopic </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>topicName</em></span></td><td>)</td>
+          <td class="paramtype">std::uint32_t</td>          <td class="paramname"><span class="paramname"><em>ecs_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::uint8_t</td>          <td class="paramname"><span class="paramname"><em>id</em></span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>Get a topic by name. </p>
+<p>Retrieves a topic from the broker. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">topicName</td><td>The name of the topic to retrieve. </td></tr>
+    <tr><td class="paramname">ecs_id</td><td>The ECS ID associated with the topic. </td></tr>
+    <tr><td class="paramname">name</td><td>The name of the topic. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classTopic.html" title="A class that represents a topic for message passing.">Topic</a>&amp; Reference to the topic. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classA.html">A</a> unique pointer to the topic. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>if the topic is not found. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="a28f27133ff950c8c0a7dfd4f8a0b81cd" name="a28f27133ff950c8c0a7dfd4f8a0b81cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a28f27133ff950c8c0a7dfd4f8a0b81cd">&#9670;&#160;</a></span>removeTopic()</h2>
+<a id="a306bf7b8864bdbdccdb5a5eaf8f1453f" name="a306bf7b8864bdbdccdb5a5eaf8f1453f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a306bf7b8864bdbdccdb5a5eaf8f1453f">&#9670;&#160;</a></span>removeTopic()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void Broker::removeTopic </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>topicName</em></span></td><td>)</td>
+          <td class="paramtype">std::uint32_t</td>          <td class="paramname"><span class="paramname"><em>ecs_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::uint8_t</td>          <td class="paramname"><span class="paramname"><em>id</em></span>&#160;)</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>Remove a topic by name. </p>
+<p>Removes a topic from the broker. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">topicName</td><td>The name of the topic to remove. </td></tr>
+    <tr><td class="paramname">ecs_id</td><td>The ECS ID associated with the topic. </td></tr>
+    <tr><td class="paramname">name</td><td>The name of the topic. </td></tr>
   </table>
   </dd>
 </dl>

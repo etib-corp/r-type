@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: include/message/ClientBroker.hpp Source File</title>
+<title>R-Type: include/message/ClientBroker.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">R-Type
    </div>
   </td>
  </tr>
@@ -99,59 +99,50 @@ $(function(){initNavTree('ClientBroker_8hpp_source.html',''); initResizable(true
   <div class="headertitle"><div class="title">ClientBroker.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="ClientBroker_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;mutex&gt;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="Broker_8hpp.html">message/Broker.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;LoaderLib.hpp&quot;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="foldopen" id="foldopen00024" data-start="{" data-end="};">
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classClientBroker.html">   24</a></span><span class="keyword">class </span><a class="code hl_class" href="classClientBroker.html">ClientBroker</a> : <span class="keyword">public</span> <a class="code hl_class" href="classBroker.html">Broker</a></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>{</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">static</span> <a class="code hl_class" href="classClientBroker.html">ClientBroker</a> *_instance;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">static</span> std::mutex _mutex;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <a class="code hl_class" href="classClientBroker.html">ClientBroker</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <a class="code hl_class" href="classClientBroker.html">~ClientBroker</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    std::unique_ptr&lt;LoaderLib&gt; _loader_lib;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    std::unique_ptr&lt;INetworkModule&gt; _network_module;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classClientBroker.html#a574e04b59dad5426082fad6f4fdd4e66">   56</a></span>    <a class="code hl_function" href="classClientBroker.html#a574e04b59dad5426082fad6f4fdd4e66">ClientBroker</a>(<a class="code hl_class" href="classClientBroker.html">ClientBroker</a> &amp;other) = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classClientBroker.html#ac54768fb6d39ec56dc8f426ba790e884">   61</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classClientBroker.html#ac54768fb6d39ec56dc8f426ba790e884">operator=</a>(<span class="keyword">const</span> <a class="code hl_class" href="classClientBroker.html">ClientBroker</a> &amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="foldopen" id="foldopen00070" data-start="{" data-end="}">
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="classClientBroker.html#a56292f555a97bb120527c43eb87a2095">   70</a></span>    <span class="keyword">static</span> <a class="code hl_class" href="classClientBroker.html">ClientBroker</a> *<a class="code hl_function" href="classClientBroker.html#a56292f555a97bb120527c43eb87a2095">GetInstance</a>()</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    {</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        std::lock_guard&lt;std::mutex&gt; lock(_mutex);</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keywordflow">if</span> (_instance == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        {</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            _instance = <span class="keyword">new</span> <a class="code hl_class" href="classClientBroker.html">ClientBroker</a>();</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        }</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keywordflow">return</span> _instance;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    }</div>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;cstdint&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;message/Broker.hpp&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;ResolvingLib.hpp&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;interface/INetworkModule/INetworkModule.hpp&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;interface/INetworkModule/IServer.hpp&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="foldopen" id="foldopen00020" data-start="{" data-end="};">
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classClientBroker.html">   20</a></span><span class="keyword">class </span><a class="code hl_class" href="classClientBroker.html">ClientBroker</a> : <span class="keyword">public</span> <a class="code hl_class" href="classBroker.html">Broker</a></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <a class="code hl_function" href="classClientBroker.html#a868edbb91c0c007eab23f4e281490e95">ClientBroker</a>(<a class="code hl_class" href="classINetworkModule.html">INetworkModule</a> *network_module, std::string connect_address, std::uint16_t connect_port);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <a class="code hl_function" href="classClientBroker.html#a542de007a4041f8499ca4495c4670a3b">~ClientBroker</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    std::string _connect_address;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    std::uint16_t _connect_port;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <a class="code hl_class" href="classIClient.html">IClient</a> *_client;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">void</span> _sendMessage(<a class="code hl_class" href="classMessage.html">Message</a> *message) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> _onReceiveRequestCallback(<span class="keyword">const</span> <a class="code hl_struct" href="structRequest.html">Request</a> &amp;request);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>};</div>
 </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>};</div>
-</div>
-<div class="ttc" id="aBroker_8hpp_html"><div class="ttname"><a href="Broker_8hpp.html">Broker.hpp</a></div><div class="ttdoc">Singleton class that manages topics.</div></div>
-<div class="ttc" id="aclassBroker_html"><div class="ttname"><a href="classBroker.html">Broker</a></div><div class="ttdoc">Singleton class that manages topics.</div><div class="ttdef"><b>Definition</b> Broker.hpp:32</div></div>
-<div class="ttc" id="aclassClientBroker_html"><div class="ttname"><a href="classClientBroker.html">ClientBroker</a></div><div class="ttdoc">A thread-safe singleton class representing a client-side broker.</div><div class="ttdef"><b>Definition</b> ClientBroker.hpp:25</div></div>
-<div class="ttc" id="aclassClientBroker_html_a56292f555a97bb120527c43eb87a2095"><div class="ttname"><a href="classClientBroker.html#a56292f555a97bb120527c43eb87a2095">ClientBroker::GetInstance</a></div><div class="ttdeci">static ClientBroker * GetInstance()</div><div class="ttdoc">This method controls access to the singleton instance. On the first run, it creates the singleton obj...</div><div class="ttdef"><b>Definition</b> ClientBroker.hpp:70</div></div>
-<div class="ttc" id="aclassClientBroker_html_a574e04b59dad5426082fad6f4fdd4e66"><div class="ttname"><a href="classClientBroker.html#a574e04b59dad5426082fad6f4fdd4e66">ClientBroker::ClientBroker</a></div><div class="ttdeci">ClientBroker(ClientBroker &amp;other)=delete</div><div class="ttdoc">Singletons should not be cloneable.</div></div>
-<div class="ttc" id="aclassClientBroker_html_ac54768fb6d39ec56dc8f426ba790e884"><div class="ttname"><a href="classClientBroker.html#ac54768fb6d39ec56dc8f426ba790e884">ClientBroker::operator=</a></div><div class="ttdeci">void operator=(const ClientBroker &amp;)=delete</div><div class="ttdoc">Singletons should not be assignable.</div></div>
+<div class="ttc" id="aclassBroker_html"><div class="ttname"><a href="classBroker.html">Broker</a></div><div class="ttdoc">Manages topics and messages in a multi-threaded environment.</div><div class="ttdef"><b>Definition</b> Broker.hpp:24</div></div>
+<div class="ttc" id="aclassClientBroker_html"><div class="ttname"><a href="classClientBroker.html">ClientBroker</a></div><div class="ttdoc">A class that handles client-side network communication.</div><div class="ttdef"><b>Definition</b> ClientBroker.hpp:21</div></div>
+<div class="ttc" id="aclassClientBroker_html_a542de007a4041f8499ca4495c4670a3b"><div class="ttname"><a href="classClientBroker.html#a542de007a4041f8499ca4495c4670a3b">ClientBroker::~ClientBroker</a></div><div class="ttdeci">~ClientBroker(void)</div><div class="ttdoc">Destroys the ClientBroker object.</div><div class="ttdef"><b>Definition</b> ClientBroker.cpp:24</div></div>
+<div class="ttc" id="aclassClientBroker_html_a868edbb91c0c007eab23f4e281490e95"><div class="ttname"><a href="classClientBroker.html#a868edbb91c0c007eab23f4e281490e95">ClientBroker::ClientBroker</a></div><div class="ttdeci">ClientBroker(INetworkModule *network_module, std::string connect_address, std::uint16_t connect_port)</div><div class="ttdoc">Constructs a new ClientBroker object.</div><div class="ttdef"><b>Definition</b> ClientBroker.cpp:5</div></div>
+<div class="ttc" id="aclassIClient_html"><div class="ttname"><a href="classIClient.html">IClient</a></div><div class="ttdef"><b>Definition</b> IClient.hpp:16</div></div>
+<div class="ttc" id="aclassINetworkModule_html"><div class="ttname"><a href="classINetworkModule.html">INetworkModule</a></div><div class="ttdoc">Abstract base class for network modules.</div><div class="ttdef"><b>Definition</b> INetworkModule.hpp:30</div></div>
+<div class="ttc" id="aclassMessage_html"><div class="ttname"><a href="classMessage.html">Message</a></div><div class="ttdoc">A class representing a message with an ECS ID and a topic name.</div><div class="ttdef"><b>Definition</b> Message.hpp:19</div></div>
+<div class="ttc" id="astructRequest_html"><div class="ttname"><a href="structRequest.html">Request</a></div><div class="ttdef"><b>Definition</b> PackUnpack.hpp:78</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_cf76b7275fdef9e3414f4bd80b878e49.html">message</a></li><li class="navelem"><a class="el" href="ClientBroker_8hpp.html">ClientBroker.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_cf76b7275fdef9e3414f4bd80b878e49.html">message</a></li><li class="navelem"><b>ClientBroker.hpp</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>

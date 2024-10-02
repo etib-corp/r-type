@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: IClient Class Reference</title>
+<title>R-Type: IClient Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">R-Type
    </div>
   </td>
  </tr>
@@ -115,30 +115,45 @@ Inheritance diagram for IClient:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a681238b2f6cfe934761bdef4e514a213" id="r_a681238b2f6cfe934761bdef4e514a213"><td class="memItemLeft" align="right" valign="top"><a id="a681238b2f6cfe934761bdef4e514a213" name="a681238b2f6cfe934761bdef4e514a213"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>connectToServer</b> (const std::string &amp;ip, const int &amp;port)=0</td></tr>
-<tr class="separator:a681238b2f6cfe934761bdef4e514a213"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06c8fec8a29784b36df054ea7b3b096f" id="r_a06c8fec8a29784b36df054ea7b3b096f"><td class="memItemLeft" align="right" valign="top"><a id="a06c8fec8a29784b36df054ea7b3b096f" name="a06c8fec8a29784b36df054ea7b3b096f"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>connectToServer</b> (void)=0</td></tr>
+<tr class="separator:a06c8fec8a29784b36df054ea7b3b096f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5327406c0fee2e588dac6159912b29a9" id="r_a5327406c0fee2e588dac6159912b29a9"><td class="memItemLeft" align="right" valign="top"><a id="a5327406c0fee2e588dac6159912b29a9" name="a5327406c0fee2e588dac6159912b29a9"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setOnReceive</b> (std::function&lt; void(const <a class="el" href="structRequest.html">Request</a> &amp;)&gt; onReceive)</td></tr>
+<tr class="separator:a5327406c0fee2e588dac6159912b29a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8671c952c70dab4f52772bbf3e34de37" id="r_a8671c952c70dab4f52772bbf3e34de37"><td class="memItemLeft" align="right" valign="top"><a id="a8671c952c70dab4f52772bbf3e34de37" name="a8671c952c70dab4f52772bbf3e34de37"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>readTCP</b> ()=0</td></tr>
 <tr class="separator:a8671c952c70dab4f52772bbf3e34de37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e03107a0bd604ad179218cb18c2adc7" id="r_a5e03107a0bd604ad179218cb18c2adc7"><td class="memItemLeft" align="right" valign="top"><a id="a5e03107a0bd604ad179218cb18c2adc7" name="a5e03107a0bd604ad179218cb18c2adc7"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>sendTCP</b> (const std::string &amp;message)=0</td></tr>
-<tr class="separator:a5e03107a0bd604ad179218cb18c2adc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab3b40420949d1fff306a7cb04c880092" id="r_ab3b40420949d1fff306a7cb04c880092"><td class="memItemLeft" align="right" valign="top"><a id="ab3b40420949d1fff306a7cb04c880092" name="ab3b40420949d1fff306a7cb04c880092"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>sendUDP</b> (const std::string &amp;message)=0</td></tr>
-<tr class="separator:ab3b40420949d1fff306a7cb04c880092"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09f14ddf47817c632e289e210bdf3053" id="r_a09f14ddf47817c632e289e210bdf3053"><td class="memItemLeft" align="right" valign="top"><a id="a09f14ddf47817c632e289e210bdf3053" name="a09f14ddf47817c632e289e210bdf3053"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>readUDP</b> ()=0</td></tr>
+<tr class="separator:a09f14ddf47817c632e289e210bdf3053"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a791a275ea2770be5796d47ce67fb938e" id="r_a791a275ea2770be5796d47ce67fb938e"><td class="memItemLeft" align="right" valign="top"><a id="a791a275ea2770be5796d47ce67fb938e" name="a791a275ea2770be5796d47ce67fb938e"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>sendTCP</b> (const std::string &amp;request)=0</td></tr>
+<tr class="separator:a791a275ea2770be5796d47ce67fb938e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22b25fbceded0e87611ab4e27065a2a1" id="r_a22b25fbceded0e87611ab4e27065a2a1"><td class="memItemLeft" align="right" valign="top"><a id="a22b25fbceded0e87611ab4e27065a2a1" name="a22b25fbceded0e87611ab4e27065a2a1"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>sendUDP</b> (const std::string &amp;request)=0</td></tr>
+<tr class="separator:a22b25fbceded0e87611ab4e27065a2a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff88c98c2549e78859dbf1d7e2a06945" id="r_aff88c98c2549e78859dbf1d7e2a06945"><td class="memItemLeft" align="right" valign="top"><a id="aff88c98c2549e78859dbf1d7e2a06945" name="aff88c98c2549e78859dbf1d7e2a06945"></a>
 virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>getId</b> () const</td></tr>
 <tr class="separator:aff88c98c2549e78859dbf1d7e2a06945"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a024ea301c77e74890eee6ef9becb7dca" id="r_a024ea301c77e74890eee6ef9becb7dca"><td class="memItemLeft" align="right" valign="top"><a id="a024ea301c77e74890eee6ef9becb7dca" name="a024ea301c77e74890eee6ef9becb7dca"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setId</b> (int id)</td></tr>
-<tr class="separator:a024ea301c77e74890eee6ef9becb7dca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a668693d252b77848e2a2892de25d776e" id="r_a668693d252b77848e2a2892de25d776e"><td class="memItemLeft" align="right" valign="top"><a id="a668693d252b77848e2a2892de25d776e" name="a668693d252b77848e2a2892de25d776e"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setId</b> (std::uint32_t id)</td></tr>
+<tr class="separator:a668693d252b77848e2a2892de25d776e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a1ad82d7b9e4246d3c84232df38e947d5" id="r_a1ad82d7b9e4246d3c84232df38e947d5"><td class="memItemLeft" align="right" valign="top"><a id="a1ad82d7b9e4246d3c84232df38e947d5" name="a1ad82d7b9e4246d3c84232df38e947d5"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>_id</b></td></tr>
-<tr class="separator:a1ad82d7b9e4246d3c84232df38e947d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abde34ca4a939ce404bb5145343e0d688" id="r_abde34ca4a939ce404bb5145343e0d688"><td class="memItemLeft" align="right" valign="top"><a id="abde34ca4a939ce404bb5145343e0d688" name="abde34ca4a939ce404bb5145343e0d688"></a>
+std::uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>_id</b></td></tr>
+<tr class="separator:abde34ca4a939ce404bb5145343e0d688"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0abfb9d41669f2cdb7f8bde96286061f" id="r_a0abfb9d41669f2cdb7f8bde96286061f"><td class="memItemLeft" align="right" valign="top"><a id="a0abfb9d41669f2cdb7f8bde96286061f" name="a0abfb9d41669f2cdb7f8bde96286061f"></a>
+std::function&lt; void(const <a class="el" href="structRequest.html">Request</a> &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_onReceive</b></td></tr>
+<tr class="separator:a0abfb9d41669f2cdb7f8bde96286061f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7db2bf280267a4f47a20400c14c78ae7" id="r_a7db2bf280267a4f47a20400c14c78ae7"><td class="memItemLeft" align="right" valign="top"><a id="a7db2bf280267a4f47a20400c14c78ae7" name="a7db2bf280267a4f47a20400c14c78ae7"></a>
+<a class="el" href="structRequest.html">Request</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_requestTCP</b> = {}</td></tr>
+<tr class="separator:a7db2bf280267a4f47a20400c14c78ae7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4aa9baaceecdea294268c1ebc51a76a9" id="r_a4aa9baaceecdea294268c1ebc51a76a9"><td class="memItemLeft" align="right" valign="top"><a id="a4aa9baaceecdea294268c1ebc51a76a9" name="a4aa9baaceecdea294268c1ebc51a76a9"></a>
+<a class="el" href="structRequest.html">Request</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_requestUDP</b> = {}</td></tr>
+<tr class="separator:a4aa9baaceecdea294268c1ebc51a76a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/interface/INetworkModule/<a class="el" href="IClient_8hpp_source.html">IClient.hpp</a></li>

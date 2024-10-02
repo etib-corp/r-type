@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: lib/AsioNetworkModule/include/ListenerUDP.hpp Source File</title>
+<title>R-Type: lib/AsioNetworkModule/include/ListenerUDP.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">R-Type
    </div>
   </td>
  </tr>
@@ -106,13 +106,13 @@ $(function(){initNavTree('ListenerUDP_8hpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">** ListenerUDP</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">*/</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef ListenerUDP_HPP_</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define ListenerUDP_HPP_</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;boost/asio.hpp&gt;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;thread&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;boost/asio.hpp&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;thread&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;interface/INetworkModule/IListenerUDP.hpp&quot;</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="foldopen" id="foldopen00033" data-start="{" data-end="};">
@@ -121,7 +121,7 @@ $(function(){initNavTree('ListenerUDP_8hpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <a class="code hl_function" href="classListenerUDP.html#aec73f4d2ab25dc95db307cae33b6fef8">ListenerUDP</a>(<span class="keywordtype">int</span> port);</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <a class="code hl_class" href="classListenerUDP.html">~ListenerUDP</a>();</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classListenerUDP.html#acfc9ae249da1a634aa15cbecda410f55">run</a>(<a class="code hl_class" href="classINetworkModule.html">INetworkModule</a> *_networkModule) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classListenerUDP.html#ad95e62ccb817752d8214f0bdeaa976b9">run</a>(std::shared_ptr&lt;SessionManager&gt; sessionManager) <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classListenerUDP.html#a8be26bdfafe517ad8a8ec5c4e24bbc35">startReceive</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
@@ -137,15 +137,12 @@ $(function(){initNavTree('ListenerUDP_8hpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keyword">private</span>:</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>};</div>
 </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="preprocessor">#endif </span><span class="comment">/* !ListenerUDP_HPP_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="aclassIListenerUDP_html"><div class="ttname"><a href="classIListenerUDP.html">IListenerUDP</a></div><div class="ttdef"><b>Definition</b> IListenerUDP.hpp:13</div></div>
-<div class="ttc" id="aclassINetworkModule_html"><div class="ttname"><a href="classINetworkModule.html">INetworkModule</a></div><div class="ttdoc">Abstract base class for network modules.</div><div class="ttdef"><b>Definition</b> INetworkModule.hpp:27</div></div>
+<div class="ttc" id="aclassIListenerUDP_html"><div class="ttname"><a href="classIListenerUDP.html">IListenerUDP</a></div><div class="ttdef"><b>Definition</b> IListenerUDP.hpp:15</div></div>
 <div class="ttc" id="aclassListenerUDP_html"><div class="ttname"><a href="classListenerUDP.html">ListenerUDP</a></div><div class="ttdoc">Manages a UDP Listener for network communication.</div><div class="ttdef"><b>Definition</b> ListenerUDP.hpp:33</div></div>
 <div class="ttc" id="aclassListenerUDP_html_a3635389915b113bab33ef0f7f7de730a"><div class="ttname"><a href="classListenerUDP.html#a3635389915b113bab33ef0f7f7de730a">ListenerUDP::_io_context</a></div><div class="ttdeci">boost::asio::io_context _io_context</div><div class="ttdoc">The io_context object provides core I/O functionality for asynchronous operations.</div><div class="ttdef"><b>Definition</b> ListenerUDP.hpp:85</div></div>
-<div class="ttc" id="aclassListenerUDP_html_a8be26bdfafe517ad8a8ec5c4e24bbc35"><div class="ttname"><a href="classListenerUDP.html#a8be26bdfafe517ad8a8ec5c4e24bbc35">ListenerUDP::startReceive</a></div><div class="ttdeci">void startReceive() override</div><div class="ttdoc">Initiates an asynchronous receive operation on the UDP socket.</div><div class="ttdef"><b>Definition</b> ListenerUDP.cpp:32</div></div>
-<div class="ttc" id="aclassListenerUDP_html_aae050749dd3bcb418393dcca3b50f986"><div class="ttname"><a href="classListenerUDP.html#aae050749dd3bcb418393dcca3b50f986">ListenerUDP::handleReceive</a></div><div class="ttdeci">void handleReceive(const boost::system::error_code &amp;error, std::size_t bytes_transferred)</div><div class="ttdoc">Handles the reception of data over UDP.</div><div class="ttdef"><b>Definition</b> ListenerUDP.cpp:41</div></div>
-<div class="ttc" id="aclassListenerUDP_html_acfc9ae249da1a634aa15cbecda410f55"><div class="ttname"><a href="classListenerUDP.html#acfc9ae249da1a634aa15cbecda410f55">ListenerUDP::run</a></div><div class="ttdeci">void run(INetworkModule *_networkModule) override</div><div class="ttdoc">Starts the UDP Listener and runs the IO context in a separate thread.</div><div class="ttdef"><b>Definition</b> ListenerUDP.cpp:22</div></div>
+<div class="ttc" id="aclassListenerUDP_html_a8be26bdfafe517ad8a8ec5c4e24bbc35"><div class="ttname"><a href="classListenerUDP.html#a8be26bdfafe517ad8a8ec5c4e24bbc35">ListenerUDP::startReceive</a></div><div class="ttdeci">void startReceive() override</div><div class="ttdoc">Initiates an asynchronous receive operation on the UDP socket.</div><div class="ttdef"><b>Definition</b> ListenerUDP.cpp:30</div></div>
+<div class="ttc" id="aclassListenerUDP_html_aae050749dd3bcb418393dcca3b50f986"><div class="ttname"><a href="classListenerUDP.html#aae050749dd3bcb418393dcca3b50f986">ListenerUDP::handleReceive</a></div><div class="ttdeci">void handleReceive(const boost::system::error_code &amp;error, std::size_t bytes_transferred)</div><div class="ttdoc">Handles the reception of data over UDP.</div><div class="ttdef"><b>Definition</b> ListenerUDP.cpp:40</div></div>
+<div class="ttc" id="aclassListenerUDP_html_ad95e62ccb817752d8214f0bdeaa976b9"><div class="ttname"><a href="classListenerUDP.html#ad95e62ccb817752d8214f0bdeaa976b9">ListenerUDP::run</a></div><div class="ttdeci">void run(std::shared_ptr&lt; SessionManager &gt; sessionManager) override</div><div class="ttdoc">Starts the UDP Listener and runs the IO context in a separate thread.</div><div class="ttdef"><b>Definition</b> ListenerUDP.cpp:22</div></div>
 <div class="ttc" id="aclassListenerUDP_html_aec73f4d2ab25dc95db307cae33b6fef8"><div class="ttname"><a href="classListenerUDP.html#aec73f4d2ab25dc95db307cae33b6fef8">ListenerUDP::ListenerUDP</a></div><div class="ttdeci">ListenerUDP(int port)</div><div class="ttdoc">Constructs a new ListenerUDP object.</div><div class="ttdef"><b>Definition</b> ListenerUDP.cpp:12</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

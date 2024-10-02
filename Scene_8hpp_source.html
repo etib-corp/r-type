@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: graphical/include/Scene.hpp Source File</title>
+<title>R-Type: client/include/Scene.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">R-Type
    </div>
   </td>
  </tr>
@@ -106,56 +106,66 @@ $(function(){initNavTree('Scene_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">** Scene</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">*/</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef SCENE_HPP_</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define SCENE_HPP_</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;Error.hpp&quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">namespace </span>LE {</div>
-<div class="foldopen" id="foldopen00029" data-start="{" data-end="};">
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classLE_1_1Scene.html">   29</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classLE_1_1Scene.html">Scene</a> {</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keyword">public</span>:</div>
-<div class="foldopen" id="foldopen00038" data-start="{" data-end="};">
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classLE_1_1Scene_1_1SceneError.html">   38</a></span>            <span class="keyword">class </span><a class="code hl_class" href="classLE_1_1Scene_1_1SceneError.html">SceneError</a> : <span class="keyword">public</span> <a class="code hl_class" href="classLE_1_1Error.html">Error</a> {</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classLE_1_1Scene_1_1SceneError.html#a1c9d8288cf6f33ac64344821b1a61f7e">   44</a></span>                    <a class="code hl_function" href="classLE_1_1Scene_1_1SceneError.html#a1c9d8288cf6f33ac64344821b1a61f7e">SceneError</a>(<span class="keyword">const</span> std::string &amp;message) : <a class="code hl_class" href="classLE_1_1Error.html">Error</a>(message) {}</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            };</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;Error.hpp&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;GUI/Manager.hpp&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="EventManager_8hpp.html">EventManager.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;ECS/Ecs.hpp&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;ECS/Systems/Render2DSystem.hpp&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;ECS/Systems/Render3DSystem.hpp&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">namespace </span>LE {</div>
+<div class="foldopen" id="foldopen00033" data-start="{" data-end="};">
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classLE_1_1Scene.html">   33</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classLE_1_1Scene.html">Scene</a> {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00042" data-start="{" data-end="};">
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classLE_1_1Scene_1_1SceneError.html">   42</a></span>            <span class="keyword">class </span><a class="code hl_class" href="classLE_1_1Scene_1_1SceneError.html">SceneError</a> : <span class="keyword">public</span> <a class="code hl_class" href="classLE_1_1Error.html">Error</a> {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classLE_1_1Scene_1_1SceneError.html#a1c9d8288cf6f33ac64344821b1a61f7e">   48</a></span>                    <a class="code hl_function" href="classLE_1_1Scene_1_1SceneError.html#a1c9d8288cf6f33ac64344821b1a61f7e">SceneError</a>(<span class="keyword">const</span> std::string &amp;message) : <a class="code hl_class" href="classLE_1_1Error.html">Error</a>(message) {}</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            };</div>
 </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classLE_1_1Scene.html#a241605420c89928942fa96ef162c985f">   50</a></span>            <a class="code hl_function" href="classLE_1_1Scene.html#a241605420c89928942fa96ef162c985f">Scene</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classLE_1_1Scene.html#adf753e5ae0267b67efbd38e68da8a686">   55</a></span>            <span class="keyword">virtual</span> <a class="code hl_function" href="classLE_1_1Scene.html#adf753e5ae0267b67efbd38e68da8a686">~Scene</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="classLE_1_1Scene.html#aadab2311b67cf8c91080f7ca80d3d665">   63</a></span>            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classLE_1_1Scene.html#aadab2311b67cf8c91080f7ca80d3d665">play</a>() = 0;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classLE_1_1Scene.html#af5d25aaaf934f29ac5bda644aa1ac6a2">draw</a>();</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="classLE_1_1Scene.html#af8b5b81dab98324cdc32169b95294ece">   79</a></span>            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classLE_1_1Scene.html#af8b5b81dab98324cdc32169b95294ece">stop</a>() = 0;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="classLE_1_1Scene.html#aba2c61cbc874a80087e1701916269313">   87</a></span>            std::shared_ptr&lt;void *&gt; <a class="code hl_variable" href="classLE_1_1Scene.html#aba2c61cbc874a80087e1701916269313">_ecs</a>;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    };</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <a class="code hl_function" href="classLE_1_1Scene.html#a0a7c319afa11ce023a6a769098c63a99">Scene</a>();</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classLE_1_1Scene.html#adf753e5ae0267b67efbd38e68da8a686">   59</a></span>            <span class="keyword">virtual</span> <a class="code hl_function" href="classLE_1_1Scene.html#adf753e5ae0267b67efbd38e68da8a686">~Scene</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classLE_1_1Scene.html#aadab2311b67cf8c91080f7ca80d3d665">   67</a></span>            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classLE_1_1Scene.html#aadab2311b67cf8c91080f7ca80d3d665">play</a>() = 0;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classLE_1_1Scene.html#af5d25aaaf934f29ac5bda644aa1ac6a2">draw</a>();</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="classLE_1_1Scene.html#af8b5b81dab98324cdc32169b95294ece">   83</a></span>            <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classLE_1_1Scene.html#af8b5b81dab98324cdc32169b95294ece">stop</a>() = 0;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classLE_1_1Scene.html#adb81881ce34cd570ba1cab54d96fb6c3">init</a>();</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classLE_1_1Scene.html#a685cce0d17871a43089dbf653e137530">   99</a></span>            std::shared_ptr&lt;Ecs&gt; <a class="code hl_variable" href="classLE_1_1Scene.html#a685cce0d17871a43089dbf653e137530">_ecs</a>;                          </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="classLE_1_1Scene.html#a26dfdfea459e3f360dba279843905d34">  100</a></span>            std::shared_ptr&lt;LE::GUI::Manager&gt; <a class="code hl_variable" href="classLE_1_1Scene.html#a26dfdfea459e3f360dba279843905d34">_guiManager</a>;      </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="classLE_1_1Scene.html#af7aa4d57b5f6ef794aa47db8b376812c">  101</a></span>            std::shared_ptr&lt;LE::EventManager&gt; <a class="code hl_variable" href="classLE_1_1Scene.html#af7aa4d57b5f6ef794aa47db8b376812c">_eventManager</a>;    </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    };</div>
 </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>}</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="preprocessor">#endif </span><span class="comment">/* !SCENE_HPP_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>}</div>
+<div class="ttc" id="aEventManager_8hpp_html"><div class="ttname"><a href="EventManager_8hpp.html">EventManager.hpp</a></div><div class="ttdoc">Defines the EventManager class and its associated error handling.</div></div>
 <div class="ttc" id="aclassLE_1_1Error_html"><div class="ttname"><a href="classLE_1_1Error.html">LE::Error</a></div><div class="ttdoc">The Error class represents an exception that can be thrown in the Lion engine.</div><div class="ttdef"><b>Definition</b> Error.hpp:20</div></div>
-<div class="ttc" id="aclassLE_1_1Scene_1_1SceneError_html"><div class="ttname"><a href="classLE_1_1Scene_1_1SceneError.html">LE::Scene::SceneError</a></div><div class="ttdoc">Exception class for scene-related errors.</div><div class="ttdef"><b>Definition</b> Scene.hpp:38</div></div>
-<div class="ttc" id="aclassLE_1_1Scene_1_1SceneError_html_a1c9d8288cf6f33ac64344821b1a61f7e"><div class="ttname"><a href="classLE_1_1Scene_1_1SceneError.html#a1c9d8288cf6f33ac64344821b1a61f7e">LE::Scene::SceneError::SceneError</a></div><div class="ttdeci">SceneError(const std::string &amp;message)</div><div class="ttdoc">Constructor for SceneError.</div><div class="ttdef"><b>Definition</b> Scene.hpp:44</div></div>
-<div class="ttc" id="aclassLE_1_1Scene_html"><div class="ttname"><a href="classLE_1_1Scene.html">LE::Scene</a></div><div class="ttdoc">Abstract base class representing a scene in the graphical system.</div><div class="ttdef"><b>Definition</b> Scene.hpp:29</div></div>
-<div class="ttc" id="aclassLE_1_1Scene_html_a241605420c89928942fa96ef162c985f"><div class="ttname"><a href="classLE_1_1Scene.html#a241605420c89928942fa96ef162c985f">LE::Scene::Scene</a></div><div class="ttdeci">Scene()=default</div><div class="ttdoc">Default constructor for Scene.</div></div>
+<div class="ttc" id="aclassLE_1_1Scene_1_1SceneError_html"><div class="ttname"><a href="classLE_1_1Scene_1_1SceneError.html">LE::Scene::SceneError</a></div><div class="ttdoc">Exception class for scene-related errors.</div><div class="ttdef"><b>Definition</b> Scene.hpp:42</div></div>
+<div class="ttc" id="aclassLE_1_1Scene_1_1SceneError_html_a1c9d8288cf6f33ac64344821b1a61f7e"><div class="ttname"><a href="classLE_1_1Scene_1_1SceneError.html#a1c9d8288cf6f33ac64344821b1a61f7e">LE::Scene::SceneError::SceneError</a></div><div class="ttdeci">SceneError(const std::string &amp;message)</div><div class="ttdoc">Constructor for SceneError.</div><div class="ttdef"><b>Definition</b> Scene.hpp:48</div></div>
+<div class="ttc" id="aclassLE_1_1Scene_html"><div class="ttname"><a href="classLE_1_1Scene.html">LE::Scene</a></div><div class="ttdoc">Abstract base class representing a scene in the graphical system.</div><div class="ttdef"><b>Definition</b> Scene.hpp:33</div></div>
+<div class="ttc" id="aclassLE_1_1Scene_html_a0a7c319afa11ce023a6a769098c63a99"><div class="ttname"><a href="classLE_1_1Scene.html#a0a7c319afa11ce023a6a769098c63a99">LE::Scene::Scene</a></div><div class="ttdeci">Scene()</div><div class="ttdoc">Default constructor for Scene.</div><div class="ttdef"><b>Definition</b> Scene.cpp:10</div></div>
+<div class="ttc" id="aclassLE_1_1Scene_html_a26dfdfea459e3f360dba279843905d34"><div class="ttname"><a href="classLE_1_1Scene.html#a26dfdfea459e3f360dba279843905d34">LE::Scene::_guiManager</a></div><div class="ttdeci">std::shared_ptr&lt; LE::GUI::Manager &gt; _guiManager</div><div class="ttdoc">Shared pointer to the GUI Manager instance.</div><div class="ttdef"><b>Definition</b> Scene.hpp:100</div></div>
+<div class="ttc" id="aclassLE_1_1Scene_html_a685cce0d17871a43089dbf653e137530"><div class="ttname"><a href="classLE_1_1Scene.html#a685cce0d17871a43089dbf653e137530">LE::Scene::_ecs</a></div><div class="ttdeci">std::shared_ptr&lt; Ecs &gt; _ecs</div><div class="ttdoc">Shared pointer to an ECS (Entity Component System) instance.</div><div class="ttdef"><b>Definition</b> Scene.hpp:99</div></div>
 <div class="ttc" id="aclassLE_1_1Scene_html_aadab2311b67cf8c91080f7ca80d3d665"><div class="ttname"><a href="classLE_1_1Scene.html#aadab2311b67cf8c91080f7ca80d3d665">LE::Scene::play</a></div><div class="ttdeci">virtual void play()=0</div><div class="ttdoc">Pure virtual function to play the scene.</div></div>
-<div class="ttc" id="aclassLE_1_1Scene_html_aba2c61cbc874a80087e1701916269313"><div class="ttname"><a href="classLE_1_1Scene.html#aba2c61cbc874a80087e1701916269313">LE::Scene::_ecs</a></div><div class="ttdeci">std::shared_ptr&lt; void * &gt; _ecs</div><div class="ttdoc">Shared pointer to an ECS (Entity Component System) instance.</div><div class="ttdef"><b>Definition</b> Scene.hpp:87</div></div>
+<div class="ttc" id="aclassLE_1_1Scene_html_adb81881ce34cd570ba1cab54d96fb6c3"><div class="ttname"><a href="classLE_1_1Scene.html#adb81881ce34cd570ba1cab54d96fb6c3">LE::Scene::init</a></div><div class="ttdeci">void init()</div><div class="ttdoc">Function to initialize the scene.</div><div class="ttdef"><b>Definition</b> Scene.cpp:21</div></div>
 <div class="ttc" id="aclassLE_1_1Scene_html_adf753e5ae0267b67efbd38e68da8a686"><div class="ttname"><a href="classLE_1_1Scene.html#adf753e5ae0267b67efbd38e68da8a686">LE::Scene::~Scene</a></div><div class="ttdeci">virtual ~Scene()=default</div><div class="ttdoc">Virtual destructor for Scene.</div></div>
-<div class="ttc" id="aclassLE_1_1Scene_html_af5d25aaaf934f29ac5bda644aa1ac6a2"><div class="ttname"><a href="classLE_1_1Scene.html#af5d25aaaf934f29ac5bda644aa1ac6a2">LE::Scene::draw</a></div><div class="ttdeci">void draw()</div><div class="ttdoc">Pure virtual function to draw the scene.</div><div class="ttdef"><b>Definition</b> Scene.cpp:10</div></div>
+<div class="ttc" id="aclassLE_1_1Scene_html_af5d25aaaf934f29ac5bda644aa1ac6a2"><div class="ttname"><a href="classLE_1_1Scene.html#af5d25aaaf934f29ac5bda644aa1ac6a2">LE::Scene::draw</a></div><div class="ttdeci">void draw()</div><div class="ttdoc">Function to draw the scene.</div><div class="ttdef"><b>Definition</b> Scene.cpp:15</div></div>
+<div class="ttc" id="aclassLE_1_1Scene_html_af7aa4d57b5f6ef794aa47db8b376812c"><div class="ttname"><a href="classLE_1_1Scene.html#af7aa4d57b5f6ef794aa47db8b376812c">LE::Scene::_eventManager</a></div><div class="ttdeci">std::shared_ptr&lt; LE::EventManager &gt; _eventManager</div><div class="ttdoc">Shared pointer to the Event Manager instance.</div><div class="ttdef"><b>Definition</b> Scene.hpp:101</div></div>
 <div class="ttc" id="aclassLE_1_1Scene_html_af8b5b81dab98324cdc32169b95294ece"><div class="ttname"><a href="classLE_1_1Scene.html#af8b5b81dab98324cdc32169b95294ece">LE::Scene::stop</a></div><div class="ttdeci">virtual void stop()=0</div><div class="ttdoc">Pure virtual function to stop the scene.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_f19ef06d7af1dd247276f1a5c92b5188.html">graphical</a></li><li class="navelem"><a class="el" href="dir_dd1db23a76bf7da246b47271b1f38822.html">include</a></li><li class="navelem"><a class="el" href="Scene_8hpp.html">Scene.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_5c23080e296bbe846f4ed2d01d7b595d.html">include</a></li><li class="navelem"><a class="el" href="Scene_8hpp.html">Scene.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: LE::Engine Class Reference</title>
+<title>R-Type: LE::Engine Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">R-Type
    </div>
   </td>
  </tr>
@@ -100,6 +100,7 @@ $(function(){initNavTree('classLE_1_1Engine.html',''); initResizable(true); });
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classLE_1_1Engine-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">LE::Engine Class Reference</div></div>
 </div><!--header-->
@@ -126,7 +127,7 @@ Public Member Functions</h2></td></tr>
 <a class="el" href="classLE_1_1Engine.html">Engine</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classLE_1_1Engine.html">Engine</a> &amp;engine)=delete</td></tr>
 <tr class="memdesc:af012b5e8871884ebe5df977ca3fbc37d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deleted assignment operator for the <a class="el" href="classLE_1_1Engine.html" title="The Engine class is responsible for managing the game engine&#39;s core functionalities.">Engine</a> class. <br /></td></tr>
 <tr class="separator:af012b5e8871884ebe5df977ca3fbc37d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b392f58fe6d77dc1f34b20e25701465" id="r_a2b392f58fe6d77dc1f34b20e25701465"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b392f58fe6d77dc1f34b20e25701465">run</a> (bool throwError=false)</td></tr>
+<tr class="memitem:a2b392f58fe6d77dc1f34b20e25701465" id="r_a2b392f58fe6d77dc1f34b20e25701465"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b392f58fe6d77dc1f34b20e25701465">run</a> (bool <a class="el" href="#a93e768762eb3d6e5b7f8d59b5c2284ca">throwError</a>=false)</td></tr>
 <tr class="memdesc:a2b392f58fe6d77dc1f34b20e25701465"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the engine.  <br /></td></tr>
 <tr class="separator:a2b392f58fe6d77dc1f34b20e25701465"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa019b3daf27d67a49db8b493d0af7afc" id="r_aa019b3daf27d67a49db8b493d0af7afc"><td class="memItemLeft" align="right" valign="top"><a id="aa019b3daf27d67a49db8b493d0af7afc" name="aa019b3daf27d67a49db8b493d0af7afc"></a>
@@ -136,17 +137,72 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>runWithDebug</b> ()</
 <tr class="memitem:a0fef957b623c93811c0c4b7e7c9a7ec5" id="r_a0fef957b623c93811c0c4b7e7c9a7ec5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fef957b623c93811c0c4b7e7c9a7ec5">debug</a> (const std::string &amp;message)</td></tr>
 <tr class="memdesc:a0fef957b623c93811c0c4b7e7c9a7ec5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Outputs debug information.  <br /></td></tr>
 <tr class="separator:a0fef957b623c93811c0c4b7e7c9a7ec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1c525604271386c21ffd6f3b7c7b58d" id="r_ad1c525604271386c21ffd6f3b7c7b58d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1c525604271386c21ffd6f3b7c7b58d">addScene</a> (const std::string &amp;sceneName, const std::shared_ptr&lt; <a class="el" href="classLE_1_1Scene.html">Scene</a> &gt; scene)</td></tr>
+<tr class="memdesc:ad1c525604271386c21ffd6f3b7c7b58d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a scene to the engine.  <br /></td></tr>
+<tr class="separator:ad1c525604271386c21ffd6f3b7c7b58d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bd7f61e42736e9c0be61e91a0a8aa59" id="r_a4bd7f61e42736e9c0be61e91a0a8aa59"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4bd7f61e42736e9c0be61e91a0a8aa59">removeScene</a> (const std::string &amp;sceneName)</td></tr>
+<tr class="memdesc:a4bd7f61e42736e9c0be61e91a0a8aa59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a scene from the engine.  <br /></td></tr>
+<tr class="separator:a4bd7f61e42736e9c0be61e91a0a8aa59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93e768762eb3d6e5b7f8d59b5c2284ca" id="r_a93e768762eb3d6e5b7f8d59b5c2284ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a93e768762eb3d6e5b7f8d59b5c2284ca">throwError</a> (const <a class="el" href="classLE_1_1Error.html">LE::Error</a> &amp;error)</td></tr>
+<tr class="memdesc:a93e768762eb3d6e5b7f8d59b5c2284ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Throws an error.  <br /></td></tr>
+<tr class="separator:a93e768762eb3d6e5b7f8d59b5c2284ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a914dd64e78a507b9f765bcc25f5c2095" id="r_a914dd64e78a507b9f765bcc25f5c2095"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a914dd64e78a507b9f765bcc25f5c2095">setConfig</a> (std::function&lt; void()&gt; <a class="el" href="group__group1.html#ga24f647174760cac13d2624b5ad74b00c">func</a>)</td></tr>
+<tr class="memdesc:a914dd64e78a507b9f765bcc25f5c2095"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the configuration function.  <br /></td></tr>
+<tr class="separator:a914dd64e78a507b9f765bcc25f5c2095"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:af5f18aeb22dce4ec6781b2918cf9f5ab" id="r_af5f18aeb22dce4ec6781b2918cf9f5ab"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classLE_1_1Engine.html">Engine</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5f18aeb22dce4ec6781b2918cf9f5ab">getInstance</a> ()</td></tr>
 <tr class="memdesc:af5f18aeb22dce4ec6781b2918cf9f5ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the singleton instance of the <a class="el" href="classLE_1_1Engine.html" title="The Engine class is responsible for managing the game engine&#39;s core functionalities.">Engine</a> class.  <br /></td></tr>
 <tr class="separator:af5f18aeb22dce4ec6781b2918cf9f5ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:aba45a46c615e2683daffdae82e2d3b8f" id="r_aba45a46c615e2683daffdae82e2d3b8f"><td class="memItemLeft" align="right" valign="top"><a id="aba45a46c615e2683daffdae82e2d3b8f" name="aba45a46c615e2683daffdae82e2d3b8f"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>EventManager</b></td></tr>
+<tr class="memdesc:aba45a46c615e2683daffdae82e2d3b8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Friend class <a class="el" href="classLE_1_1EventManager.html" title="Manages events within the application.">EventManager</a>. <br /></td></tr>
+<tr class="separator:aba45a46c615e2683daffdae82e2d3b8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28c535269148a01b05c27398cd43cffd" id="r_a28c535269148a01b05c27398cd43cffd"><td class="memItemLeft" align="right" valign="top"><a id="a28c535269148a01b05c27398cd43cffd" name="a28c535269148a01b05c27398cd43cffd"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>LE::Shapes::Triangle</b></td></tr>
+<tr class="separator:a28c535269148a01b05c27398cd43cffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1819f56ab11d0eb2be72157e10d7042" id="r_ad1819f56ab11d0eb2be72157e10d7042"><td class="memItemLeft" align="right" valign="top"><a id="ad1819f56ab11d0eb2be72157e10d7042" name="ad1819f56ab11d0eb2be72157e10d7042"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>LE::GUI::Text</b></td></tr>
+<tr class="separator:ad1819f56ab11d0eb2be72157e10d7042"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="classLE_1_1Engine.html" title="The Engine class is responsible for managing the game engine&#39;s core functionalities.">Engine</a> class is responsible for managing the game engine's core functionalities. </p>
 <p>The <a class="el" href="classLE_1_1Engine.html" title="The Engine class is responsible for managing the game engine&#39;s core functionalities.">Engine</a> class is a singleton, ensuring that only one instance of the engine exists throughout the application. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad1c525604271386c21ffd6f3b7c7b58d" name="ad1c525604271386c21ffd6f3b7c7b58d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1c525604271386c21ffd6f3b7c7b58d">&#9670;&#160;</a></span>addScene()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LE::Engine::addScene </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>sceneName</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classLE_1_1Scene.html">Scene</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>scene</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds a scene to the engine. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">scene</td><td><a class="el" href="classA.html">A</a> shared pointer to the scene to add. </td></tr>
+    <tr><td class="paramname">sceneName</td><td>The name of the scene to add. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a0fef957b623c93811c0c4b7e7c9a7ec5" name="a0fef957b623c93811c0c4b7e7c9a7ec5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0fef957b623c93811c0c4b7e7c9a7ec5">&#9670;&#160;</a></span>debug()</h2>
 
@@ -200,6 +256,31 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a4bd7f61e42736e9c0be61e91a0a8aa59" name="a4bd7f61e42736e9c0be61e91a0a8aa59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bd7f61e42736e9c0be61e91a0a8aa59">&#9670;&#160;</a></span>removeScene()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LE::Engine::removeScene </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>sceneName</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Removes a scene from the engine. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sceneName</td><td>The name of the scene to remove. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a2b392f58fe6d77dc1f34b20e25701465" name="a2b392f58fe6d77dc1f34b20e25701465"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2b392f58fe6d77dc1f34b20e25701465">&#9670;&#160;</a></span>run()</h2>
 
@@ -225,9 +306,61 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a914dd64e78a507b9f765bcc25f5c2095" name="a914dd64e78a507b9f765bcc25f5c2095"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a914dd64e78a507b9f765bcc25f5c2095">&#9670;&#160;</a></span>setConfig()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LE::Engine::setConfig </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; void()&gt;</td>          <td class="paramname"><span class="paramname"><em>func</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the configuration function. </p>
+<p>This function is used to set a configuration function that will be called before the engine starts running.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">func</td><td>The configuration function to set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a93e768762eb3d6e5b7f8d59b5c2284ca" name="a93e768762eb3d6e5b7f8d59b5c2284ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93e768762eb3d6e5b7f8d59b5c2284ca">&#9670;&#160;</a></span>throwError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LE::Engine::throwError </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classLE_1_1Error.html">LE::Error</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>error</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Throws an error. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">error</td><td>The error to throw. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>This function is use to throw an error from the <a class="el" href="classLE_1_1Engine.html" title="The Engine class is responsible for managing the game engine&#39;s core functionalities.">Engine</a> class only if the throwError flag is set to true. </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>graphical/include/<a class="el" href="Engine_8hpp_source.html">Engine.hpp</a></li>
-<li>graphical/src/<b>Engine.cpp</b></li>
+<li>client/include/<a class="el" href="Engine_8hpp_source.html">Engine.hpp</a></li>
+<li>client/src/<b>Engine.cpp</b></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

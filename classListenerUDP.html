@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: ListenerUDP Class Reference</title>
+<title>R-Type: ListenerUDP Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">R-Type
    </div>
   </td>
  </tr>
@@ -123,9 +123,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aec73f4d2ab25dc95db307cae33b6fef8" id="r_aec73f4d2ab25dc95db307cae33b6fef8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec73f4d2ab25dc95db307cae33b6fef8">ListenerUDP</a> (int port)</td></tr>
 <tr class="memdesc:aec73f4d2ab25dc95db307cae33b6fef8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classListenerUDP.html" title="Manages a UDP Listener for network communication.">ListenerUDP</a> object.  <br /></td></tr>
 <tr class="separator:aec73f4d2ab25dc95db307cae33b6fef8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acfc9ae249da1a634aa15cbecda410f55" id="r_acfc9ae249da1a634aa15cbecda410f55"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acfc9ae249da1a634aa15cbecda410f55">run</a> (<a class="el" href="classINetworkModule.html">INetworkModule</a> *_networkModule) override</td></tr>
-<tr class="memdesc:acfc9ae249da1a634aa15cbecda410f55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the UDP Listener and runs the IO context in a separate thread.  <br /></td></tr>
-<tr class="separator:acfc9ae249da1a634aa15cbecda410f55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad95e62ccb817752d8214f0bdeaa976b9" id="r_ad95e62ccb817752d8214f0bdeaa976b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad95e62ccb817752d8214f0bdeaa976b9">run</a> (std::shared_ptr&lt; <a class="el" href="classSessionManager.html">SessionManager</a> &gt; sessionManager) override</td></tr>
+<tr class="memdesc:ad95e62ccb817752d8214f0bdeaa976b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the UDP Listener and runs the IO context in a separate thread.  <br /></td></tr>
+<tr class="separator:ad95e62ccb817752d8214f0bdeaa976b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8be26bdfafe517ad8a8ec5c4e24bbc35" id="r_a8be26bdfafe517ad8a8ec5c4e24bbc35"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8be26bdfafe517ad8a8ec5c4e24bbc35">startReceive</a> () override</td></tr>
 <tr class="memdesc:a8be26bdfafe517ad8a8ec5c4e24bbc35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initiates an asynchronous receive operation on the UDP socket.  <br /></td></tr>
 <tr class="separator:a8be26bdfafe517ad8a8ec5c4e24bbc35"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -155,9 +155,9 @@ std::thread&#160;</td><td class="memItemRight" valign="bottom"><b>_threadContext
 <tr class="memitem:ad439bff53341687f509198045b061c4e inherit pro_attribs_classIListenerUDP" id="r_ad439bff53341687f509198045b061c4e"><td class="memItemLeft" align="right" valign="top">
 int&#160;</td><td class="memItemRight" valign="bottom"><b>_port</b></td></tr>
 <tr class="separator:ad439bff53341687f509198045b061c4e inherit pro_attribs_classIListenerUDP"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98e72c4a427adac324651e03bd90e3de inherit pro_attribs_classIListenerUDP" id="r_a98e72c4a427adac324651e03bd90e3de"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="classINetworkModule.html">INetworkModule</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_networkModule</b></td></tr>
-<tr class="separator:a98e72c4a427adac324651e03bd90e3de inherit pro_attribs_classIListenerUDP"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c6b6c5880945b8457e3079b7bb10613 inherit pro_attribs_classIListenerUDP" id="r_a0c6b6c5880945b8457e3079b7bb10613"><td class="memItemLeft" align="right" valign="top">
+std::shared_ptr&lt; <a class="el" href="classSessionManager.html">SessionManager</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_sessionManager</b></td></tr>
+<tr class="separator:a0c6b6c5880945b8457e3079b7bb10613 inherit pro_attribs_classIListenerUDP"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Manages a UDP Listener for network communication. </p>
@@ -223,8 +223,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>_port</b></td></tr>
 
 </div>
 </div>
-<a id="acfc9ae249da1a634aa15cbecda410f55" name="acfc9ae249da1a634aa15cbecda410f55"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acfc9ae249da1a634aa15cbecda410f55">&#9670;&#160;</a></span>run()</h2>
+<a id="ad95e62ccb817752d8214f0bdeaa976b9" name="ad95e62ccb817752d8214f0bdeaa976b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad95e62ccb817752d8214f0bdeaa976b9">&#9670;&#160;</a></span>run()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -235,7 +235,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>_port</b></td></tr>
         <tr>
           <td class="memname">void ListenerUDP::run </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classINetworkModule.html">INetworkModule</a> *</td>          <td class="paramname"><span class="paramname"><em>_networkModule</em></span></td><td>)</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classSessionManager.html">SessionManager</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>sessionManager</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>

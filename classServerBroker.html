@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: ServerBroker Class Reference</title>
+<title>R-Type: ServerBroker Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">R-Type
    </div>
   </td>
  </tr>
@@ -98,13 +98,12 @@ $(function(){initNavTree('classServerBroker.html',''); initResizable(true); });
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="classServerBroker-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">ServerBroker Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="classA.html">A</a> thread-safe singleton class representing a server-side broker.  
+<p><a class="el" href="classA.html">A</a> class that extends <a class="el" href="classBroker.html" title="Manages topics and messages in a multi-threaded environment.">Broker</a> to manage server-side network communication.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="ServerBroker_8hpp_source.html">ServerBroker.hpp</a>&gt;</code></p>
@@ -114,55 +113,145 @@ Inheritance diagram for ServerBroker:</div>
  <div class="center">
   <img src="classServerBroker.png" usemap="#ServerBroker_map" alt=""/>
   <map id="ServerBroker_map" name="ServerBroker_map">
-<area href="classBroker.html" title="Singleton class that manages topics." alt="Broker" shape="rect" coords="0,0,89,24"/>
+<area href="classBroker.html" title="Manages topics and messages in a multi-threaded environment." alt="Broker" shape="rect" coords="0,0,89,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a47cc960e4e9c9b3488b98e824c5ba6b3" id="r_a47cc960e4e9c9b3488b98e824c5ba6b3"><td class="memItemLeft" align="right" valign="top"><a id="a47cc960e4e9c9b3488b98e824c5ba6b3" name="a47cc960e4e9c9b3488b98e824c5ba6b3"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ServerBroker</b> (<a class="el" href="classServerBroker.html">ServerBroker</a> &amp;other)=delete</td></tr>
-<tr class="memdesc:a47cc960e4e9c9b3488b98e824c5ba6b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singletons should not be cloneable. <br /></td></tr>
-<tr class="separator:a47cc960e4e9c9b3488b98e824c5ba6b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4481d5ba29d6f118c347ac8b0f19a7ee" id="r_a4481d5ba29d6f118c347ac8b0f19a7ee"><td class="memItemLeft" align="right" valign="top"><a id="a4481d5ba29d6f118c347ac8b0f19a7ee" name="a4481d5ba29d6f118c347ac8b0f19a7ee"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classServerBroker.html">ServerBroker</a> &amp;)=delete</td></tr>
-<tr class="memdesc:a4481d5ba29d6f118c347ac8b0f19a7ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Singletons should not be assignable. <br /></td></tr>
-<tr class="separator:a4481d5ba29d6f118c347ac8b0f19a7ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6406a1d8a63955e1a5d7f1836438a51f" id="r_a6406a1d8a63955e1a5d7f1836438a51f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6406a1d8a63955e1a5d7f1836438a51f">ServerBroker</a> (<a class="el" href="classINetworkModule.html">INetworkModule</a> *network_module, std::uint32_t ecs_id, std::uint16_t listen_port)</td></tr>
+<tr class="memdesc:a6406a1d8a63955e1a5d7f1836438a51f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classServerBroker.html" title="A class that extends Broker to manage server-side network communication.">ServerBroker</a> object.  <br /></td></tr>
+<tr class="separator:a6406a1d8a63955e1a5d7f1836438a51f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1acdd5ecffd8164cff971683ad9ba00c" id="r_a1acdd5ecffd8164cff971683ad9ba00c"><td class="memItemLeft" align="right" valign="top"><a id="a1acdd5ecffd8164cff971683ad9ba00c" name="a1acdd5ecffd8164cff971683ad9ba00c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>~ServerBroker</b> (void)</td></tr>
+<tr class="memdesc:a1acdd5ecffd8164cff971683ad9ba00c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="classServerBroker.html" title="A class that extends Broker to manage server-side network communication.">ServerBroker</a> object. <br /></td></tr>
+<tr class="separator:a1acdd5ecffd8164cff971683ad9ba00c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7d98b859a32e513f47d3e1ab9b18811" id="r_af7d98b859a32e513f47d3e1ab9b18811"><td class="memItemLeft" align="right" valign="top">std::deque&lt; std::shared_ptr&lt; <a class="el" href="classISession.html">ISession</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7d98b859a32e513f47d3e1ab9b18811">getClientsSessions</a> (void) const</td></tr>
+<tr class="memdesc:af7d98b859a32e513f47d3e1ab9b18811"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get all clients id connected to the server.  <br /></td></tr>
+<tr class="separator:af7d98b859a32e513f47d3e1ab9b18811"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classBroker"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classBroker')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classBroker.html">Broker</a></td></tr>
-<tr class="memitem:a5b382c4cb43994d4ef1f9f428c0bd4ca inherit pub_methods_classBroker" id="r_a5b382c4cb43994d4ef1f9f428c0bd4ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBroker.html#a5b382c4cb43994d4ef1f9f428c0bd4ca">addTopic</a> (const std::string &amp;name)</td></tr>
-<tr class="memdesc:a5b382c4cb43994d4ef1f9f428c0bd4ca inherit pub_methods_classBroker"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new topic.  <br /></td></tr>
-<tr class="separator:a5b382c4cb43994d4ef1f9f428c0bd4ca inherit pub_methods_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac930bbd18ef31e4120441dded4e193cd inherit pub_methods_classBroker" id="r_ac930bbd18ef31e4120441dded4e193cd"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classTopic.html">Topic</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBroker.html#ac930bbd18ef31e4120441dded4e193cd">getTopic</a> (const std::string &amp;topicName)</td></tr>
-<tr class="memdesc:ac930bbd18ef31e4120441dded4e193cd inherit pub_methods_classBroker"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a topic by name.  <br /></td></tr>
-<tr class="separator:ac930bbd18ef31e4120441dded4e193cd inherit pub_methods_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28f27133ff950c8c0a7dfd4f8a0b81cd inherit pub_methods_classBroker" id="r_a28f27133ff950c8c0a7dfd4f8a0b81cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBroker.html#a28f27133ff950c8c0a7dfd4f8a0b81cd">removeTopic</a> (const std::string &amp;topicName)</td></tr>
-<tr class="memdesc:a28f27133ff950c8c0a7dfd4f8a0b81cd inherit pub_methods_classBroker"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove a topic by name.  <br /></td></tr>
-<tr class="separator:a28f27133ff950c8c0a7dfd4f8a0b81cd inherit pub_methods_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a3c4398b611f64be0d9d756a471c21f55" id="r_a3c4398b611f64be0d9d756a471c21f55"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classServerBroker.html">ServerBroker</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c4398b611f64be0d9d756a471c21f55">GetInstance</a> ()</td></tr>
-<tr class="memdesc:a3c4398b611f64be0d9d756a471c21f55"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method controls access to the singleton instance. On the first run, it creates the singleton object and stores it in the static pointer. Subsequent calls return the same instance.  <br /></td></tr>
-<tr class="separator:a3c4398b611f64be0d9d756a471c21f55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76e5f13b99d99c6acd145e51b8ebaf66 inherit pub_methods_classBroker" id="r_a76e5f13b99d99c6acd145e51b8ebaf66"><td class="memItemLeft" align="right" valign="top">
+&#160;</td><td class="memItemRight" valign="bottom"><b>~Broker</b> (void)=default</td></tr>
+<tr class="memdesc:a76e5f13b99d99c6acd145e51b8ebaf66 inherit pub_methods_classBroker"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for the <a class="el" href="classBroker.html" title="Manages topics and messages in a multi-threaded environment.">Broker</a> class. <br /></td></tr>
+<tr class="separator:a76e5f13b99d99c6acd145e51b8ebaf66 inherit pub_methods_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a134305d4a07353208c6d32c363865f17 inherit pub_methods_classBroker" id="r_a134305d4a07353208c6d32c363865f17"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBroker.html#a134305d4a07353208c6d32c363865f17">getECSId</a> (void) const</td></tr>
+<tr class="memdesc:a134305d4a07353208c6d32c363865f17 inherit pub_methods_classBroker"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the ECS ID of the broker.  <br /></td></tr>
+<tr class="separator:a134305d4a07353208c6d32c363865f17 inherit pub_methods_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0eebc1f2290bcbe3ec2da17303dd336e inherit pub_methods_classBroker" id="r_a0eebc1f2290bcbe3ec2da17303dd336e"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classTopic.html">Topic</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBroker.html#a0eebc1f2290bcbe3ec2da17303dd336e">getTopic</a> (std::uint32_t ecs_id, std::uint8_t id)</td></tr>
+<tr class="memdesc:a0eebc1f2290bcbe3ec2da17303dd336e inherit pub_methods_classBroker"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a topic from the broker.  <br /></td></tr>
+<tr class="separator:a0eebc1f2290bcbe3ec2da17303dd336e inherit pub_methods_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a306bf7b8864bdbdccdb5a5eaf8f1453f inherit pub_methods_classBroker" id="r_a306bf7b8864bdbdccdb5a5eaf8f1453f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBroker.html#a306bf7b8864bdbdccdb5a5eaf8f1453f">removeTopic</a> (std::uint32_t ecs_id, std::uint8_t id)</td></tr>
+<tr class="memdesc:a306bf7b8864bdbdccdb5a5eaf8f1453f inherit pub_methods_classBroker"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a topic from the broker.  <br /></td></tr>
+<tr class="separator:a306bf7b8864bdbdccdb5a5eaf8f1453f inherit pub_methods_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36d748b8bb218f84c6aafe9358ee7259 inherit pub_methods_classBroker" id="r_a36d748b8bb218f84c6aafe9358ee7259"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBroker.html#a36d748b8bb218f84c6aafe9358ee7259">addMessage</a> (std::uint32_t ecs_id, std::uint8_t topic_id, <a class="el" href="classMessage.html">Message</a> *message)</td></tr>
+<tr class="memdesc:a36d748b8bb218f84c6aafe9358ee7259 inherit pub_methods_classBroker"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a message to a topic.  <br /></td></tr>
+<tr class="separator:a36d748b8bb218f84c6aafe9358ee7259 inherit pub_methods_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52789b945668416dc4fbfedd58eb06d1 inherit pub_methods_classBroker" id="r_a52789b945668416dc4fbfedd58eb06d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMessage.html">Message</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBroker.html#a52789b945668416dc4fbfedd58eb06d1">getMessage</a> (std::uint32_t ecs_id, std::uint8_t topic_id)</td></tr>
+<tr class="memdesc:a52789b945668416dc4fbfedd58eb06d1 inherit pub_methods_classBroker"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a message from a topic.  <br /></td></tr>
+<tr class="separator:a52789b945668416dc4fbfedd58eb06d1 inherit pub_methods_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_methods_classBroker"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_classBroker')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classBroker.html">Broker</a></td></tr>
+<tr class="memitem:a38c7dfd1e912414e9559fc7b7bc62762 inherit pro_methods_classBroker" id="r_a38c7dfd1e912414e9559fc7b7bc62762"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>_setNetworkModule</b> (<a class="el" href="classINetworkModule.html">INetworkModule</a> *network_module)</td></tr>
+<tr class="separator:a38c7dfd1e912414e9559fc7b7bc62762 inherit pro_methods_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d8e56718893f6bb0408c0c74d885c95 inherit pro_methods_classBroker" id="r_a1d8e56718893f6bb0408c0c74d885c95"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>_setECSId</b> (int ecs_id)</td></tr>
+<tr class="separator:a1d8e56718893f6bb0408c0c74d885c95 inherit pro_methods_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a872f471d1542f1844600eeb40f5320c5 inherit pro_methods_classBroker" id="r_a872f471d1542f1844600eeb40f5320c5"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>_setSendFunction</b> (std::function&lt; void(<a class="el" href="classMessage.html">Message</a> *)&gt; sendFunction)</td></tr>
+<tr class="separator:a872f471d1542f1844600eeb40f5320c5 inherit pro_methods_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee581cb8cf45e214ee5da37c7dc7c9a4 inherit pro_methods_classBroker" id="r_aee581cb8cf45e214ee5da37c7dc7c9a4"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>_networkRoutine</b> (void)</td></tr>
+<tr class="separator:aee581cb8cf45e214ee5da37c7dc7c9a4 inherit pro_methods_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa65bf41542d11bb9754448f8dcb6ee2a inherit pro_methods_classBroker" id="r_aa65bf41542d11bb9754448f8dcb6ee2a"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>_logicalRoutine</b> (void)</td></tr>
+<tr class="separator:aa65bf41542d11bb9754448f8dcb6ee2a inherit pro_methods_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ecffdfb02c1b0870cfb7bf2b2a81b87 inherit pro_methods_classBroker" id="r_a2ecffdfb02c1b0870cfb7bf2b2a81b87"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>_routine</b> (void)</td></tr>
+<tr class="separator:a2ecffdfb02c1b0870cfb7bf2b2a81b87 inherit pro_methods_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe3d0028269df7f591d0a26e8e6e166e inherit pro_methods_classBroker" id="r_afe3d0028269df7f591d0a26e8e6e166e"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>_run</b> (void)</td></tr>
+<tr class="separator:afe3d0028269df7f591d0a26e8e6e166e inherit pro_methods_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac48fb4ae710d47a5450f374d259b23ed inherit pro_methods_classBroker" id="r_ac48fb4ae710d47a5450f374d259b23ed"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>_stop</b> (void)</td></tr>
+<tr class="separator:ac48fb4ae710d47a5450f374d259b23ed inherit pro_methods_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a299af8e30bc753fdb230b70125196c0c inherit pro_methods_classBroker" id="r_a299af8e30bc753fdb230b70125196c0c"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>_sendMessages</b> (void)</td></tr>
+<tr class="separator:a299af8e30bc753fdb230b70125196c0c inherit pro_methods_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classBroker"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classBroker')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classBroker.html">Broker</a></td></tr>
+<tr class="memitem:a797e32d4e24ebc7c961f4891d1de1b5a inherit pro_attribs_classBroker" id="r_a797e32d4e24ebc7c961f4891d1de1b5a"><td class="memItemLeft" align="right" valign="top">
+std::uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>_ecs_id</b></td></tr>
+<tr class="separator:a797e32d4e24ebc7c961f4891d1de1b5a inherit pro_attribs_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47763ae7ad630f3c530b287b2d6c045e inherit pro_attribs_classBroker" id="r_a47763ae7ad630f3c530b287b2d6c045e"><td class="memItemLeft" align="right" valign="top">
+<a class="el" href="classINetworkModule.html">INetworkModule</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_network_module</b></td></tr>
+<tr class="separator:a47763ae7ad630f3c530b287b2d6c045e inherit pro_attribs_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa96229cf64bd2c917276808987643415 inherit pro_attribs_classBroker" id="r_aa96229cf64bd2c917276808987643415"><td class="memItemLeft" align="right" valign="top">
+std::map&lt; std::pair&lt; std::uint32_t, std::uint8_t &gt;, std::unique_ptr&lt; <a class="el" href="classTopic.html">Topic</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_topics</b></td></tr>
+<tr class="separator:aa96229cf64bd2c917276808987643415 inherit pro_attribs_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d880a071d1925f688e5784fc09f2d64 inherit pro_attribs_classBroker" id="r_a4d880a071d1925f688e5784fc09f2d64"><td class="memItemLeft" align="right" valign="top">
+std::thread&#160;</td><td class="memItemRight" valign="bottom"><b>_thread</b></td></tr>
+<tr class="separator:a4d880a071d1925f688e5784fc09f2d64 inherit pro_attribs_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7af6aeeb7a69c6f62ad497ae01fc0bf7 inherit pro_attribs_classBroker" id="r_a7af6aeeb7a69c6f62ad497ae01fc0bf7"><td class="memItemLeft" align="right" valign="top">
 std::mutex&#160;</td><td class="memItemRight" valign="bottom"><b>_mutex</b></td></tr>
-<tr class="memdesc:a7af6aeeb7a69c6f62ad497ae01fc0bf7 inherit pro_attribs_classBroker"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutex to ensure thread safety. <br /></td></tr>
 <tr class="separator:a7af6aeeb7a69c6f62ad497ae01fc0bf7 inherit pro_attribs_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b9f00e34013ed160b85614ab21c1feb inherit pro_attribs_classBroker" id="r_a6b9f00e34013ed160b85614ab21c1feb"><td class="memItemLeft" align="right" valign="top">
-std::map&lt; std::string, std::unique_ptr&lt; <a class="el" href="classTopic.html">Topic</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_topics</b></td></tr>
-<tr class="memdesc:a6b9f00e34013ed160b85614ab21c1feb inherit pro_attribs_classBroker"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map of topics. <br /></td></tr>
-<tr class="separator:a6b9f00e34013ed160b85614ab21c1feb inherit pro_attribs_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32048e06907ce1aded0aa826f129ce5f inherit pro_attribs_classBroker" id="r_a32048e06907ce1aded0aa826f129ce5f"><td class="memItemLeft" align="right" valign="top">
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_is_running</b> = true</td></tr>
+<tr class="separator:a32048e06907ce1aded0aa826f129ce5f inherit pro_attribs_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a692e06340f2bab6d268f2d1892c483 inherit pro_attribs_classBroker" id="r_a4a692e06340f2bab6d268f2d1892c483"><td class="memItemLeft" align="right" valign="top">
+std::queue&lt; <a class="el" href="classMessage.html">Message</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_outgoing_messages</b></td></tr>
+<tr class="separator:a4a692e06340f2bab6d268f2d1892c483 inherit pro_attribs_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78a68723f886af5be86c7e446924f8a5 inherit pro_attribs_classBroker" id="r_a78a68723f886af5be86c7e446924f8a5"><td class="memItemLeft" align="right" valign="top">
+std::queue&lt; <a class="el" href="classMessage.html">Message</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_incomming_messages</b></td></tr>
+<tr class="separator:a78a68723f886af5be86c7e446924f8a5 inherit pro_attribs_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2aae9f3af6e16d3bb23794d6fbce10a1 inherit pro_attribs_classBroker" id="r_a2aae9f3af6e16d3bb23794d6fbce10a1"><td class="memItemLeft" align="right" valign="top">
+std::function&lt; void(<a class="el" href="classMessage.html">Message</a> *)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_sendFunction</b></td></tr>
+<tr class="separator:a2aae9f3af6e16d3bb23794d6fbce10a1 inherit pro_attribs_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="classA.html">A</a> thread-safe singleton class representing a server-side broker. </p>
-<p>The <a class="el" href="classServerBroker.html" title="A thread-safe singleton class representing a server-side broker.">ServerBroker</a> class is responsible for handling server-specific broker operations. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a3c4398b611f64be0d9d756a471c21f55" name="a3c4398b611f64be0d9d756a471c21f55"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c4398b611f64be0d9d756a471c21f55">&#9670;&#160;</a></span>GetInstance()</h2>
+<div class="textblock"><p><a class="el" href="classA.html">A</a> class that extends <a class="el" href="classBroker.html" title="Manages topics and messages in a multi-threaded environment.">Broker</a> to manage server-side network communication. </p>
+<p>The <a class="el" href="classServerBroker.html" title="A class that extends Broker to manage server-side network communication.">ServerBroker</a> class is responsible for handling network operations on the server side. It listens on a specified port and manages network routines. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a6406a1d8a63955e1a5d7f1836438a51f" name="a6406a1d8a63955e1a5d7f1836438a51f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6406a1d8a63955e1a5d7f1836438a51f">&#9670;&#160;</a></span>ServerBroker()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ServerBroker::ServerBroker </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classINetworkModule.html">INetworkModule</a> *</td>          <td class="paramname"><span class="paramname"><em>network_module</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::uint32_t</td>          <td class="paramname"><span class="paramname"><em>ecs_id</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::uint16_t</td>          <td class="paramname"><span class="paramname"><em>listen_port</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructs a new <a class="el" href="classServerBroker.html" title="A class that extends Broker to manage server-side network communication.">ServerBroker</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">network_module</td><td>The network module to use for communication. </td></tr>
+    <tr><td class="paramname">ecs_id</td><td>The ID of the ECS (Entity Component <a class="el" href="classSystem.html" title="The System class is the base.">System</a>). </td></tr>
+    <tr><td class="paramname">listen_port</td><td>The port on which the server will listen for incoming connections. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="af7d98b859a32e513f47d3e1ab9b18811" name="af7d98b859a32e513f47d3e1ab9b18811"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7d98b859a32e513f47d3e1ab9b18811">&#9670;&#160;</a></span>getClientsSessions()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -171,21 +260,21 @@ std::map&lt; std::string, std::unique_ptr&lt; <a class="el" href="classTopic.htm
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="classServerBroker.html">ServerBroker</a> * ServerBroker::GetInstance </td>
+          <td class="memname">std::deque&lt; std::shared_ptr&lt; <a class="el" href="classISession.html">ISession</a> &gt; &gt; ServerBroker::getClientsSessions </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>This method controls access to the singleton instance. On the first run, it creates the singleton object and stores it in the static pointer. Subsequent calls return the same instance. </p>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classA.html">A</a> pointer to the singleton instance of <a class="el" href="classServerBroker.html" title="A thread-safe singleton class representing a server-side broker.">ServerBroker</a>. </dd></dl>
+<p>Get all clients id connected to the server. </p>
+<dl class="section return"><dt>Returns</dt><dd>The list of clients id. </dd></dl>
 
 </div>
 </div>

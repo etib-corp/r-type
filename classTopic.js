@@ -1,7 +1,7 @@
 var classTopic =
 [
-    [ "Topic", "classTopic.html#a20b046c10bc9c65ebf9d0401bca91528", null ],
+    [ "Topic", "classTopic.html#a5fcd96bb59f4bf2c97c71923e52cf8a7", null ],
     [ "~Topic", "classTopic.html#a50a6d47c85650b983741d3a349c03506", null ],
-    [ "consumeMessage", "classTopic.html#aaa3225d2ce3c80a3580291ea20b32f64", null ],
-    [ "produceMessage", "classTopic.html#acc097d6d6491ba6c49ac1341f28814d4", null ]
+    [ "addMessage", "classTopic.html#a39296224e8e5aec368867c4458f71290", null ],
+    [ "getMessage", "classTopic.html#adf2cebb7633b0756ddc83ce1d37b1509", null ]
 ];

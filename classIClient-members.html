@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: Member List</title>
+<title>R-Type: Member List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">R-Type
    </div>
   </td>
  </tr>
@@ -103,13 +103,18 @@ $(function(){initNavTree('classIClient.html',''); initResizable(true); });
 <p>This is the complete list of members for <a class="el" href="classIClient.html">IClient</a>, including all inherited members.</p>
 <table class="directory">
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>_id</b> (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>connectToServer</b>(const std::string &amp;ip, const int &amp;port)=0 (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>getId</b>() const (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>readTCP</b>()=0 (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>sendTCP</b>(const std::string &amp;message)=0 (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>sendUDP</b>(const std::string &amp;message)=0 (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>setId</b>(int id) (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>~IClient</b>()=default (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>_onReceive</b> (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>_requestTCP</b> (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>_requestUDP</b> (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>connectToServer</b>(void)=0 (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>getId</b>() const (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>readTCP</b>()=0 (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>readUDP</b>()=0 (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>sendTCP</b>(const std::string &amp;request)=0 (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>sendUDP</b>(const std::string &amp;request)=0 (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>setId</b>(std::uint32_t id) (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>setOnReceive</b>(std::function&lt; void(const Request &amp;)&gt; onReceive) (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~IClient</b>()=default (defined in <a class="el" href="classIClient.html">IClient</a>)</td><td class="entry"><a class="el" href="classIClient.html">IClient</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

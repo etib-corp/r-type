@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: LE::Window Class Reference</title>
+<title>R-Type: LE::Window Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">R-Type
    </div>
   </td>
  </tr>
@@ -99,6 +99,7 @@ $(function(){initNavTree('classLE_1_1Window.html',''); initResizable(true); });
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classLE_1_1Window-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">LE::Window Class Reference</div></div>
 </div><!--header-->
@@ -124,9 +125,9 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~Window</b> ()</td></tr>
 <tr class="memdesc:a86acbf11f1ba1605c3be1c1b38171c09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for the <a class="el" href="classLE_1_1Window.html" title="The Window class is responsible for creating and managing a graphical window.">Window</a> object. <br /></td></tr>
 <tr class="separator:a86acbf11f1ba1605c3be1c1b38171c09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58b7cf193c989213b49d8610660380f8" id="r_a58b7cf193c989213b49d8610660380f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a58b7cf193c989213b49d8610660380f8">render</a> (std::shared_ptr&lt; <a class="el" href="classLE_1_1Scene.html">LE::Scene</a> &gt; scene)</td></tr>
-<tr class="memdesc:a58b7cf193c989213b49d8610660380f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the specified scene in the window.  <br /></td></tr>
-<tr class="separator:a58b7cf193c989213b49d8610660380f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a146ff957480c5c25562511512d510ba6" id="r_a146ff957480c5c25562511512d510ba6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a146ff957480c5c25562511512d510ba6">render</a> (std::shared_ptr&lt; <a class="el" href="classLE_1_1Scene.html">Scene</a> &gt; scene)</td></tr>
+<tr class="memdesc:a146ff957480c5c25562511512d510ba6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the specified scene in the window.  <br /></td></tr>
+<tr class="separator:a146ff957480c5c25562511512d510ba6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2e4e728d73e6bbc090e7e770ac45e6a" id="r_ad2e4e728d73e6bbc090e7e770ac45e6a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2e4e728d73e6bbc090e7e770ac45e6a">isOpen</a> ()</td></tr>
 <tr class="memdesc:ad2e4e728d73e6bbc090e7e770ac45e6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the window is open.  <br /></td></tr>
 <tr class="separator:ad2e4e728d73e6bbc090e7e770ac45e6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -140,9 +141,21 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> ()</td></tr
 <tr class="memitem:a6524a040fe62e63b6d5cdc9a6e5f3e59" id="r_a6524a040fe62e63b6d5cdc9a6e5f3e59"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6524a040fe62e63b6d5cdc9a6e5f3e59">clear</a> ()</td></tr>
 <tr class="memdesc:a6524a040fe62e63b6d5cdc9a6e5f3e59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the window to the specified color.  <br /></td></tr>
 <tr class="separator:a6524a040fe62e63b6d5cdc9a6e5f3e59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2aba26df7da586df6850fd172fa57a2b" id="r_a2aba26df7da586df6850fd172fa57a2b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2aba26df7da586df6850fd172fa57a2b">setClearColor</a> (Color color)</td></tr>
-<tr class="memdesc:a2aba26df7da586df6850fd172fa57a2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the clear color for the window.  <br /></td></tr>
-<tr class="separator:a2aba26df7da586df6850fd172fa57a2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5fa4966a04c4130a8ae581f4ffd13fb" id="r_ae5fa4966a04c4130a8ae581f4ffd13fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5fa4966a04c4130a8ae581f4ffd13fb">setClearColor</a> (<a class="el" href="classLE_1_1Color.html">Color</a> *color)</td></tr>
+<tr class="memdesc:ae5fa4966a04c4130a8ae581f4ffd13fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the clear color for the window.  <br /></td></tr>
+<tr class="separator:ae5fa4966a04c4130a8ae581f4ffd13fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c982e992d188e06bef76568fda775d3" id="r_a1c982e992d188e06bef76568fda775d3"><td class="memItemLeft" align="right" valign="top">GLFWwindow *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c982e992d188e06bef76568fda775d3">getWindow</a> ()</td></tr>
+<tr class="memdesc:a1c982e992d188e06bef76568fda775d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the GLFW window pointer.  <br /></td></tr>
+<tr class="separator:a1c982e992d188e06bef76568fda775d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a28c535269148a01b05c27398cd43cffd" id="r_a28c535269148a01b05c27398cd43cffd"><td class="memItemLeft" align="right" valign="top"><a id="a28c535269148a01b05c27398cd43cffd" name="a28c535269148a01b05c27398cd43cffd"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>LE::Shapes::Triangle</b></td></tr>
+<tr class="separator:a28c535269148a01b05c27398cd43cffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1819f56ab11d0eb2be72157e10d7042" id="r_ad1819f56ab11d0eb2be72157e10d7042"><td class="memItemLeft" align="right" valign="top"><a id="ad1819f56ab11d0eb2be72157e10d7042" name="ad1819f56ab11d0eb2be72157e10d7042"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>LE::GUI::Text</b></td></tr>
+<tr class="separator:ad1819f56ab11d0eb2be72157e10d7042"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="classLE_1_1Window.html" title="The Window class is responsible for creating and managing a graphical window.">Window</a> class is responsible for creating and managing a graphical window. </p>
@@ -210,6 +223,26 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> ()</td></tr
 
 </div>
 </div>
+<a id="a1c982e992d188e06bef76568fda775d3" name="a1c982e992d188e06bef76568fda775d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c982e992d188e06bef76568fda775d3">&#9670;&#160;</a></span>getWindow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GLFWwindow * LE::Window::getWindow </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the GLFW window pointer. </p>
+<dl class="section return"><dt>Returns</dt><dd>The GLFW window pointer. </dd></dl>
+
+</div>
+</div>
 <a id="ad2e4e728d73e6bbc090e7e770ac45e6a" name="ad2e4e728d73e6bbc090e7e770ac45e6a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad2e4e728d73e6bbc090e7e770ac45e6a">&#9670;&#160;</a></span>isOpen()</h2>
 
@@ -230,8 +263,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> ()</td></tr
 
 </div>
 </div>
-<a id="a58b7cf193c989213b49d8610660380f8" name="a58b7cf193c989213b49d8610660380f8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a58b7cf193c989213b49d8610660380f8">&#9670;&#160;</a></span>render()</h2>
+<a id="a146ff957480c5c25562511512d510ba6" name="a146ff957480c5c25562511512d510ba6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a146ff957480c5c25562511512d510ba6">&#9670;&#160;</a></span>render()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -239,7 +272,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> ()</td></tr
         <tr>
           <td class="memname">void LE::Window::render </td>
           <td>(</td>
-          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classLE_1_1Scene.html">LE::Scene</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>scene</em></span></td><td>)</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classLE_1_1Scene.html">Scene</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>scene</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -255,8 +288,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> ()</td></tr
 
 </div>
 </div>
-<a id="a2aba26df7da586df6850fd172fa57a2b" name="a2aba26df7da586df6850fd172fa57a2b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2aba26df7da586df6850fd172fa57a2b">&#9670;&#160;</a></span>setClearColor()</h2>
+<a id="ae5fa4966a04c4130a8ae581f4ffd13fb" name="ae5fa4966a04c4130a8ae581f4ffd13fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5fa4966a04c4130a8ae581f4ffd13fb">&#9670;&#160;</a></span>setClearColor()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -264,7 +297,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> ()</td></tr
         <tr>
           <td class="memname">void LE::Window::setClearColor </td>
           <td>(</td>
-          <td class="paramtype">Color</td>          <td class="paramname"><span class="paramname"><em>color</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classLE_1_1Color.html">Color</a> *</td>          <td class="paramname"><span class="paramname"><em>color</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -306,8 +339,8 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>close</b> ()</td></tr
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>graphical/include/<a class="el" href="Window_8hpp_source.html">Window.hpp</a></li>
-<li>graphical/src/<b>Window.cpp</b></li>
+<li>client/include/<a class="el" href="Window_8hpp_source.html">Window.hpp</a></li>
+<li>client/src/<b>Window.cpp</b></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

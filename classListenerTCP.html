@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: ListenerTCP Class Reference</title>
+<title>R-Type: ListenerTCP Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">R-Type
    </div>
   </td>
  </tr>
@@ -126,9 +126,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aafb64625421ce26fb8536fa48148f8db" id="r_aafb64625421ce26fb8536fa48148f8db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aafb64625421ce26fb8536fa48148f8db">WaitForConnection</a> () override</td></tr>
 <tr class="memdesc:aafb64625421ce26fb8536fa48148f8db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asynchronously waits for incoming TCP Listeners.  <br /></td></tr>
 <tr class="separator:aafb64625421ce26fb8536fa48148f8db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac277b7cf05610baacf47b3c49ef95a6e" id="r_ac277b7cf05610baacf47b3c49ef95a6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac277b7cf05610baacf47b3c49ef95a6e">run</a> (<a class="el" href="classINetworkModule.html">INetworkModule</a> *module) override</td></tr>
-<tr class="memdesc:ac277b7cf05610baacf47b3c49ef95a6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the TCP Listener by running the I/O context in a separate thread.  <br /></td></tr>
-<tr class="separator:ac277b7cf05610baacf47b3c49ef95a6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7cb23c7d6f213aeb80eceb7be4e12d1" id="r_af7cb23c7d6f213aeb80eceb7be4e12d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7cb23c7d6f213aeb80eceb7be4e12d1">run</a> (std::shared_ptr&lt; <a class="el" href="classSessionManager.html">SessionManager</a> &gt; sessionManager) override</td></tr>
+<tr class="memdesc:af7cb23c7d6f213aeb80eceb7be4e12d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the TCP Listener.  <br /></td></tr>
+<tr class="separator:af7cb23c7d6f213aeb80eceb7be4e12d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classIListenerTCP"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classIListenerTCP')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classIListenerTCP.html">IListenerTCP</a></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
@@ -150,9 +150,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>_port</b></td></tr>
 <tr class="memdesc:a8cd4614ff081e8ce70c173f7a7f985c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The port number used for the TCP Listener. <br /></td></tr>
 <tr class="separator:a8cd4614ff081e8ce70c173f7a7f985c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classIListenerTCP"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classIListenerTCP')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classIListenerTCP.html">IListenerTCP</a></td></tr>
-<tr class="memitem:a38a404e61cbb0f1f5be02d0099340a12 inherit pro_attribs_classIListenerTCP" id="r_a38a404e61cbb0f1f5be02d0099340a12"><td class="memItemLeft" align="right" valign="top">
-<a class="el" href="classINetworkModule.html">INetworkModule</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_module</b></td></tr>
-<tr class="separator:a38a404e61cbb0f1f5be02d0099340a12 inherit pro_attribs_classIListenerTCP"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a410348b2b45ea46f792e8393c5382827 inherit pro_attribs_classIListenerTCP" id="r_a410348b2b45ea46f792e8393c5382827"><td class="memItemLeft" align="right" valign="top">
+std::shared_ptr&lt; <a class="el" href="classSessionManager.html">SessionManager</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_sessionManager</b></td></tr>
+<tr class="separator:a410348b2b45ea46f792e8393c5382827 inherit pro_attribs_classIListenerTCP"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Manages TCP Listeners for the server. </p>
@@ -185,8 +185,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>_port</b></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ac277b7cf05610baacf47b3c49ef95a6e" name="ac277b7cf05610baacf47b3c49ef95a6e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac277b7cf05610baacf47b3c49ef95a6e">&#9670;&#160;</a></span>run()</h2>
+<a id="af7cb23c7d6f213aeb80eceb7be4e12d1" name="af7cb23c7d6f213aeb80eceb7be4e12d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7cb23c7d6f213aeb80eceb7be4e12d1">&#9670;&#160;</a></span>run()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -197,7 +197,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>_port</b></td></tr>
         <tr>
           <td class="memname">void ListenerTCP::run </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classINetworkModule.html">INetworkModule</a> *</td>          <td class="paramname"><span class="paramname"><em>module</em></span></td><td>)</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classSessionManager.html">SessionManager</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>sessionManager</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -208,8 +208,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>_port</b></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Starts the TCP Listener by running the I/O context in a separate thread. </p>
-<p>This function initializes a new thread that runs the I/O context associated with the TCP Listener. It ensures that the I/O operations are handled asynchronously. </p>
+<p>Runs the TCP Listener. </p>
+<p>This function starts the TCP Listener and runs the Listener handling loop. It sets up the Listener to wait for incoming Listeners and starts the ASIO context to handle the Listener operations. </p>
 
 <p>Implements <a class="el" href="classIListenerTCP.html">IListenerTCP</a>.</p>
 

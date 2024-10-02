@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: graphical/include/Window.hpp File Reference</title>
+<title>R-Type: client/include/Window.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">R-Type
    </div>
   </td>
  </tr>
@@ -98,7 +98,7 @@ $(function(){initNavTree('Window_8hpp.html',''); initResizable(true); });
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">Window.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -107,11 +107,12 @@ $(function(){initNavTree('Window_8hpp.html',''); initResizable(true); });
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="Clock_8hpp_source.html">Clock.hpp</a>&quot;</code><br />
 <code>#include &quot;Error.hpp&quot;</code><br />
-<code>#include &quot;<a class="el" href="Scene_8hpp_source.html">Scene.hpp</a>&quot;</code><br />
+<code>#include &quot;Color.hpp&quot;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
-<code>#include &lt;GLFW/glfw3.h&gt;</code><br />
+<code>#include &quot;GLFW/glfw3.h&quot;</code><br />
+<code>#include &quot;MacGL.hpp&quot;</code><br />
 </div>
 <p><a href="Window_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -124,40 +125,23 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exception class for window-related errors.  <a href="classLE_1_1Window_1_1WindowError.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:ae95c794a8ed130d9bb3d4a26d62af3fd" id="r_ae95c794a8ed130d9bb3d4a26d62af3fd"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae95c794a8ed130d9bb3d4a26d62af3fd">Color</a></td></tr>
-<tr class="separator:ae95c794a8ed130d9bb3d4a26d62af3fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a24b4642626931da4436c8879635af957" id="r_a24b4642626931da4436c8879635af957"><td class="memItemLeft" align="right" valign="top"><a id="a24b4642626931da4436c8879635af957" name="a24b4642626931da4436c8879635af957"></a>
+<a class="el" href="classLE_1_1Shader.html">LE::Shader</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>fontShader</b></td></tr>
+<tr class="separator:a24b4642626931da4436c8879635af957"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d1eef79ae1917b616f66c0c5f87ade2" id="r_a5d1eef79ae1917b616f66c0c5f87ade2"><td class="memItemLeft" align="right" valign="top"><a id="a5d1eef79ae1917b616f66c0c5f87ade2" name="a5d1eef79ae1917b616f66c0c5f87ade2"></a>
+<a class="el" href="classLE_1_1Shader.html">LE::Shader</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>triangleShader</b></td></tr>
+<tr class="separator:a5d1eef79ae1917b616f66c0c5f87ade2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Defines the Window class. </p>
-</div><h2 class="groupheader">Typedef Documentation</h2>
-<a id="ae95c794a8ed130d9bb3d4a26d62af3fd" name="ae95c794a8ed130d9bb3d4a26d62af3fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae95c794a8ed130d9bb3d4a26d62af3fd">&#9670;&#160;</a></span>Color</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">using Color</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line"> <span class="keyword">union </span>{</div>
-<div class="line">    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> value;</div>
-<div class="line">    <span class="keyword">struct </span>{</div>
-<div class="line">        <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> r, g, b, a;</div>
-<div class="line">    };</div>
-<div class="line">}</div>
-</div><!-- fragment -->
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_f19ef06d7af1dd247276f1a5c92b5188.html">graphical</a></li><li class="navelem"><a class="el" href="dir_dd1db23a76bf7da246b47271b1f38822.html">include</a></li><li class="navelem"><a class="el" href="Window_8hpp.html">Window.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_5c23080e296bbe846f4ed2d01d7b595d.html">include</a></li><li class="navelem"><a class="el" href="Window_8hpp.html">Window.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>

@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['listenertcp_0',['ListenerTCP',['../classListenerTCP.html',1,'']]],
-  ['listenerudp_1',['ListenerUDP',['../classListenerUDP.html',1,'']]],
-  ['loaderlib_2',['LoaderLib',['../classLoaderLib.html',1,'']]],
-  ['loaderliberror_3',['LoaderLibError',['../classLoaderLibError.html',1,'']]]
+  ['header_0',['Header',['../structHeader.html',1,'']]],
+  ['health_1',['Health',['../structHealth.html',1,'']]],
+  ['hitbox_2',['HitBox',['../structHitBox.html',1,'']]],
+  ['hurtbox_3',['HurtBox',['../structHurtBox.html',1,'']]]
 ];

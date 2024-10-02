@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: INetworkModule Class Reference</title>
+<title>R-Type: INetworkModule Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">R-Type
    </div>
   </td>
  </tr>
@@ -98,8 +98,6 @@ $(function(){initNavTree('classINetworkModule.html',''); initResizable(true); })
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classINetworkModule-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">INetworkModule Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
@@ -121,39 +119,19 @@ Inheritance diagram for INetworkModule:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab4efa37debf8e4db9dd2daa250975663" id="r_ab4efa37debf8e4db9dd2daa250975663"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab4efa37debf8e4db9dd2daa250975663">run</a> ()=0</td></tr>
-<tr class="separator:ab4efa37debf8e4db9dd2daa250975663"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc9b25432cc71437c739c2342d32368b" id="r_afc9b25432cc71437c739c2342d32368b"><td class="memItemLeft" align="right" valign="top"><a id="afc9b25432cc71437c739c2342d32368b" name="afc9b25432cc71437c739c2342d32368b"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>addClient</b> (std::shared_ptr&lt; <a class="el" href="classISession.html">ISession</a> &gt; client)</td></tr>
-<tr class="separator:afc9b25432cc71437c739c2342d32368b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9b64053afd5c2d9a6362e6c3d7884c2" id="r_ae9b64053afd5c2d9a6362e6c3d7884c2"><td class="memItemLeft" align="right" valign="top"><a id="ae9b64053afd5c2d9a6362e6c3d7884c2" name="ae9b64053afd5c2d9a6362e6c3d7884c2"></a>
-virtual std::queue&lt; std::shared_ptr&lt; <a class="el" href="classISession.html">ISession</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getClients</b> ()</td></tr>
-<tr class="separator:ae9b64053afd5c2d9a6362e6c3d7884c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7833419494c59d0edfe534e958eb5da" id="r_af7833419494c59d0edfe534e958eb5da"><td class="memItemLeft" align="right" valign="top"><a id="af7833419494c59d0edfe534e958eb5da" name="af7833419494c59d0edfe534e958eb5da"></a>
-virtual std::shared_ptr&lt; <a class="el" href="classISession.html">ISession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getClientById</b> (int id)</td></tr>
-<tr class="separator:af7833419494c59d0edfe534e958eb5da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a820b95db035c79808e9dc4d1731881d6" id="r_a820b95db035c79808e9dc4d1731881d6"><td class="memItemLeft" align="right" valign="top">std::queue&lt; std::shared_ptr&lt; <a class="el" href="classISession.html">ISession</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a820b95db035c79808e9dc4d1731881d6">_sessions</a></td></tr>
-<tr class="memdesc:a820b95db035c79808e9dc4d1731881d6"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classA.html">A</a> queue that holds shared pointers to <a class="el" href="classIClient.html">IClient</a> sessions.  <br /></td></tr>
-<tr class="separator:a820b95db035c79808e9dc4d1731881d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:afaa31a4331a2df0c37d7e4e3ced11d82" id="r_afaa31a4331a2df0c37d7e4e3ced11d82"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classIListenerTCP.html">IListenerTCP</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afaa31a4331a2df0c37d7e4e3ced11d82">_listenerTCP</a></td></tr>
-<tr class="memdesc:afaa31a4331a2df0c37d7e4e3ced11d82"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classA.html">A</a> shared pointer to a ConnectionTCP object.  <br /></td></tr>
-<tr class="separator:afaa31a4331a2df0c37d7e4e3ced11d82"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a7d1d81ba72e5cf39807cfb712a935d" id="r_a4a7d1d81ba72e5cf39807cfb712a935d"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classIListenerUDP.html">IListenerUDP</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a7d1d81ba72e5cf39807cfb712a935d">_listenerUDP</a></td></tr>
-<tr class="memdesc:a4a7d1d81ba72e5cf39807cfb712a935d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classA.html">A</a> shared pointer to a ConnectionUDP object.  <br /></td></tr>
-<tr class="separator:a4a7d1d81ba72e5cf39807cfb712a935d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27e4582ea86d5feb41ff3e9bef8c274e" id="r_a27e4582ea86d5feb41ff3e9bef8c274e"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classIServer.html">IServer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27e4582ea86d5feb41ff3e9bef8c274e">createServer</a> (int port)=0</td></tr>
+<tr class="memdesc:a27e4582ea86d5feb41ff3e9bef8c274e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs a server <a class="el" href="classIServer.html">IServer</a>.  <br /></td></tr>
+<tr class="separator:a27e4582ea86d5feb41ff3e9bef8c274e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a712a404c724e400bc8fd1e39fb98d339" id="r_a712a404c724e400bc8fd1e39fb98d339"><td class="memItemLeft" align="right" valign="top"><a id="a712a404c724e400bc8fd1e39fb98d339" name="a712a404c724e400bc8fd1e39fb98d339"></a>
+virtual <a class="el" href="classIClient.html">IClient</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>createClient</b> (const std::string &amp;ip, int port)=0</td></tr>
+<tr class="separator:a712a404c724e400bc8fd1e39fb98d339"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Abstract base class for network modules. </p>
 <p>This class defines the interface for network modules, providing a pure virtual function <code>run</code> that must be implemented by derived classes. It also includes a virtual destructor to ensure proper cleanup of derived classes. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab4efa37debf8e4db9dd2daa250975663" name="ab4efa37debf8e4db9dd2daa250975663"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab4efa37debf8e4db9dd2daa250975663">&#9670;&#160;</a></span>run()</h2>
+<a id="a27e4582ea86d5feb41ff3e9bef8c274e" name="a27e4582ea86d5feb41ff3e9bef8c274e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27e4582ea86d5feb41ff3e9bef8c274e">&#9670;&#160;</a></span>createServer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -162,9 +140,9 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void INetworkModule::run </td>
+          <td class="memname">virtual <a class="el" href="classIServer.html">IServer</a> * INetworkModule::createServer </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>port</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -175,75 +153,10 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classAsioNetworkModule.html#adb423ee10ed62f3f237a56b4fbca0b9c">AsioNetworkModule</a>.</p>
+<p>Runs a server <a class="el" href="classIServer.html">IServer</a>. </p>
+<p>This pure virtual function must be implemented by derived classes to run the server. It is used to start the server and begin listening for incoming connections. </p>
 
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="afaa31a4331a2df0c37d7e4e3ced11d82" name="afaa31a4331a2df0c37d7e4e3ced11d82"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afaa31a4331a2df0c37d7e4e3ced11d82">&#9670;&#160;</a></span>_listenerTCP</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="classIListenerTCP.html">IListenerTCP</a>&gt; INetworkModule::_listenerTCP</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p><a class="el" href="classA.html">A</a> shared pointer to a ConnectionTCP object. </p>
-<p>This member variable holds a shared pointer to an instance of the ConnectionTCP class, which manages a TCP connection. The use of std::shared_ptr ensures that the ConnectionTCP object is properly managed and deallocated when no longer in use. </p>
-
-</div>
-</div>
-<a id="a4a7d1d81ba72e5cf39807cfb712a935d" name="a4a7d1d81ba72e5cf39807cfb712a935d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4a7d1d81ba72e5cf39807cfb712a935d">&#9670;&#160;</a></span>_listenerUDP</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::shared_ptr&lt;<a class="el" href="classIListenerUDP.html">IListenerUDP</a>&gt; INetworkModule::_listenerUDP</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p><a class="el" href="classA.html">A</a> shared pointer to a ConnectionUDP object. </p>
-<p>This member variable holds a shared pointer to an instance of the ConnectionUDP class, which is used to manage UDP connections within the network module. </p>
-
-</div>
-</div>
-<a id="a820b95db035c79808e9dc4d1731881d6" name="a820b95db035c79808e9dc4d1731881d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a820b95db035c79808e9dc4d1731881d6">&#9670;&#160;</a></span>_sessions</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::queue&lt;std::shared_ptr&lt;<a class="el" href="classISession.html">ISession</a>&gt; &gt; INetworkModule::_sessions</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p><a class="el" href="classA.html">A</a> queue that holds shared pointers to <a class="el" href="classIClient.html">IClient</a> sessions. </p>
-<p>This queue is used to manage and store client sessions in a thread-safe manner. Each session is represented by a shared pointer to an <a class="el" href="classIClient.html">IClient</a> object, ensuring proper memory management and reference counting. </p>
+<p>Implemented in <a class="el" href="classAsioNetworkModule.html#a7fbad4fcfd2f0676ddb07af446fbacda">AsioNetworkModule</a>.</p>
 
 </div>
 </div>

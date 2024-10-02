@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: graphical/include/Engine.hpp Source File</title>
+<title>R-Type: client/include/Engine.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project
+   <div id="projectname">R-Type
    </div>
   </td>
  </tr>
@@ -108,63 +108,101 @@ $(function(){initNavTree('Engine_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;SceneManager.hpp&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;<a class="code" href="Window_8hpp.html">Window.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;Error.hpp&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">namespace </span>LE {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keyword">class </span>Window;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keyword">class </span>SceneManager;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keyword">class </span>Scene;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>}</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">namespace </span>LE {</div>
-<div class="foldopen" id="foldopen00028" data-start="{" data-end="};">
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="classLE_1_1Engine.html">   28</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classLE_1_1Engine.html">Engine</a> {</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keyword">public</span>:</div>
-<div class="foldopen" id="foldopen00036" data-start="{" data-end="};">
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classLE_1_1Engine_1_1EngineError.html">   36</a></span>            <span class="keyword">class </span><a class="code hl_class" href="classLE_1_1Engine_1_1EngineError.html">EngineError</a> : <span class="keyword">public</span> <a class="code hl_class" href="classLE_1_1Error.html">Error</a> {</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classLE_1_1Engine_1_1EngineError.html#a121df004bfffc0b22957e4e4554ee226">   43</a></span>                    <a class="code hl_function" href="classLE_1_1Engine_1_1EngineError.html#a121df004bfffc0b22957e4e4554ee226">EngineError</a>(<span class="keyword">const</span> std::string&amp; message) : <a class="code hl_class" href="classLE_1_1Error.html">Error</a>(message) {}</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            };</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;SceneManager.hpp&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="Window_8hpp.html">Window.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;Error.hpp&quot;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">namespace </span>LE {</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">namespace </span>Shapes {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keyword">class </span>Triangle;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    }</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">namespace </span>GUI {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="keyword">class </span>Text;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    }</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>}</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keyword">namespace </span>LE {</div>
+<div class="foldopen" id="foldopen00044" data-start="{" data-end="};">
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classLE_1_1Engine.html">   44</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classLE_1_1Engine.html">Engine</a> {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00052" data-start="{" data-end="};">
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classLE_1_1Engine_1_1EngineError.html">   52</a></span>            <span class="keyword">class </span><a class="code hl_class" href="classLE_1_1Engine_1_1EngineError.html">EngineError</a> : <span class="keyword">public</span> <a class="code hl_class" href="classLE_1_1Error.html">Error</a> {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classLE_1_1Engine_1_1EngineError.html#a121df004bfffc0b22957e4e4554ee226">   59</a></span>                    <a class="code hl_function" href="classLE_1_1Engine_1_1EngineError.html#a121df004bfffc0b22957e4e4554ee226">EngineError</a>(<span class="keyword">const</span> std::string&amp; message) : <a class="code hl_class" href="classLE_1_1Error.html">Error</a>(message) {}</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            };</div>
 </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classLE_1_1Engine.html#a0edd7d3599fd95d26c787ec141180d21">   48</a></span>            <a class="code hl_function" href="classLE_1_1Engine.html#a0edd7d3599fd95d26c787ec141180d21">Engine</a>(<span class="keyword">const</span> <a class="code hl_class" href="classLE_1_1Engine.html">Engine</a>&amp; engine) = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classLE_1_1Engine.html#af012b5e8871884ebe5df977ca3fbc37d">   53</a></span>            <a class="code hl_class" href="classLE_1_1Engine.html">Engine</a>&amp; <a class="code hl_function" href="classLE_1_1Engine.html#af012b5e8871884ebe5df977ca3fbc37d">operator=</a>(<span class="keyword">const</span> <a class="code hl_class" href="classLE_1_1Engine.html">Engine</a>&amp; engine) = <span class="keyword">delete</span>;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            <span class="keyword">static</span> <a class="code hl_class" href="classLE_1_1Engine.html">Engine</a> *<a class="code hl_function" href="classLE_1_1Engine.html#af5f18aeb22dce4ec6781b2918cf9f5ab">getInstance</a>();</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classLE_1_1Engine.html#a2b392f58fe6d77dc1f34b20e25701465">run</a>(<span class="keywordtype">bool</span> throwError = <span class="keyword">false</span>);</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classLE_1_1Engine.html#aa019b3daf27d67a49db8b493d0af7afc">runWithDebug</a>();</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classLE_1_1Engine.html#a0fef957b623c93811c0c4b7e7c9a7ec5">debug</a>(<span class="keyword">const</span> std::string&amp; message);</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            <a class="code hl_class" href="classLE_1_1Engine.html">Engine</a>();</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            <a class="code hl_class" href="classLE_1_1Engine.html">~Engine</a>();</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            <span class="keyword">static</span> <a class="code hl_class" href="classLE_1_1Engine.html">Engine</a>* _instance; </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            std::shared_ptr&lt;LE::Window&gt; _window; </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>            std::shared_ptr&lt;LE::SceneManager&gt; _sceneManager; </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            <span class="keywordtype">bool</span> _debugMode; </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    };</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classLE_1_1Engine.html#a0edd7d3599fd95d26c787ec141180d21">   64</a></span>            <a class="code hl_function" href="classLE_1_1Engine.html#a0edd7d3599fd95d26c787ec141180d21">Engine</a>(<span class="keyword">const</span> <a class="code hl_class" href="classLE_1_1Engine.html">Engine</a>&amp; engine) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classLE_1_1Engine.html#af012b5e8871884ebe5df977ca3fbc37d">   69</a></span>            <a class="code hl_class" href="classLE_1_1Engine.html">Engine</a>&amp; <a class="code hl_function" href="classLE_1_1Engine.html#af012b5e8871884ebe5df977ca3fbc37d">operator=</a>(<span class="keyword">const</span> <a class="code hl_class" href="classLE_1_1Engine.html">Engine</a>&amp; engine) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            <span class="keyword">static</span> <a class="code hl_class" href="classLE_1_1Engine.html">Engine</a> *<a class="code hl_function" href="classLE_1_1Engine.html#af5f18aeb22dce4ec6781b2918cf9f5ab">getInstance</a>();</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classLE_1_1Engine.html#a2b392f58fe6d77dc1f34b20e25701465">run</a>(<span class="keywordtype">bool</span> <a class="code hl_function" href="classLE_1_1Engine.html#a93e768762eb3d6e5b7f8d59b5c2284ca">throwError</a> = <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classLE_1_1Engine.html#aa019b3daf27d67a49db8b493d0af7afc">runWithDebug</a>();</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classLE_1_1Engine.html#a0fef957b623c93811c0c4b7e7c9a7ec5">debug</a>(<span class="keyword">const</span> std::string&amp; message);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classLE_1_1Engine.html#ad1c525604271386c21ffd6f3b7c7b58d">addScene</a>(<span class="keyword">const</span> std::string &amp;sceneName, <span class="keyword">const</span> std::shared_ptr&lt;Scene&gt; scene);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classLE_1_1Engine.html#a4bd7f61e42736e9c0be61e91a0a8aa59">removeScene</a>(<span class="keyword">const</span> std::string&amp; sceneName);</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classLE_1_1Engine.html#a93e768762eb3d6e5b7f8d59b5c2284ca">throwError</a>(<span class="keyword">const</span> <a class="code hl_class" href="classLE_1_1Error.html">LE::Error</a>&amp; error);</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classLE_1_1Engine.html#a914dd64e78a507b9f765bcc25f5c2095">setConfig</a>(std::function&lt;<span class="keywordtype">void</span>()&gt; <a class="code hl_function" href="group__group1.html#ga24f647174760cac13d2624b5ad74b00c">func</a>);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>            <a class="code hl_class" href="classLE_1_1Engine.html">Engine</a>();</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>            <a class="code hl_class" href="classLE_1_1Engine.html">~Engine</a>();</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>            <span class="keyword">static</span> <a class="code hl_class" href="classLE_1_1Engine.html">Engine</a>* _instance; </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>            std::shared_ptr&lt;LE::Window&gt; _window; </div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>            std::shared_ptr&lt;SceneManager&gt; _sceneManager; </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>            <span class="keywordtype">bool</span> _debugMode; </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>            <span class="keywordtype">bool</span> _throwError; </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno"><a class="line" href="classLE_1_1Engine.html#aba45a46c615e2683daffdae82e2d3b8f">  146</a></span>            <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_class" href="classLE_1_1EventManager.html">EventManager</a>; </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>            std::function&lt;void ()&gt; _configFunc; </div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>            <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_class" href="classLE_1_1Shapes_1_1Triangle.html">LE::Shapes::Triangle</a>;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>            <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_class" href="classLE_1_1GUI_1_1Text.html">LE::GUI::Text</a>;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    };</div>
 </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>}</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>}</div>
 <div class="ttc" id="aWindow_8hpp_html"><div class="ttname"><a href="Window_8hpp.html">Window.hpp</a></div><div class="ttdoc">Defines the Window class.</div></div>
-<div class="ttc" id="aclassLE_1_1Engine_1_1EngineError_html"><div class="ttname"><a href="classLE_1_1Engine_1_1EngineError.html">LE::Engine::EngineError</a></div><div class="ttdoc">The EngineError class represents an exception that can be thrown in the Engine class.</div><div class="ttdef"><b>Definition</b> Engine.hpp:36</div></div>
-<div class="ttc" id="aclassLE_1_1Engine_1_1EngineError_html_a121df004bfffc0b22957e4e4554ee226"><div class="ttname"><a href="classLE_1_1Engine_1_1EngineError.html#a121df004bfffc0b22957e4e4554ee226">LE::Engine::EngineError::EngineError</a></div><div class="ttdeci">EngineError(const std::string &amp;message)</div><div class="ttdoc">Constructs an EngineError object with the specified error message.</div><div class="ttdef"><b>Definition</b> Engine.hpp:43</div></div>
-<div class="ttc" id="aclassLE_1_1Engine_html"><div class="ttname"><a href="classLE_1_1Engine.html">LE::Engine</a></div><div class="ttdoc">The Engine class is responsible for managing the game engine's core functionalities.</div><div class="ttdef"><b>Definition</b> Engine.hpp:28</div></div>
+<div class="ttc" id="aclassLE_1_1Engine_1_1EngineError_html"><div class="ttname"><a href="classLE_1_1Engine_1_1EngineError.html">LE::Engine::EngineError</a></div><div class="ttdoc">The EngineError class represents an exception that can be thrown in the Engine class.</div><div class="ttdef"><b>Definition</b> Engine.hpp:52</div></div>
+<div class="ttc" id="aclassLE_1_1Engine_1_1EngineError_html_a121df004bfffc0b22957e4e4554ee226"><div class="ttname"><a href="classLE_1_1Engine_1_1EngineError.html#a121df004bfffc0b22957e4e4554ee226">LE::Engine::EngineError::EngineError</a></div><div class="ttdeci">EngineError(const std::string &amp;message)</div><div class="ttdoc">Constructs an EngineError object with the specified error message.</div><div class="ttdef"><b>Definition</b> Engine.hpp:59</div></div>
+<div class="ttc" id="aclassLE_1_1Engine_html"><div class="ttname"><a href="classLE_1_1Engine.html">LE::Engine</a></div><div class="ttdoc">The Engine class is responsible for managing the game engine's core functionalities.</div><div class="ttdef"><b>Definition</b> Engine.hpp:44</div></div>
 <div class="ttc" id="aclassLE_1_1Engine_html_a0edd7d3599fd95d26c787ec141180d21"><div class="ttname"><a href="classLE_1_1Engine.html#a0edd7d3599fd95d26c787ec141180d21">LE::Engine::Engine</a></div><div class="ttdeci">Engine(const Engine &amp;engine)=delete</div><div class="ttdoc">Deleted copy constructor for the Engine class.</div></div>
-<div class="ttc" id="aclassLE_1_1Engine_html_a0fef957b623c93811c0c4b7e7c9a7ec5"><div class="ttname"><a href="classLE_1_1Engine.html#a0fef957b623c93811c0c4b7e7c9a7ec5">LE::Engine::debug</a></div><div class="ttdeci">void debug(const std::string &amp;message)</div><div class="ttdoc">Outputs debug information.</div><div class="ttdef"><b>Definition</b> Engine.cpp:51</div></div>
-<div class="ttc" id="aclassLE_1_1Engine_html_a2b392f58fe6d77dc1f34b20e25701465"><div class="ttname"><a href="classLE_1_1Engine.html#a2b392f58fe6d77dc1f34b20e25701465">LE::Engine::run</a></div><div class="ttdeci">void run(bool throwError=false)</div><div class="ttdoc">Runs the engine.</div><div class="ttdef"><b>Definition</b> Engine.cpp:30</div></div>
-<div class="ttc" id="aclassLE_1_1Engine_html_aa019b3daf27d67a49db8b493d0af7afc"><div class="ttname"><a href="classLE_1_1Engine.html#aa019b3daf27d67a49db8b493d0af7afc">LE::Engine::runWithDebug</a></div><div class="ttdeci">void runWithDebug()</div><div class="ttdoc">Runs the engine with debug information.</div><div class="ttdef"><b>Definition</b> Engine.cpp:44</div></div>
+<div class="ttc" id="aclassLE_1_1Engine_html_a0fef957b623c93811c0c4b7e7c9a7ec5"><div class="ttname"><a href="classLE_1_1Engine.html#a0fef957b623c93811c0c4b7e7c9a7ec5">LE::Engine::debug</a></div><div class="ttdeci">void debug(const std::string &amp;message)</div><div class="ttdoc">Outputs debug information.</div><div class="ttdef"><b>Definition</b> Engine.cpp:61</div></div>
+<div class="ttc" id="aclassLE_1_1Engine_html_a2b392f58fe6d77dc1f34b20e25701465"><div class="ttname"><a href="classLE_1_1Engine.html#a2b392f58fe6d77dc1f34b20e25701465">LE::Engine::run</a></div><div class="ttdeci">void run(bool throwError=false)</div><div class="ttdoc">Runs the engine.</div><div class="ttdef"><b>Definition</b> Engine.cpp:39</div></div>
+<div class="ttc" id="aclassLE_1_1Engine_html_a4bd7f61e42736e9c0be61e91a0a8aa59"><div class="ttname"><a href="classLE_1_1Engine.html#a4bd7f61e42736e9c0be61e91a0a8aa59">LE::Engine::removeScene</a></div><div class="ttdeci">void removeScene(const std::string &amp;sceneName)</div><div class="ttdoc">Removes a scene from the engine.</div><div class="ttdef"><b>Definition</b> Engine.cpp:75</div></div>
+<div class="ttc" id="aclassLE_1_1Engine_html_a914dd64e78a507b9f765bcc25f5c2095"><div class="ttname"><a href="classLE_1_1Engine.html#a914dd64e78a507b9f765bcc25f5c2095">LE::Engine::setConfig</a></div><div class="ttdeci">void setConfig(std::function&lt; void()&gt; func)</div><div class="ttdoc">Sets the configuration function.</div><div class="ttdef"><b>Definition</b> Engine.cpp:87</div></div>
+<div class="ttc" id="aclassLE_1_1Engine_html_a93e768762eb3d6e5b7f8d59b5c2284ca"><div class="ttname"><a href="classLE_1_1Engine.html#a93e768762eb3d6e5b7f8d59b5c2284ca">LE::Engine::throwError</a></div><div class="ttdeci">void throwError(const LE::Error &amp;error)</div><div class="ttdoc">Throws an error.</div><div class="ttdef"><b>Definition</b> Engine.cpp:80</div></div>
+<div class="ttc" id="aclassLE_1_1Engine_html_aa019b3daf27d67a49db8b493d0af7afc"><div class="ttname"><a href="classLE_1_1Engine.html#aa019b3daf27d67a49db8b493d0af7afc">LE::Engine::runWithDebug</a></div><div class="ttdeci">void runWithDebug()</div><div class="ttdoc">Runs the engine with debug information.</div><div class="ttdef"><b>Definition</b> Engine.cpp:54</div></div>
+<div class="ttc" id="aclassLE_1_1Engine_html_ad1c525604271386c21ffd6f3b7c7b58d"><div class="ttname"><a href="classLE_1_1Engine.html#ad1c525604271386c21ffd6f3b7c7b58d">LE::Engine::addScene</a></div><div class="ttdeci">void addScene(const std::string &amp;sceneName, const std::shared_ptr&lt; Scene &gt; scene)</div><div class="ttdoc">Adds a scene to the engine.</div><div class="ttdef"><b>Definition</b> Engine.cpp:68</div></div>
 <div class="ttc" id="aclassLE_1_1Engine_html_af012b5e8871884ebe5df977ca3fbc37d"><div class="ttname"><a href="classLE_1_1Engine.html#af012b5e8871884ebe5df977ca3fbc37d">LE::Engine::operator=</a></div><div class="ttdeci">Engine &amp; operator=(const Engine &amp;engine)=delete</div><div class="ttdoc">Deleted assignment operator for the Engine class.</div></div>
-<div class="ttc" id="aclassLE_1_1Engine_html_af5f18aeb22dce4ec6781b2918cf9f5ab"><div class="ttname"><a href="classLE_1_1Engine.html#af5f18aeb22dce4ec6781b2918cf9f5ab">LE::Engine::getInstance</a></div><div class="ttdeci">static Engine * getInstance()</div><div class="ttdoc">Gets the singleton instance of the Engine class.</div><div class="ttdef"><b>Definition</b> Engine.cpp:22</div></div>
+<div class="ttc" id="aclassLE_1_1Engine_html_af5f18aeb22dce4ec6781b2918cf9f5ab"><div class="ttname"><a href="classLE_1_1Engine.html#af5f18aeb22dce4ec6781b2918cf9f5ab">LE::Engine::getInstance</a></div><div class="ttdeci">static Engine * getInstance()</div><div class="ttdoc">Gets the singleton instance of the Engine class.</div><div class="ttdef"><b>Definition</b> Engine.cpp:31</div></div>
 <div class="ttc" id="aclassLE_1_1Error_html"><div class="ttname"><a href="classLE_1_1Error.html">LE::Error</a></div><div class="ttdoc">The Error class represents an exception that can be thrown in the Lion engine.</div><div class="ttdef"><b>Definition</b> Error.hpp:20</div></div>
+<div class="ttc" id="aclassLE_1_1EventManager_html"><div class="ttname"><a href="classLE_1_1EventManager.html">LE::EventManager</a></div><div class="ttdoc">Manages events within the application.</div><div class="ttdef"><b>Definition</b> EventManager.hpp:115</div></div>
+<div class="ttc" id="aclassLE_1_1GUI_1_1Text_html"><div class="ttname"><a href="classLE_1_1GUI_1_1Text.html">LE::GUI::Text</a></div><div class="ttdoc">The Text class is responsible for managing text in the graphical system.</div><div class="ttdef"><b>Definition</b> Text.hpp:28</div></div>
+<div class="ttc" id="aclassLE_1_1Shapes_1_1Triangle_html"><div class="ttname"><a href="classLE_1_1Shapes_1_1Triangle.html">LE::Shapes::Triangle</a></div><div class="ttdoc">The Triangle class is responsible for managing OpenGL triangles.</div><div class="ttdef"><b>Definition</b> Triangle.hpp:24</div></div>
+<div class="ttc" id="agroup__group1_html_ga24f647174760cac13d2624b5ad74b00c"><div class="ttname"><a href="group__group1.html#ga24f647174760cac13d2624b5ad74b00c">func</a></div><div class="ttdeci">void func()</div><div class="ttdef"><b>Definition</b> group.cpp:13</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_f19ef06d7af1dd247276f1a5c92b5188.html">graphical</a></li><li class="navelem"><a class="el" href="dir_dd1db23a76bf7da246b47271b1f38822.html">include</a></li><li class="navelem"><a class="el" href="Engine_8hpp.html">Engine.hpp</a></li>
+    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_5c23080e296bbe846f4ed2d01d7b595d.html">include</a></li><li class="navelem"><a class="el" href="Engine_8hpp.html">Engine.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
