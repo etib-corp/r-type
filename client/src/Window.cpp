@@ -11,6 +11,7 @@
 #include "Shader.hpp"
 
 #include "Shapes/Triangle.hpp"
+#include "GUI/Interactable.hpp"
 #include "GUI/Text.hpp"
 
 LE::Shader *fontShader{nullptr};

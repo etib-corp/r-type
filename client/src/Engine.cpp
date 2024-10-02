@@ -11,6 +11,7 @@
 
 #include "Shapes/Triangle.hpp"
 #include "GUI/Component.hpp"
+#include "GUI/Interactable.hpp"
 
 #include <iostream>
 
