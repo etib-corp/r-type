@@ -10,41 +10,38 @@
 
 #include <iostream>
 #include "PackUnpack.hpp"
+#include <functional>
 
-class IClient {
-    public:
-        virtual ~IClient() = default;
+class IClient
+{
+public:
+    virtual ~IClient() = default;
 
-        virtual void connectToServer(void) = 0;
+    virtual void connectToServer(void) = 0;
 
-        virtual void readTCP() = 0;
+    virtual void setOnReceive(std::function<void(const Request &)> onReceive) { _onReceive = onReceive; }
 
-        virtual void readUDP() = 0;
+    virtual void readTCP() = 0;
 
-        virtual void sendTCP(const std::string &message) = 0;
+    virtual void readUDP() = 0;
 
-        virtual void sendUDP(const std::string &message) = 0;
+    virtual void sendTCP(const std::string &request) = 0;
 
-        virtual void sendTCP(const Request& request) = 0;
+    virtual void sendUDP(const std::string &request) = 0;
 
-        virtual void sendUDP(const Request& request) = 0;
+    virtual int getId() const { return _id; }
 
-        virtual int getId() const { return _id; }
+    virtual void setId(std::uint32_t id) { _id = id; }
 
-        virtual void setId(int id) { _id = id; }
+protected:
+    std::uint32_t _id;
 
-        virtual char *getDataTCP() { return _dataTCP; }
+    std::function<void(const Request &)> _onReceive;
 
-        virtual char *getDataUDP() { return _dataUDP; }
+    Request _requestTCP = {};
+    Request _requestUDP = {};
 
-    protected:
-        int _id;
-        char _dataTCP[1024] = {0};
-        char _dataUDP[1024] = {0};
-
-        Request _requestTCP = {};
-        Request _requestUDP = {};
-    private:
+private:
 };
 
 #endif /* !ICLIENT_HPP_ */

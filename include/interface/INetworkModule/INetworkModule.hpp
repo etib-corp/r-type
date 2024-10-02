@@ -26,23 +26,23 @@
  * function `run` that must be implemented by derived classes. It also includes
  * a virtual destructor to ensure proper cleanup of derived classes.
  */
-class INetworkModule {
-    public:
-        virtual ~INetworkModule() = default;
+class INetworkModule
+{
+public:
+    virtual ~INetworkModule() = default;
 
-        /**
-         * @brief Runs a server IServer
-         *
-         * This pure virtual function must be implemented by derived classes to run the server.
-         * It is used to start the server and begin listening for incoming connections.
-         */
-        virtual IServer *createServer(int port) = 0;
+    /**
+     * @brief Runs a server IServer
+     *
+     * This pure virtual function must be implemented by derived classes to run the server.
+     * It is used to start the server and begin listening for incoming connections.
+     */
+    virtual IServer *createServer(int port) = 0;
 
-        virtual IClient *createClient(const std::string& ip, int port) = 0;
+    virtual IClient *createClient(const std::string &ip, int port) = 0;
 
-    protected:
-
-    private:
+protected:
+private:
 };
 
 #endif /* !ANETWORKMODULE_HPP_ */

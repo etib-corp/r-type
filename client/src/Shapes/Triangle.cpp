@@ -22,9 +22,9 @@ LE::Shapes::Triangle::Triangle(Vector3<float> p1, Vector3<float> p2, Vector3<flo
     glBindBuffer(GL_ARRAY_BUFFER, _VBO);
 
     float vertices[] = {
-        _p1.x, _p1.y, _p1.z,
-        _p2.x, _p2.y, _p2.z,
-        _p3.x, _p3.y, _p3.z
+        _p1.x, _p1.y, static_cast<float>(_p1.z),
+        _p2.x, _p2.y, static_cast<float>(_p2.z),
+        _p3.x, _p3.y, static_cast<float>(_p3.z)
     };
 
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
@@ -58,9 +58,9 @@ void LE::Shapes::Triangle::draw()
     glBindBuffer(GL_ARRAY_BUFFER, _VBO);
 
     float vertices[9] = {
-        ((2 * _p1.x) / width) - 1, ((2 * _p1.y) / height) - 1, _p1.z - 0.1,
-        ((2 * _p2.x) / width) - 1, ((2 * _p2.y) / height) - 1, _p2.z - 0.1,
-        ((2 * _p3.x) / width) - 1, ((2 * _p3.y) / height) - 1, _p3.z - 0.1
+        ((2 * _p1.x) / width) - 1, ((2 * _p1.y) / height) - 1, static_cast<float>(_p1.z - 0.1),
+        ((2 * _p2.x) / width) - 1, ((2 * _p2.y) / height) - 1, static_cast<float>(_p2.z - 0.1),
+        ((2 * _p3.x) / width) - 1, ((2 * _p3.y) / height) - 1, static_cast<float>(_p3.z - 0.1)
     };
 
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
