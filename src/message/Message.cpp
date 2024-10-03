@@ -2,6 +2,7 @@
 
 Message::Message(void) : _emmiter_id(0), _receiver_id(0), _topic_id(0), _action(0)
 {
+    memset(&_body, 0, sizeof(Body));
 }
 
 Message::~Message(void)
@@ -32,12 +33,10 @@ static std::string compressAndPrepare(Header header, Body body)
 std::string Message::serialize(void) const
 {
     Header header = {0};
-    Body body = {0};
 
-    header.EmmiterdID = _emmiter_id;
-    header.ReceiverID = _receiver_id;
+    header.EmmiterdEcsId = _emmiter_id;
+    header.ReceiverEcsId = _receiver_id;
     header.Action = _action;
-    header.BodyLength = 0;
-    std::memset(body._buffer, 0, 1024);
-    return compressAndPrepare(header, body);
+    header.TopicID = _topic_id;
+    return compressAndPrepare(header, _body);
 }
