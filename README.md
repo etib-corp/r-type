@@ -4,19 +4,19 @@
 
 ### **File Architecture Overview**
 
-- **`client/`**  
+- **`client/`**
   Contains the source code and header files for the client.
 
-- **`include/`**  
+- **`include/`**
   Shared header files used by both server and client.
 
-- **`lib/`**  
+- **`lib/`**
   Directory for shared libraries.
 
-- **`server/`**  
+- **`server/`**
   Contains the source code and header files for the server.
 
-- **`dependencies/`**  
+- **`dependencies/`**
   Dependencies for the current CMakeLists.txt.
 
 
@@ -24,7 +24,7 @@
 
 ### **Module**
 
-- **`AsioNetworkModule`**  
+- **`AsioNetworkModule`**
   Module for networking using the Asio library.
 
 - **`ClientCoreModule`**
@@ -43,3 +43,9 @@
   Module for the test server core.
 
 ---
+
+### **RFC**
+
+- **`RFC`**
+
+![RFC](./RFC.md)
