@@ -3,8 +3,8 @@
 ## Status: Draft
 
 **RFC Number:** 6969
-**Title:** R-Type Multiplayer Game Network Protocol  
-**Author:** ETIB Corporation  
+**Title:** R-Type Multiplayer Game Network Protocol
+**Author:** ETIB Corporation
 **Version:** 1.1
 
 ## Abstract
@@ -143,7 +143,7 @@ The protocol defines several common action codes for handling game state synchro
 - **NEW CONNECTION (0x02)**: Sent by the client to acknowledge the receipt of its ID after connecting to the server.
 
 - **INPUT (0x02)**: Sent when the server detects a desynchronization between clients and forces a rollback to a previous game state.
-- 
+
 Example:
 ```cpp
 
