@@ -142,6 +142,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a47e34256eca0a267ca0c39a779e3fc93" id="r_a47e34256eca0a267ca0c39a779e3fc93"><td class="memItemLeft" align="right" valign="top">std::uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47e34256eca0a267ca0c39a779e3fc93">getAction</a> (void) const</td></tr>
 <tr class="memdesc:a47e34256eca0a267ca0c39a779e3fc93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the action of the message.  <br /></td></tr>
 <tr class="separator:a47e34256eca0a267ca0c39a779e3fc93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a029751d4c37fb13ebcaf00d41ce5087a" id="r_a029751d4c37fb13ebcaf00d41ce5087a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a029751d4c37fb13ebcaf00d41ce5087a">setBody</a> (<a class="el" href="structBody.html">Body</a> body)</td></tr>
+<tr class="memdesc:a029751d4c37fb13ebcaf00d41ce5087a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the body for the message.  <br /></td></tr>
+<tr class="separator:a029751d4c37fb13ebcaf00d41ce5087a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b8d4e69b0719e4c0fe7f265a9749c2b" id="r_a8b8d4e69b0719e4c0fe7f265a9749c2b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structBody.html">Body</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b8d4e69b0719e4c0fe7f265a9749c2b">getBody</a> (void) const</td></tr>
+<tr class="memdesc:a8b8d4e69b0719e4c0fe7f265a9749c2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the body of the message.  <br /></td></tr>
+<tr class="separator:a8b8d4e69b0719e4c0fe7f265a9749c2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e746155f82ffbf2176d40e78edf28c3" id="r_a2e746155f82ffbf2176d40e78edf28c3"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e746155f82ffbf2176d40e78edf28c3">serialize</a> (void) const</td></tr>
 <tr class="memdesc:a2e746155f82ffbf2176d40e78edf28c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serializes the message.  <br /></td></tr>
 <tr class="separator:a2e746155f82ffbf2176d40e78edf28c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -204,6 +210,34 @@ Public Member Functions</h2></td></tr>
 
 <p>Gets the action of the message. </p>
 <dl class="section return"><dt>Returns</dt><dd>The action of the message. </dd></dl>
+
+</div>
+</div>
+<a id="a8b8d4e69b0719e4c0fe7f265a9749c2b" name="a8b8d4e69b0719e4c0fe7f265a9749c2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b8d4e69b0719e4c0fe7f265a9749c2b">&#9670;&#160;</a></span>getBody()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structBody.html">Body</a> Message::getBody </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the body of the message. </p>
+<dl class="section return"><dt>Returns</dt><dd>The body of the message. </dd></dl>
 
 </div>
 </div>
@@ -338,6 +372,39 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">action</td><td>The action to be set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a029751d4c37fb13ebcaf00d41ce5087a" name="a029751d4c37fb13ebcaf00d41ce5087a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a029751d4c37fb13ebcaf00d41ce5087a">&#9670;&#160;</a></span>setBody()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Message::setBody </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structBody.html">Body</a></td>          <td class="paramname"><span class="paramname"><em>body</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the body for the message. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">body</td><td>The body to be set. </td></tr>
   </table>
   </dd>
 </dl>

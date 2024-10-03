@@ -144,11 +144,11 @@ $(function(){initNavTree('Broker_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="classBroker.html#a36d748b8bb218f84c6aafe9358ee7259">   69</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classBroker.html#a36d748b8bb218f84c6aafe9358ee7259">addMessage</a>(std::uint32_t ecs_id, std::uint8_t topic_id, <a class="code hl_class" href="classMessage.html">Message</a> *message)</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    {</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        std::lock_guard&lt;std::mutex&gt; lock(_mutex);</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        message-&gt;<a class="code hl_function" href="classMessage.html#afe76dab253b345ed8c63738119b73631">setEmmiterID</a>(_ecs_id);</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        message-&gt;<a class="code hl_function" href="classMessage.html#a398fa6f3e7b89ef3c0060d4b9a6fadba">setReceiverID</a>(ecs_id);</div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        message-&gt;<a class="code hl_function" href="classMessage.html#a66b8d4123ebb886963bcbea48c671972">setTopicID</a>(topic_id);</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        message-&gt;<a class="code hl_function" href="classMessage.html#a8321b85f3fb889262abeca5baf591de5">setAction</a>(topic_id);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="comment">// message-&gt;setAction(topic_id);</span></div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        _outgoing_messages.push(message);</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    }</div>
 </div>
@@ -203,7 +203,6 @@ $(function(){initNavTree('Broker_8hpp_source.html',''); initResizable(true); });
 <div class="ttc" id="aclassMessage_html"><div class="ttname"><a href="classMessage.html">Message</a></div><div class="ttdoc">A class representing a message with an ECS ID and a topic name.</div><div class="ttdef"><b>Definition</b> Message.hpp:19</div></div>
 <div class="ttc" id="aclassMessage_html_a398fa6f3e7b89ef3c0060d4b9a6fadba"><div class="ttname"><a href="classMessage.html#a398fa6f3e7b89ef3c0060d4b9a6fadba">Message::setReceiverID</a></div><div class="ttdeci">void setReceiverID(std::uint32_t receiver_id)</div><div class="ttdoc">Sets the receiver ID for the message.</div><div class="ttdef"><b>Definition</b> Message.hpp:50</div></div>
 <div class="ttc" id="aclassMessage_html_a66b8d4123ebb886963bcbea48c671972"><div class="ttname"><a href="classMessage.html#a66b8d4123ebb886963bcbea48c671972">Message::setTopicID</a></div><div class="ttdeci">void setTopicID(std::uint8_t topic_id)</div><div class="ttdoc">Sets the topic id for the message.</div><div class="ttdef"><b>Definition</b> Message.hpp:64</div></div>
-<div class="ttc" id="aclassMessage_html_a8321b85f3fb889262abeca5baf591de5"><div class="ttname"><a href="classMessage.html#a8321b85f3fb889262abeca5baf591de5">Message::setAction</a></div><div class="ttdeci">void setAction(std::uint8_t action)</div><div class="ttdoc">Sets the action for the message.</div><div class="ttdef"><b>Definition</b> Message.hpp:78</div></div>
 <div class="ttc" id="aclassMessage_html_afe76dab253b345ed8c63738119b73631"><div class="ttname"><a href="classMessage.html#afe76dab253b345ed8c63738119b73631">Message::setEmmiterID</a></div><div class="ttdeci">void setEmmiterID(std::uint32_t emmiter_id)</div><div class="ttdoc">Sets the ECS ID for the message.</div><div class="ttdef"><b>Definition</b> Message.hpp:36</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
