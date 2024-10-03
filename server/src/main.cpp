@@ -109,11 +109,12 @@ static void receiveFromClient(Message *message, ServerBroker *server_broker, std
         std::cout << "Message received from client" << std::endl;
         std::cout << "acion=" << (int)message->getAction() << std::endl;
         Header header = {
-            .Action = message->getAction(),
-            .EmmiterdEcsId = (uint8_t)(message)->getEmmiterID(),
-            .BodyLength = 0,
             .MagicNumber = 0x77,
-            .ReceiverEcsId = (uint8_t)message->getReceiverID()
+            .EmmiterdEcsId = (uint8_t)(message)->getEmmiterID(),
+            .ReceiverEcsId = (uint8_t)message->getReceiverID(),
+            .TopicID = message->getTopicID(),
+            .Action = message->getAction(),
+            .BodyLength = 0
         };
         processHeader(header, _ecs, actionCallbacks);
         delete message;
@@ -162,16 +163,16 @@ int main(void)
     auto sessions = server_broker->getClientsSessions();
 
     std::unordered_map<char, std::vector<CallBackFunc>> actionCallbacks = {
-        {'U', {checkMagicNumber, callbackInputUp, [sessions, server_broker, message](const Header &header, std::__1::shared_ptr<Ecs> _ecs){
+        {'U', {checkMagicNumber, callbackInputUp, [sessions, server_broker, message](const Header &header, std::shared_ptr<Ecs> _ecs) {
             sendToAllClient(sessions, server_broker, message);
         }}},
-        {'D', {checkMagicNumber, callbackInputDown, [sessions, server_broker, message](const Header &header, std::__1::shared_ptr<Ecs> _ecs){
+        {'D', {checkMagicNumber, callbackInputDown, [sessions, server_broker, message](const Header &header, std::shared_ptr<Ecs> _ecs) {
             sendToAllClient(sessions, server_broker, message);
         }}},
-        {'R', {checkMagicNumber, callbackInputRight, [sessions, server_broker, message](const Header &header, std::__1::shared_ptr<Ecs> _ecs){
+        {'R', {checkMagicNumber, callbackInputRight, [sessions, server_broker, message](const Header &header, std::shared_ptr<Ecs> _ecs) {
             sendToAllClient(sessions, server_broker, message);
         }}},
-        {'L', {checkMagicNumber, callbackInputLeft, [sessions, server_broker, message](const Header &header, std::__1::shared_ptr<Ecs> _ecs){
+        {'L', {checkMagicNumber, callbackInputLeft, [sessions, server_broker, message](const Header &header, std::shared_ptr<Ecs> _ecs) {
             sendToAllClient(sessions, server_broker, message);
         }}}
     };
