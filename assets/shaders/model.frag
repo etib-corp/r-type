@@ -12,4 +12,7 @@ uniform sampler2D texture_height1;
 void main()
 {
     FragColor = texture(texture_diffuse1, TexCoords);
+    FragColor *= texture(texture_specular1, TexCoords);
+    FragColor += texture(texture_normal1, TexCoords);
+    FragColor *= texture(texture_height1, TexCoords);
 }
