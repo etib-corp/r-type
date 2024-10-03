@@ -53,6 +53,7 @@ LE::Window::~Window()
 
 void LE::Window::render(std::shared_ptr<Scene> scene)
 {
+    _dt = _clock->getElapsedTime();
     if (_clock->getElapsedTime() < (1000.0f / _framerateLimit))
         return;
     _clock->restart();

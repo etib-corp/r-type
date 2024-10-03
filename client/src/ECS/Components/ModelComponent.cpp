@@ -95,6 +95,15 @@ Mesh *processMesh(ModelComponent *model, aiMesh *mesh, const aiScene *scene)
 
         std::vector<Texture *> diffuseMaps = loadMaterialTextures(model, material, aiTextureType_DIFFUSE, "texture_diffuse");
         textures.insert(textures.end(), diffuseMaps.begin(), diffuseMaps.end());
+
+        std::vector<Texture *> specularMaps = loadMaterialTextures(model, material, aiTextureType_SPECULAR, "texture_specular");
+        textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
+
+        std::vector<Texture *> normalMaps = loadMaterialTextures(model, material, aiTextureType_HEIGHT, "texture_normal");
+        textures.insert(textures.end(), normalMaps.begin(), normalMaps.end());
+
+        std::vector<Texture *> heightMaps = loadMaterialTextures(model, material, aiTextureType_AMBIENT, "texture_height");
+        textures.insert(textures.end(), heightMaps.begin(), heightMaps.end());
     }
     Mesh *newMesh = new Mesh();
     newMesh->_indices = indices;
@@ -142,8 +151,6 @@ void drawMesh(Mesh *mesh, LE::Shader *shader)
     unsigned int normalNr = 1;
     unsigned int heightNr = 1;
 
-    std::cout << "Drawing mesh with " << mesh->_textures.size() << " textures" << std::endl;
-
     for (unsigned int i = 0; i < mesh->_textures.size(); i++) {
         glActiveTexture(GL_TEXTURE0 + i);
         std::string number;
@@ -157,7 +164,6 @@ void drawMesh(Mesh *mesh, LE::Shader *shader)
         else if (name == "texture_height")
             number = std::to_string(heightNr++);
 
-        std::cout << "Setting texture " << name + number << " to " << i << std::endl;
         shader->setInt((name + number).c_str(), i);
         glBindTexture(GL_TEXTURE_2D, mesh->_textures[i]->_id);
     }

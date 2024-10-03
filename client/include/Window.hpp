@@ -157,5 +157,7 @@ namespace LE {
             GLFWmonitor* _monitor;              ///< Pointer to the monitor.
             const GLFWvidmode* _mode;           ///< Pointer to the video mode.
             std::unique_ptr<Clock> _clock;      ///< Unique pointer to the Clock object.
+            float _dt;                          ///< The delta time.
+            friend class EventManager;          ///< Friend class EventManager.
     };
 }

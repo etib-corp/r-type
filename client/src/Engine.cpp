@@ -40,6 +40,12 @@ void LE::Engine::run(bool throwError)
     if (_configFunc) {
         _configFunc();
     }
+    Color color;
+    color.a = 255;
+    color.r = 255;
+    color.g = 255;
+    color.b = 255;
+    _window->setClearColor(color);
     _sceneManager->init();
     while (_window->isOpen()) {
         _sceneManager->play();

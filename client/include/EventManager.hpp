@@ -155,7 +155,7 @@ namespace LE
          * @param callback The callback function to be called when the key event occurs.
          * @return A Status object indicating the success or failure of the operation.
          */
-        Status addEventListener(const LE::Key &key, std::function<void(LE::Engine *)> callback);
+        Status addEventListener(const LE::Key &key, std::function<void(LE::Engine *, float)> callback);
 
         /**
          * @brief Removes an event listener for the specified key.
@@ -166,7 +166,7 @@ namespace LE
          * @param key The key to remove the event listener for.
          * @param callback The callback function to be removed.
          */
-        void removeEventListener(const LE::Key &key, std::function<void(LE::Engine *)> callback);
+        void removeEventListener(const LE::Key &key);
 
         /**
          * @brief Polls for events and dispatches them to the appropriate listeners.
@@ -174,6 +174,6 @@ namespace LE
         void pollEvents();
 
     private:
-        std::map<std::shared_ptr<LE::Key>, std::function<void(LE::Engine *engine)>> _eventCallbacks; ///< List of event callbacks.
+        std::map<std::shared_ptr<LE::Key>, std::function<void(LE::Engine *, float)>> _eventCallbacks; ///< List of event callbacks.
     };
 }

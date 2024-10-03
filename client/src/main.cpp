@@ -38,11 +38,40 @@ class GameScene : public LE::Scene {
             // _ecs->addComponent<SpriteComponent>(entity, *sprite);
 
             Entity entity2 = _ecs->createEntity();
-            auto model = createModelComponent("assets/models/buttercup/buttercup.obj");
-            _ecs->addComponent<ModelComponent>(entity2, *model);
-            _ecs->addComponent<TransformComponent>(entity2, (TransformComponent){{0, 0, 2}, {0, 0, 0}, {0.5f, 0.5f, 0.5f}});
+            auto model2 = createModelComponent("assets/models/ship/MicroRecon.obj");
+            _ecs->addComponent<ModelComponent>(entity2, *model2);
+            _ecs->addComponent<TransformComponent>(entity2, (TransformComponent){{0, 0, 0}, {0, 0, 0}, {1.0f, 1.0f, 1.0f}});
+
+            // Entity entity3 = _ecs->createEntity();
+            // auto model3 = createModelComponent("assets/models/buttercup/buttercup.obj");
+            // _ecs->addComponent<ModelComponent>(entity3, *model3);
+            // _ecs->addComponent<TransformComponent>(entity3, (TransformComponent){{0, 0, 0}, {0, 0, 0}, {10.0f, 10.0f, 10.0f}});
+
+            _eventManager = std::make_shared<LE::EventManager>();
+                _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_ESCAPE, LE::JUST_PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
+                    exit(0);
+            });
+            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_UP, LE::PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
+                auto& transform = _ecs->getComponent<TransformComponent>(entity2);
+                transform.position.y += 0.5f * (dt / 10000);
+            });
+
+            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_DOWN, LE::PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
+                auto& transform = _ecs->getComponent<TransformComponent>(entity2);
+                transform.position.y -= 0.5f * (dt / 10000);
+            });
+            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_RIGHT, LE::PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
+                auto& transform = _ecs->getComponent<TransformComponent>(entity2);
+                transform.position.x -= 0.5f * (dt / 10000);
+            });
+
+            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_LEFT, LE::PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
+                auto& transform = _ecs->getComponent<TransformComponent>(entity2);
+                transform.position.x += 0.5f * (dt / 10000);
+            });
 
         }
+
         void play() override
         {
             // std::cout << "Game scene updated." << std::endl;
