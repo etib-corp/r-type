@@ -247,7 +247,7 @@ class JsonParser {
             size_t index = 0;
             std::ifstream file(_path);
             if (!file.is_open()) {
-                std::cerr << "Error: could not open file " << _path << std::endl;
+                _errorMessage += "Error: Couldn't open the file" + _path + "\n";
                 return false;
             }
             std::stringstream buffer;
@@ -265,10 +265,17 @@ class JsonParser {
             file.close();
         }
 
+        std::string getErrorMessage() const
+        {
+            return _errorMessage;
+        }
+
 
     private:
         void skipWhitespaces(size_t& index) {
             while (_sep.find(_content[index]) != std::string::npos) {
+                if (_content[index] == '\n')
+                    _lineNumber++;
                 index++;
             }
         }
@@ -277,17 +284,12 @@ class JsonParser {
             skipWhitespaces(index);
             switch (_content[index]) {
                 case 'n':
-                    parseNull(index, value);
-                    break;
+                    return parseNull(index, value);
                 case 'f':
-                    parseBool(index, value);
-                    break;
                 case 't':
-                    parseBool(index, value);
-                    break;
+                    return parseBool(index, value);
                 case '"':
-                    parseString(index, value);
-                    break;
+                    return parseString(index, value);
                 case '0':
                 case '1':
                 case '2':
@@ -301,39 +303,46 @@ class JsonParser {
                 case '-':
                 case '+':
                 case '.':
-                    parseNumber(index, value);
-                    break;
+                    return parseNumber(index, value);
                 case '[':
-                    parseArray(index, value);
-                    break;
+                    return parseArray(index, value);
                 case '{':
-                    parseObject(index, value);
-                    break;
+                    return parseObject(index, value);
                 default:
-                    std::cerr << "Json file is wrongly formatted." << std::endl;
+                    _errorMessage += "Json file is wrongly formatted at line " + std::to_string(_lineNumber) + "\n";
                     return false;
             }
-            return true;
         }
+
         bool parseNull(size_t& index, std::shared_ptr<JsonValue>& value) {
-            if (_content.substr(index, 4) == "null") {
+            std::string res = _content.substr(index, 4);
+            if (res == "null") {
                 value = std::make_shared<JsonNull>();
                 index += 4;
                 return true;
             }
+            _errorMessage += "Json file is wrongly formatted. Expected null at line " + std::to_string(_lineNumber) + " but got " + res + "\n";
             return false;
         }
 
         bool parseBool(size_t& index, std::shared_ptr<JsonValue>& value) {
-            if (_content.substr(index, 4) == "true") {
-                value = std::make_shared<JsonBool>(true);
-                index += 4;
-                return true;
+            if (_content[index] == 't') {
+                std::string res = _content.substr(index, 4);
+                if (res == "true") {
+                    value = std::make_shared<JsonBool>(true);
+                    index += 4;
+                    return true;
+                }
+                _errorMessage += "Json file is wrongly formatted. Expected null at line " + std::to_string(_lineNumber) + " but got " + res + "\n";
             }
-            if (_content.substr(index, 5) == "false") {
-                value = std::make_shared<JsonBool>(false);
-                index += 5;
-                return true;
+            if (_content[index] == 'f') {
+                std::string res = _content.substr(index, 5);
+                if (res == "false") {
+                    value = std::make_shared<JsonBool>(false);
+                    index += 5;
+                    return true;
+                }
+                _errorMessage += "Json file is wrongly formatted. Expected null at line " + std::to_string(_lineNumber) + " but got " + res + "\n";
             }
             return false;
         }
@@ -342,8 +351,10 @@ class JsonParser {
             std::string res;
             index++;
             for (index; _content[index] != '"'; index++) {
-                if (_content[index] == '\0')
+                if (_content[index] == '\0') {
+                    _errorMessage += "Json file is wrongly formatted. Expected \" at line " + std::to_string(_lineNumber) + " but got unexpected end of file\n";
                     return false;
+                }
                 res.push_back(_content[index]);
             }
             value = std::make_shared<JsonString>(res);
@@ -354,11 +365,14 @@ class JsonParser {
         bool parseNumber(size_t& index, std::shared_ptr<JsonValue>& value) {
             std::string res;
             for (index; _content[index] != ',' && _content[index] != '}' && _content[index] != ']'; index++) {
-                if (_content[index] == '\0')
-                    return false;
                 res.push_back(_content[index]);
             }
-            value = std::make_shared<JsonNumber>(std::stod(res));
+            try {
+                value = std::make_shared<JsonNumber>(std::stod(res));
+            } catch (std::exception& e) {
+                _errorMessage += "Json file is wrongly formatted. Expected a number at line " + std::to_string(_lineNumber) + " but got " + res + "\n";
+                return false;
+            }
             return true;
         }
 
@@ -367,18 +381,24 @@ class JsonParser {
             std::string currentValue;
             value = std::make_shared<JsonArray>();
             while (1) {
-                if (_content[index] == '\0')
+                if (_content[index] == '\0') {
+                    _errorMessage += "Json file is wrongly formatted. Expected ] at line " + std::to_string(_lineNumber) + " but got unexpected end of file\n";
                     return false;
+                }
                 skipWhitespaces(index);
                 std::shared_ptr<JsonValue> tmp;
-                if (!parseValue(index, tmp))
+                if (!parseValue(index, tmp)) {
+                    _errorMessage += "Json file is wrongly formatted at line " + std::to_string(_lineNumber) + "\n";
                     return false;
+                }
                 dynamic_cast<JsonArray *>(value.get())->addValue(tmp);
                 skipWhitespaces(index);
                 if (_content[index] == ']')
                     break;
-                if (_content[index] != ',')
+                if (_content[index] != ',') {
+                    _errorMessage += "Json file is wrongly formatted. Expected , at line " + std::to_string(_lineNumber) + " but got " + _content[index] + "\n";
                     return false;
+                }
                 index++;
             }
             index++;
@@ -394,22 +414,30 @@ class JsonParser {
                     return false;
                 skipWhitespaces(index);
                 std::shared_ptr<JsonValue> tmp;
-                if (!parseString(index, tmp))
+                if (!parseString(index, tmp)) {
+                    _errorMessage += "Json file is wrongly formatted. Expected a string at line " + std::to_string(_lineNumber) + "\n";
                     return false;
+                }
                 key = dynamic_cast<JsonString *>(tmp.get())->getValue();
                 skipWhitespaces(index);
-                if (_content[index] != ':')
+                if (_content[index] != ':') {
+                    _errorMessage += "Json file is wrongly formatted. Expected : at line " + std::to_string(_lineNumber) + " but got " + _content[index] + "\n";
                     return false;
+                }
                 index++;
                 skipWhitespaces(index);
-                if (!parseValue(index, tmp))
+                if (!parseValue(index, tmp)) {
+                    _errorMessage += "Json file is wrongly formatted. Expected a value at line " + std::to_string(_lineNumber) + "\n";
                     return false;
+                }
                 dynamic_cast<JsonObject *>(value.get())->addValue(key, tmp);
                 skipWhitespaces(index);
                 if (_content[index] == '}')
                     break;
-                if (_content[index] != ',')
+                if (_content[index] != ',') {
+                    _errorMessage += "Json file is wrongly formatted. Expected , at line " + std::to_string(_lineNumber) + " but got " + _content[index] + "\n";
                     return false;
+                }
                 index++;
             }
             index++;
@@ -420,6 +448,7 @@ class JsonParser {
         std::string _content;                   ///< Content of the parsed json file
         std::shared_ptr<JsonValue> _root;       ///< Root of the parsed json file
         std::string _sep = JSON_SEPARATOR;      ///< String containing the json separators
+        size_t _lineNumber;                     ///< The current line number
         std::string _errorMessage;              ///< The error message string
 };
 
@@ -509,25 +538,22 @@ std::string JsonValue::writeNull()
     return "null";
 }
 
-
-/*
-? main.cpp
-#include "json.hpp"
-*/
-
-int main(void)
-{
-    JsonParser p("./test2.json");
-    p.parseFile();
-    if (p.getJsonValue()->getType() != JSON_OBJECT) {
-        std::cout << " mal" << std::endl;
-        return 84;
-    }
-    std::cout << "bon" << std::endl;
-    // std::shared_ptr<JsonValue> enemy = (*p.getJsonValue())["enemy"];
-    // std::shared_ptr<JsonValue> life = (*(*enemy)[0])["life"];
-    // std::cout << life->getNumberValue() << std::endl;
-    p.writeInfile("./test3.json");
-    std::cout << "done" << std::endl;
-    return 0;
-}
+// int main(void)
+// {
+//     JsonParser p("./test.json");
+//     if (!p.parseFile()) {
+//         std::cout << p.getErrorMessage() << std::endl;
+//         return 84;
+//     }
+//     if (p.getJsonValue()->getType() != JSON_OBJECT) {
+//         std::cout << " mal" << std::endl;
+//         return 84;
+//     }
+//     std::cout << "bon" << std::endl;
+//     // std::shared_ptr<JsonValue> enemy = (*p.getJsonValue())["enemy"];
+//     // std::shared_ptr<JsonValue> life = (*(*enemy)[0])["life"];
+//     // std::cout << life->getNumberValue() << std::endl;
+//     p.writeInfile("./test2.json");
+//     std::cout << "done" << std::endl;
+//     return 0;
+// }
