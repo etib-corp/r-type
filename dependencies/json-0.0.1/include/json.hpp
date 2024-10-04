@@ -14,6 +14,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <cstddef>
 
 #define JSON_SEPARATOR " \t\n\r"
 
@@ -47,6 +48,40 @@ class JsonValue {
         std::string getStringValue();
 
         bool getBoolValue();
+
+        std::string writeObject();
+
+        std::string writeArray();
+
+        std::string writeString();
+
+        std::string writeNumber();
+
+        std::string writeBool();
+
+        std::string writeNull();
+
+        std::string writeValue()
+        {
+            switch (_type) {
+                case JSON_OBJECT:
+                    return writeObject();
+                case JSON_ARRAY:
+                    return writeArray();
+                case JSON_STRING:
+                    return writeString();
+                case JSON_NUMBER:
+                    return writeNumber();
+                case JSON_BOOL:
+                    return writeBool();
+                case JSON_NULL:
+                    return writeNull();
+                default:
+                    return "";
+            }
+        }
+
+
     protected:
         JsonType _type;
 };
@@ -150,7 +185,7 @@ class JsonArray : public JsonValue {
             _type = JSON_ARRAY;
         }
 
-        std::vector<std::shared_ptr<JsonValue>> getValue() const
+        std::vector<std::shared_ptr<JsonValue>> getValue()
         {
             return _value;
         }
@@ -221,6 +256,15 @@ class JsonParser {
             file.close();
             return parseValue(index, _root);
         }
+
+        void writeInfile(const std::string& path)
+        {
+            std::ofstream file(path);
+
+            file << _root->writeValue();
+            file.close();
+        }
+
 
     private:
         void skipWhitespaces(size_t& index) {
@@ -419,22 +463,71 @@ bool JsonValue::getBoolValue()
     return dynamic_cast<JsonBool *>(this)->getValue();
 }
 
+std::string JsonValue::writeObject()
+{
+    std::string res = "{";
+    auto objectValue = dynamic_cast<JsonObject *>(this)->getValue();
+    for (auto it = objectValue.begin(); it != objectValue.end(); it++) {
+        res += "\"" + it->first + "\":" + it->second->writeValue();
+        if (std::next(it) != objectValue.end())
+            res += ",";
+    }
+    res += "}";
+    return res;
+}
+
+std::string JsonValue::writeArray()
+{
+    std::string res = "[";
+    auto arraySize = dynamic_cast<JsonArray *>(this)->getValue().size();
+    for (size_t i = 0; i < arraySize; i++) {
+        res += dynamic_cast<JsonArray *>(this)->getValue()[i]->writeValue();
+        if (i + 1 < dynamic_cast<JsonArray *>(this)->getValue().size())
+            res += ",";
+    }
+    res += "]";
+    return res;
+}
+
+std::string JsonValue::writeString()
+{
+    return "\"" + dynamic_cast<JsonString *>(this)->getValue() + "\"";
+}
+
+std::string JsonValue::writeNumber()
+{
+    return std::to_string(dynamic_cast<JsonNumber *>(this)->getValue());
+}
+
+std::string JsonValue::writeBool()
+{
+    return dynamic_cast<JsonBool *>(this)->getValue() ? "true" : "false";
+}
+
+std::string JsonValue::writeNull()
+{
+    return "null";
+}
+
+
 /*
 ? main.cpp
 #include "json.hpp"
+*/
 
 int main(void)
 {
-    JsonParser p("./test.json");
+    JsonParser p("./test2.json");
     p.parseFile();
     if (p.getJsonValue()->getType() != JSON_OBJECT) {
         std::cout << " mal" << std::endl;
         return 84;
     }
     std::cout << "bon" << std::endl;
-    std::shared_ptr<JsonValue> enemy = (*p.getJsonValue())["enemy"];
-    std::shared_ptr<JsonValue> life = (*(*enemy)[0])["life"];
-    std::cout << life->getNumberValue() << std::endl;
+    // std::shared_ptr<JsonValue> enemy = (*p.getJsonValue())["enemy"];
+    // std::shared_ptr<JsonValue> life = (*(*enemy)[0])["life"];
+    // std::cout << life->getNumberValue() << std::endl;
+    p.writeInfile("./test3.json");
+    std::cout << "done" << std::endl;
     return 0;
 }
-*/
