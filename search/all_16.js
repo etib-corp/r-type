@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['uint32_0',['UINT32',['../structcmd_8h.html#ae1e6edbbc26d6fbc71a90190d0266018',1,'structcmd.h']]],
-  ['ungroupedfunction_1',['ungroupedFunction',['../classMemgrp__Test.html#a8a3a4ac34b2e25696159ac420bd4bdc6',1,'Memgrp_Test']]],
-  ['update_2',['update',['../classRender2DSystem.html#a7806a1389bfb62f055c998896005abf2',1,'Render2DSystem::update()'],['../classEcs.html#a9bf5c609932333a6ded63c73eba3bbd8',1,'Ecs::update()'],['../classSystem.html#aac34badcf4f522c0517587c962cf1317',1,'System::update()'],['../classSystemManager.html#a95dea3ef5b39735567125408f21840bd',1,'SystemManager::update()']]],
-  ['use_3',['use',['../classLE_1_1Shader.html#ae0650935ec0a86b3785cd214b48585df',1,'LE::Shader']]]
+  ['n1_0',['N1',['../namespaceN1.html',1,'']]],
+  ['network_20protocol_1',['RFC: R-Type Multiplayer Game Network Protocol',['../md_RFC.html',1,'']]],
+  ['normalize_2',['normalize',['../classLE_1_1Vector2.html#ac1a2c182a9c4f9497380456e112b84e6',1,'LE::Vector2::normalize()'],['../classLE_1_1Vector3.html#a6650c91950ed692371f9a461830f3c69',1,'LE::Vector3::normalize()'],['../classLE_1_1Vector4.html#a7355d07cee152d612c2c74d83f297509',1,'LE::Vector4::normalize()']]]
 ];

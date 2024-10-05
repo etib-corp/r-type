@@ -1,4 +1,9 @@
 var searchData=
 [
-  ['5_0',['5',['../group__group5.html',1,'This is a section in group 5'],['../group__group5.html',1,'This is another section in group 5']]]
+  ['0x01_200x55_0',['Common Action Codes (0x01 -&gt; 0x55)',['../md_RFC.html#autotoc_md16',1,'']]],
+  ['0x55_1',['Common Action Codes (0x01 -&gt; 0x55)',['../md_RFC.html#autotoc_md16',1,'']]],
+  ['0x56_200xaa_2',['Server-to-Client Action Codes (0x56 -&gt; 0xAA)',['../md_RFC.html#autotoc_md17',1,'']]],
+  ['0xaa_3',['Server-to-Client Action Codes (0x56 -&gt; 0xAA)',['../md_RFC.html#autotoc_md17',1,'']]],
+  ['0xaa_200xff_4',['Client-to-Server Action Codes (0xAA -&gt; 0xFF)',['../md_RFC.html#autotoc_md18',1,'']]],
+  ['0xff_5',['Client-to-Server Action Codes (0xAA -&gt; 0xFF)',['../md_RFC.html#autotoc_md18',1,'']]]
 ];
