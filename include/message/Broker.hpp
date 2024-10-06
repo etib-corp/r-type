@@ -23,6 +23,11 @@ class Broker
 {
 public:
     /**
+     * @brief constructor for the Broker class.
+     */
+    Broker(void) = default;
+
+    /**
      * @brief Destructor for the Broker class.
      */
     ~Broker(void) = default;
@@ -116,7 +121,5 @@ protected:
 
     virtual void _sendMessage(Message *message) = 0;
 
-    void _sendMessages(std::function<void(Message *)> sendFunction);
-
-    void _receiveMessages(std::function<Message *(void)> receiveFunction);
+    void _sendMessages(void);
 };
