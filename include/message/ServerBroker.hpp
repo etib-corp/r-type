@@ -37,7 +37,7 @@ public:
      * 
      * @return The list of clients id.
      */
-    std::deque<std::shared_ptr<ISession>> getClientsSessions(void) const { return _server->_sessionsManager->getClients(); }
+    [[nodiscard]] std::deque<std::shared_ptr<ISession>> getClientsSessions(void) const { return _server->_sessionsManager->getClients(); }
 
 private:
     std::uint16_t _listen_port;
