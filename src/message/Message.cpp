@@ -5,10 +5,6 @@ Message::Message(void) : _emmiter_id(0), _receiver_id(0), _topic_id(0), _action(
     memset(&_body, 0, sizeof(Body));
 }
 
-Message::~Message(void)
-{
-}
-
 static std::string serializeRequest(Request &request)
 {
     std::ostringstream oss;
@@ -34,6 +30,7 @@ std::string Message::serialize(void) const
 {
     Header header = {0};
 
+    header.MagicNumber = _magicNumber;
     header.EmmiterdEcsId = _emmiter_id;
     header.ReceiverEcsId = _receiver_id;
     header.Action = _action;
