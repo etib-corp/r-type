@@ -24,6 +24,11 @@ class Broker
 {
 public:
     /**
+     * @brief constructor for the Broker class.
+     */
+    Broker(void) = default;
+
+    /**
      * @brief Destructor for the Broker class.
      */
     ~Broker(void) = default;
