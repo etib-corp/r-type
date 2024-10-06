@@ -50,6 +50,7 @@ void ServerBroker::_onReceiveRequestCallback(const Request &request)
 {
     Message *message = new Message();
 
+    message->setMagicNumber(request.header.MagicNumber);
     message->setEmmiterID(request.header.EmmiterdEcsId);
     message->setReceiverID(request.header.ReceiverEcsId);
     message->setAction(request.header.Action);

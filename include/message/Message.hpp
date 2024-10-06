@@ -26,7 +26,21 @@ public:
     /**
      * @brief Destroys the Message object.
      */
-    ~Message(void);
+    ~Message(void) = default;
+
+    /**
+     * @brief Sets the MagicNumber ID for the message.
+     *
+     * @param magicNumber The MagicNumber ID to be set.
+     */
+    void setMagicNumber(uint8_t magicNumber) { _magicNumber = magicNumber; }
+
+    /**
+     * @brief Gets the MagicNumber ID of the message.
+     *
+     * @return The MagicNumber ID of the message.
+     */
+    uint8_t getMagicNumber(void) { return _magicNumber; }
 
     /**
      * @brief Sets the ECS ID for the message.
@@ -113,6 +127,7 @@ public:
     void deserialize(std::string raw_request);
 
 private:
+    uint8_t _magicNumber;
     std::uint32_t _emmiter_id;
     std::uint32_t _receiver_id;
     std::uint8_t _topic_id;
