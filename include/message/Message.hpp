@@ -40,7 +40,7 @@ public:
      *
      * @return The MagicNumber ID of the message.
      */
-    uint8_t getMagicNumber(void) { return _magicNumber; }
+    [[nodiscard]] uint8_t getMagicNumber(void) { return _magicNumber; }
 
     /**
      * @brief Sets the ECS ID for the message.
@@ -54,7 +54,7 @@ public:
      *
      * @return The ECS ID of the message.
      */
-    std::uint8_t getEmmiterID(void) const { return _emmiter_id; }
+    [[nodiscard]] std::uint8_t getEmmiterID(void) const { return _emmiter_id; }
 
     /**
      * @brief Sets the receiver ID for the message.
@@ -68,7 +68,7 @@ public:
      *
      * @return The receiver ID of the message.
      */
-    std::uint8_t getReceiverID(void) const { return _receiver_id; }
+    [[nodiscard]] std::uint8_t getReceiverID(void) const { return _receiver_id; }
 
     /**
      * @brief Sets the topic id for the message.
@@ -82,7 +82,7 @@ public:
      *
      * @return The topic id of the message.
      */
-    std::uint8_t getTopicID(void) const { return _topic_id; }
+    [[nodiscard]] std::uint8_t getTopicID(void) const { return _topic_id; }
 
     /**
      * @brief Sets the action for the message.
@@ -96,7 +96,7 @@ public:
      *
      * @return The action of the message.
      */
-    std::uint8_t getAction(void) const { return _action; }
+    [[nodiscard]] std::uint8_t getAction(void) const { return _action; }
 
     /**
      * @brief Sets the body for the message.
@@ -110,14 +110,14 @@ public:
      *
      * @return The body of the message.
      */
-    Body getBody(void) const { return _body; }
+    [[nodiscard]] Body getBody(void) const { return _body; }
 
     /**
      * @brief Serializes the message.
      *
      * @return A unique pointer to the serialized request.
      */
-    std::string serialize(void) const;
+    [[nodiscard]] std::string serialize(void) const;
 
     /**
      * @brief Deserializes the message.
