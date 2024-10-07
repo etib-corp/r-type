@@ -70,14 +70,14 @@ public:
      * @param topic_name The name of the topic.
      * @param message A unique pointer to the message.
      */
-    void addMessage(std::uint32_t ecs_id, std::uint8_t topic_id, Message *message)
+    void addMessage(std::uint8_t ecs_id, std::uint8_t topic_id, Message *message)
     {
+        std::uint8_t localEcsId = _ecs_id;
         std::lock_guard<std::mutex> lock(_mutex);
 
-        message->setEmmiterID(_ecs_id);
+        message->setEmmiterID(localEcsId);
         message->setReceiverID(ecs_id);
         message->setTopicID(topic_id);
-        // message->setAction(topic_id);
         _outgoing_messages.push(message);
     }
 
@@ -93,7 +93,7 @@ public:
     }
 
 protected:
-    std::uint32_t _ecs_id;
+    std::uint8_t _ecs_id;
     INetworkModule *_network_module;
     std::map<std::pair<std::uint32_t, std::uint8_t>, std::unique_ptr<Topic>> _topics;
     std::thread _thread;
