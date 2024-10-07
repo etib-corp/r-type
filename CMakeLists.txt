@@ -29,17 +29,15 @@ include_directories(dependencies/glm/)
 file(GLOB_RECURSE CLIENT_SOURCES client/src/*.cpp)
 include_directories(client/include client/include/GUI client/include/Maths dependencies/stb/include dependencies/rapidobj/include)
 
-
 include_directories(${OPENGL_INCLUDE_DIRS})
 
 add_executable(r-type_client ${CLIENT_SOURCES})
 
 target_link_libraries(r-type_client r-type)
-
+target_link_libraries(r-type_client zlib-copy)
 target_link_libraries(r-type_client glfw)
 target_link_libraries(r-type_client ${OPENGL_LIBRARIES})
 target_link_libraries(r-type_client ${GLUT_LIBRARIES})
-target_link_libraries(r-type_client zlib-copy)
 target_link_libraries(r-type_client freetype)
 target_link_libraries(r-type_client glm)
 target_link_libraries(r-type_client assimp)
@@ -49,6 +47,6 @@ include_directories(server/include)
 add_executable(r-type_server ${SERVER_SOURCES})
 
 target_link_libraries(r-type_server r-type)
-target_link_libraries(r-type_client zlib-copy)
+target_link_libraries(r-type_server zlib-copy)
 
 add_subdirectory(lib)
