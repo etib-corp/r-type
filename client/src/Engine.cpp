@@ -12,6 +12,7 @@
 #include "Shapes/Triangle.hpp"
 #include "GUI/Container.hpp"
 #include "GUI/Interactable.hpp"
+#include "GUI/Button.hpp"
 
 #include <iostream>
 

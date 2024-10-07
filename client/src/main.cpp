@@ -59,6 +59,7 @@ class MyScene : public LE::Scene {
             auto container = new MyParentContainer();
 
             _guiManager->addChildren(container);
+            _eventManager = std::make_shared<LE::EventManager>();
         }
 
         void init() {
@@ -66,6 +67,7 @@ class MyScene : public LE::Scene {
         }
 
         void draw() {
+            _eventManager->pollEvents();
             _guiManager->draw();
         }
 

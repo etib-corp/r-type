@@ -40,19 +40,3 @@ void LE::GUI::Button::draw()
         child->draw();
     }
 }
-
-void LE::GUI::Button::OnClick()
-{
-    std::cout << "Button clicked !" << std::endl;
-}
-
-void LE::GUI::Button::OnHover()
-{
-    _background->_color->set(LE::Color::CHAR, 0, 255, 0, 255);
-}
-
-void LE::GUI::Button::OnUnhover()
-{
-    _background->_color->set(LE::Color::CHAR, 255, 0, 0, 255);
-}
-

@@ -38,9 +38,12 @@ void LE::GUI::Container::draw()
     if (auto interactable = dynamic_cast<LE::GUI::Interactable *>(this)) {
         if (interactable->isHover()) {
             interactable->OnHover();
-            if (glfwGetMouseButton(LE::Engine::getInstance()->_window->_window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS) {
-                interactable->OnClick();
-            }
+            LE::Engine::getInstance()->_sceneManager->getCurrentScene()->_eventManager->addEventListener({LE::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::JUST_PRESSED}, [interactable](LE::Engine *engine) {
+                if (interactable->isHover())
+                    interactable->OnClick();
+            });
+        } else {
+            interactable->OnUnhover();
         }
     }
 
@@ -48,9 +51,10 @@ void LE::GUI::Container::draw()
         if (auto interactable = dynamic_cast<LE::GUI::Interactable *>(child)) {
             if (interactable->isHover()) {
                 interactable->OnHover();
-                if (glfwGetMouseButton(LE::Engine::getInstance()->_window->_window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS) {
-                    interactable->OnClick();
-                }
+                LE::Engine::getInstance()->_sceneManager->getCurrentScene()->_eventManager->addEventListener({LE::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::JUST_PRESSED}, [interactable](LE::Engine *engine) {
+                    if (interactable->isHover())
+                        interactable->OnClick();
+                });
             } else {
                 interactable->OnUnhover();
             }

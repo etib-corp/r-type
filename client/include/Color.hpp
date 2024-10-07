@@ -89,6 +89,9 @@ namespace LE {
              */
             void set(unsigned int hex, float a = 1.0f);
 
+            /**
+             * @brief Gets the RGBA values of the color as a Vector4.
+            */
             Vector4<float> toVector4() const;
 
 
