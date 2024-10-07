@@ -43,83 +43,13 @@ struct Position
 #include "GUI/Text.hpp"
 #include "GUI/Button.hpp"
 
-class MyContainer : public LE::GUI::Container {
-    public:
-        MyContainer(const std::string &content) {
-            _width = 500;
-            _height = 100;
-            _x = 0.0;
-            _y = 0;
 
-            LE::GUI::Text *text = new LE::GUI::Text(85, "assets/fonts/ARIAL.TTF", 24, content);
-
-            addChildren(text);
-        }
-
-        ~MyContainer() {
-            delete _background;
-        }
-};
-
-class MyParentContainer : public LE::GUI::Container {
-    public:
-        MyParentContainer() {
-            _width = 500;
-            _height = 100;
-            _x = 100.0;
-            _y = 200;
-
-            auto firstSubContainer = new MyContainer("Hello World !");
-            auto secondSubContainer = new LE::GUI::Button(0, 200, 500, 100, "Click me !", new LE::Color(LE::Color::CHAR, 0, 0, 255, 255), new LE::Color(LE::Color::CHAR, 255, 255, 255, 255));
-
-            // addChildren(firstSubContainer);
-            addChildren(secondSubContainer);
-        }
-
-        ~MyParentContainer() {
-            delete _background;
-        }
-};
-
-class MyScene : public LE::Scene {
-    public:
-        MyScene() {
-            _guiManager = std::make_shared<LE::GUI::Manager>(1920, 1080);
-
-            auto container = new MyParentContainer();
-
-            _guiManager->addChildren(container);
-            _eventManager = std::make_shared<LE::EventManager>();
-        }
-
-        void init() {
-            _guiManager->init();
-        }
-
-        void draw() {
-            _eventManager->pollEvents();
-            _guiManager->draw();
-        }
-
-        void play() {
-            draw();
-        }
-
-        void stop() {
-        }
-
-        void stop() override
-        {
-            std::cout << "Game scene ended." << std::endl;
-        }
-};
-
-int __main__(int ac, char **av)
+int main(int ac, char **av)
 {
     // Initialize the engine
     auto engine = LE::Engine::getInstance();
 
-    auto scene = std::make_shared<MyScene>();
+    auto scene = std::make_shared<GameScene>();
 
     engine->addScene("main", scene);
     // Run the engine
