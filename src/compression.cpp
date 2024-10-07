@@ -4,7 +4,6 @@
 #include <cstdint>
 #include <cerrno>
 #include <cstring>
-#include <zlib.h>
 #include "PackUnpack.hpp"
 
 void showHeader(Header header)
