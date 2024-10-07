@@ -78,7 +78,7 @@ if(NOT CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_CURRENT_BINARY_DIR)
 endif()
 
 set(ZLIB_PC ${CMAKE_CURRENT_BINARY_DIR}/zlib-copy.pc)
-configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/zlib-copy.pc.cmakein
+configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/zlib.pc.cmakein
 		${ZLIB_PC} @ONLY)
 configure_file(	${CMAKE_CURRENT_SOURCE_DIR}/zconf.h.cmakein
 		${CMAKE_CURRENT_BINARY_DIR}/zconf.h @ONLY)
@@ -129,7 +129,7 @@ if(NOT MINGW)
 endif()
 
 # parse the full version number from zlib-copy.h and include in ZLIB_FULL_VERSION
-file(READ ${CMAKE_CURRENT_SOURCE_DIR}/zlib-copy.h _zlib_h_contents)
+file(READ ${CMAKE_CURRENT_SOURCE_DIR}/zlib.h _zlib_h_contents)
 string(REGEX REPLACE ".*#define[ \t]+ZLIB_VERSION[ \t]+\"([-0-9A-Za-z.]+)\".*"
     "\\1" ZLIB_FULL_VERSION ${_zlib_h_contents})
 
