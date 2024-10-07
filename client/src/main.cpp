@@ -11,6 +11,53 @@
 #include "Scene.hpp"
 #include <iostream>
 #include "ECS/Ecs.hpp"
+#include "etibjson.hpp"
+
+bool parseJsonAndCreateEnemy(std::shared_ptr<Ecs> ecs, std::string path)
+{
+    JsonParser parser(path);
+    if (!parser.parseFile()) {
+        std::cerr << parser.getErrorMessage() << std::endl;
+        return false;
+    }
+    auto jsonEnemy = (*parser.getJsonValue())["enemy"];
+    if (jsonEnemy == nullptr) {
+        std::cerr << "Error: No enemy found in the json file." << std::endl;
+        return false;
+    }
+    for (auto jsonValue : jsonEnemy->getArrayValue()) {
+        Entity entity = ecs->createEntity();
+        TransformComponent transform = {};
+        PatternComponent pattern = {};
+        MotionComponent motion = {};
+        ModelComponent *model = {};
+        auto jsonStartPos = jsonValue->getObjectValue()["start_pos"];
+        transform.position.x = jsonStartPos->getArrayValue()[0]->getNumberValue();
+        transform.position.y = jsonStartPos->getArrayValue()[1]->getNumberValue();
+        transform.position.z = jsonStartPos->getArrayValue()[2]->getNumberValue();
+        transform.rotation.x = jsonValue->getObjectValue()["rotation"]->getArrayValue()[0]->getNumberValue();
+        transform.rotation.y = jsonValue->getObjectValue()["rotation"]->getArrayValue()[1]->getNumberValue();
+        transform.rotation.z = jsonValue->getObjectValue()["rotation"]->getArrayValue()[2]->getNumberValue();
+        transform.scale.x = jsonValue->getObjectValue()["scale"]->getNumberValue();
+        transform.scale.y = jsonValue->getObjectValue()["scale"]->getNumberValue();
+        transform.scale.z = jsonValue->getObjectValue()["scale"]->getNumberValue();
+        auto jsonEndPos = jsonValue->getObjectValue()["end_pos"];
+        pattern.end_pos.x = jsonEndPos->getArrayValue()[0]->getNumberValue();
+        pattern.end_pos.y = jsonEndPos->getArrayValue()[1]->getNumberValue();
+        pattern.end_pos.z = jsonEndPos->getArrayValue()[2]->getNumberValue();
+        pattern.speed = jsonValue->getObjectValue()["speed"]->getNumberValue();
+        pattern.pattern_name = jsonValue->getObjectValue()["pattern"]->getStringValue();
+        std::cout << transform << std::endl;
+        std::cout << pattern << std::endl;
+        ecs->addComponent<TransformComponent>(entity, transform);
+        ecs->addComponent<PatternComponent>(entity, pattern);
+        ecs->addComponent<MotionComponent>(entity, motion);
+        model = createModelComponent(jsonValue->getObjectValue()["texture_obj"]->getStringValue());
+        ecs->addComponent<ModelComponent>(entity, *model);
+
+    }
+    return true;
+}
 
 class GameScene : public LE::Scene {
     public:
@@ -20,6 +67,8 @@ class GameScene : public LE::Scene {
             _ecs->registerComponent<TransformComponent>();
             _ecs->registerComponent<SpriteComponent>();
             _ecs->registerComponent<ModelComponent>();
+            _ecs->registerComponent<PatternComponent>();
+            _ecs->registerComponent<MotionComponent>();
             Signature signatureRender2D;
             signatureRender2D.set(_ecs->getComponentType<TransformComponent>());
             signatureRender2D.set(_ecs->getComponentType<SpriteComponent>());
@@ -31,6 +80,27 @@ class GameScene : public LE::Scene {
             signatureRender3D.set(_ecs->getComponentType<ModelComponent>());
             _ecs->registerSystem<Render3DSystem>();
             _ecs->setSignature<Render3DSystem>(signatureRender3D);
+
+            Signature signaturePattern;
+            signaturePattern.set(_ecs->getComponentType<TransformComponent>());
+            signaturePattern.set(_ecs->getComponentType<PatternComponent>());
+            signaturePattern.set(_ecs->getComponentType<MotionComponent>());
+            std::shared_ptr<PatternSystem> patternSystem = _ecs->registerSystem<PatternSystem>();
+            _ecs->setSignature<PatternSystem>(signaturePattern);
+
+            patternSystem->addPattern("line", [](PatternComponent &pattern, TransformComponent &transform, MotionComponent &motion) {
+                if (transform.position.x < pattern.end_pos.x) {
+                    transform.position.x += pattern.speed;
+                }
+                if (transform.position.y < pattern.end_pos.y) {
+                    transform.position.y += pattern.speed;
+                }
+                if (transform.position.z < pattern.end_pos.z) {
+                    transform.position.z += pattern.speed;
+                }
+            });
+
+            parseJsonAndCreateEnemy(_ecs, "assets/config/vague_1.json");
 
             // Entity entity = _ecs->createEntity();
             // _ecs->addComponent<TransformComponent>(entity, (TransformComponent){{400, 400, 0}, {0, 0, 0}, {0.5f, 0.5f, 0.5f}});

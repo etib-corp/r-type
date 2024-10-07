@@ -49,7 +49,7 @@ typedef union {
     struct {
         unsigned char r, g, b, a;
     };
-} Color;
+} Color; // ! use the Color when merging
 
 /**
  * @file Window.hpp

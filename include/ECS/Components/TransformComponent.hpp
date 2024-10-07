@@ -15,3 +15,5 @@ struct TransformComponent {
     LE::Vector3<float> rotation;
     LE::Vector3<float> scale;
 };
+
+std::ostream &operator<<(std::ostream &os, const TransformComponent &transform);

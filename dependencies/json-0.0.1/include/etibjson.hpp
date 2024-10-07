@@ -49,6 +49,10 @@ class JsonValue {
 
         bool getBoolValue();
 
+        std::vector<std::shared_ptr<JsonValue>> getArrayValue();
+
+        std::map<std::string, std::shared_ptr<JsonValue>> getObjectValue();
+
         std::string writeObject();
 
         std::string writeArray();
@@ -482,6 +486,22 @@ std::string JsonValue::getStringValue()
         return "";
     }
     return dynamic_cast<JsonString *>(this)->getValue();
+}
+
+std::vector<std::shared_ptr<JsonValue>> JsonValue::getArrayValue()
+{
+    if (_type != JSON_ARRAY) {
+        return {};
+    }
+    return dynamic_cast<JsonArray *>(this)->getValue();
+}
+
+std::map<std::string, std::shared_ptr<JsonValue>> JsonValue::getObjectValue()
+{
+    if (_type != JSON_OBJECT) {
+        return {};
+    }
+    return dynamic_cast<JsonObject *>(this)->getValue();
 }
 
 bool JsonValue::getBoolValue()
