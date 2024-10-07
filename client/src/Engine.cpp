@@ -16,8 +16,10 @@ LE::Engine::Engine()
 {
     _debugMode = false;
     _throwError = false;
-    _window = std::make_shared<LE::Window>("Game Window", 1920, 1080);
+    _window = std::make_shared<LE::Window>("The R-Type");
     _sceneManager = std::make_shared<SceneManager>();
+    _clock = std::make_unique<LE::Clock>();
+    _framerateLimit = _window->_defaultFramerate;
 }
 
 LE::Engine::~Engine()
@@ -48,6 +50,10 @@ void LE::Engine::run(bool throwError)
     _window->setClearColor(color);
     _sceneManager->init();
     while (_window->isOpen()) {
+        _dt = _clock->getElapsedTime();
+        if (_clock->getElapsedTime() < (1000.0f / _framerateLimit))
+            continue;
+        _clock->restart();
         _sceneManager->play();
         _window->render(_sceneManager->getCurrentScene());
     }
@@ -89,4 +95,19 @@ void LE::Engine::throwError(const LE::Error& error)
 void LE::Engine::setConfig(std::function<void()> func)
 {
     _configFunc = func;
+}
+
+void LE::Engine::setFramerateLimit(std::size_t limit)
+{
+    _framerateLimit = limit;
+}
+
+Entity LE::Engine::getCameraEntity() const
+{
+    return _cameraEntity;
+}
+
+void LE::Engine::setCameraEntity(const Entity& entity)
+{
+    _cameraEntity = entity;
 }

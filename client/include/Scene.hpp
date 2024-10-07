@@ -16,6 +16,7 @@
 #include "ECS/Systems/Render2DSystem.hpp"
 #include "ECS/Systems/Render3DSystem.hpp"
 #include "ECS/Systems/PatternSystem.hpp"
+#include "ECS/Systems/CameraSystem.hpp"
 
 /**
  * @file Scene.hpp
@@ -92,6 +93,14 @@ namespace LE {
             void init();
 
             /**
+             * @brief Function to get the camera entity.
+             * 
+             * This function is used to get the camera entity for the scene.
+             * @return The entity representing the camera.
+             */
+            Entity getCameraEntity() const;
+
+            /**
              * @brief Shared pointer to an ECS (Entity Component System) instance.
              *
              * This member variable holds a shared pointer to an ECS instance,
@@ -100,5 +109,6 @@ namespace LE {
             std::shared_ptr<Ecs> _ecs;                          ///< Shared pointer to the ECS instance.
             std::shared_ptr<LE::GUI::Manager> _guiManager;      ///< Shared pointer to the GUI Manager instance.
             std::shared_ptr<LE::EventManager> _eventManager;    ///< Shared pointer to the Event Manager instance.
+            Entity _cameraEntity;                                     ///< Entity representing the camera in the scene.
     };
 }

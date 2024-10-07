@@ -6,7 +6,6 @@
 */
 
 #include <iostream>
-// #include <GL/glut.h>
 #include "Engine.hpp"
 #include "Scene.hpp"
 #include <iostream>
@@ -27,28 +26,21 @@ bool parseJsonAndCreateEnemy(std::shared_ptr<Ecs> ecs, std::string path)
     }
     for (auto jsonValue : jsonEnemy->getArrayValue()) {
         Entity entity = ecs->createEntity();
-        TransformComponent transform = {};
-        PatternComponent pattern = {};
         MotionComponent motion = {};
         ModelComponent *model = {};
         auto jsonStartPos = jsonValue->getObjectValue()["start_pos"];
-        transform.position.x = jsonStartPos->getArrayValue()[0]->getNumberValue();
-        transform.position.y = jsonStartPos->getArrayValue()[1]->getNumberValue();
-        transform.position.z = jsonStartPos->getArrayValue()[2]->getNumberValue();
-        transform.rotation.x = jsonValue->getObjectValue()["rotation"]->getArrayValue()[0]->getNumberValue();
-        transform.rotation.y = jsonValue->getObjectValue()["rotation"]->getArrayValue()[1]->getNumberValue();
-        transform.rotation.z = jsonValue->getObjectValue()["rotation"]->getArrayValue()[2]->getNumberValue();
-        transform.scale.x = jsonValue->getObjectValue()["scale"]->getNumberValue();
-        transform.scale.y = jsonValue->getObjectValue()["scale"]->getNumberValue();
-        transform.scale.z = jsonValue->getObjectValue()["scale"]->getNumberValue();
+        TransformComponent transform = createTransformComponent(
+            LE::Vector3<float>(jsonStartPos->getArrayValue()[0]->getNumberValue(), jsonStartPos->getArrayValue()[1]->getNumberValue(), jsonStartPos->getArrayValue()[2]->getNumberValue()),
+            LE::Vector3<float>(jsonValue->getObjectValue()["rotation"]->getArrayValue()[0]->getNumberValue(), jsonValue->getObjectValue()["rotation"]->getArrayValue()[1]->getNumberValue(), jsonValue->getObjectValue()["rotation"]->getArrayValue()[2]->getNumberValue()),
+            LE::Vector3<float>(jsonValue->getObjectValue()["scale"]->getNumberValue(), jsonValue->getObjectValue()["scale"]->getNumberValue(), jsonValue->getObjectValue()["scale"]->getNumberValue())
+        );
         auto jsonEndPos = jsonValue->getObjectValue()["end_pos"];
-        pattern.end_pos.x = jsonEndPos->getArrayValue()[0]->getNumberValue();
-        pattern.end_pos.y = jsonEndPos->getArrayValue()[1]->getNumberValue();
-        pattern.end_pos.z = jsonEndPos->getArrayValue()[2]->getNumberValue();
-        pattern.speed = jsonValue->getObjectValue()["speed"]->getNumberValue();
-        pattern.pattern_name = jsonValue->getObjectValue()["pattern"]->getStringValue();
-        std::cout << transform << std::endl;
-        std::cout << pattern << std::endl;
+        PatternComponent pattern = createPatternComponent(
+            jsonValue->getObjectValue()["pattern"]->getStringValue(),
+            LE::Vector3<float>(jsonEndPos->getArrayValue()[0]->getNumberValue(), jsonEndPos->getArrayValue()[1]->getNumberValue(), jsonEndPos->getArrayValue()[2]->getNumberValue()),
+            jsonValue->getObjectValue()["speed"]->getNumberValue(),
+            PatternEnd::STAY
+        );
         ecs->addComponent<TransformComponent>(entity, transform);
         ecs->addComponent<PatternComponent>(entity, pattern);
         ecs->addComponent<MotionComponent>(entity, motion);
@@ -78,6 +70,7 @@ class GameScene : public LE::Scene {
             Signature signatureRender3D;
             signatureRender3D.set(_ecs->getComponentType<TransformComponent>());
             signatureRender3D.set(_ecs->getComponentType<ModelComponent>());
+            signatureRender3D.set(_ecs->getComponentType<MotionComponent>());
             _ecs->registerSystem<Render3DSystem>();
             _ecs->setSignature<Render3DSystem>(signatureRender3D);
 
@@ -89,14 +82,14 @@ class GameScene : public LE::Scene {
             _ecs->setSignature<PatternSystem>(signaturePattern);
 
             patternSystem->addPattern("line", [](PatternComponent &pattern, TransformComponent &transform, MotionComponent &motion) {
-                if (transform.position.x < pattern.end_pos.x) {
-                    transform.position.x += pattern.speed;
+                if (transform.position.x != pattern.end_pos.x) {
+                    transform.position.x += pattern.speed * (pattern.end_pos.x - transform.position.x > 0 ? 1 : -1);
                 }
-                if (transform.position.y < pattern.end_pos.y) {
-                    transform.position.y += pattern.speed;
+                if (transform.position.y != pattern.end_pos.y) {
+                    transform.position.y += pattern.speed * (pattern.end_pos.y - transform.position.y > 0 ? 1 : -1);
                 }
-                if (transform.position.z < pattern.end_pos.z) {
-                    transform.position.z += pattern.speed;
+                if (transform.position.z != pattern.end_pos.z) {
+                    transform.position.z += pattern.speed * (pattern.end_pos.z - transform.position.z > 0 ? 1 : -1);
                 }
             });
 
@@ -110,7 +103,8 @@ class GameScene : public LE::Scene {
             Entity entity2 = _ecs->createEntity();
             auto model2 = createModelComponent("assets/models/ship/MicroRecon.obj");
             _ecs->addComponent<ModelComponent>(entity2, *model2);
-            _ecs->addComponent<TransformComponent>(entity2, (TransformComponent){{0, 0, 0}, {0, 0, 0}, {1.0f, 1.0f, 1.0f}});
+            _ecs->addComponent<TransformComponent>(entity2, (TransformComponent){{0, 0, 0}, {0, 90, 0}, {1.0f, 1.0f, 1.0f}});
+            _ecs->addComponent<MotionComponent>(entity2, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
 
             // Entity entity3 = _ecs->createEntity();
             // auto model3 = createModelComponent("assets/models/buttercup/buttercup.obj");
@@ -118,26 +112,39 @@ class GameScene : public LE::Scene {
             // _ecs->addComponent<TransformComponent>(entity3, (TransformComponent){{0, 0, 0}, {0, 0, 0}, {10.0f, 10.0f, 10.0f}});
 
             _eventManager = std::make_shared<LE::EventManager>();
-                _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_ESCAPE, LE::JUST_PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
-                    exit(0);
+            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_ESCAPE, LE::JUST_PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
+                exit(0);
             });
             _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_UP, LE::PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
-                auto& transform = _ecs->getComponent<TransformComponent>(entity2);
-                transform.position.y += 0.5f * (dt / 10000);
+                auto& motion = _ecs->getComponent<MotionComponent>(entity2);
+                motion.velocity.y += 50.0f * (dt / 10000);
             });
 
             _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_DOWN, LE::PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
-                auto& transform = _ecs->getComponent<TransformComponent>(entity2);
-                transform.position.y -= 0.5f * (dt / 10000);
+                auto& motion = _ecs->getComponent<MotionComponent>(entity2);
+                motion.velocity.y -= 50.0f * (dt / 10000);
             });
             _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_RIGHT, LE::PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
-                auto& transform = _ecs->getComponent<TransformComponent>(entity2);
-                transform.position.x -= 0.5f * (dt / 10000);
+                auto& motion = _ecs->getComponent<MotionComponent>(entity2);
+                motion.velocity.x += 50.0f * (dt / 10000);
             });
 
             _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_LEFT, LE::PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
-                auto& transform = _ecs->getComponent<TransformComponent>(entity2);
-                transform.position.x += 0.5f * (dt / 10000);
+                auto& motion = _ecs->getComponent<MotionComponent>(entity2);
+                motion.velocity.x -= 50.0f * (dt / 10000);
+            });
+
+            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_SPACE, LE::JUST_PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
+                Entity entity = _ecs->createEntity();
+                auto model = createModelComponent("assets/models/bullet/bullet.obj");
+                _ecs->addComponent<ModelComponent>(entity, *model);
+                auto spaceshipTransform = _ecs->getComponent<TransformComponent>(entity2);
+                auto transform = createTransformComponent({spaceshipTransform.position.x, spaceshipTransform.position.y + 6.155F, spaceshipTransform.position.z}, {0, 90, 0}, {0.2f, 0.2f, 0.5f});
+                std::cout << transform << std::endl;
+                _ecs->addComponent<TransformComponent>(entity, transform);
+                _ecs->addComponent<MotionComponent>(entity, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
+                auto pattern = createPatternComponent("line", {transform.position[0] + 100, transform.position[1], 0}, 0.05f, PatternEnd::DESTROY);
+                _ecs->addComponent<PatternComponent>(entity, pattern);
             });
 
         }

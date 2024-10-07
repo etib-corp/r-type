@@ -10,6 +10,7 @@
 #include "ECS/SystemManager.hpp"
 #include "ECS/Components/ModelComponent.hpp"
 #include "ECS/Components/TransformComponent.hpp"
+#include "ECS/Components/MotionComponent.hpp"
 
 
 class Render3DSystem : public System {

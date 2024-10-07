@@ -63,13 +63,13 @@ void LE::EventManager::pollEvents()
             engine->throwError(LE::EventManager::EventManagerError("Invalid input type. Got " + std::to_string(key->input)));
         }
         if (keyCurrentState == GLFW_PRESS && key->type == Type::PRESSED) {
-            callback(engine, engine->_window->_dt);
+            callback(engine, engine->_dt);
         } else if (keyCurrentState == GLFW_RELEASE && key->type == Type::RELEASED) {
-            callback(engine, engine->_window->_dt);
+            callback(engine, engine->_dt);
         } else if (keyCurrentState == GLFW_PRESS && key->type == Type::JUST_PRESSED && !key->_alreadyPressed) {
-            callback(engine, engine->_window->_dt);
+            callback(engine, engine->_dt);
         } else if (keyCurrentState == GLFW_RELEASE && key->type == Type::JUST_RELEASED && key->_alreadyPressed) {
-            callback(engine, engine->_window->_dt);
+            callback(engine, engine->_dt);
         } else {
         }
         if (keyCurrentState == GLFW_RELEASE) {

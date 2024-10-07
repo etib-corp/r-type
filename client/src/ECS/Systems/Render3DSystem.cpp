@@ -24,15 +24,20 @@ void Render3DSystem::update(Ecs *ecs, float delta)
     for (auto &entity : _entities) {
         auto &model = ecs->getComponent<ModelComponent>(entity);
         auto &transform = ecs->getComponent<TransformComponent>(entity);
-        std::cout << "position: " << transform.position << std::endl;
+        auto &motion = ecs->getComponent<MotionComponent>(entity);
 
+        if (model.hidden)
+            continue;
+
+        transform.position += motion.velocity;
+        motion.velocity = {0, 0, 0};
 
         _shader->use();
 
-        glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)1920 / (float)1080, 0.1f, 100.0f);
+        glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)2560 / (float)1440, 0.1f, 100.0f);
         _shader->setMat<4>("projection", LE::Matrix<4, 4, float>(projection));
 
-        glm::mat4 view = glm::lookAt(glm::vec3(0.0f, 0.0f, 50.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        glm::mat4 view = glm::lookAt(glm::vec3(0.0f, 0.0f, 25.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
         _shader->setMat<4>("view", LE::Matrix<4, 4, float>(view));
 
         glm::mat4 modelMat = glm::mat4(1.0f);

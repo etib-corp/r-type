@@ -19,6 +19,7 @@ namespace LE {
 #include "SceneManager.hpp"
 #include "Window.hpp"
 #include "Error.hpp"
+#include "ECS/Components/CameraComponent.hpp"
 
 /**
  * @file Engine.hpp
@@ -117,6 +118,13 @@ namespace LE {
              */
             void setConfig(std::function<void()> func);
 
+            /**
+             * @brief Sets the frame rate limit for the window.
+             *
+             * @param limit The frame rate limit.
+             */
+            void setFramerateLimit(std::size_t limit);
+
         private:
             /**
              * @brief Private constructor for the Engine class.
@@ -134,7 +142,10 @@ namespace LE {
             std::shared_ptr<SceneManager> _sceneManager; ///< Shared pointer to the SceneManager instance.
             bool _debugMode; ///< Flag indicating whether debug mode is enabled.
             bool _throwError; ///< Flag indicating whether to throw an error.
-            friend class EventManager; ///< Friend class EventManager.
             std::function<void ()> _configFunc; ///< Configuration function. This function is called before the engine starts running.
+            std::unique_ptr<Clock> _clock;      ///< Unique pointer to the Clock object.
+            float _dt;                          ///< The delta time.
+            std::size_t _framerateLimit;        ///< The frame rate limit.
+            friend class EventManager; ///< Friend class EventManager.
     };
 }

@@ -57,7 +57,8 @@ struct ModelComponent {
     std::string _directory;                                                 ///< The directory of the model file.
     std::vector<Texture *> _texturesLoaded;                                   ///< The textures loaded for the model.
     static std::map<std::string, ModelComponent *> _modelsLoaded;           ///< The loaded models.
-    LE::Matrix<4, 4, float> _originalModelMatrix;                           ///< The original model matrix of the model.
+    LE::Matrix<4, 4, float> _originalModelMatrix;
+    bool hidden = false;                                                   ///< The original model matrix.
 };
 
 ModelComponent *createModelComponent(const std::string &path);

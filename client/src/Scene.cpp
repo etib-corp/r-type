@@ -23,3 +23,8 @@ void LE::Scene::init()
     if (_guiManager)
         _guiManager->init();
 }
+
+Entity LE::Scene::getCameraEntity() const
+{
+    return _cameraEntity;
+}
