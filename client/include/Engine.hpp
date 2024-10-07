@@ -147,5 +147,6 @@ namespace LE {
             friend class LE::Shapes::Triangle;
             friend class LE::GUI::Text;
             friend class LE::GUI::Interactable;
+            friend class LE::GUI::Container;
     };
 }

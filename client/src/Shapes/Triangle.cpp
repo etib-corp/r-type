@@ -9,11 +9,13 @@
 
 #include "Engine.hpp"
 
-LE::Shapes::Triangle::Triangle(Vector3<float> p1, Vector3<float> p2, Vector3<float> p3)
+LE::Shapes::Triangle::Triangle(Vector3<float> p1, Vector3<float> p2, Vector3<float> p3, Color *color)
 {
     _p1 = p1;
     _p2 = p2;
     _p3 = p3;
+
+    _color = color ? color : new Color(LE::Color::FLOAT, 1.0f, 0.0f, 0.0f, 1.0f);
 
     glGenVertexArrays(1, &_VAO);
     glGenBuffers(1, &_VBO);
@@ -71,6 +73,7 @@ void LE::Shapes::Triangle::draw()
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
     triangleShader->use();
+    triangleShader->setVec4("color", _color->toVector4());
     glUniformMatrix4fv(glGetUniformLocation(triangleShader->getID(), "projection"), 1, GL_FALSE, glm::value_ptr(projection));
     glBindVertexArray(_VAO);
     glDrawArrays(GL_TRIANGLES, 0, 3);

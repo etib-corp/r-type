@@ -27,7 +27,7 @@ namespace LE {
                  * @param x The x position of the rectangle
                  * @param y The y position of the rectangle
                  */
-                Rectangle(float width, float height, float x, float y);
+                Rectangle(float width, float height, float x, float y, Color *color = nullptr);
 
                 /**
                  * @brief Destroy the Rectangle object
@@ -56,6 +56,7 @@ namespace LE {
                 Triangle *_bottomRight; // The bottom right triangle of the rectangle
                 float _height;  // The height of the rectangle
                 float _width;   // The width of the rectangle
+                Color *_color;  // The color of the rectangle
         };
     }
 }
