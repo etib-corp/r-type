@@ -9,28 +9,22 @@
 
 #include "Engine.hpp"
 
-#include "GUI/Component.hpp"
+#include "GUI/Container.hpp"
 
 namespace LE {
     namespace GUI {
         /**
          * @brief Interface for interactable GUI objects
          */
-        class Interactable : public Component {
+        class Interactable : public Container {
             public:
-                /**
-                 * @brief Destroy the Interactable object
-                 */
                 virtual ~Interactable() = default;
 
-                void OnClick();
+                virtual void OnClick() = 0;
 
-                void OnHover();
+                virtual void OnHover() = 0;
 
-                bool _hovered = false;
-
-            protected:
-                void (*_onClickCallback)(GLFWwindow* window, int button, int action, int mods);
+                [[nodiscard]] bool isHover();
         };
     }
 }

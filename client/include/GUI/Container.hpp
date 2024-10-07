@@ -15,6 +15,12 @@
 
 namespace LE {
     namespace GUI {
+        class Interactable;
+    }
+}
+
+namespace LE {
+    namespace GUI {
         /**
          * @class Container
          * @brief Abstract base class representing a GUI container.

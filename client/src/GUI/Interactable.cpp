@@ -7,32 +7,18 @@
 
 #include "GUI/Interactable.hpp"
 
-void LE::GUI::Interactable::OnClick()
+bool LE::GUI::Interactable::isHover()
 {
+    double mouseX, mouseY;
+    glfwGetCursorPos(LE::Engine::getInstance()->_window->_window, &mouseX, &mouseY);
+    int windowWidth, windowHeight;
+    glfwGetWindowSize(LE::Engine::getInstance()->_window->_window, &windowWidth, &windowHeight);
 
-    auto width = LE::Engine::getInstance()->_window->_width;
-    auto height = LE::Engine::getInstance()->_window->_height;
-
-    if (_x < width && _x > 0) {
-        if (_y < height && _y > 0) {
-            _hovered = true;
-            glfwSetMouseButtonCallback(LE::Engine::getInstance()->_window->_window, _onClickCallback);
-            return;
+    mouseY = windowHeight - mouseY;
+    if (mouseX < _x + _width && mouseX > _x) {
+        if (mouseY < _y + _height && mouseY > _y) {
+            return true;
         }
     }
-    _hovered = false;
-}
-
-void LE::GUI::Interactable::OnHover()
-{
-    auto width = LE::Engine::getInstance()->_window->_width;
-    auto height = LE::Engine::getInstance()->_window->_height;
-
-    if (_x < width && _x > 0) {
-        if (_y < height && _y > 0) {
-            _hovered = true;
-            return;
-        }
-    }
-    _hovered = false;
+    return false;
 }

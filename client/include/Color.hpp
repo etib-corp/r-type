@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include "Maths/Vector4.hpp"
 #include "Error.hpp"
 
 namespace LE {
@@ -35,6 +36,11 @@ namespace LE {
                     ColorError(const std::string& message) : Error(message) {}
             };
 
+            enum UseMode {
+                FLOAT,
+                CHAR
+            };
+
             /**
              * @brief Constructs a Color object with default values (red).
              */
@@ -43,22 +49,13 @@ namespace LE {
             /**
              * @brief Constructs a Color object with the specified RGBA values.
              *
+             * @param mode The mode to use (CHAR or FLOAT).
              * @param r The red value.
              * @param g The green value.
              * @param b The blue value.
              * @param a The alpha value (default is 1.0).
              */
-            Color(float r, float g, float b, float a = 1.0f);
-
-            /**
-             * @brief Constructs a Color object with the specified RGBA values.
-             *
-             * @param r The red value.
-             * @param g The green value.
-             * @param b The blue value.
-             * @param a The alpha value (default is 255).
-             */
-            Color(unsigned char r, unsigned char g, unsigned char b, unsigned char a = 255);
+            Color(UseMode mode, float r, float g, float b, float a = 1.0f);
 
             /**
              * @brief Constructs a Color object with the specified hex value.
@@ -76,22 +73,13 @@ namespace LE {
             /**
              * @brief Sets the RGBA values of the color.
              *
+             * @param mode The mode to use (CHAR or FLOAT).
              * @param r The red value.
              * @param g The green value.
              * @param b The blue value.
              * @param a The alpha value (default is 1.0).
              */
-            void set(float r, float g, float b, float a = 1.0f);
-
-            /**
-             * @brief Sets the RGBA values of the color.
-             *
-             * @param r The red value.
-             * @param g The green value.
-             * @param b The blue value.
-             * @param a The alpha value (default is 255).
-             */
-            void set(unsigned char r, unsigned char g, unsigned char b, unsigned char a = 255);
+            void set(UseMode mode, float r, float g, float b, float a = 1.0f);
 
             /**
              * @brief Sets the RGBA values of the color.
@@ -100,6 +88,8 @@ namespace LE {
              * @param a The alpha value (default is 1.0).
              */
             void set(unsigned int hex, float a = 1.0f);
+
+            Vector4<float> toVector4() const;
 
 
             /**
