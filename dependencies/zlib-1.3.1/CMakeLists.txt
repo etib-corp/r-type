@@ -71,13 +71,13 @@ if(NOT CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_CURRENT_BINARY_DIR)
     if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/zconf.h)
         message(STATUS "Renaming")
         message(STATUS "    ${CMAKE_CURRENT_SOURCE_DIR}/zconf.h")
-        message(STATUS "to 'zconf.h.included' because this file is included with zlib-copy")
+        message(STATUS "to 'zconf.h.included' because this file is included with zlib")
         message(STATUS "but CMake generates it automatically in the build directory.")
         file(RENAME ${CMAKE_CURRENT_SOURCE_DIR}/zconf.h ${CMAKE_CURRENT_SOURCE_DIR}/zconf.h.included)
   endif()
 endif()
 
-set(ZLIB_PC ${CMAKE_CURRENT_BINARY_DIR}/zlib-copy.pc)
+set(ZLIB_PC ${CMAKE_CURRENT_BINARY_DIR}/zlib.pc)
 configure_file( ${CMAKE_CURRENT_SOURCE_DIR}/zlib.pc.cmakein
 		${ZLIB_PC} @ONLY)
 configure_file(	${CMAKE_CURRENT_SOURCE_DIR}/zconf.h.cmakein
@@ -86,12 +86,12 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR} ${CMAKE_SOURCE_DIR})
 
 
 #============================================================================
-# zlib-copy
+# zlib
 #============================================================================
 
 set(ZLIB_PUBLIC_HDRS
     ${CMAKE_CURRENT_BINARY_DIR}/zconf.h
-    zlib-copy.h
+    zlib.h
 )
 set(ZLIB_PRIVATE_HDRS
     crc32.h
@@ -128,7 +128,7 @@ if(NOT MINGW)
     )
 endif()
 
-# parse the full version number from zlib-copy.h and include in ZLIB_FULL_VERSION
+# parse the full version number from zlib.h and include in ZLIB_FULL_VERSION
 file(READ ${CMAKE_CURRENT_SOURCE_DIR}/zlib.h _zlib_h_contents)
 string(REGEX REPLACE ".*#define[ \t]+ZLIB_VERSION[ \t]+\"([-0-9A-Za-z.]+)\".*"
     "\\1" ZLIB_FULL_VERSION ${_zlib_h_contents})
@@ -171,7 +171,7 @@ if(UNIX)
     # On unix-like platforms the library is almost always called libz
    set_target_properties(zlib-copy zlibstatic-copy PROPERTIES OUTPUT_NAME z)
    if(NOT APPLE AND NOT(CMAKE_SYSTEM_NAME STREQUAL AIX))
-     set_target_properties(zlib-copy PROPERTIES LINK_FLAGS "-Wl,--version-script,\"${CMAKE_CURRENT_SOURCE_DIR}/zlib-copy.map\"")
+     set_target_properties(zlib PROPERTIES LINK_FLAGS "-Wl,--version-script,\"${CMAKE_CURRENT_SOURCE_DIR}/zlib.map\"")
    endif()
 elseif(BUILD_SHARED_LIBS AND WIN32)
     # Creates zlib1.dll when building shared library version
@@ -188,7 +188,7 @@ if(NOT SKIP_INSTALL_HEADERS AND NOT SKIP_INSTALL_ALL )
     install(FILES ${ZLIB_PUBLIC_HDRS} DESTINATION "${INSTALL_INC_DIR}")
 endif()
 if(NOT SKIP_INSTALL_FILES AND NOT SKIP_INSTALL_ALL )
-    install(FILES zlib-copy.3 DESTINATION "${INSTALL_MAN_DIR}/man3")
+    install(FILES zlib.3 DESTINATION "${INSTALL_MAN_DIR}/man3")
 endif()
 if(NOT SKIP_INSTALL_FILES AND NOT SKIP_INSTALL_ALL )
     install(FILES ${ZLIB_PC} DESTINATION "${INSTALL_PKGCONFIG_DIR}")
