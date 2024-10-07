@@ -25,24 +25,31 @@ void Client::connectToServer()
     readUDP();
     _socketTCP.connect(_endpointTCPServer);
     readTCP();
-    _thread = std::thread([this]() { _ioContext.run(); });
+    _thread = std::thread([this]()
+                          { _ioContext.run(); });
 }
 
 void Client::readTCP()
 {
     _socketTCP.async_receive(
         boost::asio::buffer(&_requestTCP, sizeof(Header)),
-        [this](const boost::system::error_code &error, std::size_t bytes_transferred __attribute__((unused))) {
-            if (!error) {
-                char *_bodyStr = new char[_requestTCP.header.BodyLength];
-                ::memset(_bodyStr, 0, _requestTCP.header.BodyLength);
-                std::istringstream iss;
-                showHeader(_requestTCP.header);
-                _socketTCP.receive(boost::asio::buffer(_bodyStr, _requestTCP.header.BodyLength));
-                iss.str(_bodyStr);
-                iss >> _requestTCP.body;
-                showBody(reinterpret_cast<_Entity *>(&_requestTCP.body));
-                delete[] _bodyStr;
+        [this](const boost::system::error_code &error, std::size_t bytes_transferred __attribute__((unused)))
+        {
+            if (!error)
+            {
+                if (_requestTCP.header.BodyLength != 0)
+                {
+                    char *_bodyStr = new char[_requestTCP.header.BodyLength];
+                    ::memset(_bodyStr, 0, _requestTCP.header.BodyLength);
+                    std::istringstream iss;
+                    _socketTCP.receive(boost::asio::buffer(_bodyStr, _requestTCP.header.BodyLength));
+                    iss.str(_bodyStr);
+                    iss >> _requestTCP.body;
+                    delete[] _bodyStr;
+                }
+                if (_onReceive)
+                    _onReceive(_requestTCP);
+
             }
             ::memset(&_requestTCP, 0, sizeof(Request));
             readTCP();
@@ -51,33 +58,28 @@ void Client::readTCP()
 
 void Client::readUDP()
 {
-    _socketUDP.async_receive(
-        boost::asio::buffer(_dataUDP, 1024),
-        [this](const boost::system::error_code &error, std::size_t bytes_transferred) {
-            (void)bytes_transferred;
-            if (!error) {
-                std::cout << "Received: " << _dataUDP << std::endl;
-                readUDP();
+    _socketUDP.async_receive_from(
+        boost::asio::buffer(&_requestUDP, sizeof(Request)),
+        _endpointUDPServer,
+        [this](const boost::system::error_code &error, std::size_t bytes_transferred __attribute__((unused)))
+        {
+            if (!error)
+            {
+                showHeader(_requestUDP.header);
+                if (_onReceive)
+                    _onReceive(_requestUDP);
             }
+            ::memset(&_requestUDP, 0, sizeof(Request));
+            readUDP();
         });
 }
 
-void Client::sendTCP(const std::string &message)
+void Client::sendTCP(const std::string &request)
 {
-    boost::asio::write(_socketTCP, boost::asio::buffer(message));
+    boost::asio::write(_socketTCP, boost::asio::buffer(request));
 }
 
-void Client::sendUDP(const std::string &message)
+void Client::sendUDP(const std::string &request)
 {
-    _socketUDP.send_to(boost::asio::buffer(message), _endpointUDPServer);
-}
-
-void Client::sendTCP(const Request &request)
-{
-    boost::asio::write(_socketTCP, boost::asio::buffer(&request, sizeof(Request)));
-}
-
-void Client::sendUDP(const Request &request)
-{
-    _socketUDP.send_to(boost::asio::buffer(&request, sizeof(Request)), _endpointUDPServer);
+    _socketUDP.send_to(boost::asio::buffer(request), _endpointUDPServer);
 }

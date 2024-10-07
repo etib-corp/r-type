@@ -61,15 +61,19 @@ class PackUnpack {
     private:
 };
 
+#define BODY_LENGTH 1024
+
 struct Header {
     uint8_t MagicNumber;
-    uint8_t ECS_CLIENT_ID;
+    uint8_t EmmiterdEcsId;
+    uint8_t ReceiverEcsId;
+    uint8_t TopicID;
     uint8_t Action;
     uint32_t BodyLength;
 };
 
 struct Body {
-    uint8_t _buffer[1024];
+    uint8_t _buffer[BODY_LENGTH + 1];
 };
 
 struct Request {
