@@ -33,6 +33,7 @@ add_executable(r-type_client ${CLIENT_SOURCES})
 
 target_link_libraries(r-type_client r-type)
 target_link_libraries(r-type_client zlib-copy)
+target_link_libraries(r-type_client zlib)
 target_link_libraries(r-type_client glfw)
 target_link_libraries(r-type_client ${OPENGL_LIBRARIES})
 target_link_libraries(r-type_client ${GLUT_LIBRARIES})
@@ -46,5 +47,6 @@ add_executable(r-type_server ${SERVER_SOURCES})
 
 target_link_libraries(r-type_server r-type)
 target_link_libraries(r-type_server zlib-copy)
+target_link_libraries(r-type_server zlib)
 
 add_subdirectory(lib)
