@@ -24,13 +24,11 @@ include_directories(include)
 add_library(r-type STATIC ${SOURCES})
 
 include_directories(${OPENGL_INCLUDE_DIRS})
+include_directories(dependencies/zlib-1.3.1)
 include_directories(dependencies/glm/)
 
 file(GLOB_RECURSE CLIENT_SOURCES client/src/*.cpp)
 include_directories(client/include client/include/GUI client/include/Maths dependencies/stb/include dependencies/rapidobj/include)
-
-include_directories(${OPENGL_INCLUDE_DIRS})
-
 add_executable(r-type_client ${CLIENT_SOURCES})
 
 target_link_libraries(r-type_client r-type)
