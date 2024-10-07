@@ -56,7 +56,6 @@ namespace LE {
                 Triangle *_bottomRight; // The bottom right triangle of the rectangle
                 float _height;  // The height of the rectangle
                 float _width;   // The width of the rectangle
-                Color *_color;  // The color of the rectangle
         };
     }
 }

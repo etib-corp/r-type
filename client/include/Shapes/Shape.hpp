@@ -37,6 +37,8 @@ namespace LE {
                  * @brief Initialize the shape
                  */
                 virtual void init() = 0;
+
+                Color *_color; // The color of the shape
         };
     }
 }

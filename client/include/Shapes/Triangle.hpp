@@ -62,7 +62,6 @@ namespace LE {
                 Vector3<float> _p3; // The third point of the triangle
                 GLuint _VAO; // The vertex array object where the triangle is stored
                 GLuint _VBO; // The vertex buffer object where the triangle is stored
-                Color *_color; // The color of the triangle
         };
     }
 }

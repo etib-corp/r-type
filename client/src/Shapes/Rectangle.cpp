@@ -9,7 +9,7 @@
 
 LE::Shapes::Rectangle::Rectangle(float width, float height, float x, float y, Color *color)
 {
-    _color = color ? color : new Color(LE::Color::FLOAT, 1.0f, 0.0f, 0.0f, 1.0f);
+    _color = color != nullptr ? color : new Color(LE::Color::FLOAT, 1.0f, 0.0f, 0.0f, 1.0f);
     _topLeft = new Triangle(Vector3<float>(x, y, 0), Vector3<float>(x + width, y, 0), Vector3<float>(x, y + height, 0), _color);
     _bottomRight = new Triangle(Vector3<float>(x + width, y, 0), Vector3<float>(x + width, y + height, 0), Vector3<float>(x, y + height, 0), _color);
     _height = height;

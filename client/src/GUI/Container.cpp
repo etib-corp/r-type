@@ -51,6 +51,8 @@ void LE::GUI::Container::draw()
                 if (glfwGetMouseButton(LE::Engine::getInstance()->_window->_window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS) {
                     interactable->OnClick();
                 }
+            } else {
+                interactable->OnUnhover();
             }
         }
         child->draw();

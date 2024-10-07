@@ -22,6 +22,8 @@ namespace LE {
                 void OnClick() override;
 
                 void OnHover() override;
+
+                void OnUnhover() override;
         };
     }
 }

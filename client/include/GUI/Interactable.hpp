@@ -24,6 +24,8 @@ namespace LE {
 
                 virtual void OnHover() = 0;
 
+                virtual void OnUnhover() = 0;
+
                 [[nodiscard]] bool isHover();
         };
     }
