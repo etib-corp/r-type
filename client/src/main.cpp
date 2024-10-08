@@ -12,6 +12,7 @@
 #include <iostream>
 #include "PackUnpack.hpp"
 #include "ECS/Ecs.hpp"
+#include "EnumClass.hpp"
 
 class GameScene : public LE::Scene
 {
@@ -148,24 +149,21 @@ int __main__(int ac, char **av)
 #include <sstream>
 #include "PackUnpack.hpp"
 #include "message/ClientBroker.hpp"
-
-// bool deserializeRequest(const char *data, std::size_t length, std::istringstream *request)
-// {
-//     if (length < sizeof(std::istringstream))
-//     {
-//         std::cerr << "Erreur: Données reçues trop courtes." << std::endl;
-//         return false;
-//     }
-
-//     ::memmove(request, data, sizeof(std::istringstream));
-//     return true;
-// }
+#include <EnumClass.hpp>
+#include "Common.hpp"
 
 static void receiveFromServer( Message *message, ClientBroker *client_broker)
 {
+    UpdateEcs updateEcs = {0};
     try {
         message = client_broker->getMessage(0, 1);
+        if (message == nullptr)
+            return;
         std::cout << "Message received from server" << std::endl;
+        // std::cout << message->getBody()._buffer << std::endl;
+        ::memmove(&updateEcs, message->getBody()._buffer, sizeof(UpdateEcs));
+        std::cout << (int)updateEcs.ecs_id << std::endl;
+        std::cout << (int)updateEcs.actionInput << std::endl;
         delete message;
     } catch (const std::exception &e) {
         std::cerr << e.what() << std::endl;
@@ -177,6 +175,18 @@ static void receiveFromServer( Message *message, ClientBroker *client_broker)
 static void sendToServer(void)
 {
 
+}
+
+static void sendAuthToServer(ClientBroker *client_broker, std::string playerName)
+{
+    Message *message = new Message();
+    Body body;
+
+    ::memmove(body._buffer, playerName.c_str(), playerName.size() + 1);
+    message->setMagicNumber(static_cast<uint8_t>(ActionCode::MAGIC_NUMBER));
+    message->setAction(static_cast<uint8_t>(ActionCode::USERNAME));
+    message->setBody(body);
+    client_broker->addMessage(0, 1, message);
 }
 
 int main(void)
@@ -193,75 +203,40 @@ int main(void)
     Message *message = nullptr;
 
     message = new Message();
+    std::string name = "mannuuuuuuuuuu";
+
+    sendAuthToServer(client_broker, name);
 
     Body bodyTest = {._buffer = "|test|test|test|test|"};
-    message->setAction('D');
+    message->setMagicNumber(static_cast<uint8_t>(ActionCode::MAGIC_NUMBER));
+    message->setAction(static_cast<uint8_t>(ActionCode::UP));
     message->setBody(bodyTest);
+    client_broker->addMessage(0, 1, message);
+    sleep(3);
+    message->setMagicNumber(static_cast<uint8_t>(ActionCode::MAGIC_NUMBER));
+    message->setAction(static_cast<uint8_t>(ActionCode::DOWN));
+    message->setBody(bodyTest);
+    client_broker->addMessage(0, 1, message);
+    sleep(3);
+    message->setMagicNumber(static_cast<uint8_t>(ActionCode::MAGIC_NUMBER));
+    message->setAction(static_cast<uint8_t>(ActionCode::LEFT));
+    message->setBody(bodyTest);
+    client_broker->addMessage(0, 1, message);
+    sleep(3);
+    message->setMagicNumber(static_cast<uint8_t>(ActionCode::MAGIC_NUMBER));
+    message->setAction(static_cast<uint8_t>(ActionCode::RIGHT));
+    message->setBody(bodyTest);
+    client_broker->addMessage(0, 1, message);
+    sleep(3);
     while (true)
     {
-        client_broker->addMessage(0, 1, message);
-        sleep(3);
+        receiveFromServer(message, client_broker);
     }
-
-
-
-    // while (true)
-    // {
-    //     receiveFromServer(message, client_broker);
-    // }
     // client_broker->addMessage(0, 1, message);
 
     std::cout << "ClientBroker is stopping" << std::endl;
 
     delete client_broker;
     delete network_module;
-
-    // try
-    // {
-    //     Request request;
-    //     Header header;
-    //     Body body;
-    //     Entity entity;
-    //     LoaderLib lb(pathLib, "");
-    //     std::istringstream iss;
-    //     lb.LoadModule();
-
-    //     INetworkModule *network_module = lb.createNetworkModule();
-
-    //     IClient *client = network_module->createClient(
-
-    //     client->connectToServer();
-    //     client->sendTCP("Hello 0from client TCP\n");
-    //     client->sendUDP("Hello from client UDP\n");
-    //     while (true) {
-    //         char *data = client->getDataTCP();
-    //         if (::strlen(data))
-    //         {
-    //             ::memmove(&request.header, data, sizeof(Header));
-    //             std::cout << sizeof(Header) << std::endl;
-    //             showHeader(request.header);
-    //             deserializeRequest(data + sizeof(Header), 2048, &iss);
-    //             ::memmove(&iss.str(), data + sizeof(Header), 2048);
-    //             showHeader(request.header);
-    //             char *request_body = data + sizeof(Header);
-    //             std::istringstream sub_iss;
-    //             sub_iss.str(request_body);
-    //             header = request.header;
-    //             std::cout << header.BodyLength << std::endl;
-    //             static_cast<std::istringstream>(request.body) >> body;
-    //             iss.str(client->getDataTCP());
-    //             iss >> body;
-    //             sub_iss >> body;
-    //             showHeader(header);
-    //             showBody(reinterpret_cast<Entity *>(&body));
-    //             ::memset(client->getDataTCP(), 0, 1024);
-    //         }
-    //     }
-    // }
-    // catch (const std::exception &e)
-    // {
-    //     std::cerr << e.what() << '\n';
-    // }
-
     return 0;
 }
