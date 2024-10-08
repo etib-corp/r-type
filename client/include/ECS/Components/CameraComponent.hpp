@@ -20,6 +20,6 @@ struct CameraComponent {
     float aspect;
     LE::Vector3<float> speed;
     LE::Vector2<float> sensitivity;
-}
+};
 
 #endif /* !CAMERACOMPONENT_HPP_ */

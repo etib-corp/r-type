@@ -9,12 +9,14 @@
 #define CAMERASYSTEM_HPP_
 
 #include "ECS/Components/CameraComponent.hpp"
-#include "ECS/Systems.hpp"
+#include "ECS/SystemManager.hpp"
 
 class CameraSystem : public System {
     public:
         CameraSystem();
         ~CameraSystem();
+
+        void update(Ecs *ecs, float dt) override;
 
     protected:
     private:
