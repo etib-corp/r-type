@@ -22,6 +22,7 @@ add_subdirectory(dependencies/boost-1.86.0)
 file(GLOB_RECURSE SOURCES src/*.cpp)
 include_directories(include)
 add_library(r-type STATIC ${SOURCES})
+target_link_libraries(r-type Boost::iostreams)
 
 include_directories(${OPENGL_INCLUDE_DIRS})
 include_directories(dependencies/glm/)
@@ -34,7 +35,6 @@ include_directories(${OPENGL_INCLUDE_DIRS})
 add_executable(r-type_client ${CLIENT_SOURCES})
 
 target_link_libraries(r-type_client r-type)
-target_link_libraries(r-type_client Boost::iostreams)
 target_link_libraries(r-type_client glfw)
 target_link_libraries(r-type_client ${OPENGL_LIBRARIES})
 target_link_libraries(r-type_client ${GLUT_LIBRARIES})
@@ -47,6 +47,6 @@ include_directories(server/include)
 add_executable(r-type_server ${SERVER_SOURCES})
 
 target_link_libraries(r-type_server r-type)
-target_link_libraries(r-type_server Boost::iostreams)
+
 
 add_subdirectory(lib)
