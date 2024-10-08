@@ -22,7 +22,12 @@ public:
 
     virtual void run(std::shared_ptr<SessionManager> module) = 0;
 
+    void setOnClientConnected(std::function<void(ISession *)> onClientConnected) { _onClientConnected = onClientConnected; }
+
 protected:
+
+    std::function<void(ISession *)> _onClientConnected = nullptr;
+
     std::shared_ptr<SessionManager> _sessionManager;
 
 private:
