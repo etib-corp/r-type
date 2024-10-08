@@ -104,7 +104,7 @@ public:
         //     std::cerr << "Error code: " << e.code().value()
         //               << " (" << e.code().message() << ")\n"
         //               << "Error category: " << e.code().category().name() << '\n';
-                    
+
         // }
         // catch (const std::exception &e)
         // {
