@@ -39,20 +39,21 @@ var NAVTREE =
         [ "3.2. Body", "md_RFC.html#autotoc_md15", null ],
         [ "Common Action Codes (0x01 -> 0x55)", "md_RFC.html#autotoc_md16", null ],
         [ "Server-to-Client Action Codes (0x56 -> 0xAA)", "md_RFC.html#autotoc_md17", null ],
-        [ "Client-to-Server Action Codes (0xAA -> 0xFF)", "md_RFC.html#autotoc_md18", null ]
+        [ "Client-to-Server Action Codes (0xAA -> 0xFE)", "md_RFC.html#autotoc_md18", null ],
+        [ "Both Magic Number (0xFF)", "md_RFC.html#autotoc_md19", null ]
       ] ],
-      [ "Protocol Design", "md_RFC.html#autotoc_md19", [
-        [ "4.1. Connection Establishment", "md_RFC.html#autotoc_md20", [
-          [ "4.1.1 Server Sends Client ID (TCP)", "md_RFC.html#autotoc_md21", null ],
-          [ "4.1.2 Client Acknowledges ID (UDP)", "md_RFC.html#autotoc_md22", null ]
+      [ "Protocol Design", "md_RFC.html#autotoc_md20", [
+        [ "4.1. Connection Establishment", "md_RFC.html#autotoc_md21", [
+          [ "4.1.1 Server Sends Client ID (TCP)", "md_RFC.html#autotoc_md22", null ],
+          [ "4.1.2 Client Acknowledges ID (UDP)", "md_RFC.html#autotoc_md23", null ]
         ] ],
-        [ "4.2. Common Action Codes", "md_RFC.html#autotoc_md23", null ],
-        [ "4.3. Server-to-Client Messages", "md_RFC.html#autotoc_md24", null ],
-        [ "4.4. Client-to-Server Messages", "md_RFC.html#autotoc_md25", null ]
+        [ "4.2. Common Action Codes", "md_RFC.html#autotoc_md24", null ],
+        [ "4.3. Server-to-Client Messages", "md_RFC.html#autotoc_md25", null ],
+        [ "4.4. Client-to-Server Messages", "md_RFC.html#autotoc_md26", null ]
       ] ],
-      [ "Error Handling", "md_RFC.html#autotoc_md26", null ],
-      [ "Security Considerations", "md_RFC.html#autotoc_md27", null ],
-      [ "References", "md_RFC.html#autotoc_md28", null ]
+      [ "Error Handling", "md_RFC.html#autotoc_md27", null ],
+      [ "Security Considerations", "md_RFC.html#autotoc_md28", null ],
+      [ "References", "md_RFC.html#autotoc_md29", null ]
     ] ],
     [ "Bug List", "bug.html", null ],
     [ "Topics", "topics.html", "topics" ],
@@ -95,9 +96,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AsioNetworkModule_8hpp_source.html",
-"classLE_1_1Error.html#ab2ed200b714e9dbd8d9be341d80673b5",
-"classListenerTCP.html#af7cb23c7d6f213aeb80eceb7be4e12d1",
-"group__group5.html"
+"classLE_1_1Engine_1_1EngineError.html",
+"classListenerTCP.html#a457cd16d8e84d70212bd2ef935b71b94",
+"globals_vars.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

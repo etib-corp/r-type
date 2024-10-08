@@ -1,4 +1,28 @@
 var searchData=
 [
-  ['handlereceive_0',['handleReceive',['../classListenerUDP.html#aae050749dd3bcb418393dcca3b50f986',1,'ListenerUDP']]]
+  ['getaction_0',['getAction',['../classMessage.html#a47e34256eca0a267ca0c39a779e3fc93',1,'Message']]],
+  ['getbody_1',['getBody',['../classMessage.html#a8b8d4e69b0719e4c0fe7f265a9749c2b',1,'Message']]],
+  ['getclientssessions_2',['getClientsSessions',['../classServerBroker.html#af7d98b859a32e513f47d3e1ab9b18811',1,'ServerBroker']]],
+  ['getcomponent_3',['getComponent',['../classComponentManager.html#af239b992598a18ce67a51355758da326',1,'ComponentManager::getComponent()'],['../classEcs.html#a6ac088b22cae84c4ceba78496cf87e4c',1,'Ecs::getComponent()']]],
+  ['getcomponenttype_4',['getComponentType',['../classComponentManager.html#a6f5c040f73e5007026ae99bc5f0ac589',1,'ComponentManager::getComponentType()'],['../classEcs.html#a4facc01feed1fd634ae83a4c4394f70b',1,'Ecs::getComponentType()']]],
+  ['getcurrentscene_5',['getCurrentScene',['../classLE_1_1SceneManager.html#ae5ccdfada6a2f4a5b17b34770d60dca2',1,'LE::SceneManager']]],
+  ['getdata_6',['getData',['../classComponentArray.html#a72ff06ce58f03016f5c457f93a0db017',1,'ComponentArray']]],
+  ['getecsid_7',['getECSId',['../classBroker.html#a134305d4a07353208c6d32c363865f17',1,'Broker']]],
+  ['getelapsedtime_8',['getElapsedTime',['../classLE_1_1Clock.html#a39f1220e55d866162405c021491bc99a',1,'LE::Clock']]],
+  ['getemmiterid_9',['getEmmiterID',['../classMessage.html#a3f0858ed81105410bdcb9e0e62ef1ec1',1,'Message']]],
+  ['getheight_10',['getHeight',['../classLE_1_1GUI_1_1Component.html#a7329c028765e186cc701a9c5e7e9ff55',1,'LE::GUI::Component::getHeight()'],['../classLE_1_1Matrix.html#a1ff1850f51f82e85c65db052f9067ea6',1,'LE::Matrix::getHeight()']]],
+  ['getid_11',['getID',['../classLE_1_1Shader.html#a33aefd7dc7fefee053a09ae008196113',1,'LE::Shader']]],
+  ['getid_12',['getId',['../classLE_1_1GUI_1_1Component.html#af07f67dd2aca864949d20e2990542952',1,'LE::GUI::Component']]],
+  ['getinstance_13',['getInstance',['../classLE_1_1Engine.html#af5f18aeb22dce4ec6781b2918cf9f5ab',1,'LE::Engine']]],
+  ['getmagicnumber_14',['getMagicNumber',['../classMessage.html#a3e5b6f70909f3a631935105d7f2952b6',1,'Message']]],
+  ['getmessage_15',['getMessage',['../classBroker.html#a52789b945668416dc4fbfedd58eb06d1',1,'Broker::getMessage()'],['../classTopic.html#adf2cebb7633b0756ddc83ce1d37b1509',1,'Topic::getMessage()']]],
+  ['getpreviousscene_16',['getPreviousScene',['../classLE_1_1SceneManager.html#a6b1e5fc621a6e9c55a71a623737b0ec5',1,'LE::SceneManager']]],
+  ['getreceiverid_17',['getReceiverID',['../classMessage.html#a2e8727680656520bb5b9a8dd13b70b02',1,'Message']]],
+  ['getsignature_18',['getSignature',['../classEntityManager.html#ad60fd822c39bbe8b0d0cc366a7de965d',1,'EntityManager']]],
+  ['gettopic_19',['getTopic',['../classBroker.html#a0eebc1f2290bcbe3ec2da17303dd336e',1,'Broker']]],
+  ['gettopicid_20',['getTopicID',['../classMessage.html#ab2ebeefe4d30d3d11d77d0b3394166ef',1,'Message']]],
+  ['getwidth_21',['getWidth',['../classLE_1_1GUI_1_1Component.html#afd10acaaafda16e5647ccf1a762ed301',1,'LE::GUI::Component::getWidth()'],['../classLE_1_1Matrix.html#a0ca70ed706ba86180950f502e52985ed',1,'LE::Matrix::getWidth()']]],
+  ['getwindow_22',['getWindow',['../classLE_1_1Window.html#a1c982e992d188e06bef76568fda775d3',1,'LE::Window']]],
+  ['getx_23',['getX',['../classLE_1_1GUI_1_1Component.html#ab5a0e13d35e0ed06f6781755338872b7',1,'LE::GUI::Component']]],
+  ['gety_24',['getY',['../classLE_1_1GUI_1_1Component.html#ad4b786b97e6848a167ce2b18fb196590',1,'LE::GUI::Component']]]
 ];

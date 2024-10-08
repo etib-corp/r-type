@@ -7,7 +7,7 @@ var searchData=
   ['deletesystem_4',['deleteSystem',['../classSystemManager.html#a9d29bdde279bf2583fcb6e9f3ddfac87',1,'SystemManager']]],
   ['depth_5',['depth',['../structBox.html#acea7bc9c51c365fb05d37e818f0df701',1,'Box']]],
   ['deserialize_6',['deserialize',['../classMessage.html#abec5fc98f8716a0f030861578c4caf73',1,'Message']]],
-  ['design_7',['4. Protocol Design',['../md_RFC.html#autotoc_md19',1,'']]],
+  ['design_7',['4. Protocol Design',['../md_RFC.html#autotoc_md20',1,'']]],
   ['destroyentity_8',['destroyEntity',['../classEcs.html#a56ba6f97abeed71cf5940b926f62963c',1,'Ecs::destroyEntity()'],['../classEntityManager.html#aacc08e93994c20f37b1388ab81e62e19',1,'EntityManager::destroyEntity()']]],
   ['determinant_9',['determinant',['../classLE_1_1Matrix.html#ab86b7dd10a12eb7d0aabb88a3f4ac751',1,'LE::Matrix']]],
   ['din_5f0_10',['din_0',['../classmux__using__with.html#a9fc14b65611c7124d4cab27b963f3011',1,'mux_using_with']]],

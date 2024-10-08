@@ -6,7 +6,7 @@ var searchData=
   ['readme_3',['README',['../md_lib_2AsioNetworkModule_2README.html',1,'']]],
   ['rect_4',['rect',['../structSpriteComponent.html#adc670c71614a060dbf16f84022aa0b08',1,'SpriteComponent']]],
   ['rectangle_5',['Rectangle',['../classLE_1_1Shapes_1_1Rectangle.html',1,'LE::Shapes::Rectangle'],['../classLE_1_1Shapes_1_1Rectangle.html#a04d5eb75913ffdb248e71a1b628ffe2c',1,'LE::Shapes::Rectangle::Rectangle()']]],
-  ['references_6',['7. References',['../md_RFC.html#autotoc_md28',1,'']]],
+  ['references_6',['7. References',['../md_RFC.html#autotoc_md29',1,'']]],
   ['reflect_7',['reflect',['../classLE_1_1Vector2.html#afae9eed7fefb89640832b65a9992ddab',1,'LE::Vector2::reflect()'],['../classLE_1_1Vector3.html#a5a91d470a6737c11dc7fbcd1316bb530',1,'LE::Vector3::reflect()'],['../classLE_1_1Vector4.html#a0e78097358c71ac8df7c51676f31ff1a',1,'LE::Vector4::reflect()']]],
   ['refract_8',['refract',['../classLE_1_1Vector2.html#a62fbb695971a1ad0e44bad7481ae4588',1,'LE::Vector2::refract()'],['../classLE_1_1Vector3.html#aa8e25f565d9bec7350e965f7830e9986',1,'LE::Vector3::refract()'],['../classLE_1_1Vector4.html#ae2418de92ab2a2d525bdd622458fd8b7',1,'LE::Vector4::refract()']]],
   ['registercomponent_9',['registerComponent',['../classComponentManager.html#a715d30d16e24755833bfa5712d8d65ba',1,'ComponentManager::registerComponent()'],['../classEcs.html#a59438a2834dedee4ec951ad00d1563fa',1,'Ecs::registerComponent()']]],
@@ -21,10 +21,11 @@ var searchData=
   ['render2dsystem_18',['Render2DSystem',['../classRender2DSystem.html',1,'Render2DSystem'],['../classRender2DSystem.html#aa2c53fa2de35976e19cbc80a0056829e',1,'Render2DSystem::Render2DSystem()']]],
   ['request_19',['Request',['../structRequest.html',1,'']]],
   ['requirements_20',['2. Requirements',['../md_RFC.html#autotoc_md12',1,'']]],
-  ['restart_21',['restart',['../classLE_1_1Clock.html#aaef7d50a48ead6f90d0e08d022e486e9',1,'LE::Clock']]],
-  ['restypedef_2ecpp_22',['restypedef.cpp',['../restypedef_8cpp.html',1,'']]],
-  ['rfc_20strong_23',['&lt;strong&gt;RFC&lt;/strong&gt;',['../md_README.html#autotoc_md6',1,'']]],
-  ['rfc_3a_20r_20type_20multiplayer_20game_20network_20protocol_24',['RFC: R-Type Multiplayer Game Network Protocol',['../md_RFC.html',1,'']]],
-  ['run_25',['run',['../classLE_1_1Engine.html#a2b392f58fe6d77dc1f34b20e25701465',1,'LE::Engine::run()'],['../classListenerTCP.html#af7cb23c7d6f213aeb80eceb7be4e12d1',1,'ListenerTCP::run()'],['../classListenerUDP.html#ad95e62ccb817752d8214f0bdeaa976b9',1,'ListenerUDP::run()']]],
-  ['runwithdebug_26',['runWithDebug',['../classLE_1_1Engine.html#aa019b3daf27d67a49db8b493d0af7afc',1,'LE::Engine']]]
+  ['responsibilitychain_21',['ResponsibilityChain',['../classResponsibilityChain.html',1,'']]],
+  ['restart_22',['restart',['../classLE_1_1Clock.html#aaef7d50a48ead6f90d0e08d022e486e9',1,'LE::Clock']]],
+  ['restypedef_2ecpp_23',['restypedef.cpp',['../restypedef_8cpp.html',1,'']]],
+  ['rfc_20strong_24',['&lt;strong&gt;RFC&lt;/strong&gt;',['../md_README.html#autotoc_md6',1,'']]],
+  ['rfc_3a_20r_20type_20multiplayer_20game_20network_20protocol_25',['RFC: R-Type Multiplayer Game Network Protocol',['../md_RFC.html',1,'']]],
+  ['run_26',['run',['../classLE_1_1Engine.html#a2b392f58fe6d77dc1f34b20e25701465',1,'LE::Engine::run()'],['../classListenerTCP.html#af7cb23c7d6f213aeb80eceb7be4e12d1',1,'ListenerTCP::run()'],['../classListenerUDP.html#ad95e62ccb817752d8214f0bdeaa976b9',1,'ListenerUDP::run()']]],
+  ['runwithdebug_27',['runWithDebug',['../classLE_1_1Engine.html#aa019b3daf27d67a49db8b493d0af7afc',1,'LE::Engine']]]
 ];

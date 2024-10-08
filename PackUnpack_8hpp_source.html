@@ -146,14 +146,14 @@ $(function(){initNavTree('PackUnpack_8hpp_source.html',''); initResizable(true);
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <span class="keywordflow">return</span> decompressedData;</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        }</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keyword">static</span> std::vector&lt;uint8_t&gt; serialize(<span class="keyword">const</span> T&amp; obj)</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        [[nodiscard]]  <span class="keyword">static</span> std::vector&lt;uint8_t&gt; serialize(<span class="keyword">const</span> T&amp; obj)</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        {</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            std::vector&lt;uint8_t&gt; serializedData(<span class="keyword">sizeof</span>(T));</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            std::memmove(serializedData.data(), &amp;obj, <span class="keyword">sizeof</span>(T));</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <span class="keywordflow">return</span> serializedData;</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        }</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keyword">static</span> T deserialize(<span class="keyword">const</span> std::vector&lt;uint8_t&gt;&amp; data)</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        [[nodiscard]]  <span class="keyword">static</span> T deserialize(<span class="keyword">const</span> std::vector&lt;uint8_t&gt;&amp; data)</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        {</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            T obj;</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            std::memmove(&amp;obj, data.data(), <span class="keyword">sizeof</span>(T));</div>

@@ -114,22 +114,28 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Message</b> (void)</td></tr>
 <tr class="memdesc:a2ccdab4b2313d398d49f638a53f30103"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classMessage.html" title="A class representing a message with an ECS ID and a topic name.">Message</a> object. <br /></td></tr>
 <tr class="separator:a2ccdab4b2313d398d49f638a53f30103"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aecc65d35b2f089e8ca46e8644ed023d1" id="r_aecc65d35b2f089e8ca46e8644ed023d1"><td class="memItemLeft" align="right" valign="top"><a id="aecc65d35b2f089e8ca46e8644ed023d1" name="aecc65d35b2f089e8ca46e8644ed023d1"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>~Message</b> (void)</td></tr>
-<tr class="memdesc:aecc65d35b2f089e8ca46e8644ed023d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="classMessage.html" title="A class representing a message with an ECS ID and a topic name.">Message</a> object. <br /></td></tr>
-<tr class="separator:aecc65d35b2f089e8ca46e8644ed023d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe76dab253b345ed8c63738119b73631" id="r_afe76dab253b345ed8c63738119b73631"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe76dab253b345ed8c63738119b73631">setEmmiterID</a> (std::uint32_t emmiter_id)</td></tr>
-<tr class="memdesc:afe76dab253b345ed8c63738119b73631"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the ECS ID for the message.  <br /></td></tr>
-<tr class="separator:afe76dab253b345ed8c63738119b73631"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47eb99b0d7594afa5521b2a82012b7fe" id="r_a47eb99b0d7594afa5521b2a82012b7fe"><td class="memItemLeft" align="right" valign="top">std::uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47eb99b0d7594afa5521b2a82012b7fe">getEmmiterID</a> (void) const</td></tr>
-<tr class="memdesc:a47eb99b0d7594afa5521b2a82012b7fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the ECS ID of the message.  <br /></td></tr>
-<tr class="separator:a47eb99b0d7594afa5521b2a82012b7fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a398fa6f3e7b89ef3c0060d4b9a6fadba" id="r_a398fa6f3e7b89ef3c0060d4b9a6fadba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a398fa6f3e7b89ef3c0060d4b9a6fadba">setReceiverID</a> (std::uint32_t receiver_id)</td></tr>
-<tr class="memdesc:a398fa6f3e7b89ef3c0060d4b9a6fadba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the receiver ID for the message.  <br /></td></tr>
-<tr class="separator:a398fa6f3e7b89ef3c0060d4b9a6fadba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41c56ac08aed73bd25059db91c17d9ec" id="r_a41c56ac08aed73bd25059db91c17d9ec"><td class="memItemLeft" align="right" valign="top">std::uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41c56ac08aed73bd25059db91c17d9ec">getReceiverID</a> (void) const</td></tr>
-<tr class="memdesc:a41c56ac08aed73bd25059db91c17d9ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the receiver ID of the message.  <br /></td></tr>
-<tr class="separator:a41c56ac08aed73bd25059db91c17d9ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ce422093306470fa002324c252650a2" id="r_a2ce422093306470fa002324c252650a2"><td class="memItemLeft" align="right" valign="top"><a id="a2ce422093306470fa002324c252650a2" name="a2ce422093306470fa002324c252650a2"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>~Message</b> (void)=default</td></tr>
+<tr class="memdesc:a2ce422093306470fa002324c252650a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="classMessage.html" title="A class representing a message with an ECS ID and a topic name.">Message</a> object. <br /></td></tr>
+<tr class="separator:a2ce422093306470fa002324c252650a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a166ebf912a5d93b8dd444d63b196ef0d" id="r_a166ebf912a5d93b8dd444d63b196ef0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a166ebf912a5d93b8dd444d63b196ef0d">setMagicNumber</a> (uint8_t magicNumber)</td></tr>
+<tr class="memdesc:a166ebf912a5d93b8dd444d63b196ef0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the MagicNumber ID for the message.  <br /></td></tr>
+<tr class="separator:a166ebf912a5d93b8dd444d63b196ef0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e5b6f70909f3a631935105d7f2952b6" id="r_a3e5b6f70909f3a631935105d7f2952b6"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e5b6f70909f3a631935105d7f2952b6">getMagicNumber</a> (void)</td></tr>
+<tr class="memdesc:a3e5b6f70909f3a631935105d7f2952b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the MagicNumber ID of the message.  <br /></td></tr>
+<tr class="separator:a3e5b6f70909f3a631935105d7f2952b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47dff35f6cb3eaf577d8a3fbc6477a76" id="r_a47dff35f6cb3eaf577d8a3fbc6477a76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47dff35f6cb3eaf577d8a3fbc6477a76">setEmmiterID</a> (std::uint8_t emmiter_id)</td></tr>
+<tr class="memdesc:a47dff35f6cb3eaf577d8a3fbc6477a76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the ECS ID for the message.  <br /></td></tr>
+<tr class="separator:a47dff35f6cb3eaf577d8a3fbc6477a76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f0858ed81105410bdcb9e0e62ef1ec1" id="r_a3f0858ed81105410bdcb9e0e62ef1ec1"><td class="memItemLeft" align="right" valign="top">std::uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3f0858ed81105410bdcb9e0e62ef1ec1">getEmmiterID</a> (void) const</td></tr>
+<tr class="memdesc:a3f0858ed81105410bdcb9e0e62ef1ec1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the ECS ID of the message.  <br /></td></tr>
+<tr class="separator:a3f0858ed81105410bdcb9e0e62ef1ec1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae554e5832f0fef9b5048cb55ebd9eab1" id="r_ae554e5832f0fef9b5048cb55ebd9eab1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae554e5832f0fef9b5048cb55ebd9eab1">setReceiverID</a> (std::uint8_t receiver_id)</td></tr>
+<tr class="memdesc:ae554e5832f0fef9b5048cb55ebd9eab1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the receiver ID for the message.  <br /></td></tr>
+<tr class="separator:ae554e5832f0fef9b5048cb55ebd9eab1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e8727680656520bb5b9a8dd13b70b02" id="r_a2e8727680656520bb5b9a8dd13b70b02"><td class="memItemLeft" align="right" valign="top">std::uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2e8727680656520bb5b9a8dd13b70b02">getReceiverID</a> (void) const</td></tr>
+<tr class="memdesc:a2e8727680656520bb5b9a8dd13b70b02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the receiver ID of the message.  <br /></td></tr>
+<tr class="separator:a2e8727680656520bb5b9a8dd13b70b02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66b8d4123ebb886963bcbea48c671972" id="r_a66b8d4123ebb886963bcbea48c671972"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a66b8d4123ebb886963bcbea48c671972">setTopicID</a> (std::uint8_t topic_id)</td></tr>
 <tr class="memdesc:a66b8d4123ebb886963bcbea48c671972"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the topic id for the message.  <br /></td></tr>
 <tr class="separator:a66b8d4123ebb886963bcbea48c671972"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -203,7 +209,7 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -231,7 +237,7 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -241,8 +247,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a47eb99b0d7594afa5521b2a82012b7fe" name="a47eb99b0d7594afa5521b2a82012b7fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a47eb99b0d7594afa5521b2a82012b7fe">&#9670;&#160;</a></span>getEmmiterID()</h2>
+<a id="a3f0858ed81105410bdcb9e0e62ef1ec1" name="a3f0858ed81105410bdcb9e0e62ef1ec1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f0858ed81105410bdcb9e0e62ef1ec1">&#9670;&#160;</a></span>getEmmiterID()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -251,7 +257,7 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::uint32_t Message::getEmmiterID </td>
+          <td class="memname">std::uint8_t Message::getEmmiterID </td>
           <td>(</td>
           <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -259,7 +265,7 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -269,8 +275,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a41c56ac08aed73bd25059db91c17d9ec" name="a41c56ac08aed73bd25059db91c17d9ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41c56ac08aed73bd25059db91c17d9ec">&#9670;&#160;</a></span>getReceiverID()</h2>
+<a id="a3e5b6f70909f3a631935105d7f2952b6" name="a3e5b6f70909f3a631935105d7f2952b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e5b6f70909f3a631935105d7f2952b6">&#9670;&#160;</a></span>getMagicNumber()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -279,7 +285,35 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::uint32_t Message::getReceiverID </td>
+          <td class="memname">uint8_t Message::getMagicNumber </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the MagicNumber ID of the message. </p>
+<dl class="section return"><dt>Returns</dt><dd>The MagicNumber ID of the message. </dd></dl>
+
+</div>
+</div>
+<a id="a2e8727680656520bb5b9a8dd13b70b02" name="a2e8727680656520bb5b9a8dd13b70b02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e8727680656520bb5b9a8dd13b70b02">&#9670;&#160;</a></span>getReceiverID()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::uint8_t Message::getReceiverID </td>
           <td>(</td>
           <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -287,7 +321,7 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -315,7 +349,7 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">nodiscard</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -330,6 +364,9 @@ Public Member Functions</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::string Message::serialize </td>
@@ -338,6 +375,11 @@ Public Member Functions</h2></td></tr>
           <td> const</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">nodiscard</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Serializes the message. </p>
@@ -411,8 +453,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="afe76dab253b345ed8c63738119b73631" name="afe76dab253b345ed8c63738119b73631"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe76dab253b345ed8c63738119b73631">&#9670;&#160;</a></span>setEmmiterID()</h2>
+<a id="a47dff35f6cb3eaf577d8a3fbc6477a76" name="a47dff35f6cb3eaf577d8a3fbc6477a76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47dff35f6cb3eaf577d8a3fbc6477a76">&#9670;&#160;</a></span>setEmmiterID()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -423,7 +465,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void Message::setEmmiterID </td>
           <td>(</td>
-          <td class="paramtype">std::uint32_t</td>          <td class="paramname"><span class="paramname"><em>emmiter_id</em></span></td><td>)</td>
+          <td class="paramtype">std::uint8_t</td>          <td class="paramname"><span class="paramname"><em>emmiter_id</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -444,8 +486,41 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a398fa6f3e7b89ef3c0060d4b9a6fadba" name="a398fa6f3e7b89ef3c0060d4b9a6fadba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a398fa6f3e7b89ef3c0060d4b9a6fadba">&#9670;&#160;</a></span>setReceiverID()</h2>
+<a id="a166ebf912a5d93b8dd444d63b196ef0d" name="a166ebf912a5d93b8dd444d63b196ef0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a166ebf912a5d93b8dd444d63b196ef0d">&#9670;&#160;</a></span>setMagicNumber()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Message::setMagicNumber </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>magicNumber</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the MagicNumber ID for the message. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">magicNumber</td><td>The MagicNumber ID to be set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae554e5832f0fef9b5048cb55ebd9eab1" name="ae554e5832f0fef9b5048cb55ebd9eab1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae554e5832f0fef9b5048cb55ebd9eab1">&#9670;&#160;</a></span>setReceiverID()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -456,7 +531,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void Message::setReceiverID </td>
           <td>(</td>
-          <td class="paramtype">std::uint32_t</td>          <td class="paramname"><span class="paramname"><em>receiver_id</em></span></td><td>)</td>
+          <td class="paramtype">std::uint8_t</td>          <td class="paramname"><span class="paramname"><em>receiver_id</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>

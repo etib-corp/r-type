@@ -192,22 +192,34 @@ Server-to-Client Action Codes (0x56 -&gt; 0xAA)</h2>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Action Code   </th><th class="markdownTableHeadNone">Description    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">0x56   </td><td class="markdownTableBodyNone">ROLLBACK   </td></tr>
+<td class="markdownTableBodyNone">0x56   </td><td class="markdownTableBodyNone">ROLLBACK    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">0x57   </td><td class="markdownTableBodyNone">UPDATE ECS   </td></tr>
 </table>
 <h2><a class="anchor" id="autotoc_md18"></a>
-Client-to-Server Action Codes (0xAA -&gt; 0xFF)</h2>
+Client-to-Server Action Codes (0xAA -&gt; 0xFE)</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Action Code   </th><th class="markdownTableHeadNone">Description    </th></tr>
 <tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">0xAB   </td><td class="markdownTableBodyNone">USERNAME    </td></tr>
+<tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">0xAB   </td><td class="markdownTableBodyNone">USERNAME   </td></tr>
 </table>
-<h1><a class="anchor" id="autotoc_md19"></a>
+<h2><a class="anchor" id="autotoc_md19"></a>
+Both Magic Number (0xFF)</h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Action Code   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">0xFF   </td><td class="markdownTableBodyNone">MAGIC_NUMBER   </td></tr>
+</table>
+<h1><a class="anchor" id="autotoc_md20"></a>
 4. Protocol Design</h1>
-<h2><a class="anchor" id="autotoc_md20"></a>
+<h2><a class="anchor" id="autotoc_md21"></a>
 4.1. Connection Establishment</h2>
 <p>The client initially connects to the server via TCP to establish the connection and receive its unique ID. After that, gameplay messages are exchanged via UDP for efficiency.</p>
-<h3><a class="anchor" id="autotoc_md21"></a>
+<h3><a class="anchor" id="autotoc_md22"></a>
 4.1.1 Server Sends Client ID (TCP)</h3>
 <p>Upon successful connection, the server assigns a unique client ID and sends the following message to the client:</p>
 <div class="fragment"><div class="line">header.MagicNumber = 0x77;</div>
@@ -216,7 +228,7 @@ Client-to-Server Action Codes (0xAA -&gt; 0xFF)</h2>
 <div class="line">header.Action = 0x01;  <span class="comment">// NEW CONNECTION</span></div>
 <div class="line">header.BodyLength = 0;</div>
 <div class="line">body = NULL;</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md22"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md23"></a>
 4.1.2 Client Acknowledges ID (UDP)</h3>
 <p>The client acknowledges the receipt of its ID by sending a message via UDP:</p>
 <div class="fragment"><div class="line">header.MagicNumber = 0x77;</div>
@@ -225,7 +237,7 @@ Client-to-Server Action Codes (0xAA -&gt; 0xFF)</h2>
 <div class="line">header.Action = 0x01;  <span class="comment">// NEW CONNECTION</span></div>
 <div class="line">header.BodyLength = 0;</div>
 <div class="line">body = NULL;</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md23"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md24"></a>
 4.2. Common Action Codes</h2>
 <p>The protocol defines several common action codes for handling game state synchronization and player actions:</p>
 <ul>
@@ -244,7 +256,7 @@ Client-to-Server Action Codes (0xAA -&gt; 0xFF)</h2>
 <div class="line">header.Action = 0xAA; <span class="comment">// Inpput action</span></div>
 <div class="line">header.BodyLength = <span class="keyword">sizeof</span>(InputData);</div>
 <div class="line">body = [InputData];  <span class="comment">// Player input data (e.g., direction, attack)</span></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md24"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md25"></a>
 4.3. Server-to-Client Messages</h2>
 <p>The server sends messages to clients to notify them about game state changes. Common server-to-client messages include:</p>
 <ul>
@@ -260,7 +272,7 @@ Client-to-Server Action Codes (0xAA -&gt; 0xFF)</h2>
 <div class="line">header.Action = 0x56; <span class="comment">// Rollback action</span></div>
 <div class="line">header.BodyLength = <span class="keyword">sizeof</span>(RollbackData);</div>
 <div class="line">body = [RollbackData];  <span class="comment">// Rollback data (e.g., timestamp, state)</span></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md25"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md26"></a>
 4.4. Client-to-Server Messages</h2>
 <p>Clients send messages to the server to perform actions or provide updates. Common client-to-server messages include:</p>
 <ul>
@@ -278,21 +290,21 @@ Client-to-Server Action Codes (0xAA -&gt; 0xFF)</h2>
 <div class="line">header.Action = 0xAB; <span class="comment">// Username action</span></div>
 <div class="line">header.BodyLength = <span class="keyword">sizeof</span>(UsernameData);</div>
 <div class="line">body = [UsernameData];  <span class="comment">// Username data (e.g., player&#39;s username)</span></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md26"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md27"></a>
 5. Error Handling</h1>
 <p>The protocol uses a lightweight error-handling mechanism. If a message is lost or malformed, the server or client don't process it and wait for a retransmission.</p>
 <ul>
 <li><b>Timeouts</b>: Messages that are not acknowledged within a set timeout will be retransmitted.</li>
 <li><b>Graceful Reconnection</b>: Clients can attempt to reconnect within a grace period after disconnection.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md27"></a>
+<h1><a class="anchor" id="autotoc_md28"></a>
 6. Security Considerations</h1>
 <p>The protocol includes basic security measures to ensure fair gameplay and protect against tampering:</p>
 <ul>
 <li><b><a class="el" href="classSession.html" title="Manages a session using Boost.Asio.">Session</a> Authentication</b>: Players are authenticated using unique session tokens to prevent unauthorized connections.</li>
 <li><b>Data Validation</b>: All incoming messages are validated by the server to prevent malicious inputs or buffer overflow attacks.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md28"></a>
+<h1><a class="anchor" id="autotoc_md29"></a>
 7. References</h1>
 <ul>
 <li>RFC 768: User Datagram Protocol</li>

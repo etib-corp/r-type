@@ -122,6 +122,10 @@ Inheritance diagram for Broker:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:ad53697e7a88ce846724ec0c75b2d72e7" id="r_ad53697e7a88ce846724ec0c75b2d72e7"><td class="memItemLeft" align="right" valign="top"><a id="ad53697e7a88ce846724ec0c75b2d72e7" name="ad53697e7a88ce846724ec0c75b2d72e7"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Broker</b> (void)=default</td></tr>
+<tr class="memdesc:ad53697e7a88ce846724ec0c75b2d72e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor for the <a class="el" href="classBroker.html" title="Manages topics and messages in a multi-threaded environment.">Broker</a> class. <br /></td></tr>
+<tr class="separator:ad53697e7a88ce846724ec0c75b2d72e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76e5f13b99d99c6acd145e51b8ebaf66" id="r_a76e5f13b99d99c6acd145e51b8ebaf66"><td class="memItemLeft" align="right" valign="top"><a id="a76e5f13b99d99c6acd145e51b8ebaf66" name="a76e5f13b99d99c6acd145e51b8ebaf66"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~Broker</b> (void)=default</td></tr>
 <tr class="memdesc:a76e5f13b99d99c6acd145e51b8ebaf66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for the <a class="el" href="classBroker.html" title="Manages topics and messages in a multi-threaded environment.">Broker</a> class. <br /></td></tr>
@@ -135,9 +139,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a306bf7b8864bdbdccdb5a5eaf8f1453f" id="r_a306bf7b8864bdbdccdb5a5eaf8f1453f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a306bf7b8864bdbdccdb5a5eaf8f1453f">removeTopic</a> (std::uint32_t ecs_id, std::uint8_t id)</td></tr>
 <tr class="memdesc:a306bf7b8864bdbdccdb5a5eaf8f1453f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a topic from the broker.  <br /></td></tr>
 <tr class="separator:a306bf7b8864bdbdccdb5a5eaf8f1453f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36d748b8bb218f84c6aafe9358ee7259" id="r_a36d748b8bb218f84c6aafe9358ee7259"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36d748b8bb218f84c6aafe9358ee7259">addMessage</a> (std::uint32_t ecs_id, std::uint8_t topic_id, <a class="el" href="classMessage.html">Message</a> *message)</td></tr>
-<tr class="memdesc:a36d748b8bb218f84c6aafe9358ee7259"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a message to a topic.  <br /></td></tr>
-<tr class="separator:a36d748b8bb218f84c6aafe9358ee7259"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a413904c3561ad24acf8579aae2920776" id="r_a413904c3561ad24acf8579aae2920776"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a413904c3561ad24acf8579aae2920776">addMessage</a> (std::uint8_t ecs_id, std::uint8_t topic_id, <a class="el" href="classMessage.html">Message</a> *message)</td></tr>
+<tr class="memdesc:a413904c3561ad24acf8579aae2920776"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a message to a topic.  <br /></td></tr>
+<tr class="separator:a413904c3561ad24acf8579aae2920776"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52789b945668416dc4fbfedd58eb06d1" id="r_a52789b945668416dc4fbfedd58eb06d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMessage.html">Message</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52789b945668416dc4fbfedd58eb06d1">getMessage</a> (std::uint32_t ecs_id, std::uint8_t topic_id)</td></tr>
 <tr class="memdesc:a52789b945668416dc4fbfedd58eb06d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a message from a topic.  <br /></td></tr>
 <tr class="separator:a52789b945668416dc4fbfedd58eb06d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,9 +181,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>_sendMessages</b> (vo
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a797e32d4e24ebc7c961f4891d1de1b5a" id="r_a797e32d4e24ebc7c961f4891d1de1b5a"><td class="memItemLeft" align="right" valign="top"><a id="a797e32d4e24ebc7c961f4891d1de1b5a" name="a797e32d4e24ebc7c961f4891d1de1b5a"></a>
-std::uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>_ecs_id</b></td></tr>
-<tr class="separator:a797e32d4e24ebc7c961f4891d1de1b5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08dca0008faeadf6ad0ee31ba4a2d6e5" id="r_a08dca0008faeadf6ad0ee31ba4a2d6e5"><td class="memItemLeft" align="right" valign="top"><a id="a08dca0008faeadf6ad0ee31ba4a2d6e5" name="a08dca0008faeadf6ad0ee31ba4a2d6e5"></a>
+std::uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_ecs_id</b></td></tr>
+<tr class="separator:a08dca0008faeadf6ad0ee31ba4a2d6e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a47763ae7ad630f3c530b287b2d6c045e" id="r_a47763ae7ad630f3c530b287b2d6c045e"><td class="memItemLeft" align="right" valign="top"><a id="a47763ae7ad630f3c530b287b2d6c045e" name="a47763ae7ad630f3c530b287b2d6c045e"></a>
 <a class="el" href="classINetworkModule.html">INetworkModule</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_network_module</b></td></tr>
 <tr class="separator:a47763ae7ad630f3c530b287b2d6c045e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -209,8 +213,8 @@ std::function&lt; void(<a class="el" href="classMessage.html">Message</a> *)&gt;
 <div class="textblock"><p>Manages topics and messages in a multi-threaded environment. </p>
 <p>The <a class="el" href="classBroker.html" title="Manages topics and messages in a multi-threaded environment.">Broker</a> class is responsible for managing topics and messages. It provides methods to add, retrieve, and remove topics, as well as to add and retrieve messages. It ensures thread safety using mutex locks. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a36d748b8bb218f84c6aafe9358ee7259" name="a36d748b8bb218f84c6aafe9358ee7259"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a36d748b8bb218f84c6aafe9358ee7259">&#9670;&#160;</a></span>addMessage()</h2>
+<a id="a413904c3561ad24acf8579aae2920776" name="a413904c3561ad24acf8579aae2920776"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a413904c3561ad24acf8579aae2920776">&#9670;&#160;</a></span>addMessage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -221,7 +225,7 @@ std::function&lt; void(<a class="el" href="classMessage.html">Message</a> *)&gt;
         <tr>
           <td class="memname">void Broker::addMessage </td>
           <td>(</td>
-          <td class="paramtype">std::uint32_t</td>          <td class="paramname"><span class="paramname"><em>ecs_id</em></span>, </td>
+          <td class="paramtype">std::uint8_t</td>          <td class="paramname"><span class="paramname"><em>ecs_id</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>

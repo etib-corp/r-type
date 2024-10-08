@@ -26,7 +26,6 @@ var hierarchy =
     [ "C3", "classC3.html", null ],
     [ "C4", "classC4.html", null ],
     [ "C5", "classC5.html", null ],
-    [ "CallBack", "classCallBack.html", null ],
     [ "LE::GUI::Font::Character", "structLE_1_1GUI_1_1Font_1_1Character.html", null ],
     [ "LE::Clock", "classLE_1_1Clock.html", null ],
     [ "LE::Color", "classLE_1_1Color.html", null ],
@@ -116,6 +115,7 @@ var hierarchy =
     [ "pyexample.PyClass", "classpyexample_1_1PyClass.html", null ],
     [ "QTstyle_Test", "classQTstyle__Test.html", null ],
     [ "Request", "structRequest.html", null ],
+    [ "ResponsibilityChain", "classResponsibilityChain.html", null ],
     [ "LE::Scene", "classLE_1_1Scene.html", [
       [ "GameScene", "classGameScene.html", null ],
       [ "MyScene", "classMyScene.html", null ]
@@ -141,6 +141,7 @@ var hierarchy =
     ] ],
     [ "Topic", "classTopic.html", null ],
     [ "TransformComponent", "structTransformComponent.html", null ],
+    [ "UpdateEcs", "structUpdateEcs.html", null ],
     [ "LE::Vector2< T >", "classLE_1_1Vector2.html", null ],
     [ "LE::Vector3< T >", "classLE_1_1Vector3.html", null ],
     [ "LE::Vector3< float >", "classLE_1_1Vector3.html", null ],

@@ -50,7 +50,6 @@ var annotated_dup =
     [ "C3", "classC3.html", null ],
     [ "C4", "classC4.html", null ],
     [ "C5", "classC5.html", null ],
-    [ "CallBack", "classCallBack.html", null ],
     [ "Car", "structCar.html", "structCar" ],
     [ "Client", "classClient.html", null ],
     [ "ClientBroker", "classClientBroker.html", "classClientBroker" ],
@@ -100,6 +99,7 @@ var annotated_dup =
     [ "QTstyle_Test", "classQTstyle__Test.html", "classQTstyle__Test" ],
     [ "Render2DSystem", "classRender2DSystem.html", "classRender2DSystem" ],
     [ "Request", "structRequest.html", null ],
+    [ "ResponsibilityChain", "classResponsibilityChain.html", null ],
     [ "Server", "classServer.html", null ],
     [ "ServerBroker", "classServerBroker.html", "classServerBroker" ],
     [ "Session", "classSession.html", "classSession" ],
@@ -117,5 +117,6 @@ var annotated_dup =
     [ "Topic", "classTopic.html", "classTopic" ],
     [ "TransformComponent", "structTransformComponent.html", null ],
     [ "Truck", "structTruck.html", "structTruck" ],
+    [ "UpdateEcs", "structUpdateEcs.html", null ],
     [ "Vehicle", "structVehicle.html", "structVehicle" ]
 ];
