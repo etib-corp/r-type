@@ -1,5 +1,7 @@
 include(FetchContent)
 
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
 cmake_minimum_required(VERSION 3.20)
 project(r-type)
 
@@ -26,7 +28,7 @@ target_link_libraries(r-type Boost::iostreams)
 
 include_directories(${OPENGL_INCLUDE_DIRS})
 include_directories(dependencies/glm/)
-include_directories({BOOST_INCLUDE_DIRS})
+include_directories(${BOOST_INCLUDE_DIRS})
 
 file(GLOB_RECURSE CLIENT_SOURCES client/src/*.cpp)
 include_directories(client/include client/include/GUI client/include/Maths dependencies/stb/include dependencies/rapidobj/include)
