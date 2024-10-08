@@ -119,9 +119,15 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac967502cd45d96405b7269293703c04d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6819be5b322623f45264b9c54eb76d11" id="r_a6819be5b322623f45264b9c54eb76d11"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6819be5b322623f45264b9c54eb76d11">run</a> (std::shared_ptr&lt; <a class="el" href="classSessionManager.html">SessionManager</a> &gt; module)=0</td></tr>
 <tr class="separator:a6819be5b322623f45264b9c54eb76d11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48f76fb9703b335766a11ca31626b8cf" id="r_a48f76fb9703b335766a11ca31626b8cf"><td class="memItemLeft" align="right" valign="top"><a id="a48f76fb9703b335766a11ca31626b8cf" name="a48f76fb9703b335766a11ca31626b8cf"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setOnClientConnected</b> (std::function&lt; void(<a class="el" href="classISession.html">ISession</a> *)&gt; onClientConnected)</td></tr>
+<tr class="separator:a48f76fb9703b335766a11ca31626b8cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
+<tr class="memitem:af66eaaf209dde58a340e0fb9d6459002" id="r_af66eaaf209dde58a340e0fb9d6459002"><td class="memItemLeft" align="right" valign="top"><a id="af66eaaf209dde58a340e0fb9d6459002" name="af66eaaf209dde58a340e0fb9d6459002"></a>
+std::function&lt; void(<a class="el" href="classISession.html">ISession</a> *)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_onClientConnected</b> = nullptr</td></tr>
+<tr class="separator:af66eaaf209dde58a340e0fb9d6459002"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a410348b2b45ea46f792e8393c5382827" id="r_a410348b2b45ea46f792e8393c5382827"><td class="memItemLeft" align="right" valign="top"><a id="a410348b2b45ea46f792e8393c5382827" name="a410348b2b45ea46f792e8393c5382827"></a>
 std::shared_ptr&lt; <a class="el" href="classSessionManager.html">SessionManager</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_sessionManager</b></td></tr>
 <tr class="separator:a410348b2b45ea46f792e8393c5382827"><td class="memSeparator" colspan="2">&#160;</td></tr>

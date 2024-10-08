@@ -130,6 +130,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:af7cb23c7d6f213aeb80eceb7be4e12d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the TCP Listener.  <br /></td></tr>
 <tr class="separator:af7cb23c7d6f213aeb80eceb7be4e12d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classIListenerTCP"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classIListenerTCP')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classIListenerTCP.html">IListenerTCP</a></td></tr>
+<tr class="memitem:a48f76fb9703b335766a11ca31626b8cf inherit pub_methods_classIListenerTCP" id="r_a48f76fb9703b335766a11ca31626b8cf"><td class="memItemLeft" align="right" valign="top">
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setOnClientConnected</b> (std::function&lt; void(<a class="el" href="classISession.html">ISession</a> *)&gt; onClientConnected)</td></tr>
+<tr class="separator:a48f76fb9703b335766a11ca31626b8cf inherit pub_methods_classIListenerTCP"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -150,6 +153,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>_port</b></td></tr>
 <tr class="memdesc:a8cd4614ff081e8ce70c173f7a7f985c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The port number used for the TCP Listener. <br /></td></tr>
 <tr class="separator:a8cd4614ff081e8ce70c173f7a7f985c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classIListenerTCP"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classIListenerTCP')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classIListenerTCP.html">IListenerTCP</a></td></tr>
+<tr class="memitem:af66eaaf209dde58a340e0fb9d6459002 inherit pro_attribs_classIListenerTCP" id="r_af66eaaf209dde58a340e0fb9d6459002"><td class="memItemLeft" align="right" valign="top">
+std::function&lt; void(<a class="el" href="classISession.html">ISession</a> *)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_onClientConnected</b> = nullptr</td></tr>
+<tr class="separator:af66eaaf209dde58a340e0fb9d6459002 inherit pro_attribs_classIListenerTCP"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a410348b2b45ea46f792e8393c5382827 inherit pro_attribs_classIListenerTCP" id="r_a410348b2b45ea46f792e8393c5382827"><td class="memItemLeft" align="right" valign="top">
 std::shared_ptr&lt; <a class="el" href="classSessionManager.html">SessionManager</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_sessionManager</b></td></tr>
 <tr class="separator:a410348b2b45ea46f792e8393c5382827 inherit pro_attribs_classIListenerTCP"><td class="memSeparator" colspan="2">&#160;</td></tr>
