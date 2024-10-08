@@ -61,6 +61,7 @@ class GameScene : public LE::Scene {
             _ecs->registerComponent<ModelComponent>();
             _ecs->registerComponent<PatternComponent>();
             _ecs->registerComponent<MotionComponent>();
+            _ecs->registerComponent<CameraComponent>();
             Signature signatureRender2D;
             signatureRender2D.set(_ecs->getComponentType<TransformComponent>());
             signatureRender2D.set(_ecs->getComponentType<SpriteComponent>());
@@ -81,6 +82,13 @@ class GameScene : public LE::Scene {
             std::shared_ptr<PatternSystem> patternSystem = _ecs->registerSystem<PatternSystem>();
             _ecs->setSignature<PatternSystem>(signaturePattern);
 
+            Signature signatureCamera;
+            signatureCamera.set(_ecs->getComponentType<TransformComponent>());
+            signatureCamera.set(_ecs->getComponentType<CameraComponent>());
+            signatureCamera.set(_ecs->getComponentType<MotionComponent>());
+            _ecs->registerSystem<CameraSystem>();
+            _ecs->setSignature<CameraSystem>(signatureCamera);
+
             patternSystem->addPattern("line", [](PatternComponent &pattern, TransformComponent &transform, MotionComponent &motion) {
                 if (transform.position.x != pattern.end_pos.x) {
                     transform.position.x += pattern.speed * (pattern.end_pos.x - transform.position.x > 0 ? 1 : -1);
@@ -99,6 +107,12 @@ class GameScene : public LE::Scene {
             // _ecs->addComponent<TransformComponent>(entity, (TransformComponent){{400, 400, 0}, {0, 0, 0}, {0.5f, 0.5f, 0.5f}});
             // auto sprite = createSpriteComponent("assets/images/character.png");
             // _ecs->addComponent<SpriteComponent>(entity, *sprite);
+
+            Entity cameraEntity = _ecs->createEntity();\
+            _ecs->addComponent<TransformComponent>(cameraEntity, (TransformComponent){{0, 0, 0}, {0, 0, 0}, {1.0f, 1.0f, 1.0f}});
+            _ecs->addComponent<CameraComponent>(cameraEntity, (CameraComponent){static_cast<float>(LE::Engine::getInstance()->getWindowWidth()), static_cast<float>(LE::Engine::getInstance()->getWindowHeight()), 0.0f, 1000.0f, 45.0f, static_cast<float>(LE::Engine::getInstance()->getWindowWidth()) / static_cast<float>(LE::Engine::getInstance()->getWindowHeight()), {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f}});
+            _ecs->addComponent<MotionComponent>(cameraEntity, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
+            _ecs->setCameraEntity(cameraEntity);
 
             Entity entity2 = _ecs->createEntity();
             auto model2 = createModelComponent("assets/models/ship/MicroRecon.obj");
@@ -140,7 +154,6 @@ class GameScene : public LE::Scene {
                 _ecs->addComponent<ModelComponent>(entity, *model);
                 auto spaceshipTransform = _ecs->getComponent<TransformComponent>(entity2);
                 auto transform = createTransformComponent({spaceshipTransform.position.x, spaceshipTransform.position.y + 6.155F, spaceshipTransform.position.z}, {0, 90, 0}, {0.2f, 0.2f, 0.5f});
-                std::cout << transform << std::endl;
                 _ecs->addComponent<TransformComponent>(entity, transform);
                 _ecs->addComponent<MotionComponent>(entity, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
                 auto pattern = createPatternComponent("line", {transform.position[0] + 100, transform.position[1], 0}, 0.05f, PatternEnd::DESTROY);

@@ -11,6 +11,8 @@
 #include "ECS/SystemManager.hpp"
 #include "ECS/Components/SpriteComponent.hpp"
 #include "ECS/Components/TransformComponent.hpp"
+#include "ECS/Components/CameraComponent.hpp"
+#include "ECS/Components/PatternComponent.hpp"
 
 /**
  * @brief A render 2D system.
@@ -32,7 +34,7 @@ class Render2DSystem : public System {
 
         /**
          * @brief Update the system
-         * 
+         *
          * This function will be used to update the system
          * @param ecs The ecs
          * @param delta The delta time

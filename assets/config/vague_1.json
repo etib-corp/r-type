@@ -4,7 +4,7 @@
             "texture_obj" : "assets/models/ship/MicroRecon.obj",
             "start_pos" : [0, 0, 0],
             "end_pos" : [1000, 1000, 0],
-            "speed" : 0.00001,
+            "speed" : 0.01,
             "life" : 100,
             "damage" : 10,
             "pattern" : "line",

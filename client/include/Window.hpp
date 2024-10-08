@@ -133,6 +133,20 @@ namespace LE {
              * @return The GLFW window pointer.
              */
             GLFWwindow* getWindow();
+
+            /**
+             * @brief Gets the width of the window.
+             *
+             * @return The width of the window.
+             */
+            std::size_t getWidth() const;
+
+            /**
+             * @brief Gets the height of the window.
+             *
+             * @return The height of the window.
+             */
+            std::size_t getHeight() const;
         private:
 
             /**

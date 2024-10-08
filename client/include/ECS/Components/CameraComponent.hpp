@@ -12,10 +12,10 @@
 #include "Maths/Vector2.hpp"
 
 struct CameraComponent {
-    int height;
-    int width;
-    int near;
-    int far;
+    float width;
+    float height;
+    float near;
+    float far;
     float fovy;
     float aspect;
     LE::Vector3<float> speed;

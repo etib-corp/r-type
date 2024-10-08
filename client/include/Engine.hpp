@@ -125,6 +125,20 @@ namespace LE {
              */
             void setFramerateLimit(std::size_t limit);
 
+            /**
+             * @brief Gets the width of the window.
+             *
+             * @return The width of the window.
+             */
+            std::size_t getWindowWidth() const;
+
+            /**
+             * @brief Gets the height of the window.
+             *
+             * @return The height of the window.
+             */
+            std::size_t getWindowHeight() const;
+
         private:
             /**
              * @brief Private constructor for the Engine class.

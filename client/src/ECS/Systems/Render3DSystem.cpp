@@ -21,7 +21,12 @@ Render3DSystem::~Render3DSystem()
 
 void Render3DSystem::update(Ecs *ecs, float delta)
 {
-    for (auto &entity : _entities) {
+    Entity cameraEntity = ecs->getCameraEntity();
+    TransformComponent cameraTransform = ecs->getComponent<TransformComponent>(cameraEntity);
+    MotionComponent cameraMotion = ecs->getComponent<MotionComponent>(cameraEntity);
+    CameraComponent camera = ecs->getComponent<CameraComponent>(cameraEntity);
+
+for (auto &entity : _entities) {
         auto &model = ecs->getComponent<ModelComponent>(entity);
         auto &transform = ecs->getComponent<TransformComponent>(entity);
         auto &motion = ecs->getComponent<MotionComponent>(entity);
@@ -34,7 +39,7 @@ void Render3DSystem::update(Ecs *ecs, float delta)
 
         _shader->use();
 
-        glm::mat4 projection = glm::perspective(glm::radians(45.0f), (float)2560 / (float)1440, 0.1f, 100.0f);
+        glm::mat4 projection = glm::perspective(glm::radians(camera.fovy), camera.width / camera.height, camera.near, camera.far);
         _shader->setMat<4>("projection", LE::Matrix<4, 4, float>(projection));
 
         glm::mat4 view = glm::lookAt(glm::vec3(0.0f, 0.0f, 25.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f));

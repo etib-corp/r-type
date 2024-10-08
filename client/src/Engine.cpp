@@ -101,13 +101,12 @@ void LE::Engine::setFramerateLimit(std::size_t limit)
 {
     _framerateLimit = limit;
 }
-
-Entity LE::Engine::getCameraEntity() const
+std::size_t LE::Engine::getWindowWidth() const
 {
-    return _cameraEntity;
+    return _window->getWidth();
 }
 
-void LE::Engine::setCameraEntity(const Entity& entity)
+std::size_t LE::Engine::getWindowHeight() const
 {
-    _cameraEntity = entity;
+    return _window->getHeight();
 }

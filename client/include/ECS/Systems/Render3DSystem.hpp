@@ -11,6 +11,7 @@
 #include "ECS/Components/ModelComponent.hpp"
 #include "ECS/Components/TransformComponent.hpp"
 #include "ECS/Components/MotionComponent.hpp"
+#include "ECS/Components/CameraComponent.hpp"
 
 
 class Render3DSystem : public System {

@@ -109,3 +109,13 @@ GLFWwindow* LE::Window::getWindow()
 {
     return _window;
 }
+
+std::size_t LE::Window::getWidth() const
+{
+    return _width;
+}
+
+std::size_t LE::Window::getHeight() const
+{
+    return _height;
+}
