@@ -11,7 +11,6 @@
 #include <glm.hpp>
 
 #include <cmath>
-#include <cxxabi.h>
 #include <iostream>
 #include <memory>
 #include <type_traits>

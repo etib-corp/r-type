@@ -12,7 +12,6 @@
 #include "Vector3.hpp"
 
 #include <cmath>
-#include <cxxabi.h>
 #include <iostream>
 #include <memory>
 #include <type_traits>
