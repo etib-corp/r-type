@@ -21,9 +21,7 @@ add_subdirectory(dependencies/boost-1.86.0)
 
 file(GLOB_RECURSE SOURCES src/*.cpp)
 include_directories(include)
-add_library(r-type SHARED ${SOURCES})
-target_compile_options(r-type PRIVATE -fPIC)
-target_link_libraries(r-type Boost::iostreams)
+add_library(r-type STATIC ${SOURCES})
 
 include_directories(${OPENGL_INCLUDE_DIRS})
 include_directories(dependencies/glm/)
