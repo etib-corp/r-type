@@ -349,13 +349,6 @@ template<typename T>
 std::ostream& operator<<(std::ostream& os, const LE::Vector3<T> vec)
 {
     const char* name = typeid(T).name();
-    int status = -4;
-
-    std::unique_ptr<char, void(*)(void*)> res {
-        abi::__cxa_demangle(name, NULL, NULL, &status),
-        std::free
-    };
-    name = status == 0 ? res.get() : typeid(T).name();
 
     os << "Vector3<" << name << ">(" << vec.x << ", " << vec.y << ", " << vec.z << ")";
     return os;
