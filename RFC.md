@@ -97,12 +97,20 @@ body = NULL;
 | Action Code | Description |
 | ----------- | ----------- |
 | 0x56        | ROLLBACK    |
+| 0x57        | UPDATE ECS  |
 
-### Client-to-Server Action Codes (0xAA -> 0xFF)
+### Client-to-Server Action Codes (0xAA -> 0xFE)
 
 | Action Code | Description |
 | ----------- | ----------- |
 | 0xAB        | USERNAME    |
+| 0xAB        | USERNAME    |
+
+### Both Magic Number (0xFF)
+
+| Action Code | Description |
+| ----------- | ----------- |
+| 0xFF        | MAGIC_NUMBER|
 
 ## 4. Protocol Design
 
