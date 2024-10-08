@@ -13,6 +13,18 @@ ServerBroker::ServerBroker(INetworkModule *network_module, std::uint32_t ecs_id,
 
     _server->_sessionsManager->setOnReceive(std::bind(&ServerBroker::_onReceiveRequestCallback, this, std::placeholders::_1));
 
+    _server->setOnClientConnected([](ISession *session) {
+        Message *message = new Message();
+
+        message->setEmmiterID(0);
+        message->setReceiverID(session->getId());
+        message->setAction(0x01);
+        message->setTopicID(0);
+
+        session->sendTCP(message->serialize());
+        delete message;
+    });
+
     _server->run();
     std::cout << "ServerBroker is running" << std::endl;
 

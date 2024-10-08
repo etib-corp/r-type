@@ -26,6 +26,8 @@ public:
 
     std::shared_ptr<SessionManager> _sessionsManager;
 
+    void setOnClientConnected(std::function<void(ISession *)> onClientConnected) { _listenerTCP->setOnClientConnected(onClientConnected); }
+
 protected:
     std::shared_ptr<IListenerTCP> _listenerTCP;
     std::shared_ptr<IListenerUDP> _listenerUDP;
