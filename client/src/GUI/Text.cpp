@@ -9,11 +9,12 @@
 
 #include "Engine.hpp"
 
-LE::GUI::Text::Text(unsigned int id, const std::string &fontPath, unsigned int fontHeight, const std::string &content, unsigned int fontWidth )
+LE::GUI::Text::Text(unsigned int id, const std::string &fontPath, unsigned int fontHeight, const std::string &content, Color *color, unsigned int fontWidth )
 {
     _id = id;
     _content = content;
     _font = new LE::GUI::Font(fontHeight, fontPath, fontWidth);
+    _color = color ? color : new Color(LE::Color::FLOAT, 1.0f, 1.0f, 1.0f, 1.0f);
     _x = 0;
     _y = 0;
 }
@@ -61,7 +62,7 @@ void LE::GUI::Text::draw()
     glUniformMatrix4fv(glGetUniformLocation(triangleShader->getID(), "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 
     fontShader->use();
-    glUniform3f(glGetUniformLocation(fontShader->getID(), "textColor"), 1.0, 1.0, 1.0);
+    glUniform3f(glGetUniformLocation(fontShader->getID(), "textColor"), _color->_r, _color->_g, _color->_b);
     glActiveTexture(GL_TEXTURE0);
     glBindVertexArray(_VAO);
 
@@ -69,6 +70,8 @@ void LE::GUI::Text::draw()
     float x = _x;
     float xpos = 0;
     float ypos = 0;
+
+    _width = 0;
     for (c = _content.begin(); c != _content.end(); c++) {
         LE::GUI::Font::Character ch = _font->_characters[*c];
 
@@ -93,6 +96,17 @@ void LE::GUI::Text::draw()
         glDrawArrays(GL_TRIANGLES, 0, 6);
         x += (ch.Advance >> 6);
     }
+    _width = x - _x;
     glBindVertexArray(0);
     glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+void LE::GUI::Text::setContent(const std::string &content)
+{
+    _content = content;
+}
+
+std::string LE::GUI::Text::getContent() const
+{
+    return _content;
 }

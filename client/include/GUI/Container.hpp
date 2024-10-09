@@ -15,6 +15,12 @@
 
 namespace LE {
     namespace GUI {
+        class Interactable;
+    }
+}
+
+namespace LE {
+    namespace GUI {
         /**
          * @class Container
          * @brief Abstract base class representing a GUI container.
@@ -68,6 +74,7 @@ namespace LE {
             protected:
                 std::vector<Component *> _children; /**< The container's children components. @note Similar to React components. */
                 Shapes::Shape *_background; /**< The container's background. */
+                float _initialWidth; /**< The container's initial width. */
                 friend class Engine;
         };
     }

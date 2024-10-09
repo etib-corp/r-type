@@ -7,12 +7,6 @@
 
 #pragma once
 
-namespace LE {
-    class Window;
-    class SceneManager;
-    class Scene;
-}
-
 #include <memory>
 #include <iostream>
 
@@ -21,11 +15,18 @@ namespace LE {
 #include "Error.hpp"
 
 namespace LE {
+    class Window;
+    class SceneManager;
+    class Scene;
+
     namespace Shapes {
         class Triangle;
     }
     namespace GUI {
         class Text;
+        class Interactable;
+        class Button;
+        class TextField;
     }
 }
 
@@ -147,5 +148,9 @@ namespace LE {
             std::function<void ()> _configFunc; ///< Configuration function. This function is called before the engine starts running.
             friend class LE::Shapes::Triangle;
             friend class LE::GUI::Text;
+            friend class LE::GUI::Interactable;
+            friend class LE::GUI::Button;
+            friend class LE::GUI::Container;
+            friend class LE::GUI::TextField;
     };
 }

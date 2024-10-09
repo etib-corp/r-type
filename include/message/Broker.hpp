@@ -11,7 +11,6 @@
 #include "message/Topic.hpp"
 
 #include "interface/INetworkModule/INetworkModule.hpp"
-#include "interface/INetworkModule/INetworkModule.hpp"
 
 /**
  * @class Broker

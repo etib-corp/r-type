@@ -6,12 +6,16 @@
 */
 
 #include <iostream>
-// #include <GL/glut.h>
 #include "Engine.hpp"
 #include "Scene.hpp"
 #include <iostream>
+
 #include "PackUnpack.hpp"
 #include "ECS/Ecs.hpp"
+#include "GUI/TextField.hpp"
+#include "EnumClass.hpp"
+#include "GUI/TextField.hpp"
+
 #include "EnumClass.hpp"
 #include <chrono>
 
@@ -20,14 +24,15 @@ class GameScene : public LE::Scene
 public:
     GameScene() : LE::Scene()
     {
-        _eventManager->addEventListener({LE::Input::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::Type::PRESSED}, [this](LE::Engine *engine)
-                                        { std::cout << "Left click pressed" << std::endl; });
-        _eventManager->addEventListener({LE::Input::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::Type::RELEASED}, [this](LE::Engine *engine)
-                                        { std::cout << "Left click released" << std::endl; });
+        _guiManager = std::make_shared<LE::GUI::Manager>(1920, 1080);
+        LE::GUI::TextField *textField = new LE::GUI::TextField(100, 100, 200, 200, "Hello", new LE::Color(LE::Color::CHAR, 0, 0, 0, 255), new LE::Color(LE::Color::CHAR, 255, 255, 255, 255));
+
+        _guiManager->addChildren(textField);
     }
     void play() override
     {
         // std::cout << "Game scene updated." << std::endl;
+        _guiManager->draw();
         _eventManager->pollEvents();
     }
     void stop() override
@@ -43,6 +48,7 @@ struct Position
 };
 
 #include "GUI/Text.hpp"
+#include "GUI/Button.hpp"
 
 class MyContainer : public LE::GUI::Container {
     public:
@@ -132,7 +138,7 @@ int __main__(int ac, char **av)
     // Initialize the engine
     auto engine = LE::Engine::getInstance();
 
-    auto scene = std::make_shared<MyScene>();
+    auto scene = std::make_shared<GameScene>();
 
     engine->addScene("main", scene);
     // Run the engine
@@ -143,7 +149,6 @@ int __main__(int ac, char **av)
     }
     return 0;
 }
-
 #include "LoaderLib.hpp"
 #include "ResolvingLib.hpp"
 #include "interface/INetworkModule/INetworkModule.hpp"

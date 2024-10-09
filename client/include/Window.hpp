@@ -48,6 +48,8 @@ namespace LE {
     }
     namespace GUI {
         class Text;
+        class Interactable;
+        class Container;
     }
 }
 
@@ -162,5 +164,7 @@ namespace LE {
             std::unique_ptr<Clock> _clock;      ///< Unique pointer to the Clock object.
             friend class LE::Shapes::Triangle;
             friend class LE::GUI::Text;
+            friend class LE::GUI::Interactable;
+            friend class LE::GUI::Container;
     };
 }
