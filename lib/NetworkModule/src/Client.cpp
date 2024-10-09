@@ -42,9 +42,9 @@ void Client::readTCP()
                 {
                     char *_bodyStr = new char[_requestTCP.header.BodyLength];
                     ::memset(_bodyStr, 0, _requestTCP.header.BodyLength);
-                    std::istringstream iss;
                     _socketTCP.receive(boost::asio::buffer(_bodyStr, _requestTCP.header.BodyLength));
-                    iss.str(_bodyStr);
+                    std::string bodyString(_bodyStr, _requestTCP.header.BodyLength);
+                    std::istringstream iss(bodyString);
                     iss >> _requestTCP.body;
                     delete[] _bodyStr;
                 }
