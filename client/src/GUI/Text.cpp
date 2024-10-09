@@ -70,6 +70,8 @@ void LE::GUI::Text::draw()
     float x = _x;
     float xpos = 0;
     float ypos = 0;
+
+    _width = 0;
     for (c = _content.begin(); c != _content.end(); c++) {
         LE::GUI::Font::Character ch = _font->_characters[*c];
 
@@ -93,7 +95,18 @@ void LE::GUI::Text::draw()
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glDrawArrays(GL_TRIANGLES, 0, 6);
         x += (ch.Advance >> 6);
+        _width += w;
     }
     glBindVertexArray(0);
     glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+void LE::GUI::Text::setContent(const std::string &content)
+{
+    _content = content;
+}
+
+std::string LE::GUI::Text::getContent() const
+{
+    return _content;
 }

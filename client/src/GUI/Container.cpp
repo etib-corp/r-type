@@ -35,30 +35,18 @@ void LE::GUI::Container::draw()
         _background->draw();
     glDisable(GL_DEPTH_TEST);
 
-    if (auto interactable = dynamic_cast<LE::GUI::Interactable *>(this)) {
-        if (interactable->isHover()) {
-            interactable->OnHover();
-            LE::Engine::getInstance()->_sceneManager->getCurrentScene()->_eventManager->addEventListener({LE::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::JUST_PRESSED}, [interactable](LE::Engine *engine) {
-                if (interactable->isHover())
-                    interactable->OnClick();
-            });
-        } else {
-            interactable->OnUnhover();
-        }
-    }
-
     for (auto& child : _children) {
-        if (auto interactable = dynamic_cast<LE::GUI::Interactable *>(child)) {
-            if (interactable->isHover()) {
-                interactable->OnHover();
-                LE::Engine::getInstance()->_sceneManager->getCurrentScene()->_eventManager->addEventListener({LE::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::JUST_PRESSED}, [interactable](LE::Engine *engine) {
-                    if (interactable->isHover())
-                        interactable->OnClick();
-                });
-            } else {
-                interactable->OnUnhover();
-            }
-        }
+        // if (auto interactable = dynamic_cast<LE::GUI::Interactable *>(child)) {
+        //     if (interactable->isHover()) {
+        //         interactable->OnHover();
+        //         LE::Engine::getInstance()->_sceneManager->getCurrentScene()->_eventManager->addEventListener({LE::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::JUST_PRESSED}, [interactable](LE::Engine *engine) {
+        //             if (interactable->isHover())
+        //                 interactable->OnClick();
+        //         });
+        //     } else {
+        //         interactable->OnUnhover();
+        //     }
+        // }
         child->draw();
     }
 }

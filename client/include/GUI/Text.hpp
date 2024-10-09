@@ -61,6 +61,10 @@ namespace LE {
                  */
                 void init() override;
 
+                void setContent(const std::string &content);
+
+                std::string getContent() const;
+
             protected:
                 std::string _content; /** The text content. */
                 LE::GUI::Font *_font;  /** The text font. */
