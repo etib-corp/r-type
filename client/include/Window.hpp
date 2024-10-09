@@ -128,7 +128,7 @@ namespace LE {
              *
              * @param color The color to set as the clear color.
              */
-            void setClearColor(Color *color);
+            void setClearColor(const Color &color);
 
             /**
              * @brief Gets the GLFW window pointer.
@@ -170,4 +170,5 @@ namespace LE {
             friend class Engine;                ///< Friend class Engine.
             friend class LE::Shapes::Triangle;  ///< Friend class LE::Shapes::Triangle.
             friend class LE::GUI::Text;         ///< Friend class LE::GUI::Text.
+    };
 }

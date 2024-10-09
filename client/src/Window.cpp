@@ -105,9 +105,9 @@ void LE::Window::clear()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void LE::Window::setClearColor(Color *color)
+void LE::Window::setClearColor(const Color &color)
 {
-    glClearColor(color->_r, color->_g, color->_b, color->_a);
+    glClearColor(color._r, color._g, color._b, color._a);
 }
 
 GLFWwindow* LE::Window::getWindow()

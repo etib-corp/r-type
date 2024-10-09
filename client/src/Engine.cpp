@@ -47,10 +47,10 @@ void LE::Engine::run(bool throwError)
         _configFunc();
     }
     Color color;
-    color.a = 255;
-    color.r = 255;
-    color.g = 255;
-    color.b = 255;
+    color._a = 255.0f;
+    color._r = 255.0f;
+    color._g = 255.0f;
+    color._b = 255.0f;
     _window->setClearColor(color);
     _sceneManager->init();
     while (_window->isOpen()) {

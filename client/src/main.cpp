@@ -59,9 +59,9 @@ class GameScene : public LE::Scene
 public:
     GameScene() : LE::Scene()
     {
-        _eventManager->addEventListener({LE::Input::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::Type::PRESSED}, [this](LE::Engine *engine)
+        _eventManager->addEventListener({LE::Input::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::Type::PRESSED}, [this](LE::Engine *engine, float dt)
                                         { std::cout << "Left click pressed" << std::endl; });
-        _eventManager->addEventListener({LE::Input::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::Type::RELEASED}, [this](LE::Engine *engine)
+        _eventManager->addEventListener({LE::Input::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::Type::RELEASED}, [this](LE::Engine *engine, float dt)
                                         { std::cout << "Left click released" << std::endl; });
     }
     void play() override
