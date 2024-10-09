@@ -162,10 +162,9 @@ static void receiveFromServer( Message *message, ClientBroker *client_broker)
         if (message == nullptr)
             return;
         std::cout << "Message received from server" << std::endl;
-        // std::cout << message->getBody()._buffer << std::endl;
         ::memmove(&updateEcs, message->getBody()._buffer, sizeof(UpdateEcs));
-        std::cout << (int)updateEcs.ecs_id << std::endl;
-        std::cout << (int)updateEcs.actionInput << std::endl;
+        std::cout << "ECS ID = " << (int)updateEcs.ecs_id << std::endl;
+        std::cout << "Action Input" << (int)updateEcs.actionInput << std::endl;
         delete message;
     } catch (const std::exception &e) {
         std::cerr << e.what() << std::endl;
