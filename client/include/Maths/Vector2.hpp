@@ -11,7 +11,6 @@
 #include <glm.hpp>
 
 #include <cmath>
-#include <cxxabi.h>
 #include <iostream>
 #include <memory>
 #include <type_traits>
@@ -352,14 +351,6 @@ template<typename T>
 std::ostream& operator<<(std::ostream& os, const LE::Vector2<T> vec)
 {
     const char* name = typeid(T).name();
-    int status = -4;
-
-    std::unique_ptr<char, void(*)(void*)> res {
-        abi::__cxa_demangle(name, NULL, NULL, &status),
-        std::free
-    };
-    name = status == 0 ? res.get() : typeid(T).name();
-
     os << "Vector2<" << name << ">(" << vec.x << ", " << vec.y << ")";
     return os;
 }

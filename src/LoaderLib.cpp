@@ -18,6 +18,13 @@ LoaderLib::LoaderLib(const std::string &NetworkModule, const std::string &CoreMo
 
 LoaderLib::~LoaderLib()
 {
+    if (_handleNetworkModule) {
+        CLOSE_SYM(_handleNetworkModule);
+    }
+    
+    if (_handleCoreModule) {
+        CLOSE_SYM(_handleCoreModule);
+    }
 }
 
 void LoaderLib::LoadModule(void)
@@ -29,12 +36,24 @@ void LoaderLib::LoadModule(void)
     OPEN_SYM(_pathNetworkModule, _handleNetworkModule);
     if (_handleNetworkModule == nullptr)
         throw LoaderLibError("Can't load the module NETWORK");
+
     LOAD_SYM(_handleNetworkModule, _createNetworkModule, "createNetworkModule", INetworkModule*(*)());
     if (_createNetworkModule == nullptr)
         throw LoaderLibError("Can't load the symbol createNetworkModule");
 }
 
-INetworkModule *LoaderLib::createNetworkModule()
+INetworkModule *LoaderLib::createNetworkModule(void)
 {
+    if (_createNetworkModule == nullptr)
+        throw LoaderLibError("createNetworkModule is not loaded");
+
     return _createNetworkModule();
 }
+
+// ICoreModule *LoaderLib::createCoreModule(void)
+// {
+//     if (_createCoreModule == nullptr)
+//         throw LoaderLibError("createCoreModule is not loaded");
+//     return _createCoreModule();
+// }
+

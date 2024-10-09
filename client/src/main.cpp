@@ -5,12 +5,15 @@
 ** main
 */
 
-#include <iostream>
+#include "EnumClass.hpp"
 #include "Engine.hpp"
 #include "Scene.hpp"
-#include <iostream>
+#include "PackUnpack.hpp"
 #include "ECS/Ecs.hpp"
 #include "etibjson.hpp"
+#include <iostream>
+#include <chrono>
+
 
 bool parseJsonAndCreateEnemy(std::shared_ptr<Ecs> ecs, std::string path)
 {
@@ -51,9 +54,76 @@ bool parseJsonAndCreateEnemy(std::shared_ptr<Ecs> ecs, std::string path)
     return true;
 }
 
-class GameScene : public LE::Scene {
+class GameScene : public LE::Scene
+{
+public:
+    GameScene() : LE::Scene()
+    {
+        _eventManager->addEventListener({LE::Input::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::Type::PRESSED}, [this](LE::Engine *engine)
+                                        { std::cout << "Left click pressed" << std::endl; });
+        _eventManager->addEventListener({LE::Input::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::Type::RELEASED}, [this](LE::Engine *engine)
+                                        { std::cout << "Left click released" << std::endl; });
+    }
+    void play() override
+    {
+        // std::cout << "Game scene updated." << std::endl;
+        _eventManager->pollEvents();
+    }
+    void stop() override
+    {
+        std::cout << "Game scene ended." << std::endl;
+    }
+};
+
+struct Position
+{
+    float x;
+    float y;
+};
+
+#include "GUI/Text.hpp"
+
+class MyContainer : public LE::GUI::Container {
     public:
-        GameScene() : LE::Scene()
+        MyContainer(const std::string &content) {
+            _width = 500;
+            _height = 100;
+            _x = 0.0;
+            _y = 0;
+
+            LE::GUI::Text *text = new LE::GUI::Text(85, "assets/fonts/ARIAL.TTF", 24, content);
+
+            addChildren(text);
+        }
+
+        ~MyContainer() {
+            delete _background;
+        }
+};
+
+class MyParentContainer : public LE::GUI::Container {
+    public:
+        MyParentContainer() {
+            _width = 500;
+            _height = 100;
+            _x = 100.0;
+            _y = 0;
+
+            auto firstSubContainer = new MyContainer("Hello World !");
+            auto secondSubContainer = new MyContainer("Hi Marvin !");
+
+            addChildren(firstSubContainer);
+            addChildren(secondSubContainer);
+        }
+
+        ~MyParentContainer() {
+            delete _background;
+        }
+};
+
+class MyScene : public LE::Scene {
+    public:
+        MyScene()
         {
             _ecs = std::make_shared<Ecs>();
             _ecs->registerComponent<TransformComponent>();
@@ -168,6 +238,7 @@ class GameScene : public LE::Scene {
             _eventManager->pollEvents();
             _ecs->update(0.0f);
         }
+
         void stop() override
         {
             std::cout << "Game scene ended." << std::endl;
@@ -178,9 +249,16 @@ int main(int ac, char **av)
 {
     // Initialize the engine
     auto engine = LE::Engine::getInstance();
-    auto scene = std::make_shared<GameScene>();
-    engine->addScene("game", scene);
-    engine->run(true);
+
+    auto scene = std::make_shared<MyScene>();
+
+    engine->addScene("main", scene);
+    // Run the engine
+    try {
+        engine->runWithDebug(); // Change to true to simulate an error
+    } catch (const LE::Engine::EngineError &e) {
+        std::cerr << "Engine error: " << e.what() << std::endl;
+    }
     return 0;
 }
 
@@ -191,67 +269,94 @@ int main(int ac, char **av)
 #include <sstream>
 #include "PackUnpack.hpp"
 #include "message/ClientBroker.hpp"
+#include <EnumClass.hpp>
+#include "Common.hpp"
 
-bool deserializeRequest(const char* data, std::size_t length, std::istringstream *request)
+static void receiveFromServer( Message *message, ClientBroker *client_broker)
 {
-    if (length < sizeof(std::istringstream))
-    {
-        std::cerr << "Erreur: Données reçues trop courtes." << std::endl;
-        return false;
+    UpdateEcs updateEcs = {0};
+    try {
+        message = client_broker->getMessage(0, 1);
+        if (message == nullptr)
+            return;
+        std::cout << "Message received from server" << std::endl;
+        // std::cout << message->getBody()._buffer << std::endl;
+        ::memmove(&updateEcs, message->getBody()._buffer, sizeof(UpdateEcs));
+        std::cout << (int)updateEcs.ecs_id << std::endl;
+        std::cout << (int)updateEcs.actionInput << std::endl;
+        delete message;
+    } catch (const std::exception &e) {
+        std::cerr << e.what() << std::endl;
+        std::cout << "No message received. Waiting..." << std::endl;
+        std::this_thread::sleep_for(std::chrono::seconds(1));
     }
-
-    ::memmove(request, data, sizeof(std::istringstream));
-    return true;
 }
 
-int _main(void)
+static void sendToServer(void)
+{
+
+}
+
+static void sendAuthToServer(ClientBroker *client_broker, std::string playerName)
+{
+    Message *message = new Message();
+    Body body;
+
+    ::memmove(body._buffer, playerName.c_str(), playerName.size() + 1);
+    message->setMagicNumber(static_cast<uint8_t>(ActionCode::MAGIC_NUMBER));
+    message->setAction(static_cast<uint8_t>(ActionCode::USERNAME));
+    message->setBody(body);
+    client_broker->addMessage(0, 1, message);
+}
+
+int main_(void)
 {
     std::string pathLib = getPathOfNetworkDynLib() + getExtensionKernel();
+    LoaderLib loader_lib(pathLib, "");
+    INetworkModule *network_module = nullptr;
+    ClientBroker *client_broker = nullptr;
 
-    try {
-        Request request;
-        Header header;
-        Body body;
-        Entity entity;
-        LoaderLib lb(pathLib, "");
-        std::istringstream iss;
-        lb.LoadModule();
+    loader_lib.LoadModule();
+    network_module = loader_lib.createNetworkModule();
+    client_broker = new ClientBroker(network_module, "127.0.0.1", 8080);
 
-        INetworkModule *module = lb.createNetworkModule();
+    Message *message = nullptr;
 
-        IClient *client = module->createClient("127.0.0.1", 8080);
+    message = new Message();
+    std::string name = "mannuuuuuuuuuu";
 
-        client->connectToServer();
-        // client->sendTCP("Hello 0from client TCP\n");
-        client->sendUDP("Hello from client UDP\n");
-        while (true) {
-            // char *data = client->getDataTCP();
-            // if (::strlen(data)) {
-            //     ::memmove(&request.header, data, sizeof(Header));
-            //     std::cout << sizeof(Header) << std::endl;
-            //     // showHeader(request.header);
-            //     // deserializeRequest(data + sizeof(Header), 2048, &iss);
-            //     // ::memmove(&iss.str(), data + sizeof(Header), 2048);
-            //     showHeader(request.header);
-            //     char *request_body = data + sizeof(Header);
-            //     std::istringstream sub_iss;
-            //     sub_iss.str(request_body);
-            //     // header = request.header;
-            //     // std::cout << header.BodyLength << std::endl;
-            //     // static_cast<std::istringstream>(request.body) >> body;
-            //     // iss.str(client->getDataTCP());
-            //     // iss >> body;
-            //     sub_iss >> body;
-            //     // showHeader(header);
-            //     showBody(reinterpret_cast<Entity *>(&body));
-            //     ::memset(client->getDataTCP(), 0, 1024);
-            // }
-        }
+    sendAuthToServer(client_broker, name);
 
-    } catch(const std::exception& e) {
-        std::cerr << e.what() << '\n';
+    Body bodyTest = {._buffer = "|test|test|test|test|"};
+    message->setMagicNumber(static_cast<uint8_t>(ActionCode::MAGIC_NUMBER));
+    message->setAction(static_cast<uint8_t>(ActionCode::UP));
+    message->setBody(bodyTest);
+    client_broker->addMessage(0, 1, message);
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    message->setMagicNumber(static_cast<uint8_t>(ActionCode::MAGIC_NUMBER));
+    message->setAction(static_cast<uint8_t>(ActionCode::DOWN));
+    message->setBody(bodyTest);
+    client_broker->addMessage(0, 1, message);
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    message->setMagicNumber(static_cast<uint8_t>(ActionCode::MAGIC_NUMBER));
+    message->setAction(static_cast<uint8_t>(ActionCode::LEFT));
+    message->setBody(bodyTest);
+    client_broker->addMessage(0, 1, message);
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    message->setMagicNumber(static_cast<uint8_t>(ActionCode::MAGIC_NUMBER));
+    message->setAction(static_cast<uint8_t>(ActionCode::RIGHT));
+    message->setBody(bodyTest);
+    client_broker->addMessage(0, 1, message);
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    while (true)
+    {
+        receiveFromServer(message, client_broker);
     }
-    std::unique_ptr<ClientBroker> client_broker = std::make_unique<ClientBroker>("127.0.0.1", 4242);
+    // client_broker->addMessage(0, 1, message);
 
+    std::cout << "ClientBroker is stopping" << std::endl;
+
+    delete client_broker;
+    delete network_module;
     return 0;
 }

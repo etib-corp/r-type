@@ -95,7 +95,7 @@ namespace LE
         Input input;
         int key;
         Type type;
-        bool _alreadyPressed = false;
+        bool _alreadyPressed;
     } Key;
 
     /**

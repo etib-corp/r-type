@@ -23,10 +23,11 @@ public:
     /**
      * @brief Constructs a new ClientBroker object.
      *
+     * @param network_module The network module to use for communication.
      * @param connect_address The address to connect to.
      * @param connect_port The port to connect to.
      */
-    ClientBroker(std::string connect_address, std::uint16_t connect_port);
+    ClientBroker(INetworkModule *network_module, std::string connect_address, std::uint16_t connect_port);
 
     /**
      * @brief Destroys the ClientBroker object.
@@ -39,5 +40,7 @@ private:
     std::uint16_t _connect_port;
     IClient *_client;
 
-    void _networkRoutine(void) override;
+    void _sendMessage(Message *message) override;
+
+    void _onReceiveRequestCallback(const Request &request);
 };

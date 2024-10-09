@@ -21,10 +21,9 @@ public:
      * @brief Constructs a new Topic object.
      *
      * @param ecs_id The ID associated with the topic.
-     * @param name The name of the topic.
+     * @param id The ID of the topic.
      */
-
-    Topic(std::uint32_t ecs_id, const std::string name);
+    Topic(std::uint32_t ecs_id, std::uint8_t id);
 
     /**
      * @brief Destroys the Topic object.
@@ -36,9 +35,9 @@ public:
      *
      * @param message A unique pointer to the message to be added.
      */
-    void addMessage(std::unique_ptr<Message> message)
+    void addMessage(Message *message)
     {
-        _messages.push(std::move(message));
+        _messages.push(message);
     }
 
     /**
@@ -46,17 +45,17 @@ public:
      *
      * @return A unique pointer to the next message, or nullptr if the queue is empty.
      */
-    std::unique_ptr<Message> getMessage(void)
+    Message *getMessage(void)
     {
         if (_messages.empty())
             return nullptr;
-        auto message = std::move(_messages.front());
+        Message *message = _messages.front();
         _messages.pop();
         return message;
     }
 
 private:
     std::uint32_t _ecs_id;
-    std::string _name;
-    std::queue<std::unique_ptr<Message>> _messages;
+    std::uint8_t _id;
+    std::queue<Message *> _messages;
 };

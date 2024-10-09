@@ -4,14 +4,14 @@
 #include <cstdint>
 #include <cerrno>
 #include <cstring>
-#include <zlib.h>
 #include "PackUnpack.hpp"
 
 void showHeader(Header header)
 {
     std::cout << "Header:" << std::endl;
     std::cout << "\tMagicNumber: " << +header.MagicNumber << std::endl;
-    std::cout << "\tECS_CLIENT_ID: " << +header.ECS_CLIENT_ID << std::endl;
+    std::cout << "\tEmmiter id: " << +header.EmmiterdEcsId << std::endl;
+    std::cout << "\tReceiver id: " << +header.ReceiverEcsId << std::endl;
     std::cout << "\tAction: " << +header.Action << std::endl;
     std::cout << "\tBodyLength: " << header.BodyLength << std::endl;
     // std::cout << "\tBodyCorp: " << header.Body << std::endl;
@@ -37,7 +37,7 @@ std::istream& operator>>(std::istream& is, Body& req)
 {
     size_t originalSize = sizeof(Body);
     std::vector<uint8_t> compressedData((std::istreambuf_iterator<char>(is)), std::istreambuf_iterator<char>());
-    std::vector<uint8_t> decompressedData = PackUnpack::unPack(compressedData, originalSize);
+    std::vector<uint8_t> decompressedData = PackUnpack::unPack(compressedData);
     req = PackUnpack::deserialize<Body>(decompressedData);
     return is;
 }

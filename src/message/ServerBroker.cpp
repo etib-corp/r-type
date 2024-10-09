@@ -2,32 +2,64 @@
 
 #include "message/ServerBroker.hpp"
 
-ServerBroker::ServerBroker(std::uint32_t ecs_id, std::uint16_t listen_port) : _listen_port(listen_port)
+ServerBroker::ServerBroker(INetworkModule *network_module, std::uint32_t ecs_id, std::uint16_t listen_port) : _listen_port(listen_port)
 {
-    setECSId(ecs_id);
-
-    std::string network_module_path = getPathOfNetworkDynLib() + getExtensionKernel();
-    std::string core_module_path = "";
-
-    _loader_lib = std::make_unique<LoaderLib>(network_module_path, core_module_path);
-
-    _loader_lib->LoadModule();
-
-    _network_module = _loader_lib->createNetworkModule();
+    _setNetworkModule(network_module);
+    _setECSId(ecs_id);
+    _setSendFunction(std::bind(&ServerBroker::_sendMessage, this, std::placeholders::_1));
 
     _server = _network_module->createServer(_listen_port);
+    std::cout << "ServerBroker network server created" << std::endl;
 
+    _server->_sessionsManager->setOnReceive(std::bind(&ServerBroker::_onReceiveRequestCallback, this, std::placeholders::_1));
+
+    _server->setOnClientConnected([](ISession *session) {
+        Message *message = new Message();
+
+        message->setEmmiterID(0);
+        message->setReceiverID(session->getId());
+        message->setAction(0x01);
+        message->setTopicID(0);
+
+        session->sendTCP(message->serialize());
+        delete message;
+    });
+
+    _server->run();
+    std::cout << "ServerBroker is running" << std::endl;
+
+    std::cout << "ServerBroker thread started" << std::endl;
     _thread = std::thread(&ServerBroker::_run, this);
 }
 
 ServerBroker::~ServerBroker(void)
 {
-    _is_running = false;
-    _thread.join();
+    std::cout << "ServerBroker is stopping" << std::endl;
+    _stop();
+    std::cout << "ServerBroker stopped" << std::endl;
 }
 
-void ServerBroker::_networkRoutine(void)
+void ServerBroker::_sendMessage(Message *message)
 {
-    std::cout << "ServerBroker networkRoutine" << std::endl;
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    std::string compress_request = message->serialize();
+
+    _server->_sessionsManager->getClientById(message->getReceiverID())->sendTCP(compress_request);
+}
+
+void ServerBroker::_onReceiveRequestCallback(const Request &request)
+{
+    Message *message = new Message();
+
+    message->setMagicNumber(request.header.MagicNumber);
+    message->setEmmiterID(request.header.EmmiterdEcsId);
+    message->setReceiverID(request.header.ReceiverEcsId);
+    message->setAction(request.header.Action);
+    message->setTopicID(request.header.TopicID);
+    message->setBody(request.body);
+    _incomming_messages.push(message);
+}
+
+void ServerBroker::_onClientDisconnectedCallback(ISession *session)
+{
+    std::cout << session->getId() << " disconnect" << std::endl;
 }

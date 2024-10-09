@@ -13,6 +13,7 @@ namespace LE {
 
 #include "Clock.hpp"
 #include "Error.hpp"
+#include "Color.hpp"
 
 #include <cmath>
 #include <memory>
@@ -32,8 +33,9 @@ namespace LE {
 
 #ifdef _WIN32
     #define GL_GLEXT_PROTOTYPES
+    #include <windows.h>
     #include <GL/gl.h>
-    #include <GL/glext.h>
+    #include "GLFW/glext.h"
 #endif
 
 #include "GLFW/glfw3.h"
@@ -41,15 +43,16 @@ namespace LE {
 
 namespace LE {
     class Shader;
+    namespace Shapes {
+        class Triangle;
+    }
+    namespace GUI {
+        class Text;
+    }
 }
-extern LE::Shader *fontShader;
 
-typedef union {
-    unsigned int value;
-    struct {
-        unsigned char r, g, b, a;
-    };
-} Color; // ! use the Color when merging
+extern LE::Shader *fontShader;
+extern LE::Shader *triangleShader;
 
 /**
  * @file Window.hpp
@@ -125,7 +128,7 @@ namespace LE {
              *
              * @param color The color to set as the clear color.
              */
-            void setClearColor(Color color);
+            void setClearColor(Color *color);
 
             /**
              * @brief Gets the GLFW window pointer.
@@ -165,5 +168,6 @@ namespace LE {
             std::size_t _defaultFramerate;      ///< The default framerate.
             friend class EventManager;          ///< Friend class EventManager.
             friend class Engine;                ///< Friend class Engine.
-    };
+            friend class LE::Shapes::Triangle;  ///< Friend class LE::Shapes::Triangle.
+            friend class LE::GUI::Text;         ///< Friend class LE::GUI::Text.
 }

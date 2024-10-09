@@ -13,6 +13,7 @@ LE::GUI::Manager::Manager(unsigned int width, unsigned int height)
     _height = height;
     _x = 0;
     _y = 0;
+    _background = nullptr;
 }
 
 LE::GUI::Manager::~Manager()

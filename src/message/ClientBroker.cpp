@@ -2,36 +2,47 @@
 
 #include "message/ClientBroker.hpp"
 
-ClientBroker::ClientBroker(std::string connect_address, std::uint16_t connect_port) : _connect_address(connect_address), _connect_port(connect_port)
+ClientBroker::ClientBroker(INetworkModule *network_module, std::string connect_address, std::uint16_t connect_port) : _connect_address(connect_address), _connect_port(connect_port)
 {
-    std::string network_module_path = getPathOfNetworkDynLib() + getExtensionKernel();
-    std::string core_module_path = "";
-
-    _loader_lib = std::make_unique<LoaderLib>(network_module_path, std::string());
-
-    _loader_lib->LoadModule();
-
-    _network_module = _loader_lib->createNetworkModule();
+    _setNetworkModule(network_module);
+    _setSendFunction(std::bind(&ClientBroker::_sendMessage, this, std::placeholders::_1));
 
     _client = _network_module->createClient(_connect_address, _connect_port);
+    std::cout << "ClientBroker network client created" << std::endl;
 
     _client->connectToServer();
+    std::cout << "ClientBroker network client connected" << std::endl;
 
+    _setECSId(_client->getId());
+
+    _client->setOnReceive(std::bind(&ClientBroker::_onReceiveRequestCallback, this, std::placeholders::_1));
+
+    std::cout << "ClientBroker thread started" << std::endl;
     _thread = std::thread(&ClientBroker::_run, this);
 }
 
 ClientBroker::~ClientBroker(void)
 {
-    _mutex.lock();
-    _is_running = false;
-    _mutex.unlock();
-    _thread.join();
+    std::cout << "ClientBroker is stopping" << std::endl;
+    _stop();
+    std::cout << "ClientBroker stopped" << std::endl;
 }
 
-void ClientBroker::_networkRoutine(void)
+void ClientBroker::_sendMessage(Message *message)
 {
-    std::cout << "ClientBroker networkRoutine" << std::endl;
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    std::string compressed_request = message->serialize();
+
+    _client->sendTCP(compressed_request);
 }
 
+void ClientBroker::_onReceiveRequestCallback(const Request &request)
+{
+    Message *message = new Message();
 
+    message->setEmmiterID(request.header.EmmiterdEcsId);
+    message->setReceiverID(request.header.ReceiverEcsId);
+    message->setAction(request.header.Action);
+    message->setTopicID(request.header.TopicID);
+    message->setBody(request.body);
+    _incomming_messages.push(message);
+}

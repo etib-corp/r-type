@@ -1,5 +1,8 @@
 include(FetchContent)
 
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+SET(CMAKE_ALL_ERRORS_FATAL TRUE)
+
 cmake_minimum_required(VERSION 3.20)
 project(r-type)
 
@@ -14,19 +17,20 @@ set(OpenGL_GL_PREFERENCE GLVND)
 find_package(OpenGL REQUIRED)
 
 add_subdirectory(dependencies/glfw-3.4)
-add_subdirectory(dependencies/zlib-1.3.1)
 add_subdirectory(dependencies/freetype-VER-2-13-3)
 add_subdirectory(dependencies/glm)
 add_subdirectory(dependencies/assimp-5.4.3)
-
+add_subdirectory(dependencies/boost-1.86.0)
 
 file(GLOB_RECURSE SOURCES src/*.cpp)
 include_directories(include)
 add_library(r-type STATIC ${SOURCES})
+target_link_libraries(r-type Boost::iostreams)
 
 include_directories(${OPENGL_INCLUDE_DIRS})
 include_directories(dependencies/glm/)
 include_directories(dependencies/assimp-5.4.3/include)
+include_directories(${BOOST_INCLUDE_DIRS})
 
 file(GLOB_RECURSE CLIENT_SOURCES client/src/*.cpp)
 include_directories(client/include client/include/GUI client/include/Maths dependencies/stb/include dependencies/rapidobj/include dependencies/json-0.0.1/include)
@@ -41,7 +45,6 @@ target_link_libraries(r-type_client r-type)
 target_link_libraries(r-type_client glfw)
 target_link_libraries(r-type_client ${OPENGL_LIBRARIES})
 target_link_libraries(r-type_client ${GLUT_LIBRARIES})
-target_link_libraries(r-type_client zlib)
 target_link_libraries(r-type_client freetype)
 target_link_libraries(r-type_client glm)
 target_link_libraries(r-type_client assimp)
@@ -51,6 +54,6 @@ include_directories(server/include)
 add_executable(r-type_server ${SERVER_SOURCES})
 
 target_link_libraries(r-type_server r-type)
-target_link_libraries(r-type_server zlib)
+
 
 add_subdirectory(lib)

@@ -4,30 +4,28 @@
 
 ### **File Architecture Overview**
 
-- **`client/`**  
+- **`client/`**
   Contains the source code and header files for the client.
 
-- **`graphical/`**  
-  Currently under development.
-
-- **`include/`**  
+- **`include/`**
   Shared header files used by both server and client.
 
-- **`lib/`**  
+- **`lib/`**
   Directory for shared libraries.
 
-- **`server/`**  
+- **`server/`**
   Contains the source code and header files for the server.
 
-- **`include/`**  
-  Shared source files used by both server and client.
+- **`dependencies/`**
+  Dependencies for the current CMakeLists.txt.
+
 
 ---
 
 ### **Entity Component System**
 An entity component system is a design pattern used to create a modular and scalable architecture for video games.
 
-- **`Entity`**  
+- **`Entity`**
   An entity is a container for components. An entity is a unique identifier.
 
 - **`Component`**
@@ -70,3 +68,30 @@ public:
     }
 };
 ```
+### **Module**
+
+- **`AsioNetworkModule`**
+  Module for networking using the Asio library.
+
+- **`ClientCoreModule`**
+  Module for the client core.
+
+- **`ServerCoreModule`**
+  Module for the server core.
+
+- **`TestClientCoreModule`**
+  Module for the test client core.
+
+- **`TestNetworkModule`**
+  Module for the test network.
+
+- **`TestServerCoreModule`**
+  Module for the test server core.
+
+---
+
+### **RFC**
+
+- **`RFC`**
+
+![RFC](./RFC.md)

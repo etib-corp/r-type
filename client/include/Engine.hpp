@@ -21,6 +21,15 @@ namespace LE {
 #include "Error.hpp"
 #include "ECS/Components/CameraComponent.hpp"
 
+namespace LE {
+    namespace Shapes {
+        class Triangle;
+    }
+    namespace GUI {
+        class Text;
+    }
+}
+
 /**
  * @file Engine.hpp
  * @brief Defines the Engine class.
@@ -161,5 +170,7 @@ namespace LE {
             float _dt;                          ///< The delta time.
             std::size_t _framerateLimit;        ///< The frame rate limit.
             friend class EventManager; ///< Friend class EventManager.
+            friend class LE::Shapes::Triangle;
+            friend class LE::GUI::Text;
     };
 }

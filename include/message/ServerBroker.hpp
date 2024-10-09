@@ -21,19 +21,31 @@ public:
     /**
      * @brief Constructs a new ServerBroker object.
      *
+     * @param network_module The network module to use for communication.
      * @param ecs_id The ID of the ECS (Entity Component System).
      * @param listen_port The port on which the server will listen for incoming connections.
      */
-    ServerBroker(std::uint32_t ecs_id, std::uint16_t listen_port);
+    ServerBroker(INetworkModule *network_module, std::uint32_t ecs_id, std::uint16_t listen_port);
 
     /**
      * @brief Destroys the ServerBroker object.
      */
     ~ServerBroker(void);
 
+    /**
+     * @brief Get all clients id connected to the server.
+     *
+     * @return The list of clients id.
+     */
+    [[nodiscard]] std::deque<std::shared_ptr<ISession>> getClientsSessions(void) const { return _server->_sessionsManager->getClients(); }
+
 private:
     std::uint16_t _listen_port;
     IServer *_server;
 
-    void _networkRoutine(void) override;
+    void _sendMessage(Message *message) override;
+
+    void _onReceiveRequestCallback(const Request &request);
+
+    void _onClientDisconnectedCallback(ISession *session);
 };
