@@ -53,8 +53,8 @@ namespace LE {
     }
 }
 
-extern LE::Shader *fontShader;
-extern LE::Shader *triangleShader;
+extern LE::Shader *fontShader;      ///< The font shader.
+extern LE::Shader *triangleShader;  ///< The triangle shader.
 
 /**
  * @file Window.hpp
@@ -172,7 +172,7 @@ namespace LE {
             friend class Engine;                ///< Friend class Engine.
             friend class LE::Shapes::Triangle;  ///< Friend class LE::Shapes::Triangle.
             friend class LE::GUI::Text;         ///< Friend class LE::GUI::Text.
-            friend class LE::GUI::Interactable;
-            friend class LE::GUI::Container;
+            friend class LE::GUI::Interactable; ///< Friend class LE::GUI::Interactable.
+            friend class LE::GUI::Container;    ///< Friend class LE::GUI::Container.
     };
 }

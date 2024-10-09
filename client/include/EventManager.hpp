@@ -37,8 +37,8 @@ namespace LE
      */
     typedef struct
     {
-        bool success;
-        std::string message;
+        bool success;           ///< A boolean value indicating whether the operation was successful.
+        std::string message;    ///< A string message providing additional information about the operation.
     } Status;
 
     /**
@@ -54,10 +54,10 @@ namespace LE
      */
     typedef enum
     {
-        PRESSED,
-        RELEASED,
-        JUST_PRESSED,
-        JUST_RELEASED
+        PRESSED,            ///< The key is currently pressed.
+        RELEASED,           ///< The key is currently released.
+        JUST_PRESSED,       ///< The key was just pressed.
+        JUST_RELEASED       ///< The key was just released.
     } Type;
 
     /**
@@ -73,10 +73,10 @@ namespace LE
      */
     typedef enum
     {
-        KEYBOARD,
-        MOUSE,
-        JOYSTICK_BUTTON,
-        JOYSTICK_AXIS
+        KEYBOARD,           ///< The event is from a keyboard.
+        MOUSE,              ///< The event is from a mouse.
+        JOYSTICK_BUTTON,    ///< The event is from a joystick button.
+        JOYSTICK_AXIS       ///< The event is from a joystick axis.
     } Input;
 
     /**
@@ -92,10 +92,10 @@ namespace LE
      */
     typedef struct
     {
-        Input input;
-        int key;
-        Type type;
-        bool _alreadyPressed;
+        Input input;            ///< The input source of the event.
+        int key;                ///< The key code of the event.
+        Type type;              ///< The type of the event.
+        bool _alreadyPressed;   ///< A boolean value indicating whether the key was already pressed.
     } Key;
 
     /**

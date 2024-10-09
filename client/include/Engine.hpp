@@ -162,20 +162,20 @@ namespace LE {
 
             static Engine* _instance; ///< The singleton instance of the Engine class.
 
-            std::shared_ptr<LE::Window> _window; ///< Shared pointer to the Window instance.
-            std::shared_ptr<SceneManager> _sceneManager; ///< Shared pointer to the SceneManager instance.
-            bool _debugMode; ///< Flag indicating whether debug mode is enabled.
-            bool _throwError; ///< Flag indicating whether to throw an error.
-            std::function<void ()> _configFunc; ///< Configuration function. This function is called before the engine starts running.
-            std::unique_ptr<Clock> _clock;      ///< Unique pointer to the Clock object.
-            float _dt;                          ///< The delta time.
-            std::size_t _framerateLimit;        ///< The frame rate limit.
-            friend class EventManager; ///< Friend class EventManager.
-            friend class LE::Shapes::Triangle;
-            friend class LE::GUI::Text;
-            friend class LE::GUI::Interactable;
-            friend class LE::GUI::Button;
-            friend class LE::GUI::Container;
-            friend class LE::GUI::TextField;
+            std::shared_ptr<LE::Window> _window;            ///< Shared pointer to the Window instance.
+            std::shared_ptr<SceneManager> _sceneManager;    ///< Shared pointer to the SceneManager instance.
+            bool _debugMode;                                ///< Flag indicating whether debug mode is enabled.
+            bool _throwError;                               ///< Flag indicating whether to throw an error.
+            std::function<void ()> _configFunc;             ///< Configuration function. This function is called before the engine starts running.
+            std::unique_ptr<Clock> _clock;                  ///< Unique pointer to the Clock object.
+            float _dt;                                      ///< The delta time.
+            std::size_t _framerateLimit;                    ///< The frame rate limit.
+            friend class EventManager;                      ///< Friend class EventManager.
+            friend class LE::Shapes::Triangle;              ///< Friend class LE::Shapes::Triangle.
+            friend class LE::GUI::Text;                     ///< Friend class LE::GUI::Text.
+            friend class LE::GUI::Interactable;             ///< Friend class LE::GUI::Interactable.
+            friend class LE::GUI::Button;                   ///< Friend class LE::GUI::Button.
+            friend class LE::GUI::Container;                ///< Friend class LE::GUI::Container.
+            friend class LE::GUI::TextField;                ///< Friend class LE::GUI::TextField.
     };
 }
