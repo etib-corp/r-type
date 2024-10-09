@@ -12,7 +12,10 @@
 
 #include "PackUnpack.hpp"
 #include "ECS/Ecs.hpp"
+
 #include "GUI/TextField.hpp"
+
+#include "EnumClass.hpp"
 
 class GameScene : public LE::Scene
 {
