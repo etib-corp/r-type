@@ -2,7 +2,7 @@
 
 void Broker::_networkRoutine(void)
 {
-    _sendMessages(_sendFunction);
+    _sendMessages();
 }
 
 void Broker::_logicalRoutine()
@@ -50,7 +50,7 @@ void Broker::_stop(void)
     std::cout << "Broker thread joined" << std::endl;
 }
 
-void Broker::_sendMessages(std::function<void(Message *)> sendFunction)
+void Broker::_sendMessages(void)
 {
     Message *message = nullptr;
     while (!_outgoing_messages.empty())
