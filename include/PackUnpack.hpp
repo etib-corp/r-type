@@ -125,6 +125,9 @@ public:
     [[nodiscard]] static T deserialize(const std::vector<uint8_t> &data)
     {
         T obj;
+
+        if (data.size() == 0)
+            return obj;
         std::memmove(&obj, data.data(), sizeof(T));
         return obj;
     }
