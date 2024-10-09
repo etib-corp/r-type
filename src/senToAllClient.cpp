@@ -15,7 +15,7 @@ void sendToAllClient(
 )
 {
     Body body = {0};
-    UpdateEcs updateEcs = {.ecs_id = 0x03, .actionInput = ecsInput};
+    UpdateEcs updateEcs = {.ecs_id = 0x00, .actionInput = ecsInput};
 
     sessions = server_broker->getClientsSessions();
     if (sessions.size() <= 0)

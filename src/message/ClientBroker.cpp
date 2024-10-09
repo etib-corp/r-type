@@ -1,5 +1,11 @@
-#include <iostream>
+/*
+** EPITECH PROJECT, 2024
+** r-type
+** File description:
+** ClientBroker
+*/
 
+#include <iostream>
 #include "message/ClientBroker.hpp"
 
 ClientBroker::ClientBroker(INetworkModule *network_module, std::string connect_address, std::uint16_t connect_port) : _connect_address(connect_address), _connect_port(connect_port)
