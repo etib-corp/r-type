@@ -20,12 +20,17 @@
 #include "SenToAllClient.hpp"
 #include <iostream>
 
-static void receiveFromClient(Message *message, ServerBroker *server_broker, std::shared_ptr<Ecs> _ecs, ResponsibilityChain chain)
+
+static void receiveFromClient(ServerBroker *server_broker, std::shared_ptr<Ecs> _ecs, ResponsibilityChain chain)
 {
     try {
+        Message *message = nullptr;
+        Session session = 
         message = server_broker->getMessage(0, 1);
-        if (message == nullptr)
+        if (message == nullptr) {
+            std::cout << "message is null" << std::endl;
             return;
+        }
         std::cout << "Message received from client" << std::endl;
         Header header = {
             .MagicNumber = message->getMagicNumber(),
@@ -35,23 +40,27 @@ static void receiveFromClient(Message *message, ServerBroker *server_broker, std
             .Action = message->getAction(),
             .BodyLength = 0
         };
-        processHeader(header, _ecs, chain);
+        Body body = message->getBody();
+        Request req = {
+            .header = header,
+            .body = body
+        };
+        processRequest(req, _ecs, chain);
         std::cout << "getBody()=" << message->getBody()._buffer << std::endl;
         std::cout << "getReceiverID()=" << (int)message->getReceiverID() << std::endl;
         std::cout << "getEmmiterID()=" << (int)message->getEmmiterID() << std::endl;
-        delete message;
+        // delete message;
     } catch (const std::exception &e) {
         std::cerr << e.what() << std::endl;
-        std::cout << "No message received. Waiting..." << std::endl;
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        // std::cout << "No message received. Waiting..." << std::endl;
     }
 }
 
-static void receivedFromAllClient(Message *message, ServerBroker *server_broker, std::shared_ptr<Ecs> _ecs, ResponsibilityChain chain)
+static void receivedFromAllClient(ServerBroker *server_broker, std::shared_ptr<Ecs> _ecs, ResponsibilityChain chain)
 {
     while (true)
     {
-        receiveFromClient(message, server_broker, _ecs, chain);
+        receiveFromClient(server_broker, _ecs, chain);
     }
 }
 
@@ -62,16 +71,24 @@ int main(void)
     std::string pathLib = getPathOfNetworkDynLib() + getExtensionKernel();
     LoaderLib loader_lib(pathLib, "");
     loader_lib.LoadModule();
-    Message *message = nullptr;
     INetworkModule *network_module = loader_lib.createNetworkModule();
     ServerBroker *server_broker = new ServerBroker(network_module, 0, 8080);
     auto sessions = server_broker->getClientsSessions();
 
-    attributeServerCallback(&chain, sessions, server_broker, message);
-
-    clock.addCallback([sessions, server_broker, message]()
+    attributeServerCallback(&chain, sessions, server_broker);
+    int nbrPlayer = 0;
+    chain.addActionCallback(asChar(ActionCode::NEW_CONNECTION), [&nbrPlayer, sessions, server_broker](const Request &request, std::shared_ptr<Ecs> _ecs)
     {
-        std::cout << "All 100 ms : " << std::endl;
+        std::cout << "New connection" << std::endl;
+        nbrPlayer++;
+        if (nbrPlayer == 2) {
+            sendToAllClient(asChar(ActionCode::START_GAME), sessions, server_broker);
+        }
+    });
+
+    clock.addCallback([sessions, server_broker]()
+    {
+        // std::cout << "All 100 ms : " << std::endl;
         // sendToAllClient(sessions, server_broker, message);
     }, 100);
 
@@ -83,7 +100,7 @@ int main(void)
 
     _ecs->addComponent<TransformComponent>(entity, {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}});
 
-    receivedFromAllClient(message, server_broker, _ecs, chain);
+    receivedFromAllClient(server_broker, _ecs, chain);
 
     delete server_broker;
     delete network_module;

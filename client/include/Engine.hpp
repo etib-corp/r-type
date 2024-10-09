@@ -129,6 +129,15 @@ namespace LE {
             void setConfig(std::function<void()> func);
 
             /**
+             * @brief Sets the loop function.
+             *
+             * This function is used to set a loop function that will be called during the engine's main loop.
+             *
+             * @param func The loop function to set.
+             */
+            void setLoop(std::function<void()> func);
+
+            /**
              * @brief Sets the frame rate limit for the window.
              *
              * @param limit The frame rate limit.
@@ -167,6 +176,7 @@ namespace LE {
             bool _debugMode;                                ///< Flag indicating whether debug mode is enabled.
             bool _throwError;                               ///< Flag indicating whether to throw an error.
             std::function<void ()> _configFunc;             ///< Configuration function. This function is called before the engine starts running.
+            std::function<void ()> _loopFunc;               ///< Loop function. This function is called during the engine's main loop.
             std::unique_ptr<Clock> _clock;                  ///< Unique pointer to the Clock object.
             float _dt;                                      ///< The delta time.
             std::size_t _framerateLimit;                    ///< The frame rate limit.

@@ -56,6 +56,9 @@ void LE::Engine::run(bool throwError)
     _window->setClearColor(color);
     _sceneManager->init();
     while (_window->isOpen()) {
+        if (_loopFunc) {
+            _loopFunc();
+        }
         _dt = _clock->getElapsedTime();
         if (_clock->getElapsedTime() < (1000.0f / _framerateLimit))
             continue;
@@ -99,6 +102,11 @@ void LE::Engine::throwError(const LE::Error& error)
 void LE::Engine::setConfig(std::function<void()> func)
 {
     _configFunc = func;
+}
+
+void LE::Engine::setLoop(std::function<void()> func)
+{
+    _loopFunc = func;
 }
 
 void LE::Engine::setFramerateLimit(std::size_t limit)

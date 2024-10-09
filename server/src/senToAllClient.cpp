@@ -10,9 +10,7 @@
 void sendToAllClient(
     std::uint8_t ecsInput,
     std::deque<std::shared_ptr<ISession>> sessions,
-    ServerBroker *server_broker,
-    Message *message
-)
+    ServerBroker *server_broker)
 {
     Body body = {0};
     UpdateEcs updateEcs = {.ecs_id = 0x00, .actionInput = ecsInput};
@@ -26,12 +24,12 @@ void sendToAllClient(
     ::memmove(body._buffer, &updateEcs, sizeof(updateEcs));
     for (auto &session : sessions)
     {
-        message = new Message();
+        std::shared_ptr<Message> message = std::make_shared<Message>();
         message->setMagicNumber(0x77);
         message->setAction(static_cast<std::uint8_t>(ActionCode::UPDATE_ECS));
         message->setEmmiterID(0x0);
         message->setBody(body);
-        server_broker->addMessage(session->getId(), 1, message);
+        server_broker->addMessage(session->getId(), 1, message.get());
         std::cout << "Message sent to client <" << session->getId() << ">" << std::endl;
     }
 }

@@ -21,11 +21,6 @@
 #include "SenToAllClient.hpp"
 #include "CallBack.hpp"
 
-void callbackInputUp(const Header& header, std::shared_ptr<Ecs> _ecs);
-void callbackInputDown(const Header& header, std::shared_ptr<Ecs> _ecs);
-void callbackInputLeft(const Header& header, std::shared_ptr<Ecs> _ecs);
-void callbackInputRight(const Header& header, std::shared_ptr<Ecs> _ecs);
-void checkMagicNumber(const Header& header, std::shared_ptr<Ecs> _ecs);
-void attributeServerCallback(ResponsibilityChain *chain, std::deque<std::shared_ptr<ISession>> sessions, ServerBroker *server_broker, Message *message);
+void attributeServerCallback(ResponsibilityChain *chain, std::deque<std::shared_ptr<ISession>> sessions, ServerBroker *server_broker);
 
 #endif /* !CALLBACKSERVER_HPP_ */

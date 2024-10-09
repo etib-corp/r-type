@@ -14,9 +14,17 @@
 #include "GUI/TextField.hpp"
 #include "EnumClass.hpp"
 #include "GUI/TextField.hpp"
-#include "EnumClass.hpp"
 #include <chrono>
 #include "etibjson.hpp"
+#include "LoaderLib.hpp"
+#include "ResolvingLib.hpp"
+#include "interface/INetworkModule/INetworkModule.hpp"
+#include <cstring>
+#include <sstream>
+#include "message/ClientBroker.hpp"
+#include "Common.hpp"
+#include "CallbackClient.hpp"
+
 
 bool parseJsonAndCreateEnemy(std::shared_ptr<Ecs> ecs, std::string path)
 {
@@ -81,12 +89,6 @@ public:
     {
         std::cout << "Game scene ended." << std::endl;
     }
-};
-
-struct Position
-{
-    float x;
-    float y;
 };
 
 #include "GUI/Text.hpp"
@@ -180,7 +182,7 @@ class MyScene : public LE::Scene {
                 }
             });
 
-            parseJsonAndCreateEnemy(_ecs, "assets/config/vague_1.json");
+            // parseJsonAndCreateEnemy(_ecs, "assets/config/vague_1.json");
 
             // Entity entity = _ecs->createEntity();
             // _ecs->addComponent<TransformComponent>(entity, (TransformComponent){{400, 400, 0}, {0, 0, 0}, {0.5f, 0.5f, 0.5f}});
@@ -193,51 +195,40 @@ class MyScene : public LE::Scene {
             _ecs->addComponent<MotionComponent>(cameraEntity, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
             _ecs->setCameraEntity(cameraEntity);
 
-            Entity entity2 = _ecs->createEntity();
-            auto model2 = createModelComponent("assets/models/ship/MicroRecon.obj");
-            _ecs->addComponent<ModelComponent>(entity2, *model2);
-            _ecs->addComponent<TransformComponent>(entity2, (TransformComponent){{0, 0, 0}, {0, 90, 0}, {1.0f, 1.0f, 1.0f}});
-            _ecs->addComponent<MotionComponent>(entity2, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
+            // _eventManager = std::make_shared<LE::EventManager>();
+            // _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_ESCAPE, LE::JUST_PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
+            //     exit(0);
+            // });
+            // _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_UP, LE::PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
+            //     auto& motion = _ecs->getComponent<MotionComponent>(entity2);
+            //     motion.velocity.y += 50.0f * (dt / 10000);
+            // });
 
-            // Entity entity3 = _ecs->createEntity();
-            // auto model3 = createModelComponent("assets/models/buttercup/buttercup.obj");
-            // _ecs->addComponent<ModelComponent>(entity3, *model3);
-            // _ecs->addComponent<TransformComponent>(entity3, (TransformComponent){{0, 0, 0}, {0, 0, 0}, {10.0f, 10.0f, 10.0f}});
+            // _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_DOWN, LE::PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
+            //     auto& motion = _ecs->getComponent<MotionComponent>(entity2);
+            //     motion.velocity.y -= 50.0f * (dt / 10000);
+            // });
+            // _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_RIGHT, LE::PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
+            //     auto& motion = _ecs->getComponent<MotionComponent>(entity2);
+            //     motion.velocity.x += 50.0f * (dt / 10000);
+            // });
 
-            _eventManager = std::make_shared<LE::EventManager>();
-            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_ESCAPE, LE::JUST_PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
-                exit(0);
-            });
-            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_UP, LE::PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
-                auto& motion = _ecs->getComponent<MotionComponent>(entity2);
-                motion.velocity.y += 50.0f * (dt / 10000);
-            });
+            // _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_LEFT, LE::PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
+            //     auto& motion = _ecs->getComponent<MotionComponent>(entity2);
+            //     motion.velocity.x -= 50.0f * (dt / 10000);
+            // });
 
-            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_DOWN, LE::PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
-                auto& motion = _ecs->getComponent<MotionComponent>(entity2);
-                motion.velocity.y -= 50.0f * (dt / 10000);
-            });
-            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_RIGHT, LE::PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
-                auto& motion = _ecs->getComponent<MotionComponent>(entity2);
-                motion.velocity.x += 50.0f * (dt / 10000);
-            });
-
-            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_LEFT, LE::PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
-                auto& motion = _ecs->getComponent<MotionComponent>(entity2);
-                motion.velocity.x -= 50.0f * (dt / 10000);
-            });
-
-            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_SPACE, LE::JUST_PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
-                Entity entity = _ecs->createEntity();
-                auto model = createModelComponent("assets/models/bullet/bullet.obj");
-                _ecs->addComponent<ModelComponent>(entity, *model);
-                auto spaceshipTransform = _ecs->getComponent<TransformComponent>(entity2);
-                auto transform = createTransformComponent({spaceshipTransform.position.x, spaceshipTransform.position.y + 6.155F, spaceshipTransform.position.z}, {0, 90, 0}, {0.2f, 0.2f, 0.5f});
-                _ecs->addComponent<TransformComponent>(entity, transform);
-                _ecs->addComponent<MotionComponent>(entity, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
-                auto pattern = createPatternComponent("line", {transform.position[0] + 100, transform.position[1], 0}, 0.05f, PatternEnd::DESTROY);
-                _ecs->addComponent<PatternComponent>(entity, pattern);
-            });
+            // _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_SPACE, LE::JUST_PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
+            //     Entity entity = _ecs->createEntity();
+            //     auto model = createModelComponent("assets/models/bullet/bullet.obj");
+            //     _ecs->addComponent<ModelComponent>(entity, *model);
+            //     auto spaceshipTransform = _ecs->getComponent<TransformComponent>(entity2);
+            //     auto transform = createTransformComponent({spaceshipTransform.position.x, spaceshipTransform.position.y + 6.155F, spaceshipTransform.position.z}, {0, 90, 0}, {0.2f, 0.2f, 0.5f});
+            //     _ecs->addComponent<TransformComponent>(entity, transform);
+            //     _ecs->addComponent<MotionComponent>(entity, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
+            //     auto pattern = createPatternComponent("line", {transform.position[0] + 100, transform.position[1], 0}, 0.05f, PatternEnd::DESTROY);
+            //     _ecs->addComponent<PatternComponent>(entity, pattern);
+            // });
 
         }
 
@@ -254,48 +245,35 @@ class MyScene : public LE::Scene {
         }
 };
 
-int main(int ac, char **av)
+static void receiveFromServer(ClientBroker *client_broker, std::shared_ptr<Ecs> _ecs, ResponsibilityChain& chain)
 {
-    // Initialize the engine
-    auto engine = LE::Engine::getInstance();
-
-    auto scene = std::make_shared<GameScene>();
-
-    engine->addScene("main", scene);
-    // Run the engine
     try {
-        engine->runWithDebug(); // Change to true to simulate an error
-    } catch (const LE::Engine::EngineError &e) {
-        std::cerr << "Engine error: " << e.what() << std::endl;
-    }
-    return 0;
-}
-#include "LoaderLib.hpp"
-#include "ResolvingLib.hpp"
-#include "interface/INetworkModule/INetworkModule.hpp"
-#include <cstring>
-#include <sstream>
-#include "PackUnpack.hpp"
-#include "message/ClientBroker.hpp"
-#include <EnumClass.hpp>
-#include "Common.hpp"
-
-static void receiveFromServer( Message *message, ClientBroker *client_broker)
-{
-    UpdateEcs updateEcs = {0};
-    try {
+        Message *message = nullptr;
         message = client_broker->getMessage(0, 1);
         if (message == nullptr)
             return;
-        std::cout << "Message received from server" << std::endl;
-        ::memmove(&updateEcs, message->getBody()._buffer, sizeof(UpdateEcs));
-        std::cout << "ECS ID = " << (int)updateEcs.ecs_id << std::endl;
-        std::cout << "Action Input" << (int)updateEcs.actionInput << std::endl;
-        delete message;
+        std::cout << "Message received from client" << std::endl;
+        Header header = {
+            .MagicNumber = message->getMagicNumber(),
+            .EmmiterdEcsId = message->getEmmiterID(),
+            .ReceiverEcsId = message->getReceiverID(),
+            .TopicID = message->getTopicID(),
+            .Action = message->getAction(),
+            .BodyLength = 0
+        };
+        Body body = message->getBody();
+        Request req = {
+            .header = header,
+            .body = body
+        };
+        processRequest(req, _ecs, chain);
+        std::cout << "getBody()=" << message->getBody()._buffer << std::endl;
+        std::cout << "getReceiverID()=" << (int)message->getReceiverID() << std::endl;
+        std::cout << "getEmmiterID()=" << (int)message->getEmmiterID() << std::endl;
+        // delete message;
     } catch (const std::exception &e) {
-        std::cerr << e.what() << std::endl;
-        std::cout << "No message received. Waiting..." << std::endl;
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        // std::cerr << e.what() << std::endl;
+        // std::cout << "No message received. Waiting..." << std::endl;
     }
 }
 
@@ -316,50 +294,44 @@ static void sendAuthToServer(ClientBroker *client_broker, std::string playerName
     client_broker->addMessage(0, 1, message);
 }
 
-int main_(void)
+int main(void)
 {
     std::string pathLib = getPathOfNetworkDynLib() + getExtensionKernel();
     LoaderLib loader_lib(pathLib, "");
     INetworkModule *network_module = nullptr;
     ClientBroker *client_broker = nullptr;
+    ResponsibilityChain responsibilityChain;
+
+    auto engine = LE::Engine::getInstance();
+
+    auto scene = std::make_shared<MyScene>();
+
+    engine->addScene("main", scene);
 
     loader_lib.LoadModule();
     network_module = loader_lib.createNetworkModule();
     client_broker = new ClientBroker(network_module, "127.0.0.1", 8080);
 
-    Message *message = nullptr;
+    std::shared_ptr<Message> message = std::make_shared<Message>();
+    message->setMagicNumber(0xFF);
+    message->setAction(0x01);
+    // message->setBody({0});
+    // message->setTopicID(1);
 
-    message = new Message();
-    std::string name = "mannuuuuuuuuuu";
+    attributeClientCallback(&responsibilityChain, client_broker);
 
-    sendAuthToServer(client_broker, name);
+    client_broker->addMessage(0, 1, message.get());
 
-    Body bodyTest = {._buffer = "|test|test|test|test|"};
-    message->setMagicNumber(static_cast<uint8_t>(ActionCode::MAGIC_NUMBER));
-    message->setAction(static_cast<uint8_t>(ActionCode::UP));
-    message->setBody(bodyTest);
-    client_broker->addMessage(0, 1, message);
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-    message->setMagicNumber(static_cast<uint8_t>(ActionCode::MAGIC_NUMBER));
-    message->setAction(static_cast<uint8_t>(ActionCode::DOWN));
-    message->setBody(bodyTest);
-    client_broker->addMessage(0, 1, message);
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-    message->setMagicNumber(static_cast<uint8_t>(ActionCode::MAGIC_NUMBER));
-    message->setAction(static_cast<uint8_t>(ActionCode::LEFT));
-    message->setBody(bodyTest);
-    client_broker->addMessage(0, 1, message);
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-    message->setMagicNumber(static_cast<uint8_t>(ActionCode::MAGIC_NUMBER));
-    message->setAction(static_cast<uint8_t>(ActionCode::RIGHT));
-    message->setBody(bodyTest);
-    client_broker->addMessage(0, 1, message);
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-    while (true)
-    {
-        receiveFromServer(message, client_broker);
+    engine->setLoop([&]() {
+        std::shared_ptr<Ecs> ecs = scene->_ecs; // TODO getCurrentScene in Engine
+        receiveFromServer(client_broker, ecs, responsibilityChain);
+    });
+    
+    try {
+        engine->runWithDebug(); // Change to true to simulate an error
+    } catch (const LE::Engine::EngineError &e) {
+        std::cerr << "Engine error: " << e.what() << std::endl;
     }
-    // client_broker->addMessage(0, 1, message);
 
     std::cout << "ClientBroker is stopping" << std::endl;
 
