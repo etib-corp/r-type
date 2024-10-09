@@ -33,6 +33,7 @@ namespace LE {
 
 #ifdef _WIN32
     #define GL_GLEXT_PROTOTYPES
+    #include <windows.h>
     #include <GL/gl.h>
     #include <GL/glext.h>
 #endif
