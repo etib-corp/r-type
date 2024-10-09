@@ -98,6 +98,7 @@ $(function(){initNavTree('classLE_1_1Shapes_1_1Shape.html',''); initResizable(tr
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classLE_1_1Shapes_1_1Shape-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">LE::Shapes::Shape Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
@@ -129,6 +130,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a58e9306085a7bd1af4cb7f89495a6ebd" id="r_a58e9306085a7bd1af4cb7f89495a6ebd"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a58e9306085a7bd1af4cb7f89495a6ebd">init</a> ()=0</td></tr>
 <tr class="memdesc:a58e9306085a7bd1af4cb7f89495a6ebd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the shape.  <br /></td></tr>
 <tr class="separator:a58e9306085a7bd1af4cb7f89495a6ebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bd3673b0ab0e0e4c84e47f41db5fca9" id="r_a3bd3673b0ab0e0e4c84e47f41db5fca9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3bd3673b0ab0e0e4c84e47f41db5fca9">resize</a> (float width, float height)=0</td></tr>
+<tr class="memdesc:a3bd3673b0ab0e0e4c84e47f41db5fca9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resize the shape.  <br /></td></tr>
+<tr class="separator:a3bd3673b0ab0e0e4c84e47f41db5fca9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:ac72cb84a528bfbd528b2d59f6ac9106f" id="r_ac72cb84a528bfbd528b2d59f6ac9106f"><td class="memItemLeft" align="right" valign="top"><a id="ac72cb84a528bfbd528b2d59f6ac9106f" name="ac72cb84a528bfbd528b2d59f6ac9106f"></a>
+<a class="el" href="classLE_1_1Color.html">Color</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_color</b></td></tr>
+<tr class="separator:ac72cb84a528bfbd528b2d59f6ac9106f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The <a class="el" href="classLE_1_1Shapes_1_1Shape.html" title="The Shape class is an abstract base class for managing OpenGL shapes.">Shape</a> class is an abstract base class for managing OpenGL shapes. </p>
@@ -224,6 +234,46 @@ Public Member Functions</h2></td></tr>
 </dl>
 
 <p>Implemented in <a class="el" href="classLE_1_1Shapes_1_1Rectangle.html#afc2dcc9324a33bdd19474b43dc0318dd">LE::Shapes::Rectangle</a>, and <a class="el" href="classLE_1_1Shapes_1_1Triangle.html#a76b7864911dbad69baafc3de8b3eeba5">LE::Shapes::Triangle</a>.</p>
+
+</div>
+</div>
+<a id="a3bd3673b0ab0e0e4c84e47f41db5fca9" name="a3bd3673b0ab0e0e4c84e47f41db5fca9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bd3673b0ab0e0e4c84e47f41db5fca9">&#9670;&#160;</a></span>resize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void LE::Shapes::Shape::resize </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>width</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>height</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Resize the shape. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">width</td><td>The new width of the shape </td></tr>
+    <tr><td class="paramname">height</td><td>The new height of the shape </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classLE_1_1Shapes_1_1Rectangle.html#a3372549e4fe8efc584edd5d1f843ba69">LE::Shapes::Rectangle</a>, and <a class="el" href="classLE_1_1Shapes_1_1Triangle.html#a928022979d69ca425fd8f49d3d1f170c">LE::Shapes::Triangle</a>.</p>
 
 </div>
 </div>

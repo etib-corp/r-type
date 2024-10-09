@@ -31,6 +31,10 @@ var hierarchy =
     [ "LE::Color", "classLE_1_1Color.html", null ],
     [ "LE::GUI::Component", "classLE_1_1GUI_1_1Component.html", [
       [ "LE::GUI::Container", "classLE_1_1GUI_1_1Container.html", [
+        [ "LE::GUI::Interactable", "classLE_1_1GUI_1_1Interactable.html", [
+          [ "LE::GUI::Button", "classLE_1_1GUI_1_1Button.html", null ],
+          [ "LE::GUI::TextField", "classLE_1_1GUI_1_1TextField.html", null ]
+        ] ],
         [ "LE::GUI::Manager", "classLE_1_1GUI_1_1Manager.html", null ],
         [ "MyContainer", "classMyContainer.html", null ],
         [ "MyParentContainer", "classMyParentContainer.html", null ]

@@ -115,10 +115,13 @@ Inheritance diagram for LE::GUI::Container:</div>
  <div class="center">
   <img src="classLE_1_1GUI_1_1Container.png" usemap="#LE::GUI::Container_map" alt=""/>
   <map id="LE::GUI::Container_map" name="LE::GUI::Container_map">
-<area href="classLE_1_1GUI_1_1Component.html" title="Abstract base class representing a GUI component." alt="LE::GUI::Component" shape="rect" coords="132,0,254,24"/>
-<area href="classLE_1_1GUI_1_1Manager.html" title="The Manager class is responsible for managing GUI components in the graphical system." alt="LE::GUI::Manager" shape="rect" coords="0,112,122,136"/>
-<area href="classMyContainer.html" alt="MyContainer" shape="rect" coords="132,112,254,136"/>
-<area href="classMyParentContainer.html" alt="MyParentContainer" shape="rect" coords="264,112,386,136"/>
+<area href="classLE_1_1GUI_1_1Component.html" title="Abstract base class representing a GUI component." alt="LE::GUI::Component" shape="rect" coords="270,0,395,24"/>
+<area href="classLE_1_1GUI_1_1Interactable.html" title="Interface for interactable GUI objects." alt="LE::GUI::Interactable" shape="rect" coords="67,112,192,136"/>
+<area href="classLE_1_1GUI_1_1Manager.html" title="The Manager class is responsible for managing GUI components in the graphical system." alt="LE::GUI::Manager" shape="rect" coords="202,112,327,136"/>
+<area href="classMyContainer.html" alt="MyContainer" shape="rect" coords="337,112,462,136"/>
+<area href="classMyParentContainer.html" alt="MyParentContainer" shape="rect" coords="472,112,597,136"/>
+<area href="classLE_1_1GUI_1_1Button.html" title="The Button class represents a button in the GUI." alt="LE::GUI::Button" shape="rect" coords="0,168,125,192"/>
+<area href="classLE_1_1GUI_1_1TextField.html" alt="LE::GUI::TextField" shape="rect" coords="135,168,260,192"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -165,6 +168,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a3f7f374e97c456a70887467280f9c853"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa650f73d5d5cc88702bd12744f88544f" id="r_aa650f73d5d5cc88702bd12744f88544f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLE_1_1Shapes_1_1Shape.html">Shapes::Shape</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa650f73d5d5cc88702bd12744f88544f">_background</a></td></tr>
 <tr class="separator:aa650f73d5d5cc88702bd12744f88544f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affd381b85c0dde0f386d1e04ba113bd7" id="r_affd381b85c0dde0f386d1e04ba113bd7"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#affd381b85c0dde0f386d1e04ba113bd7">_initialWidth</a></td></tr>
+<tr class="separator:affd381b85c0dde0f386d1e04ba113bd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classLE_1_1GUI_1_1Component"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classLE_1_1GUI_1_1Component')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classLE_1_1GUI_1_1Component.html">LE::GUI::Component</a></td></tr>
 <tr class="memitem:a99df4dae55b0caa0efd321b461cb69b4 inherit pro_attribs_classLE_1_1GUI_1_1Component" id="r_a99df4dae55b0caa0efd321b461cb69b4"><td class="memItemLeft" align="right" valign="top">
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>_id</b></td></tr>
@@ -271,6 +276,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Engine</b></td></tr>
 
 <p>Implements <a class="el" href="classLE_1_1GUI_1_1Component.html#a2b34bb1d7a1ee0bc056153029322668d">LE::GUI::Component</a>.</p>
 
+<p>Reimplemented in <a class="el" href="classLE_1_1GUI_1_1TextField.html#ae2662e9506bd105603be5aad7cc6741a">LE::GUI::TextField</a>.</p>
+
 </div>
 </div>
 <a id="a4bc6327682feaa73439df23b63b00ed4" name="a4bc6327682feaa73439df23b63b00ed4"></a>
@@ -301,7 +308,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Engine</b></td></tr>
 
 <p>Implements <a class="el" href="classLE_1_1GUI_1_1Component.html#a0b2ec695c65d4603eaef505d669702e3">LE::GUI::Component</a>.</p>
 
-<p>Reimplemented in <a class="el" href="classLE_1_1GUI_1_1Manager.html#a10028d0ef12faf0e15c88b7b3571c3cb">LE::GUI::Manager</a>.</p>
+<p>Reimplemented in <a class="el" href="classLE_1_1GUI_1_1Manager.html#a10028d0ef12faf0e15c88b7b3571c3cb">LE::GUI::Manager</a>, and <a class="el" href="classLE_1_1GUI_1_1TextField.html#a81c457642c213fd185bc1cbf22dd30fa">LE::GUI::TextField</a>.</p>
 
 </div>
 </div>
@@ -375,6 +382,29 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>Engine</b></td></tr>
 </table>
 </div><div class="memdoc">
 <p>The container's children components. </p><dl class="section note"><dt>Note</dt><dd>Similar to React components. </dd></dl>
+
+</div>
+</div>
+<a id="affd381b85c0dde0f386d1e04ba113bd7" name="affd381b85c0dde0f386d1e04ba113bd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affd381b85c0dde0f386d1e04ba113bd7">&#9670;&#160;</a></span>_initialWidth</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float LE::GUI::Container::_initialWidth</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The container's initial width. </p>
 
 </div>
 </div>

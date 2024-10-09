@@ -120,9 +120,9 @@ Inheritance diagram for LE::GUI::Text:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac367feb0e7c053dd3ee168f00822e8e8" id="r_ac367feb0e7c053dd3ee168f00822e8e8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac367feb0e7c053dd3ee168f00822e8e8">Text</a> (unsigned int id, const std::string &amp;fontPath, unsigned int fontHeight, const std::string &amp;content=&quot;Hello World !&quot;, unsigned int fontWidth=0)</td></tr>
-<tr class="memdesc:ac367feb0e7c053dd3ee168f00822e8e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classLE_1_1GUI_1_1Text.html" title="The Text class is responsible for managing text in the graphical system.">Text</a> object (GUI).  <br /></td></tr>
-<tr class="separator:ac367feb0e7c053dd3ee168f00822e8e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a436de3801af8a481f23baef9c54e2988" id="r_a436de3801af8a481f23baef9c54e2988"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a436de3801af8a481f23baef9c54e2988">Text</a> (unsigned int id, const std::string &amp;fontPath, unsigned int fontHeight, const std::string &amp;content, <a class="el" href="classLE_1_1Color.html">Color</a> *color=nullptr, unsigned int fontWidth=0)</td></tr>
+<tr class="memdesc:a436de3801af8a481f23baef9c54e2988"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classLE_1_1GUI_1_1Text.html" title="The Text class is responsible for managing text in the graphical system.">Text</a> object (GUI).  <br /></td></tr>
+<tr class="separator:a436de3801af8a481f23baef9c54e2988"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e8a26701a3dfe5e6b2201d58692c785" id="r_a9e8a26701a3dfe5e6b2201d58692c785"><td class="memItemLeft" align="right" valign="top"><a id="a9e8a26701a3dfe5e6b2201d58692c785" name="a9e8a26701a3dfe5e6b2201d58692c785"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~Text</b> ()</td></tr>
 <tr class="memdesc:a9e8a26701a3dfe5e6b2201d58692c785"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for the <a class="el" href="classLE_1_1GUI_1_1Text.html" title="The Text class is responsible for managing text in the graphical system.">Text</a> object. <br /></td></tr>
@@ -133,6 +133,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:afcd3d6c0eb9c79588aadbdcb80305bda" id="r_afcd3d6c0eb9c79588aadbdcb80305bda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afcd3d6c0eb9c79588aadbdcb80305bda">init</a> () override</td></tr>
 <tr class="memdesc:afcd3d6c0eb9c79588aadbdcb80305bda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to initialize the text.  <br /></td></tr>
 <tr class="separator:afcd3d6c0eb9c79588aadbdcb80305bda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94456e964274961d0af4b2ddec973f93" id="r_a94456e964274961d0af4b2ddec973f93"><td class="memItemLeft" align="right" valign="top"><a id="a94456e964274961d0af4b2ddec973f93" name="a94456e964274961d0af4b2ddec973f93"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setContent</b> (const std::string &amp;content)</td></tr>
+<tr class="separator:a94456e964274961d0af4b2ddec973f93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c4f2b7aa3538acb3ad667e064cda09c" id="r_a2c4f2b7aa3538acb3ad667e064cda09c"><td class="memItemLeft" align="right" valign="top"><a id="a2c4f2b7aa3538acb3ad667e064cda09c" name="a2c4f2b7aa3538acb3ad667e064cda09c"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getContent</b> () const</td></tr>
+<tr class="separator:a2c4f2b7aa3538acb3ad667e064cda09c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classLE_1_1GUI_1_1Component"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classLE_1_1GUI_1_1Component')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classLE_1_1GUI_1_1Component.html">LE::GUI::Component</a></td></tr>
 <tr class="memitem:af07f67dd2aca864949d20e2990542952 inherit pub_methods_classLE_1_1GUI_1_1Component" id="r_af07f67dd2aca864949d20e2990542952"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLE_1_1GUI_1_1Component.html#af07f67dd2aca864949d20e2990542952">getId</a> () const</td></tr>
 <tr class="memdesc:af07f67dd2aca864949d20e2990542952 inherit pub_methods_classLE_1_1GUI_1_1Component"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that returns the component's ID.  <br /></td></tr>
@@ -164,6 +170,8 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_content</b></
 <tr class="separator:aea01a95ae0a4e8e09926dd550a16f9c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac88bb53459c081b6e14dd7ac0fad38f5" id="r_ac88bb53459c081b6e14dd7ac0fad38f5"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac88bb53459c081b6e14dd7ac0fad38f5">_VBO</a></td></tr>
 <tr class="separator:ac88bb53459c081b6e14dd7ac0fad38f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6b0cd04c76cde74fcc71a7b3d63aa8f" id="r_ad6b0cd04c76cde74fcc71a7b3d63aa8f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classLE_1_1Color.html">Color</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6b0cd04c76cde74fcc71a7b3d63aa8f">_color</a></td></tr>
+<tr class="separator:ad6b0cd04c76cde74fcc71a7b3d63aa8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classLE_1_1GUI_1_1Component"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classLE_1_1GUI_1_1Component')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classLE_1_1GUI_1_1Component.html">LE::GUI::Component</a></td></tr>
 <tr class="memitem:a99df4dae55b0caa0efd321b461cb69b4 inherit pro_attribs_classLE_1_1GUI_1_1Component" id="r_a99df4dae55b0caa0efd321b461cb69b4"><td class="memItemLeft" align="right" valign="top">
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>_id</b></td></tr>
@@ -181,8 +189,8 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>_id</b></td></tr>
 <div class="textblock"><p>The <a class="el" href="classLE_1_1GUI_1_1Text.html" title="The Text class is responsible for managing text in the graphical system.">Text</a> class is responsible for managing text in the graphical system. </p>
 <p>The <a class="el" href="classLE_1_1GUI_1_1Text.html" title="The Text class is responsible for managing text in the graphical system.">Text</a> class provides functionalities for loading and rendering text in the graphical system. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ac367feb0e7c053dd3ee168f00822e8e8" name="ac367feb0e7c053dd3ee168f00822e8e8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac367feb0e7c053dd3ee168f00822e8e8">&#9670;&#160;</a></span>Text()</h2>
+<a id="a436de3801af8a481f23baef9c54e2988" name="a436de3801af8a481f23baef9c54e2988"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a436de3801af8a481f23baef9c54e2988">&#9670;&#160;</a></span>Text()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -205,7 +213,12 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>_id</b></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>content</em></span><span class="paramdefsep"> = </span><span class="paramdefval">&quot;Hello&#160;World&#160;!&quot;</span>, </td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>content</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classLE_1_1Color.html">Color</a> *</td>          <td class="paramname"><span class="paramname"><em>color</em></span><span class="paramdefsep"> = </span><span class="paramdefval">nullptr</span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -293,6 +306,29 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><b>_id</b></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="ad6b0cd04c76cde74fcc71a7b3d63aa8f" name="ad6b0cd04c76cde74fcc71a7b3d63aa8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6b0cd04c76cde74fcc71a7b3d63aa8f">&#9670;&#160;</a></span>_color</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classLE_1_1Color.html">Color</a>* LE::GUI::Text::_color</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Vertex Buffer <a class="el" href="structObject.html">Object</a> where the <a class="el" href="classLE_1_1GUI_1_1Text.html" title="The Text class is responsible for managing text in the graphical system.">Text</a> is stored. </p>
+
+</div>
+</div>
 <a id="af32ec51dda38c231f73a69abe470c1bc" name="af32ec51dda38c231f73a69abe470c1bc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af32ec51dda38c231f73a69abe470c1bc">&#9670;&#160;</a></span>_font</h2>
 

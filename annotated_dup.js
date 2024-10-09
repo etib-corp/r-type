@@ -5,11 +5,14 @@ var annotated_dup =
     ] ],
     [ "LE", null, [
       [ "GUI", null, [
+        [ "Button", "classLE_1_1GUI_1_1Button.html", "classLE_1_1GUI_1_1Button" ],
         [ "Component", "classLE_1_1GUI_1_1Component.html", "classLE_1_1GUI_1_1Component" ],
         [ "Container", "classLE_1_1GUI_1_1Container.html", "classLE_1_1GUI_1_1Container" ],
         [ "Font", "classLE_1_1GUI_1_1Font.html", "classLE_1_1GUI_1_1Font" ],
+        [ "Interactable", "classLE_1_1GUI_1_1Interactable.html", "classLE_1_1GUI_1_1Interactable" ],
         [ "Manager", "classLE_1_1GUI_1_1Manager.html", "classLE_1_1GUI_1_1Manager" ],
-        [ "Text", "classLE_1_1GUI_1_1Text.html", "classLE_1_1GUI_1_1Text" ]
+        [ "Text", "classLE_1_1GUI_1_1Text.html", "classLE_1_1GUI_1_1Text" ],
+        [ "TextField", "classLE_1_1GUI_1_1TextField.html", "classLE_1_1GUI_1_1TextField" ]
       ] ],
       [ "Shapes", null, [
         [ "Rectangle", "classLE_1_1Shapes_1_1Rectangle.html", "classLE_1_1Shapes_1_1Rectangle" ],

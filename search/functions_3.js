@@ -4,7 +4,7 @@ var searchData=
   ['clientbroker_1',['ClientBroker',['../classClientBroker.html#a868edbb91c0c007eab23f4e281490e95',1,'ClientBroker']]],
   ['clock_2',['Clock',['../classLE_1_1Clock.html#a1ae994eca63459eb75f21d6e045d5bd2',1,'LE::Clock']]],
   ['close_3',['close',['../classLE_1_1Window.html#a70330c9b2fe40cd644e380c32c0745fe',1,'LE::Window::close()'],['../structcmd_8h.html#ae152484c890a24e4d9b4980e7b965be0',1,'close():&#160;structcmd.h']]],
-  ['color_4',['Color',['../classLE_1_1Color.html#a20168cc1450a507dc52d1ba707f7c9fc',1,'LE::Color::Color()'],['../classLE_1_1Color.html#a5ddc6aa273c5b41e66dbc609f6fcbf6e',1,'LE::Color::Color(float r, float g, float b, float a=1.0f)'],['../classLE_1_1Color.html#ae6a5810ebe6b9c9a39dedec97f65bd38',1,'LE::Color::Color(unsigned char r, unsigned char g, unsigned char b, unsigned char a=255)'],['../classLE_1_1Color.html#aa3b3b3782d1021647f6e7bf31474a6c6',1,'LE::Color::Color(unsigned int hex, float a=1.0f)']]],
+  ['color_4',['Color',['../classLE_1_1Color.html#a20168cc1450a507dc52d1ba707f7c9fc',1,'LE::Color::Color()'],['../classLE_1_1Color.html#a5d2acb3a69d1b50a4b6680fbc381a1f7',1,'LE::Color::Color(UseMode mode, float r, float g, float b, float a=1.0f)'],['../classLE_1_1Color.html#aa3b3b3782d1021647f6e7bf31474a6c6',1,'LE::Color::Color(unsigned int hex, float a=1.0f)']]],
   ['colorerror_5',['ColorError',['../classLE_1_1Color_1_1ColorError.html#a029389bfe91384e21abdd6c9538809c1',1,'LE::Color::ColorError']]],
   ['compile_6',['compile',['../classLE_1_1Shader.html#a2baa93ee03b3fa07cd5d5e25811219c1',1,'LE::Shader']]],
   ['componentarray_7',['ComponentArray',['../classComponentArray.html#a1fcf505e8d0dcfb24bb3645b1e335bf5',1,'ComponentArray']]],
