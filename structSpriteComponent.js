@@ -5,6 +5,7 @@ var structSpriteComponent =
     [ "filterMax", "structSpriteComponent.html#a24985918156677b134f5d5fe6c0ccaab", null ],
     [ "filterMin", "structSpriteComponent.html#a931ce2de33819a15a053cc7ac0a02227", null ],
     [ "height", "structSpriteComponent.html#a62ae7c4b06bd296958b8311c48e93138", null ],
+    [ "hidden", "structSpriteComponent.html#a2a3fbda6715f5f0507b2c4e6c5b51379", null ],
     [ "id", "structSpriteComponent.html#a5548efbfc18d504fc27fa25391d47ab3", null ],
     [ "imageFormat", "structSpriteComponent.html#a2c20fda8ef2e379fde5f93ad7ec2ae3e", null ],
     [ "internalFormat", "structSpriteComponent.html#aee80991a845692012dade52728c23e86", null ],

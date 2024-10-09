@@ -29,31 +29,31 @@ var NAVTREE =
     [ "README", "md_lib_2NetworkModule_2README.html", null ],
     [ "<strong>R-Type</strong>", "md_README.html", null ],
     [ "RFC: R-Type Multiplayer Game Network Protocol", "md_RFC.html", [
-      [ "Status: Draft", "md_RFC.html#autotoc_md8", null ],
-      [ "Abstract", "md_RFC.html#autotoc_md9", null ],
-      [ "Table of Contents", "md_RFC.html#autotoc_md10", null ],
-      [ "Introduction", "md_RFC.html#autotoc_md11", null ],
-      [ "Requirements", "md_RFC.html#autotoc_md12", null ],
-      [ "Message Structure", "md_RFC.html#autotoc_md13", [
-        [ "3.1. Header", "md_RFC.html#autotoc_md14", null ],
-        [ "3.2. Body", "md_RFC.html#autotoc_md15", null ],
-        [ "Common Action Codes (0x01 -> 0x55)", "md_RFC.html#autotoc_md16", null ],
-        [ "Server-to-Client Action Codes (0x56 -> 0xAA)", "md_RFC.html#autotoc_md17", null ],
-        [ "Client-to-Server Action Codes (0xAA -> 0xFE)", "md_RFC.html#autotoc_md18", null ],
-        [ "Both Magic Number (0xFF)", "md_RFC.html#autotoc_md19", null ]
+      [ "Status: Draft", "md_RFC.html#autotoc_md13", null ],
+      [ "Abstract", "md_RFC.html#autotoc_md14", null ],
+      [ "Table of Contents", "md_RFC.html#autotoc_md15", null ],
+      [ "Introduction", "md_RFC.html#autotoc_md16", null ],
+      [ "Requirements", "md_RFC.html#autotoc_md17", null ],
+      [ "Message Structure", "md_RFC.html#autotoc_md18", [
+        [ "3.1. Header", "md_RFC.html#autotoc_md19", null ],
+        [ "3.2. Body", "md_RFC.html#autotoc_md20", null ],
+        [ "Common Action Codes (0x01 -> 0x55)", "md_RFC.html#autotoc_md21", null ],
+        [ "Server-to-Client Action Codes (0x56 -> 0xAA)", "md_RFC.html#autotoc_md22", null ],
+        [ "Client-to-Server Action Codes (0xAA -> 0xFE)", "md_RFC.html#autotoc_md23", null ],
+        [ "Both Magic Number (0xFF)", "md_RFC.html#autotoc_md24", null ]
       ] ],
-      [ "Protocol Design", "md_RFC.html#autotoc_md20", [
-        [ "4.1. Connection Establishment", "md_RFC.html#autotoc_md21", [
-          [ "4.1.1 Server Sends Client ID (TCP)", "md_RFC.html#autotoc_md22", null ],
-          [ "4.1.2 Client Acknowledges ID (UDP)", "md_RFC.html#autotoc_md23", null ]
+      [ "Protocol Design", "md_RFC.html#autotoc_md25", [
+        [ "4.1. Connection Establishment", "md_RFC.html#autotoc_md26", [
+          [ "4.1.1 Server Sends Client ID (TCP)", "md_RFC.html#autotoc_md27", null ],
+          [ "4.1.2 Client Acknowledges ID (UDP)", "md_RFC.html#autotoc_md28", null ]
         ] ],
-        [ "4.2. Common Action Codes", "md_RFC.html#autotoc_md24", null ],
-        [ "4.3. Server-to-Client Messages", "md_RFC.html#autotoc_md25", null ],
-        [ "4.4. Client-to-Server Messages", "md_RFC.html#autotoc_md26", null ]
+        [ "4.2. Common Action Codes", "md_RFC.html#autotoc_md29", null ],
+        [ "4.3. Server-to-Client Messages", "md_RFC.html#autotoc_md30", null ],
+        [ "4.4. Client-to-Server Messages", "md_RFC.html#autotoc_md31", null ]
       ] ],
-      [ "Error Handling", "md_RFC.html#autotoc_md27", null ],
-      [ "Security Considerations", "md_RFC.html#autotoc_md28", null ],
-      [ "References", "md_RFC.html#autotoc_md29", null ]
+      [ "Error Handling", "md_RFC.html#autotoc_md32", null ],
+      [ "Security Considerations", "md_RFC.html#autotoc_md33", null ],
+      [ "References", "md_RFC.html#autotoc_md34", null ]
     ] ],
     [ "Bug List", "bug.html", null ],
     [ "Topics", "topics.html", "topics" ],
@@ -96,9 +96,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AsioNetworkModule_8hpp_source.html",
-"classLE_1_1Engine.html#ad1c525604271386c21ffd6f3b7c7b58d",
-"classLE_1_1Vector4.html#ac3bde7a0601263c221c23df9b889dbd6",
-"functions_i.html"
+"classLE_1_1Color_1_1ColorError.html#a029389bfe91384e21abdd6c9538809c1",
+"classLE_1_1Vector4.html#a13c12bedc66addd584f5695e45e7bebe",
+"functions_d.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

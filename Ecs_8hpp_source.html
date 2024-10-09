@@ -191,11 +191,16 @@ $(function(){initNavTree('Ecs_8hpp_source.html',''); initResizable(true); });
 </div>
 <div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
 <div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classEcs.html#a9bf5c609932333a6ded63c73eba3bbd8">update</a>(<span class="keywordtype">float</span> dt);</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        std::unique_ptr&lt;ComponentManager&gt; _componentManager;        </div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        std::unique_ptr&lt;EntityManager&gt; _entityManager;              </div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        std::unique_ptr&lt;SystemManager&gt; _systemManager;              </div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>};</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classEcs.html#abf3e71019dcfd6d21d01932b4ec636bf">setCameraEntity</a>(Entity entity);</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        Entity <a class="code hl_function" href="classEcs.html#ab6425887b9064a4713992ceb378fa073">getCameraEntity</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        std::unique_ptr&lt;ComponentManager&gt; _componentManager;        </div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        std::unique_ptr&lt;EntityManager&gt; _entityManager;              </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        std::unique_ptr&lt;SystemManager&gt; _systemManager;              </div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        Entity _cameraEntity;                                       </div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>};</div>
 </div>
 <div class="ttc" id="aclassEcs_html"><div class="ttname"><a href="classEcs.html">Ecs</a></div><div class="ttdoc">The Ecs class is the main class of the ECS system. It is responsible for creating and destroying enti...</div><div class="ttdef"><b>Definition</b> Ecs.hpp:19</div></div>
 <div class="ttc" id="aclassEcs_html_a22ed69ee3f2a8aa6748a66ba3e470775"><div class="ttname"><a href="classEcs.html#a22ed69ee3f2a8aa6748a66ba3e470775">Ecs::addComponent</a></div><div class="ttdeci">void addComponent(Entity entity, T component)</div><div class="ttdoc">Add a component to an entity.</div><div class="ttdef"><b>Definition</b> Ecs.hpp:67</div></div>
@@ -207,7 +212,9 @@ $(function(){initNavTree('Ecs_8hpp_source.html',''); initResizable(true); });
 <div class="ttc" id="aclassEcs_html_a5ba48f04571a846da1705c987a2efd19"><div class="ttname"><a href="classEcs.html#a5ba48f04571a846da1705c987a2efd19">Ecs::registerSystem</a></div><div class="ttdeci">std::shared_ptr&lt; T &gt; registerSystem()</div><div class="ttdoc">Registers a new system of type T.</div><div class="ttdef"><b>Definition</b> Ecs.hpp:123</div></div>
 <div class="ttc" id="aclassEcs_html_a6ac088b22cae84c4ceba78496cf87e4c"><div class="ttname"><a href="classEcs.html#a6ac088b22cae84c4ceba78496cf87e4c">Ecs::getComponent</a></div><div class="ttdeci">T &amp; getComponent(Entity entity)</div><div class="ttdoc">Get a component from an entity.</div><div class="ttdef"><b>Definition</b> Ecs.hpp:98</div></div>
 <div class="ttc" id="aclassEcs_html_a9bf5c609932333a6ded63c73eba3bbd8"><div class="ttname"><a href="classEcs.html#a9bf5c609932333a6ded63c73eba3bbd8">Ecs::update</a></div><div class="ttdeci">void update(float dt)</div><div class="ttdoc">Update the ECS.</div><div class="ttdef"><b>Definition</b> Ecs.cpp:37</div></div>
+<div class="ttc" id="aclassEcs_html_ab6425887b9064a4713992ceb378fa073"><div class="ttname"><a href="classEcs.html#ab6425887b9064a4713992ceb378fa073">Ecs::getCameraEntity</a></div><div class="ttdeci">Entity getCameraEntity() const</div><div class="ttdoc">Function to get the camera entity.</div><div class="ttdef"><b>Definition</b> Ecs.cpp:47</div></div>
 <div class="ttc" id="aclassEcs_html_ab75a4dc61543523b5c324c25008666cf"><div class="ttname"><a href="classEcs.html#ab75a4dc61543523b5c324c25008666cf">Ecs::createEntity</a></div><div class="ttdeci">Entity createEntity()</div><div class="ttdoc">Create a new entity.</div><div class="ttdef"><b>Definition</b> Ecs.cpp:21</div></div>
+<div class="ttc" id="aclassEcs_html_abf3e71019dcfd6d21d01932b4ec636bf"><div class="ttname"><a href="classEcs.html#abf3e71019dcfd6d21d01932b4ec636bf">Ecs::setCameraEntity</a></div><div class="ttdeci">void setCameraEntity(Entity entity)</div><div class="ttdoc">Function to set the camera entity.</div><div class="ttdef"><b>Definition</b> Ecs.cpp:42</div></div>
 <div class="ttc" id="aclassEcs_html_ade244b0d71153520164eebe990d4c341"><div class="ttname"><a href="classEcs.html#ade244b0d71153520164eebe990d4c341">Ecs::~Ecs</a></div><div class="ttdeci">~Ecs()</div><div class="ttdoc">Destroy the Ecs object.</div><div class="ttdef"><b>Definition</b> Ecs.cpp:17</div></div>
 <div class="ttc" id="aclassEcs_html_ae087552b8938f3af57ac81a7f14870c4"><div class="ttname"><a href="classEcs.html#ae087552b8938f3af57ac81a7f14870c4">Ecs::setSignature</a></div><div class="ttdeci">void setSignature(Signature signature)</div><div class="ttdoc">Set the signature of a system.</div><div class="ttdef"><b>Definition</b> Ecs.hpp:135</div></div>
 </div><!-- fragment --></div><!-- contents -->

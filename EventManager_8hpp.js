@@ -1,7 +1,7 @@
 var EventManager_8hpp =
 [
-    [ "LE::Status", "structLE_1_1Status.html", null ],
-    [ "LE::Key", "structLE_1_1Key.html", null ],
+    [ "LE::Status", "structLE_1_1Status.html", "structLE_1_1Status" ],
+    [ "LE::Key", "structLE_1_1Key.html", "structLE_1_1Key" ],
     [ "LE::EventManager", "classLE_1_1EventManager.html", "classLE_1_1EventManager" ],
     [ "LE::EventManager::EventManagerError", "classLE_1_1EventManager_1_1EventManagerError.html", "classLE_1_1EventManager_1_1EventManagerError" ],
     [ "Input", "EventManager_8hpp.html#a86857615d58faee7e56423da77db2c6f", [

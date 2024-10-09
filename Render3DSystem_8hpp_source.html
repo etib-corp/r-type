@@ -107,6 +107,30 @@ $(function(){initNavTree('Render3DSystem_8hpp_source.html',''); initResizable(tr
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">*/</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;ECS/SystemManager.hpp&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;ECS/Components/ModelComponent.hpp&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;ECS/Components/TransformComponent.hpp&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;ECS/Components/MotionComponent.hpp&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;ECS/Components/CameraComponent.hpp&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classRender3DSystem.html">   17</a></span><span class="keyword">class </span><a class="code hl_class" href="classRender3DSystem.html">Render3DSystem</a> : <span class="keyword">public</span> <a class="code hl_class" href="classSystem.html">System</a> {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <a class="code hl_class" href="classRender3DSystem.html">Render3DSystem</a>();</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <a class="code hl_class" href="classRender3DSystem.html">~Render3DSystem</a>();</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classRender3DSystem.html#aa1685d3f4c5a3696e7d5f47961b7a6eb">update</a>(<a class="code hl_class" href="classEcs.html">Ecs</a> *ecs, <span class="keywordtype">float</span> delta);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        std::shared_ptr&lt;LE::Shader&gt; _shader;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>};</div>
+</div>
+<div class="ttc" id="aclassEcs_html"><div class="ttname"><a href="classEcs.html">Ecs</a></div><div class="ttdoc">The Ecs class is the main class of the ECS system. It is responsible for creating and destroying enti...</div><div class="ttdef"><b>Definition</b> Ecs.hpp:19</div></div>
+<div class="ttc" id="aclassRender3DSystem_html"><div class="ttname"><a href="classRender3DSystem.html">Render3DSystem</a></div><div class="ttdef"><b>Definition</b> Render3DSystem.hpp:17</div></div>
+<div class="ttc" id="aclassRender3DSystem_html_aa1685d3f4c5a3696e7d5f47961b7a6eb"><div class="ttname"><a href="classRender3DSystem.html#aa1685d3f4c5a3696e7d5f47961b7a6eb">Render3DSystem::update</a></div><div class="ttdeci">void update(Ecs *ecs, float delta)</div><div class="ttdoc">Update the system This function will be used to update the system.</div><div class="ttdef"><b>Definition</b> Render3DSystem.cpp:22</div></div>
+<div class="ttc" id="aclassSystem_html"><div class="ttname"><a href="classSystem.html">System</a></div><div class="ttdoc">The System class is the base.</div><div class="ttdef"><b>Definition</b> SystemManager.hpp:18</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

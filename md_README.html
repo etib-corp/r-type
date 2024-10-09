@@ -112,6 +112,43 @@ $(function(){initNavTree('md_README.html',''); initResizable(true); });
 </ul>
 <hr  />
 <h2><a class="anchor" id="autotoc_md4"></a>
+<b>Entity Component System</b></h2>
+<p>An entity component system is a design pattern used to create a modular and scalable architecture for video games.</p>
+<ul>
+<li><b><code>Entity</code></b> An entity is a container for components. An entity is a unique identifier.</li>
+<li><b><code>Component</code></b> <a class="el" href="classA.html">A</a> component is a container for data. Components are used to store data for entities.</li>
+<li><b><code><a class="el" href="classSystem.html" title="The System class is the base.">System</a></code></b> <a class="el" href="classA.html">A</a> system is a container for logic. Systems are used to process entities. Systems use components data to process entities.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md5"></a>
+<b>Entity Component System Overview</b></h2>
+<h3><a class="anchor" id="autotoc_md6"></a>
+<b>Entity</b></h3>
+<p>An entity is an unsigned integer that is used to identify an entity. </p><div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> Entity;</div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md7"></a>
+<b>Component</b></h3>
+<p><a class="el" href="classA.html">A</a> component is a structure that contains data. </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;Vector3.hpp&quot;</span></div>
+<div class="line"><span class="keyword">struct </span><a class="code hl_struct" href="structTransformComponent.html">TransformComponent</a> {</div>
+<div class="line">    <a class="code hl_class" href="classLE_1_1Vector3.html">LE::Vector3&lt;float&gt;</a> position;</div>
+<div class="line">    <a class="code hl_class" href="classLE_1_1Vector3.html">LE::Vector3&lt;float&gt;</a> rotation;</div>
+<div class="line">    <a class="code hl_class" href="classLE_1_1Vector3.html">LE::Vector3&lt;float&gt;</a> scale;</div>
+<div class="line">};</div>
+<div class="ttc" id="aclassLE_1_1Vector3_html"><div class="ttname"><a href="classLE_1_1Vector3.html">LE::Vector3</a></div><div class="ttdoc">A 3D vector class template.</div><div class="ttdef"><b>Definition</b> Vector3.hpp:28</div></div>
+<div class="ttc" id="astructTransformComponent_html"><div class="ttname"><a href="structTransformComponent.html">TransformComponent</a></div><div class="ttdef"><b>Definition</b> TransformComponent.hpp:13</div></div>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md8"></a>
+<b>System</b></h3>
+<p><a class="el" href="classA.html">A</a> system is a class that contains logic. </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;System.hpp&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">class </span>GravitySystem : <span class="keyword">public</span> LE::System {</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">    <span class="keywordtype">void</span> update()<span class="keyword"> override </span>{</div>
+<div class="line">        <span class="keywordflow">for</span> (<span class="keyword">auto</span>&amp; entity : entities) {</div>
+<div class="line">            <span class="keyword">auto</span>&amp; transform = entity.getComponent&lt;<a class="code hl_struct" href="structTransformComponent.html">TransformComponent</a>&gt;();</div>
+<div class="line">            transform.position.<a class="code hl_variable" href="classLE_1_1Vector3.html#a89ac85c995b6a38ac1dc5136ed24c2c4">y</a> -= 9.8f * 0.01f;</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">};</div>
+<div class="ttc" id="aclassLE_1_1Vector3_html_a89ac85c995b6a38ac1dc5136ed24c2c4"><div class="ttname"><a href="classLE_1_1Vector3.html#a89ac85c995b6a38ac1dc5136ed24c2c4">LE::Vector3::y</a></div><div class="ttdeci">T y</div><div class="ttdef"><b>Definition</b> Vector3.hpp:336</div></div>
+</div><!-- fragment --> <h2><a class="anchor" id="autotoc_md9"></a>
 <b>Module</b></h2>
 <ul>
 <li><b><code><a class="el" href="classAsioNetworkModule.html" title="A class that implements the INetworkModule interface.">AsioNetworkModule</a></code></b> Module for networking using the Asio library.</li>
@@ -122,7 +159,7 @@ $(function(){initNavTree('md_README.html',''); initResizable(true); });
 <li><b><code>TestServerCoreModule</code></b> Module for the test server core.</li>
 </ul>
 <hr  />
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 <b>RFC</b></h2>
 <ul>
 <li><b><code>RFC</code></b></li>
