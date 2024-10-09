@@ -40,7 +40,7 @@ namespace LE {
                  *
                  * @note The `fontHeight` and `fontWidth` parameters are in pixels (`px`) and represent the size of the font.
                  */
-                Text(unsigned int id, const std::string &fontPath, unsigned int fontHeight, const std::string &content = "Hello World !", unsigned int fontWidth = 0);
+                Text(unsigned int id, const std::string &fontPath, unsigned int fontHeight, const std::string &content, Color *color = nullptr, unsigned int fontWidth = 0);
 
                 /**
                  * @brief Destructor for the Text object.
@@ -61,11 +61,16 @@ namespace LE {
                  */
                 void init() override;
 
+                void setContent(const std::string &content);
+
+                std::string getContent() const;
+
             protected:
                 std::string _content; /** The text content. */
                 LE::GUI::Font *_font;  /** The text font. */
                 GLuint _VAO;       /** Vertex Array Object where the Text is drawn. */
                 GLuint _VBO;       /** Vertex Buffer Object where the Text is stored. */
+                Color *_color;    /** The color of the text. */
         };
     }
 }

@@ -27,7 +27,7 @@ namespace LE {
                  * @param x The x position of the rectangle
                  * @param y The y position of the rectangle
                  */
-                Rectangle(float width, float height, float x, float y);
+                Rectangle(float width, float height, float x, float y, Color *color = nullptr);
 
                 /**
                  * @brief Destroy the Rectangle object
@@ -50,6 +50,16 @@ namespace LE {
                  * @brief Initialize the rectangle
                  */
                 void init();
+
+                /**
+                 * @brief Resize the rectangle
+                 *
+                 * @param width The new width of the rectangle
+                 * @param height The new height of the rectangle
+                 *
+                 * Inherited from the Shape class
+                 */
+                void resize(float width, float height);
 
             private:
                 Triangle *_topLeft; // The top left triangle of the rectangle

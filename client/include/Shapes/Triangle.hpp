@@ -9,6 +9,8 @@
 
 #include "Shapes/Shape.hpp"
 
+#include "Color.hpp"
+
 namespace LE {
     class Engine;
 }
@@ -30,7 +32,7 @@ namespace LE {
                  * @param p2 The second point of the triangle
                  * @param p3 The third point of the triangle
                  */
-                Triangle(Vector3<float> p1, Vector3<float> p2, Vector3<float> p3);
+                Triangle(Vector3<float> p1, Vector3<float> p2, Vector3<float> p3, Color *color = nullptr);
 
                 /**
                  * @brief Destroy the Triangle object
@@ -54,12 +56,23 @@ namespace LE {
                  */
                 void init();
 
+                /**
+                 * @brief Resize the triangle
+                 *
+                 * @param width The new width of the triangle
+                 * @param height The new height of the triangle
+                 *
+                 * Inherited from the Shape class
+                 */
+                void resize(float width, float height);
+
             private:
                 Vector3<float> _p1; // The first point of the triangle
                 Vector3<float> _p2; // The second point of the triangle
                 Vector3<float> _p3; // The third point of the triangle
                 GLuint _VAO; // The vertex array object where the triangle is stored
                 GLuint _VBO; // The vertex buffer object where the triangle is stored
+                friend class Rectangle;
         };
     }
 }

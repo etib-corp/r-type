@@ -7,12 +7,6 @@
 
 #pragma once
 
-namespace LE {
-    class Window;
-    class SceneManager;
-    class Scene;
-}
-
 #include <memory>
 #include <iostream>
 
@@ -22,11 +16,18 @@ namespace LE {
 #include "ECS/Components/CameraComponent.hpp"
 
 namespace LE {
+    class Window;
+    class SceneManager;
+    class Scene;
+
     namespace Shapes {
         class Triangle;
     }
     namespace GUI {
         class Text;
+        class Interactable;
+        class Button;
+        class TextField;
     }
 }
 
@@ -172,5 +173,9 @@ namespace LE {
             friend class EventManager; ///< Friend class EventManager.
             friend class LE::Shapes::Triangle;
             friend class LE::GUI::Text;
+            friend class LE::GUI::Interactable;
+            friend class LE::GUI::Button;
+            friend class LE::GUI::Container;
+            friend class LE::GUI::TextField;
     };
 }
