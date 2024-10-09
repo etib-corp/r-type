@@ -17,9 +17,16 @@
 LE::Shader *fontShader{nullptr};
 LE::Shader *triangleShader{nullptr};
 
-LE::Window::Window(const std::string& title, std::size_t width, std::size_t height)
-    : _title(title), _width(width), _height(height), _window(nullptr), _framerateLimit(60), _monitor(nullptr), _mode(nullptr) {
+LE::Window::Window(const std::string& title)
+    : _title(title), _window(nullptr), _monitor(nullptr), _mode(nullptr) {
     _initGLFW();
+
+    _monitor = glfwGetPrimaryMonitor();
+    _mode = glfwGetVideoMode(_monitor);
+    _width = _mode->width;
+    _height = _mode->height;
+    _defaultFramerate = _mode->refreshRate;
+    std::cout << "Framerate: " <<  _defaultFramerate << std::endl;
 
     _window = glfwCreateWindow(_width, _height, _title.c_str(), nullptr, nullptr);
 
@@ -42,11 +49,10 @@ LE::Window::Window(const std::string& title, std::size_t width, std::size_t heig
 
     glfwSwapInterval(1);
 
-    _clock = std::make_unique<LE::Clock>();
     fontShader = new LE::Shader("assets/shaders/font.vert", "assets/shaders/font.frag");
     triangleShader = new Shader("assets/shaders/triangle.vert", "assets/shaders/triangle.frag");
     fontShader->use();
-    glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(width), 0.0f, static_cast<float>(height));
+    glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(_width), 0.0f, static_cast<float>(_height));
     glUniformMatrix4fv(glGetUniformLocation(fontShader->getID(), "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 }
 
@@ -59,9 +65,6 @@ LE::Window::~Window()
 
 void LE::Window::render(std::shared_ptr<Scene> scene)
 {
-    if (_clock->getElapsedTime() < (1000.0f / _framerateLimit))
-        return;
-    _clock->restart();
     scene->draw();
     glfwSwapBuffers(_window);
     clear();
@@ -98,22 +101,27 @@ void LE::Window::close()
     glfwSetWindowShouldClose(_window, GLFW_TRUE);
 }
 
-void LE::Window::setFramerateLimit(std::size_t limit)
-{
-    _framerateLimit = limit;
-}
-
 void LE::Window::clear()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void LE::Window::setClearColor(Color *color)
+void LE::Window::setClearColor(const Color &color)
 {
-    glClearColor(color->_r, color->_g, color->_b, color->_a);
+    glClearColor(color._r, color._g, color._b, color._a);
 }
 
 GLFWwindow* LE::Window::getWindow()
 {
     return _window;
+}
+
+std::size_t LE::Window::getWidth() const
+{
+    return _width;
+}
+
+std::size_t LE::Window::getHeight() const
+{
+    return _height;
 }

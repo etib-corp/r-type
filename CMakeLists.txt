@@ -27,11 +27,16 @@ target_link_libraries(r-type Boost::iostreams)
 
 include_directories(${OPENGL_INCLUDE_DIRS})
 include_directories(dependencies/glm/)
+include_directories(dependencies/assimp-5.4.3/include)
 include_directories(${BOOST_INCLUDE_DIRS})
 
 file(GLOB_RECURSE CLIENT_SOURCES client/src/*.cpp)
-include_directories(client/include client/include/GUI client/include/Maths dependencies/stb/include dependencies/rapidobj/include)
+include_directories(client/include client/include/GUI client/include/Maths dependencies/stb/include dependencies/rapidobj/include dependencies/json-0.0.1/include)
 
+
+include_directories(${OPENGL_INCLUDE_DIRS})
+
+add_compile_options(-g3 -ggdb)
 add_executable(r-type_client ${CLIENT_SOURCES})
 
 target_link_libraries(r-type_client r-type)

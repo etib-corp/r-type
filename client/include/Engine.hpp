@@ -13,6 +13,7 @@
 #include "SceneManager.hpp"
 #include "Window.hpp"
 #include "Error.hpp"
+#include "ECS/Components/CameraComponent.hpp"
 
 namespace LE {
     class Window;
@@ -127,6 +128,27 @@ namespace LE {
              */
             void setConfig(std::function<void()> func);
 
+            /**
+             * @brief Sets the frame rate limit for the window.
+             *
+             * @param limit The frame rate limit.
+             */
+            void setFramerateLimit(std::size_t limit);
+
+            /**
+             * @brief Gets the width of the window.
+             *
+             * @return The width of the window.
+             */
+            std::size_t getWindowWidth() const;
+
+            /**
+             * @brief Gets the height of the window.
+             *
+             * @return The height of the window.
+             */
+            std::size_t getWindowHeight() const;
+
         private:
             /**
              * @brief Private constructor for the Engine class.
@@ -140,17 +162,20 @@ namespace LE {
 
             static Engine* _instance; ///< The singleton instance of the Engine class.
 
-            std::shared_ptr<LE::Window> _window; ///< Shared pointer to the Window instance.
-            std::shared_ptr<SceneManager> _sceneManager; ///< Shared pointer to the SceneManager instance.
-            bool _debugMode; ///< Flag indicating whether debug mode is enabled.
-            bool _throwError; ///< Flag indicating whether to throw an error.
-            friend class EventManager; ///< Friend class EventManager.
-            std::function<void ()> _configFunc; ///< Configuration function. This function is called before the engine starts running.
-            friend class LE::Shapes::Triangle;
-            friend class LE::GUI::Text;
-            friend class LE::GUI::Interactable;
-            friend class LE::GUI::Button;
-            friend class LE::GUI::Container;
-            friend class LE::GUI::TextField;
+            std::shared_ptr<LE::Window> _window;            ///< Shared pointer to the Window instance.
+            std::shared_ptr<SceneManager> _sceneManager;    ///< Shared pointer to the SceneManager instance.
+            bool _debugMode;                                ///< Flag indicating whether debug mode is enabled.
+            bool _throwError;                               ///< Flag indicating whether to throw an error.
+            std::function<void ()> _configFunc;             ///< Configuration function. This function is called before the engine starts running.
+            std::unique_ptr<Clock> _clock;                  ///< Unique pointer to the Clock object.
+            float _dt;                                      ///< The delta time.
+            std::size_t _framerateLimit;                    ///< The frame rate limit.
+            friend class EventManager;                      ///< Friend class EventManager.
+            friend class LE::Shapes::Triangle;              ///< Friend class LE::Shapes::Triangle.
+            friend class LE::GUI::Text;                     ///< Friend class LE::GUI::Text.
+            friend class LE::GUI::Interactable;             ///< Friend class LE::GUI::Interactable.
+            friend class LE::GUI::Button;                   ///< Friend class LE::GUI::Button.
+            friend class LE::GUI::Container;                ///< Friend class LE::GUI::Container.
+            friend class LE::GUI::TextField;                ///< Friend class LE::GUI::TextField.
     };
 }
