@@ -35,7 +35,7 @@ namespace LE {
     #define GL_GLEXT_PROTOTYPES
     #include <windows.h>
     #include <GL/gl.h>
-    #include <GL/glext.h>
+    #include "GLFW/glext.h"
 #endif
 
 #include "GLFW/glfw3.h"

@@ -13,6 +13,7 @@
 #include "PackUnpack.hpp"
 #include "ECS/Ecs.hpp"
 #include "EnumClass.hpp"
+#include <chrono>
 
 class GameScene : public LE::Scene
 {
@@ -102,7 +103,8 @@ class MyScene : public LE::Scene {
             // _ecs->setSignature<Render3DSystem>(signatureRender3D);
 
             Entity entity = _ecs->createEntity();
-            _ecs->addComponent<TransformComponent>(entity, (TransformComponent){{400, 400, 0}, {0, 0, 0}, {0.5f, 0.5f, 0.5f}});
+            TransformComponent transform = {{400, 400, 0}, {0, 0, 0}, {0.5f, 0.5f, 0.5f}};
+            _ecs->addComponent<TransformComponent>(entity, transform);
             auto sprite = createSpriteComponent("assets/images/character.png");
             _ecs->addComponent<SpriteComponent>(entity, *sprite);
 
@@ -212,22 +214,22 @@ int main(void)
     message->setAction(static_cast<uint8_t>(ActionCode::UP));
     message->setBody(bodyTest);
     client_broker->addMessage(0, 1, message);
-    sleep(3);
+    std::this_thread::sleep_for(std::chrono::seconds(1));
     message->setMagicNumber(static_cast<uint8_t>(ActionCode::MAGIC_NUMBER));
     message->setAction(static_cast<uint8_t>(ActionCode::DOWN));
     message->setBody(bodyTest);
     client_broker->addMessage(0, 1, message);
-    sleep(3);
+    std::this_thread::sleep_for(std::chrono::seconds(1));
     message->setMagicNumber(static_cast<uint8_t>(ActionCode::MAGIC_NUMBER));
     message->setAction(static_cast<uint8_t>(ActionCode::LEFT));
     message->setBody(bodyTest);
     client_broker->addMessage(0, 1, message);
-    sleep(3);
+    std::this_thread::sleep_for(std::chrono::seconds(1));
     message->setMagicNumber(static_cast<uint8_t>(ActionCode::MAGIC_NUMBER));
     message->setAction(static_cast<uint8_t>(ActionCode::RIGHT));
     message->setBody(bodyTest);
     client_broker->addMessage(0, 1, message);
-    sleep(3);
+    std::this_thread::sleep_for(std::chrono::seconds(1));
     while (true)
     {
         receiveFromServer(message, client_broker);
