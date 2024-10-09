@@ -33,8 +33,9 @@ void Client::readTCP()
 {
     _socketTCP.async_receive(
         boost::asio::buffer(&_requestTCP, sizeof(Header)),
-        [this](const boost::system::error_code &error, std::size_t bytes_transferred __attribute__((unused)))
+        [this](const boost::system::error_code &error, std::size_t bytes_transferred)
         {
+            (void)bytes_transferred;
             if (!error)
             {
                 if (_requestTCP.header.BodyLength != 0)
@@ -61,8 +62,9 @@ void Client::readUDP()
     _socketUDP.async_receive_from(
         boost::asio::buffer(&_requestUDP, sizeof(Request)),
         _endpointUDPServer,
-        [this](const boost::system::error_code &error, std::size_t bytes_transferred __attribute__((unused)))
+        [this](const boost::system::error_code &error, std::size_t bytes_transferred)
         {
+            (void)bytes_transferred;
             if (!error)
             {
                 if (_onReceive)
