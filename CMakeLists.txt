@@ -1,7 +1,6 @@
 include(FetchContent)
 
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
-SET(CMAKE_ALL_ERRORS_FATAL TRUE)
 
 cmake_minimum_required(VERSION 3.20)
 project(r-type)
@@ -13,7 +12,6 @@ set(CMAKE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/)
 set(XERCES_USE_ICU OFF)
 
 set(OPENGL_SILENT TRUE)
-set(OpenGL_GL_PREFERENCE GLVND)
 find_package(OpenGL REQUIRED)
 
 add_subdirectory(dependencies/glfw-3.4)
