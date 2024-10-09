@@ -10,8 +10,9 @@
 #include "Window.hpp"
 
 #include "Shapes/Triangle.hpp"
-#include "GUI/Container.hpp"
-#include "GUI/Interactable.hpp"
+// #include "GUI/Container.hpp"
+// #include "GUI/Interactable.hpp"
+#include "GUI/TextField.hpp"
 #include "GUI/Button.hpp"
 
 #include <iostream>
@@ -42,7 +43,6 @@ void LE::Engine::run(bool throwError)
 {
     _throwError = throwError;
 
-    std::cout << "Engine running." << std::endl;
     if (_configFunc) {
         _configFunc();
     }
@@ -69,9 +69,7 @@ void LE::Engine::debug(const std::string& message)
 
 void LE::Engine::addScene(const std::string &sceneName, const std::shared_ptr<Scene> scene)
 {
-    debug("Adding scene in engine: " + sceneName);
     _sceneManager->addScene(scene, sceneName);
-    debug("Scene added in engine: " + sceneName);
 }
 
 void LE::Engine::removeScene(const std::string& sceneName)

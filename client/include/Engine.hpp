@@ -26,6 +26,7 @@ namespace LE {
         class Text;
         class Interactable;
         class Button;
+        class TextField;
     }
 }
 
@@ -150,5 +151,6 @@ namespace LE {
             friend class LE::GUI::Interactable;
             friend class LE::GUI::Button;
             friend class LE::GUI::Container;
+            friend class LE::GUI::TextField;
     };
 }

@@ -25,12 +25,21 @@ LE::GUI::Button::~Button()
 }
 
 void LE::GUI::Button::draw()
-
 {
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
 
     glClear(GL_DEPTH_BUFFER_BIT);
+
+    if (isHover()) {
+        OnHover();
+        LE::Engine::getInstance()->_sceneManager->getCurrentScene()->_eventManager->addEventListener({LE::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
+            if (isHover())
+                OnClick();
+        });
+    } else {
+        OnUnhover();
+    }
 
     if (_background)
         _background->draw();

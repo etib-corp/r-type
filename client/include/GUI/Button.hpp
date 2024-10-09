@@ -46,6 +46,7 @@ namespace LE {
                  * This function is responsible for rendering the button on the screen.
                  */
                 void draw() override;
+
         };
     }
 }
