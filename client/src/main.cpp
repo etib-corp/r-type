@@ -313,20 +313,22 @@ int main(void)
     client_broker = new ClientBroker(network_module, "127.0.0.1", 8080);
 
     std::shared_ptr<Message> message = std::make_shared<Message>();
-    message->setMagicNumber(0xFF);
-    message->setAction(0x01);
-    // message->setBody({0});
-    // message->setTopicID(1);
+    message->setMagicNumber(asChar(ActionCode::MAGIC_NUMBER));
+    message->setAction(asChar(ActionCode::NEW_CONNECTION));
+    message->setBody({0});
 
     attributeClientCallback(&responsibilityChain, client_broker);
 
     client_broker->addMessage(0, 1, message.get());
 
+    // client_broker->addMessage(0, 1, message.get());
+    // std::cout << "ClientBroker is starting" << std::endl;
+
     engine->setLoop([&]() {
         std::shared_ptr<Ecs> ecs = scene->_ecs; // TODO getCurrentScene in Engine
         receiveFromServer(client_broker, ecs, responsibilityChain);
     });
-    
+
     try {
         engine->runWithDebug(); // Change to true to simulate an error
     } catch (const LE::Engine::EngineError &e) {

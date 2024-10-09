@@ -50,7 +50,7 @@ void checkMagicNumber(const Request& req, std::shared_ptr<Ecs> _ecs)
     std::cout << "Magic number not good." << std::endl;
 }
 
-void attributeServerCallback(ResponsibilityChain *chain, std::deque<std::shared_ptr<ISession>>  , ServerBroker *server_broker)
+void attributeServerCallback(ResponsibilityChain *chain, std::deque<std::shared_ptr<ISession>> sessions, ServerBroker *server_broker)
 {
     chain->addActionCallback(asChar(ActionCode::UP), checkMagicNumber);
     chain->addActionCallback(asChar(ActionCode::UP), callbackInputUp);

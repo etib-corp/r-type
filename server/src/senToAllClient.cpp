@@ -21,13 +21,13 @@ void sendToAllClient(
         std::cout << "No clients connected. Waiting..." << std::endl;
         return;
     }
-    ::memmove(body._buffer, &updateEcs, sizeof(updateEcs));
+    ::memmove(&body._buffer, &updateEcs, sizeof(updateEcs));
     for (auto &session : sessions)
     {
         std::shared_ptr<Message> message = std::make_shared<Message>();
-        message->setMagicNumber(0x77);
-        message->setAction(static_cast<std::uint8_t>(ActionCode::UPDATE_ECS));
-        message->setEmmiterID(0x0);
+        message->setMagicNumber(asChar(ActionCode::MAGIC_NUMBER));
+        message->setAction(ecsInput);
+        message->setEmmiterID(0x01);
         message->setBody(body);
         server_broker->addMessage(session->getId(), 1, message.get());
         std::cout << "Message sent to client <" << session->getId() << ">" << std::endl;

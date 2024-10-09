@@ -25,10 +25,8 @@ static void receiveFromClient(ServerBroker *server_broker, std::shared_ptr<Ecs> 
 {
     try {
         Message *message = nullptr;
-        Session session = 
         message = server_broker->getMessage(0, 1);
         if (message == nullptr) {
-            std::cout << "message is null" << std::endl;
             return;
         }
         std::cout << "Message received from client" << std::endl;
@@ -51,7 +49,7 @@ static void receiveFromClient(ServerBroker *server_broker, std::shared_ptr<Ecs> 
         std::cout << "getEmmiterID()=" << (int)message->getEmmiterID() << std::endl;
         // delete message;
     } catch (const std::exception &e) {
-        std::cerr << e.what() << std::endl;
+        // std::cerr << e.what() << std::endl;
         // std::cout << "No message received. Waiting..." << std::endl;
     }
 }
