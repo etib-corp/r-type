@@ -3,7 +3,7 @@ var searchData=
   ['r_20type_20multiplayer_20game_20network_20protocol_0',['RFC: R-Type Multiplayer Game Network Protocol',['../md_RFC.html',1,'']]],
   ['r_20type_20strong_1',['&lt;strong&gt;R-Type&lt;/strong&gt;',['../md_README.html',1,'']]],
   ['read_2',['read',['../classSession.html#acf2ddc75112e46fffffce9c1e41375f4',1,'Session::read()'],['../structcmd_8h.html#a9c7b76d5266903891c803132d51ccb90',1,'read(int, char *, size_t):&#160;structcmd.h']]],
-  ['readme_3',['README',['../md_lib_2AsioNetworkModule_2README.html',1,'']]],
+  ['readme_3',['README',['../md_lib_2NetworkModule_2README.html',1,'']]],
   ['rect_4',['rect',['../structSpriteComponent.html#adc670c71614a060dbf16f84022aa0b08',1,'SpriteComponent']]],
   ['rectangle_5',['Rectangle',['../classLE_1_1Shapes_1_1Rectangle.html',1,'LE::Shapes::Rectangle'],['../classLE_1_1Shapes_1_1Rectangle.html#a04d5eb75913ffdb248e71a1b628ffe2c',1,'LE::Shapes::Rectangle::Rectangle()']]],
   ['references_6',['7. References',['../md_RFC.html#autotoc_md29',1,'']]],

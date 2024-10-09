@@ -26,7 +26,7 @@ var NAVTREE =
 [
   [ "R-Type", "index.html", [
     [ "pag_example", "pag_example.html", null ],
-    [ "README", "md_lib_2AsioNetworkModule_2README.html", null ],
+    [ "README", "md_lib_2NetworkModule_2README.html", null ],
     [ "<strong>R-Type</strong>", "md_README.html", null ],
     [ "RFC: R-Type Multiplayer Game Network Protocol", "md_RFC.html", [
       [ "Status: Draft", "md_RFC.html#autotoc_md8", null ],
@@ -98,7 +98,7 @@ var NAVTREEINDEX =
 "AsioNetworkModule_8hpp_source.html",
 "classLE_1_1Engine_1_1EngineError.html",
 "classListenerTCP.html#a457cd16d8e84d70212bd2ef935b71b94",
-"globals_vars.html"
+"globals_type.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

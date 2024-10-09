@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"globals_type.html":[8,1,3],
 "globals_vars.html":[8,1,2],
 "group_8cpp.html":[5,2,1],
 "group__group1.html":[5,0],
@@ -45,7 +46,7 @@ var NAVTREEINDEX3 =
 "md_RFC.html#autotoc_md29":[3,9],
 "md_RFC.html#autotoc_md8":[3,0],
 "md_RFC.html#autotoc_md9":[3,1],
-"md_lib_2AsioNetworkModule_2README.html":[1],
+"md_lib_2NetworkModule_2README.html":[1],
 "memgrp_8cpp.html":[8,0,1,0,15],
 "memgrp_8cpp.html#a111da81ae5883147168bbb8366377b10":[8,0,1,0,15,2],
 "memgrp_8cpp.html#a955f504eccf76b4eb2489c0adab03121":[8,0,1,0,15,1],

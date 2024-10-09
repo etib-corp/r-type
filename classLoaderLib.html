@@ -104,7 +104,7 @@ $(function(){initNavTree('classLoaderLib.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 
-<p>The <a class="el" href="classLoaderLib.html" title="The LoaderLib class is responsible for loading network and core modules dynamically.">LoaderLib</a> class is responsible for loading network and core modules dynamically.  
+<p>Responsible for dynamically loading network and core modules.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="LoaderLib_8hpp_source.html">LoaderLib.hpp</a>&gt;</code></p>
@@ -112,11 +112,15 @@ $(function(){initNavTree('classLoaderLib.html',''); initResizable(true); });
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5fe57eca180f419caf517a7e6d79a194" id="r_a5fe57eca180f419caf517a7e6d79a194"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5fe57eca180f419caf517a7e6d79a194">LoaderLib</a> (const std::string &amp;NetworkModule, const std::string &amp;CoreModule)</td></tr>
-<tr class="memdesc:a5fe57eca180f419caf517a7e6d79a194"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classLoaderLib.html" title="The LoaderLib class is responsible for loading network and core modules dynamically.">LoaderLib</a> object with the specified network module and core module.  <br /></td></tr>
+<tr class="memdesc:a5fe57eca180f419caf517a7e6d79a194"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classLoaderLib.html" title="Responsible for dynamically loading network and core modules.">LoaderLib</a> object.  <br /></td></tr>
 <tr class="separator:a5fe57eca180f419caf517a7e6d79a194"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0465b9373edc1925fbdb342ea0cfdea" id="r_af0465b9373edc1925fbdb342ea0cfdea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0465b9373edc1925fbdb342ea0cfdea">LoadModule</a> (void)</td></tr>
-<tr class="memdesc:af0465b9373edc1925fbdb342ea0cfdea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the loader is currently loading.  <br /></td></tr>
-<tr class="separator:af0465b9373edc1925fbdb342ea0cfdea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dc5f87ff973ea0b56081074c46c59c0" id="r_a2dc5f87ff973ea0b56081074c46c59c0"><td class="memItemLeft" align="right" valign="top"><a id="a2dc5f87ff973ea0b56081074c46c59c0" name="a2dc5f87ff973ea0b56081074c46c59c0"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>~LoaderLib</b> ()</td></tr>
+<tr class="memdesc:a2dc5f87ff973ea0b56081074c46c59c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor cleans up loaded modules. <br /></td></tr>
+<tr class="separator:a2dc5f87ff973ea0b56081074c46c59c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab041da0382befc39a4c46eaf294240d6" id="r_ab041da0382befc39a4c46eaf294240d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab041da0382befc39a4c46eaf294240d6">LoadModule</a> ()</td></tr>
+<tr class="memdesc:ab041da0382befc39a4c46eaf294240d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads both the network and core modules.  <br /></td></tr>
+<tr class="separator:ab041da0382befc39a4c46eaf294240d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3ac8e66a0d0512d9d35965f686a6d15" id="r_ad3ac8e66a0d0512d9d35965f686a6d15"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classINetworkModule.html">INetworkModule</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3ac8e66a0d0512d9d35965f686a6d15">createNetworkModule</a> ()</td></tr>
 <tr class="memdesc:ad3ac8e66a0d0512d9d35965f686a6d15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a network module instance.  <br /></td></tr>
 <tr class="separator:ad3ac8e66a0d0512d9d35965f686a6d15"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,22 +135,21 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_pathNetworkMo
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>_pathCoreModule</b></td></tr>
 <tr class="memdesc:a632821f3a54132b1b73d67f5ebea68fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Path to the core module. <br /></td></tr>
 <tr class="separator:a632821f3a54132b1b73d67f5ebea68fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb5faa90f2e4f9ab09d455f004004056" id="r_abb5faa90f2e4f9ab09d455f004004056"><td class="memItemLeft" align="right" valign="top"><a id="abb5faa90f2e4f9ab09d455f004004056" name="abb5faa90f2e4f9ab09d455f004004056"></a>
+<tr class="memitem:a0216e1bb6c5073b0e3af79ed7da0dbf0" id="r_a0216e1bb6c5073b0e3af79ed7da0dbf0"><td class="memItemLeft" align="right" valign="top"><a id="a0216e1bb6c5073b0e3af79ed7da0dbf0" name="a0216e1bb6c5073b0e3af79ed7da0dbf0"></a>
 std::function&lt; <a class="el" href="classINetworkModule.html">INetworkModule</a> *()&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_createNetworkModule</b></td></tr>
-<tr class="memdesc:abb5faa90f2e4f9ab09d455f004004056"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to create a network module. <br /></td></tr>
-<tr class="separator:abb5faa90f2e4f9ab09d455f004004056"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7c6b6545b909cce12205b0f37700547" id="r_ae7c6b6545b909cce12205b0f37700547"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae7c6b6545b909cce12205b0f37700547">_handleNetworkModule</a></td></tr>
-<tr class="memdesc:ae7c6b6545b909cce12205b0f37700547"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to create a client.  <br /></td></tr>
-<tr class="separator:ae7c6b6545b909cce12205b0f37700547"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef54062304d08bdf69fcb4be1b2a28f9" id="r_aef54062304d08bdf69fcb4be1b2a28f9"><td class="memItemLeft" align="right" valign="top"><a id="aef54062304d08bdf69fcb4be1b2a28f9" name="aef54062304d08bdf69fcb4be1b2a28f9"></a>
-void *&#160;</td><td class="memItemRight" valign="bottom"><b>_handleCoreModule</b></td></tr>
-<tr class="memdesc:aef54062304d08bdf69fcb4be1b2a28f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains the handle to the core module. <br /></td></tr>
-<tr class="separator:aef54062304d08bdf69fcb4be1b2a28f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:a0216e1bb6c5073b0e3af79ed7da0dbf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to create a network module. <br /></td></tr>
+<tr class="separator:a0216e1bb6c5073b0e3af79ed7da0dbf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64bb8c47bcde0f96e05310f8000ed89e" id="r_a64bb8c47bcde0f96e05310f8000ed89e"><td class="memItemLeft" align="right" valign="top"><a id="a64bb8c47bcde0f96e05310f8000ed89e" name="a64bb8c47bcde0f96e05310f8000ed89e"></a>
+LIB_HANDLE&#160;</td><td class="memItemRight" valign="bottom"><b>_handleNetworkModule</b></td></tr>
+<tr class="memdesc:a64bb8c47bcde0f96e05310f8000ed89e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle to the network module. <br /></td></tr>
+<tr class="separator:a64bb8c47bcde0f96e05310f8000ed89e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1faa71911280b632dbce3358bbff7cf9" id="r_a1faa71911280b632dbce3358bbff7cf9"><td class="memItemLeft" align="right" valign="top"><a id="a1faa71911280b632dbce3358bbff7cf9" name="a1faa71911280b632dbce3358bbff7cf9"></a>
+LIB_HANDLE&#160;</td><td class="memItemRight" valign="bottom"><b>_handleCoreModule</b></td></tr>
+<tr class="memdesc:a1faa71911280b632dbce3358bbff7cf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle to the core module. <br /></td></tr>
+<tr class="separator:a1faa71911280b632dbce3358bbff7cf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The <a class="el" href="classLoaderLib.html" title="The LoaderLib class is responsible for loading network and core modules dynamically.">LoaderLib</a> class is responsible for loading network and core modules dynamically. </p>
-<p>The <a class="el" href="classLoaderLib.html" title="The LoaderLib class is responsible for loading network and core modules dynamically.">LoaderLib</a> class provides functionality to load network and core modules dynamically. It allows creating network modules and checking if the modules are currently being loaded.</p>
-<dl class="section note"><dt>Note</dt><dd>This class assumes that the network and core modules are implemented using the <a class="el" href="classINetworkModule.html" title="Abstract base class for network modules.">INetworkModule</a> interface. </dd></dl>
+<div class="textblock"><p>Responsible for dynamically loading network and core modules. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5fe57eca180f419caf517a7e6d79a194" name="a5fe57eca180f419caf517a7e6d79a194"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5fe57eca180f419caf517a7e6d79a194">&#9670;&#160;</a></span>LoaderLib()</h2>
@@ -167,11 +170,11 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><b>_handleCoreModule</
       </table>
 </div><div class="memdoc">
 
-<p>Constructs a <a class="el" href="classLoaderLib.html" title="The LoaderLib class is responsible for loading network and core modules dynamically.">LoaderLib</a> object with the specified network module and core module. </p>
+<p>Constructs a <a class="el" href="classLoaderLib.html" title="Responsible for dynamically loading network and core modules.">LoaderLib</a> object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">NetworkModule</td><td>The path to the network module. </td></tr>
-    <tr><td class="paramname">CoreModule</td><td>The path to the core module. </td></tr>
+    <tr><td class="paramname">NetworkModule</td><td>Path to the network module. </td></tr>
+    <tr><td class="paramname">CoreModule</td><td>Path to the core module. </td></tr>
   </table>
   </dd>
 </dl>
@@ -188,26 +191,19 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><b>_handleCoreModule</
         <tr>
           <td class="memname"><a class="el" href="classINetworkModule.html">INetworkModule</a> * LoaderLib::createNetworkModule </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Creates a network module instance. </p>
-<p>This function creates and returns a new instance of a network module using the specified port.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">port</td><td>The port number to be used by the network module. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>INetworkModule* Pointer to the created network module instance. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classA.html">A</a> pointer to the created network module instance. </dd></dl>
 
 </div>
 </div>
-<a id="af0465b9373edc1925fbdb342ea0cfdea" name="af0465b9373edc1925fbdb342ea0cfdea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0465b9373edc1925fbdb342ea0cfdea">&#9670;&#160;</a></span>LoadModule()</h2>
+<a id="ab041da0382befc39a4c46eaf294240d6" name="ab041da0382befc39a4c46eaf294240d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab041da0382befc39a4c46eaf294240d6">&#9670;&#160;</a></span>LoadModule()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -221,40 +217,13 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><b>_handleCoreModule</
       </table>
 </div><div class="memdoc">
 
-<p>Checks if the loader is currently loading. </p>
-<p>This function checks if the loader is currently loading by attempting to load the network module. If the network module fails to load, an exception of type <a class="el" href="classLoaderLibError.html">LoaderLibError</a> is thrown with the corresponding error message.</p>
+<p>Loads both the network and core modules. </p>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classLoaderLibError.html">LoaderLibError</a></td><td>If the network module fails to load. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classLoaderLibError.html" title="Exception class for loader errors.">LoaderLibError</a></td><td>If either module fails to load. </td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="ae7c6b6545b909cce12205b0f37700547" name="ae7c6b6545b909cce12205b0f37700547"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae7c6b6545b909cce12205b0f37700547">&#9670;&#160;</a></span>_handleNetworkModule</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void* LoaderLib::_handleNetworkModule</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Function to create a client. </p>
-<p>Contains the handle to the network module. </p>
 
 </div>
 </div>
