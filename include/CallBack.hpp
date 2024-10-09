@@ -22,12 +22,6 @@
 // #include "CallBack.hpp"
 #include <iostream>
 
-void callbackInputUp(const Header& header, std::shared_ptr<Ecs> _ecs);
-void callbackInputDown(const Header& header, std::shared_ptr<Ecs> _ecs);
-void callbackInputLeft(const Header& header, std::shared_ptr<Ecs> _ecs);
-void callbackInputRight(const Header& header, std::shared_ptr<Ecs> _ecs);
-void checkMagicNumber(const Header& header, std::shared_ptr<Ecs> _ecs);
-void attributeServerCallback(ResponsibilityChain *chain, std::deque<std::shared_ptr<ISession>> sessions, ServerBroker *server_broker, Message *message);
 void executeCallbacks(
     const std::vector<std::function<void(
         const Header&, std::shared_ptr<Ecs>
