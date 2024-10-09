@@ -51,6 +51,14 @@ namespace LE {
                  */
                 void init();
 
+                /**
+                 * @brief Resize the rectangle
+                 *
+                 * @param width The new width of the rectangle
+                 * @param height The new height of the rectangle
+                 *
+                 * Inherited from the Shape class
+                 */
                 void resize(float width, float height);
 
             private:

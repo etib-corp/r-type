@@ -38,6 +38,12 @@ namespace LE {
                  */
                 virtual void init() = 0;
 
+                /**
+                 * @brief Resize the shape
+                 *
+                 * @param width The new width of the shape
+                 * @param height The new height of the shape
+                 */
                 virtual void resize(float width, float height) = 0;
 
                 Color *_color; // The color of the shape
