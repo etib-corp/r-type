@@ -37,3 +37,20 @@ void LE::Shapes::Rectangle::draw()
     _topLeft->draw();
     _bottomRight->draw();
 }
+
+void LE::Shapes::Rectangle::resize(float width, float height)
+{
+    _width = width;
+    _height = height;
+
+    float x = _topLeft->_p1.x;
+    float y = _topLeft->_p1.y;
+
+    _topLeft->_p1 = Vector3<float>(x, y, 0);
+    _topLeft->_p2 = Vector3<float>(x + _width, y, 0);
+    _topLeft->_p3 = Vector3<float>(x, y + _height, 0);
+
+    _bottomRight->_p1 = Vector3<float>(x + _width, y, 0);
+    _bottomRight->_p2 = Vector3<float>(x + _width, y + _height, 0);
+    _bottomRight->_p3 = Vector3<float>(x, y + _height, 0);
+}

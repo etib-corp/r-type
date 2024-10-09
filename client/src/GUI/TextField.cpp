@@ -14,6 +14,7 @@ LE::GUI::TextField::TextField(float x, float y, float width, float height, const
     _width = width;
     _height = height;
     _focused = false;
+    _initialWidth = _width;
 
     _label = new LE::GUI::Text(280604, "assets/fonts/ARIAL.TTF", 24, label, textColor);
     _label->setPos(x, y + height - 24);
@@ -42,8 +43,19 @@ void LE::GUI::TextField::draw()
         OnUnhover();
     }
 
-    if (_background)
+    float maxWidth = 0.0f;
+
+    for (auto &child : _children) {
+        if (child->getWidth() > maxWidth)
+            maxWidth = child->getWidth();
+    }
+
+    _width = maxWidth > _initialWidth ? maxWidth : _initialWidth;
+
+    if (_background) {
+        _background->resize(_width, _height);
         _background->draw();
+    }
     glDisable(GL_DEPTH_TEST);
 
     for (auto &child : _children) {
@@ -62,6 +74,11 @@ void LE::GUI::TextField::OnHover()
 
 void LE::GUI::TextField::OnUnhover()
 {
+}
+
+void LE::GUI::TextField::setMaxChars(unsigned int maxChars)
+{
+    _maxChars = maxChars;
 }
 
 void LE::GUI::TextField::init()
@@ -85,24 +102,24 @@ void LE::GUI::TextField::init()
     });
     for (int key = LE_KEY_A; key <= LE_KEY_Z; key++) {
         eventManager->addEventListener({LE::KEYBOARD, key, LE::JUST_PRESSED}, [this, key](LE::Engine *engine) {
-            if (_focused)
+            if (_focused && _content->getContent().size() < _maxChars)
                 _content->setContent(_content->getContent() + std::string(1, key));
         });
     }
     for (int key = LE_KEY_0; key <= LE_KEY_9; key++) {
         eventManager->addEventListener({LE::KEYBOARD, key, LE::JUST_PRESSED}, [this, key](LE::Engine *engine) {
-            if (_focused)
+            if (_focused && _content->getContent().size() < _maxChars)
                 _content->setContent(_content->getContent() + std::string(1, key));
         });
     }
     for (int key = LE_KEY_NUMPAD_0; key <= LE_KEY_NUMPAD_9; key++) {
         eventManager->addEventListener({LE::KEYBOARD, key, LE::JUST_PRESSED}, [this, key](LE::Engine *engine) {
-            if (_focused)
+            if (_focused && _content->getContent().size() < _maxChars)
                 _content->setContent(_content->getContent() + std::string(1, key));
         });
     }
     eventManager->addEventListener({LE::KEYBOARD, LE_KEY_SPACE, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
-        if (_focused)
+        if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent(_content->getContent() + " ");
     });
     eventManager->addEventListener({LE::KEYBOARD, LE_KEY_BACKSPACE, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
@@ -110,55 +127,55 @@ void LE::GUI::TextField::init()
             _content->setContent(_content->getContent().substr(0, _content->getContent().size() - 1));
     });
     eventManager->addEventListener({LE::KEYBOARD, LE_KEY_DELETE, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
-        if (_focused)
+        if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent("");
     });
     eventManager->addEventListener({LE::KEYBOARD, LE_KEY_MINUS, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
-        if (_focused)
+        if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent(_content->getContent() + "-");
     });
     eventManager->addEventListener({LE::KEYBOARD, LE_KEY_NUMPAD_MINUS, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
-        if (_focused)
+        if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent(_content->getContent() + "-");
     });
     eventManager->addEventListener({LE::KEYBOARD, LE_KEY_EQUALS, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
-        if (_focused)
+        if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent(_content->getContent() + "=");
     });
     eventManager->addEventListener({LE::KEYBOARD, LE_KEY_PERIOD, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
-        if (_focused)
+        if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent(_content->getContent() + ".");
     });
     eventManager->addEventListener({LE::KEYBOARD, LE_KEY_COMMA, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
-        if (_focused)
+        if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent(_content->getContent() + ",");
     });
     eventManager->addEventListener({LE::KEYBOARD, LE_KEY_SLASH, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
-        if (_focused)
+        if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent(_content->getContent() + "/");
     });
     eventManager->addEventListener({LE::KEYBOARD, LE_KEY_SEMICOLON, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
-        if (_focused)
+        if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent(_content->getContent() + ";");
     });
     eventManager->addEventListener({LE::KEYBOARD, LE_KEY_QUOTE, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
-        if (_focused)
+        if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent(_content->getContent() + "'");
     });
     eventManager->addEventListener({LE::KEYBOARD, LE_KEY_LEFTBRACKET, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
-        if (_focused)
+        if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent(_content->getContent() + "[");
     });
     eventManager->addEventListener({LE::KEYBOARD, LE_KEY_RIGHTBRACKET, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
-        if (_focused)
+        if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent(_content->getContent() + "]");
     });
     eventManager->addEventListener({LE::KEYBOARD, LE_KEY_BACKSLASH, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
-        if (_focused)
+        if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent(_content->getContent() + "\\");
     });
     eventManager->addEventListener({LE::KEYBOARD, LE_KEY_TAB, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
-        if (_focused)
+        if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent(_content->getContent() + "\t");
     });
 

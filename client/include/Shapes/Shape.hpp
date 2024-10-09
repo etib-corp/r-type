@@ -38,6 +38,8 @@ namespace LE {
                  */
                 virtual void init() = 0;
 
+                virtual void resize(float width, float height) = 0;
+
                 Color *_color; // The color of the shape
         };
     }

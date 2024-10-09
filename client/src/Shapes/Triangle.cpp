@@ -86,3 +86,20 @@ void LE::Shapes::Triangle::init()
     glGenVertexArrays(1, &_VAO);
     glGenBuffers(1, &_VBO);
 }
+
+void LE::Shapes::Triangle::resize(float width, float height)
+{
+    auto x = _p1.x;
+    auto y = _p1.y;
+    auto z = _p1.z;
+
+    _p1 = Vector3<float>((2 * x) / width, (2 * y) / height, z);
+    x = _p2.x;
+    y = _p2.y;
+    z = _p2.z;
+    _p2 = Vector3<float>((2 * x) / width, (2 * y) / height, z);
+    x = _p3.x;
+    y = _p3.y;
+    z = _p3.z;
+    _p3 = Vector3<float>((2 * x) / width, (2 * y) / height, z);
+}

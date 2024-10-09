@@ -56,12 +56,15 @@ namespace LE {
                  */
                 void init();
 
+                void resize(float width, float height);
+
             private:
                 Vector3<float> _p1; // The first point of the triangle
                 Vector3<float> _p2; // The second point of the triangle
                 Vector3<float> _p3; // The third point of the triangle
                 GLuint _VAO; // The vertex array object where the triangle is stored
                 GLuint _VBO; // The vertex buffer object where the triangle is stored
+                friend class Rectangle;
         };
     }
 }
