@@ -95,8 +95,8 @@ void LE::GUI::Text::draw()
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glDrawArrays(GL_TRIANGLES, 0, 6);
         x += (ch.Advance >> 6);
-        _width += w;
     }
+    _width = x - _x;
     glBindVertexArray(0);
     glBindTexture(GL_TEXTURE_2D, 0);
 }

@@ -17,6 +17,8 @@ namespace LE {
                 TextField(float x, float y, float width, float height, const std::string &label, LE::Color *bgColor, LE::Color *textColor);
                 ~TextField();
 
+                void setMaxChars(unsigned int maxChars);
+
                 void draw() override;
 
                 void init() override;
@@ -31,6 +33,7 @@ namespace LE {
                 LE::GUI::Text *_label;
                 LE::GUI::Text *_content;
                 bool _focused;
+                unsigned int _maxChars = 18;
         };
     }
 }

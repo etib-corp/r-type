@@ -8,6 +8,7 @@
 #include "GUI/Container.hpp"
 
 #include "GUI/Interactable.hpp"
+#include "GUI/Text.hpp"
 
 void LE::GUI::Container::addChildren(Component *child)
 {
@@ -31,22 +32,13 @@ void LE::GUI::Container::draw()
 
     glClear(GL_DEPTH_BUFFER_BIT);
 
-    if (_background)
+    if (_background) {
+        _background->resize(_width, _height);
         _background->draw();
+    }
     glDisable(GL_DEPTH_TEST);
 
     for (auto& child : _children) {
-        // if (auto interactable = dynamic_cast<LE::GUI::Interactable *>(child)) {
-        //     if (interactable->isHover()) {
-        //         interactable->OnHover();
-        //         LE::Engine::getInstance()->_sceneManager->getCurrentScene()->_eventManager->addEventListener({LE::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::JUST_PRESSED}, [interactable](LE::Engine *engine) {
-        //             if (interactable->isHover())
-        //                 interactable->OnClick();
-        //         });
-        //     } else {
-        //         interactable->OnUnhover();
-        //     }
-        // }
         child->draw();
     }
 }
@@ -56,8 +48,9 @@ void LE::GUI::Container::init()
     float totalHeight = 0.0f;
 
     for (auto child : _children) {
-        if (child->getWidth() > _width)
+        if (child->getWidth() > _width) {
             _width = child->getWidth();
+        }
         totalHeight += child->getHeight();
     }
     _height = totalHeight > _height ? totalHeight : _height;

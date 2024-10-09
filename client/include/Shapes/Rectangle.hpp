@@ -51,6 +51,8 @@ namespace LE {
                  */
                 void init();
 
+                void resize(float width, float height);
+
             private:
                 Triangle *_topLeft; // The top left triangle of the rectangle
                 Triangle *_bottomRight; // The bottom right triangle of the rectangle
