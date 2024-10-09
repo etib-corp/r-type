@@ -1,4 +1,4 @@
-add_subdirectory(AsioNetworkModule)
+add_subdirectory(NetworkModule)
 add_subdirectory(ClientCoreModule)
 add_subdirectory(ServerCoreModule)
 add_subdirectory(TestClientCoreModule)
