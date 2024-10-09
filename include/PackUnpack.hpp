@@ -44,14 +44,14 @@ class PackUnpack {
             return decompressedData;
         }
         template<typename T>
-        static std::vector<uint8_t> serialize(const T& obj)
+        [[nodiscard]]  static std::vector<uint8_t> serialize(const T& obj)
         {
             std::vector<uint8_t> serializedData(sizeof(T));
             std::memmove(serializedData.data(), &obj, sizeof(T));
             return serializedData;
         }
         template<typename T>
-        static T deserialize(const std::vector<uint8_t>& data)
+        [[nodiscard]]  static T deserialize(const std::vector<uint8_t>& data)
         {
             T obj;
             std::memmove(&obj, data.data(), sizeof(T));

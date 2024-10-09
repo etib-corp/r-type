@@ -26,35 +26,49 @@ public:
     /**
      * @brief Destroys the Message object.
      */
-    ~Message(void);
+    ~Message(void) = default;
+
+    /**
+     * @brief Sets the MagicNumber ID for the message.
+     *
+     * @param magicNumber The MagicNumber ID to be set.
+     */
+    void setMagicNumber(uint8_t magicNumber) { _magicNumber = magicNumber; }
+
+    /**
+     * @brief Gets the MagicNumber ID of the message.
+     *
+     * @return The MagicNumber ID of the message.
+     */
+    [[nodiscard]] uint8_t getMagicNumber(void) { return _magicNumber; }
 
     /**
      * @brief Sets the ECS ID for the message.
      *
      * @param ecs_id The ECS ID to be set.
      */
-    void setEmmiterID(std::uint32_t emmiter_id) { _emmiter_id = emmiter_id; }
+    void setEmmiterID(std::uint8_t emmiter_id) { _emmiter_id = emmiter_id; }
 
     /**
      * @brief Gets the ECS ID of the message.
      *
      * @return The ECS ID of the message.
      */
-    std::uint32_t getEmmiterID(void) const { return _emmiter_id; }
+    [[nodiscard]] std::uint8_t getEmmiterID(void) const { return _emmiter_id; }
 
     /**
      * @brief Sets the receiver ID for the message.
      *
      * @param receiver_id The receiver ID to be set.
      */
-    void setReceiverID(std::uint32_t receiver_id) { _receiver_id = receiver_id; }
+    void setReceiverID(std::uint8_t receiver_id) { _receiver_id = receiver_id; }
 
     /**
      * @brief Gets the receiver ID of the message.
      *
      * @return The receiver ID of the message.
      */
-    std::uint32_t getReceiverID(void) const { return _receiver_id; }
+    [[nodiscard]] std::uint8_t getReceiverID(void) const { return _receiver_id; }
 
     /**
      * @brief Sets the topic id for the message.
@@ -68,7 +82,7 @@ public:
      *
      * @return The topic id of the message.
      */
-    std::uint8_t getTopicID(void) const { return _topic_id; }
+    [[nodiscard]] std::uint8_t getTopicID(void) const { return _topic_id; }
 
     /**
      * @brief Sets the action for the message.
@@ -82,7 +96,7 @@ public:
      *
      * @return The action of the message.
      */
-    std::uint8_t getAction(void) const { return _action; }
+    [[nodiscard]] std::uint8_t getAction(void) const { return _action; }
 
     /**
      * @brief Sets the body for the message.
@@ -96,14 +110,14 @@ public:
      *
      * @return The body of the message.
      */
-    Body getBody(void) const { return _body; }
+    [[nodiscard]] Body getBody(void) const { return _body; }
 
     /**
      * @brief Serializes the message.
      *
      * @return A unique pointer to the serialized request.
      */
-    std::string serialize(void) const;
+    [[nodiscard]] std::string serialize(void) const;
 
     /**
      * @brief Deserializes the message.
@@ -113,8 +127,9 @@ public:
     void deserialize(std::string raw_request);
 
 private:
-    std::uint32_t _emmiter_id;
-    std::uint32_t _receiver_id;
+    std::uint8_t _magicNumber;
+    std::uint8_t _emmiter_id;
+    std::uint8_t _receiver_id;
     std::uint8_t _topic_id;
     std::uint8_t _action;
     Body _body;
