@@ -56,6 +56,14 @@ namespace LE {
                  */
                 void init();
 
+                /**
+                 * @brief Resize the triangle
+                 *
+                 * @param width The new width of the triangle
+                 * @param height The new height of the triangle
+                 *
+                 * Inherited from the Shape class
+                 */
                 void resize(float width, float height);
 
             private:
