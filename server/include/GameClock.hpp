@@ -17,8 +17,6 @@
 #include <iostream>
 #include <functional>
 #include <unordered_map>
-#include <vector>
-#include <unistd.h>
 
 class GameClock {
 public:

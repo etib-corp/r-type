@@ -4,7 +4,6 @@
 #include <cstdint>
 #include <cerrno>
 #include <cstring>
-#include <zlib.h>
 #include "PackUnpack.hpp"
 
 void showHeader(Header header)
@@ -38,7 +37,7 @@ std::istream& operator>>(std::istream& is, Body& req)
 {
     size_t originalSize = sizeof(Body);
     std::vector<uint8_t> compressedData((std::istreambuf_iterator<char>(is)), std::istreambuf_iterator<char>());
-    std::vector<uint8_t> decompressedData = PackUnpack::unPack(compressedData, originalSize);
+    std::vector<uint8_t> decompressedData = PackUnpack::unPack(compressedData);
     req = PackUnpack::deserialize<Body>(decompressedData);
     return is;
 }

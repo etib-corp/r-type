@@ -49,10 +49,10 @@ std::string getExtensionKernel(void)
 std::string getPathOfNetworkDynLib(void)
 {
     if (isLinux())
-        return "./build/lib/AsioNetworkModule/libAsioNetworkModule";
+        return "./build/lib/NetworkModule/libNetworkModule";
     if (isWindows())
         return ".\\Debug\\NetworkModule";
     if (isMacOS())
-        return "./build/lib/AsioNetworkModule/libAsioNetworkModule";
+        return "./build/lib/NetworkModule/libNetworkModule";
     return "";
 }
