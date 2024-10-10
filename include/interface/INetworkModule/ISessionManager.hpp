@@ -23,6 +23,7 @@ public:
 
     virtual void addClient(std::shared_ptr<ISession> client)
     {
+        std::cout << "Session added: " << client->getId() << std::endl;
         _sessions.push_back(client);
     }
 
@@ -40,6 +41,7 @@ public:
                 return clients.front();
             clients.pop_front();
         }
+        throw std::runtime_error("Client not found: " + std::to_string(id));
         return nullptr;
     }
 

@@ -61,13 +61,10 @@ void ServerBroker::_sendMessage(Message *message)
 void ServerBroker::_onReceiveRequestCallback(const Request &request)
 {
     Message *message = new Message();
-
-    message->setMagicNumber(request.header.MagicNumber);
-    message->setEmmiterID(request.header.EmmiterdEcsId);
-    message->setReceiverID(request.header.ReceiverEcsId);
-    message->setAction(request.header.Action);
-    message->setTopicID(request.header.TopicID);
-    message->setBody(request.body);
+    
+    if (message == nullptr)
+        std::cerr << "Error: Could not allocate memory for message" << std::endl;
+        std::abort();
     _incomming_messages.push(message);
 }
 

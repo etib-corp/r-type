@@ -44,6 +44,7 @@ void ClientBroker::_sendMessage(Message *message)
 void ClientBroker::_onReceiveRequestCallback(const Request &request)
 {
     static bool first_message = false;
+    Message *message = nullptr;
 
     if (!first_message) {
         std::cout << "ClientBroker received first message" << std::endl;
@@ -53,9 +54,10 @@ void ClientBroker::_onReceiveRequestCallback(const Request &request)
         std::cout << "ClientBroker ID set to " << (int)_ecs_id << std::endl;
         return;
     }
-
-    Message *message = new Message();
-
+    message = new Message();
+    if (message == nullptr)
+        std::cerr << "Error: Could not allocate memory for message" << std::endl;
+        std::abort();
     message->setRequest(request);
     _incomming_messages.push(message);
 }
