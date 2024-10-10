@@ -309,14 +309,111 @@ int main(void)
 
     while (1)
         client_broker->addMessage(0, 1, message);
-    
     attributeClientCallback(&responsibilityChain, client_broker);
 
     // client_broker->addMessage(0, 1, message.get());
     // std::cout << "ClientBroker is starting" << std::endl;
-
+    engine->setConfig([&]() {
+        auto& eventManager = scene->_eventManager;
+        eventManager->addEventListener({LE::KEYBOARD, LE_KEY_UP, LE::JUST_PRESSED, false}, [&](LE::Engine *engine, float dt) {
+            Request request = {0};
+            request.header.Action = asChar(ActionCode::UP);
+            request.header.BodyLength = 0;
+            request.header.EmmiterdEcsId = client_broker->getECSId();
+            request.header.MagicNumber = 0xFF;
+            request.header.ReceiverEcsId = 0;
+            request.header.TopicID = 1;
+            Message *message = new Message();
+            message->setRequest(request);
+            client_broker->addMessage(asChar(ActionCode::UP), 1, message);
+        });
+        eventManager->addEventListener({LE::KEYBOARD, LE_KEY_UP, LE::JUST_RELEASED, false}, [&](LE::Engine *engine, float dt) {
+            Request request = {0};
+            request.header.Action = asChar(ActionCode::UP);
+            request.header.BodyLength = 0;
+            request.header.EmmiterdEcsId = client_broker->getECSId();
+            request.header.MagicNumber = 0xFF;
+            request.header.ReceiverEcsId = 0;
+            request.header.TopicID = 1;
+            Message *message = new Message();
+            message->setRequest(request);
+            client_broker->addMessage(asChar(ActionCode::UP), 1, message);
+        });
+        eventManager->addEventListener({LE::KEYBOARD, LE_KEY_DOWN, LE::JUST_PRESSED, false}, [&](LE::Engine *engine, float dt) {
+            Request request = {0};
+            request.header.Action = asChar(ActionCode::DOWN);
+            request.header.BodyLength = 0;
+            request.header.EmmiterdEcsId = client_broker->getECSId();
+            request.header.MagicNumber = 0xFF;
+            request.header.ReceiverEcsId = 0;
+            request.header.TopicID = 1;
+            Message *message = new Message();
+            message->setRequest(request);
+            client_broker->addMessage(asChar(ActionCode::DOWN), 1, message);
+        });
+        eventManager->addEventListener({LE::KEYBOARD, LE_KEY_DOWN, LE::JUST_RELEASED, false}, [&](LE::Engine *engine, float dt) {
+            Request request = {0};
+            request.header.Action = asChar(ActionCode::DOWN);
+            request.header.BodyLength = 0;
+            request.header.EmmiterdEcsId = client_broker->getECSId();
+            request.header.MagicNumber = 0xFF;
+            request.header.ReceiverEcsId = 0;
+            request.header.TopicID = 1;
+            Message *message = new Message();
+            message->setRequest(request);
+            client_broker->addMessage(asChar(ActionCode::DOWN), 1, message);
+        });
+        eventManager->addEventListener({LE::KEYBOARD, LE_KEY_LEFT, LE::JUST_PRESSED, false}, [&](LE::Engine *engine, float dt) {
+            Request request = {0};
+            request.header.Action = asChar(ActionCode::LEFT);
+            request.header.BodyLength = 0;
+            request.header.EmmiterdEcsId = client_broker->getECSId();
+            request.header.MagicNumber = 0xFF;
+            request.header.ReceiverEcsId = 0;
+            request.header.TopicID = 1;
+            Message *message = new Message();
+            message->setRequest(request);
+            client_broker->addMessage(asChar(ActionCode::LEFT), 1, message);
+        });
+        eventManager->addEventListener({LE::KEYBOARD, LE_KEY_LEFT, LE::JUST_RELEASED, false}, [&](LE::Engine *engine, float dt) {
+            Request request = {0};
+            request.header.Action = asChar(ActionCode::LEFT);
+            request.header.BodyLength = 0;
+            request.header.EmmiterdEcsId = client_broker->getECSId();
+            request.header.MagicNumber = 0xFF;
+            request.header.ReceiverEcsId = 0;
+            request.header.TopicID = 1;
+            Message *message = new Message();
+            message->setRequest(request);
+            client_broker->addMessage(asChar(ActionCode::LEFT), 1, message);
+        });
+        eventManager->addEventListener({LE::KEYBOARD, LE_KEY_RIGHT, LE::JUST_PRESSED, false}, [&](LE::Engine *engine, float dt) {
+            Request request = {0};
+            request.header.Action = asChar(ActionCode::RIGHT);
+            request.header.BodyLength = 0;
+            request.header.EmmiterdEcsId = client_broker->getECSId();
+            request.header.MagicNumber = 0xFF;
+            request.header.ReceiverEcsId = 0;
+            request.header.TopicID = 1;
+            Message *message = new Message();
+            message->setRequest(request);
+            client_broker->addMessage(asChar(ActionCode::RIGHT), 1, message);
+        });
+        eventManager->addEventListener({LE::KEYBOARD, LE_KEY_RIGHT, LE::JUST_RELEASED, false}, [&](LE::Engine *engine, float dt) {
+            Request request = {0};
+            request.header.Action = asChar(ActionCode::RIGHT);
+            request.header.BodyLength = 0;
+            request.header.EmmiterdEcsId = client_broker->getECSId();
+            request.header.MagicNumber = 0xFF;
+            request.header.ReceiverEcsId = 0;
+            request.header.TopicID = 1;
+            Message *message = new Message();
+            message->setRequest(request);
+            client_broker->addMessage(asChar(ActionCode::RIGHT), 1, message);
+        });
+    });
     engine->setLoop([&]() {
-        std::shared_ptr<Ecs> ecs = scene->_ecs; // TODO getCurrentScene in Engine
+        auto& ecs = scene->_ecs; // TODO getCurrentScene in Engine
         receiveFromServer(client_broker, ecs, responsibilityChain);
     });
 
