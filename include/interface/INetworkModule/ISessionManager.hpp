@@ -61,10 +61,23 @@ public:
 
     std::function<void(const Request &)> getOnReceive() { return _onReceive; }
 
+    std::shared_ptr<ISession> popSession(void)
+    {
+        auto session = _sessions.front();
+        _sessions.pop_front();
+        return session;
+    }
+
+    void pushSession(std::shared_ptr<ISession> session)
+    {
+        _sessions.push_back(session);
+    }
+
     std::deque<std::shared_ptr<ISession>> _sessions;
 
 protected:
     std::function<void(const Request &)> _onReceive;
+
 
 private:
 };

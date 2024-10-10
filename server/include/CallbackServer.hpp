@@ -18,7 +18,6 @@
 #include "Utils.hpp"
 #include "ResponsibilityChain.hpp"
 #include "Common.hpp"
-#include "SenToAllClient.hpp"
 #include "CallBack.hpp"
 
 void checkMagicNumber(const Request& req, std::shared_ptr<Ecs> _ecs);

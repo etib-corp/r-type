@@ -17,7 +17,6 @@
 #include "ResponsibilityChain.hpp"
 #include "Common.hpp"
 #include "CallbackServer.hpp"
-#include "SenToAllClient.hpp"
 #include <iostream>
 
 
@@ -62,32 +61,21 @@ int main(void)
     loader_lib.LoadModule();
     INetworkModule *network_module = loader_lib.createNetworkModule();
     ServerBroker *server_broker = new ServerBroker(network_module, 0, 8080);
-    
+
+    attributeServerCallback(&chain, server_broker);
+
     Message *message = new Message();
     Body body;
     ::memmove(body._buffer, "Hello", 6);
     message->setMagicNumber(asChar(ActionCode::MAGIC_NUMBER));
     message->setAction(asChar(ActionCode::USERNAME));
     message->setBody(body);
+    
+    
 
-    while (1)
-        sendToAllClient(asChar(ActionCode::USERNAME), server_broker);
-
-    attributeServerCallback(&chain, server_broker);
-    int nbrPlayer = 0;
-    chain.addActionCallback(asChar(ActionCode::NEW_CONNECTION), [&nbrPlayer, server_broker](const Request &request, std::shared_ptr<Ecs> _ecs)
+    clock.addCallback([server_broker, message]()
     {
-        std::cout << "New connection" << std::endl;
-        nbrPlayer++;
-        if (nbrPlayer == 2) {
-            sendToAllClient(asChar(ActionCode::START_GAME), server_broker);
-        }
-    });
-
-    clock.addCallback([server_broker]()
-    {
-        // std::cout << "All 100 ms : " << std::endl;
-        // sendToAllClient(sessions, server_broker, message);
+        server_broker->sendToAllClient(message, 1);
     }, 100);
 
     clock.start();

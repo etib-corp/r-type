@@ -7,7 +7,6 @@
 
 #include "message/Message.hpp"
 #include <iomanip>
-#include "SenToAllClient.hpp"
 
 Message::Message(void) : _emmiter_id(0), _receiver_id(0), _topic_id(0), _action(0)
 {
