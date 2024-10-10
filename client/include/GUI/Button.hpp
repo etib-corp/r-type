@@ -18,7 +18,7 @@ namespace LE {
          *
          * The Button class is a subclass of the Interactable class and represents a button in the GUI.
          */
-        class Button : public Interactable {
+        class Button final : public Interactable {
             public:
                 /**
                  * @brief Constructs a new Button object.
@@ -46,6 +46,26 @@ namespace LE {
                  * This function is responsible for rendering the button on the screen.
                  */
                 void draw() override;
+
+                void OnClick() override;
+
+                void OnHover() override;
+
+                void OnUnhover() override;
+
+                void setOnClickCallback(std::function<void()> onClick);
+
+                void setOnHoverCallback(std::function<void()> onHover);
+
+                void setOnUnhoverCallback(std::function<void()> onUnhover);
+
+            protected:
+                std::function<void()> _onClick;
+                std::function<void()> _onHover;
+                std::function<void()> _onUnhover;
+                Color *_bgColor;
+                Color *_textColor;
+
 
         };
     }

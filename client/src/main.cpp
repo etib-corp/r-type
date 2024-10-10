@@ -18,6 +18,8 @@
 #include <chrono>
 #include "etibjson.hpp"
 
+#include "Game/Menu.hpp"
+
 bool parseJsonAndCreateEnemy(std::shared_ptr<Ecs> ecs, std::string path)
 {
     JsonParser parser(path);
@@ -259,9 +261,11 @@ int main(int ac, char **av)
     // Initialize the engine
     auto engine = LE::Engine::getInstance();
 
-    auto scene = std::make_shared<GameScene>();
+    // auto scene = std::make_shared<GameScene>();
 
-    engine->addScene("main", scene);
+    // engine->addScene("main", scene);
+
+    engine->addScene("menu", std::make_shared<Menu>());
     // Run the engine
     try {
         engine->runWithDebug(); // Change to true to simulate an error

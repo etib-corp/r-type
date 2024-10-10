@@ -15,6 +15,9 @@ LE::GUI::Button::Button(float x, float y, float width, float height, const std::
     _width = width;
     _height = height;
 
+    _bgColor = bgColor;
+    _textColor = textColor;
+
     _background = new LE::Shapes::Rectangle(x, y, width, height, bgColor);
 
     addChildren(text);
@@ -48,4 +51,43 @@ void LE::GUI::Button::draw()
     for (auto &child : _children) {
         child->draw();
     }
+}
+
+void LE::GUI::Button::setOnClickCallback(std::function<void()> onClick)
+{
+    _onClick = onClick;
+}
+
+void LE::GUI::Button::setOnHoverCallback(std::function<void()> onHover)
+{
+    _onHover = onHover;
+}
+
+void LE::GUI::Button::setOnUnhoverCallback(std::function<void()> onUnhover)
+{
+    _onUnhover = onUnhover;
+}
+
+void LE::GUI::Button::OnClick()
+{
+    _bgColor->_a = 0.2;
+    if (_onClick)
+        _onClick();
+}
+
+void LE::GUI::Button::OnHover()
+{
+    if (_bgColor->_a >= 0.5)
+        _bgColor->_a = 0.5;
+    if (_onHover)
+        _onHover();
+}
+
+void LE::GUI::Button::OnUnhover()
+{
+    _bgColor->_a = 1.0;
+    _textColor->_a = 1.0;
+    if (_onUnhover)
+        _onUnhover();
+    _background->resize(_width, _height);
 }

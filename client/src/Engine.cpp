@@ -114,3 +114,8 @@ std::size_t LE::Engine::getWindowHeight() const
 {
     return _window->getHeight();
 }
+
+void LE::Engine::selectScene(const std::string &sceneName)
+{
+    _sceneManager->play(sceneName);
+}

@@ -149,6 +149,8 @@ namespace LE {
              */
             std::size_t getWindowHeight() const;
 
+            void selectScene(const std::string &sceneName);
+
         private:
             /**
              * @brief Private constructor for the Engine class.
