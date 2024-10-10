@@ -21,7 +21,6 @@
 #include "Utils.hpp"
 #include "ResponsibilityChain.hpp"
 #include "Common.hpp"
-#include "SenToAllClient.hpp"
 #include "CallBack.hpp"
 
 void attributeClientCallback(ResponsibilityChain *chain, ClientBroker *client_broker);

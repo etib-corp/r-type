@@ -62,10 +62,24 @@ void ServerBroker::_onReceiveRequestCallback(const Request &request)
 {
     Message *message = new Message();
     
+    message->setRequest(request);
     _incomming_messages.push(message);
 }
 
 void ServerBroker::_onClientDisconnectedCallback(ISession *session)
 {
     std::cout << session->getId() << " disconnect" << std::endl;
+}
+
+void ServerBroker::sendToAllClient(Message *message, std::uint8_t topic_id)
+{
+    std::lock_guard<std::mutex> lock(_mutex);
+
+    message->setEmmiterID(_ecs_id);
+    message->setTopicID(topic_id);
+    for (auto &session : _server->_sessionsManager->getClients())
+    {
+        message->setReceiverID(session->getId());
+        _outgoing_messages.push(message);
+    }
 }
