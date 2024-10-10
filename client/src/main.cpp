@@ -300,16 +300,6 @@ int main(void)
     network_module = loader_lib.createNetworkModule();
     client_broker = new ClientBroker(network_module, "127.0.0.1", 8080);
 
-    Message *message = new Message();
-    Body body;
-    ::memmove(body._buffer, "Hello", 6);
-    message->setMagicNumber(asChar(ActionCode::MAGIC_NUMBER));
-    message->setAction(asChar(ActionCode::USERNAME));
-    message->setBody(body);
-
-    while (1)
-        client_broker->addMessage(0, 1, message);
-    
     attributeClientCallback(&responsibilityChain, client_broker);
 
     // client_broker->addMessage(0, 1, message.get());

@@ -55,9 +55,7 @@ void ClientBroker::_onReceiveRequestCallback(const Request &request)
         return;
     }
     message = new Message();
-    if (message == nullptr)
-        std::cerr << "Error: Could not allocate memory for message" << std::endl;
-        std::abort();
+
     message->setRequest(request);
     _incomming_messages.push(message);
 }

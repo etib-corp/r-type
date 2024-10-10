@@ -62,16 +62,7 @@ int main(void)
     loader_lib.LoadModule();
     INetworkModule *network_module = loader_lib.createNetworkModule();
     ServerBroker *server_broker = new ServerBroker(network_module, 0, 8080);
-    
-    Message *message = new Message();
-    Body body;
-    ::memmove(body._buffer, "Hello", 6);
-    message->setMagicNumber(asChar(ActionCode::MAGIC_NUMBER));
-    message->setAction(asChar(ActionCode::USERNAME));
-    message->setBody(body);
 
-    while (1)
-        sendToAllClient(asChar(ActionCode::USERNAME), server_broker);
 
     attributeServerCallback(&chain, server_broker);
     int nbrPlayer = 0;
@@ -84,10 +75,16 @@ int main(void)
         }
     });
 
+    Message *message = new Message();
+    Body body;
+    ::memmove(body._buffer, "Hello", 6);
+    message->setMagicNumber(asChar(ActionCode::MAGIC_NUMBER));
+    message->setAction(asChar(ActionCode::USERNAME));
+    message->setBody(body);
+
     clock.addCallback([server_broker]()
     {
-        // std::cout << "All 100 ms : " << std::endl;
-        // sendToAllClient(sessions, server_broker, message);
+        sendToAllClient(asChar(ActionCode::USERNAME), server_broker);
     }, 100);
 
     clock.start();

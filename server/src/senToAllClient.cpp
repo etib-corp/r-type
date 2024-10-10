@@ -31,6 +31,7 @@ void sendToAllClient(
         message->setEmmiterID(0x01);
         message->setBody(body);
         try {
+            std::cout << "Message sent to client <" << (int)session->getId() << ">" << std::endl;
             server_broker->addMessage(session->getId(), 1, message.get());
         } catch (const std::exception &e) {
             std::cerr << e.what() << std::endl;
