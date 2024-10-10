@@ -50,21 +50,23 @@ void checkMagicNumber(const Request& req, std::shared_ptr<Ecs> _ecs)
     std::cout << "Magic number not good." << std::endl;
 }
 
-void attributeServerCallback(ResponsibilityChain *chain, std::deque<std::shared_ptr<ISession>> sessions, ServerBroker *server_broker)
+void attributeServerCallback(ResponsibilityChain *chain, ServerBroker *server_broker)
 {
+    auto sessions = server_broker->getClientsSessions();
+
     chain->addActionCallback(asChar(ActionCode::UP), checkMagicNumber);
     chain->addActionCallback(asChar(ActionCode::UP), callbackInputUp);
-    chain->addActionCallback(asChar(ActionCode::UP), [sessions, server_broker](const Request& req, std::shared_ptr<Ecs> _ecs) { sendToAllClient(asChar(ActionCode::UP), sessions, server_broker); } );
+    chain->addActionCallback(asChar(ActionCode::UP), [sessions, server_broker](const Request& req, std::shared_ptr<Ecs> _ecs) { sendToAllClient(asChar(ActionCode::UP), server_broker); } );
 
     chain->addActionCallback(asChar(ActionCode::DOWN), checkMagicNumber);
     chain->addActionCallback(asChar(ActionCode::DOWN), callbackInputDown);
-    chain->addActionCallback(asChar(ActionCode::DOWN), [sessions, server_broker](const Request& req, std::shared_ptr<Ecs> _ecs) { sendToAllClient(asChar(ActionCode::DOWN), sessions, server_broker); } );
+    chain->addActionCallback(asChar(ActionCode::DOWN), [sessions, server_broker](const Request& req, std::shared_ptr<Ecs> _ecs) { sendToAllClient(asChar(ActionCode::DOWN), server_broker); } );
 
     chain->addActionCallback(asChar(ActionCode::RIGHT), checkMagicNumber);
     chain->addActionCallback(asChar(ActionCode::RIGHT), callbackInputRight);
-    chain->addActionCallback(asChar(ActionCode::RIGHT), [sessions, server_broker](const Request& req, std::shared_ptr<Ecs> _ecs) { sendToAllClient(asChar(ActionCode::RIGHT), sessions, server_broker); } );
+    chain->addActionCallback(asChar(ActionCode::RIGHT), [sessions, server_broker](const Request& req, std::shared_ptr<Ecs> _ecs) { sendToAllClient(asChar(ActionCode::RIGHT), server_broker); } );
 
     chain->addActionCallback(asChar(ActionCode::LEFT), checkMagicNumber);
     chain->addActionCallback(asChar(ActionCode::LEFT), callbackInputLeft);
-    chain->addActionCallback(asChar(ActionCode::LEFT), [sessions, server_broker](const Request& req, std::shared_ptr<Ecs> _ecs) { sendToAllClient(asChar(ActionCode::LEFT), sessions, server_broker); } );
+    chain->addActionCallback(asChar(ActionCode::LEFT), [sessions, server_broker](const Request& req, std::shared_ptr<Ecs> _ecs) { sendToAllClient(asChar(ActionCode::LEFT), server_broker); } );
 }

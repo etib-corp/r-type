@@ -29,12 +29,16 @@ public:
 
     virtual void sendUDP(const std::string &request) = 0;
 
-    virtual int getId() const { return _id; }
+    void setOnConnect(std::function<void(IClient *)> onConnect) { _onConnect = onConnect; }
 
-    virtual void setId(std::uint32_t id) { _id = id; }
+    virtual std::uint8_t getId() const { return _id; }
+
+    virtual void setId(std::uint8_t id) { _id = id; }
 
 protected:
-    std::uint32_t _id;
+    std::uint8_t _id;
+
+    std::function<void(IClient *)> _onConnect;
 
     std::function<void(const Request &)> _onReceive;
 

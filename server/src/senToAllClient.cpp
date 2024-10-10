@@ -9,13 +9,12 @@
 
 void sendToAllClient(
     std::uint8_t ecsInput,
-    std::deque<std::shared_ptr<ISession>> sessions,
     ServerBroker *server_broker)
 {
     Body body = {0};
     UpdateEcs updateEcs = {.ecs_id = 0x00, .actionInput = ecsInput};
+    auto sessions = server_broker->getClientsSessions();
 
-    sessions = server_broker->getClientsSessions();
     if (sessions.size() <= 0)
     {
         std::cout << "No clients connected. Waiting..." << std::endl;

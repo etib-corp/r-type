@@ -25,7 +25,7 @@ public:
      * @param ecs_id The ID of the ECS (Entity Component System).
      * @param listen_port The port on which the server will listen for incoming connections.
      */
-    ServerBroker(INetworkModule *network_module, std::uint32_t ecs_id, std::uint16_t listen_port);
+    ServerBroker(INetworkModule *network_module, std::uint8_t ecs_id, std::uint16_t listen_port);
 
     /**
      * @brief Destroys the ServerBroker object.

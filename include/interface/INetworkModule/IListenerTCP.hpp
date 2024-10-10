@@ -10,6 +10,7 @@
 
 #include <queue>
 #include <memory>
+#include <cstdint>
 
 #include "ISessionManager.hpp"
 
@@ -29,6 +30,8 @@ protected:
     std::function<void(ISession *)> _onClientConnected = nullptr;
 
     std::shared_ptr<SessionManager> _sessionManager;
+
+    std::uint8_t _last_id = 0;
 
 private:
 };

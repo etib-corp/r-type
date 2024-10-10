@@ -1,8 +1,10 @@
 #include <iostream>
 
 #include "message/ServerBroker.hpp"
+#include "EnumClass.hpp"
+#include "Utils.hpp"
 
-ServerBroker::ServerBroker(INetworkModule *network_module, std::uint32_t ecs_id, std::uint16_t listen_port) : _listen_port(listen_port)
+ServerBroker::ServerBroker(INetworkModule *network_module, std::uint8_t ecs_id, std::uint16_t listen_port) : _listen_port(listen_port)
 {
     _setNetworkModule(network_module);
     _setECSId(ecs_id);
@@ -14,14 +16,24 @@ ServerBroker::ServerBroker(INetworkModule *network_module, std::uint32_t ecs_id,
     _server->_sessionsManager->setOnReceive(std::bind(&ServerBroker::_onReceiveRequestCallback, this, std::placeholders::_1));
 
     _server->setOnClientConnected([](ISession *session) {
+        Request request = {
+            .header = {
+                .MagicNumber = 0xFF,
+                .EmmiterdEcsId = 00,
+                .ReceiverEcsId = session->getId(),
+                .TopicID = 0x00,
+                .Action = asChar(ActionCode::NEW_CONNECTION),
+                .BodyLength = 0
+            },
+            .body = {0}
+        };
+        
         Message *message = new Message();
 
-        message->setEmmiterID(0);
-        message->setReceiverID(session->getId());
-        message->setAction(0x01);
-        message->setTopicID(0);
-
-        session->sendTCP(message->serialize());
+        message->setHeader(request.header);
+        message->setBody(request.body);
+        std::string compress_message = message->serialize();
+        session->sendTCP(compress_message);
         delete message;
     });
 

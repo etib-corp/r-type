@@ -20,7 +20,7 @@
 #include "ResponsibilityChain.hpp"
 #include "Common.hpp"
 
-void sendToAllClient(std::uint8_t ecsInput, std::deque<std::shared_ptr<ISession>> sessions, ServerBroker *server_broker);
+void sendToAllClient(std::uint8_t ecsInput, ServerBroker *server_broker);
 
 
 #endif /* !SENTOALLCLIENT_HPP_ */

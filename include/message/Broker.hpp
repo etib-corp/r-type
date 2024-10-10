@@ -45,7 +45,7 @@ public:
      * @return A unique pointer to the topic.
      * @throws std::runtime_error if the topic is not found.
      */
-    std::unique_ptr<Topic> &getTopic(std::uint32_t ecs_id, std::uint8_t id)
+    std::unique_ptr<Topic> &getTopic(std::uint8_t ecs_id, std::uint8_t id)
     {
         std::lock_guard<std::mutex> lock(_mutex);
         if (_topics.find(std::make_pair(ecs_id, id)) == _topics.end())
@@ -58,7 +58,7 @@ public:
      * @param ecs_id The ECS ID associated with the topic.
      * @param name The name of the topic.
      */
-    void removeTopic(std::uint32_t ecs_id, std::uint8_t id)
+    void removeTopic(std::uint8_t ecs_id, std::uint8_t id)
     {
         std::lock_guard<std::mutex> lock(_mutex);
         _topics.erase(std::make_pair(ecs_id, id));
@@ -72,10 +72,9 @@ public:
      */
     void addMessage(std::uint8_t ecs_id, std::uint8_t topic_id, Message *message)
     {
-        std::uint8_t localEcsId = _ecs_id;
         std::lock_guard<std::mutex> lock(_mutex);
 
-        message->setEmmiterID(localEcsId);
+        message->setEmmiterID(_ecs_id);
         message->setReceiverID(ecs_id);
         message->setTopicID(topic_id);
         _outgoing_messages.push(message);
@@ -87,7 +86,7 @@ public:
      * @param topic_name The name of the topic.
      * @return A unique pointer to the message.
      */
-    Message *getMessage(std::uint32_t ecs_id, std::uint8_t topic_id)
+    Message *getMessage(std::uint8_t ecs_id, std::uint8_t topic_id)
     {
         return getTopic(ecs_id, topic_id)->getMessage();
     }
@@ -95,7 +94,7 @@ public:
 protected:
     std::uint8_t _ecs_id;
     INetworkModule *_network_module;
-    std::map<std::pair<std::uint32_t, std::uint8_t>, std::unique_ptr<Topic>> _topics;
+    std::map<std::pair<std::uint8_t, std::uint8_t>, std::unique_ptr<Topic>> _topics;
     std::thread _thread;
     std::mutex _mutex;
     bool _is_running = true;

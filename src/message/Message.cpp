@@ -46,3 +46,11 @@ std::string Message::serialize(void) const
     header.TopicID = _topic_id;
     return compressAndPrepare(header, _body);
 }
+
+std::ostream &operator<<(std::ostream &stream, const Message &message) {
+    stream << "EmmiterID: " << (unsigned int)message.getEmmiterID() << std::endl;
+    stream << "ReceiverID: " << (unsigned int)message.getReceiverID() << std::endl;
+    stream << "TopicID: " <<(unsigned int) message.getTopicID() << std::endl;
+    stream << "Action: " << (unsigned int)message.getAction() << std::endl;
+    return stream;
+}

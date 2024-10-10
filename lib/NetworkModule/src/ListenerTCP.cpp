@@ -8,12 +8,12 @@
 #include "ListenerTCP.hpp"
 #include "interface/INetworkModule/IServer.hpp"
 
-static int id = 1;
 
 ListenerTCP::ListenerTCP(int port) : _asioAcceptor(_io_context, boost::asio::ip::tcp::endpoint(boost::asio::ip::tcp::v4(), port))
 {
     _endpoint = _asioAcceptor.local_endpoint();
     _port = port;
+    _last_id = 1;
 }
 
 ListenerTCP::~ListenerTCP()
@@ -29,7 +29,7 @@ void ListenerTCP::WaitForConnection()
             {
                 std::cout << "Connection established" << std::endl;
                 std::shared_ptr<Session> newSession = std::make_shared<Session>(std::move(socket));
-                newSession->setId(id++);
+                newSession->setId(_last_id++);
                 _sessionManager->addClient(newSession);
                 newSession->read([this](ISession *session)
                                  {

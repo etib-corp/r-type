@@ -23,7 +23,7 @@ public:
      * @param ecs_id The ID associated with the topic.
      * @param id The ID of the topic.
      */
-    Topic(std::uint32_t ecs_id, std::uint8_t id);
+    Topic(std::uint8_t ecs_id, std::uint8_t id);
 
     /**
      * @brief Destroys the Topic object.
@@ -55,7 +55,7 @@ public:
     }
 
 private:
-    std::uint32_t _ecs_id;
+    std::uint8_t _ecs_id;
     std::uint8_t _id;
     std::queue<Message *> _messages;
 };

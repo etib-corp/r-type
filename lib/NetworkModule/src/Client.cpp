@@ -14,6 +14,8 @@ Client::Client(const std::string &ip, const int &port) : _socketTCP(_ioContext),
         boost::asio::ip::address::from_string(ip), port);
     _endpointUDPServer = boost::asio::ip::udp::endpoint(
         boost::asio::ip::address::from_string(ip), port);
+    _onReceive = nullptr;
+    _onConnect = nullptr;
 }
 
 Client::~Client()
@@ -24,6 +26,8 @@ void Client::connectToServer()
 {
     readUDP();
     _socketTCP.connect(_endpointTCPServer);
+    if (_onConnect)
+        _onConnect(this);
     readTCP();
     _thread = std::thread([this]()
                           { _ioContext.run(); });

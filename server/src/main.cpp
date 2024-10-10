@@ -21,28 +21,16 @@
 #include <iostream>
 
 
-static void receiveFromClient(ServerBroker *server_broker, std::shared_ptr<Ecs> _ecs, ResponsibilityChain chain)
+static void receiveFromClient(ServerBroker *server_broker, std::shared_ptr<ISession> session, std::shared_ptr<Ecs> _ecs, ResponsibilityChain chain)
 {
     try {
         Message *message = nullptr;
-        message = server_broker->getMessage(0, 1);
+        message = server_broker->getMessage(session->getId(), 1);
         if (message == nullptr) {
             return;
         }
-        std::cout << "Message received from client" << std::endl;
-        Header header = {
-            .MagicNumber = message->getMagicNumber(),
-            .EmmiterdEcsId = message->getEmmiterID(),
-            .ReceiverEcsId = message->getReceiverID(),
-            .TopicID = message->getTopicID(),
-            .Action = message->getAction(),
-            .BodyLength = 0
-        };
-        Body body = message->getBody();
-        Request req = {
-            .header = header,
-            .body = body
-        };
+        std::cout << "Message received from client: " << (int)session->getId() << std::endl;
+        Request req = message->getRequest();
         processRequest(req, _ecs, chain);
         std::cout << "getBody()=" << message->getBody()._buffer << std::endl;
         std::cout << "getReceiverID()=" << (int)message->getReceiverID() << std::endl;
@@ -58,7 +46,10 @@ static void receivedFromAllClient(ServerBroker *server_broker, std::shared_ptr<E
 {
     while (true)
     {
-        receiveFromClient(server_broker, _ecs, chain);
+        for (auto session : server_broker->getClientsSessions())
+        {
+            receiveFromClient(server_broker, session, _ecs, chain);
+        }
     }
 }
 
@@ -71,20 +62,29 @@ int main(void)
     loader_lib.LoadModule();
     INetworkModule *network_module = loader_lib.createNetworkModule();
     ServerBroker *server_broker = new ServerBroker(network_module, 0, 8080);
-    auto sessions = server_broker->getClientsSessions();
+    
+    Message *message = new Message();
+    Body body;
+    ::memmove(body._buffer, "Hello", 6);
+    message->setMagicNumber(asChar(ActionCode::MAGIC_NUMBER));
+    message->setAction(asChar(ActionCode::USERNAME));
+    message->setBody(body);
 
-    attributeServerCallback(&chain, sessions, server_broker);
+    while (1)
+        sendToAllClient(asChar(ActionCode::USERNAME), server_broker);
+
+    attributeServerCallback(&chain, server_broker);
     int nbrPlayer = 0;
-    chain.addActionCallback(asChar(ActionCode::NEW_CONNECTION), [&nbrPlayer, sessions, server_broker](const Request &request, std::shared_ptr<Ecs> _ecs)
+    chain.addActionCallback(asChar(ActionCode::NEW_CONNECTION), [&nbrPlayer, server_broker](const Request &request, std::shared_ptr<Ecs> _ecs)
     {
         std::cout << "New connection" << std::endl;
         nbrPlayer++;
         if (nbrPlayer == 2) {
-            sendToAllClient(asChar(ActionCode::START_GAME), sessions, server_broker);
+            sendToAllClient(asChar(ActionCode::START_GAME), server_broker);
         }
     });
 
-    clock.addCallback([sessions, server_broker]()
+    clock.addCallback([server_broker]()
     {
         // std::cout << "All 100 ms : " << std::endl;
         // sendToAllClient(sessions, server_broker, message);
@@ -100,7 +100,7 @@ int main(void)
 
     receivedFromAllClient(server_broker, _ecs, chain);
 
-    delete server_broker;
+    delete server_broker;  
     delete network_module;
 
     clock.stop();

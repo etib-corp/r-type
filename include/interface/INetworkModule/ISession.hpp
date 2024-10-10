@@ -29,16 +29,16 @@ public:
 
     virtual void sendUDP(const std::string &request) = 0;
 
-    int getId() const { return _id; }
+    std::uint8_t getId() const { return _id; }
 
-    void setId(std::uint32_t id) { _id = id; }
+    void setId(std::uint8_t id) { _id = id; }
 
     bool isConnected() const { return _isConnected; }
 
     void setConnected(bool connected) { _isConnected = connected; }
 
 protected:
-    std::uint32_t _id;
+    std::uint8_t _id;
     bool _isConnected;
 
 private:

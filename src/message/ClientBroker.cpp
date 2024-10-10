@@ -43,12 +43,19 @@ void ClientBroker::_sendMessage(Message *message)
 
 void ClientBroker::_onReceiveRequestCallback(const Request &request)
 {
+    static bool first_message = false;
+
+    if (!first_message) {
+        std::cout << "ClientBroker received first message" << std::endl;
+        first_message = true;
+        _client->setId(request.header.ReceiverEcsId);
+        _setECSId(request.header.ReceiverEcsId);
+        std::cout << "ClientBroker ID set to " << (int)_ecs_id << std::endl;
+        return;
+    }
+
     Message *message = new Message();
 
-    message->setEmmiterID(request.header.EmmiterdEcsId);
-    message->setReceiverID(request.header.ReceiverEcsId);
-    message->setAction(request.header.Action);
-    message->setTopicID(request.header.TopicID);
-    message->setBody(request.body);
+    message->setRequest(request);
     _incomming_messages.push(message);
 }

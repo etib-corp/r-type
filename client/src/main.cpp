@@ -252,20 +252,8 @@ static void receiveFromServer(ClientBroker *client_broker, std::shared_ptr<Ecs> 
         message = client_broker->getMessage(0, 1);
         if (message == nullptr)
             return;
-        std::cout << "Message received from client" << std::endl;
-        Header header = {
-            .MagicNumber = message->getMagicNumber(),
-            .EmmiterdEcsId = message->getEmmiterID(),
-            .ReceiverEcsId = message->getReceiverID(),
-            .TopicID = message->getTopicID(),
-            .Action = message->getAction(),
-            .BodyLength = 0
-        };
-        Body body = message->getBody();
-        Request req = {
-            .header = header,
-            .body = body
-        };
+        std::cout << "Message received from server" << std::endl;
+        Request req = message->getRequest();
         processRequest(req, _ecs, chain);
         std::cout << "getBody()=" << message->getBody()._buffer << std::endl;
         std::cout << "getReceiverID()=" << (int)message->getReceiverID() << std::endl;
@@ -312,14 +300,7 @@ int main(void)
     network_module = loader_lib.createNetworkModule();
     client_broker = new ClientBroker(network_module, "127.0.0.1", 8080);
 
-    std::shared_ptr<Message> message = std::make_shared<Message>();
-    message->setMagicNumber(asChar(ActionCode::MAGIC_NUMBER));
-    message->setAction(asChar(ActionCode::NEW_CONNECTION));
-    message->setBody({0});
-
     attributeClientCallback(&responsibilityChain, client_broker);
-
-    client_broker->addMessage(0, 1, message.get());
 
     // client_broker->addMessage(0, 1, message.get());
     // std::cout << "ClientBroker is starting" << std::endl;

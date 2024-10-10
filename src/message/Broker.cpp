@@ -19,7 +19,8 @@ void Broker::_logicalRoutine()
             _topics[key] = std::make_unique<Topic>(message->getEmmiterID(), message->getTopicID());
         }
         _topics[key]->addMessage(message);
-        std::cout << "Message received from " << message->getEmmiterID() << " on topic " << message->getTopicID() << std::endl;
+        std::cout << "Message received" << std::endl;
+        std::cout << *message << std::endl;
         _mutex.unlock();
     }
 }
@@ -59,7 +60,8 @@ void Broker::_sendMessages(void)
         message = _outgoing_messages.front();
         _outgoing_messages.pop();
         _sendFunction(message);
-        std::cout << "Message sent to " << message->getReceiverID() << std::endl;
+        std::cout << "Message sent" << std::endl;
+        std::cout << *message << std::endl;
         _mutex.unlock();
     }
 }
