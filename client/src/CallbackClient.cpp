@@ -5,14 +5,17 @@
 ** CallbackClient
 */
 
+#include "globalLogger.hpp"
 #include "CallbackClient.hpp"
+#include "LogDef.hpp"
 
 void callbackStartGame(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
-    std::cout << "Game started." << std::endl;
+    rtypeLog->log("{}", "Game started.");
     StartGame sg;
     ::memmove(&sg, &req.body, sizeof(StartGame));
-    std::cout << "Number of player : " << sg.nbrPlayers << std::endl;
+    rtypeLog->log("{} {}", "Number of player : ", static_cast<int>(sg.nbrPlayers));
+
     for (int i = 0; i < sg.nbrPlayers; i++) {
         Entity player = _ecs->createEntity();
         _ecs->addComponent<TransformComponent>(player, {{50.0f * (static_cast<float>(i) + 1.0f), 0, 0}, {0, 90, 0}, {1, 1, 1}});
@@ -25,6 +28,7 @@ void callbackStartGame(const Request& req, std::shared_ptr<Ecs> _ecs)
 void callbackNewConnection(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
     std::cout << "New connection." << std::endl;
+    rtypeLog->log("{}", "New connection.");
 }
 
 void callbackUp(const Request& req, std::shared_ptr<Ecs> _ecs)
@@ -36,6 +40,7 @@ void callbackUp(const Request& req, std::shared_ptr<Ecs> _ecs)
     else
         motion.velocity[1] = 0.0f;
     LE::Engine::getInstance()->debug("Up");
+    rtypeLog->log<LogType::DEBUG>("{}", "Up");
 }
 
 void callbackDown(const Request& req, std::shared_ptr<Ecs> _ecs)
@@ -46,6 +51,7 @@ void callbackDown(const Request& req, std::shared_ptr<Ecs> _ecs)
         motion.velocity[1] = -1.0f;
     else
         motion.velocity[1] = 0.0f;
+    rtypeLog->log<LogType::DEBUG>("{}", "Down");
     LE::Engine::getInstance()->debug("Down");
 }
 
@@ -58,6 +64,8 @@ void callbackRight(const Request& req, std::shared_ptr<Ecs> _ecs)
     else
         motion.velocity[0] = 0.0f;
     LE::Engine::getInstance()->debug("Right");
+    rtypeLog->log<LogType::DEBUG>("{}", "Right");
+
 }
 
 void callbackLeft(const Request& req, std::shared_ptr<Ecs> _ecs)
@@ -69,16 +77,17 @@ void callbackLeft(const Request& req, std::shared_ptr<Ecs> _ecs)
     else
         motion.velocity[0] = 0.0f;
     LE::Engine::getInstance()->debug("Left");
+    rtypeLog->log<LogType::DEBUG>("{}", "Left");
 }
 
 void checkMagicNumber(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
     if (req.header.MagicNumber == 0xFF)
     {
-        std::cout << "Magic number checked." << std::endl;
+        rtypeLog->log<LogType::DEBUG>("{}", "Magic number checked.");
         return;
     }
-    std::cout << "Magic number not good." << std::endl;
+    rtypeLog->log<LogType::DEBUG>("{}", "Magic number not good.");
 }
 
 void attributeClientCallback(ResponsibilityChain *chain, ClientBroker *client_broker)
