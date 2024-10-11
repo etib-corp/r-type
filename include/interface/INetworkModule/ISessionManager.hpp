@@ -23,7 +23,7 @@ public:
 
     virtual void addClient(std::shared_ptr<ISession> client)
     {
-        std::cout << "Session added: " << client->getId() << std::endl;
+        std::cout << "Session added: " << (int)client->getId() << std::endl;
         _sessions.push_back(client);
     }
 

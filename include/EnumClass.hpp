@@ -34,9 +34,10 @@ enum class ActionCode : std::uint8_t {
     RIGHT           = 0xAE,
     LEFT            = 0xAF,
     STOP            = 0xB0,
+    READY           = 0xB1,
     A = 0x3E,
     START_GAME     = 0x3F,
-    MAGIC_NUMBER    = 0xFF
+    MAGIC_NUMBER    = 0xFF,
 };
 
 #endif /* !ENUMCLASS_HPP_ */

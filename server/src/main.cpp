@@ -65,14 +65,28 @@ int main(void)
 
     attributeServerCallback(&chain, server_broker);
 
-    // Message *message = new Message();
-    // Body body;
-    // ::memmove(body._buffer, "Hello", 6);
-    // message->setMagicNumber(asChar(ActionCode::MAGIC_NUMBER));
-    // message->setAction(asChar(ActionCode::USERNAME));
-    // message->setBody(body);
-
-
+    int nbrPlayer = 0;
+    chain.addActionCallback(asChar(ActionCode::READY), [&nbrPlayer, &server_broker](const Request &req, std::shared_ptr<Ecs> _ecs) {
+        nbrPlayer++;
+        if (nbrPlayer != 2) {
+            return;
+        }
+        Request request = {
+            .header = {
+                .MagicNumber = 0xFF,
+                .EmmiterdEcsId = 0x00,
+                .ReceiverEcsId = request.header.EmmiterdEcsId,
+                .TopicID = 0x00,
+                .Action = asChar(ActionCode::START_GAME),
+                .BodyLength = 0},
+            .body = {0}};
+        StartGame startGame;
+        startGame.nbrPlayers = nbrPlayer;
+        ::memmove(request.body._buffer, &startGame, sizeof(StartGame));
+        Message msg;
+        msg.setRequest(request);
+        server_broker->sendToAllClient(&msg, 1);
+    });
 
     // clock.addCallback([server_broker, message]()
     // {
