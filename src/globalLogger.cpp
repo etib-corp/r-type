@@ -7,13 +7,13 @@
 
 #include "globalLogger.hpp"
 
-Logger *globalLogger = nullptr;
+Logger *rtypeLog = nullptr;
 
 // WARN : do not call iostream method in this function
 // TODO : add doc
 void initLogger(void)
 {
-    globalLogger = &Logger::getInstance(LogOutput::STDOUT);
+    rtypeLog = &Logger::getInstance(LogOutput::STDOUT);
 
-    globalLogger->setColorEnabled(true);
+    rtypeLog->setColorEnabled(true);
 }
