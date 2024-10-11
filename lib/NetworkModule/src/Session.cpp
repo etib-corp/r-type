@@ -5,6 +5,7 @@
 ** Session
 */
 
+#include "globalLogger.hpp"
 #include "Session.hpp"
 #include "message/Message.hpp"
 
@@ -36,7 +37,7 @@ void Session::handShake(void)
 
     msg.setRequest(request);
     _socketTCP.send(boost::asio::buffer(msg.serialize()));
-    std::cout << "Handshake sent" << std::endl;
+    rtypeLog->log("Handshake sent");
 }
 
 void Session::read(std::function<void(ISession *)> onDisconnected, std::function<void(const Request &request)> onReceive)
@@ -48,7 +49,7 @@ void Session::read(std::function<void(ISession *)> onDisconnected, std::function
             if (!error)
             {
                 char *_bodyStr = new char[_data.header.BodyLength];
-                std::cout << "Received: " << _data.header.BodyLength << std::endl;
+                rtypeLog->log("Received: {}", _data.header.BodyLength);
                 ::memset(_bodyStr, 0, _data.header.BodyLength);
                 std::istringstream iss;
                 this->_socketTCP.receive(boost::asio::buffer(_bodyStr, _data.header.BodyLength));
