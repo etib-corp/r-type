@@ -8,7 +8,7 @@
 #include "Engine.hpp"
 #include "SceneManager.hpp"
 #include "Window.hpp"
-
+#include "globalLogger.hpp"
 #include "Shapes/Triangle.hpp"
 // #include "GUI/Container.hpp"
 // #include "GUI/Interactable.hpp"
@@ -79,6 +79,7 @@ void LE::Engine::debug(const std::string& message)
 {
     if (_debugMode) {
         std::cout << "DEBUG: " << message << std::endl;
+        rtypeLog->log<LogType::DEBUG, &std::cout>("DEBUG: {}", message);
     }
 }
 
