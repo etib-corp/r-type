@@ -22,7 +22,6 @@ public:
      * @brief Constructs a new Message object.
      */
     Message(void);
-
     /**
      * @brief Destroys the Message object.
      */
@@ -160,6 +159,21 @@ public:
      *
      * @return The request of the message.
      */
+    [[nodiscard]] bool isReliable(void) const { return _is_relialbe; }
+
+    /**
+     * @brief Sets the reliability of the message.
+     *
+     * @param is_reliable The reliability of the message.
+     */
+    void setReliable(bool is_reliable) { _is_relialbe = is_reliable; }
+
+
+    /**
+     * @brief Gets the request of the message.
+     *
+     * @return The request of the message.
+     */
     [[nodiscard]] Request getRequest(void)
     {
         Request request = {
@@ -190,6 +204,7 @@ private:
     std::uint8_t _topic_id;
     std::uint8_t _action;
     Body _body;
+    bool _is_relialbe;
 };
 
 /**

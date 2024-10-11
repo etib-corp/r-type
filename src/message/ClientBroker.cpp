@@ -38,7 +38,10 @@ void ClientBroker::_sendMessage(Message *message)
 {
     std::string compressed_request = message->serialize();
 
-    _client->sendTCP(compressed_request);
+    if (message->isReliable())
+        _client->sendTCP(compressed_request);
+    else
+        _client->sendUDP(compressed_request);
 }
 
 void ClientBroker::_onReceiveRequestCallback(const Request &request)

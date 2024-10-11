@@ -53,9 +53,13 @@ ServerBroker::~ServerBroker(void)
 
 void ServerBroker::_sendMessage(Message *message)
 {
-    std::string compress_request = message->serialize();
+    std::string compressed_request = message->serialize();
+    auto client = _server->_sessionsManager->getClientById(message->getReceiverID());
 
-    _server->_sessionsManager->getClientById(message->getReceiverID())->sendTCP(compress_request);
+    if (message->isReliable())
+        client->sendTCP(compressed_request);
+    else
+        client->sendUDP(compressed_request);
 }
 
 void ServerBroker::_onReceiveRequestCallback(const Request &request)
