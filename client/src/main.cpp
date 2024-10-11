@@ -307,8 +307,7 @@ int main(void)
     message->setAction(asChar(ActionCode::USERNAME));
     message->setBody(body);
 
-    while (1)
-        client_broker->addMessage(0, 1, message);
+
     attributeClientCallback(&responsibilityChain, client_broker);
 
     // client_broker->addMessage(0, 1, message.get());

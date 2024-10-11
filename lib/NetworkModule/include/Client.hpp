@@ -26,6 +26,8 @@ class Client : public IClient {
 
         void sendUDP(const std::string& request) override;
 
+        void handShake() override;
+
     protected:
 
         boost::asio::io_context _ioContext;

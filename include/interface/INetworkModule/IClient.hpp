@@ -35,6 +35,8 @@ public:
 
     virtual void setId(std::uint8_t id) { _id = id; }
 
+    virtual void handShake() = 0;
+
 protected:
     std::uint8_t _id;
 

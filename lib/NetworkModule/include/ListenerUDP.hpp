@@ -13,6 +13,8 @@
 #include <thread>
 
 #include "interface/INetworkModule/IListenerUDP.hpp"
+#include "Utils.hpp"
+#include "EnumClass.hpp"
 
 /**
  * @class ListenerUDP
@@ -85,7 +87,8 @@ class ListenerUDP : public IListenerUDP {
         boost::asio::io_context _io_context;
         boost::asio::ip::udp::socket _udpSocket;
         boost::asio::ip::udp::endpoint _remoteEndpoint;
-        std::array<char, 1024> _recvBuffer;
         std::thread _threadContext;
+
+        Request _request;
     private:
 };

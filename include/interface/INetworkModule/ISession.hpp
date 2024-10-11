@@ -37,6 +37,8 @@ public:
 
     void setConnected(bool connected) { _isConnected = connected; }
 
+    virtual void handShake() = 0;
+
 protected:
     std::uint8_t _id;
     bool _isConnected;

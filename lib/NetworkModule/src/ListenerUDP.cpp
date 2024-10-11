@@ -30,34 +30,28 @@ void ListenerUDP::run(std::shared_ptr<SessionManager> sessionManager)
 void ListenerUDP::startReceive()
 {
     _udpSocket.async_receive_from(
-        boost::asio::buffer(_recvBuffer), _remoteEndpoint,
-        [this](const boost::system::error_code &error, std::size_t bytes_transferred)
-        {
+        boost::asio::buffer(&_request, sizeof(Request)), _remoteEndpoint,
+        [this](const boost::system::error_code &error, std::size_t bytes_transferred) {
             handleReceive(error, bytes_transferred);
-        });
+    });
 }
 
 void ListenerUDP::handleReceive(const boost::system::error_code &error, std::size_t bytes_transferred)
 {
     (void)bytes_transferred;
-    if (!error)
-    {
-        try
-        {
-            // int id = std::stoi(_recvBuffer.data());
-            // std::cout << "ID: " << id << std::endl;
-            std::shared_ptr<ISession> client = _sessionManager->_sessions[0];
-            if (client != nullptr)
-            {
-                dynamic_cast<Session *>(client.get())->setUdpEndpoint(_remoteEndpoint);
+    if (!error) {
+        try {
+            if (_request.header.Action == asChar(ActionCode::NEW_CONNECTION)) {
+                std::shared_ptr<ISession> session = this->_sessionManager->getClientById(_request.header.EmmiterdEcsId);
+                dynamic_cast<Session *>(session.get())->setUdpEndpoint(_remoteEndpoint);
+                std::cout << "UDP Connection established" << std::endl;
             }
         }
         catch (const std::exception &e)
         {
             std::cerr << e.what() << '\n';
         }
-        std::cout << "Received: " << _recvBuffer.data() << std::endl;
-        std::cout << "Address: " << _remoteEndpoint << std::endl;
+        ::memset(&_request, 0, sizeof(Request));
         startReceive();
     }
 }
