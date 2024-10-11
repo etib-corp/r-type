@@ -12,6 +12,7 @@
 #include "PackUnpack.hpp"
 #include "ECS/Ecs.hpp"
 #include "ECS/Components/TransformComponent.hpp"
+#include "ECS/Components/MotionComponent.hpp"
 #include "GameClock.hpp"
 #include "message/ServerBroker.hpp"
 #include "EnumClass.hpp"

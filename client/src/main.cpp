@@ -298,7 +298,7 @@ int main(void)
 
     loader_lib.LoadModule();
     network_module = loader_lib.createNetworkModule();
-    client_broker = new ClientBroker(network_module, "127.0.0.1", 8080);
+    client_broker = new ClientBroker(network_module, "10.49.84.158", 8080);
 
 
     attributeClientCallback(&responsibilityChain, client_broker);
@@ -306,10 +306,13 @@ int main(void)
     engine->setConfig([&]() {
         auto& eventManager = scene->_eventManager;
         eventManager->addEventListener({LE::KEYBOARD, LE_KEY_UP, LE::JUST_PRESSED, false}, [&](LE::Engine *engine, float dt) {
+            int id = client_broker->getECSId();
+            auto& motion = scene->_ecs->getComponent<MotionComponent>(id);
+            motion.velocity[1] = 1.0f;
             Request request = {0};
             request.header.Action = asChar(ActionCode::UP);
             request.header.BodyLength = 0;
-            request.header.EmmiterdEcsId = client_broker->getECSId();
+            request.header.EmmiterdEcsId = id;
             request.header.MagicNumber = 0xFF;
             request.header.ReceiverEcsId = 0;
             request.header.TopicID = 1;
@@ -318,6 +321,9 @@ int main(void)
             client_broker->addMessage(0, 1, message);
         });
         eventManager->addEventListener({LE::KEYBOARD, LE_KEY_UP, LE::JUST_RELEASED, false}, [&](LE::Engine *engine, float dt) {
+            int id = client_broker->getECSId();
+            auto& motion = scene->_ecs->getComponent<MotionComponent>(id);
+            motion.velocity[1] = 0.0f;
             Request request = {0};
             request.header.Action = asChar(ActionCode::UP);
             request.header.BodyLength = 0;
@@ -330,6 +336,9 @@ int main(void)
             client_broker->addMessage(0, 1, message);
         });
         eventManager->addEventListener({LE::KEYBOARD, LE_KEY_DOWN, LE::JUST_PRESSED, false}, [&](LE::Engine *engine, float dt) {
+            int id = client_broker->getECSId();
+            auto& motion = scene->_ecs->getComponent<MotionComponent>(id);
+            motion.velocity[1] = -1.0f;
             Request request = {0};
             request.header.Action = asChar(ActionCode::DOWN);
             request.header.BodyLength = 0;
@@ -342,6 +351,9 @@ int main(void)
             client_broker->addMessage(0, 1, message);
         });
         eventManager->addEventListener({LE::KEYBOARD, LE_KEY_DOWN, LE::JUST_RELEASED, false}, [&](LE::Engine *engine, float dt) {
+            int id = client_broker->getECSId();
+            auto& motion = scene->_ecs->getComponent<MotionComponent>(id);
+            motion.velocity[1] = 0.0f;
             Request request = {0};
             request.header.Action = asChar(ActionCode::DOWN);
             request.header.BodyLength = 0;
@@ -354,6 +366,9 @@ int main(void)
             client_broker->addMessage(0, 1, message);
         });
         eventManager->addEventListener({LE::KEYBOARD, LE_KEY_LEFT, LE::JUST_PRESSED, false}, [&](LE::Engine *engine, float dt) {
+            int id = client_broker->getECSId();
+            auto& motion = scene->_ecs->getComponent<MotionComponent>(id);
+            motion.velocity[0] = -1.0f;
             Request request = {0};
             request.header.Action = asChar(ActionCode::LEFT);
             request.header.BodyLength = 0;
@@ -366,6 +381,9 @@ int main(void)
             client_broker->addMessage(0, 1, message);
         });
         eventManager->addEventListener({LE::KEYBOARD, LE_KEY_LEFT, LE::JUST_RELEASED, false}, [&](LE::Engine *engine, float dt) {
+            int id = client_broker->getECSId();
+            auto& motion = scene->_ecs->getComponent<MotionComponent>(id);
+            motion.velocity[0] = 0.0f;
             Request request = {0};
             request.header.Action = asChar(ActionCode::LEFT);
             request.header.BodyLength = 0;
@@ -378,6 +396,9 @@ int main(void)
             client_broker->addMessage(0, 1, message);
         });
         eventManager->addEventListener({LE::KEYBOARD, LE_KEY_RIGHT, LE::JUST_PRESSED, false}, [&](LE::Engine *engine, float dt) {
+            int id = client_broker->getECSId();
+            auto& motion = scene->_ecs->getComponent<MotionComponent>(id);
+            motion.velocity[0] = 1.0f;
             Request request = {0};
             request.header.Action = asChar(ActionCode::RIGHT);
             request.header.BodyLength = 0;
@@ -390,6 +411,9 @@ int main(void)
             client_broker->addMessage(0, 1, message);
         });
         eventManager->addEventListener({LE::KEYBOARD, LE_KEY_RIGHT, LE::JUST_RELEASED, false}, [&](LE::Engine *engine, float dt) {
+            int id = client_broker->getECSId();
+            auto& motion = scene->_ecs->getComponent<MotionComponent>(id);
+            motion.velocity[0] = 0.0f;
             Request request = {0};
             request.header.Action = asChar(ActionCode::RIGHT);
             request.header.BodyLength = 0;
