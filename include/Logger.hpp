@@ -17,7 +17,7 @@
 #include <sstream>
 #include <format>
 #include "interface/ILogger/ILogger.hpp"
-#include "LogOutput.hpp"
+#include "LogDef.hpp"
 
 class Logger : public ILoggable
 {
@@ -30,32 +30,54 @@ class Logger : public ILoggable
 
         void logInfo(const std::string& message, std::ostream* forcedStream = nullptr) override
         {
-            std::lock_guard<std::mutex> lock(_mutex);
             logMessage("[INFO]: " + message, LogColor::GREEN, forcedStream);
         }
 
         void logError(const std::string &message, std::ostream *forcedStream = nullptr) override
         {
-            std::lock_guard<std::mutex> lock(_mutex);
             logMessage("[ERROR]: " + message, LogColor::RED, forcedStream);
         }
 
         void logWarning(const std::string &message, std::ostream *forcedStream = nullptr) override
         {
-            std::lock_guard<std::mutex> lock(_mutex);
             logMessage("[WARNING]: " + message, LogColor::YELLOW, forcedStream);
         }
 
         void logDebug(const std::string &message, std::ostream *forcedStream = nullptr) override
         {
-            std::lock_guard<std::mutex> lock(_mutex);
             logMessage("[DEBUG]: " + message, LogColor::BLUE, forcedStream);
         }
 
         void logCritical(const std::string &message, std::ostream *forcedStream = nullptr) override
         {
-            std::lock_guard<std::mutex> lock(_mutex);
             logMessage("[CRITICAL]: " + message, LogColor::MAGENTA, forcedStream);
+        }
+
+        template<LogType logType = LogType::INFO, std::ostream *streamOverride = nullptr, typename ...Args>
+        void log(const std::string &format, Args&&... args)
+        {
+            std::lock_guard<std::mutex> lock(_mutex);
+
+            switch (logType)
+            {
+                case LogType::INFO:
+                    logInfo(std::vformat(format, std::make_format_args(args...)), streamOverride);
+                    break;
+                case LogType::ERROR:
+                    logError(std::vformat(format, std::make_format_args(args...)), streamOverride);
+                    break;
+                case LogType::WARN:
+                    logWarning(std::vformat(format, std::make_format_args(args...)), streamOverride);
+                    break;
+                case LogType::DEBUG:
+                    logDebug(std::vformat(format, std::make_format_args(args...)), streamOverride);
+                    break;
+                case LogType::CRITICAL:
+                    logCritical(std::vformat(format, std::make_format_args(args...)), streamOverride);
+                    break;
+                default:
+                    logMessage("[DEFAULT]: " + std::vformat(format, std::make_format_args(args...)), LogColor::GREEN, streamOverride);
+            }
         }
 
         void setColorEnabled(bool enable)
