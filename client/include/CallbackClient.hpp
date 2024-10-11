@@ -11,6 +11,7 @@
 #include "ResolvingLib.hpp"
 #include "PackUnpack.hpp"
 #include "ECS/Ecs.hpp"
+#include "Engine.hpp"
 #include "ECS/Components/TransformComponent.hpp"
 #include "ECS/Components/ModelComponent.hpp"
 #include "ECS/Components/PatternComponent.hpp"
