@@ -18,7 +18,7 @@
 #include "Common.hpp"
 #include "CallbackServer.hpp"
 #include <iostream>
-
+#include "globalLogger.hpp"
 
 static void receiveFromClient(ServerBroker *server_broker, std::shared_ptr<ISession> session, std::shared_ptr<Ecs> _ecs, ResponsibilityChain chain)
 {
@@ -54,6 +54,7 @@ static void receivedFromAllClient(ServerBroker *server_broker, std::shared_ptr<E
 
 int main(void)
 {
+    globalLogger->logInfo("Server started");
     GameClock clock;
     ResponsibilityChain chain;
     std::string pathLib = getPathOfNetworkDynLib() + getExtensionKernel();
