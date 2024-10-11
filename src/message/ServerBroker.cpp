@@ -81,11 +81,13 @@ void ServerBroker::sendToAllClient(Message *message, std::uint8_t topic_id)
 {
     std::lock_guard<std::mutex> lock(_mutex);
 
-    message->setEmmiterID(_ecs_id);
-    message->setTopicID(topic_id);
+    Message *new_message = nullptr;
     for (auto &session : _server->_sessionsManager->getClients())
     {
-        message->setReceiverID(session->getId());
-        _outgoing_messages.push(message);
+        new_message = new Message(*message);
+        new_message->setEmmiterID(_ecs_id);
+        new_message->setTopicID(topic_id);
+        new_message->setReceiverID(session->getId());
+        _outgoing_messages.push(new_message);
     }
 }
