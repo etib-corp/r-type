@@ -15,6 +15,7 @@
 #include <chrono>
 #include <iomanip>
 #include <sstream>
+#include <format>
 #include "interface/ILogger/ILogger.hpp"
 #include "LogOutput.hpp"
 
@@ -27,7 +28,8 @@ class Logger : public ILoggable
             return instance;
         }
 
-        void logInfo(const std::string& message, std::ostream* forcedStream = nullptr) override {
+        void logInfo(const std::string& message, std::ostream* forcedStream = nullptr) override
+        {
             std::lock_guard<std::mutex> lock(_mutex);
             logMessage("[INFO]: " + message, LogColor::GREEN, forcedStream);
         }
