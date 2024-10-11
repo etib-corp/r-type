@@ -20,9 +20,12 @@ public:
 
     void virtual startReceive() = 0;
 
+    void setOnReceive(std::function<void(const Request &)> onReceive) { _onReceive = onReceive; }
+
 protected:
     int _port;
     std::shared_ptr<SessionManager> _sessionManager;
+    std::function<void(const Request &)> _onReceive = nullptr;
 
 private:
 };

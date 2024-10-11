@@ -27,6 +27,7 @@ void Render3DSystem::update(Ecs *ecs, float delta)
     CameraComponent camera = ecs->getComponent<CameraComponent>(cameraEntity);
 
 for (auto &entity : _entities) {
+        std::cout << "entity: " << entity << std::endl;
         auto &model = ecs->getComponent<ModelComponent>(entity);
         auto &transform = ecs->getComponent<TransformComponent>(entity);
         auto &motion = ecs->getComponent<MotionComponent>(entity);

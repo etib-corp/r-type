@@ -28,6 +28,8 @@ public:
 
     void setOnClientConnected(std::function<void(ISession *)> onClientConnected) { _listenerTCP->setOnClientConnected(onClientConnected); }
 
+    void setOnReceiveUDP(std::function<void(const Request &)> onReceive) { _listenerUDP->setOnReceive(onReceive); }
+
 protected:
     std::shared_ptr<IListenerTCP> _listenerTCP;
     std::shared_ptr<IListenerUDP> _listenerUDP;

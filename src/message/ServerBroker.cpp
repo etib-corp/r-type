@@ -15,6 +15,8 @@ ServerBroker::ServerBroker(INetworkModule *network_module, std::uint8_t ecs_id, 
 
     _server->_sessionsManager->setOnReceive(std::bind(&ServerBroker::_onReceiveRequestCallback, this, std::placeholders::_1));
 
+    _server->setOnReceiveUDP(std::bind(&ServerBroker::_onReceiveRequestCallback, this, std::placeholders::_1));
+
     _server->setOnClientConnected([](ISession *session) {
         Request request = {
             .header = {
@@ -27,7 +29,7 @@ ServerBroker::ServerBroker(INetworkModule *network_module, std::uint8_t ecs_id, 
             },
             .body = {0}
         };
-        
+
         Message *message = new Message();
 
         message->setHeader(request.header);
@@ -65,7 +67,7 @@ void ServerBroker::_sendMessage(Message *message)
 void ServerBroker::_onReceiveRequestCallback(const Request &request)
 {
     Message *message = new Message();
-    
+
     message->setRequest(request);
     _incomming_messages.push(message);
 }

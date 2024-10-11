@@ -12,11 +12,11 @@ void callbackStartGame(const Request& req, std::shared_ptr<Ecs> _ecs)
     std::cout << "Game started." << std::endl;
     StartGame sg;
     ::memmove(&sg, &req.body, sizeof(StartGame));
-    std::cout << "Number of player : " << sg.nbrPlayers << std::endl;
+    std::cout << "Number of player : " << (int)sg.nbrPlayers << std::endl;
     for (int i = 0; i < sg.nbrPlayers; i++) {
         Entity player = _ecs->createEntity();
-        _ecs->addComponent<TransformComponent>(player, {{50.0f * (static_cast<float>(i) + 1.0f), 0, 0}, {0, 90, 0}, {1, 1, 1}});
-        ModelComponent *model = createModelComponent("assets/models/ship/ship" + std::to_string(i) + ".obj");
+        _ecs->addComponent<TransformComponent>(player, {{0, 0, 0}, {0, 90, 0}, {1, 1, 1}});
+        ModelComponent *model = createModelComponent("assets/models/ship" + std::to_string(i) + "/ship" + std::to_string(i) + ".obj");
         _ecs->addComponent<ModelComponent>(player, *model);
         _ecs->addComponent<MotionComponent>(player, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
     }
