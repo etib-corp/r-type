@@ -12,6 +12,6 @@
 
 void initLogger(void) __attribute__((constructor));
 
-extern Logger *globalLogger;
+extern Logger *rtypeLog;
 
 #endif /* !GLOBALLOGGER_HPP_ */
