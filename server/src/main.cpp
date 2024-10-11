@@ -54,7 +54,7 @@ static void receivedFromAllClient(ServerBroker *server_broker, std::shared_ptr<E
 
 int main(void)
 {
-    globalLogger->logInfo("Server started");
+    rtypeLog->log("Server started");
     GameClock clock;
     ResponsibilityChain chain;
     std::string pathLib = getPathOfNetworkDynLib() + getExtensionKernel();
