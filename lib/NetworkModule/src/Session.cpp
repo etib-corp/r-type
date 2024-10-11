@@ -6,6 +6,7 @@
 */
 
 #include "Session.hpp"
+#include "message/Message.hpp"
 
 Session::Session(boost::asio::ip::tcp::socket socket)
     : _socketTCP(std::move(socket)), _socketUDP(_io_service)
@@ -16,6 +17,26 @@ Session::Session(boost::asio::ip::tcp::socket socket)
 
 Session::~Session()
 {
+}
+
+void Session::handShake(void)
+{
+    Request request = {
+        .header = {
+            .MagicNumber = 0xFF,
+            .EmmiterdEcsId = 00,
+            .ReceiverEcsId = getId(),
+            .TopicID = 0x00,
+            .Action = asChar(ActionCode::NEW_CONNECTION),
+            .BodyLength = 0
+        },
+        .body = {0}
+    };
+    Message msg;
+
+    msg.setRequest(request);
+    _socketTCP.send(boost::asio::buffer(msg.serialize()));
+    std::cout << "Handshake sent" << std::endl;
 }
 
 void Session::read(std::function<void(ISession *)> onDisconnected, std::function<void(const Request &request)> onReceive)

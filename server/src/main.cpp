@@ -64,19 +64,19 @@ int main(void)
 
     attributeServerCallback(&chain, server_broker);
 
-    Message *message = new Message();
-    Body body;
-    ::memmove(body._buffer, "Hello", 6);
-    message->setMagicNumber(asChar(ActionCode::MAGIC_NUMBER));
-    message->setAction(asChar(ActionCode::USERNAME));
-    message->setBody(body);
-    
-    
+    // Message *message = new Message();
+    // Body body;
+    // ::memmove(body._buffer, "Hello", 6);
+    // message->setMagicNumber(asChar(ActionCode::MAGIC_NUMBER));
+    // message->setAction(asChar(ActionCode::USERNAME));
+    // message->setBody(body);
 
-    clock.addCallback([server_broker, message]()
-    {
-        server_broker->sendToAllClient(message, 1);
-    }, 100);
+
+
+    // clock.addCallback([server_broker, message]()
+    // {
+    //     server_broker->sendToAllClient(message, 1);
+    // }, 100);
 
     clock.start();
 
@@ -88,7 +88,7 @@ int main(void)
 
     receivedFromAllClient(server_broker, _ecs, chain);
 
-    delete server_broker;  
+    delete server_broker;
     delete network_module;
 
     clock.stop();

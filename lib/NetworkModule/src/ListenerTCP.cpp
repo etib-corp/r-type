@@ -31,6 +31,7 @@ void ListenerTCP::WaitForConnection()
                 std::shared_ptr<Session> newSession = std::make_shared<Session>(std::move(socket));
                 newSession->setId(_last_id++);
                 _sessionManager->addClient(newSession);
+                newSession->handShake();
                 newSession->read([this](ISession *session)
                                  {
                     std::cout << "Client disconnected: " << session->getId() << std::endl;
@@ -38,6 +39,7 @@ void ListenerTCP::WaitForConnection()
                 if (_onClientConnected) {
                     _onClientConnected(newSession.get());
                 }
+
             }
             WaitForConnection();
         });

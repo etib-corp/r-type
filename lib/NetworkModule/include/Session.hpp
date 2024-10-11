@@ -10,7 +10,10 @@
 #include <boost/asio.hpp>
 #include <memory>
 #include <iostream>
+
 #include "interface/INetworkModule/ISession.hpp"
+#include "Utils.hpp"
+#include "EnumClass.hpp"
 
 /**
  * @class Session
@@ -54,6 +57,8 @@ public:
     void sendUDP(const std::string &request) override;
 
     void setUdpEndpoint(boost::asio::ip::udp::endpoint udp_endpoint) { _udp_endpoint = udp_endpoint; }
+
+    void handShake() override;
 
 protected:
     boost::asio::io_service _io_service;

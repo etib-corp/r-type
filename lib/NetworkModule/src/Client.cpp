@@ -26,11 +26,28 @@ void Client::connectToServer()
 {
     readUDP();
     _socketTCP.connect(_endpointTCPServer);
+    handShake();
     if (_onConnect)
         _onConnect(this);
     readTCP();
     _thread = std::thread([this]()
                           { _ioContext.run(); });
+}
+
+void Client::handShake(void)
+{
+    _socketTCP.receive(boost::asio::buffer(&_requestTCP, sizeof(Request)));
+    std::cout << "Handshake received" << std::endl;
+    std::cout << "MagicNumber: " << (int)_requestTCP.header.MagicNumber << std::endl;
+    std::cout << "EmmiterEcsId: " << (int)_requestTCP.header.EmmiterdEcsId << std::endl;
+    std::cout << "ReceiverEcsId: " << (int)_requestTCP.header.ReceiverEcsId << std::endl;
+    std::cout << "TopicID: " << (int)_requestTCP.header.TopicID << std::endl;
+    std::cout << "Action: " << (int)_requestTCP.header.Action << std::endl;
+    std::cout << "BodyLength: " << (int)_requestTCP.header.BodyLength << std::endl;
+    setId(_requestTCP.header.ReceiverEcsId);
+    _requestTCP.header.EmmiterdEcsId = getId();
+    _requestTCP.header.ReceiverEcsId = 0;
+    _socketUDP.send_to(boost::asio::buffer(&_requestTCP, sizeof(Request)), _endpointUDPServer);
 }
 
 void Client::readTCP()
