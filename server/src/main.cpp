@@ -28,16 +28,10 @@ static void receiveFromClient(ServerBroker *server_broker, std::shared_ptr<ISess
         if (message == nullptr) {
             return;
         }
-        std::cout << "Message received from client: " << (int)session->getId() << std::endl;
         Request req = message->getRequest();
         processRequest(req, _ecs, chain);
-        std::cout << "getBody()=" << message->getBody()._buffer << std::endl;
-        std::cout << "getReceiverID()=" << (int)message->getReceiverID() << std::endl;
-        std::cout << "getEmmiterID()=" << (int)message->getEmmiterID() << std::endl;
         // delete message;
     } catch (const std::exception &e) {
-        // std::cerr << e.what() << std::endl;
-        // std::cout << "No message received. Waiting..." << std::endl;
     }
 }
 
@@ -86,11 +80,6 @@ int main(void)
         msg.setRequest(request);
         server_broker->sendToAllClient(&msg, 1);
     });
-
-    // clock.addCallback([server_broker, message]()
-    // {
-    //     server_broker->sendToAllClient(message, 1);
-    // }, 100);
 
     clock.start();
 
