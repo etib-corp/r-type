@@ -14,26 +14,15 @@ set(XERCES_USE_ICU OFF)
 set(OPENGL_SILENT TRUE)
 find_package(OpenGL REQUIRED)
 
-include(FetchContent)
-
-# FetchContent_Declare(
-#   fmt
-#   GIT_REPOSITORY https://github.com/fmtlib/fmt
-#   GIT_TAG        e69e5f977d458f2650bb346dadf2ad30c5320281) # 10.2.1
-# FetchContent_MakeAvailable(fmt)
-
 add_subdirectory(dependencies/glfw-3.4)
 add_subdirectory(dependencies/freetype-VER-2-13-3)
 add_subdirectory(dependencies/glm)
 add_subdirectory(dependencies/assimp-5.4.3)
 add_subdirectory(dependencies/boost-1.86.0)
-add_subdirectory(dependencies/fmt-11.0.2)
 
-include_directories(dependencies/fmt-11.0.2/include)
 file(GLOB_RECURSE SOURCES src/*.cpp)
 include_directories(include)
 add_library(r-type STATIC ${SOURCES})
-target_link_libraries(r-type fmt::fmt)
 target_link_libraries(r-type Boost::iostreams)
 
 include_directories(${OPENGL_INCLUDE_DIRS})
@@ -55,14 +44,11 @@ target_link_libraries(r-type_client ${GLUT_LIBRARIES})
 target_link_libraries(r-type_client freetype)
 target_link_libraries(r-type_client glm)
 target_link_libraries(r-type_client assimp)
-target_link_libraries(r-type_client fmt::fmt)
 
 file(GLOB_RECURSE SERVER_SOURCES server/src/*.cpp)
 include_directories(server/include)
 add_executable(r-type_server ${SERVER_SOURCES})
 
 target_link_libraries(r-type_server r-type)
-target_link_libraries(r-type_server fmt::fmt)
-
 
 add_subdirectory(lib)
