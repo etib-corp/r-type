@@ -32,7 +32,7 @@ void ListenerTCP::WaitForConnection()
                 std::shared_ptr<Session> newSession = std::make_shared<Session>(std::move(socket));
                 newSession->setId(_last_id++);
                 _sessionManager->addClient(newSession);
-                newSession->handShake();
+                // newSession->handShake();
                 newSession->read([this](ISession *session)
                                  {
                     rtypeLog->log<LogType::WARN>("Client disconnected: {}", session->getId());

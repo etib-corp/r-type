@@ -34,14 +34,14 @@ public:
 
     /**
      * @brief Get all clients id connected to the server.
-     * 
+     *
      * @return The list of clients id.
      */
-    [[nodiscard]] std::deque<std::shared_ptr<ISession>> getClientsSessions(void) const { return _server->_sessionsManager->getClients(); }
+    [[nodiscard]] std::vector<std::shared_ptr<ISession>> getClientsSessions(void) const { return _server->_sessionsManager->getClients(); }
 
     /**
      * @brief Send a message to all clients connected to the server.
-     * 
+     *
      * @param message The message to send.
      */
     void sendToAllClient(Message *message, std::uint8_t topic_id);

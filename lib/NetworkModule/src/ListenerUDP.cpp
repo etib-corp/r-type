@@ -14,6 +14,7 @@ ListenerUDP::ListenerUDP(int port)
     : _udpSocket(_io_context, boost::asio::ip::udp::endpoint(boost::asio::ip::udp::v4(), port))
 {
     _port = port;
+    _udpSocket.set_option(boost::asio::socket_base::reuse_address(true));
 }
 
 ListenerUDP::~ListenerUDP()
@@ -34,6 +35,9 @@ void ListenerUDP::startReceive()
         boost::asio::buffer(&_request, sizeof(Request)), _remoteEndpoint,
         [this](const boost::system::error_code &error, std::size_t bytes_transferred) {
             handleReceive(error, bytes_transferred);
+            ::memset(&_request, 0, sizeof(Request));
+            std::cout << "UDP Received" << std::endl; 
+            startReceive();
     });
 }
 
@@ -44,7 +48,6 @@ void ListenerUDP::handleReceive(const boost::system::error_code &error, std::siz
         try {
             if (_request.header.Action == asChar(ActionCode::NEW_CONNECTION)) {
                 std::shared_ptr<ISession> session = this->_sessionManager->getClientById(_request.header.EmmiterdEcsId);
-                // copy the _remoteEndpoint to the session
                 boost::asio::ip::udp::endpoint udp_endpoint(_remoteEndpoint.address(), _remoteEndpoint.port());
                 dynamic_cast<Session *>(session.get())->setUdpEndpoint(udp_endpoint);
                 rtypeLog->log("{}", "UDP Connection established");
@@ -57,7 +60,5 @@ void ListenerUDP::handleReceive(const boost::system::error_code &error, std::siz
         {
             rtypeLog->log<LogType::ERROR, &std::cerr>("{}", e.what());
         }
-        ::memset(&_request, 0, sizeof(Request));
-        startReceive();
     }
 }

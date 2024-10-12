@@ -9,7 +9,7 @@
 #define ISESSIONMANAGER_HPP_
 
 #include "ISession.hpp"
-#include <deque>
+#include <vector>
 #include <memory>
 #include "PackUnpack.hpp"
 #include <functional>
@@ -27,21 +27,18 @@ public:
         _sessions.push_back(client);
     }
 
-    virtual std::deque<std::shared_ptr<ISession>> &getClients()
+    virtual std::vector<std::shared_ptr<ISession>> &getClients()
     {
         return _sessions;
     }
 
     virtual std::shared_ptr<ISession> getClientById(std::uint32_t id)
     {
-        std::deque<std::shared_ptr<ISession>> clients = _sessions;
-        while (!clients.empty())
+        for (auto &session : _sessions)
         {
-            if (clients.front()->getId() == id)
-                return clients.front();
-            clients.pop_front();
+            if (session->getId() == id)
+                return session;
         }
-        throw std::runtime_error("Client not found: " + std::to_string(id));
         return nullptr;
     }
 
@@ -63,8 +60,10 @@ public:
 
     std::shared_ptr<ISession> popSession(void)
     {
+        if (_sessions.size() == 0)
+            return nullptr;
         auto session = _sessions.front();
-        _sessions.pop_front();
+        _sessions.erase(_sessions.begin());
         return session;
     }
 
@@ -73,7 +72,7 @@ public:
         _sessions.push_back(session);
     }
 
-    std::deque<std::shared_ptr<ISession>> _sessions;
+    std::vector<std::shared_ptr<ISession>> _sessions;
 
 protected:
     std::function<void(const Request &)> _onReceive;

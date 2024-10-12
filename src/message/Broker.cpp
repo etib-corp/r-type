@@ -21,6 +21,7 @@ void Broker::_logicalRoutine()
         _topics[key]->addMessage(message);
         std::cout << "Message received" << std::endl;
         std::cout << *message << std::endl;
+        std::cout << std::endl;
         _mutex.unlock();
     }
 }
@@ -59,7 +60,9 @@ void Broker::_sendMessages(void)
         _mutex.lock();
         message = _outgoing_messages.front();
         _outgoing_messages.pop();
+        std::cout << "Message sent" << std::endl;
         std::cout << *message << std::endl;
+        std::cout << std::endl;
         _sendFunction(message);
         _mutex.unlock();
     }

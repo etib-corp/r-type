@@ -12,8 +12,11 @@ Client::Client(const std::string &ip, const int &port) : _socketTCP(_ioContext),
     _socketUDP.open(boost::asio::ip::udp::v4());
     _endpointTCPServer = boost::asio::ip::tcp::endpoint(
         boost::asio::ip::address::from_string(ip), port);
-    _endpointUDPServer = boost::asio::ip::udp::endpoint(
-        boost::asio::ip::address::from_string(ip), port);
+
+    boost::asio::ip::udp::resolver resolver(_ioContext);
+    boost::asio::ip::udp::resolver::query query(boost::asio::ip::udp::v4(), ip, std::to_string(port + 1));  // Use the UDP port
+    _endpointUDPServer = *resolver.resolve(query);
+
     _onReceive = nullptr;
     _onConnect = nullptr;
 }
