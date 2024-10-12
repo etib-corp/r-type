@@ -19,7 +19,6 @@
 #include "CallbackServer.hpp"
 #include <iostream>
 #include "globalLogger.hpp"
-#include "fmt/core.h"
 
 static void receiveFromClient(ServerBroker *server_broker, std::shared_ptr<ISession> session, std::shared_ptr<Ecs> _ecs, ResponsibilityChain chain)
 {
