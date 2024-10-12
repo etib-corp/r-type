@@ -15,7 +15,6 @@
 #include <chrono>
 #include <iomanip>
 #include <sstream>
-#include <format>
 #include "interface/ILogger/ILogger.hpp"
 #include "LogDef.hpp"
 
