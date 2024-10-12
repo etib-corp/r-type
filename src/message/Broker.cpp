@@ -59,9 +59,8 @@ void Broker::_sendMessages(void)
         _mutex.lock();
         message = _outgoing_messages.front();
         _outgoing_messages.pop();
-        _sendFunction(message);
-        std::cout << "Message sent" << std::endl;
         std::cout << *message << std::endl;
+        _sendFunction(message);
         _mutex.unlock();
     }
 }

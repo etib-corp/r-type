@@ -79,10 +79,10 @@ int main(void)
         ::memmove(request.body._buffer, &startGame, sizeof(StartGame));
         Message msg;
         msg.setRequest(request);
+        msg.setReliable(true);
         server_broker->sendToAllClient(&msg, 1);
     });
 
-    clock.start();
 
     std::shared_ptr<Ecs> _ecs = std::make_shared<Ecs>();
     Entity entity = _ecs->createEntity();
@@ -94,7 +94,5 @@ int main(void)
 
     delete server_broker;
     delete network_module;
-
-    clock.stop();
     return 0;
 }

@@ -73,6 +73,9 @@ void ServerBroker::_onReceiveRequestCallback(const Request &request)
     Message *message = new Message();
 
     message->setRequest(request);
+    std::cout << "--------------" << std::endl;
+    std::cout << *message << std::endl;
+    std::cout << "--------------" << std::endl;
     _incomming_messages.push(message);
 }
 

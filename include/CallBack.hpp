@@ -19,15 +19,11 @@
 #include "Utils.hpp"
 #include "ResponsibilityChain.hpp"
 #include "Common.hpp"
-// #include "CallBack.hpp"
 #include <iostream>
+#include "LogDef.hpp"
+#include "globalLogger.hpp"
 
-// void callbackInputUp(const Request& req, std::shared_ptr<Ecs> _ecs);
-// void callbackInputDown(const Request& req, std::shared_ptr<Ecs> _ecs);
-// void callbackInputLeft(const Request& req, std::shared_ptr<Ecs> _ecs);
-// void callbackInputRight(const Request& req, std::shared_ptr<Ecs> _ecs);
-// void checkMagicNumber(const Request& req, std::shared_ptr<Ecs> _ecs);
-// void attributeServerCallback(ResponsibilityChain *chain, std::deque<std::shared_ptr<ISession>> sessions, ServerBroker *server_broker, Message *message);
+
 void executeCallbacks(
     const std::vector<CallBackFunc>& callbacks,
     const Request& req,

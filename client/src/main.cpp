@@ -298,7 +298,7 @@ int main(void)
 
     loader_lib.LoadModule();
     network_module = loader_lib.createNetworkModule();
-    client_broker = new ClientBroker(network_module, "10.49.84.158", 8080);
+    client_broker = new ClientBroker(network_module, "127.0.0.1", 8080);
 
 
     attributeClientCallback(&responsibilityChain, client_broker);
@@ -319,6 +319,7 @@ int main(void)
             Message *message = new Message();
             message->setRequest(request);
             client_broker->addMessage(0, 1, message);
+            std::cout << "UP" << std::endl;
         });
         eventManager->addEventListener({LE::KEYBOARD, LE_KEY_UP, LE::JUST_RELEASED, false}, [&](LE::Engine *engine, float dt) {
             int id = client_broker->getECSId();
@@ -433,9 +434,10 @@ int main(void)
             request.header.MagicNumber = 0xFF;
             request.header.ReceiverEcsId = 0;
             request.header.TopicID = 1;
-            Message message;
-            message.setRequest(request);
-            client_broker->addMessage(0, 1, &message);
+            Message *message = new Message();
+            message->setRequest(request);
+            message->setReliable(true);
+            client_broker->addMessage(0, 1, message);
         });
     });
     engine->setLoop([&]() {

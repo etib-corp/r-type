@@ -44,7 +44,9 @@ void ListenerUDP::handleReceive(const boost::system::error_code &error, std::siz
         try {
             if (_request.header.Action == asChar(ActionCode::NEW_CONNECTION)) {
                 std::shared_ptr<ISession> session = this->_sessionManager->getClientById(_request.header.EmmiterdEcsId);
-                dynamic_cast<Session *>(session.get())->setUdpEndpoint(_remoteEndpoint);
+                // copy the _remoteEndpoint to the session
+                boost::asio::ip::udp::endpoint udp_endpoint(_remoteEndpoint.address(), _remoteEndpoint.port());
+                dynamic_cast<Session *>(session.get())->setUdpEndpoint(udp_endpoint);
                 rtypeLog->log("{}", "UDP Connection established");
             } else {
                 if (_onReceive)
