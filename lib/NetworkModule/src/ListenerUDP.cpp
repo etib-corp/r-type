@@ -5,6 +5,7 @@
 ** ListenerUDP
 */
 
+#include "globalLogger.hpp"
 #include "ListenerUDP.hpp"
 #include "interface/INetworkModule/IServer.hpp"
 #include "Session.hpp"
@@ -44,7 +45,7 @@ void ListenerUDP::handleReceive(const boost::system::error_code &error, std::siz
             if (_request.header.Action == asChar(ActionCode::NEW_CONNECTION)) {
                 std::shared_ptr<ISession> session = this->_sessionManager->getClientById(_request.header.EmmiterdEcsId);
                 dynamic_cast<Session *>(session.get())->setUdpEndpoint(_remoteEndpoint);
-                std::cout << "UDP Connection established" << std::endl;
+                rtypeLog->log("{}", "UDP Connection established");
             } else {
                 if (_onReceive)
                     _onReceive(_request);
@@ -52,7 +53,7 @@ void ListenerUDP::handleReceive(const boost::system::error_code &error, std::siz
         }
         catch (const std::exception &e)
         {
-            std::cerr << e.what() << '\n';
+            rtypeLog->log<LogType::ERROR, &std::cerr>("{}", e.what());
         }
         ::memset(&_request, 0, sizeof(Request));
         startReceive();

@@ -7,36 +7,44 @@
 
 #include "CallbackServer.hpp"
 
-void callbackInputUp(const Request &req, std::shared_ptr<Ecs> _ecs)
+void callbackInputUp(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
-    std::cout << "Callback Input UP executed." << std::endl;
-    std::cout << "Before" << _ecs->getComponent<TransformComponent>(req.header.EmmiterdEcsId).position << std::endl;
-    _ecs->getComponent<TransformComponent>(req.header.EmmiterdEcsId).position[static_cast<int>(Axes3D::Y)] += 1;
-    std::cout << "After" << _ecs->getComponent<TransformComponent>(req.header.EmmiterdEcsId).position << std::endl;
+    std::uint8_t id = req.header.EmmiterdEcsId;
+    auto& motion = _ecs->getComponent<MotionComponent>(id);
+    if (motion.velocity[1] == 0.0f)
+        motion.velocity[1] = 1.0f;
+    else
+        motion.velocity[1] = 0.0f;
 }
 
-void callbackInputDown(const Request &req, std::shared_ptr<Ecs> _ecs)
+void callbackInputDown(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
-    std::cout << "Callback Input Down executed." << std::endl;
-    std::cout << "Before" << _ecs->getComponent<TransformComponent>(req.header.EmmiterdEcsId).position << std::endl;
-    _ecs->getComponent<TransformComponent>(req.header.EmmiterdEcsId).position[static_cast<int>(Axes3D::Y)] -= 1;
-    std::cout << "After" << _ecs->getComponent<TransformComponent>(req.header.EmmiterdEcsId).position << std::endl;
+    std::uint8_t id = req.header.EmmiterdEcsId;
+    auto& motion = _ecs->getComponent<MotionComponent>(id);
+    if (motion.velocity[1] == 0.0f)
+        motion.velocity[1] = -1.0f;
+    else
+        motion.velocity[1] = 0.0f;
 }
 
-void callbackInputLeft(const Request &req, std::shared_ptr<Ecs> _ecs)
+void callbackInputRight(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
-    std::cout << "Callback Input Down executed." << std::endl;
-    std::cout << "Before" << _ecs->getComponent<TransformComponent>(req.header.EmmiterdEcsId).position << std::endl;
-    _ecs->getComponent<TransformComponent>(req.header.EmmiterdEcsId).position[static_cast<int>(Axes3D::X)] -= 1;
-    std::cout << "After" << _ecs->getComponent<TransformComponent>(req.header.EmmiterdEcsId).position << std::endl;
+    std::uint8_t id = req.header.EmmiterdEcsId;
+    auto& motion = _ecs->getComponent<MotionComponent>(id);
+    if (motion.velocity[0] == 0.0f)
+        motion.velocity[0] = 1.0f;
+    else
+        motion.velocity[0] = 0.0f;
 }
 
-void callbackInputRight(const Request &req, std::shared_ptr<Ecs> _ecs)
+void callbackInputLeft(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
-    std::cout << "Callback Input Right executed." << std::endl;
-    std::cout << "Before" << _ecs->getComponent<TransformComponent>(req.header.EmmiterdEcsId).position << std::endl;
-    _ecs->getComponent<TransformComponent>(req.header.EmmiterdEcsId).position[static_cast<int>(Axes3D::X)] += 1;
-    std::cout << "After" << _ecs->getComponent<TransformComponent>(req.header.EmmiterdEcsId).position << std::endl;
+    std::uint8_t id = req.header.EmmiterdEcsId;
+    auto& motion = _ecs->getComponent<MotionComponent>(id);
+    if (motion.velocity[0] == 0.0f)
+        motion.velocity[0] = -1.0f;
+    else
+        motion.velocity[0] = 0.0f;
 }
 
 void checkMagicNumber(const Request &req, std::shared_ptr<Ecs> _ecs)

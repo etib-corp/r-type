@@ -3,6 +3,7 @@
 #include "message/ServerBroker.hpp"
 #include "EnumClass.hpp"
 #include "Utils.hpp"
+#include "globalLogger.hpp"
 
 ServerBroker::ServerBroker(INetworkModule *network_module, std::uint8_t ecs_id, std::uint16_t listen_port) : _listen_port(listen_port)
 {
@@ -11,7 +12,8 @@ ServerBroker::ServerBroker(INetworkModule *network_module, std::uint8_t ecs_id, 
     _setSendFunction(std::bind(&ServerBroker::_sendMessage, this, std::placeholders::_1));
 
     _server = _network_module->createServer(_listen_port);
-    std::cout << "ServerBroker network server created" << std::endl;
+    rtypeLog->log("{}", "ServerBroker network server created");
+
 
     _server->_sessionsManager->setOnReceive(std::bind(&ServerBroker::_onReceiveRequestCallback, this, std::placeholders::_1));
 
@@ -40,17 +42,19 @@ ServerBroker::ServerBroker(INetworkModule *network_module, std::uint8_t ecs_id, 
     });
 
     _server->run();
-    std::cout << "ServerBroker is running" << std::endl;
+    rtypeLog->log("{}", "ServerBroker is running");
 
-    std::cout << "ServerBroker thread started" << std::endl;
+
+    rtypeLog->log("{}", "ServerBroker thread started");
+
     _thread = std::thread(&ServerBroker::_run, this);
 }
 
 ServerBroker::~ServerBroker(void)
 {
-    std::cout << "ServerBroker is stopping" << std::endl;
+    rtypeLog->log("{}", "ServerBroker is stopping");
     _stop();
-    std::cout << "ServerBroker stopped" << std::endl;
+    rtypeLog->log("{}", "ServerBroker stopped");
 }
 
 void ServerBroker::_sendMessage(Message *message)
@@ -75,6 +79,7 @@ void ServerBroker::_onReceiveRequestCallback(const Request &request)
 void ServerBroker::_onClientDisconnectedCallback(ISession *session)
 {
     std::cout << session->getId() << " disconnect" << std::endl;
+    rtypeLog->log("{} disconnect", session->getId());
 }
 
 void ServerBroker::sendToAllClient(Message *message, std::uint8_t topic_id)
