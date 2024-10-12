@@ -16,22 +16,25 @@ find_package(OpenGL REQUIRED)
 
 include(FetchContent)
 
-FetchContent_Declare(
-  fmt
-  GIT_REPOSITORY https://github.com/fmtlib/fmt
-  GIT_TAG        e69e5f977d458f2650bb346dadf2ad30c5320281) # 10.2.1
-FetchContent_MakeAvailable(fmt)
+# FetchContent_Declare(
+#   fmt
+#   GIT_REPOSITORY https://github.com/fmtlib/fmt
+#   GIT_TAG        e69e5f977d458f2650bb346dadf2ad30c5320281) # 10.2.1
+# FetchContent_MakeAvailable(fmt)
 
 add_subdirectory(dependencies/glfw-3.4)
 add_subdirectory(dependencies/freetype-VER-2-13-3)
 add_subdirectory(dependencies/glm)
 add_subdirectory(dependencies/assimp-5.4.3)
 add_subdirectory(dependencies/boost-1.86.0)
+add_subdirectory(dependencies/fmt-11.0.2)
 
+include_directories(dependencies/fmt-11.0.2/include)
 file(GLOB_RECURSE SOURCES src/*.cpp)
 include_directories(include)
 add_library(r-type STATIC ${SOURCES})
-target_link_libraries(r-type Boost::iostreams fmt::fmt)
+target_link_libraries(r-type fmt::fmt)
+target_link_libraries(r-type Boost::iostreams)
 
 include_directories(${OPENGL_INCLUDE_DIRS})
 include_directories(dependencies/glm/)
@@ -40,7 +43,6 @@ include_directories(${BOOST_INCLUDE_DIRS})
 
 file(GLOB_RECURSE CLIENT_SOURCES client/src/*.cpp)
 include_directories(client/include client/include/GUI client/include/Maths dependencies/stb/include dependencies/rapidobj/include dependencies/json-0.0.1/include)
-
 
 include_directories(${OPENGL_INCLUDE_DIRS})
 
