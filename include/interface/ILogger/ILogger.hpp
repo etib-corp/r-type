@@ -14,9 +14,11 @@
 #if __cplusplus >= 202002L
     #include <format>
     using std::vformat;
+    using std::make_format_args;
 #else
     #include <fmt/core.h>
     using fmt::vformat;
+    using fmt::make_format_args;
 #endif
 
 class ILoggable
