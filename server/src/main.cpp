@@ -53,11 +53,7 @@ static void receivedFromAllClient(ServerBroker *server_broker, std::shared_ptr<E
     }
 }
 
-int main() {
-  fmt::print("Hello, world!\n");
-}
-
-int _main(void)
+int main(void)
 {
     rtypeLog->log("Server started");
     GameClock clock;
