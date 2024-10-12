@@ -10,7 +10,14 @@
 
 #include <string>
 #include <ostream>
-#include <format>
+
+#if __cplusplus >= 202002L
+    #include <format>
+    using std::vformat;
+#else
+    #include <fmt/core.h>
+    using fmt::vformat;
+#endif
 
 class ILoggable
 {

@@ -60,22 +60,22 @@ class Logger : public ILoggable
             switch (logType)
             {
                 case LogType::INFO:
-                    logInfo(std::vformat(format, std::make_format_args(args...)), streamOverride);
+                    logInfo(vformat(format, make_format_args(args...)), streamOverride);
                     break;
                 case LogType::ERROR:
-                    logError(std::vformat(format, std::make_format_args(args...)), streamOverride);
+                    logError(vformat(format, make_format_args(args...)), streamOverride);
                     break;
                 case LogType::WARN:
-                    logWarning(std::vformat(format, std::make_format_args(args...)), streamOverride);
+                    logWarning(vformat(format, make_format_args(args...)), streamOverride);
                     break;
                 case LogType::DEBUG:
-                    logDebug(std::vformat(format, std::make_format_args(args...)), streamOverride);
+                    logDebug(vformat(format, make_format_args(args...)), streamOverride);
                     break;
                 case LogType::CRITICAL:
-                    logCritical(std::vformat(format, std::make_format_args(args...)), streamOverride);
+                    logCritical(vformat(format, make_format_args(args...)), streamOverride);
                     break;
                 default:
-                    logMessage("[DEFAULT]: " + std::vformat(format, std::make_format_args(args...)), LogColor::GREEN, streamOverride);
+                    logMessage("[DEFAULT]: " + vformat(format, make_format_args(args...)), LogColor::GREEN, streamOverride);
             }
         }
 
