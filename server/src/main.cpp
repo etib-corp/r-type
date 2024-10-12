@@ -19,6 +19,7 @@
 #include "CallbackServer.hpp"
 #include <iostream>
 #include "globalLogger.hpp"
+#include "fmt/core.h"
 
 static void receiveFromClient(ServerBroker *server_broker, std::shared_ptr<ISession> session, std::shared_ptr<Ecs> _ecs, ResponsibilityChain chain)
 {
@@ -52,7 +53,11 @@ static void receivedFromAllClient(ServerBroker *server_broker, std::shared_ptr<E
     }
 }
 
-int main(void)
+int main() {
+  fmt::print("Hello, world!\n");
+}
+
+int _main(void)
 {
     rtypeLog->log("Server started");
     GameClock clock;

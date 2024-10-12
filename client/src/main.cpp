@@ -282,7 +282,13 @@ static void sendAuthToServer(ClientBroker *client_broker, std::string playerName
     client_broker->addMessage(0, 1, message);
 }
 
-int main(void)
+#include <fmt/core.h>
+
+int main() {
+  fmt::print("Hello, world!\n");
+}
+
+int _main(void)
 {
     std::string pathLib = getPathOfNetworkDynLib() + getExtensionKernel();
     LoaderLib loader_lib(pathLib, "");
