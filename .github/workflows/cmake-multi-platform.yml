@@ -42,7 +42,7 @@ jobs:
           - os: ubuntu-latest
             c_compiler: cl
           - os: ubuntu-latest
-            c_compiler: clang 
+            c_compiler: clang
           - os: macos-latest
             c_compiler: clang
           - os: macos-latest
@@ -54,6 +54,10 @@ jobs:
     - name: Install wayland-scanner
       if: matrix.os == 'ubuntu-latest'
       run: sudo apt-get install xorg-dev libglu1-mesa-dev libwayland-dev libxkbcommon-dev libxrandr-dev
+
+    - name: Install fmt
+      if: matrix.os == 'ubuntu-latest'
+      run: sudo apt-get install libfmt-dev
 
     - name: Set reusable strings
       # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.
