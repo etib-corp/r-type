@@ -48,3 +48,13 @@ Entity Ecs::getCameraEntity() const
 {
     return _cameraEntity;
 }
+
+void *Ecs::getScene() const
+{
+    return _scene;
+}
+
+void Ecs::setScene(void *scene)
+{
+    _scene = scene;
+}
