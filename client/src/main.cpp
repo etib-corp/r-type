@@ -251,7 +251,7 @@ static void receiveFromServer(ClientBroker *client_broker, std::shared_ptr<Ecs> 
 {
     try {
         Message *message = nullptr;
-        message = client_broker->getMessage(0, 1);
+        message = client_broker->getMessageFromTopic(1);
         if (message == nullptr)
             return;
         std::cout << "Message received from server" << std::endl;
