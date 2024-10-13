@@ -7,41 +7,41 @@
 
 #include "CallbackServer.hpp"
 
-void callbackInputUp(const Request& req, std::shared_ptr<Ecs> _ecs)
+void callbackInputUp(const Request &req, std::shared_ptr<Ecs> _ecs)
 {
     std::uint8_t id = req.header.EmmiterdEcsId;
     rtypeLog->log("{}", "Up");
-    auto& motion = _ecs->getComponent<MotionComponent>(id);
+    auto &motion = _ecs->getComponent<MotionComponent>(id);
     if (motion.velocity[1] == 0.0f)
         motion.velocity[1] = 1.0f;
     else
         motion.velocity[1] = 0.0f;
 }
 
-void callbackInputDown(const Request& req, std::shared_ptr<Ecs> _ecs)
+void callbackInputDown(const Request &req, std::shared_ptr<Ecs> _ecs)
 {
     std::uint8_t id = req.header.EmmiterdEcsId;
-    auto& motion = _ecs->getComponent<MotionComponent>(id);
+    auto &motion = _ecs->getComponent<MotionComponent>(id);
     if (motion.velocity[1] == 0.0f)
         motion.velocity[1] = -1.0f;
     else
         motion.velocity[1] = 0.0f;
 }
 
-void callbackInputRight(const Request& req, std::shared_ptr<Ecs> _ecs)
+void callbackInputRight(const Request &req, std::shared_ptr<Ecs> _ecs)
 {
     std::uint8_t id = req.header.EmmiterdEcsId;
-    auto& motion = _ecs->getComponent<MotionComponent>(id);
+    auto &motion = _ecs->getComponent<MotionComponent>(id);
     if (motion.velocity[0] == 0.0f)
         motion.velocity[0] = 1.0f;
     else
         motion.velocity[0] = 0.0f;
 }
 
-void callbackInputLeft(const Request& req, std::shared_ptr<Ecs> _ecs)
+void callbackInputLeft(const Request &req, std::shared_ptr<Ecs> _ecs)
 {
     std::uint8_t id = req.header.EmmiterdEcsId;
-    auto& motion = _ecs->getComponent<MotionComponent>(id);
+    auto &motion = _ecs->getComponent<MotionComponent>(id);
     if (motion.velocity[0] == 0.0f)
         motion.velocity[0] = -1.0f;
     else
@@ -78,26 +78,26 @@ void attributeServerCallback(ResponsibilityChain *chain, ServerBroker *server_br
                              {
         rtypeLog->log("{}", "SEND UP to all client");
         message->setAction(asChar(ActionCode::UP));
-        server_broker->sendToAllClient(message.get(), 1); });
+        server_broker->sendToAllClient(message.get(), 1, req.header.EmmiterdEcsId); });
 
     // chain->addActionCallback(asChar(ActionCode::DOWN), checkMagicNumber);
     // chain->addActionCallback(asChar(ActionCode::DOWN), callbackInputDown);
     chain->addActionCallback(asChar(ActionCode::DOWN), [server_broker, message](const Request &req, std::shared_ptr<Ecs> _ecs)
                              {
                 message->setAction(asChar(ActionCode::DOWN));
-        server_broker->sendToAllClient(message.get(), 1); });
+        server_broker->sendToAllClient(message.get(), 1, req.header.EmmiterdEcsId); });
 
     // chain->addActionCallback(asChar(ActionCode::RIGHT), checkMagicNumber);
     // chain->addActionCallback(asChar(ActionCode::RIGHT), callbackInputRight);
     chain->addActionCallback(asChar(ActionCode::RIGHT), [server_broker, message](const Request &req, std::shared_ptr<Ecs> _ecs)
                              {
                message->setAction(asChar(ActionCode::RIGHT));
-        server_broker->sendToAllClient(message.get(), 1); });
+        server_broker->sendToAllClient(message.get(), 1, req.header.EmmiterdEcsId); });
 
     // chain->addActionCallback(asChar(ActionCode::LEFT), checkMagicNumber);
     // chain->addActionCallback(asChar(ActionCode::LEFT), callbackInputLeft);
     chain->addActionCallback(asChar(ActionCode::LEFT), [server_broker, message](const Request &req, std::shared_ptr<Ecs> _ecs)
                              {
                 message->setAction(asChar(ActionCode::LEFT));
-        server_broker->sendToAllClient(message.get(), 1); });
+        server_broker->sendToAllClient(message.get(), 1, req.header.EmmiterdEcsId); });
 }

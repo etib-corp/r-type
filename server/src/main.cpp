@@ -80,7 +80,7 @@ int main(void)
         Message msg;
         msg.setRequest(request);
         msg.setReliable(true);
-        server_broker->sendToAllClient(&msg, 1);
+        server_broker->sendToAllClient(&msg, 1, 0);
     });
 
 

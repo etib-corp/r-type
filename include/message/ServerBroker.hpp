@@ -44,7 +44,7 @@ public:
      *
      * @param message The message to send.
      */
-    void sendToAllClient(Message *message, std::uint8_t topic_id);
+    void sendToAllClient(Message *message, std::uint8_t topic_id, std::uint8_t ecs_id);
 
 private:
     std::uint16_t _listen_port;

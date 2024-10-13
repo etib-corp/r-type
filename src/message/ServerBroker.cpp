@@ -85,18 +85,18 @@ void ServerBroker::_onClientDisconnectedCallback(ISession *session)
     rtypeLog->log("{} disconnect", session->getId());
 }
 
-void ServerBroker::sendToAllClient(Message *message, std::uint8_t topic_id)
+void ServerBroker::sendToAllClient(Message *message, std::uint8_t topic_id, std::uint8_t ecs_id)
 {
-    // std::lock_guard<std::mutex> lock(_mutex);
+    std::lock_guard<std::mutex> lock(_mutex);
 
-    // Message *new_message = nullptr;
+    Message *new_message = nullptr;
     for (auto &session : _server->_sessionsManager->getClients())
     {
-        // new_message = new Message();
-        // new_message->setRequest(message->getRequest());
-        // new_message->setReceiverID(session->getId());
-        // new_message->setTopicID(topic_id);
-        // new_message->setEmmiterID(_ecs_id);
-        // _outgoing_messages.push(new_message);
+        new_message = new Message();
+        new_message->setRequest(message->getRequest());
+        new_message->setReceiverID(session->getId());
+        new_message->setEmmiterID(message->getEmmiterID());
+        new_message->setTopicID(topic_id);
+        _outgoing_messages.push(new_message);
     }
 }
