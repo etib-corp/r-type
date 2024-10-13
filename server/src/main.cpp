@@ -65,11 +65,12 @@ int main(void)
         if (nbrPlayer != 2) {
             return;
         }
+        rtypeLog->log("Game is starting");
         Request request = {
             .header = {
                 .MagicNumber = 0xFF,
-                .EmmiterdEcsId = 0x00,
-                .ReceiverEcsId = request.header.EmmiterdEcsId,
+                .EmmiterdEcsId = req.header.EmmiterdEcsId,
+                .ReceiverEcsId = 0,
                 .TopicID = 0x00,
                 .Action = asChar(ActionCode::START_GAME),
                 .BodyLength = 0},
@@ -80,7 +81,7 @@ int main(void)
         Message msg;
         msg.setRequest(request);
         msg.setReliable(true);
-        server_broker->sendToAllClient(&msg, 1, 0);
+        server_broker->sendToAllClient(&msg, 1, req.header.EmmiterdEcsId);
     });
 
 

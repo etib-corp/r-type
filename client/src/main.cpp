@@ -302,21 +302,6 @@ int main(void)
     network_module = loader_lib.createNetworkModule();
     client_broker = new ClientBroker(network_module, "127.0.0.1", 8080);
 
-    Request request = {0};
-    request.header.Action = asChar(ActionCode::UP);
-    request.header.BodyLength = 0;
-    request.header.EmmiterdEcsId = client_broker->getECSId();
-    request.header.MagicNumber = 0xFF;
-    request.header.ReceiverEcsId = 0;
-    Message message;
-    message.setRequest(request);
-
-
-    while (true) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-        client_broker->addMessage(0, 1, &message);
-    }
-
     attributeClientCallback(&responsibilityChain, client_broker);
 
     engine->setConfig([&]() {

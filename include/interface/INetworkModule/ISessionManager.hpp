@@ -23,17 +23,20 @@ public:
 
     virtual void addClient(std::shared_ptr<ISession> client)
     {
+        std::lock_guard<std::mutex> lock(_mutex);
         std::cout << "Session added: " << (int)client->getId() << std::endl;
         _sessions.push_back(client);
     }
 
     virtual std::vector<std::shared_ptr<ISession>> &getClients()
     {
+        std::lock_guard<std::mutex> lock(_mutex);
         return _sessions;
     }
 
     virtual std::shared_ptr<ISession> getClientById(std::uint32_t id)
     {
+        std::lock_guard<std::mutex> lock(_mutex);
         for (auto &session : _sessions)
         {
             if (session->getId() == id)
@@ -44,6 +47,7 @@ public:
 
     virtual void removeClientById(std::uint32_t id)
     {
+        std::lock_guard<std::mutex> lock(_mutex);
         for (auto it = _sessions.begin(); it != _sessions.end(); it++)
         {
             if ((*it)->getId() == id)
@@ -60,6 +64,7 @@ public:
 
     std::shared_ptr<ISession> popSession(void)
     {
+        std::lock_guard<std::mutex> lock(_mutex);
         if (_sessions.size() == 0)
             return nullptr;
         auto session = _sessions.front();
@@ -69,6 +74,7 @@ public:
 
     void pushSession(std::shared_ptr<ISession> session)
     {
+        std::lock_guard<std::mutex> lock(_mutex);
         _sessions.push_back(session);
     }
 
@@ -76,7 +82,7 @@ public:
 
 protected:
     std::function<void(const Request &)> _onReceive;
-
+    std::mutex _mutex;
 
 private:
 };
