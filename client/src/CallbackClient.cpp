@@ -33,7 +33,8 @@ void callbackNewConnection(const Request& req, std::shared_ptr<Ecs> _ecs)
 
 void callbackUp(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
-    std::uint8_t id = req.header.ReceiverEcsId;
+    std::uint8_t id = req.header.EmmiterdEcsId;
+    std::cout << "Up : " << static_cast<int>(id) << std::endl;
     auto& motion = _ecs->getComponent<MotionComponent>(id);
     if (motion.velocity[1] == 0.0f)
         motion.velocity[1] = 1.0f;
@@ -45,7 +46,7 @@ void callbackUp(const Request& req, std::shared_ptr<Ecs> _ecs)
 
 void callbackDown(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
-    std::uint8_t id = req.header.ReceiverEcsId;
+    std::uint8_t id = req.header.EmmiterdEcsId;
     auto& motion = _ecs->getComponent<MotionComponent>(id);
     if (motion.velocity[1] == 0.0f)
         motion.velocity[1] = -1.0f;
@@ -57,7 +58,7 @@ void callbackDown(const Request& req, std::shared_ptr<Ecs> _ecs)
 
 void callbackRight(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
-    std::uint8_t id = req.header.ReceiverEcsId;
+    std::uint8_t id = req.header.EmmiterdEcsId;
     auto& motion = _ecs->getComponent<MotionComponent>(id);
     if (motion.velocity[0] == 0.0f)
         motion.velocity[0] = 1.0f;
@@ -70,7 +71,7 @@ void callbackRight(const Request& req, std::shared_ptr<Ecs> _ecs)
 
 void callbackLeft(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
-    std::uint8_t id = req.header.ReceiverEcsId;
+    std::uint8_t id = req.header.EmmiterdEcsId;
     auto& motion = _ecs->getComponent<MotionComponent>(id);
     if (motion.velocity[0] == 0.0f)
         motion.velocity[0] = -1.0f;

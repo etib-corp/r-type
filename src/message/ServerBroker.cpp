@@ -66,6 +66,7 @@ void ServerBroker::_sendMessage(Message *message)
         client->sendTCP(compressed_request);
     else
         client->sendUDP(compressed_request);
+
 }
 
 void ServerBroker::_onReceiveRequestCallback(const Request &request)
@@ -97,7 +98,7 @@ void ServerBroker::sendToAllClient(Message *message, std::uint8_t topic_id, std:
         new_message = new Message();
         new_message->setRequest(message->getRequest());
         new_message->setReceiverID(session->getId());
-        new_message->setEmmiterID(message->getEmmiterID());
+        new_message->setEmmiterID(ecs_id);
         new_message->setTopicID(topic_id);
         _outgoing_messages.push(new_message);
     }

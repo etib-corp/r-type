@@ -35,6 +35,8 @@ class Client : public IClient {
         boost::asio::ip::tcp::endpoint _endpointTCPServer;
         boost::asio::ip::udp::endpoint _endpointUDPServer;
 
+        boost::asio::ip::udp::endpoint _endpointUDPReceiver;
+
         boost::asio::ip::tcp::socket _socketTCP;
 
         boost::asio::ip::udp::socket _socketUDP;

@@ -17,6 +17,7 @@ Client::Client(const std::string &ip, const int &port) : _socketTCP(_ioContext),
     boost::asio::ip::udp::resolver::query query(boost::asio::ip::udp::v4(), ip, std::to_string(port + 1));  // Use the UDP port
     _endpointUDPServer = *resolver.resolve(query);
 
+
     _onReceive = nullptr;
     _onConnect = nullptr;
 }
@@ -85,7 +86,7 @@ void Client::readUDP()
 {
     _socketUDP.async_receive_from(
         boost::asio::buffer(&_requestUDP, sizeof(Request)),
-        _endpointUDPServer,
+        _endpointUDPReceiver,
         [this](const boost::system::error_code &error, std::size_t bytes_transferred)
         {
             (void)bytes_transferred;

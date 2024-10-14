@@ -35,7 +35,7 @@ for (auto &entity : _entities) {
             continue;
 
         transform.position += motion.velocity;
-        motion.velocity = {0, 0, 0};
+        // motion.velocity = {0, 0, 0};
 
         _shader->use();
 

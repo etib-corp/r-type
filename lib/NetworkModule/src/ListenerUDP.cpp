@@ -36,7 +36,6 @@ void ListenerUDP::startReceive()
         [this](const boost::system::error_code &error, std::size_t bytes_transferred) {
             handleReceive(error, bytes_transferred);
             ::memset(&_request, 0, sizeof(Request));
-            std::cout << "UDP Received" << std::endl;
             startReceive();
     });
 }
