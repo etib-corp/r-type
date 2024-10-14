@@ -23,7 +23,7 @@ public:
 
     virtual void addClient(std::shared_ptr<ISession> client)
     {
-        std::lock_guard<std::mutex> lock(_mutex);
+        std::lock_guard<std::mutex> lock(_mutex);   
         std::cout << "Session added: " << (int)client->getId() << std::endl;
         _sessions.push_back(client);
     }
@@ -78,11 +78,10 @@ public:
         _sessions.push_back(session);
     }
 
-    std::vector<std::shared_ptr<ISession>> _sessions;
-
 protected:
     std::function<void(const Request &)> _onReceive;
     std::mutex _mutex;
+    std::vector<std::shared_ptr<ISession>> _sessions;
 
 private:
 };

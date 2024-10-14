@@ -4,6 +4,7 @@
 #include <string>
 #include <queue>
 #include <memory>
+#include <mutex>
 
 #include "message/Message.hpp"
 
@@ -37,6 +38,7 @@ public:
      */
     void addMessage(Message *message)
     {
+        std::lock_guard<std::mutex> lock(_mutex);
         _messages.push(message);
     }
 
@@ -47,6 +49,7 @@ public:
      */
     Message *getMessage(void)
     {
+        std::lock_guard<std::mutex> lock(_mutex);
         if (_messages.empty())
             return nullptr;
         Message *message = _messages.front();
@@ -58,4 +61,5 @@ private:
     std::uint8_t _ecs_id;
     std::uint8_t _id;
     std::queue<Message *> _messages;
+    std::mutex _mutex;
 };
