@@ -39,7 +39,7 @@ public:
     {
         Message *message = nullptr;
         for (auto &topic : _topics) {
-            if (topic.first.second == topic_id)
+            if (topic.first.second != topic_id)
                 continue;
             message = topic.second->getMessage();
             if (!message)
