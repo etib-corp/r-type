@@ -51,3 +51,17 @@ void ClientBroker::_onReceiveRequestCallback(const Request &request)
     message->setRequest(request);
     _incomming_messages.push(message);
 }
+
+Message *ClientBroker::getMessageFromTopic(std::uint8_t topic_id)
+{
+    Message *message = nullptr;
+    for (auto &topic : _topics) {
+        if (topic.first.second != topic_id)
+            continue;
+        message = topic.second->getMessage();
+        if (!message)
+            continue;
+        return message;
+    }
+    return nullptr;
+}

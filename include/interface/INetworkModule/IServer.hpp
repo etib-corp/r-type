@@ -15,7 +15,7 @@
 #include "interface/INetworkModule/ISession.hpp"
 #include "interface/INetworkModule/IListenerTCP.hpp"
 #include "interface/INetworkModule/IListenerUDP.hpp"
-#include "interface/INetworkModule/ISessionManager.hpp"
+#include "interface/INetworkModule/SessionManager.hpp"
 
 class IServer
 {

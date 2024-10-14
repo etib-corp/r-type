@@ -36,26 +36,13 @@ public:
      *
      * @param message A unique pointer to the message to be added.
      */
-    void addMessage(Message *message)
-    {
-        std::lock_guard<std::mutex> lock(_mutex);
-        _messages.push(message);
-    }
-
+    void addMessage(Message *message);
     /**
      * @brief Retrieves and removes the next message from the topic's queue.
      *
      * @return A unique pointer to the next message, or nullptr if the queue is empty.
      */
-    Message *getMessage(void)
-    {
-        std::lock_guard<std::mutex> lock(_mutex);
-        if (_messages.empty())
-            return nullptr;
-        Message *message = _messages.front();
-        _messages.pop();
-        return message;
-    }
+    Message *getMessage(void);
 
 private:
     std::uint8_t _ecs_id;
