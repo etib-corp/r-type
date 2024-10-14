@@ -63,7 +63,6 @@ void LE::Engine::run(bool throwError)
         if (_clock->getElapsedTime() < (1000.0f / _framerateLimit))
             continue;
         _clock->restart();
-        _sceneManager->play();
         _window->render(_sceneManager->getCurrentScene());
     }
 }
@@ -122,4 +121,9 @@ std::size_t LE::Engine::getWindowWidth() const
 std::size_t LE::Engine::getWindowHeight() const
 {
     return _window->getHeight();
+}
+
+float LE::Engine::getDeltaTime() const
+{
+    return _dt;
 }

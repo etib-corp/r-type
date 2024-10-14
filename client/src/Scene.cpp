@@ -5,21 +5,25 @@
 ** Scene
 */
 
+#include "Engine.hpp"
 #include "Scene.hpp"
 
 LE::Scene::Scene()
 {
+    auto engine = LE::Engine::getInstance();
     _eventManager = std::make_shared<LE::EventManager>();
+    _guiManager = std::make_shared<LE::GUI::Manager>(engine->getWindowWidth(), engine->getWindowHeight());
+    _ecs = std::make_shared<Ecs>();
 }
 
 void LE::Scene::draw()
 {
-    if (_guiManager)
-        _guiManager->draw();
+    _guiManager->draw();
+    _ecs->update(LE::Engine::getInstance()->getDeltaTime());
+    _eventManager->pollEvents();
 }
 
 void LE::Scene::init()
 {
-    if (_guiManager)
-        _guiManager->init();
+    _guiManager->init();
 }

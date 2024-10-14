@@ -24,6 +24,7 @@
  */
 
 namespace LE {
+    class Engine;
     /**
      * @class Scene
      * @brief Abstract base class representing a scene in the graphical system.
@@ -61,28 +62,12 @@ namespace LE {
             virtual ~Scene() = default;
 
             /**
-             * @brief Pure virtual function to play the scene.
-             *
-             * This function must be implemented by derived classes to define
-             * the behavior when the scene is played.
-             */
-            virtual void play() = 0;
-
-            /**
              * @brief Function to draw the scene.
              *
              * This function is used to draw the scene. It is implemented by
              * the base class to draw the GUI elements of the scene.
              */
             void draw();
-
-            /**
-             * @brief Pure virtual function to stop the scene.
-             *
-             * This function must be implemented by derived classes to define
-             * the behavior when the scene is stopped.
-             */
-            virtual void stop() = 0;
 
             /**
              * @brief Function to initialize the scene.
