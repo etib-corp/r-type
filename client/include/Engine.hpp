@@ -158,6 +158,8 @@ namespace LE {
              */
             std::size_t getWindowHeight() const;
 
+            float getDeltaTime() const;
+
         private:
             /**
              * @brief Private constructor for the Engine class.
