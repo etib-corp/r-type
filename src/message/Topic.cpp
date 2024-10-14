@@ -18,13 +18,11 @@ void Topic::addMessage(Message *message)
 Message *Topic::getMessage(void)
 {
     Message *message = nullptr;
-    while(!_mutex.try_lock());
+    std::lock_guard<std::mutex> lock(_mutex);
     if (_messages.empty()) {
-        _mutex.unlock();
         return nullptr;
     }
     message = _messages.front();
     _messages.pop();
-    _mutex.unlock();
     return message;
 }

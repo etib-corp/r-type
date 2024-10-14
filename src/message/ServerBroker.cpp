@@ -90,7 +90,9 @@ void ServerBroker::sendToAllClient(Message *message, std::uint8_t topic_id, std:
     std::lock_guard<std::mutex> lock(_mutex);
 
     Message *new_message = nullptr;
-    for (auto &session : _server->_sessionsManager->getClients())
+    std::vector<std::shared_ptr<ISession>> sessions = _server->_sessionsManager->getClients();
+
+    for (auto &session : sessions)
     {
         new_message = new Message();
         new_message->setRequest(message->getRequest());

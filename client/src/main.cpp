@@ -304,6 +304,19 @@ int main(void)
 
     attributeClientCallback(&responsibilityChain, client_broker);
 
+    Request request = {0};
+    request.header.Action = asChar(ActionCode::UP);
+    request.header.BodyLength = 0;
+    request.header.EmmiterdEcsId = client_broker->getECSId();
+    request.header.MagicNumber = 0xFF;
+    request.header.ReceiverEcsId = 0;
+    Message message;
+    message.setRequest(request);
+    while (true) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        client_broker->addMessage(0, 1, &message);
+    }
+
     engine->setConfig([&]() {
         auto& eventManager = scene->_eventManager;
         eventManager->addEventListener({LE::KEYBOARD, LE_KEY_ESCAPE, LE::JUST_PRESSED, false}, [&](LE::Engine *engine, float dt) {
