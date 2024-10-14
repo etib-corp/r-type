@@ -55,6 +55,8 @@ void ClientBroker::_onReceiveRequestCallback(const Request &request)
 Message *ClientBroker::getMessageFromTopic(std::uint8_t topic_id)
 {
     Message *message = nullptr;
+
+    std::lock_guard<std::mutex> lock(_mutex);
     for (auto &topic : _topics) {
         if (topic.first.second != topic_id)
             continue;
