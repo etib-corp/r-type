@@ -69,7 +69,7 @@ int main(void)
         Request request = {
             .header = {
                 .MagicNumber = 0xFF,
-                .EmmiterdEcsId = req.header.EmmiterdEcsId,
+                .EmmiterdEcsId = 0,
                 .ReceiverEcsId = 0,
                 .TopicID = 0x00,
                 .Action = asChar(ActionCode::START_GAME),
@@ -81,7 +81,7 @@ int main(void)
         Message msg;
         msg.setRequest(request);
         msg.setReliable(true);
-        server_broker->sendToAllClient(&msg, 1, req.header.EmmiterdEcsId);
+        server_broker->sendToAllClient(&msg, 1, 0);
     });
 
 
