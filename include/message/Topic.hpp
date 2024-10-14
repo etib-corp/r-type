@@ -4,6 +4,7 @@
 #include <string>
 #include <queue>
 #include <memory>
+#include <mutex>
 
 #include "message/Message.hpp"
 
@@ -35,27 +36,17 @@ public:
      *
      * @param message A unique pointer to the message to be added.
      */
-    void addMessage(Message *message)
-    {
-        _messages.push(message);
-    }
-
+    void addMessage(Message *message);
     /**
      * @brief Retrieves and removes the next message from the topic's queue.
      *
      * @return A unique pointer to the next message, or nullptr if the queue is empty.
      */
-    Message *getMessage(void)
-    {
-        if (_messages.empty())
-            return nullptr;
-        Message *message = _messages.front();
-        _messages.pop();
-        return message;
-    }
+    Message *getMessage(void);
 
 private:
     std::uint8_t _ecs_id;
     std::uint8_t _id;
     std::queue<Message *> _messages;
+    std::mutex _mutex;
 };

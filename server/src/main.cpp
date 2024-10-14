@@ -65,11 +65,12 @@ int main(void)
         if (nbrPlayer != 2) {
             return;
         }
+        rtypeLog->log("Game is starting");
         Request request = {
             .header = {
                 .MagicNumber = 0xFF,
-                .EmmiterdEcsId = 0x00,
-                .ReceiverEcsId = request.header.EmmiterdEcsId,
+                .EmmiterdEcsId = 0,
+                .ReceiverEcsId = 0,
                 .TopicID = 0x00,
                 .Action = asChar(ActionCode::START_GAME),
                 .BodyLength = 0},

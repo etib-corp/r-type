@@ -35,19 +35,7 @@ public:
 
     ~ClientBroker(void);
 
-    Message *getMessageFromTopic(std::uint8_t topic_id)
-    {
-        Message *message = nullptr;
-        for (auto &topic : _topics) {
-            if (topic.first.second == topic_id)
-                continue;
-            message = topic.second->getMessage();
-            if (!message)
-                continue;
-            return message;
-        }
-        return nullptr;
-    }
+    Message *getMessageFromTopic(std::uint8_t topic_id);
 
 private:
     std::string _connect_address;
