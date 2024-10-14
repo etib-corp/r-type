@@ -1,5 +1,35 @@
 #include "message/Broker.hpp"
 
+std::unique_ptr<Topic> &Broker::getTopic(std::uint8_t ecs_id, std::uint8_t id)
+{
+    std::lock_guard<std::mutex> lock(_mutex);
+    if (_topics.find(std::make_pair(ecs_id, id)) == _topics.end())
+        throw std::runtime_error("Topic not found");
+    return _topics[std::make_pair(ecs_id, id)];
+}
+
+void Broker::removeTopic(std::uint8_t ecs_id, std::uint8_t id)
+{
+    std::lock_guard<std::mutex> lock(_mutex);
+    _topics.erase(std::make_pair(ecs_id, id));
+}
+
+
+void Broker::addMessage(std::uint8_t ecs_id, std::uint8_t topic_id, Message *message)
+{
+    std::lock_guard<std::mutex> lock(_mutex);
+
+    message->setEmmiterID(_ecs_id);
+    message->setReceiverID(ecs_id);
+    message->setTopicID(topic_id);
+    _outgoing_messages.push(message);
+}
+
+Message *Broker::getMessage(std::uint8_t ecs_id, std::uint8_t topic_id)
+{
+    return getTopic(ecs_id, topic_id)->getMessage();
+}
+
 void Broker::_networkRoutine(void)
 {
     _sendMessages();

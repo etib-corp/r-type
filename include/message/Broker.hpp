@@ -45,24 +45,14 @@ public:
      * @return A unique pointer to the topic.
      * @throws std::runtime_error if the topic is not found.
      */
-    std::unique_ptr<Topic> &getTopic(std::uint8_t ecs_id, std::uint8_t id)
-    {
-        std::lock_guard<std::mutex> lock(_mutex);
-        if (_topics.find(std::make_pair(ecs_id, id)) == _topics.end())
-            throw std::runtime_error("Topic not found");
-        return _topics[std::make_pair(ecs_id, id)];
-    }
+    std::unique_ptr<Topic> &getTopic(std::uint8_t ecs_id, std::uint8_t id);
 
     /**
      * @brief Removes a topic from the broker.
      * @param ecs_id The ECS ID associated with the topic.
      * @param name The name of the topic.
      */
-    void removeTopic(std::uint8_t ecs_id, std::uint8_t id)
-    {
-        std::lock_guard<std::mutex> lock(_mutex);
-        _topics.erase(std::make_pair(ecs_id, id));
-    }
+    void removeTopic(std::uint8_t ecs_id, std::uint8_t id);
 
     /**
      * @brief Adds a message to a topic.
@@ -70,15 +60,7 @@ public:
      * @param topic_name The name of the topic.
      * @param message A unique pointer to the message.
      */
-    void addMessage(std::uint8_t ecs_id, std::uint8_t topic_id, Message *message)
-    {
-        std::lock_guard<std::mutex> lock(_mutex);
-
-        message->setEmmiterID(_ecs_id);
-        message->setReceiverID(ecs_id);
-        message->setTopicID(topic_id);
-        _outgoing_messages.push(message);
-    }
+    void addMessage(std::uint8_t ecs_id, std::uint8_t topic_id, Message *message);
 
     /**
      * @brief Retrieves a message from a topic.
@@ -86,10 +68,7 @@ public:
      * @param topic_name The name of the topic.
      * @return A unique pointer to the message.
      */
-    Message *getMessage(std::uint8_t ecs_id, std::uint8_t topic_id)
-    {
-        return getTopic(ecs_id, topic_id)->getMessage();
-    }
+    Message *getMessage(std::uint8_t ecs_id, std::uint8_t topic_id);
 
 protected:
     std::uint8_t _ecs_id;
