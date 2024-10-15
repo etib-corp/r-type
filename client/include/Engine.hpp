@@ -12,13 +12,14 @@
 
 #include "SceneManager.hpp"
 #include "Window.hpp"
+#include "Game.hpp"
 #include "Error.hpp"
 #include "ECS/Components/CameraComponent.hpp"
 
 namespace LE {
     class Window;
     class SceneManager;
-    class Scene;
+    class Game;
 
     namespace Shapes {
         class Triangle;
@@ -100,16 +101,15 @@ namespace LE {
              * @brief Adds a scene to the engine.
              *
              * @param scene A shared pointer to the scene to add.
-             * @param sceneName The name of the scene to add.
              */
-            void addScene(const std::string &sceneName, const std::shared_ptr<Scene> scene);
+            void setGame(const std::shared_ptr<LE::Game> game);
 
             /**
              * @brief Removes a scene from the engine.
              *
-             * @param sceneName The name of the scene to remove.
+             * @return A shared pointer to the scene that was removed.
              */
-            void removeScene(const std::string& sceneName);
+            std::shared_ptr<LE::Game> getGame();
 
             /**
              * @brief Throws an error.
@@ -174,7 +174,7 @@ namespace LE {
             static Engine* _instance; ///< The singleton instance of the Engine class.
 
             std::shared_ptr<LE::Window> _window;            ///< Shared pointer to the Window instance.
-            std::shared_ptr<SceneManager> _sceneManager;    ///< Shared pointer to the SceneManager instance.
+            std::shared_ptr<LE::Game> _game;                ///< Shared pointer to the Game instance.
             bool _debugMode;                                ///< Flag indicating whether debug mode is enabled.
             bool _throwError;                               ///< Flag indicating whether to throw an error.
             std::function<void ()> _configFunc;             ///< Configuration function. This function is called before the engine starts running.

@@ -6,7 +6,6 @@
 */
 
 #include "Engine.hpp"
-#include "SceneManager.hpp"
 #include "Window.hpp"
 #include "globalLogger.hpp"
 #include "Shapes/Triangle.hpp"
@@ -24,7 +23,6 @@ LE::Engine::Engine()
     _debugMode = false;
     _throwError = false;
     _window = std::make_shared<LE::Window>("The R-Type");
-    _sceneManager = std::make_shared<SceneManager>();
     _clock = std::make_unique<LE::Clock>();
     _framerateLimit = _window->_defaultFramerate;
 }
@@ -47,6 +45,7 @@ void LE::Engine::run(bool throwError)
 
     if (_configFunc) {
         _configFunc();
+        std::cout << "Config function called" << std::endl;
     }
     Color color;
     color._a = 255.0f;
@@ -54,16 +53,16 @@ void LE::Engine::run(bool throwError)
     color._g = 255.0f;
     color._b = 255.0f;
     _window->setClearColor(color);
-    _sceneManager->init();
     while (_window->isOpen()) {
         if (_loopFunc) {
             _loopFunc();
         }
+        _game->update();
         _dt = _clock->getElapsedTime();
         if (_clock->getElapsedTime() < (1000.0f / _framerateLimit))
             continue;
         _clock->restart();
-        _window->render(_sceneManager->getCurrentScene());
+        _window->render(_game->_sceneManager->getCurrentScene());
     }
 }
 
@@ -82,14 +81,14 @@ void LE::Engine::debug(const std::string& message)
     }
 }
 
-void LE::Engine::addScene(const std::string &sceneName, const std::shared_ptr<Scene> scene)
+void LE::Engine::setGame(const std::shared_ptr<LE::Game> game)
 {
-    _sceneManager->addScene(scene, sceneName);
+    _game = game;
 }
 
-void LE::Engine::removeScene(const std::string& sceneName)
+std::shared_ptr<LE::Game> LE::Engine::getGame()
 {
-    _sceneManager->removeScene(sceneName);
+    return _game;
 }
 
 void LE::Engine::throwError(const LE::Error& error)

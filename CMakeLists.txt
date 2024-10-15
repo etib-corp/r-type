@@ -14,6 +14,8 @@ set(XERCES_USE_ICU OFF)
 set(OPENGL_SILENT TRUE)
 find_package(OpenGL REQUIRED)
 
+add_compile_options(-g3 -ggdb)
+
 add_subdirectory(dependencies/glfw-3.4)
 add_subdirectory(dependencies/freetype-VER-2-13-3)
 add_subdirectory(dependencies/glm)

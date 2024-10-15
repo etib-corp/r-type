@@ -9,6 +9,7 @@
 
 #include <memory>
 
+#include "message/ClientBroker.hpp"
 #include "Error.hpp"
 #include "GUI/Manager.hpp"
 #include "EventManager.hpp"
@@ -67,7 +68,7 @@ namespace LE {
              * This function is used to draw the scene. It is implemented by
              * the base class to draw the GUI elements of the scene.
              */
-            void draw();
+            virtual void draw();
 
             /**
              * @brief Function to initialize the scene.
@@ -75,7 +76,14 @@ namespace LE {
              * This function is used to initialize the scene. It is implemented
              * by the base class to initialize the GUI elements of the scene.
              */
-            void init();
+            virtual void init();
+
+            /**
+             * @brief Sets the ClientBroker instance for the scene.
+             *
+             * @param clientBroker Pointer to the ClientBroker instance.
+             */
+            void setClientBroker(ClientBroker *clientBroker);
 
             /**
              * @brief Shared pointer to an ECS (Entity Component System) instance.
@@ -86,5 +94,6 @@ namespace LE {
             std::shared_ptr<Ecs> _ecs;                          ///< Shared pointer to the ECS instance.
             std::shared_ptr<LE::GUI::Manager> _guiManager;      ///< Shared pointer to the GUI Manager instance.
             std::shared_ptr<LE::EventManager> _eventManager;    ///< Shared pointer to the Event Manager instance.
+            ClientBroker *_clientBroker;                        ///< Pointer to the Client Broker instance.
     };
 }
