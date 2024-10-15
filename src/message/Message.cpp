@@ -51,5 +51,7 @@ std::ostream &operator<<(std::ostream &stream, const Message &message)
     stream << "ReceiverID: " << (unsigned int)message.getReceiverID() << std::endl;
     stream << "TopicID: " << (unsigned int)message.getTopicID() << std::endl;
     stream << "Action: " << (unsigned int)message.getAction() << std::endl;
+    stream << "Body length: " << (unsigned int)const_cast<Message&>(message).getHeader().BodyLength << std::endl;
+    stream << "Body: " << std::hex << const_cast<Message&>(message).getBody() << std::dec << std::endl;
     return stream;
 }

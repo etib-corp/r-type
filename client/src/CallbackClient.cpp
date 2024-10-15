@@ -32,6 +32,10 @@ bool callbackUp(const Request& req, std::shared_ptr<Ecs> _ecs)
     std::uint8_t id = req.header.EmmiterdEcsId;
     std::cout << "Up : " << static_cast<int>(id) << std::endl;
     auto& motion = _ecs->getComponent<MotionComponent>(id);
+    auto& transform = _ecs->getComponent<TransformComponent>(id);
+    LE::Vector3Data<float> vectorData;
+    ::memcpy(&vectorData, &req.body, sizeof(LE::Vector3Data<float>));
+    transform.position.setData(vectorData);
     if (motion.velocity[1] == 0.0f)
         motion.velocity[1] = 1.0f;
     else
@@ -45,6 +49,10 @@ bool callbackDown(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
     std::uint8_t id = req.header.EmmiterdEcsId;
     auto& motion = _ecs->getComponent<MotionComponent>(id);
+    auto& transform = _ecs->getComponent<TransformComponent>(id);
+    LE::Vector3Data<float> vectorData;
+    ::memcpy(&vectorData, &req.body, sizeof(LE::Vector3Data<float>));
+    transform.position.setData(vectorData);
     if (motion.velocity[1] == 0.0f)
         motion.velocity[1] = -1.0f;
     else
@@ -58,6 +66,12 @@ bool callbackRight(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
     std::uint8_t id = req.header.EmmiterdEcsId;
     auto& motion = _ecs->getComponent<MotionComponent>(id);
+    auto& transform = _ecs->getComponent<TransformComponent>(id);
+    LE::Vector3Data<float> vectorData;
+    std::cout << "body lenght: " << req.header.BodyLength << std::endl;
+    std::cout << "X: " << reinterpret_cast<const LE::Vector3Data<float> *>(&req.body)->x << " Y: " << reinterpret_cast<const LE::Vector3Data<float> *>(&req.body)->y << " Z: " << reinterpret_cast<const LE::Vector3Data<float> *>(&req.body)->z << std::endl;
+    ::memcpy(&vectorData, &req.body, sizeof(LE::Vector3Data<float>));
+    transform.position.setData(vectorData);
     if (motion.velocity[0] == 0.0f)
         motion.velocity[0] = 1.0f;
     else
@@ -71,6 +85,10 @@ bool callbackLeft(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
     std::uint8_t id = req.header.EmmiterdEcsId;
     auto& motion = _ecs->getComponent<MotionComponent>(id);
+    auto& transform = _ecs->getComponent<TransformComponent>(id);
+    LE::Vector3Data<float> vectorData;
+    ::memcpy(&vectorData, &req.body, sizeof(LE::Vector3Data<float>));
+    transform.position.setData(vectorData);
     if (motion.velocity[0] == 0.0f)
         motion.velocity[0] = -1.0f;
     else
@@ -111,7 +129,7 @@ void attributeClientCallback(ResponsibilityChain *chain, ClientBroker *client_br
     std::function<bool(const Request &, std::shared_ptr<Ecs>)> checkRequestEmmiterdEcsId = [client_broker](const Request &req, std::shared_ptr<Ecs> _ecs) {
         if (req.header.EmmiterdEcsId == client_broker->getECSId()) {
             rtypeLog->log<LogType::DEBUG>("{}", "Request emmiterd ecs id checked.");
-            return false;
+            return true; // ! false
         }
         return true;
     };
