@@ -12,16 +12,16 @@
 #include "Engine.hpp"
 #include "EnumClass.hpp"
 #include "etibjson.hpp"
-#include "Scene.hpp"
+#include "GameScene.hpp"
 #include "Utils.hpp"
 
-class Rtype : public LE::Scene {
+class Rtype : public LE::Game {
     public:
         Rtype();
         ~Rtype();
 
-        void init();
-        void loop();
+        bool init() override;
+        void update() override;
 
     private:
         ClientBroker *_clientBroker;

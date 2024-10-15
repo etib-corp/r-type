@@ -100,7 +100,7 @@ void LE::SceneManager::selectScene(const std::string &sceneName)
     }
 }
 
-void LE::SceneManager::init()
+void LE::SceneManager::initScenes()
 {
     for (auto& scene : _scenes) {
         scene.second->init();

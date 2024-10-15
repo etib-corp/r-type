@@ -19,11 +19,16 @@ LE::Scene::Scene()
 void LE::Scene::draw()
 {
     _guiManager->draw();
-    _ecs->update(LE::Engine::getInstance()->getDeltaTime());
     _eventManager->pollEvents();
+    _ecs->update(LE::Engine::getInstance()->getDeltaTime());
 }
 
 void LE::Scene::init()
 {
     _guiManager->init();
+}
+
+void LE::Scene::setClientBroker(ClientBroker *clientBroker)
+{
+    _clientBroker = clientBroker;
 }

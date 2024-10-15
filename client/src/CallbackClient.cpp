@@ -11,6 +11,7 @@
 
 void callbackStartGame(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
+    std::cout << "############### GAME STARTED ###############################" << std::endl;
     rtypeLog->log("{}", "Game started.");
     StartGame sg;
     ::memmove(&sg, &req.body, sizeof(StartGame));
@@ -93,6 +94,8 @@ void checkMagicNumber(const Request& req, std::shared_ptr<Ecs> _ecs)
 
 void attributeClientCallback(ResponsibilityChain *chain, ClientBroker *client_broker)
 {
+    std::cout << "############### ATTRIBUTE CALLBACK ###############################" << std::endl;
+
     chain->addActionCallback(asChar(ActionCode::START_GAME), callbackStartGame);
 
     chain->addActionCallback(asChar(ActionCode::NEW_CONNECTION), callbackNewConnection);
