@@ -18,6 +18,7 @@
 #include "ECS/Systems/Render3DSystem.hpp"
 #include "ECS/Systems/PatternSystem.hpp"
 #include "ECS/Systems/CameraSystem.hpp"
+#include "ECS/Systems/CollisionSystem.hpp"
 
 /**
  * @file Scene.hpp

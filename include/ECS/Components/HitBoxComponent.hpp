@@ -14,5 +14,5 @@
  *
  * This component represents a hit box.
  */
-struct HitBox : public Box {
+struct HitBox : Box {
 };
