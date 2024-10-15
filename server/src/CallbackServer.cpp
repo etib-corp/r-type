@@ -77,6 +77,7 @@ void attributeServerCallback(ResponsibilityChain *chain, ServerBroker *server_br
         .body = {0}};
     message->setRequest(request);
 
+
     // chain->addActionCallback(asChar(ActionCode::UP), checkMagicNumber);
     // chain->addActionCallback(asChar(ActionCode::UP), callbackInputUp);
     chain->addActionCallback(asChar(ActionCode::UP), [server_broker, message](const Request &req, std::shared_ptr<Ecs> _ecs) -> bool
@@ -112,5 +113,13 @@ void attributeServerCallback(ResponsibilityChain *chain, ServerBroker *server_br
                 message->setAction(asChar(ActionCode::LEFT));
         server_broker->sendToAllClient(message.get(), 1, req.header.EmmiterdEcsId);
     return true;
+    });
+
+
+    chain->addActionCallback(asChar(ActionCode::SHOOT), [server_broker, message](const Request &req, std::shared_ptr<Ecs> _ecs) -> bool
+                             {
+        message->setAction(asChar(ActionCode::SHOOT));
+        server_broker->sendToAllClient(message.get(), 1, req.header.EmmiterdEcsId);
+        return true;
     });
 }
