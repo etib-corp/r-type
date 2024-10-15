@@ -24,7 +24,4 @@ class Rtype : public LE::Game {
         void update() override;
 
     private:
-        ClientBroker *_clientBroker;
-        INetworkModule *_networkModule;
-        ResponsibilityChain _responsibilityChain;
 };

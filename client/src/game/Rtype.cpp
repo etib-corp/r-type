@@ -45,8 +45,6 @@ static bool parseJsonAndCreateEnemy(std::shared_ptr<Ecs> ecs, std::string path)
     return true;
 }
 
-
-
 Rtype::Rtype() : LE::Game()
 {
     std::cout << "Rtype constructor" << std::endl;
