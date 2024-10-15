@@ -7,12 +7,13 @@
 
 #pragma once
 
-#include "BoxComponent.hpp"
+#include "ECS/Components/BoxComponent.hpp"
 
 /**
  * @brief A hurt box component.
  *
  * This component represents a hurt box.
  */
-struct HurtBox : public Box {
+struct HurtBox : Box {
+    std::function<void()> onHit;     ///< The function to call when the hurt box is hit.
 };

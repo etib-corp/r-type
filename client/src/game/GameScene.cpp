@@ -46,13 +46,13 @@ GameScene::GameScene() : LE::Scene()
 
     patternSystem->addPattern("line", [](PatternComponent &pattern, TransformComponent &transform, MotionComponent &motion) {
         if (transform.position.x != pattern.end_pos.x) {
-            transform.position.x += pattern.speed * (pattern.end_pos.x - transform.position.x > 0 ? 1 : -1);
+            motion.velocity.x = pattern.speed * (pattern.end_pos.x - transform.position.x > 0 ? 1 : -1);
         }
         if (transform.position.y != pattern.end_pos.y) {
-            transform.position.y += pattern.speed * (pattern.end_pos.y - transform.position.y > 0 ? 1 : -1);
+            motion.velocity.y = pattern.speed * (pattern.end_pos.y - transform.position.y > 0 ? 1 : -1);
         }
         if (transform.position.z != pattern.end_pos.z) {
-            transform.position.z += pattern.speed * (pattern.end_pos.z - transform.position.z > 0 ? 1 : -1);
+            motion.velocity.z = pattern.speed * (pattern.end_pos.z - transform.position.z > 0 ? 1 : -1);
         }
     });
 
@@ -272,6 +272,30 @@ void GameScene::init()
                 motion.velocity[0] -= 0.1f;
         } catch (const std::exception &e) {
         }
+    });
+    _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_SPACE, LE::JUST_PRESSED, false}, [&](LE::Engine *engine, float dt) {
+        try {
+            int id = _clientBroker->getECSId();
+            auto transform = _ecs->getComponent<TransformComponent>(id);
+            Request request = {0};
+            request.header.Action = asChar(ActionCode::SHOOT);
+            request.header.BodyLength = 0;
+            request.header.EmmiterdEcsId = _clientBroker->getECSId();
+            request.header.MagicNumber = 0xFF;
+            request.header.ReceiverEcsId = 0;
+            request.header.TopicID = 1;
+            Message *message = new Message();
+            message->setRequest(request);
+            _clientBroker->addMessage(0, 1, message);
+
+            Entity entity = _ecs->createEntity();
+            _ecs->addComponent<TransformComponent>(entity, (TransformComponent){transform.position, {0, 0, 0}, {1.0f, 1.0f, 1.0f}});
+            _ecs->addComponent<MotionComponent>(entity, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
+            _ecs->addComponent<PatternComponent>(entity, (PatternComponent){"line", LE::Vector3<float>(transform.position.x + 50, transform.position.y, transform.position.z), 0.1, PatternEnd::DESTROY});
+            ModelComponent *model = createModelComponent("assets/models/bullet/bullet.obj");
+            _ecs->addComponent<ModelComponent>(entity, *model);
+            std::cout << "SHIP " << id << " SHOOT" << std::endl;
+        } catch (const std::exception &e) {}
     });
     _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_ENTER, LE::JUST_PRESSED, false}, [&](LE::Engine *engine, float dt) {
         Request request = {0};

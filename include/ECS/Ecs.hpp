@@ -100,6 +100,12 @@ class Ecs {
             return _componentManager->getComponent<T>(entity);
         }
 
+        template <typename T>
+        std::vector<T> getComponents()
+        {
+            return _componentManager->getComponents<T>();
+        }
+
         /**
          * @brief Get a component type
          * @tparam T The component to get the type of
