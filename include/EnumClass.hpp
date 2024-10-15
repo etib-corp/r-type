@@ -35,6 +35,7 @@ enum class ActionCode : std::uint8_t {
     LEFT            = 0xAF,
     STOP            = 0xB0,
     READY           = 0xB1,
+    SHOOT           = 0xB2,
     A = 0x3E,
     START_GAME     = 0x3F,
     MAGIC_NUMBER    = 0xFF,

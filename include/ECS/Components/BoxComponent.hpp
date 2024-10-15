@@ -9,6 +9,9 @@
 
 #include <bitset>
 #include "Vector3.hpp"
+#include <iostream>
+#include <functional>
+#include "Maths/Matrix.hpp"
 
 #define NB_LAYERS 8     ///< Number of layers
 #define NB_MASKS NB_LAYERS  ///< Number of masks
@@ -21,7 +24,6 @@
 struct Box {
     int width;      ///< The width of the box.
     int height;     ///< The height of the box.
-    int depth;      ///< The depth of the box.
     std::bitset<NB_LAYERS> layers;      ///< The layers of the box.
     std::bitset<NB_MASKS> masks;        ///< The masks of the box.
 };

@@ -153,6 +153,15 @@ class ComponentArray : public IComponentArray {
             }
         }
 
+        std::vector<T> getComponents()
+        {
+            std::vector<T> components;
+            for (size_t i = 0; i < _size; i++) {
+                components.push_back(_components[i]);
+            }
+            return components;
+        }
+
     private:
         std::array<T, MAX_ENTITIES> _components;                ///< An array of components
         std::unordered_map<Entity, size_t> _entityToIndexMap;   ///< A map of entities to indices
@@ -273,6 +282,12 @@ class ComponentManager {
                 auto const &component = pair.second;
                 component->entityDestroyed(entity);
             }
+        }
+
+        template <typename T>
+        std::vector<T> getComponents()
+        {
+            return getComponentArray<T>()->getComponents();
         }
 
     private:
