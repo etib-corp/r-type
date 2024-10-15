@@ -86,7 +86,7 @@ bool callbackLeft(const Request& req, std::shared_ptr<Ecs> _ecs)
     return true;
 }
 
-void callbackShoot(const Request& req, std::shared_ptr<Ecs> _ecs)
+bool callbackShoot(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
     std::uint8_t id = req.header.EmmiterdEcsId;
     auto transform = _ecs->getComponent<TransformComponent>(id);
@@ -97,6 +97,7 @@ void callbackShoot(const Request& req, std::shared_ptr<Ecs> _ecs)
     ModelComponent *model = createModelComponent("assets/models/bullet/bullet.obj");
     _ecs->addComponent<ModelComponent>(entity, *model);
     std::cout << "SHIP " << id << " SHOOT" << std::endl;
+    return true;
 }
 
 bool checkMagicNumber(const Request& req, std::shared_ptr<Ecs> _ecs)
