@@ -11,7 +11,6 @@
 
 void callbackStartGame(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
-    std::cout << "############### GAME STARTED ###############################" << std::endl;
     rtypeLog->log("{}", "Game started.");
     StartGame sg;
     ::memmove(&sg, &req.body, sizeof(StartGame));
@@ -82,6 +81,19 @@ void callbackLeft(const Request& req, std::shared_ptr<Ecs> _ecs)
     rtypeLog->log<LogType::DEBUG>("{}", "Left");
 }
 
+void callbackShoot(const Request& req, std::shared_ptr<Ecs> _ecs)
+{
+    std::uint8_t id = req.header.EmmiterdEcsId;
+    auto transform = _ecs->getComponent<TransformComponent>(id);
+    Entity entity = _ecs->createEntity();
+    _ecs->addComponent<TransformComponent>(entity, (TransformComponent){transform.position, {0, 0, 0}, {1.0f, 1.0f, 1.0f}});
+    _ecs->addComponent<MotionComponent>(entity, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
+    _ecs->addComponent<PatternComponent>(entity, (PatternComponent){"line", LE::Vector3<float>(transform.position.x + 50, transform.position.y, transform.position.z), 0.1, PatternEnd::DESTROY});
+    ModelComponent *model = createModelComponent("assets/models/bullet/bullet.obj");
+    _ecs->addComponent<ModelComponent>(entity, *model);
+    std::cout << "SHIP " << id << " SHOOT" << std::endl;
+}
+
 void checkMagicNumber(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
     if (req.header.MagicNumber == 0xFF)
@@ -94,8 +106,6 @@ void checkMagicNumber(const Request& req, std::shared_ptr<Ecs> _ecs)
 
 void attributeClientCallback(ResponsibilityChain *chain, ClientBroker *client_broker)
 {
-    std::cout << "############### ATTRIBUTE CALLBACK ###############################" << std::endl;
-
     chain->addActionCallback(asChar(ActionCode::START_GAME), callbackStartGame);
 
     chain->addActionCallback(asChar(ActionCode::NEW_CONNECTION), callbackNewConnection);
@@ -107,4 +117,6 @@ void attributeClientCallback(ResponsibilityChain *chain, ClientBroker *client_br
     chain->addActionCallback(asChar(ActionCode::RIGHT), callbackRight);
 
     chain->addActionCallback(asChar(ActionCode::LEFT), callbackLeft);
+
+    chain->addActionCallback(asChar(ActionCode::SHOOT), callbackShoot);
 }
