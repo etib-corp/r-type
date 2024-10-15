@@ -21,7 +21,7 @@
 #include "Common.hpp"
 #include "CallBack.hpp"
 
-void checkMagicNumber(const Request& req, std::shared_ptr<Ecs> _ecs);
+bool checkMagicNumber(const Request& req, std::shared_ptr<Ecs> _ecs);
 void attributeServerCallback(ResponsibilityChain *chain, ServerBroker *server_broker);
 
 #endif /* !CALLBACKSERVER_HPP_ */

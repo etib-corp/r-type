@@ -86,9 +86,16 @@ void executeCallbacks(
 void processRequest(const Request& req, std::shared_ptr<Ecs> _ecs, ResponsibilityChain chain)
 {
     auto callbacks = chain.getActionCallbacks(req.header.Action);
+    bool callbackState = false;
 
     for (const auto& callback : callbacks)
     {
-        callback(req, _ecs);
+        callbackState =  callback(req, _ecs);
+        if (!callbackState)
+        {
+            rtypeLog->log<LogType::WARN>("THE CHAIN HAS BEEN BROKEN");
+            break;
+        }
+        rtypeLog->log<LogType::DEBUG>("callback state = {}", callbackState);
     }
 }

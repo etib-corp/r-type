@@ -60,10 +60,10 @@ int main(void)
     attributeServerCallback(&chain, server_broker);
 
     int nbrPlayer = 0;
-    chain.addActionCallback(asChar(ActionCode::READY), [&nbrPlayer, &server_broker](const Request &req, std::shared_ptr<Ecs> _ecs) {
+    chain.addActionCallback(asChar(ActionCode::READY), [&nbrPlayer, &server_broker](const Request &req, std::shared_ptr<Ecs> _ecs) -> bool {
         nbrPlayer++;
         if (nbrPlayer != 2) {
-            return;
+            return false;
         }
         rtypeLog->log("Game is starting");
         Request request = {
@@ -82,6 +82,7 @@ int main(void)
         msg.setRequest(request);
         msg.setReliable(true);
         server_broker->sendToAllClient(&msg, 1, 0);
+        return true;
     });
 
 

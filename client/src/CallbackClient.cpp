@@ -9,7 +9,7 @@
 #include "CallbackClient.hpp"
 #include "LogDef.hpp"
 
-void callbackStartGame(const Request& req, std::shared_ptr<Ecs> _ecs)
+bool callbackStartGame(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
     rtypeLog->log("{}", "Game started.");
     StartGame sg;
@@ -23,15 +23,17 @@ void callbackStartGame(const Request& req, std::shared_ptr<Ecs> _ecs)
         _ecs->addComponent<ModelComponent>(player, *model);
         _ecs->addComponent<MotionComponent>(player, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
     }
+    return true;
 }
 
-void callbackNewConnection(const Request& req, std::shared_ptr<Ecs> _ecs)
+bool callbackNewConnection(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
     std::cout << "New connection." << std::endl;
     rtypeLog->log("{}", "New connection.");
+    return true;
 }
 
-void callbackUp(const Request& req, std::shared_ptr<Ecs> _ecs)
+bool callbackUp(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
     std::uint8_t id = req.header.EmmiterdEcsId;
     std::cout << "Up : " << static_cast<int>(id) << std::endl;
@@ -42,9 +44,10 @@ void callbackUp(const Request& req, std::shared_ptr<Ecs> _ecs)
         motion.velocity[1] = 0.0f;
     LE::Engine::getInstance()->debug("Up");
     rtypeLog->log<LogType::DEBUG>("{}", "Up");
+    return true;
 }
 
-void callbackDown(const Request& req, std::shared_ptr<Ecs> _ecs)
+bool callbackDown(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
     std::uint8_t id = req.header.EmmiterdEcsId;
     auto& motion = _ecs->getComponent<MotionComponent>(id);
@@ -54,9 +57,10 @@ void callbackDown(const Request& req, std::shared_ptr<Ecs> _ecs)
         motion.velocity[1] = 0.0f;
     rtypeLog->log<LogType::DEBUG>("{}", "Down");
     LE::Engine::getInstance()->debug("Down");
+    return true;
 }
 
-void callbackRight(const Request& req, std::shared_ptr<Ecs> _ecs)
+bool callbackRight(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
     std::uint8_t id = req.header.EmmiterdEcsId;
     auto& motion = _ecs->getComponent<MotionComponent>(id);
@@ -66,10 +70,10 @@ void callbackRight(const Request& req, std::shared_ptr<Ecs> _ecs)
         motion.velocity[0] = 0.0f;
     LE::Engine::getInstance()->debug("Right");
     rtypeLog->log<LogType::DEBUG>("{}", "Right");
-
+    return true;
 }
 
-void callbackLeft(const Request& req, std::shared_ptr<Ecs> _ecs)
+bool callbackLeft(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
     std::uint8_t id = req.header.EmmiterdEcsId;
     auto& motion = _ecs->getComponent<MotionComponent>(id);
@@ -79,6 +83,7 @@ void callbackLeft(const Request& req, std::shared_ptr<Ecs> _ecs)
         motion.velocity[0] = 0.0f;
     LE::Engine::getInstance()->debug("Left");
     rtypeLog->log<LogType::DEBUG>("{}", "Left");
+    return true;
 }
 
 void callbackShoot(const Request& req, std::shared_ptr<Ecs> _ecs)
@@ -94,14 +99,15 @@ void callbackShoot(const Request& req, std::shared_ptr<Ecs> _ecs)
     std::cout << "SHIP " << id << " SHOOT" << std::endl;
 }
 
-void checkMagicNumber(const Request& req, std::shared_ptr<Ecs> _ecs)
+bool checkMagicNumber(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
     if (req.header.MagicNumber == 0xFF)
     {
         rtypeLog->log<LogType::DEBUG>("{}", "Magic number checked.");
-        return;
+        return true;
     }
     rtypeLog->log<LogType::DEBUG>("{}", "Magic number not good.");
+    return false;
 }
 
 void attributeClientCallback(ResponsibilityChain *chain, ClientBroker *client_broker)
