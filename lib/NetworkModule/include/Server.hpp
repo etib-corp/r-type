@@ -10,8 +10,9 @@
 #include "interface/INetworkModule/IServer.hpp"
 #include "ListenerTCP.hpp"
 #include "ListenerUDP.hpp"
+#include "dllDefine.hpp"
 
-class Server : public IServer {
+class LIBRARY_API Server : public IServer {
     public:
         Server(int port);
         ~Server();

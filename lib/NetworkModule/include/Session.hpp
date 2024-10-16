@@ -14,6 +14,7 @@
 #include "interface/INetworkModule/ISession.hpp"
 #include "Utils.hpp"
 #include "EnumClass.hpp"
+#include "dllDefine.hpp"
 
 /**
  * @class Session
@@ -22,7 +23,7 @@
  * The Session class handles the lifecycle of a  session, including
  * reading from and writing to the socket.
  */
-class Session : public ISession
+class LIBRARY_API Session : public ISession
 {
 public:
     /**

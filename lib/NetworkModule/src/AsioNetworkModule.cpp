@@ -43,7 +43,7 @@ extern "C"
      *
      * @return INetworkModule* Pointer to the newly created network module.
      */
-    INetworkModule *createNetworkModule()
+    LIBRARY_API INetworkModule *createNetworkModule()
     {
         return new AsioNetworkModule();
     }

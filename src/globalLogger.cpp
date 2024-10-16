@@ -17,3 +17,16 @@ void initLogger(void)
 
     rtypeLog->setColorEnabled(true);
 }
+
+static void finalize(void)
+{
+    // printf( "finalize\n");
+}
+
+INITIALIZER( initialize)
+{
+    rtypeLog = &Logger::getInstance(LogOutput::STDOUT);
+
+    rtypeLog->setColorEnabled(true);
+    atexit( finalize);
+}
