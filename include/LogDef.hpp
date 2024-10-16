@@ -16,7 +16,7 @@ enum class LogOutput {
 
 enum class LogType {
     INFO        = 0,
-    ERROR       = 1,
+    ERR         = 1,
     WARN        = 2,
     DEBUG       = 3,
     CRITICAL    = 4
