@@ -15,10 +15,15 @@
     #include <format>
     using std::vformat;
     using std::make_format_args;
-#else
-    #include <fmt/core.h>
-    using fmt::vformat;
-    using fmt::make_format_args;
+#endif
+
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
+    // #include <fmt/core.h>
+    // using fmt::vformat;
+    // using fmt::make_format_args;
+    #include <format>
+    using std::vformat;
+    using std::make_format_args;
 #endif
 
 class ILoggable
