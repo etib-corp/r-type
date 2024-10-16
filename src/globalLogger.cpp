@@ -23,6 +23,8 @@ static void finalize(void)
     // printf( "finalize\n");
 }
 
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
+
 INITIALIZER( initialize)
 {
     rtypeLog = &Logger::getInstance(LogOutput::STDOUT);
@@ -30,3 +32,5 @@ INITIALIZER( initialize)
     rtypeLog->setColorEnabled(true);
     atexit( finalize);
 }
+
+#endif

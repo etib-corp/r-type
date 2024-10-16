@@ -39,7 +39,11 @@
     #endif
 #endif
 
-void initLogger(void) [[constructor]];
+#if defined(__linux__) || defined(__APPLE__)
+
+void initLogger(void) __attribute__((constructor));
+
+#endif
 
 extern Logger *rtypeLog;
 
