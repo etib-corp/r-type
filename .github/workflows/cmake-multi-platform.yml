@@ -53,7 +53,7 @@ jobs:
 
     - name: Install wayland-scanner
       if: matrix.os == 'ubuntu-latest'
-      run: sudo apt-get install xorg-dev libglu1-mesa-dev libwayland-dev libxkbcommon-dev libxrandr-dev
+      run: sudo apt-get install libglu1-mesa-dev libwayland-dev libxkbcommon-dev libxrandr-dev 
 
     - name: Install fmt
       if: matrix.os == 'ubuntu-latest'
