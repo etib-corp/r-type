@@ -76,8 +76,6 @@ void GameScene::init()
         try {
             int id = _clientBroker->getECSId();
             auto& motion = _ecs->getComponent<MotionComponent>(id);
-            auto& transform = _ecs->getComponent<TransformComponent>(id);
-            auto vectorData = transform.position.getData();
             Request request = {0};
             request.header.Action = asChar(ActionCode::UP);
             request.header.BodyLength = 0;
@@ -85,7 +83,6 @@ void GameScene::init()
             request.header.MagicNumber = 0xFF;
             request.header.ReceiverEcsId = 0;
             request.header.TopicID = 1;
-            ::memcpy(&request.body, &vectorData, sizeof(LE::Vector3Data<float>));
             Message *message = new Message();
             message->setRequest(request);
             _clientBroker->addMessage(0, 1, message);
@@ -107,8 +104,6 @@ void GameScene::init()
         try {
             int id = _clientBroker->getECSId();
             auto& motion = _ecs->getComponent<MotionComponent>(id);
-            auto& transform = _ecs->getComponent<TransformComponent>(id);
-            auto vectorData = transform.position.getData();
             Request request = {0};
             request.header.Action = asChar(ActionCode::UP);
             request.header.BodyLength = 0;
@@ -116,7 +111,6 @@ void GameScene::init()
             request.header.MagicNumber = 0xFF;
             request.header.ReceiverEcsId = 0;
             request.header.TopicID = 1;
-            ::memcpy(&request.body, &vectorData, sizeof(LE::Vector3Data<float>));
             Message *message = new Message();
             message->setRequest(request);
             _clientBroker->addMessage(0, 1, message);
@@ -135,8 +129,6 @@ void GameScene::init()
         try {
             int id = _clientBroker->getECSId();
             auto& motion = _ecs->getComponent<MotionComponent>(id);
-            auto& transform = _ecs->getComponent<TransformComponent>(id);
-            auto vectorData = transform.position.getData();
             Request request = {0};
             request.header.Action = asChar(ActionCode::DOWN);
             request.header.BodyLength = 0;
@@ -144,7 +136,6 @@ void GameScene::init()
             request.header.MagicNumber = 0xFF;
             request.header.ReceiverEcsId = 0;
             request.header.TopicID = 1;
-            ::memcpy(&request.body, &vectorData, sizeof(LE::Vector3Data<float>));
             Message *message = new Message();
             message->setRequest(request);
             _clientBroker->addMessage(0, 1, message);
@@ -165,8 +156,6 @@ void GameScene::init()
         try {
             int id = _clientBroker->getECSId();
             auto& motion = _ecs->getComponent<MotionComponent>(id);
-            auto& transform = _ecs->getComponent<TransformComponent>(id);
-            auto vectorData = transform.position.getData();
             Request request = {0};
             request.header.Action = asChar(ActionCode::DOWN);
             request.header.BodyLength = 0;
@@ -174,7 +163,6 @@ void GameScene::init()
             request.header.MagicNumber = 0xFF;
             request.header.ReceiverEcsId = 0;
             request.header.TopicID = 1;
-            ::memcpy(&request.body, &vectorData, sizeof(LE::Vector3Data<float>));
             Message *message = new Message();
             message->setRequest(request);
             _clientBroker->addMessage(0, 1, message);
@@ -193,8 +181,6 @@ void GameScene::init()
         try {
             int id = _clientBroker->getECSId();
             auto& motion = _ecs->getComponent<MotionComponent>(id);
-            auto& transform = _ecs->getComponent<TransformComponent>(id);
-            auto vectorData = transform.position.getData();
             Request request = {0};
             request.header.Action = asChar(ActionCode::LEFT);
             request.header.BodyLength = 0;
@@ -202,7 +188,6 @@ void GameScene::init()
             request.header.MagicNumber = 0xFF;
             request.header.ReceiverEcsId = 0;
             request.header.TopicID = 1;
-            ::memcpy(&request.body, &vectorData, sizeof(LE::Vector3Data<float>));
             Message *message = new Message();
             message->setRequest(request);
             _clientBroker->addMessage(0, 1, message);
@@ -223,8 +208,6 @@ void GameScene::init()
         try {
             int id = _clientBroker->getECSId();
             auto& motion = _ecs->getComponent<MotionComponent>(id);
-            auto& transform = _ecs->getComponent<TransformComponent>(id);
-            auto vectorData = transform.position.getData();
             Request request = {0};
             request.header.Action = asChar(ActionCode::LEFT);
             request.header.BodyLength = 0;
@@ -232,7 +215,6 @@ void GameScene::init()
             request.header.MagicNumber = 0xFF;
             request.header.ReceiverEcsId = 0;
             request.header.TopicID = 1;
-            ::memcpy(&request.body, &vectorData, sizeof(LE::Vector3Data<float>));
             Message *message = new Message();
             message->setRequest(request);
             _clientBroker->addMessage(0, 1, message);
@@ -251,8 +233,6 @@ void GameScene::init()
         try {
             int id = _clientBroker->getECSId();
             auto& motion = _ecs->getComponent<MotionComponent>(id);
-            auto& transform = _ecs->getComponent<TransformComponent>(id);
-            auto vectorData = transform.position.getData();
             Request request = {0};
             request.header.Action = asChar(ActionCode::RIGHT);
             request.header.BodyLength = 0;
@@ -260,7 +240,6 @@ void GameScene::init()
             request.header.MagicNumber = 0xFF;
             request.header.ReceiverEcsId = 0;
             request.header.TopicID = 1;
-            ::memcpy(&request.body, &vectorData, sizeof(LE::Vector3Data<float>));
             Message *message = new Message();
             message->setRequest(request);
             _clientBroker->addMessage(0, 1, message);
@@ -281,8 +260,6 @@ void GameScene::init()
         try {
             int id = _clientBroker->getECSId();
             auto& motion = _ecs->getComponent<MotionComponent>(id);
-            auto& transform = _ecs->getComponent<TransformComponent>(id);
-            auto vectorData = transform.position.getData();
             Request request = {0};
             request.header.Action = asChar(ActionCode::RIGHT);
             request.header.BodyLength = sizeof(LE::Vector3Data<float>);
@@ -290,9 +267,6 @@ void GameScene::init()
             request.header.MagicNumber = 0xFF;
             request.header.ReceiverEcsId = 0;
             request.header.TopicID = 1;
-            // ::memset(&request.body, 1, sizeof(char) * 5);
-            ::memcpy(&request.body, &vectorData, sizeof(LE::Vector3Data<float>));
-            std::cout << "X: " << reinterpret_cast<LE::Vector3Data<float> *>(&request.body)->x << " Y: " << reinterpret_cast<LE::Vector3Data<float> *>(&request.body)->y << " Z: " << reinterpret_cast<LE::Vector3Data<float> *>(&request.body)->z << std::endl;
             Message *message = new Message();
             message->setRequest(request);
             _clientBroker->addMessage(0, 1, message);

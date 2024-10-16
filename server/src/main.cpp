@@ -63,7 +63,7 @@ int main(void)
     chain.addActionCallback(asChar(ActionCode::READY), [&nbrPlayer, &server_broker](const Request &req, std::shared_ptr<Ecs> _ecs) -> bool {
         nbrPlayer++;
         if (nbrPlayer != 2) {
-            return true; // ! false
+            return false;
         }
         rtypeLog->log("Game is starting");
         Request request = {
