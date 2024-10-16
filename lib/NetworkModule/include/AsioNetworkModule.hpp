@@ -15,6 +15,7 @@
 #include "ListenerUDP.hpp"
 #include "Client.hpp"
 #include "Server.hpp"
+#include "dllDefine.hpp"
 
 /**
  * @class AsioNetworkModule
@@ -23,7 +24,7 @@
  * The module class provides functionality to run network operations
  * using TCP and UDP connections.
  */
-class AsioNetworkModule : public INetworkModule {
+class LIBRARY_API AsioNetworkModule : public INetworkModule {
     public:
         AsioNetworkModule();
         ~AsioNetworkModule();

@@ -14,6 +14,7 @@
 #include "interface/INetworkModule/IListenerTCP.hpp"
 #include <thread>
 #include "PackUnpack.hpp"
+#include "dllDefine.hpp"
 
 /**
  * @class ListenerTCP
@@ -22,7 +23,7 @@
  * This class is responsible for handling TCP Listeners using Boost.Asio.
  * It provides methods to wait for incoming Listeners and to run the Listener handling loop.
  */
-class ListenerTCP : public IListenerTCP {
+class LIBRARY_API ListenerTCP : public IListenerTCP {
     public:
         /**
          * @brief Constructs a new ListenerTCP object.

@@ -8,10 +8,10 @@
 #pragma once
 
 #include "interface/INetworkModule/IClient.hpp"
+#include "dllDefine.hpp"
 #include <boost/asio.hpp>
 #include <thread>
-
-class Client : public IClient {
+class LIBRARY_API Client : public IClient {
     public:
         Client(const std::string &ip, const int &port);
         ~Client();

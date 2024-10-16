@@ -15,6 +15,7 @@
 #include "interface/INetworkModule/IListenerUDP.hpp"
 #include "Utils.hpp"
 #include "EnumClass.hpp"
+#include "dllDefine.hpp"
 
 /**
  * @class ListenerUDP
@@ -32,7 +33,7 @@
  * handle received messages, and send messages to a remote endpoint. It
  * operates on a separate thread to ensure non-blocking network operations.
  */
-class ListenerUDP : public IListenerUDP {
+class LIBRARY_API ListenerUDP : public IListenerUDP {
     public:
         /**
          * @brief Constructs a new ListenerUDP object.
