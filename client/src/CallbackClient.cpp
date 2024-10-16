@@ -19,7 +19,7 @@ bool callbackStartGame(const Request& req, std::shared_ptr<Ecs> _ecs)
     for (int i = 0; i < sg.nbrPlayers; i++) {
         Entity player = _ecs->createEntity();
         _ecs->addComponent<TransformComponent>(player, {{0, 0, 0}, {0, 90, 0}, {1, 1, 1}});
-        ModelComponent *model = createModelComponent("assets/models/ship" + std::to_string(1) + "/ship" + std::to_string(i) + ".obj");
+        ModelComponent *model = createModelComponent("assets/models/ship" + std::to_string(1) + "/ship" + std::to_string(1) + ".obj");
         _ecs->addComponent<ModelComponent>(player, *model);
         _ecs->addComponent<MotionComponent>(player, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
     }
