@@ -187,6 +187,7 @@ class JsonArray : public JsonValue {
         JsonArray()
         {
             _type = JSON_ARRAY;
+            _value = {};
         }
 
         std::vector<std::shared_ptr<JsonValue>> getValue()
@@ -390,6 +391,8 @@ class JsonParser {
                     return false;
                 }
                 skipWhitespaces(index);
+                if (_content[index] == ']')
+                    break;
                 std::shared_ptr<JsonValue> tmp;
                 if (!parseValue(index, tmp)) {
                     _errorMessage += "Json file is wrongly formatted at line " + std::to_string(_lineNumber) + "\n";

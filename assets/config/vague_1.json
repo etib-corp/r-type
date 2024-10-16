@@ -1,26 +1,26 @@
 {
     "enemy" : [
         {
-            "texture_obj" : "assets/models/ship/MicroRecon.obj",
-            "start_pos" : [0, 0, 0],
-            "end_pos" : [1000, 1000, 0],
+            "texture_obj" : "assets/models/ship2/ship2.obj",
+            "start_pos" : [0, -2, 0],
+            "end_pos" : [100, -2, 0],
             "speed" : 0.01,
             "life" : 100,
             "damage" : 10,
             "pattern" : "line",
             "scale" : 1,
             "rotation" : [0, 0, 0],
-            "hurbox": {
+            "hurtbox": {
                 "height": 10,
                 "width": 10,
-                "layer": [3],
+                "layers": [3],
                 "masks": [1, 2]
             },
             "hitbox": {
                 "height": 10,
                 "width": 10,
-                "layer": [],
-                "masks": []
+                "layers": [ ],
+                "masks": [ ]
             }
         }
     ]

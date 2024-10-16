@@ -91,6 +91,12 @@ bool callbackShoot(const Request& req, std::shared_ptr<Ecs> _ecs)
     _ecs->addComponent<MotionComponent>(entity, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
     _ecs->addComponent<PatternComponent>(entity, (PatternComponent){"line", LE::Vector3<float>(transform.position.x + 50, transform.position.y, transform.position.z), 0.1, PatternEnd::DESTROY});
     ModelComponent *model = createModelComponent("assets/models/bullet/bullet.obj");
+    HitBox hitbox = {5, 5, 0, 0};
+    hitbox.masks.set(3);
+    _ecs->addComponent<HitBox>(entity, hitbox);
+    _ecs->addComponent<HurtBox>(entity, (HurtBox){5, 5, 0, 0, []() {
+        std::cout << "Hurtbox on hit" << std::endl;
+    }});
     _ecs->addComponent<ModelComponent>(entity, *model);
     std::cout << "SHIP " << (int)id << " SHOOT" << std::endl;
     return true;
@@ -105,6 +111,18 @@ bool checkMagicNumber(const Request& req, std::shared_ptr<Ecs> _ecs)
     }
     rtypeLog->log<LogType::DEBUG>("{}", "Magic number not good.");
     return false;
+}
+
+bool callbackUpdateEcs(const Request& req, std::shared_ptr<Ecs> _ecs)
+{
+    UpdateEcs updateEcs1;
+    UpdateEcs updateEcs2;
+    ::memmove(&updateEcs1, &req.body._buffer, sizeof(UpdateEcs));
+    ::memmove(&updateEcs2, &req.body._buffer + sizeof(UpdateEcs), sizeof(UpdateEcs));
+    std::cout << "UpdateEcs1 : " << static_cast<int>(updateEcs1.ecsId) << std::endl;
+    std::cout << "UpdateEcs2 : " << static_cast<int>(updateEcs2.ecsId) << std::endl;
+    std::cout << updateEcs1.position[0] << "  " <<  updateEcs1.position[1] << "  " << updateEcs1.position[2] << std::endl;
+    return true;
 }
 
 void attributeClientCallback(ResponsibilityChain *chain, ClientBroker *client_broker)
@@ -136,4 +154,6 @@ void attributeClientCallback(ResponsibilityChain *chain, ClientBroker *client_br
 
     chain->addActionCallback(asChar(ActionCode::SHOOT), checkRequestEmmiterdEcsId);
     chain->addActionCallback(asChar(ActionCode::SHOOT), callbackShoot);
+
+    chain->addActionCallback(asChar(ActionCode::UPDATE_ECS), callbackUpdateEcs);
 }

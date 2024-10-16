@@ -82,7 +82,6 @@ void attributeServerCallback(ResponsibilityChain *chain, ServerBroker *server_br
     // chain->addActionCallback(asChar(ActionCode::UP), callbackInputUp);
     chain->addActionCallback(asChar(ActionCode::UP), [server_broker, message](const Request &req, std::shared_ptr<Ecs> _ecs) -> bool
                              {
-        rtypeLog->log("{}", "SEND UP to all client");
         message->setAction(asChar(ActionCode::UP));
         server_broker->sendToAllClient(message.get(), 1, req.header.EmmiterdEcsId);
         return true;

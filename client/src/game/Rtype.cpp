@@ -44,12 +44,18 @@ static bool parseJsonAndCreateEnemy(std::shared_ptr<Ecs> ecs, std::string path)
             hurtbox.height = jsonHurtBox->getObjectValue()["height"]->getNumberValue();
             std::vector<std::shared_ptr<JsonValue>> layers = jsonHurtBox->getObjectValue()["layers"]->getArrayValue();
             std::vector<std::shared_ptr<JsonValue>> masks = jsonHurtBox->getObjectValue()["masks"]->getArrayValue();
+            std::cout << "nbr layers: " << layers.size() << std::endl;
+            std::cout << "nbr masks: " << masks.size() << std::endl;
             for (const auto index : layers) {
+                std::cout << "Hurtbox layers: " << index->getNumberValue() << std::endl;
                 hurtbox.layers.set(index->getNumberValue());
             }
             for (const auto index : masks) {
                 hurtbox.masks.set(index->getNumberValue());
             }
+            hurtbox.onHit = [entity, ecs]() {
+                ecs->destroyEntity(entity);
+            };
         }
 
         auto jsonHitBox = jsonValue->getObjectValue()["hitbox"];
@@ -95,6 +101,11 @@ bool Rtype::init()
     LE::Game::init();
     std::cout << "Rtype init" << std::endl;
     attributeClientCallback(&_responsibilityChain, _clientBroker);
+    _responsibilityChain.addActionCallback(asChar(ActionCode::START_GAME), [](const Request &req, std::shared_ptr<Ecs> ecs) -> bool {
+        std::cout << "Game start" << std::endl;
+        parseJsonAndCreateEnemy(ecs, "assets/config/vague_1.json");
+        return true;
+    });
     return true;
 }
 

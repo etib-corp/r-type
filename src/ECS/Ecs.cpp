@@ -32,6 +32,7 @@ void Ecs::destroyEntity(Entity entity)
 {
     _entityManager->destroyEntity(entity);
     _componentManager->entityDestroyed(entity);
+    _systemManager->entityDestroyed(entity);
 }
 
 void Ecs::update(float dt)

@@ -59,6 +59,10 @@ int main(void)
 
     attributeServerCallback(&chain, server_broker);
 
+    std::shared_ptr<Ecs> _ecs = std::make_shared<Ecs>();
+    Entity entity = _ecs->createEntity();
+    _ecs->registerComponent<TransformComponent>();
+
     int nbrPlayer = 0;
     chain.addActionCallback(asChar(ActionCode::READY), [&nbrPlayer, &server_broker](const Request &req, std::shared_ptr<Ecs> _ecs) -> bool {
         nbrPlayer++;
@@ -66,6 +70,10 @@ int main(void)
             return false;
         }
         rtypeLog->log("Game is starting");
+        Entity player1 = _ecs->createEntity();
+        _ecs->addComponent<TransformComponent>(player1, {{0, 0, 0}, {0, 90, 0}, {1, 1, 1}});
+        Entity player2 = _ecs->createEntity();
+        _ecs->addComponent<TransformComponent>(player2, {{0, 0, 0}, {0, 90, 0}, {1, 1, 1}});
         Request request = {
             .header = {
                 .MagicNumber = 0xFF,
@@ -85,12 +93,37 @@ int main(void)
         return true;
     });
 
+    // clock.addCallback([&server_broker, &_ecs, &nbrPlayer]() {
+    //     if (nbrPlayer != 2) {
+    //         return;
+    //     }
+    //     Request rq;
+    //     rq.header.MagicNumber = 0xFF;
+    //     rq.header.EmmiterdEcsId = 0;
+    //     rq.header.ReceiverEcsId = 0;
+    //     rq.header.TopicID = 1;
+    //     rq.header.Action = asChar(ActionCode::UPDATE_ECS);
+    //     rq.header.BodyLength = 0;
+    //     UpdateEcs updateEcs1;
+    //     updateEcs1.ecsId = 1;
+    //     updateEcs1.position[0] = _ecs->getComponent<TransformComponent>(1).position.x;
+    //     updateEcs1.position[1] = _ecs->getComponent<TransformComponent>(1).position.y;
+    //     updateEcs1.position[2] = _ecs->getComponent<TransformComponent>(1).position.z;
+    //     ::memmove(&rq.body._buffer, &updateEcs1, sizeof(UpdateEcs));
+    //     UpdateEcs updateEcs2;
+    //     updateEcs2.ecsId = 2;
+    //     updateEcs2.position[0] = _ecs->getComponent<TransformComponent>(2).position.x;
+    //     updateEcs2.position[1] = _ecs->getComponent<TransformComponent>(2).position.y;
+    //     updateEcs2.position[2] = _ecs->getComponent<TransformComponent>(2).position.z;
+    //     ::memmove((rq.body._buffer + sizeof(UpdateEcs)), &updateEcs2, sizeof(UpdateEcs));
+    //     rq.header.BodyLength = sizeof(updateEcs1) + sizeof(updateEcs2);
+    //     Message msg;
+    //     msg.setRequest(rq);
+    //     msg.setReliable(true);
+    //     server_broker->sendToAllClient(&msg, 1, 0);
+    // }, 1000);
 
-    std::shared_ptr<Ecs> _ecs = std::make_shared<Ecs>();
-    Entity entity = _ecs->createEntity();
-    _ecs->registerComponent<TransformComponent>();
-
-    _ecs->addComponent<TransformComponent>(entity, {{0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0}});
+    clock.start();
 
     receivedFromAllClient(server_broker, _ecs, chain);
 
