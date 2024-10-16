@@ -63,7 +63,7 @@ void Broker::_routine(void)
 void Broker::_run(void)
 {
     _is_running = true;
-    _mutex.unlock();
+    // _mutex.unlock(); // JUST FOR WINDOWS
     while (_is_running)
         _routine();
     std::cout << "Broker routine stopped" << std::endl;
