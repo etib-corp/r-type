@@ -36,7 +36,7 @@ void CollisionSystem::update(Ecs *ecs, float dt)
                 transform.position.x + hitbox.width > transform2.position.x &&
                 transform.position.y < transform2.position.y + hurtbox.height &&
                 transform.position.y + hitbox.height > transform2.position.y) {
-                std::cout << "Collision detected" << std::endl;
+                hurtbox.onHit();
             }
         }
     }

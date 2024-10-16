@@ -17,6 +17,8 @@ GameScene::GameScene() : LE::Scene()
     _ecs->registerComponent<PatternComponent>();
     _ecs->registerComponent<MotionComponent>();
     _ecs->registerComponent<CameraComponent>();
+    _ecs->registerComponent<HurtBox>();
+    _ecs->registerComponent<HitBox>();
     Signature signatureRender2D;
     signatureRender2D.set(_ecs->getComponentType<TransformComponent>());
     signatureRender2D.set(_ecs->getComponentType<SpriteComponent>());
@@ -43,6 +45,13 @@ GameScene::GameScene() : LE::Scene()
     signatureCamera.set(_ecs->getComponentType<MotionComponent>());
     _ecs->registerSystem<CameraSystem>();
     _ecs->setSignature<CameraSystem>(signatureCamera);
+
+    Signature signatureCollision;
+    signatureCollision.set(_ecs->getComponentType<TransformComponent>());
+    signatureCollision.set(_ecs->getComponentType<HitBox>());
+    signatureCollision.set(_ecs->getComponentType<HurtBox>());
+    _ecs->registerSystem<CollisionSystem>();
+    _ecs->setSignature<CollisionSystem>(signatureCollision);
 
     patternSystem->addPattern("line", [](PatternComponent &pattern, TransformComponent &transform, MotionComponent &motion) {
         if (transform.position.x != pattern.end_pos.x) {

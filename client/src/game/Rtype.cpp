@@ -36,11 +36,43 @@ static bool parseJsonAndCreateEnemy(std::shared_ptr<Ecs> ecs, std::string path)
             jsonValue->getObjectValue()["speed"]->getNumberValue(),
             PatternEnd::STAY
         );
+        HurtBox hurtbox;
+        HitBox hitbox;
+        auto jsonHurtBox = jsonValue->getObjectValue()["hurtbox"];
+        if (jsonHurtBox != nullptr) {
+            hurtbox.width = jsonHurtBox->getObjectValue()["width"]->getNumberValue();
+            hurtbox.height = jsonHurtBox->getObjectValue()["height"]->getNumberValue();
+            std::vector<std::shared_ptr<JsonValue>> layers = jsonHurtBox->getObjectValue()["layers"]->getArrayValue();
+            std::vector<std::shared_ptr<JsonValue>> masks = jsonHurtBox->getObjectValue()["masks"]->getArrayValue();
+            for (const auto index : layers) {
+                hurtbox.layers.set(index->getNumberValue());
+            }
+            for (const auto index : masks) {
+                hurtbox.masks.set(index->getNumberValue());
+            }
+        }
+
+        auto jsonHitBox = jsonValue->getObjectValue()["hitbox"];
+        if (jsonHitBox != nullptr) {
+            hitbox.width = jsonHitBox->getObjectValue()["width"]->getNumberValue();
+            hitbox.height = jsonHitBox->getObjectValue()["height"]->getNumberValue();
+            std::vector<std::shared_ptr<JsonValue>> layers = jsonHitBox->getObjectValue()["layers"]->getArrayValue();
+            std::vector<std::shared_ptr<JsonValue>> masks = jsonHitBox->getObjectValue()["masks"]->getArrayValue();
+            for (const auto index : layers) {
+                hitbox.layers.set(index->getNumberValue());
+            }
+            for (const auto index : masks) {
+                hitbox.masks.set(index->getNumberValue());
+            }
+        }
+
         ecs->addComponent<TransformComponent>(entity, transform);
         ecs->addComponent<PatternComponent>(entity, pattern);
         ecs->addComponent<MotionComponent>(entity, motion);
         model = createModelComponent(jsonValue->getObjectValue()["texture_obj"]->getStringValue());
         ecs->addComponent<ModelComponent>(entity, *model);
+        ecs->addComponent<HurtBox>(entity, hurtbox);
+        ecs->addComponent<HitBox>(entity, hitbox);
     }
     return true;
 }

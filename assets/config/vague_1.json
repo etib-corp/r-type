@@ -9,7 +9,19 @@
             "damage" : 10,
             "pattern" : "line",
             "scale" : 1,
-            "rotation" : [0, 0, 0]
+            "rotation" : [0, 0, 0],
+            "hurbox": {
+                "height": 10,
+                "width": 10,
+                "layer": [3],
+                "masks": [1, 2]
+            },
+            "hitbox": {
+                "height": 10,
+                "width": 10,
+                "layer": [],
+                "masks": []
+            }
         }
     ]
 }
