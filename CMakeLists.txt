@@ -14,7 +14,9 @@ set(XERCES_USE_ICU OFF)
 set(OPENGL_SILENT TRUE)
 find_package(OpenGL REQUIRED)
 
-add_compile_options(-g3 -ggdb)
+if (UNIX OR APPLE)
+    add_compile_options(-g3 -ggdb)
+endif()
 
 add_subdirectory(dependencies/glfw-3.4)
 add_subdirectory(dependencies/freetype-VER-2-13-3)
@@ -37,15 +39,18 @@ include_directories(client/include client/include/game client/include/GUI client
 
 include_directories(${OPENGL_INCLUDE_DIRS})
 
-add_executable(r-type_client ${CLIENT_SOURCES})
+if (UNIX OR APPLE)
+    add_executable(r-type_client ${CLIENT_SOURCES})
 
-target_link_libraries(r-type_client r-type)
-target_link_libraries(r-type_client glfw)
-target_link_libraries(r-type_client ${OPENGL_LIBRARIES})
-target_link_libraries(r-type_client ${GLUT_LIBRARIES})
-target_link_libraries(r-type_client freetype)
-target_link_libraries(r-type_client glm)
-target_link_libraries(r-type_client assimp)
+    target_link_libraries(r-type_client r-type)
+    target_link_libraries(r-type_client glfw)
+    target_link_libraries(r-type_client ${OPENGL_LIBRARIES})
+    target_link_libraries(r-type_client ${GLUT_LIBRARIES})
+    target_link_libraries(r-type_client freetype)
+    target_link_libraries(r-type_client glm)
+    target_link_libraries(r-type_client assimp)
+
+endif()
 
 file(GLOB_RECURSE SERVER_SOURCES server/src/*.cpp)
 include_directories(server/include)

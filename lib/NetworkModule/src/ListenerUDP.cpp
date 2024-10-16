@@ -57,7 +57,7 @@ void ListenerUDP::handleReceive(const boost::system::error_code &error, std::siz
         }
         catch (const std::exception &e)
         {
-            rtypeLog->log<LogType::ERROR, &std::cerr>("{}", e.what());
+            rtypeLog->log<LogType::ERR, &std::cerr>("{}", e.what());
         }
     }
 }

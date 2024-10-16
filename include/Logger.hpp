@@ -62,7 +62,7 @@ class Logger : public ILoggable
                 case LogType::INFO:
                     logInfo(vformat(format, make_format_args(args...)), streamOverride);
                     break;
-                case LogType::ERROR:
+                case LogType::ERR:
                     logError(vformat(format, make_format_args(args...)), streamOverride);
                     break;
                 case LogType::WARN:
