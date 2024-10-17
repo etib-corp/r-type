@@ -23,6 +23,10 @@ void PatternSystem::update(Ecs *ecs, float dt)
         auto &transform = ecs->getComponent<TransformComponent>(entity);
         auto &motion = ecs->getComponent<MotionComponent>(entity);
 
+        if (pattern.end_pos == transform.position && pattern.end == DESTROY) {
+            ecs->destroyEntity(entity);
+        }
+
         _patterns[pattern.pattern_name](pattern, transform, motion);
     }
 }
