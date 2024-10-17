@@ -17,6 +17,19 @@
 
 namespace LE {
     /**
+     * @brief A struct representing a 3D vector with x, y, and z components.
+     *
+     * @tparam T The type of the components of the vector.
+     * @note The template parameter T must be an arithmetic type.
+     * @note This struct is used to store the x, y, and z components of a 3D vector.
+     */
+    template <typename T>
+    struct Vector3Data {
+        T x;
+        T y;
+        T z;
+    };
+    /**
      * @brief A 3D vector class template.
      *
      * This class represents a 3D vector with x, y, and z components.
@@ -63,6 +76,28 @@ namespace LE {
              * @brief Destructor for the Vector3 object.
              */
             ~Vector3() {}
+
+            /**
+             * @brief Returns the data of the vector.
+             *
+             * @return The data of the vector.
+             */
+            struct Vector3Data<T> getData() const
+            {
+                return {x, y, z};
+            }
+
+            /**
+             * @brief Sets the data of the vector.
+             *
+             * @param data The data to set.
+             */
+            void setData(const struct Vector3Data<T>& data)
+            {
+                x = data.x;
+                y = data.y;
+                z = data.z;
+            }
 
             /**
              * @brief Returns the length of the vector.

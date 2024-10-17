@@ -27,11 +27,6 @@ void LE::GUI::Container::removeChildren(unsigned int id)
 
 void LE::GUI::Container::draw()
 {
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LESS);
-
-    glClear(GL_DEPTH_BUFFER_BIT);
-
     if (_background) {
         _background->resize(_width, _height);
         _background->draw();

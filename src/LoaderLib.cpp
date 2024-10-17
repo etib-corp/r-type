@@ -6,6 +6,7 @@
 */
 
 #include "LoaderLib.hpp"
+#include "globalLogger.hpp"
 
 LoaderLib::LoaderLib(const std::string &NetworkModule, const std::string &CoreModule)
 {
@@ -56,4 +57,3 @@ INetworkModule *LoaderLib::createNetworkModule(void)
 //         throw LoaderLibError("createCoreModule is not loaded");
 //     return _createCoreModule();
 // }
-

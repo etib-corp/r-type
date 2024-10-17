@@ -5,7 +5,9 @@
 ** Session
 */
 
+#include "globalLogger.hpp"
 #include "Session.hpp"
+#include "message/Message.hpp"
 
 Session::Session(boost::asio::ip::tcp::socket socket)
     : _socketTCP(std::move(socket)), _socketUDP(_io_service)
@@ -18,6 +20,26 @@ Session::~Session()
 {
 }
 
+void Session::handShake(void)
+{
+    Request request = {
+        .header = {
+            .MagicNumber = 0xFF,
+            .EmmiterdEcsId = 00,
+            .ReceiverEcsId = getId(),
+            .TopicID = 0x00,
+            .Action = asChar(ActionCode::NEW_CONNECTION),
+            .BodyLength = 0
+        },
+        .body = {0}
+    };
+    Message msg;
+
+    msg.setRequest(request);
+    _socketTCP.send(boost::asio::buffer(msg.serialize()));
+    rtypeLog->log("Handshake sent");
+}
+
 void Session::read(std::function<void(ISession *)> onDisconnected, std::function<void(const Request &request)> onReceive)
 {
     _socketTCP.async_receive(
@@ -27,7 +49,7 @@ void Session::read(std::function<void(ISession *)> onDisconnected, std::function
             if (!error)
             {
                 char *_bodyStr = new char[_data.header.BodyLength];
-                std::cout << "Received: " << _data.header.BodyLength << std::endl;
+                rtypeLog->log("Received: {}", _data.header.BodyLength);
                 ::memset(_bodyStr, 0, _data.header.BodyLength);
                 std::istringstream iss;
                 this->_socketTCP.receive(boost::asio::buffer(_bodyStr, _data.header.BodyLength));

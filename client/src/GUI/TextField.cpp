@@ -84,10 +84,10 @@ void LE::GUI::TextField::setMaxChars(unsigned int maxChars)
 void LE::GUI::TextField::init()
 {
     LE::Engine *engine = LE::Engine::getInstance();
-    std::shared_ptr<LE::Scene> scene = engine->_sceneManager->getCurrentScene();
+    std::shared_ptr<LE::Scene> scene = engine->_game->_sceneManager->getCurrentScene();
     std::shared_ptr<LE::EventManager> eventManager = scene->_eventManager;
 
-    LE::Engine::getInstance()->_sceneManager->getCurrentScene()->_eventManager->addEventListener({LE::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::JUST_PRESSED}, [this](LE::Engine *engine, float dt) {
+    eventManager->addEventListener({LE::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::JUST_PRESSED}, [this](LE::Engine *engine, float dt) {
         if (isHover()) {
             OnClick();
         } else {

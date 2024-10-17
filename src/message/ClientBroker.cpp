@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include "message/ClientBroker.hpp"
+#include "globalLogger.hpp"
 
 ClientBroker::ClientBroker(INetworkModule *network_module, std::string connect_address, std::uint16_t connect_port) : _connect_address(connect_address), _connect_port(connect_port)
 {
@@ -38,17 +39,32 @@ void ClientBroker::_sendMessage(Message *message)
 {
     std::string compressed_request = message->serialize();
 
-    _client->sendTCP(compressed_request);
+    if (message->isReliable())
+        _client->sendTCP(compressed_request);
+    else
+        _client->sendUDP(compressed_request);
 }
 
 void ClientBroker::_onReceiveRequestCallback(const Request &request)
 {
     Message *message = new Message();
 
-    message->setEmmiterID(request.header.EmmiterdEcsId);
-    message->setReceiverID(request.header.ReceiverEcsId);
-    message->setAction(request.header.Action);
-    message->setTopicID(request.header.TopicID);
-    message->setBody(request.body);
+    message->setRequest(request);
     _incomming_messages.push(message);
+}
+
+Message *ClientBroker::getMessageFromTopic(std::uint8_t topic_id)
+{
+    Message *message = nullptr;
+
+    std::lock_guard<std::mutex> lock(_mutex);
+    for (auto &topic : _topics) {
+        if (topic.first.second != topic_id)
+            continue;
+        message = topic.second->getMessage();
+        if (!message)
+            continue;
+        return message;
+    }
+    return nullptr;
 }

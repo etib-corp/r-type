@@ -17,7 +17,7 @@
 #include <vector>
 #include "Vector3.hpp"
 #include "Vector2.hpp"
-#include "Matrix.hpp"
+#include "matrix.hpp"
 #include "Window.hpp"
 #include "Shader.hpp"
 

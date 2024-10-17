@@ -35,6 +35,8 @@ public:
 
     ~ClientBroker(void);
 
+    Message *getMessageFromTopic(std::uint8_t topic_id);
+
 private:
     std::string _connect_address;
     std::uint16_t _connect_port;

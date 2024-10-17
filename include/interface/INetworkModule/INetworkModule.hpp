@@ -1,12 +1,4 @@
-/*
-** EPITECH PROJECT, 2024
-** r-type
-** File description:
-** ANetworkModule
-*/
-
-#ifndef ANETWORKMODULE_HPP_
-#define ANETWORKMODULE_HPP_
+#pragma once
 
 #include <queue>
 #include <memory>
@@ -39,10 +31,14 @@ public:
      */
     virtual IServer *createServer(int port) = 0;
 
+    /**
+     * @brief Creates a client IClient
+     *
+     * This pure virtual function must be implemented by derived classes to create a client.
+     * It is used to connect to a server and begin sending and receiving data.
+     */
     virtual IClient *createClient(const std::string &ip, int port) = 0;
 
 protected:
 private:
 };
-
-#endif /* !ANETWORKMODULE_HPP_ */

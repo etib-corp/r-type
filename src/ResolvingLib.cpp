@@ -51,7 +51,7 @@ std::string getPathOfNetworkDynLib(void)
     if (isLinux())
         return "./build/lib/NetworkModule/libNetworkModule";
     if (isWindows())
-        return ".\\Debug\\NetworkModule";
+        return ".\\build\\lib\\NetworkModule\\Debug\\NetworkModuled";
     if (isMacOS())
         return "./build/lib/NetworkModule/libNetworkModule";
     return "";

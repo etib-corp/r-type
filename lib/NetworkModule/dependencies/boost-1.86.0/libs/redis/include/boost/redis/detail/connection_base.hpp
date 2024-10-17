@@ -435,7 +435,7 @@ public:
          cancel_impl(operation::receive);
          cancel_impl(operation::exec);
          return;
-      } 
+      }
 
       cancel_impl(op);
    }
