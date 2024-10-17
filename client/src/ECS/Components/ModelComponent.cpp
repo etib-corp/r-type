@@ -14,7 +14,7 @@ ModelComponent *createModelComponent(const std::string &path)
 {
     if (g_models.find(path) != g_models.end())
         return g_models[path];
-    ModelComponent *model = new ModelComponent();
+    std::shared_ptr<ModelComponent> model = std::make_shared<ModelComponent>();
     Assimp::Importer importer;
     const aiScene *scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_CalcTangentSpace | aiProcess_JoinIdenticalVertices);
     if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
@@ -23,10 +23,10 @@ ModelComponent *createModelComponent(const std::string &path)
         return nullptr;
     }
     model->_directory = path.substr(0, path.find_last_of('/'));
-    processNode(scene->mRootNode, scene, model);
+    processNode(scene->mRootNode, scene, model.get());
 
-    g_models[path] = model;
-    return model;
+    g_models[path] = model.get();
+    return model.get();
 }
 
 void processNode(aiNode *node, const aiScene *scene, ModelComponent *model)

@@ -35,7 +35,7 @@ LE::Game::Game()
 
     loaderLib.LoadModule();
     _networkModule = loaderLib.createNetworkModule();
-    _clientBroker = new ClientBroker(_networkModule, "127.0.0.1", 8080);
+    _clientBroker = new ClientBroker(_networkModule, "10.49.84.132", 8080);
     _responsibilityChain = ResponsibilityChain();
     _sceneManager = std::make_shared<SceneManager>();
 }

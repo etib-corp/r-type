@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <string>
 #include <map>
+#include <thread>
 
 #include "PackUnpack.hpp"
 
@@ -159,7 +160,7 @@ public:
      *
      * @return The request of the message.
      */
-    [[nodiscard]] bool isReliable(void) const { return _is_relialbe; }
+    [[nodiscard]] bool isReliable(void) const { std::cout << "[" << std::this_thread::get_id() << "]" << std::endl; return _is_relialbe; }
 
     /**
      * @brief Sets the reliability of the message.
