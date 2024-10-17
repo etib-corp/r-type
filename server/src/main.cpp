@@ -46,13 +46,14 @@ static void receivedFromAllClient(ServerBroker *server_broker, std::shared_ptr<E
         {
             receiveFromClient(server_broker, session, _ecs, chain);
         }
-        std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
-        std::chrono::duration<double> elapsed = now - lastFrame;
-        if (elapsed.count() >= 0.016)
-        {
-            lastFrame = now;
-            _ecs->update(elapsed.count());
-        }
+        // std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
+        // std::chrono::duration<double> elapsed = now - lastFrame;
+        // if (elapsed.count() >= 0.016)
+        // {
+
+        //     lastFrame = now;
+        //     _ecs->update(elapsed.count());
+        // }
     }
 }
 
@@ -81,7 +82,7 @@ int main(void)
     _ecs->setSignature<MoveSystem>(signature);
 
     int nbrPlayer = 0;
-    chain.addActionCallback(asChar(ActionCode::READY), [&nbrPlayer, &server_broker](const Request &req, std::shared_ptr<Ecs>& _ecs) -> bool {
+    chain.addActionCallback(asChar(ActionCode::READY), [&nbrPlayer, &server_broker, &clock](const Request &req, std::shared_ptr<Ecs>& _ecs) -> bool {
         nbrPlayer++;
         if (nbrPlayer != 2) {
             return false;
@@ -109,6 +110,7 @@ int main(void)
         msg.setRequest(request);
         msg.setReliable(true);
         server_broker->sendToAllClient(&msg, 1, 0);
+        clock.start();
         return true;
     });
 
@@ -142,7 +144,9 @@ int main(void)
         server_broker->sendToAllClient(&msg, 1, 0);
     }, 1000);
 
-    clock.start();
+    clock.addCallback([&_ecs]() {
+        _ecs->update(0.016);
+    }, 16);
 
     receivedFromAllClient(server_broker, _ecs, chain);
 
