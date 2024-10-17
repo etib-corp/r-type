@@ -24,7 +24,7 @@ LE::Engine::Engine()
     _throwError = false;
     _window = std::make_shared<LE::Window>("The R-Type");
     _clock = std::make_unique<LE::Clock>();
-    _framerateLimit = _window->_defaultFramerate;
+    _framerateLimit = 60; // _window->_defaultFramerate;
 }
 
 LE::Engine::~Engine()
