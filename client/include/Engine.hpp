@@ -14,6 +14,8 @@
 #include "Window.hpp"
 #include "Error.hpp"
 
+#include "Sound/Device.hpp"
+
 namespace LE {
     class Window;
     class SceneManager;
