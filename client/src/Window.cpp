@@ -43,9 +43,9 @@ LE::Window::Window(const std::string& title)
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
 
-    // glEnable(GL_CULL_FACE);
-    // glCullFace(GL_FRONT);
-    // glFrontFace(GL_CW);
+    glEnable(GL_CULL_FACE);
+    glCullFace(GL_FRONT);
+    glFrontFace(GL_CW);
 
     glfwSwapInterval(1);
 
