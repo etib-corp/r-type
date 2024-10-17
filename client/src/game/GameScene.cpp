@@ -66,7 +66,7 @@ GameScene::GameScene() : LE::Scene()
     });
 
     Entity cameraEntity = _ecs->createEntity();
-    _ecs->addComponent<TransformComponent>(cameraEntity, (TransformComponent){{0, 0, -50}, {0, 0, 0}, {1.0f, 1.0f, 1.0f}});
+    _ecs->addComponent<TransformComponent>(cameraEntity, (TransformComponent){{0, 0, -100}, {0, 0, 0}, {1.0f, 1.0f, 1.0f}});
     _ecs->addComponent<CameraComponent>(cameraEntity, (CameraComponent){static_cast<float>(LE::Engine::getInstance()->getWindowWidth()), static_cast<float>(LE::Engine::getInstance()->getWindowHeight()), 0.0f, 1000.0f, 45.0f, static_cast<float>(LE::Engine::getInstance()->getWindowWidth()) / static_cast<float>(LE::Engine::getInstance()->getWindowHeight()), {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f}});
     _ecs->addComponent<MotionComponent>(cameraEntity, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
     _ecs->setCameraEntity(cameraEntity);
