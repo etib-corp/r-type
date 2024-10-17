@@ -126,7 +126,7 @@ int main(void)
         updateEcs2.position[0] = _ecs->getComponent<TransformComponent>(2).position.x;
         updateEcs2.position[1] = _ecs->getComponent<TransformComponent>(2).position.y;
         updateEcs2.position[2] = _ecs->getComponent<TransformComponent>(2).position.z;
-        ::memmove((rq.body._buffer + sizeof(UpdateEcs)), &updateEcs2, sizeof(UpdateEcs));
+        ::memmove(&rq.body._buffer[sizeof(UpdateEcs)], &updateEcs2, sizeof(UpdateEcs));
         rq.header.BodyLength = sizeof(UpdateEcs) + sizeof(UpdateEcs);
         Message msg;
         msg.setRequest(rq);
