@@ -13,7 +13,7 @@
 #include "PackUnpack.hpp"
 #include "ECS/Ecs.hpp"
 
-using CallBackFunc = std::function<bool(const Request&, std::shared_ptr<Ecs>)>;
+using CallBackFunc = std::function<bool(const Request&, std::shared_ptr<Ecs>&)>;
 
 class ResponsibilityChain {
     public:

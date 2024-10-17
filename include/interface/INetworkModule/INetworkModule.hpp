@@ -42,5 +42,3 @@ public:
 protected:
 private:
 };
-
-#endif /* !ANETWORKMODULE_HPP_ */

@@ -52,6 +52,16 @@ void SessionManager::removeClientById(std::uint32_t id)
     }
 }
 
+void SessionManager::setOnReceive(std::function<void(const Request &)> callback)
+{
+    _onReceive = callback;
+}
+
+std::function<void(const Request &)> SessionManager::getOnReceive(void)
+{
+    return _onReceive;
+}
+
 std::shared_ptr<ISession> SessionManager::popSession(void)
 {
     std::lock_guard<std::mutex> lock(_mutex);

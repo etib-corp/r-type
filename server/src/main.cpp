@@ -19,6 +19,7 @@
 #include "CallbackServer.hpp"
 #include <iostream>
 #include "globalLogger.hpp"
+#include "ECS/Systems/MoveSystem.hpp"
 
 static void receiveFromClient(ServerBroker *server_broker, std::shared_ptr<ISession> session, std::shared_ptr<Ecs> _ecs, ResponsibilityChain chain)
 {
@@ -43,6 +44,7 @@ static void receivedFromAllClient(ServerBroker *server_broker, std::shared_ptr<E
         {
             receiveFromClient(server_broker, session, _ecs, chain);
         }
+        _ecs->update(0.0f);
     }
 }
 
@@ -57,14 +59,21 @@ int main(void)
     INetworkModule *network_module = loader_lib.createNetworkModule();
     ServerBroker *server_broker = new ServerBroker(network_module, 0, 8080);
 
-    attributeServerCallback(&chain, server_broker);
+    attributeServerCallback(chain, *server_broker);
 
     std::shared_ptr<Ecs> _ecs = std::make_shared<Ecs>();
     Entity entity = _ecs->createEntity();
     _ecs->registerComponent<TransformComponent>();
+    _ecs->registerComponent<MotionComponent>();
+
+    Signature signature;
+    _ecs->registerSystem<MoveSystem>();
+    signature.set(_ecs->getComponentType<TransformComponent>());
+    signature.set(_ecs->getComponentType<MotionComponent>());
+    _ecs->setSignature<MoveSystem>(signature);
 
     int nbrPlayer = 0;
-    chain.addActionCallback(asChar(ActionCode::READY), [&nbrPlayer, &server_broker](const Request &req, std::shared_ptr<Ecs> _ecs) -> bool {
+    chain.addActionCallback(asChar(ActionCode::READY), [&nbrPlayer, &server_broker](const Request &req, std::shared_ptr<Ecs>& _ecs) -> bool {
         nbrPlayer++;
         if (nbrPlayer != 2) {
             return false;
@@ -72,8 +81,10 @@ int main(void)
         rtypeLog->log("Game is starting");
         Entity player1 = _ecs->createEntity();
         _ecs->addComponent<TransformComponent>(player1, {{0, 0, 0}, {0, 90, 0}, {1, 1, 1}});
+        _ecs->addComponent<MotionComponent>(player1, {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
         Entity player2 = _ecs->createEntity();
         _ecs->addComponent<TransformComponent>(player2, {{0, 0, 0}, {0, 90, 0}, {1, 1, 1}});
+        _ecs->addComponent<MotionComponent>(player2, {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
         Request request = {
             .header = {
                 .MagicNumber = 0xFF,
@@ -93,35 +104,35 @@ int main(void)
         return true;
     });
 
-    // clock.addCallback([&server_broker, &_ecs, &nbrPlayer]() {
-    //     if (nbrPlayer != 2) {
-    //         return;
-    //     }
-    //     Request rq;
-    //     rq.header.MagicNumber = 0xFF;
-    //     rq.header.EmmiterdEcsId = 0;
-    //     rq.header.ReceiverEcsId = 0;
-    //     rq.header.TopicID = 1;
-    //     rq.header.Action = asChar(ActionCode::UPDATE_ECS);
-    //     rq.header.BodyLength = 0;
-    //     UpdateEcs updateEcs1;
-    //     updateEcs1.ecsId = 1;
-    //     updateEcs1.position[0] = _ecs->getComponent<TransformComponent>(1).position.x;
-    //     updateEcs1.position[1] = _ecs->getComponent<TransformComponent>(1).position.y;
-    //     updateEcs1.position[2] = _ecs->getComponent<TransformComponent>(1).position.z;
-    //     ::memmove(&rq.body._buffer, &updateEcs1, sizeof(UpdateEcs));
-    //     UpdateEcs updateEcs2;
-    //     updateEcs2.ecsId = 2;
-    //     updateEcs2.position[0] = _ecs->getComponent<TransformComponent>(2).position.x;
-    //     updateEcs2.position[1] = _ecs->getComponent<TransformComponent>(2).position.y;
-    //     updateEcs2.position[2] = _ecs->getComponent<TransformComponent>(2).position.z;
-    //     ::memmove((rq.body._buffer + sizeof(UpdateEcs)), &updateEcs2, sizeof(UpdateEcs));
-    //     rq.header.BodyLength = sizeof(updateEcs1) + sizeof(updateEcs2);
-    //     Message msg;
-    //     msg.setRequest(rq);
-    //     msg.setReliable(true);
-    //     server_broker->sendToAllClient(&msg, 1, 0);
-    // }, 1000);
+    clock.addCallback([&server_broker, &_ecs, &nbrPlayer]() {
+        if (nbrPlayer != 2) {
+            return;
+        }
+        Request rq;
+        rq.header.MagicNumber = 0xFF;
+        rq.header.EmmiterdEcsId = 0;
+        rq.header.ReceiverEcsId = 0;
+        rq.header.TopicID = 1;
+        rq.header.Action = asChar(ActionCode::UPDATE_ECS);
+        rq.header.BodyLength = 0;
+        UpdateEcs updateEcs1;
+        updateEcs1.ecsId = 1;
+        updateEcs1.position[0] = _ecs->getComponent<TransformComponent>(1).position.x;
+        updateEcs1.position[1] = _ecs->getComponent<TransformComponent>(1).position.y;
+        updateEcs1.position[2] = _ecs->getComponent<TransformComponent>(1).position.z;
+        ::memmove(&rq.body._buffer, &updateEcs1, sizeof(UpdateEcs));
+        UpdateEcs updateEcs2;
+        updateEcs2.ecsId = 2;
+        updateEcs2.position[0] = _ecs->getComponent<TransformComponent>(2).position.x;
+        updateEcs2.position[1] = _ecs->getComponent<TransformComponent>(2).position.y;
+        updateEcs2.position[2] = _ecs->getComponent<TransformComponent>(2).position.z;
+        ::memmove((rq.body._buffer + sizeof(UpdateEcs)), &updateEcs2, sizeof(UpdateEcs));
+        rq.header.BodyLength = sizeof(UpdateEcs) + sizeof(UpdateEcs);
+        Message msg;
+        msg.setRequest(rq);
+        msg.setReliable(true);
+        server_broker->sendToAllClient(&msg, 1, 0);
+    }, 1000);
 
     clock.start();
 

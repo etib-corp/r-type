@@ -118,7 +118,7 @@ bool callbackUpdateEcs(const Request& req, std::shared_ptr<Ecs> _ecs)
     UpdateEcs updateEcs1;
     UpdateEcs updateEcs2;
     ::memmove(&updateEcs1, &req.body._buffer, sizeof(UpdateEcs));
-    ::memmove(&updateEcs2, &req.body._buffer + sizeof(UpdateEcs), sizeof(UpdateEcs));
+    ::memmove(&updateEcs2, &req.body._buffer, sizeof(UpdateEcs));
     std::cout << "UpdateEcs1 : " << static_cast<int>(updateEcs1.ecsId) << std::endl;
     std::cout << "UpdateEcs2 : " << static_cast<int>(updateEcs2.ecsId) << std::endl;
     std::cout << updateEcs1.position[0] << "  " <<  updateEcs1.position[1] << "  " << updateEcs1.position[2] << std::endl;

@@ -25,15 +25,15 @@ void showBody(_Entity *entity)
     std::cout << "\t" << entity->life << std::endl;
 }
 
-std::ostream& operator<<(std::ostream& os, const Body& req)
+std::ostream &operator<<(std::ostream &os, const Body &req)
 {
     std::vector<uint8_t> serializedData = PackUnpack::serialize(req);
     std::vector<uint8_t> packedData = PackUnpack::pack(serializedData);
-    os.write(reinterpret_cast<const char*>(packedData.data()), packedData.size());
+    os.write(reinterpret_cast<const char *>(packedData.data()), packedData.size());
     return os;
 }
 
-std::istream& operator>>(std::istream& is, Body& req)
+std::istream &operator>>(std::istream &is, Body &req)
 {
     size_t originalSize = sizeof(Body);
     std::vector<uint8_t> compressedData((std::istreambuf_iterator<char>(is)), std::istreambuf_iterator<char>());
