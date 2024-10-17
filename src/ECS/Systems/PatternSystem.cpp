@@ -24,6 +24,7 @@ void PatternSystem::update(Ecs *ecs, float dt)
         auto &motion = ecs->getComponent<MotionComponent>(entity);
 
         if (pattern.end_pos == transform.position && pattern.end == DESTROY) {
+            std::cout << "Destroying entity" << std::endl;
             ecs->destroyEntity(entity);
         }
 

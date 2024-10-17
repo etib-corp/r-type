@@ -8,12 +8,12 @@
 #include "ECS/Components/ModelComponent.hpp"
 #include "stb_image.h"
 
-std::map<std::string, ModelComponent *> g_models;
+std::map<std::string, std::shared_ptr<ModelComponent>> g_models;
 
 ModelComponent *createModelComponent(const std::string &path)
 {
     if (g_models.find(path) != g_models.end())
-        return g_models[path];
+        return g_models[path].get();
     std::shared_ptr<ModelComponent> model = std::make_shared<ModelComponent>();
     Assimp::Importer importer;
     const aiScene *scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_CalcTangentSpace | aiProcess_JoinIdenticalVertices);
@@ -25,7 +25,7 @@ ModelComponent *createModelComponent(const std::string &path)
     model->_directory = path.substr(0, path.find_last_of('/'));
     processNode(scene->mRootNode, scene, model.get());
 
-    g_models[path] = model.get();
+    g_models[path] = model;
     return model.get();
 }
 
