@@ -122,6 +122,8 @@ bool callbackUpdateEcs(const Request& req, std::shared_ptr<Ecs> _ecs)
     std::cout << "UpdateEcs1 : " << static_cast<int>(updateEcs1.ecsId) << std::endl;
     std::cout << "UpdateEcs2 : " << static_cast<int>(updateEcs2.ecsId) << std::endl;
     std::cout << updateEcs1.position[0] << "  " <<  updateEcs1.position[1] << "  " << updateEcs1.position[2] << std::endl;
+    _ecs->getComponent<TransformComponent>(updateEcs1.ecsId).position = {updateEcs1.position[0], updateEcs1.position[1], updateEcs1.position[2]};
+    _ecs->getComponent<TransformComponent>(updateEcs2.ecsId).position = {updateEcs2.position[0], updateEcs2.position[1], updateEcs2.position[2]};
     return true;
 }
 
