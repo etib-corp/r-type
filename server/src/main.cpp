@@ -20,6 +20,7 @@
 #include <iostream>
 #include "globalLogger.hpp"
 #include "ECS/Systems/MoveSystem.hpp"
+#include <chrono>
 
 static void receiveFromClient(ServerBroker *server_broker, std::shared_ptr<ISession> session, std::shared_ptr<Ecs> _ecs, ResponsibilityChain chain)
 {
@@ -38,13 +39,20 @@ static void receiveFromClient(ServerBroker *server_broker, std::shared_ptr<ISess
 
 static void receivedFromAllClient(ServerBroker *server_broker, std::shared_ptr<Ecs> _ecs, ResponsibilityChain chain)
 {
+    std::chrono::high_resolution_clock::time_point lastFrame = std::chrono::high_resolution_clock::now();
     while (true)
     {
         for (auto session : server_broker->getClientsSessions())
         {
             receiveFromClient(server_broker, session, _ecs, chain);
         }
-        _ecs->update(0.0f);
+        std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> elapsed = now - lastFrame;
+        if (elapsed.count() >= 0.016)
+        {
+            lastFrame = now;
+            _ecs->update(elapsed.count());
+        }
     }
 }
 
