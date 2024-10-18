@@ -15,8 +15,7 @@ LE::GUI::Text::Text(unsigned int id, const std::string &fontPath, unsigned int f
     _content = content;
     _font = new LE::GUI::Font(fontHeight, fontPath, fontWidth);
     _color = color ? color : new Color(LE::Color::FLOAT, 1.0f, 1.0f, 1.0f, 1.0f);
-    _x = 0;
-    _y = 0;
+    _height = fontHeight;
 }
 
 LE::GUI::Text::~Text()
@@ -49,8 +48,8 @@ void LE::GUI::Text::init()
         ypos = _y - (ch.Size.y - ch.Bearing.y);
         x += (ch.Advance >> 6);
     }
-    _width = xpos - _x;
-    _height = ypos - _y;
+    _width = x - _x;
+    _x -= _width / 2;
 }
 
 void LE::GUI::Text::draw()
@@ -95,6 +94,7 @@ void LE::GUI::Text::draw()
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glDrawArrays(GL_TRIANGLES, 0, 6);
         x += (ch.Advance >> 6);
+
     }
     _width = x - _x;
     glBindVertexArray(0);

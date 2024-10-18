@@ -55,17 +55,16 @@ void LE::GUI::Container::init()
     }
     _height = totalHeight > _height ? totalHeight : _height;
 
-    auto lastPos = _y;
+    auto lastPos = _y + _height - ((_height / 2) - (totalHeight / 2));
     for (auto child : _children) {
-        if (child->getY() < _y || child->getY() > _y + _height) {
-            child->setPos(child->getX(), lastPos);
-        }
-        if (child->getX() < _x || child->getX() > _x + _width)
-            child->setPos(_x, child->getY());
+        child->setPos(_x + (_width / 2) - (child->getWidth() / 2), lastPos - child->getHeight());
         lastPos -= child->getHeight();
         child->init();
     }
-    _background = new LE::Shapes::Rectangle(_width, _height, _x, _y);
+    if (_background)
+        _background = new LE::Shapes::Rectangle(_width, _height, _x, _y, _background->_color);
+    else
+        _background = new LE::Shapes::Rectangle(_width, _height, _x, _y);
 
     _background->init();
 }
