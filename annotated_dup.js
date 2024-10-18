@@ -90,6 +90,7 @@ var annotated_dup =
     [ "LoaderLib", "classLoaderLib.html", "classLoaderLib" ],
     [ "LoaderLibError", "classLoaderLibError.html", null ],
     [ "Memgrp_Test", "classMemgrp__Test.html", "classMemgrp__Test" ],
+    [ "Menu", "classMenu.html", "classMenu" ],
     [ "Mesh", "structMesh.html", "structMesh" ],
     [ "Message", "classMessage.html", "classMessage" ],
     [ "ModelComponent", "structModelComponent.html", "structModelComponent" ],

@@ -37,6 +37,7 @@ var hierarchy =
           [ "LE::GUI::TextField", "classLE_1_1GUI_1_1TextField.html", null ]
         ] ],
         [ "LE::GUI::Manager", "classLE_1_1GUI_1_1Manager.html", null ],
+        [ "Menu::MainContainer", "classMenu_1_1MainContainer.html", null ],
         [ "MyContainer", "classMyContainer.html", null ],
         [ "MyParentContainer", "classMyParentContainer.html", null ]
       ] ],
@@ -128,6 +129,7 @@ var hierarchy =
     [ "ResponsibilityChain", "classResponsibilityChain.html", null ],
     [ "LE::Scene", "classLE_1_1Scene.html", [
       [ "GameScene", "classGameScene.html", null ],
+      [ "Menu", "classMenu.html", null ],
       [ "MyScene", "classMyScene.html", null ]
     ] ],
     [ "LE::SceneManager", "classLE_1_1SceneManager.html", null ],

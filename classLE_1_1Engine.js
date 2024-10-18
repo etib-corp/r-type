@@ -10,6 +10,7 @@ var classLE_1_1Engine =
     [ "removeScene", "classLE_1_1Engine.html#a4bd7f61e42736e9c0be61e91a0a8aa59", null ],
     [ "run", "classLE_1_1Engine.html#a2b392f58fe6d77dc1f34b20e25701465", null ],
     [ "runWithDebug", "classLE_1_1Engine.html#aa019b3daf27d67a49db8b493d0af7afc", null ],
+    [ "selectScene", "classLE_1_1Engine.html#afa12b3026aa773988957895821c57151", null ],
     [ "setConfig", "classLE_1_1Engine.html#a914dd64e78a507b9f765bcc25f5c2095", null ],
     [ "setFramerateLimit", "classLE_1_1Engine.html#af7c731481980ad7ceea7ab90341548c5", null ],
     [ "throwError", "classLE_1_1Engine.html#a93e768762eb3d6e5b7f8d59b5c2284ca", null ],
