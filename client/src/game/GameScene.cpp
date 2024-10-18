@@ -336,18 +336,18 @@ void GameScene::init()
             message->setRequest(request);
             _clientBroker->addMessage(0, 1, message);
 
-            Entity entity = _ecs->createEntity();
-            _ecs->addComponent<TransformComponent>(entity, (TransformComponent){{transform.position.x + 3, transform.position.y + 0.3f, transform.position.z}, {0, 0, 0}, {0.3f, 0.1f, 0.1f}});
-            _ecs->addComponent<MotionComponent>(entity, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
-            _ecs->addComponent<PatternComponent>(entity, (PatternComponent){"line", LE::Vector3<float>(transform.position.x + 50, transform.position.y + 0.3f, transform.position.z), 0.1, PatternEnd::DESTROY});
-            HitBox hitbox = {5, 5, 0, 0};
-            hitbox.masks.set(3);
-            _ecs->addComponent<HitBox>(entity, hitbox);
-            _ecs->addComponent<HurtBox>(entity, (HurtBox){5, 5, 0, 0, []() {
-                std::cout << "Hurtbox on hit" << std::endl;
-            }});
-            ModelComponent *model = createModelComponent("assets/models/bullet/bullet.obj");
-            _ecs->addComponent<ModelComponent>(entity, *model);
+            // Entity entity = _ecs->createEntity();
+            // _ecs->addComponent<TransformComponent>(entity, (TransformComponent){{transform.position.x + 3, transform.position.y + 0.3f, transform.position.z}, {0, 0, 0}, {0.3f, 0.1f, 0.1f}});
+            // _ecs->addComponent<MotionComponent>(entity, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
+            // _ecs->addComponent<PatternComponent>(entity, (PatternComponent){"line", LE::Vector3<float>(transform.position.x + 50, transform.position.y + 0.3f, transform.position.z), 0.1, PatternEnd::DESTROY});
+            // HitBox hitbox = {5, 5, 0, 0};
+            // hitbox.masks.set(3);
+            // _ecs->addComponent<HitBox>(entity, hitbox);
+            // _ecs->addComponent<HurtBox>(entity, (HurtBox){5, 5, 0, 0, []() {
+            //     std::cout << "Hurtbox on hit" << std::endl;
+            // }});
+            // ModelComponent *model = createModelComponent("assets/models/bullet/bullet.obj");
+            // _ecs->addComponent<ModelComponent>(entity, *model);
             std::cout << "SHIP " << id << " SHOOT" << std::endl;
         } catch (const std::exception &e) {}
     });

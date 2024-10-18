@@ -84,21 +84,20 @@ bool callbackLeft(const Request& req, std::shared_ptr<Ecs> _ecs)
 
 bool callbackShoot(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
-    std::uint8_t id = req.header.EmmiterdEcsId;
-    auto transform = _ecs->getComponent<TransformComponent>(id);
+    auto transform = _ecs->getComponent<TransformComponent>(req.header.EmmiterdEcsId);
     Entity entity = _ecs->createEntity();
-    _ecs->addComponent<TransformComponent>(entity, (TransformComponent){transform.position, {0, 0, 0}, {1.0f, 1.0f, 1.0f}});
+    _ecs->addComponent<TransformComponent>(entity, (TransformComponent){{transform.position.x + 3, transform.position.y + 0.3f, transform.position.z}, {0, 0, 0}, {0.3f, 0.1f, 0.1f}});
     _ecs->addComponent<MotionComponent>(entity, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
-    _ecs->addComponent<PatternComponent>(entity, (PatternComponent){"line", LE::Vector3<float>(transform.position.x + 50, transform.position.y, transform.position.z), 0.1, PatternEnd::DESTROY});
-    ModelComponent *model = createModelComponent("assets/models/bullet/bullet.obj");
+    _ecs->addComponent<PatternComponent>(entity, (PatternComponent){"line", LE::Vector3<float>(transform.position.x + 50, transform.position.y + 0.3f, transform.position.z), 0.1, PatternEnd::DESTROY});
     HitBox hitbox = {5, 5, 0, 0};
     hitbox.masks.set(3);
     _ecs->addComponent<HitBox>(entity, hitbox);
     _ecs->addComponent<HurtBox>(entity, (HurtBox){5, 5, 0, 0, []() {
         std::cout << "Hurtbox on hit" << std::endl;
     }});
+    ModelComponent *model = createModelComponent("assets/models/bullet/bullet.obj");
+
     _ecs->addComponent<ModelComponent>(entity, *model);
-    std::cout << "SHIP " << (int)id << " SHOOT" << std::endl;
     return true;
 }
 
