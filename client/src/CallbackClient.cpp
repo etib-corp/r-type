@@ -142,19 +142,19 @@ void attributeClientCallback(ResponsibilityChain *chain, ClientBroker *client_br
     chain->addActionCallback(asChar(ActionCode::START_GAME), callbackStartGame);
 
 
-    chain->addActionCallback(asChar(ActionCode::UP), checkRequestEmmiterdEcsId);
+    // chain->addActionCallback(asChar(ActionCode::UP), checkRequestEmmiterdEcsId);
     chain->addActionCallback(asChar(ActionCode::UP), callbackUp);
 
-    chain->addActionCallback(asChar(ActionCode::DOWN), checkRequestEmmiterdEcsId);
+    // chain->addActionCallback(asChar(ActionCode::DOWN), checkRequestEmmiterdEcsId);
     chain->addActionCallback(asChar(ActionCode::DOWN), callbackDown);
 
-    chain->addActionCallback(asChar(ActionCode::RIGHT), checkRequestEmmiterdEcsId);
+    // chain->addActionCallback(asChar(ActionCode::RIGHT), checkRequestEmmiterdEcsId);
     chain->addActionCallback(asChar(ActionCode::RIGHT), callbackRight);
 
-    chain->addActionCallback(asChar(ActionCode::LEFT), checkRequestEmmiterdEcsId);
+    // chain->addActionCallback(asChar(ActionCode::LEFT), checkRequestEmmiterdEcsId);
     chain->addActionCallback(asChar(ActionCode::LEFT), callbackLeft);
 
-    chain->addActionCallback(asChar(ActionCode::SHOOT), checkRequestEmmiterdEcsId);
+    // chain->addActionCallback(asChar(ActionCode::SHOOT), checkRequestEmmiterdEcsId);
     chain->addActionCallback(asChar(ActionCode::SHOOT), callbackShoot);
 
     chain->addActionCallback(asChar(ActionCode::UPDATE_ECS), callbackUpdateEcs);

@@ -83,8 +83,8 @@ void LE::Shapes::Triangle::draw()
 
 void LE::Shapes::Triangle::init()
 {
-    glGenVertexArrays(1, &_VAO);
-    glGenBuffers(1, &_VBO);
+    // glGenVertexArrays(1, &_VAO);
+    // glGenBuffers(1, &_VBO);
 }
 
 void LE::Shapes::Triangle::resize(float width, float height)
