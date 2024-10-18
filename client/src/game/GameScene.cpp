@@ -324,7 +324,7 @@ void GameScene::init()
     _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_SPACE, LE::JUST_PRESSED, false}, [&](LE::Engine *engine, float dt) {
         try {
             int id = _clientBroker->getECSId();
-            // auto transform = _ecs->getComponent<TransformComponent>(id);
+            auto transform = _ecs->getComponent<TransformComponent>(id);
             Request request = {0};
             request.header.Action = asChar(ActionCode::SHOOT);
             request.header.BodyLength = 0;

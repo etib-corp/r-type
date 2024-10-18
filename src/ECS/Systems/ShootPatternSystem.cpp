@@ -6,6 +6,7 @@
 */
 
 #include "ECS/Systems/ShootPatternSystem.hpp"
+#include "ECS/Ecs.hpp"
 
 ShootPatternSystem::ShootPatternSystem()
 {
@@ -30,7 +31,7 @@ void ShootPatternSystem::update(Ecs *ecs, float dt)
             }
         }
 
-        _patterns[pattern.pattern_name](pattern, transform, motion);
+        // pattern[pattern.pattern_name](pattern, transform, motion);
     }
 
     for (auto &entity : end) {

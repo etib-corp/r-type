@@ -7,8 +7,10 @@
 
 #pragma once
 
-#include "ECS/Systems/System.hpp"
+#include "ECS/SystemManager.hpp"
 #include "ECS/Components/ShootPatternComponent.hpp"
+#include "ECS/Components/TransformComponent.hpp"
+#include "ECS/Components/MotionComponent.hpp"
 
 class ShootPatternSystem : public System {
     public:
@@ -16,4 +18,6 @@ class ShootPatternSystem : public System {
         ~ShootPatternSystem();
 
         void update(Ecs *ecs, float dt) override;
-}
+
+    protected:
+};
