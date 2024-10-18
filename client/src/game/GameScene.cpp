@@ -84,7 +84,7 @@ void GameScene::init()
     _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_UP, LE::JUST_PRESSED, false}, [&](LE::Engine *engine, float dt) {
         try {
             int id = _clientBroker->getECSId();
-            auto& motion = _ecs->getComponent<MotionComponent>(id);
+            // auto& motion = _ecs->getComponent<MotionComponent>(id);
             Request request = {0};
             request.header.Action = asChar(ActionCode::UP);
             request.header.BodyLength = 0;
@@ -95,10 +95,10 @@ void GameScene::init()
             Message *message = new Message();
             message->setRequest(request);
             _clientBroker->addMessage(0, 1, message);
-            if (motion.velocity[1] == 0.0f)
-                motion.velocity[1] = 1.0f;
-            else
-                motion.velocity[1] = 0.0f;
+            // if (motion.velocity[1] == 0.0f)
+            //     motion.velocity[1] = 1.0f;
+            // else
+            //     motion.velocity[1] = 0.0f;
         } catch (const std::exception &e) {}
     });
     // _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_UP, LE::PRESSED, false}, [&](LE::Engine *engine, float dt) {
@@ -115,7 +115,7 @@ void GameScene::init()
     _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_UP, LE::JUST_RELEASED, false}, [&](LE::Engine *engine, float dt) {
         try {
             int id = _clientBroker->getECSId();
-            auto& motion = _ecs->getComponent<MotionComponent>(id);
+            // auto& motion = _ecs->getComponent<MotionComponent>(id);
             Request request = {0};
             request.header.Action = asChar(ActionCode::UP);
             request.header.BodyLength = 0;
@@ -126,8 +126,8 @@ void GameScene::init()
             Message *message = new Message();
             message->setRequest(request);
             _clientBroker->addMessage(0, 1, message);
-            if (motion.velocity[1] == 1.0f)
-                motion.velocity[1] = 0.0f;
+            // if (motion.velocity[1] == 1.0f)
+            //     motion.velocity[1] = 0.0f;
         } catch (const std::exception &e) {}
     });
     // _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_UP, LE::RELEASED, false}, [&](LE::Engine *engine, float dt) {
@@ -142,7 +142,7 @@ void GameScene::init()
     _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_DOWN, LE::JUST_PRESSED, false}, [&](LE::Engine *engine, float dt) {
         try {
             int id = _clientBroker->getECSId();
-            auto& motion = _ecs->getComponent<MotionComponent>(id);
+            // auto& motion = _ecs->getComponent<MotionComponent>(id);
             Request request = {0};
             request.header.Action = asChar(ActionCode::DOWN);
             request.header.BodyLength = 0;
@@ -153,10 +153,10 @@ void GameScene::init()
             Message *message = new Message();
             message->setRequest(request);
             _clientBroker->addMessage(0, 1, message);
-            if (motion.velocity[1] == 0.0f)
-                motion.velocity[1] = -1.0f;
-            else
-                motion.velocity[1] = 0.0f;
+            // if (motion.velocity[1] == 0.0f)
+            //     motion.velocity[1] = -1.0f;
+            // else
+            //     motion.velocity[1] = 0.0f;
         } catch (const std::exception &e) {}
     });
     // _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_DOWN, LE::PRESSED, false}, [&](LE::Engine *engine, float dt) {
@@ -173,7 +173,7 @@ void GameScene::init()
     _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_DOWN, LE::JUST_RELEASED, false}, [&](LE::Engine *engine, float dt) {
         try {
             int id = _clientBroker->getECSId();
-            auto& motion = _ecs->getComponent<MotionComponent>(id);
+            // auto& motion = _ecs->getComponent<MotionComponent>(id);
             Request request = {0};
             request.header.Action = asChar(ActionCode::DOWN);
             request.header.BodyLength = 0;
@@ -184,8 +184,8 @@ void GameScene::init()
             Message *message = new Message();
             message->setRequest(request);
             _clientBroker->addMessage(0, 1, message);
-            if (motion.velocity[1] == -1.0f)
-                motion.velocity[1] = 0.0f;
+            // if (motion.velocity[1] == -1.0f)
+            //     motion.velocity[1] = 0.0f;
         } catch (const std::exception &e) {}
     });
     // _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_DOWN, LE::RELEASED, false}, [&](LE::Engine *engine, float dt) {
@@ -200,7 +200,7 @@ void GameScene::init()
     _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_LEFT, LE::JUST_PRESSED, false}, [&](LE::Engine *engine, float dt) {
         try {
             int id = _clientBroker->getECSId();
-            auto& motion = _ecs->getComponent<MotionComponent>(id);
+            // auto& motion = _ecs->getComponent<MotionComponent>(id);
             Request request = {0};
             request.header.Action = asChar(ActionCode::LEFT);
             request.header.BodyLength = 0;
@@ -211,10 +211,10 @@ void GameScene::init()
             Message *message = new Message();
             message->setRequest(request);
             _clientBroker->addMessage(0, 1, message);
-            if (motion.velocity[0] == 0.0f)
-                motion.velocity[0] = -1.0f;
-            else
-                motion.velocity[0] = 0.0f;
+            // if (motion.velocity[0] == 0.0f)
+            //     motion.velocity[0] = -1.0f;
+            // else
+            //     motion.velocity[0] = 0.0f;
         } catch (const std::exception &e) {}
     });
     // _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_LEFT, LE::PRESSED, false}, [&](LE::Engine *engine, float dt) {
@@ -242,8 +242,8 @@ void GameScene::init()
             Message *message = new Message();
             message->setRequest(request);
             _clientBroker->addMessage(0, 1, message);
-            if (motion.velocity[0] == -1.0f)
-                motion.velocity[0] = 0.0f;
+            // if (motion.velocity[0] == -1.0f)
+            //     motion.velocity[0] = 0.0f;
         } catch (const std::exception &e) {}
     });
     // _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_LEFT, LE::RELEASED, false}, [&](LE::Engine *engine, float dt) {
@@ -258,7 +258,7 @@ void GameScene::init()
     _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_RIGHT, LE::JUST_PRESSED, false}, [&](LE::Engine *engine, float dt) {
         try {
             int id = _clientBroker->getECSId();
-            auto& motion = _ecs->getComponent<MotionComponent>(id);
+            // auto& motion = _ecs->getComponent<MotionComponent>(id);
             Request request = {0};
             request.header.Action = asChar(ActionCode::RIGHT);
             request.header.BodyLength = 0;
@@ -269,10 +269,10 @@ void GameScene::init()
             Message *message = new Message();
             message->setRequest(request);
             _clientBroker->addMessage(0, 1, message);
-            if (motion.velocity[0] == 0.0f)
-                motion.velocity[0] = 1.0f;
-            else
-                motion.velocity[0] = 0.0f;
+            // if (motion.velocity[0] == 0.0f)
+            //     motion.velocity[0] = 1.0f;
+            // else
+            //     motion.velocity[0] = 0.0f;
         } catch (const std::exception &e) {}
     });
     // _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_RIGHT, LE::PRESSED, false}, [&](LE::Engine *engine, float dt) {
@@ -289,7 +289,7 @@ void GameScene::init()
     _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_RIGHT, LE::JUST_RELEASED, false}, [&](LE::Engine *engine, float dt) {
         try {
             int id = _clientBroker->getECSId();
-            auto& motion = _ecs->getComponent<MotionComponent>(id);
+            // auto& motion = _ecs->getComponent<MotionComponent>(id);
             Request request = {0};
             request.header.Action = asChar(ActionCode::RIGHT);
             request.header.BodyLength = sizeof(LE::Vector3Data<float>);
@@ -300,8 +300,8 @@ void GameScene::init()
             Message *message = new Message();
             message->setRequest(request);
             _clientBroker->addMessage(0, 1, message);
-            if (motion.velocity[0] == 1.0f)
-                motion.velocity[0] = 0.0f;
+            // if (motion.velocity[0] == 1.0f)
+            //     motion.velocity[0] = 0.0f;
         } catch (const std::exception &e) {}
     });
     // _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_RIGHT, LE::RELEASED, false}, [&](LE::Engine *engine, float dt) {
@@ -316,7 +316,7 @@ void GameScene::init()
     _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_SPACE, LE::JUST_PRESSED, false}, [&](LE::Engine *engine, float dt) {
         try {
             int id = _clientBroker->getECSId();
-            auto transform = _ecs->getComponent<TransformComponent>(id);
+            // auto transform = _ecs->getComponent<TransformComponent>(id);
             Request request = {0};
             request.header.Action = asChar(ActionCode::SHOOT);
             request.header.BodyLength = 0;
@@ -328,19 +328,19 @@ void GameScene::init()
             message->setRequest(request);
             _clientBroker->addMessage(0, 1, message);
 
-            Entity entity = _ecs->createEntity();
-            _ecs->addComponent<TransformComponent>(entity, (TransformComponent){transform.position, {0, 0, 0}, {1.0f, 1.0f, 1.0f}});
-            _ecs->addComponent<MotionComponent>(entity, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
-            _ecs->addComponent<PatternComponent>(entity, (PatternComponent){"line", LE::Vector3<float>(transform.position.x + 50, transform.position.y, transform.position.z), 0.1, PatternEnd::DESTROY});
-            HitBox hitbox = {5, 5, 0, 0};
-            hitbox.masks.set(3);
-            _ecs->addComponent<HitBox>(entity, hitbox);
-            _ecs->addComponent<HurtBox>(entity, (HurtBox){5, 5, 0, 0, []() {
-                std::cout << "Hurtbox on hit" << std::endl;
-            }});
-            ModelComponent *model = createModelComponent("assets/models/bullet/bullet.obj");
-            _ecs->addComponent<ModelComponent>(entity, *model);
-            std::cout << "SHIP " << id << " SHOOT" << std::endl;
+            // Entity entity = _ecs->createEntity();
+            // _ecs->addComponent<TransformComponent>(entity, (TransformComponent){transform.position, {0, 0, 0}, {1.0f, 1.0f, 1.0f}});
+            // _ecs->addComponent<MotionComponent>(entity, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
+            // _ecs->addComponent<PatternComponent>(entity, (PatternComponent){"line", LE::Vector3<float>(transform.position.x + 50, transform.position.y, transform.position.z), 0.1, PatternEnd::DESTROY});
+            // HitBox hitbox = {5, 5, 0, 0};
+            // hitbox.masks.set(3);
+            // _ecs->addComponent<HitBox>(entity, hitbox);
+            // _ecs->addComponent<HurtBox>(entity, (HurtBox){5, 5, 0, 0, []() {
+            //     std::cout << "Hurtbox on hit" << std::endl;
+            // }});
+            // ModelComponent *model = createModelComponent("assets/models/bullet/bullet.obj");
+            // _ecs->addComponent<ModelComponent>(entity, *model);
+            // std::cout << "SHIP " << id << " SHOOT" << std::endl;
         } catch (const std::exception &e) {}
     });
     _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_ENTER, LE::JUST_PRESSED, false}, [&](LE::Engine *engine, float dt) {
