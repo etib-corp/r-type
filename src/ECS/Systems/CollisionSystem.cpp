@@ -18,6 +18,8 @@ CollisionSystem::~CollisionSystem()
 
 void CollisionSystem::update(Ecs *ecs, float dt)
 {
+    std::vector<HurtBox> hurtboxHit;
+
     for (auto entity : _entities) {
         auto &hitbox = ecs->getComponent<HitBox>(entity);
         auto &transform = ecs->getComponent<TransformComponent>(entity);
@@ -36,8 +38,11 @@ void CollisionSystem::update(Ecs *ecs, float dt)
                 transform.position.x + hitbox.width > transform2.position.x &&
                 transform.position.y < transform2.position.y + hurtbox.height &&
                 transform.position.y + hitbox.height > transform2.position.y) {
-                hurtbox.onHit();
+                hurtboxHit.push_back(hurtbox);
             }
         }
+    }
+    for (auto& hurtbox : hurtboxHit) {
+        hurtbox.onHit();
     }
 }

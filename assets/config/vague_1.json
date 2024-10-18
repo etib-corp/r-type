@@ -2,8 +2,31 @@
     "enemy" : [
         {
             "texture_obj" : "assets/models/ship2/ship2.obj",
-            "start_pos" : [0, -2, 0],
-            "end_pos" : [100, -2, 0],
+            "start_pos" : [20, -6, 0],
+            "end_pos" : [-20, -6, 0],
+            "speed" : 0.03,
+            "life" : 100,
+            "damage" : 10,
+            "pattern" : "sinus_x",
+            "scale" : 1,
+            "rotation" : [0, 0, 0],
+            "hurtbox": {
+                "height": 10,
+                "width": 10,
+                "layers": [3],
+                "masks": [1, 2]
+            },
+            "hitbox": {
+                "height": 10,
+                "width": 10,
+                "layers": [ ],
+                "masks": [ ]
+            }
+        },
+        {
+            "texture_obj" : "assets/models/ship2/ship2.obj",
+            "start_pos" : [20, 2, 0],
+            "end_pos" : [-20, 2, 0],
             "speed" : 0.01,
             "life" : 100,
             "damage" : 10,

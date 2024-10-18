@@ -65,6 +65,14 @@ GameScene::GameScene() : LE::Scene()
         }
     });
 
+    patternSystem->addPattern("sinus_x", [](PatternComponent &pattern, TransformComponent &transform, MotionComponent &motion) {
+        if (transform.position.x != pattern.end_pos.x) {
+            motion.velocity.x = pattern.speed * (pattern.end_pos.x - transform.position.x > 0 ? 1 : -1);
+            motion.velocity.y = sin(pattern.seek) * 10 * pattern.speed;
+            pattern.seek += 0.1;
+        }
+    });
+
     Entity cameraEntity = _ecs->createEntity();
     _ecs->addComponent<TransformComponent>(cameraEntity, (TransformComponent){{0, 0, -100}, {0, 0, 0}, {1.0f, 1.0f, 1.0f}});
     _ecs->addComponent<CameraComponent>(cameraEntity, (CameraComponent){static_cast<float>(LE::Engine::getInstance()->getWindowWidth()), static_cast<float>(LE::Engine::getInstance()->getWindowHeight()), 0.0f, 1000.0f, 45.0f, static_cast<float>(LE::Engine::getInstance()->getWindowWidth()) / static_cast<float>(LE::Engine::getInstance()->getWindowHeight()), {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f}});
@@ -329,9 +337,9 @@ void GameScene::init()
             _clientBroker->addMessage(0, 1, message);
 
             Entity entity = _ecs->createEntity();
-            _ecs->addComponent<TransformComponent>(entity, (TransformComponent){transform.position, {0, 0, 0}, {1.0f, 1.0f, 1.0f}});
+            _ecs->addComponent<TransformComponent>(entity, (TransformComponent){{transform.position.x + 3, transform.position.y + 0.3f, transform.position.z}, {0, 0, 0}, {0.3f, 0.1f, 0.1f}});
             _ecs->addComponent<MotionComponent>(entity, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
-            _ecs->addComponent<PatternComponent>(entity, (PatternComponent){"line", LE::Vector3<float>(transform.position.x + 50, transform.position.y, transform.position.z), 0.1, PatternEnd::DESTROY});
+            _ecs->addComponent<PatternComponent>(entity, (PatternComponent){"line", LE::Vector3<float>(transform.position.x + 50, transform.position.y + 0.3f, transform.position.z), 0.1, PatternEnd::DESTROY});
             HitBox hitbox = {5, 5, 0, 0};
             hitbox.masks.set(3);
             _ecs->addComponent<HitBox>(entity, hitbox);
