@@ -13,6 +13,8 @@ All the following libraries were chosen for their **efficiency**, and they are *
 
 ### **OpenGL**
 
+(https://www.profolus.com/topics/advantages-disadvantages-of-opengl/)
+
 We encapsulate the **OpenGL API** within our own classes, so users don't need to interact directly with OpenGL. To enhance our usage of OpenGL, we integrate the following libraries:
 - **GLFW**: A simple and efficient library that enables easy window creation and input handling.
 - **GLM**: A mathematics library specifically designed for 3D graphics, providing a variety of useful functions.
@@ -22,12 +24,16 @@ We encapsulate the **OpenGL API** within our own classes, so users don't need to
 
 ### **Assimp**
 
+(https://www.modelo.io/damf/article/2024/06/26/0748/understanding-the-advantages-of-assimp-in-3d-model-importing?hl=en)
+
 For 3D model loading, we use **Assimp**:
 - It offers excellent support for **3D models**, making it a perfect fit for our project.
 
 ---
 
 ### **OpenAL**
+
+(https://medium.com/@bookmyblogss/what-is-openal-should-i-remove-openal-in-windows-10-or-11-6d4cd04c92d9)
 
 For audio handling, we rely on **OpenAL**:
 - OpenAL provides robust support for **3D sound**, which is crucial for the immersive audio experience we aim to deliver in the future.
@@ -37,6 +43,8 @@ We encapsulate the **OpenAL API** within our classes as well, so users won't nee
 ---
 
 ### **Boost Asio**
+
+(https://alexott.net/en/cpp/BoostAsioNotes.html)
 
 For networking, we use **Boost Asio**:
 - Asio offers comprehensive support for **TCP** and **UDP** protocols.
