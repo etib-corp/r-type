@@ -102,6 +102,112 @@ $(function(){initNavTree('md_README.html',''); initResizable(true); });
 <div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p>
 <hr  />
 <h2><a class="anchor" id="autotoc_md2"></a>
+<b>Tech choices</b></h2>
+<p>All the following libraries were chosen for their <b>efficiency</b>, and they are <b>well-known</b> and <b>widely used</b> in the industry:</p>
+<ul>
+<li><b>OpenGL</b>: Used in Minecraft, World of Warcraft, and more.</li>
+<li><b>Assimp</b>: Used in the Godot Engine.</li>
+<li><b>OpenAL</b>: Used in Amnesia: The Dark Descent.</li>
+<li><b>Asio</b>: Part of the Boost library, also used in the JUCE framework.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md3"></a>
+<b>OpenGL</b></h2>
+<p>We encapsulate the <b>OpenGL API</b> within our own classes, so users don't need to interact directly with OpenGL. To enhance our usage of OpenGL, we integrate the following libraries:</p><ul>
+<li><b>GLFW</b>: <a class="el" href="classA.html">A</a> simple and efficient library that enables easy window creation and input handling.</li>
+<li><b>GLM</b>: <a class="el" href="classA.html">A</a> mathematics library specifically designed for 3<a class="el" href="classD.html">D</a> graphics, providing a variety of useful functions.</li>
+<li><b>Freetype</b>: <a class="el" href="classA.html">A</a> powerful library that simplifies font loading and text rendering.</li>
+</ul>
+<hr  />
+<h2><a class="anchor" id="autotoc_md5"></a>
+<b>Assimp</b></h2>
+<p>For 3<a class="el" href="classD.html">D</a> model loading, we use <b>Assimp</b>:</p><ul>
+<li>It offers excellent support for <b>3<a class="el" href="classD.html">D</a> models</b>, making it a perfect fit for our project.</li>
+</ul>
+<hr  />
+<h2><a class="anchor" id="autotoc_md7"></a>
+<b>OpenAL</b></h2>
+<p>For audio handling, we rely on <b>OpenAL</b>:</p><ul>
+<li>OpenAL provides robust support for <b>3<a class="el" href="classD.html">D</a> sound</b>, which is crucial for the immersive audio experience we aim to deliver in the future.</li>
+</ul>
+<p>We encapsulate the <b>OpenAL API</b> within our classes as well, so users won't need to manage OpenAL directly. Currently, we support <b>Device</b>, <b>Sound</b>, and <b>Playlist</b> components.</p>
+<hr  />
+<h2><a class="anchor" id="autotoc_md9"></a>
+<b>Boost Asio</b></h2>
+<p>For networking, we use <b>Boost Asio</b>:</p><ul>
+<li>Asio offers comprehensive support for <b>TCP</b> and <b>UDP</b> protocols.</li>
+<li>It also excels in providing <b>asynchronous</b> operations, crucial for real-time applications.</li>
+</ul>
+<p>As with the other libraries, we encapsulate the <b>Asio API</b>, so users won’t have to interact with it directly. We currently support <b><a class="el" href="classClient.html">Client</a></b> and <b><a class="el" href="classServer.html">Server</a></b> components.</p>
+<hr  />
+<blockquote class="doxtable">
+<p>&zwj;<b>Note:</b> We use <b>CMake</b> to build our project. </p>
+</blockquote>
+<h1><a class="anchor" id="autotoc_md11"></a>
+</h1>
+<h1><a class="anchor" id="autotoc_md12"></a>
+<b>Library Comparisons</b></h1>
+<h2><a class="anchor" id="autotoc_md13"></a>
+<b>Graphics and General Libraries</b></h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Library   </th><th class="markdownTableHeadNone">OpenGL   </th><th class="markdownTableHeadNone">SFML   </th><th class="markdownTableHeadNone">SDL    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><b>3<a class="el" href="classD.html">D</a> Support</b>   </td><td class="markdownTableBodyNone">Yes   </td><td class="markdownTableBodyNone">No   </td><td class="markdownTableBodyNone">No    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><b>Sound Support</b>   </td><td class="markdownTableBodyNone">No   </td><td class="markdownTableBodyNone">Yes   </td><td class="markdownTableBodyNone">Yes    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><b>Network Support</b>   </td><td class="markdownTableBodyNone">No   </td><td class="markdownTableBodyNone">Yes   </td><td class="markdownTableBodyNone">Yes    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><b>Cross-platform</b>   </td><td class="markdownTableBodyNone">Yes   </td><td class="markdownTableBodyNone">Yes   </td><td class="markdownTableBodyNone">Yes    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><b>Community</b>   </td><td class="markdownTableBodyNone">Large   </td><td class="markdownTableBodyNone">Large   </td><td class="markdownTableBodyNone">Large    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><b>Documentation</b>   </td><td class="markdownTableBodyNone">Extensive   </td><td class="markdownTableBodyNone">Extensive   </td><td class="markdownTableBodyNone">Extensive    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><b>Learning Curve</b>   </td><td class="markdownTableBodyNone">Hard   </td><td class="markdownTableBodyNone">Easy   </td><td class="markdownTableBodyNone">Easy   </td></tr>
+</table>
+<hr  />
+<h2><a class="anchor" id="autotoc_md15"></a>
+<b>Sound Libraries</b></h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Library   </th><th class="markdownTableHeadNone">OpenAL   </th><th class="markdownTableHeadNone">FMOD   </th><th class="markdownTableHeadNone">SDL    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><b>3<a class="el" href="classD.html">D</a> Sound</b>   </td><td class="markdownTableBodyNone">Yes   </td><td class="markdownTableBodyNone">Yes   </td><td class="markdownTableBodyNone">No    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><b>Cross-platform</b>   </td><td class="markdownTableBodyNone">Yes   </td><td class="markdownTableBodyNone">Yes   </td><td class="markdownTableBodyNone">Yes    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><b>Community</b>   </td><td class="markdownTableBodyNone">Large   </td><td class="markdownTableBodyNone">Large   </td><td class="markdownTableBodyNone">Large    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><b>Documentation</b>   </td><td class="markdownTableBodyNone">Extensive   </td><td class="markdownTableBodyNone">Extensive   </td><td class="markdownTableBodyNone">Extensive    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><b>Learning Curve</b>   </td><td class="markdownTableBodyNone">Hard   </td><td class="markdownTableBodyNone">Easy   </td><td class="markdownTableBodyNone">Easy   </td></tr>
+</table>
+<hr  />
+<h2><a class="anchor" id="autotoc_md17"></a>
+<b>Networking Libraries</b></h2>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Library   </th><th class="markdownTableHeadNone">Boost Asio   </th><th class="markdownTableHeadNone">ENet   </th><th class="markdownTableHeadNone">RakNet    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><b>TCP Support</b>   </td><td class="markdownTableBodyNone">Yes   </td><td class="markdownTableBodyNone">No   </td><td class="markdownTableBodyNone">Yes    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><b>UDP Support</b>   </td><td class="markdownTableBodyNone">Yes   </td><td class="markdownTableBodyNone">Yes   </td><td class="markdownTableBodyNone">Yes    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><b>Cross-platform</b>   </td><td class="markdownTableBodyNone">Yes   </td><td class="markdownTableBodyNone">Yes   </td><td class="markdownTableBodyNone">Yes    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><b>Community</b>   </td><td class="markdownTableBodyNone">Large   </td><td class="markdownTableBodyNone">Large   </td><td class="markdownTableBodyNone">Large    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><b>Documentation</b>   </td><td class="markdownTableBodyNone">Extensive   </td><td class="markdownTableBodyNone">Extensive   </td><td class="markdownTableBodyNone">Extensive    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><b>Learning Curve</b>   </td><td class="markdownTableBodyNone">Hard   </td><td class="markdownTableBodyNone">Easy   </td><td class="markdownTableBodyNone">Easy   </td></tr>
+</table>
+<hr  />
+<h2><a class="anchor" id="autotoc_md19"></a>
+Conclusion:</h2>
+<p>As demonstrated, we have carefully selected the best libraries for our project. While some of these libraries may present a steeper learning curve, they offer significant benefits in terms of performance and capability. We are committed to providing a powerful API for our users, leveraging <b>3<a class="el" href="classD.html">D</a> graphics</b> and <b>3<a class="el" href="classD.html">D</a> sound</b> to deliver a richer and more immersive experience.</p>
+<hr  />
+<h2><a class="anchor" id="autotoc_md21"></a>
 <b>File Architecture Overview</b></h2>
 <ul>
 <li><b><code>client/</code></b> Contains the source code and header files for the client.</li>
@@ -111,7 +217,7 @@ $(function(){initNavTree('md_README.html',''); initResizable(true); });
 <li><b><code>dependencies/</code></b> Dependencies for the current CMakeLists.txt.</li>
 </ul>
 <hr  />
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md23"></a>
 <b>Entity Component System</b></h2>
 <p>An entity component system is a design pattern used to create a modular and scalable architecture for video games.</p>
 <ul>
@@ -119,12 +225,12 @@ $(function(){initNavTree('md_README.html',''); initResizable(true); });
 <li><b><code>Component</code></b> <a class="el" href="classA.html">A</a> component is a container for data. Components are used to store data for entities.</li>
 <li><b><code><a class="el" href="classSystem.html" title="The System class is the base.">System</a></code></b> <a class="el" href="classA.html">A</a> system is a container for logic. Systems are used to process entities. Systems use components data to process entities.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md24"></a>
 <b>Entity Component System Overview</b></h2>
-<h3><a class="anchor" id="autotoc_md6"></a>
+<h3><a class="anchor" id="autotoc_md25"></a>
 <b>Entity</b></h3>
 <p>An entity is an unsigned integer that is used to identify an entity. </p><div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> Entity;</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md7"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md26"></a>
 <b>Component</b></h3>
 <p><a class="el" href="classA.html">A</a> component is a structure that contains data. </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;Vector3.hpp&quot;</span></div>
 <div class="line"><span class="keyword">struct </span><a class="code hl_struct" href="structTransformComponent.html">TransformComponent</a> {</div>
@@ -134,7 +240,7 @@ $(function(){initNavTree('md_README.html',''); initResizable(true); });
 <div class="line">};</div>
 <div class="ttc" id="aclassLE_1_1Vector3_html"><div class="ttname"><a href="classLE_1_1Vector3.html">LE::Vector3</a></div><div class="ttdoc">A 3D vector class template.</div><div class="ttdef"><b>Definition</b> Vector3.hpp:28</div></div>
 <div class="ttc" id="astructTransformComponent_html"><div class="ttname"><a href="structTransformComponent.html">TransformComponent</a></div><div class="ttdef"><b>Definition</b> TransformComponent.hpp:13</div></div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md8"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md27"></a>
 <b>System</b></h3>
 <p><a class="el" href="classA.html">A</a> system is a class that contains logic. </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;System.hpp&quot;</span></div>
 <div class="line"> </div>
@@ -148,7 +254,7 @@ $(function(){initNavTree('md_README.html',''); initResizable(true); });
 <div class="line">    }</div>
 <div class="line">};</div>
 <div class="ttc" id="aclassLE_1_1Vector3_html_a89ac85c995b6a38ac1dc5136ed24c2c4"><div class="ttname"><a href="classLE_1_1Vector3.html#a89ac85c995b6a38ac1dc5136ed24c2c4">LE::Vector3::y</a></div><div class="ttdeci">T y</div><div class="ttdef"><b>Definition</b> Vector3.hpp:336</div></div>
-</div><!-- fragment --> <h2><a class="anchor" id="autotoc_md9"></a>
+</div><!-- fragment --> <h2><a class="anchor" id="autotoc_md28"></a>
 <b>Module</b></h2>
 <ul>
 <li><b><code><a class="el" href="classAsioNetworkModule.html" title="A class that implements the INetworkModule interface.">AsioNetworkModule</a></code></b> Module for networking using the Asio library.</li>
@@ -159,7 +265,27 @@ $(function(){initNavTree('md_README.html',''); initResizable(true); });
 <li><b><code>TestServerCoreModule</code></b> Module for the test server core.</li>
 </ul>
 <hr  />
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md30"></a>
+<b>Graphical User Interface <em>(GUI)</em></b></h2>
+<p>Here’s a more structured and refined version of the provided content:</p>
+<hr  />
+<blockquote class="doxtable">
+<p>&zwj;<b>Note:</b> The GUI is a work in progress. While the base components have been implemented, we plan to add more components in the future. </p>
+</blockquote>
+<p>The GUI follows an <b>atomic design pattern</b>, drawing inspiration from the <b>React</b> library for its component-based architecture.</p>
+<p><b>Components Overview:</b></p>
+<ul>
+<li><b><code>GUI::Component</code></b> An abstract element that can be rendered.</li>
+<li><b><code>GUI::Container</code></b> <a class="el" href="classA.html">A</a> component that can contain other components. <em>(Abstract)</em></li>
+<li><b><code>GUI::Interactable</code></b> <em>(inherits from <code>GUI::Container</code>)</em> <a class="el" href="classA.html">A</a> container that supports user interaction. <em>(Abstract)</em></li>
+<li><b><code>GUI::Button</code></b> <em>(inherits from <code>GUI::Interactable</code>)</em> <a class="el" href="classA.html">A</a> clickable button that includes a <code>GUI::Text</code> and a <code>Shape::Rectangle</code>.</li>
+<li><b><code>GUI::TextField</code></b> <em>(inherits from <code>GUI::Interactable</code>)</em> <a class="el" href="classA.html">A</a> text field providing text input functionality, containing a <code>GUI::Text</code> and a <code>Shape::Rectangle</code>.</li>
+<li><b><code>GUI::Text</code></b> <em>(inherits from <code>GUI::Component</code>)</em> <a class="el" href="classA.html">A</a> component responsible for displaying text, encapsulating a <code>GUI::Font</code>.</li>
+<li><b><code>GUI::Font</code></b> <a class="el" href="classA.html">A</a> class that manages a font file through the <code>Freetype</code> library.</li>
+<li><b><code>GUI::Manager</code></b> <em>(inherits from <code>GUI::Container</code>)</em> <a class="el" href="classA.html">A</a> manager that holds and manages all GUI components.</li>
+</ul>
+<hr  />
+ <h2><a class="anchor" id="autotoc_md33"></a>
 <b>RFC</b></h2>
 <ul>
 <li><b><code>RFC</code></b></li>

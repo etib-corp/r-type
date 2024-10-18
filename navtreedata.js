@@ -27,33 +27,56 @@ var NAVTREE =
   [ "R-Type", "index.html", [
     [ "pag_example", "pag_example.html", null ],
     [ "README", "md_lib_2NetworkModule_2README.html", null ],
-    [ "<strong>R-Type</strong>", "md_README.html", null ],
-    [ "RFC: R-Type Multiplayer Game Network Protocol", "md_RFC.html", [
-      [ "Status: Draft", "md_RFC.html#autotoc_md13", null ],
-      [ "Abstract", "md_RFC.html#autotoc_md14", null ],
-      [ "Table of Contents", "md_RFC.html#autotoc_md15", null ],
-      [ "Introduction", "md_RFC.html#autotoc_md16", null ],
-      [ "Requirements", "md_RFC.html#autotoc_md17", null ],
-      [ "Message Structure", "md_RFC.html#autotoc_md18", [
-        [ "3.1. Header", "md_RFC.html#autotoc_md19", null ],
-        [ "3.2. Body", "md_RFC.html#autotoc_md20", null ],
-        [ "Common Action Codes (0x01 -> 0x55)", "md_RFC.html#autotoc_md21", null ],
-        [ "Server-to-Client Action Codes (0x56 -> 0xAA)", "md_RFC.html#autotoc_md22", null ],
-        [ "Client-to-Server Action Codes (0xAA -> 0xFE)", "md_RFC.html#autotoc_md23", null ],
-        [ "Both Magic Number (0xFF)", "md_RFC.html#autotoc_md24", null ]
-      ] ],
-      [ "Protocol Design", "md_RFC.html#autotoc_md25", [
-        [ "4.1. Connection Establishment", "md_RFC.html#autotoc_md26", [
-          [ "4.1.1 Server Sends Client ID (TCP)", "md_RFC.html#autotoc_md27", null ],
-          [ "4.1.2 Client Acknowledges ID (UDP)", "md_RFC.html#autotoc_md28", null ]
+    [ "<strong>R-Type</strong>", "md_README.html", [
+      [ "", "md_README.html#autotoc_md11", null ],
+      [ "Library Comparisons", "md_README.html#autotoc_md12", [
+        [ "Tech choices", "md_README.html#autotoc_md2", null ],
+        [ "OpenGL", "md_README.html#autotoc_md3", null ],
+        [ "Assimp", "md_README.html#autotoc_md5", null ],
+        [ "OpenAL", "md_README.html#autotoc_md7", null ],
+        [ "Boost Asio", "md_README.html#autotoc_md9", null ],
+        [ "Graphics and General Libraries", "md_README.html#autotoc_md13", null ],
+        [ "Sound Libraries", "md_README.html#autotoc_md15", null ],
+        [ "Networking Libraries", "md_README.html#autotoc_md17", null ],
+        [ "Conclusion:", "md_README.html#autotoc_md19", null ],
+        [ "File Architecture Overview", "md_README.html#autotoc_md21", null ],
+        [ "Entity Component System", "md_README.html#autotoc_md23", null ],
+        [ "Entity Component System Overview", "md_README.html#autotoc_md24", [
+          [ "Entity", "md_README.html#autotoc_md25", null ],
+          [ "Component", "md_README.html#autotoc_md26", null ],
+          [ "System", "md_README.html#autotoc_md27", null ]
         ] ],
-        [ "4.2. Common Action Codes", "md_RFC.html#autotoc_md29", null ],
-        [ "4.3. Server-to-Client Messages", "md_RFC.html#autotoc_md30", null ],
-        [ "4.4. Client-to-Server Messages", "md_RFC.html#autotoc_md31", null ]
+        [ "Module", "md_README.html#autotoc_md28", null ],
+        [ "Graphical User Interface (GUI)", "md_README.html#autotoc_md30", null ],
+        [ "RFC", "md_README.html#autotoc_md33", null ]
+      ] ]
+    ] ],
+    [ "RFC: R-Type Multiplayer Game Network Protocol", "md_RFC.html", [
+      [ "Status: Draft", "md_RFC.html#autotoc_md35", null ],
+      [ "Abstract", "md_RFC.html#autotoc_md36", null ],
+      [ "Table of Contents", "md_RFC.html#autotoc_md37", null ],
+      [ "Introduction", "md_RFC.html#autotoc_md38", null ],
+      [ "Requirements", "md_RFC.html#autotoc_md39", null ],
+      [ "Message Structure", "md_RFC.html#autotoc_md40", [
+        [ "3.1. Header", "md_RFC.html#autotoc_md41", null ],
+        [ "3.2. Body", "md_RFC.html#autotoc_md42", null ],
+        [ "Common Action Codes (0x01 -> 0x55)", "md_RFC.html#autotoc_md43", null ],
+        [ "Server-to-Client Action Codes (0x56 -> 0xAA)", "md_RFC.html#autotoc_md44", null ],
+        [ "Client-to-Server Action Codes (0xAA -> 0xFE)", "md_RFC.html#autotoc_md45", null ],
+        [ "Both Magic Number (0xFF)", "md_RFC.html#autotoc_md46", null ]
       ] ],
-      [ "Error Handling", "md_RFC.html#autotoc_md32", null ],
-      [ "Security Considerations", "md_RFC.html#autotoc_md33", null ],
-      [ "References", "md_RFC.html#autotoc_md34", null ]
+      [ "Protocol Design", "md_RFC.html#autotoc_md47", [
+        [ "4.1. Connection Establishment", "md_RFC.html#autotoc_md48", [
+          [ "4.1.1 Server Sends Client ID (TCP)", "md_RFC.html#autotoc_md49", null ],
+          [ "4.1.2 Client Acknowledges ID (UDP)", "md_RFC.html#autotoc_md50", null ]
+        ] ],
+        [ "4.2. Common Action Codes", "md_RFC.html#autotoc_md51", null ],
+        [ "4.3. Server-to-Client Messages", "md_RFC.html#autotoc_md52", null ],
+        [ "4.4. Client-to-Server Messages", "md_RFC.html#autotoc_md53", null ]
+      ] ],
+      [ "Error Handling", "md_RFC.html#autotoc_md54", null ],
+      [ "Security Considerations", "md_RFC.html#autotoc_md55", null ],
+      [ "References", "md_RFC.html#autotoc_md56", null ]
     ] ],
     [ "Bug List", "bug.html", null ],
     [ "Topics", "topics.html", "topics" ],
