@@ -47,24 +47,48 @@ namespace LE {
                  */
                 void draw() override;
 
+                /**
+                 * @brief Function to handle button click events.
+                 *
+                 * This function is called when the button is clicked.
+                 */
                 void OnClick() override;
 
+                /**
+                 * @brief Function to handle button hover events.
+                 *
+                 * This function is called when the button is hovered over.
+                 */
                 void OnHover() override;
 
+                /**
+                 * @brief Function to handle button unhover events.
+                 *
+                 * This function is called when the button is no longer hovered over.
+                 */
                 void OnUnhover() override;
 
+                /**
+                 * @brief Sets the onClick callback function.
+                 */
                 void setOnClickCallback(std::function<void()> onClick);
 
+                /**
+                 * @brief Sets the onHover callback function.
+                 */
                 void setOnHoverCallback(std::function<void()> onHover);
 
+                /**
+                 * @brief Sets the onUnhover callback function.
+                 */
                 void setOnUnhoverCallback(std::function<void()> onUnhover);
 
             protected:
-                std::function<void()> _onClick;
-                std::function<void()> _onHover;
-                std::function<void()> _onUnhover;
-                Color *_bgColor;
-                Color *_textColor;
+                std::function<void()> _onClick;     /**< The onClick callback function. */
+                std::function<void()> _onHover;     /**< The onHover callback function. */
+                std::function<void()> _onUnhover;   /**< The onUnhover callback function. */
+                Color *_bgColor;                    /**< The background color of the button. */
+                Color *_textColor;                  /**< The text color of the button. */
 
 
         };
