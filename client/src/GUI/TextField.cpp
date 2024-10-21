@@ -87,94 +87,94 @@ void LE::GUI::TextField::init()
     std::shared_ptr<LE::Scene> scene = engine->_sceneManager->getCurrentScene();
     std::shared_ptr<LE::EventManager> eventManager = scene->_eventManager;
 
-    LE::Engine::getInstance()->_sceneManager->getCurrentScene()->_eventManager->addEventListener({LE::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
+    LE::Engine::getInstance()->_sceneManager->getCurrentScene()->_eventManager->addEventListener({LE::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::JUST_PRESSED}, [this](LE::Engine *engine, float dt) {
         if (isHover()) {
             OnClick();
         } else {
             _focused = false;
         }
     });
-    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_ENTER, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
+    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_ENTER, LE::JUST_PRESSED}, [this](LE::Engine *, float dt) {
         _focused = false;
     });
-    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_NUMPAD_ENTER, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
+    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_NUMPAD_ENTER, LE::JUST_PRESSED}, [this](LE::Engine *, float dt) {
         _focused = false;
     });
     for (int key = LE_KEY_A; key <= LE_KEY_Z; key++) {
-        eventManager->addEventListener({LE::KEYBOARD, key, LE::JUST_PRESSED}, [this, key](LE::Engine *engine) {
+        eventManager->addEventListener({LE::KEYBOARD, key, LE::JUST_PRESSED}, [this, key](LE::Engine *, float dt) {
             if (_focused && _content->getContent().size() < _maxChars)
                 _content->setContent(_content->getContent() + std::string(1, key));
         });
     }
     for (int key = LE_KEY_0; key <= LE_KEY_9; key++) {
-        eventManager->addEventListener({LE::KEYBOARD, key, LE::JUST_PRESSED}, [this, key](LE::Engine *engine) {
+        eventManager->addEventListener({LE::KEYBOARD, key, LE::JUST_PRESSED}, [this, key](LE::Engine *, float dt) {
             if (_focused && _content->getContent().size() < _maxChars)
                 _content->setContent(_content->getContent() + std::string(1, key));
         });
     }
     for (int key = LE_KEY_NUMPAD_0; key <= LE_KEY_NUMPAD_9; key++) {
-        eventManager->addEventListener({LE::KEYBOARD, key, LE::JUST_PRESSED}, [this, key](LE::Engine *engine) {
+        eventManager->addEventListener({LE::KEYBOARD, key, LE::JUST_PRESSED}, [this, key](LE::Engine *, float dt) {
             if (_focused && _content->getContent().size() < _maxChars)
                 _content->setContent(_content->getContent() + std::string(1, key));
         });
     }
-    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_SPACE, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
+    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_SPACE, LE::JUST_PRESSED}, [this](LE::Engine *, float dt) {
         if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent(_content->getContent() + " ");
     });
-    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_BACKSPACE, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
+    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_BACKSPACE, LE::JUST_PRESSED}, [this](LE::Engine *, float dt) {
         if (_content->getContent().size() > 0 && _focused)
             _content->setContent(_content->getContent().substr(0, _content->getContent().size() - 1));
     });
-    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_DELETE, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
+    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_DELETE, LE::JUST_PRESSED}, [this](LE::Engine *, float dt) {
         if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent("");
     });
-    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_MINUS, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
+    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_MINUS, LE::JUST_PRESSED}, [this](LE::Engine *, float dt) {
         if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent(_content->getContent() + "-");
     });
-    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_NUMPAD_MINUS, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
+    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_NUMPAD_MINUS, LE::JUST_PRESSED}, [this](LE::Engine *, float dt) {
         if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent(_content->getContent() + "-");
     });
-    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_EQUALS, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
+    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_EQUALS, LE::JUST_PRESSED}, [this](LE::Engine *, float dt) {
         if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent(_content->getContent() + "=");
     });
-    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_PERIOD, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
+    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_PERIOD, LE::JUST_PRESSED}, [this](LE::Engine *, float dt) {
         if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent(_content->getContent() + ".");
     });
-    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_COMMA, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
+    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_COMMA, LE::JUST_PRESSED}, [this](LE::Engine *, float dt) {
         if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent(_content->getContent() + ",");
     });
-    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_SLASH, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
+    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_SLASH, LE::JUST_PRESSED}, [this](LE::Engine *, float dt) {
         if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent(_content->getContent() + "/");
     });
-    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_SEMICOLON, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
+    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_SEMICOLON, LE::JUST_PRESSED}, [this](LE::Engine *, float dt) {
         if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent(_content->getContent() + ";");
     });
-    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_QUOTE, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
+    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_QUOTE, LE::JUST_PRESSED}, [this](LE::Engine *, float dt) {
         if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent(_content->getContent() + "'");
     });
-    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_LEFTBRACKET, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
+    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_LEFTBRACKET, LE::JUST_PRESSED}, [this](LE::Engine *, float dt) {
         if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent(_content->getContent() + "[");
     });
-    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_RIGHTBRACKET, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
+    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_RIGHTBRACKET, LE::JUST_PRESSED}, [this](LE::Engine *, float dt) {
         if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent(_content->getContent() + "]");
     });
-    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_BACKSLASH, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
+    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_BACKSLASH, LE::JUST_PRESSED}, [this](LE::Engine *, float dt) {
         if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent(_content->getContent() + "\\");
     });
-    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_TAB, LE::JUST_PRESSED}, [this](LE::Engine *engine) {
+    eventManager->addEventListener({LE::KEYBOARD, LE_KEY_TAB, LE::JUST_PRESSED}, [this](LE::Engine *, float dt) {
         if (_focused && _content->getContent().size() < _maxChars)
             _content->setContent(_content->getContent() + "\t");
     });

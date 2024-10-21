@@ -38,3 +38,13 @@ void Ecs::update(float dt)
 {
     _systemManager->update(this, dt);
 }
+
+void Ecs::setCameraEntity(Entity entity)
+{
+    _cameraEntity = entity;
+}
+
+Entity Ecs::getCameraEntity() const
+{
+    return _cameraEntity;
+}

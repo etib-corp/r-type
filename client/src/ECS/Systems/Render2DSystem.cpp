@@ -10,6 +10,7 @@
 #include "Shader.hpp"
 #include "ECS/Ecs.hpp"
 
+
 Render2DSystem::Render2DSystem()
 {
     _shader = std::make_shared<LE::Shader>("assets/shaders/sprite.vert", "assets/shaders/sprite.frag");
@@ -21,9 +22,18 @@ Render2DSystem::~Render2DSystem()
 
 void Render2DSystem::update(Ecs *ecs, float dt)
 {
+    Entity cameraEntity = ecs->getCameraEntity();
+    TransformComponent cameraTransform = ecs->getComponent<TransformComponent>(cameraEntity);
+    MotionComponent cameraMotion = ecs->getComponent<MotionComponent>(cameraEntity);
+    CameraComponent camera = ecs->getComponent<CameraComponent>(cameraEntity);
+
     for (auto entity : _entities) {
         auto sprite = ecs->getComponent<SpriteComponent>(entity);
         auto transform = ecs->getComponent<TransformComponent>(entity);
+
+        if (sprite.hidden)
+            continue;
+
         float vertices[] {
         0.0f, 0.0f,                     sprite.rect[0], sprite.rect[1], // top-left
         static_cast<float>(sprite.width), 0.0f,                       sprite.rect[0] + sprite.rect[2], sprite.rect[1], // top-right
@@ -43,7 +53,7 @@ void Render2DSystem::update(Ecs *ecs, float dt)
 
         _shader->setInt("image", 0);
 
-        glm::mat4 projection = glm::ortho(0.0f, 1920.0f, 1080.0f, 0.0f, -100.0f, 100.0f);
+        glm::mat4 projection = glm::ortho(0.0f, camera.width, camera.height, 0.0f, camera.near, camera.far);
         _shader->setMat<4>("projection", projection);
 
         glm::mat4 model = glm::mat4(1.0f);

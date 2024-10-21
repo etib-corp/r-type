@@ -140,7 +140,7 @@ void LE::Shader::setInt(const std::string& name, int value) const
     unsigned int location = glGetUniformLocation(this->_ID, name.c_str());
 
     if (location == -1)
-        throw ShaderError("ERROR\n\tUNIFORM NOT FOUND\n\t\twhile trying to set " + name + " to " + std::to_string(value) + "\n");
+        throw ShaderError("ERROR\n\tUNIFORM NOT FOUND\n\t\twhile trying to set " + name + " to " + std::to_string(value) + "\n" + std::to_string(glGetError()));
     glUniform1i(location, value);
 }
 

@@ -31,6 +31,7 @@ struct SpriteComponent {
     unsigned int quadVBO = 0;               ///< The quad VBO of the sprite.
     unsigned char *data = nullptr;          ///< The data of the sprite.
     LE::Vector4<float> rect = {0.0f, 0.0f, 1.0f, 1.0f};     ///< The rect of the sprite.
+    bool hidden = false;                    ///< The hidden state of the sprite.
 };
 
 /**

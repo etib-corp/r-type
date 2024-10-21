@@ -45,7 +45,7 @@ namespace LE {
                      * @brief Constructs a MatrixError object with the specified error message.
                      * @param message The error message.
                      */
-                    MatrixError(std::string const &message)
+                    MatrixError(const std::string &message)
                         : Error(message) {};
                 };
 
