@@ -23,6 +23,7 @@ bool callbackStartGame(const Request& req, std::shared_ptr<Ecs> _ecs)
         _ecs->addComponent<ModelComponent>(player, *model);
         _ecs->addComponent<MotionComponent>(player, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
     }
+    LE::Engine::getInstance()->restartClock();
     return true;
 }
 
@@ -32,12 +33,19 @@ bool callbackUp(const Request& req, std::shared_ptr<Ecs> _ecs)
     std::uint8_t id = req.header.EmmiterdEcsId;
     std::cout << "Up : " << static_cast<int>(id) << std::endl;
     auto& motion = _ecs->getComponent<MotionComponent>(id);
-    if (motion.velocity[1] == 0.0f)
-        motion.velocity[1] = 1.0f;
-    else
-        motion.velocity[1] = 0.0f;
+    motion.velocity[1] = 1.0f;
     LE::Engine::getInstance()->debug("Up");
     rtypeLog->log<LogType::DEBUG>("{}", "Up");
+    return true;
+}
+
+bool callbackStopUp(const Request& req, std::shared_ptr<Ecs> _ecs)
+{
+    std::uint8_t id = req.header.EmmiterdEcsId;
+    auto& motion = _ecs->getComponent<MotionComponent>(id);
+    motion.velocity[1] = 0.0f;
+    rtypeLog->log<LogType::DEBUG>("{}", "Stop Up");
+    LE::Engine::getInstance()->debug("Stop Up");
     return true;
 }
 
@@ -45,12 +53,19 @@ bool callbackDown(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
     std::uint8_t id = req.header.EmmiterdEcsId;
     auto& motion = _ecs->getComponent<MotionComponent>(id);
-    if (motion.velocity[1] == 0.0f)
-        motion.velocity[1] = -1.0f;
-    else
-        motion.velocity[1] = 0.0f;
+    motion.velocity[1] = -1.0f;
     rtypeLog->log<LogType::DEBUG>("{}", "Down");
     LE::Engine::getInstance()->debug("Down");
+    return true;
+}
+
+bool callbackStopDown(const Request& req, std::shared_ptr<Ecs> _ecs)
+{
+    std::uint8_t id = req.header.EmmiterdEcsId;
+    auto& motion = _ecs->getComponent<MotionComponent>(id);
+    motion.velocity[1] = 0.0f;
+    rtypeLog->log<LogType::DEBUG>("{}", "Stop Down");
+    LE::Engine::getInstance()->debug("Stop Down");
     return true;
 }
 
@@ -144,8 +159,12 @@ void attributeClientCallback(ResponsibilityChain *chain, ClientBroker *client_br
     // chain->addActionCallback(asChar(ActionCode::UP), checkRequestEmmiterdEcsId);
     chain->addActionCallback(asChar(ActionCode::UP), callbackUp);
 
+    chain->addActionCallback(asChar(ActionCode::STOP_UP), callbackStopUp);
+
     // chain->addActionCallback(asChar(ActionCode::DOWN), checkRequestEmmiterdEcsId);
     chain->addActionCallback(asChar(ActionCode::DOWN), callbackDown);
+
+    chain->addActionCallback(asChar(ActionCode::STOP_DOWN), callbackStopDown);
 
     // chain->addActionCallback(asChar(ActionCode::RIGHT), checkRequestEmmiterdEcsId);
     chain->addActionCallback(asChar(ActionCode::RIGHT), callbackRight);

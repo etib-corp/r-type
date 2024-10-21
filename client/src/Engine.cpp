@@ -126,3 +126,8 @@ float LE::Engine::getDeltaTime() const
 {
     return _dt;
 }
+
+void LE::Engine::restartClock(void)
+{
+    _clock->restart();
+}

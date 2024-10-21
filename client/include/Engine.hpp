@@ -160,6 +160,8 @@ namespace LE {
 
             float getDeltaTime() const;
 
+            void restartClock();
+
         private:
             /**
              * @brief Private constructor for the Engine class.

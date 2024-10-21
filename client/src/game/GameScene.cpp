@@ -125,7 +125,7 @@ void GameScene::init()
             int id = _clientBroker->getECSId();
             // auto& motion = _ecs->getComponent<MotionComponent>(id);
             Request request = {0};
-            request.header.Action = asChar(ActionCode::UP);
+            request.header.Action = asChar(ActionCode::STOP_UP);
             request.header.BodyLength = 0;
             request.header.EmmiterdEcsId = _clientBroker->getECSId();
             request.header.MagicNumber = 0xFF;
@@ -183,7 +183,7 @@ void GameScene::init()
             int id = _clientBroker->getECSId();
             // auto& motion = _ecs->getComponent<MotionComponent>(id);
             Request request = {0};
-            request.header.Action = asChar(ActionCode::DOWN);
+            request.header.Action = asChar(ActionCode::STOP_DOWN);
             request.header.BodyLength = 0;
             request.header.EmmiterdEcsId = _clientBroker->getECSId();
             request.header.MagicNumber = 0xFF;

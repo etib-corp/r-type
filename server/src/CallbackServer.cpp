@@ -12,10 +12,15 @@ bool callbackInputUp(const Request &req, std::shared_ptr<Ecs> _ecs)
     std::uint8_t id = req.header.EmmiterdEcsId;
     rtypeLog->log("{}", "Up");
     auto &motion = _ecs->getComponent<MotionComponent>(id);
-    if (motion.velocity[1] == 0.0f)
-        motion.velocity[1] = 1.0f;
-    else
-        motion.velocity[1] = 0.0f;
+     motion.velocity[1] = 1.0f;
+    return true;
+}
+
+bool callbackInputStopUp(const Request &req, std::shared_ptr<Ecs> ecs)
+{
+    std::uint8_t id = req.header.EmmiterdEcsId;
+    auto &motion = ecs->getComponent<MotionComponent>(id);
+    motion.velocity[1] = 0.0f;
     return true;
 }
 
@@ -23,10 +28,15 @@ bool callbackInputDown(const Request &req, std::shared_ptr<Ecs> _ecs)
 {
     std::uint8_t id = req.header.EmmiterdEcsId;
     auto &motion = _ecs->getComponent<MotionComponent>(id);
-    if (motion.velocity[1] == 0.0f)
-        motion.velocity[1] = -1.0f;
-    else
-        motion.velocity[1] = 0.0f;
+    motion.velocity[1] = -1.0f;
+    return true;
+}
+
+bool callbackInputStopDown(const Request &req, std::shared_ptr<Ecs> _ecs)
+{
+    std::uint8_t id = req.header.EmmiterdEcsId;
+    auto &motion = _ecs->getComponent<MotionComponent>(id);
+    motion.velocity[1] = 0.0f;
     return true;
 }
 
@@ -87,11 +97,27 @@ void attributeServerCallback(ResponsibilityChain &chain, ServerBroker &server_br
         return true;
     });
 
+    chain.addActionCallback(asChar(ActionCode::STOP_UP), callbackInputStopUp);
+    chain.addActionCallback(asChar(ActionCode::STOP_UP), [&server_broker, message](const Request &req, std::shared_ptr<Ecs> _ecs) -> bool
+                             {
+        message->setAction(asChar(ActionCode::STOP_UP));
+        server_broker.sendToAllClient(message.get(), 1, req.header.EmmiterdEcsId);
+        return true;
+    });
+
     // chain.addActionCallback(asChar(ActionCode::DOWN), checkMagicNumber);
     chain.addActionCallback(asChar(ActionCode::DOWN), callbackInputDown);
     chain.addActionCallback(asChar(ActionCode::DOWN), [&server_broker, message](const Request &req, std::shared_ptr<Ecs> _ecs) -> bool
                              {
                 message->setAction(asChar(ActionCode::DOWN));
+        server_broker.sendToAllClient(message.get(), 1, req.header.EmmiterdEcsId);
+        return true;
+    });
+
+    chain.addActionCallback(asChar(ActionCode::STOP_DOWN), callbackInputStopDown);
+    chain.addActionCallback(asChar(ActionCode::STOP_DOWN), [&server_broker, message](const Request &req, std::shared_ptr<Ecs> _ecs) -> bool
+                             {
+                message->setAction(asChar(ActionCode::STOP_DOWN));
         server_broker.sendToAllClient(message.get(), 1, req.header.EmmiterdEcsId);
         return true;
     });
