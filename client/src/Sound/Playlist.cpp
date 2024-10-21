@@ -7,8 +7,6 @@
 
 #include "Sound/Playlist.hpp"
 
-#include "Utils.hpp"
-
 LE::Sound::Playlist::Playlist(const std::string &path)
 {
     std::vector<std::string> mp3Files = Utils::getDirectoryFiles(path, ".mp3");

@@ -25,6 +25,7 @@ LE::Engine::Engine()
     _throwError = false;
     _window = std::make_shared<LE::Window>("Game Window", 1920, 1080);
     _sceneManager = std::make_shared<SceneManager>();
+    _device = new LE::Sound::Device();
 }
 
 LE::Engine::~Engine()

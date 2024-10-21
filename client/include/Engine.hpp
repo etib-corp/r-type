@@ -148,6 +148,7 @@ namespace LE {
             bool _throwError; ///< Flag indicating whether to throw an error.
             friend class EventManager; ///< Friend class EventManager.
             std::function<void ()> _configFunc; ///< Configuration function. This function is called before the engine starts running.
+            LE::Sound::Device *_device; ///< The sound device used by the engine.
             friend class LE::Shapes::Triangle;
             friend class LE::GUI::Text;
             friend class LE::GUI::Interactable;

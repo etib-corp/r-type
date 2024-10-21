@@ -17,6 +17,7 @@
 #include "GUI/TextField.hpp"
 
 #include "EnumClass.hpp"
+#include "Sound/Sound.hpp"
 #include <chrono>
 
 class GameScene : public LE::Scene
@@ -28,6 +29,9 @@ public:
         LE::GUI::TextField *textField = new LE::GUI::TextField(100, 100, 200, 200, "Hello", new LE::Color(LE::Color::CHAR, 0, 0, 0, 255), new LE::Color(LE::Color::CHAR, 255, 255, 255, 255));
 
         _guiManager->addChildren(textField);
+        LE::Sound::Sound *sound = new LE::Sound::Sound("assets/sounds/Pompilili.mp3", LE::Sound::Sound::FileType::MP3);
+
+        sound->play();
     }
     void play() override
     {
@@ -133,7 +137,7 @@ class MyScene : public LE::Scene {
         }
 };
 
-int __main__(int ac, char **av)
+int main(int ac, char **av)
 {
     // Initialize the engine
     auto engine = LE::Engine::getInstance();
@@ -196,54 +200,54 @@ static void sendAuthToServer(ClientBroker *client_broker, std::string playerName
     client_broker->addMessage(0, 1, message);
 }
 
-int main(void)
-{
-    std::string pathLib = getPathOfNetworkDynLib() + getExtensionKernel();
-    LoaderLib loader_lib(pathLib, "");
-    INetworkModule *network_module = nullptr;
-    ClientBroker *client_broker = nullptr;
+// int main(void)
+// {
+//     std::string pathLib = getPathOfNetworkDynLib() + getExtensionKernel();
+//     LoaderLib loader_lib(pathLib, "");
+//     INetworkModule *network_module = nullptr;
+//     ClientBroker *client_broker = nullptr;
 
-    loader_lib.LoadModule();
-    network_module = loader_lib.createNetworkModule();
-    client_broker = new ClientBroker(network_module, "127.0.0.1", 8080);
+//     loader_lib.LoadModule();
+//     network_module = loader_lib.createNetworkModule();
+//     client_broker = new ClientBroker(network_module, "127.0.0.1", 8080);
 
-    Message *message = nullptr;
+//     Message *message = nullptr;
 
-    message = new Message();
-    std::string name = "mannuuuuuuuuuu";
+//     message = new Message();
+//     std::string name = "mannuuuuuuuuuu";
 
-    sendAuthToServer(client_broker, name);
+//     sendAuthToServer(client_broker, name);
 
-    Body bodyTest = {._buffer = "|test|test|test|test|"};
-    message->setMagicNumber(static_cast<uint8_t>(ActionCode::MAGIC_NUMBER));
-    message->setAction(static_cast<uint8_t>(ActionCode::UP));
-    message->setBody(bodyTest);
-    client_broker->addMessage(0, 1, message);
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-    message->setMagicNumber(static_cast<uint8_t>(ActionCode::MAGIC_NUMBER));
-    message->setAction(static_cast<uint8_t>(ActionCode::DOWN));
-    message->setBody(bodyTest);
-    client_broker->addMessage(0, 1, message);
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-    message->setMagicNumber(static_cast<uint8_t>(ActionCode::MAGIC_NUMBER));
-    message->setAction(static_cast<uint8_t>(ActionCode::LEFT));
-    message->setBody(bodyTest);
-    client_broker->addMessage(0, 1, message);
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-    message->setMagicNumber(static_cast<uint8_t>(ActionCode::MAGIC_NUMBER));
-    message->setAction(static_cast<uint8_t>(ActionCode::RIGHT));
-    message->setBody(bodyTest);
-    client_broker->addMessage(0, 1, message);
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-    while (true)
-    {
-        receiveFromServer(message, client_broker);
-    }
-    // client_broker->addMessage(0, 1, message);
+//     Body bodyTest = {._buffer = "|test|test|test|test|"};
+//     message->setMagicNumber(static_cast<uint8_t>(ActionCode::MAGIC_NUMBER));
+//     message->setAction(static_cast<uint8_t>(ActionCode::UP));
+//     message->setBody(bodyTest);
+//     client_broker->addMessage(0, 1, message);
+//     std::this_thread::sleep_for(std::chrono::seconds(1));
+//     message->setMagicNumber(static_cast<uint8_t>(ActionCode::MAGIC_NUMBER));
+//     message->setAction(static_cast<uint8_t>(ActionCode::DOWN));
+//     message->setBody(bodyTest);
+//     client_broker->addMessage(0, 1, message);
+//     std::this_thread::sleep_for(std::chrono::seconds(1));
+//     message->setMagicNumber(static_cast<uint8_t>(ActionCode::MAGIC_NUMBER));
+//     message->setAction(static_cast<uint8_t>(ActionCode::LEFT));
+//     message->setBody(bodyTest);
+//     client_broker->addMessage(0, 1, message);
+//     std::this_thread::sleep_for(std::chrono::seconds(1));
+//     message->setMagicNumber(static_cast<uint8_t>(ActionCode::MAGIC_NUMBER));
+//     message->setAction(static_cast<uint8_t>(ActionCode::RIGHT));
+//     message->setBody(bodyTest);
+//     client_broker->addMessage(0, 1, message);
+//     std::this_thread::sleep_for(std::chrono::seconds(1));
+//     while (true)
+//     {
+//         receiveFromServer(message, client_broker);
+//     }
+//     // client_broker->addMessage(0, 1, message);
 
-    std::cout << "ClientBroker is stopping" << std::endl;
+//     std::cout << "ClientBroker is stopping" << std::endl;
 
-    delete client_broker;
-    delete network_module;
-    return 0;
-}
+//     delete client_broker;
+//     delete network_module;
+//     return 0;
+// }

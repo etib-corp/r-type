@@ -22,6 +22,9 @@ LE::SceneManager::~SceneManager()
 void LE::SceneManager::play()
 {
     if (!_currentScene) {
+        if (_scenes.empty()) {
+            throw SceneManagerError("No scenes available to play.");
+        }
         _currentScene = _scenes.begin()->second;
         _currentSceneName = _scenes.begin()->first;
     }

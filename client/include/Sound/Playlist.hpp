@@ -10,11 +10,10 @@
 #include "Sound/Sound.hpp"
 
 #include "Error.hpp"
+#include "Utils.hpp"
 
 #include <string>
 #include <vector>
-
-class Utils;
 
 namespace LE {
     namespace Sound {
