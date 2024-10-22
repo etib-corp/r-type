@@ -10,8 +10,8 @@
 #include "Sound/dr_mp3.h"
 #include "Sound/dr_wav.h"
 
-#include <AL/al.h>
-#include <AL/alc.h>
+#include "AL/al.h"
+#include "AL/alc.h"
 
 #include <string>
 #include <vector>

@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include <AL/al.h>
-#include <AL/alc.h>
+#include "AL/al.h"
+#include "AL/alc.h"
 #include <string.h>
 
 #include <vector>

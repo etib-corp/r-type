@@ -32,7 +32,7 @@ include_directories(dependencies/assimp-5.4.3/include)
 include_directories(${BOOST_INCLUDE_DIRS})
 
 file(GLOB_RECURSE CLIENT_SOURCES client/src/*.cpp)
-include_directories(client/include client/include/GUI client/include/Maths dependencies/stb/include dependencies/rapidobj/include dependencies/json-0.0.1/include)
+include_directories(client/include client/include/GUI client/include/Maths dependencies/stb/include dependencies/rapidobj/include dependencies/json-0.0.1/include dependencies/openal-soft-1.23.1/include)
 
 include_directories(${OPENGL_INCLUDE_DIRS})
 
