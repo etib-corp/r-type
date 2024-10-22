@@ -148,7 +148,7 @@ namespace LE {
              * This method initializes the SceneManager, setting up any necessary resources
              * or configurations required for managing scenes within the application.
              */
-            void init();
+            void initScenes();
 
         private:
             std::unordered_map<std::string, std::shared_ptr<Scene>> _scenes;    ///< Collection of scenes managed by the SceneManager.

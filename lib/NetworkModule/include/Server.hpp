@@ -10,14 +10,32 @@
 #include "interface/INetworkModule/IServer.hpp"
 #include "ListenerTCP.hpp"
 #include "ListenerUDP.hpp"
+#include "dllDefine.hpp"
 
-class Server : public IServer {
-    public:
-        Server(int port);
-        ~Server();
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
 
-        void run(void) override;
+    class LIBRARY_API Server : public IServer {
+        public:
+            Server(int port);
+            ~Server();
 
-    protected:
-    private:
-};
+            void run(void) override;
+
+        protected:
+        private:
+    };
+
+#else
+
+    class Server : public IServer {
+        public:
+            Server(int port);
+            ~Server();
+
+            void run(void) override;
+
+        protected:
+        private:
+    };
+
+#endif

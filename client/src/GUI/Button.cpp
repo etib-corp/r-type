@@ -36,7 +36,7 @@ void LE::GUI::Button::draw()
 
     if (isHover()) {
         OnHover();
-        LE::Engine::getInstance()->_sceneManager->getCurrentScene()->_eventManager->addEventListener({LE::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::JUST_PRESSED}, [this](LE::Engine *engine, float dt) {
+        LE::Engine::getInstance()->_game->_sceneManager->getCurrentScene()->_eventManager->addEventListener({LE::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::JUST_PRESSED}, [this](LE::Engine *engine, float dt) {
             if (isHover())
                 OnClick();
         });

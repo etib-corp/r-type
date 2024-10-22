@@ -30,16 +30,6 @@ class Menu : public LE::Scene {
         ~Menu();
 
         /**
-         * @brief Function to play the Menu scene.
-         */
-        void play() override;
-
-        /**
-         * @brief Function to stop the Menu scene.
-         */
-        void stop() override;
-
-        /**
          * @brief Class in which all the GUI elements are stored for the Menu scene.
          */
         class MainContainer : public LE::GUI::Container {

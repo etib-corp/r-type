@@ -32,6 +32,7 @@ void Ecs::destroyEntity(Entity entity)
 {
     _entityManager->destroyEntity(entity);
     _componentManager->entityDestroyed(entity);
+    _systemManager->entityDestroyed(entity);
 }
 
 void Ecs::update(float dt)
@@ -47,4 +48,14 @@ void Ecs::setCameraEntity(Entity entity)
 Entity Ecs::getCameraEntity() const
 {
     return _cameraEntity;
+}
+
+void *Ecs::getScene() const
+{
+    return _scene;
+}
+
+void Ecs::setScene(void *scene)
+{
+    _scene = scene;
 }

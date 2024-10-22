@@ -73,16 +73,6 @@ public:
 
         _guiManager->addChildren(textField);
     }
-    void play() override
-    {
-        // std::cout << "Game scene updated." << std::endl;
-        _guiManager->draw();
-        _eventManager->pollEvents();
-    }
-    void stop() override
-    {
-        std::cout << "Game scene ended." << std::endl;
-    }
 };
 
 struct Position
@@ -132,131 +122,7 @@ class MyParentContainer : public LE::GUI::Container {
         }
 };
 
-class MyScene : public LE::Scene {
-    public:
-        MyScene()
-        {
-            _ecs = std::make_shared<Ecs>();
-            _ecs->registerComponent<TransformComponent>();
-            _ecs->registerComponent<SpriteComponent>();
-            _ecs->registerComponent<ModelComponent>();
-            _ecs->registerComponent<PatternComponent>();
-            _ecs->registerComponent<MotionComponent>();
-            _ecs->registerComponent<CameraComponent>();
-            Signature signatureRender2D;
-            signatureRender2D.set(_ecs->getComponentType<TransformComponent>());
-            signatureRender2D.set(_ecs->getComponentType<SpriteComponent>());
-            _ecs->registerSystem<Render2DSystem>();
-            _ecs->setSignature<Render2DSystem>(signatureRender2D);
-
-            Signature signatureRender3D;
-            signatureRender3D.set(_ecs->getComponentType<TransformComponent>());
-            signatureRender3D.set(_ecs->getComponentType<ModelComponent>());
-            signatureRender3D.set(_ecs->getComponentType<MotionComponent>());
-            _ecs->registerSystem<Render3DSystem>();
-            _ecs->setSignature<Render3DSystem>(signatureRender3D);
-
-            Signature signaturePattern;
-            signaturePattern.set(_ecs->getComponentType<TransformComponent>());
-            signaturePattern.set(_ecs->getComponentType<PatternComponent>());
-            signaturePattern.set(_ecs->getComponentType<MotionComponent>());
-            std::shared_ptr<PatternSystem> patternSystem = _ecs->registerSystem<PatternSystem>();
-            _ecs->setSignature<PatternSystem>(signaturePattern);
-
-            Signature signatureCamera;
-            signatureCamera.set(_ecs->getComponentType<TransformComponent>());
-            signatureCamera.set(_ecs->getComponentType<CameraComponent>());
-            signatureCamera.set(_ecs->getComponentType<MotionComponent>());
-            _ecs->registerSystem<CameraSystem>();
-            _ecs->setSignature<CameraSystem>(signatureCamera);
-
-            patternSystem->addPattern("line", [](PatternComponent &pattern, TransformComponent &transform, MotionComponent &motion) {
-                if (transform.position.x != pattern.end_pos.x) {
-                    transform.position.x += pattern.speed * (pattern.end_pos.x - transform.position.x > 0 ? 1 : -1);
-                }
-                if (transform.position.y != pattern.end_pos.y) {
-                    transform.position.y += pattern.speed * (pattern.end_pos.y - transform.position.y > 0 ? 1 : -1);
-                }
-                if (transform.position.z != pattern.end_pos.z) {
-                    transform.position.z += pattern.speed * (pattern.end_pos.z - transform.position.z > 0 ? 1 : -1);
-                }
-            });
-
-            parseJsonAndCreateEnemy(_ecs, "assets/config/vague_1.json");
-
-            // Entity entity = _ecs->createEntity();
-            // _ecs->addComponent<TransformComponent>(entity, (TransformComponent){{400, 400, 0}, {0, 0, 0}, {0.5f, 0.5f, 0.5f}});
-            // auto sprite = createSpriteComponent("assets/images/character.png");
-            // _ecs->addComponent<SpriteComponent>(entity, *sprite);
-
-            Entity cameraEntity = _ecs->createEntity();\
-            _ecs->addComponent<TransformComponent>(cameraEntity, (TransformComponent){{0, 0, 0}, {0, 0, 0}, {1.0f, 1.0f, 1.0f}});
-            _ecs->addComponent<CameraComponent>(cameraEntity, (CameraComponent){static_cast<float>(LE::Engine::getInstance()->getWindowWidth()), static_cast<float>(LE::Engine::getInstance()->getWindowHeight()), 0.0f, 1000.0f, 45.0f, static_cast<float>(LE::Engine::getInstance()->getWindowWidth()) / static_cast<float>(LE::Engine::getInstance()->getWindowHeight()), {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f}});
-            _ecs->addComponent<MotionComponent>(cameraEntity, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
-            _ecs->setCameraEntity(cameraEntity);
-
-            Entity entity2 = _ecs->createEntity();
-            auto model2 = createModelComponent("assets/models/ship/MicroRecon.obj");
-            _ecs->addComponent<ModelComponent>(entity2, *model2);
-            _ecs->addComponent<TransformComponent>(entity2, (TransformComponent){{0, 0, 0}, {0, 90, 0}, {1.0f, 1.0f, 1.0f}});
-            _ecs->addComponent<MotionComponent>(entity2, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
-
-            // Entity entity3 = _ecs->createEntity();
-            // auto model3 = createModelComponent("assets/models/buttercup/buttercup.obj");
-            // _ecs->addComponent<ModelComponent>(entity3, *model3);
-            // _ecs->addComponent<TransformComponent>(entity3, (TransformComponent){{0, 0, 0}, {0, 0, 0}, {10.0f, 10.0f, 10.0f}});
-
-            _eventManager = std::make_shared<LE::EventManager>();
-            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_ESCAPE, LE::JUST_PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
-                exit(0);
-            });
-            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_UP, LE::PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
-                auto& motion = _ecs->getComponent<MotionComponent>(entity2);
-                motion.velocity.y += 50.0f * (dt / 10000);
-            });
-
-            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_DOWN, LE::PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
-                auto& motion = _ecs->getComponent<MotionComponent>(entity2);
-                motion.velocity.y -= 50.0f * (dt / 10000);
-            });
-            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_RIGHT, LE::PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
-                auto& motion = _ecs->getComponent<MotionComponent>(entity2);
-                motion.velocity.x += 50.0f * (dt / 10000);
-            });
-
-            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_LEFT, LE::PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
-                auto& motion = _ecs->getComponent<MotionComponent>(entity2);
-                motion.velocity.x -= 50.0f * (dt / 10000);
-            });
-
-            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_SPACE, LE::JUST_PRESSED}, [this, entity2](LE::Engine *engine, float dt) {
-                Entity entity = _ecs->createEntity();
-                auto model = createModelComponent("assets/models/bullet/bullet.obj");
-                _ecs->addComponent<ModelComponent>(entity, *model);
-                auto spaceshipTransform = _ecs->getComponent<TransformComponent>(entity2);
-                auto transform = createTransformComponent({spaceshipTransform.position.x, spaceshipTransform.position.y + 6.155F, spaceshipTransform.position.z}, {0, 90, 0}, {0.2f, 0.2f, 0.5f});
-                _ecs->addComponent<TransformComponent>(entity, transform);
-                _ecs->addComponent<MotionComponent>(entity, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
-                auto pattern = createPatternComponent("line", {transform.position[0] + 100, transform.position[1], 0}, 0.05f, PatternEnd::DESTROY);
-                _ecs->addComponent<PatternComponent>(entity, pattern);
-            });
-
-        }
-
-        void play() override
-        {
-            // std::cout << "Game scene updated." << std::endl;
-            _eventManager->pollEvents();
-            _ecs->update(0.0f);
-        }
-
-        void stop() override
-        {
-            std::cout << "Game scene ended." << std::endl;
-        }
-};
-
-int main(int ac, char **av)
+int _main(int ac, char **av)
 {
     // Initialize the engine
     auto engine = LE::Engine::getInstance();
@@ -265,7 +131,7 @@ int main(int ac, char **av)
 
     // engine->addScene("main", scene);
 
-    engine->addScene("menu", std::make_shared<Menu>());
+    // engine->addScene("menu", std::make_shared<Menu>());
     // Run the engine
     try {
         engine->runWithDebug(); // Change to true to simulate an error
@@ -293,8 +159,6 @@ static void receiveFromServer( Message *message, ClientBroker *client_broker)
             return;
         std::cout << "Message received from server" << std::endl;
         ::memmove(&updateEcs, message->getBody()._buffer, sizeof(UpdateEcs));
-        std::cout << "ECS ID = " << (int)updateEcs.ecs_id << std::endl;
-        std::cout << "Action Input" << (int)updateEcs.actionInput << std::endl;
         delete message;
     } catch (const std::exception &e) {
         std::cerr << e.what() << std::endl;
