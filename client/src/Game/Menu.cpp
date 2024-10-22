@@ -36,16 +36,6 @@ Menu::~Menu()
 {
 }
 
-void Menu::play()
-{
-    _guiManager->draw();
-    _eventManager->pollEvents();
-}
-
-void Menu::stop()
-{
-}
-
 Menu::MainContainer::MainContainer()
 {
     _x = 560;
