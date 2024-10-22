@@ -19,6 +19,7 @@
 #include "ECS/Systems/PatternSystem.hpp"
 #include "ECS/Systems/CameraSystem.hpp"
 #include "ECS/Systems/CollisionSystem.hpp"
+#include "ECS/Systems/MoveSystem.hpp"
 
 /**
  * @file Scene.hpp

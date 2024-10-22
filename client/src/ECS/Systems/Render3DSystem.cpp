@@ -35,13 +35,13 @@ for (auto &entity : _entities) {
             continue;
 
         // limit the location of the entity -20,-20,0 to 20,20,0
-        if (transform.position.x < -20.0f || transform.position.x > 20.0f) {
-            motion.velocity.x = 0;
-        }
-        if (transform.position.y < -20.0f || transform.position.y > 20.0f) {
-            motion.velocity.y = 0;
-        }
-        transform.position += motion.velocity;
+        // if (transform.position.x < -20.0f || transform.position.x > 20.0f) {
+        //     motion.velocity.x = 0;
+        // }
+        // if (transform.position.y < -20.0f || transform.position.y > 20.0f) {
+        //     motion.velocity.y = 0;
+        // }
+        // transform.positéion += motion.velocity;
 
 
         _shader->use();

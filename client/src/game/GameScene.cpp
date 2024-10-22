@@ -53,6 +53,12 @@ GameScene::GameScene() : LE::Scene()
     _ecs->registerSystem<CollisionSystem>();
     _ecs->setSignature<CollisionSystem>(signatureCollision);
 
+    Signature signatureMove;
+    signatureMove.set(_ecs->getComponentType<TransformComponent>());
+    signatureMove.set(_ecs->getComponentType<MotionComponent>());
+    _ecs->registerSystem<MoveSystem>();
+    _ecs->setSignature<MoveSystem>(signatureMove);
+
     patternSystem->addPattern("line", [](PatternComponent &pattern, TransformComponent &transform, MotionComponent &motion) {
         if (transform.position.x != pattern.end_pos.x) {
             motion.velocity.x = pattern.speed * (pattern.end_pos.x - transform.position.x > 0 ? 1 : -1);
@@ -125,7 +131,7 @@ void GameScene::init()
             int id = _clientBroker->getECSId();
             // auto& motion = _ecs->getComponent<MotionComponent>(id);
             Request request = {0};
-            request.header.Action = asChar(ActionCode::STOP_UP);
+            request.header.Action = asChar(ActionCode::UP);
             request.header.BodyLength = 0;
             request.header.EmmiterdEcsId = _clientBroker->getECSId();
             request.header.MagicNumber = 0xFF;
@@ -183,7 +189,7 @@ void GameScene::init()
             int id = _clientBroker->getECSId();
             // auto& motion = _ecs->getComponent<MotionComponent>(id);
             Request request = {0};
-            request.header.Action = asChar(ActionCode::STOP_DOWN);
+            request.header.Action = asChar(ActionCode::DOWN);
             request.header.BodyLength = 0;
             request.header.EmmiterdEcsId = _clientBroker->getECSId();
             request.header.MagicNumber = 0xFF;

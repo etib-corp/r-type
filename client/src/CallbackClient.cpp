@@ -33,19 +33,9 @@ bool callbackUp(const Request& req, std::shared_ptr<Ecs> _ecs)
     std::uint8_t id = req.header.EmmiterdEcsId;
     std::cout << "Up : " << static_cast<int>(id) << std::endl;
     auto& motion = _ecs->getComponent<MotionComponent>(id);
-    motion.velocity[1] = 1.0f;
+    motion.movement[MOVEMENT_UP] = motion.movement[MOVEMENT_UP] == 0 ? 1 : 0;
     LE::Engine::getInstance()->debug("Up");
     rtypeLog->log<LogType::DEBUG>("{}", "Up");
-    return true;
-}
-
-bool callbackStopUp(const Request& req, std::shared_ptr<Ecs> _ecs)
-{
-    std::uint8_t id = req.header.EmmiterdEcsId;
-    auto& motion = _ecs->getComponent<MotionComponent>(id);
-    motion.velocity[1] = 0.0f;
-    rtypeLog->log<LogType::DEBUG>("{}", "Stop Up");
-    LE::Engine::getInstance()->debug("Stop Up");
     return true;
 }
 
@@ -53,19 +43,9 @@ bool callbackDown(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
     std::uint8_t id = req.header.EmmiterdEcsId;
     auto& motion = _ecs->getComponent<MotionComponent>(id);
-    motion.velocity[1] = -1.0f;
+    motion.movement[MOVEMENT_DOWN] = motion.movement[MOVEMENT_DOWN] == 0 ? 1 : 0;
     rtypeLog->log<LogType::DEBUG>("{}", "Down");
     LE::Engine::getInstance()->debug("Down");
-    return true;
-}
-
-bool callbackStopDown(const Request& req, std::shared_ptr<Ecs> _ecs)
-{
-    std::uint8_t id = req.header.EmmiterdEcsId;
-    auto& motion = _ecs->getComponent<MotionComponent>(id);
-    motion.velocity[1] = 0.0f;
-    rtypeLog->log<LogType::DEBUG>("{}", "Stop Down");
-    LE::Engine::getInstance()->debug("Stop Down");
     return true;
 }
 
@@ -74,11 +54,7 @@ bool callbackRight(const Request& req, std::shared_ptr<Ecs> _ecs)
     std::uint8_t id = req.header.EmmiterdEcsId;
     auto& motion = _ecs->getComponent<MotionComponent>(id);
     auto& transform = _ecs->getComponent<TransformComponent>(id);
-    LE::Vector3Data<float> vectorData;
-    if (motion.velocity[0] == 0.0f)
-        motion.velocity[0] = 1.0f;
-    else
-        motion.velocity[0] = 0.0f;
+    motion.movement[MOVEMENT_RIGHT] = motion.movement[MOVEMENT_RIGHT] == 0 ? 1 : 0;
     LE::Engine::getInstance()->debug("Right");
     rtypeLog->log<LogType::DEBUG>("{}", "Right");
     return true;
@@ -88,10 +64,7 @@ bool callbackLeft(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
     std::uint8_t id = req.header.EmmiterdEcsId;
     auto& motion = _ecs->getComponent<MotionComponent>(id);
-    if (motion.velocity[0] == 0.0f)
-        motion.velocity[0] = -1.0f;
-    else
-        motion.velocity[0] = 0.0f;
+    motion.movement[MOVEMENT_LEFT] = motion.movement[MOVEMENT_LEFT] == 0 ? 1 : 0;
     LE::Engine::getInstance()->debug("Left");
     rtypeLog->log<LogType::DEBUG>("{}", "Left");
     return true;
@@ -159,12 +132,8 @@ void attributeClientCallback(ResponsibilityChain *chain, ClientBroker *client_br
     // chain->addActionCallback(asChar(ActionCode::UP), checkRequestEmmiterdEcsId);
     chain->addActionCallback(asChar(ActionCode::UP), callbackUp);
 
-    chain->addActionCallback(asChar(ActionCode::STOP_UP), callbackStopUp);
-
     // chain->addActionCallback(asChar(ActionCode::DOWN), checkRequestEmmiterdEcsId);
     chain->addActionCallback(asChar(ActionCode::DOWN), callbackDown);
-
-    chain->addActionCallback(asChar(ActionCode::STOP_DOWN), callbackStopDown);
 
     // chain->addActionCallback(asChar(ActionCode::RIGHT), checkRequestEmmiterdEcsId);
     chain->addActionCallback(asChar(ActionCode::RIGHT), callbackRight);
