@@ -98,48 +98,292 @@ $(function(){initNavTree('classSessionManager.html',''); initResizable(true); })
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classSessionManager-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">SessionManager Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Manages client sessions in a network module.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="SessionManager_8hpp_source.html">SessionManager.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab0ac42f960795c376906156cc7db1c98" id="r_ab0ac42f960795c376906156cc7db1c98"><td class="memItemLeft" align="right" valign="top"><a id="ab0ac42f960795c376906156cc7db1c98" name="ab0ac42f960795c376906156cc7db1c98"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>addClient</b> (std::shared_ptr&lt; <a class="el" href="classISession.html">ISession</a> &gt; client)</td></tr>
-<tr class="separator:ab0ac42f960795c376906156cc7db1c98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11f2a6651fc937b3f0ce553151ac0568" id="r_a11f2a6651fc937b3f0ce553151ac0568"><td class="memItemLeft" align="right" valign="top"><a id="a11f2a6651fc937b3f0ce553151ac0568" name="a11f2a6651fc937b3f0ce553151ac0568"></a>
-virtual std::deque&lt; std::shared_ptr&lt; <a class="el" href="classISession.html">ISession</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>getClients</b> ()</td></tr>
-<tr class="separator:a11f2a6651fc937b3f0ce553151ac0568"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1869ed9efcf5b9000c388d20db9bde0f" id="r_a1869ed9efcf5b9000c388d20db9bde0f"><td class="memItemLeft" align="right" valign="top"><a id="a1869ed9efcf5b9000c388d20db9bde0f" name="a1869ed9efcf5b9000c388d20db9bde0f"></a>
-virtual std::shared_ptr&lt; <a class="el" href="classISession.html">ISession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getClientById</b> (std::uint32_t id)</td></tr>
-<tr class="separator:a1869ed9efcf5b9000c388d20db9bde0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad90ffa9fc6d1006c42cfc600da178ae1" id="r_ad90ffa9fc6d1006c42cfc600da178ae1"><td class="memItemLeft" align="right" valign="top"><a id="ad90ffa9fc6d1006c42cfc600da178ae1" name="ad90ffa9fc6d1006c42cfc600da178ae1"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>removeClientById</b> (std::uint32_t id)</td></tr>
-<tr class="separator:ad90ffa9fc6d1006c42cfc600da178ae1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae11299f8c4cfdc040a7dcb94f327e265" id="r_ae11299f8c4cfdc040a7dcb94f327e265"><td class="memItemLeft" align="right" valign="top"><a id="ae11299f8c4cfdc040a7dcb94f327e265" name="ae11299f8c4cfdc040a7dcb94f327e265"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setOnReceive</b> (std::function&lt; void(const <a class="el" href="structRequest.html">Request</a> &amp;)&gt; onReceive)</td></tr>
+<tr class="memitem:acc0ba9a385a5d78b9602d5ecb0525006" id="r_acc0ba9a385a5d78b9602d5ecb0525006"><td class="memItemLeft" align="right" valign="top"><a id="acc0ba9a385a5d78b9602d5ecb0525006" name="acc0ba9a385a5d78b9602d5ecb0525006"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SessionManager</b> ()</td></tr>
+<tr class="memdesc:acc0ba9a385a5d78b9602d5ecb0525006"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classSessionManager.html" title="Manages client sessions in a network module.">SessionManager</a> object. <br /></td></tr>
+<tr class="separator:acc0ba9a385a5d78b9602d5ecb0525006"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf9860a47b8c54e5f13210715e784621" id="r_acf9860a47b8c54e5f13210715e784621"><td class="memItemLeft" align="right" valign="top"><a id="acf9860a47b8c54e5f13210715e784621" name="acf9860a47b8c54e5f13210715e784621"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~SessionManager</b> ()</td></tr>
+<tr class="memdesc:acf9860a47b8c54e5f13210715e784621"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="classSessionManager.html" title="Manages client sessions in a network module.">SessionManager</a> object. <br /></td></tr>
+<tr class="separator:acf9860a47b8c54e5f13210715e784621"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5885be5a6b6de701abf33e413231f70" id="r_ad5885be5a6b6de701abf33e413231f70"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad5885be5a6b6de701abf33e413231f70">addClient</a> (std::shared_ptr&lt; <a class="el" href="classISession.html">ISession</a> &gt; client)</td></tr>
+<tr class="memdesc:ad5885be5a6b6de701abf33e413231f70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a client session.  <br /></td></tr>
+<tr class="separator:ad5885be5a6b6de701abf33e413231f70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5dfbb7df9fa6a39ecdecc9ee99cc26cb" id="r_a5dfbb7df9fa6a39ecdecc9ee99cc26cb"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; std::shared_ptr&lt; <a class="el" href="classISession.html">ISession</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5dfbb7df9fa6a39ecdecc9ee99cc26cb">getClients</a> ()</td></tr>
+<tr class="memdesc:a5dfbb7df9fa6a39ecdecc9ee99cc26cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves all client sessions.  <br /></td></tr>
+<tr class="separator:a5dfbb7df9fa6a39ecdecc9ee99cc26cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaebfdd12c831c527200dd62d2b7f1294" id="r_aaebfdd12c831c527200dd62d2b7f1294"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; <a class="el" href="classISession.html">ISession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaebfdd12c831c527200dd62d2b7f1294">getClientById</a> (std::uint32_t id)</td></tr>
+<tr class="memdesc:aaebfdd12c831c527200dd62d2b7f1294"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a client session by its ID.  <br /></td></tr>
+<tr class="separator:aaebfdd12c831c527200dd62d2b7f1294"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35aada9670b8402063efca2c39ce0b3d" id="r_a35aada9670b8402063efca2c39ce0b3d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35aada9670b8402063efca2c39ce0b3d">removeClientById</a> (std::uint32_t id)</td></tr>
+<tr class="memdesc:a35aada9670b8402063efca2c39ce0b3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a client session by its ID.  <br /></td></tr>
+<tr class="separator:a35aada9670b8402063efca2c39ce0b3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae11299f8c4cfdc040a7dcb94f327e265" id="r_ae11299f8c4cfdc040a7dcb94f327e265"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae11299f8c4cfdc040a7dcb94f327e265">setOnReceive</a> (std::function&lt; void(const <a class="el" href="structRequest.html">Request</a> &amp;)&gt; onReceive)</td></tr>
+<tr class="memdesc:ae11299f8c4cfdc040a7dcb94f327e265"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the callback function to handle received requests.  <br /></td></tr>
 <tr class="separator:ae11299f8c4cfdc040a7dcb94f327e265"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37f616952a6518fe381f1f36eb500e66" id="r_a37f616952a6518fe381f1f36eb500e66"><td class="memItemLeft" align="right" valign="top"><a id="a37f616952a6518fe381f1f36eb500e66" name="a37f616952a6518fe381f1f36eb500e66"></a>
-std::function&lt; void(const <a class="el" href="structRequest.html">Request</a> &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>getOnReceive</b> ()</td></tr>
+<tr class="memitem:a37f616952a6518fe381f1f36eb500e66" id="r_a37f616952a6518fe381f1f36eb500e66"><td class="memItemLeft" align="right" valign="top">std::function&lt; void(const <a class="el" href="structRequest.html">Request</a> &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37f616952a6518fe381f1f36eb500e66">getOnReceive</a> ()</td></tr>
+<tr class="memdesc:a37f616952a6518fe381f1f36eb500e66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the callback function for handling received requests.  <br /></td></tr>
 <tr class="separator:a37f616952a6518fe381f1f36eb500e66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:aeb61b388a730891d84b2e7ada928b1ed" id="r_aeb61b388a730891d84b2e7ada928b1ed"><td class="memItemLeft" align="right" valign="top"><a id="aeb61b388a730891d84b2e7ada928b1ed" name="aeb61b388a730891d84b2e7ada928b1ed"></a>
-std::deque&lt; std::shared_ptr&lt; <a class="el" href="classISession.html">ISession</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_sessions</b></td></tr>
-<tr class="separator:aeb61b388a730891d84b2e7ada928b1ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ed545a0eafb670a449e2ff690f7f764" id="r_a8ed545a0eafb670a449e2ff690f7f764"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classISession.html">ISession</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ed545a0eafb670a449e2ff690f7f764">popSession</a> (void)</td></tr>
+<tr class="memdesc:a8ed545a0eafb670a449e2ff690f7f764"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pops a session from the session stack.  <br /></td></tr>
+<tr class="separator:a8ed545a0eafb670a449e2ff690f7f764"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90dc0e1762bc9855d37fba7d6919f20e" id="r_a90dc0e1762bc9855d37fba7d6919f20e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90dc0e1762bc9855d37fba7d6919f20e">pushSession</a> (std::shared_ptr&lt; <a class="el" href="classISession.html">ISession</a> &gt; session)</td></tr>
+<tr class="memdesc:a90dc0e1762bc9855d37fba7d6919f20e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pushes a session onto the session stack.  <br /></td></tr>
+<tr class="separator:a90dc0e1762bc9855d37fba7d6919f20e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a860edac10aa1cfea4d76d0478895c0d2" id="r_a860edac10aa1cfea4d76d0478895c0d2"><td class="memItemLeft" align="right" valign="top"><a id="a860edac10aa1cfea4d76d0478895c0d2" name="a860edac10aa1cfea4d76d0478895c0d2"></a>
 std::function&lt; void(const <a class="el" href="structRequest.html">Request</a> &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_onReceive</b></td></tr>
+<tr class="memdesc:a860edac10aa1cfea4d76d0478895c0d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for received requests. <br /></td></tr>
 <tr class="separator:a860edac10aa1cfea4d76d0478895c0d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05d87c5c88d86aa2852d0e4778275273" id="r_a05d87c5c88d86aa2852d0e4778275273"><td class="memItemLeft" align="right" valign="top"><a id="a05d87c5c88d86aa2852d0e4778275273" name="a05d87c5c88d86aa2852d0e4778275273"></a>
+std::mutex&#160;</td><td class="memItemRight" valign="bottom"><b>_mutex</b></td></tr>
+<tr class="memdesc:a05d87c5c88d86aa2852d0e4778275273"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutex for thread safety. <br /></td></tr>
+<tr class="separator:a05d87c5c88d86aa2852d0e4778275273"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90bc23643426e99162ab905d470ec2d9" id="r_a90bc23643426e99162ab905d470ec2d9"><td class="memItemLeft" align="right" valign="top"><a id="a90bc23643426e99162ab905d470ec2d9" name="a90bc23643426e99162ab905d470ec2d9"></a>
+std::vector&lt; std::shared_ptr&lt; <a class="el" href="classISession.html">ISession</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_sessions</b></td></tr>
+<tr class="memdesc:a90bc23643426e99162ab905d470ec2d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vector of client sessions. <br /></td></tr>
+<tr class="separator:a90bc23643426e99162ab905d470ec2d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>include/interface/INetworkModule/<a class="el" href="ISessionManager_8hpp_source.html">ISessionManager.hpp</a></li>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Manages client sessions in a network module. </p>
+<p>The <a class="el" href="classSessionManager.html" title="Manages client sessions in a network module.">SessionManager</a> class provides methods to add, remove, and retrieve client sessions. It also allows setting a callback function to handle received requests. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad5885be5a6b6de701abf33e413231f70" name="ad5885be5a6b6de701abf33e413231f70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5885be5a6b6de701abf33e413231f70">&#9670;&#160;</a></span>addClient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SessionManager::addClient </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classISession.html">ISession</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>client</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds a client session. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">client</td><td><a class="el" href="classA.html">A</a> shared pointer to the client session to be added. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aaebfdd12c831c527200dd62d2b7f1294" name="aaebfdd12c831c527200dd62d2b7f1294"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaebfdd12c831c527200dd62d2b7f1294">&#9670;&#160;</a></span>getClientById()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classISession.html">ISession</a> &gt; SessionManager::getClientById </td>
+          <td>(</td>
+          <td class="paramtype">std::uint32_t</td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves a client session by its ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>The ID of the client session to be retrieved. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classA.html">A</a> shared pointer to the client session with the specified ID. </dd></dl>
+
+</div>
+</div>
+<a id="a5dfbb7df9fa6a39ecdecc9ee99cc26cb" name="a5dfbb7df9fa6a39ecdecc9ee99cc26cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5dfbb7df9fa6a39ecdecc9ee99cc26cb">&#9670;&#160;</a></span>getClients()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::shared_ptr&lt; <a class="el" href="classISession.html">ISession</a> &gt; &gt; &amp; SessionManager::getClients </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves all client sessions. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classA.html">A</a> reference to a vector of shared pointers to client sessions. </dd></dl>
+
+</div>
+</div>
+<a id="a37f616952a6518fe381f1f36eb500e66" name="a37f616952a6518fe381f1f36eb500e66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37f616952a6518fe381f1f36eb500e66">&#9670;&#160;</a></span>getOnReceive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::function&lt; void(const <a class="el" href="structRequest.html">Request</a> &amp;)&gt; SessionManager::getOnReceive </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieves the callback function for handling received requests. </p>
+<dl class="section return"><dt>Returns</dt><dd>The function to be called when a request is received. </dd></dl>
+
+</div>
+</div>
+<a id="a8ed545a0eafb670a449e2ff690f7f764" name="a8ed545a0eafb670a449e2ff690f7f764"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ed545a0eafb670a449e2ff690f7f764">&#9670;&#160;</a></span>popSession()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classISession.html">ISession</a> &gt; SessionManager::popSession </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pops a session from the session stack. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classA.html">A</a> shared pointer to the popped session. </dd></dl>
+
+</div>
+</div>
+<a id="a90dc0e1762bc9855d37fba7d6919f20e" name="a90dc0e1762bc9855d37fba7d6919f20e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90dc0e1762bc9855d37fba7d6919f20e">&#9670;&#160;</a></span>pushSession()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SessionManager::pushSession </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classISession.html">ISession</a> &gt;</td>          <td class="paramname"><span class="paramname"><em>session</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pushes a session onto the session stack. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">session</td><td><a class="el" href="classA.html">A</a> shared pointer to the session to be pushed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a35aada9670b8402063efca2c39ce0b3d" name="a35aada9670b8402063efca2c39ce0b3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35aada9670b8402063efca2c39ce0b3d">&#9670;&#160;</a></span>removeClientById()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SessionManager::removeClientById </td>
+          <td>(</td>
+          <td class="paramtype">std::uint32_t</td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Removes a client session by its ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>The ID of the client session to be removed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae11299f8c4cfdc040a7dcb94f327e265" name="ae11299f8c4cfdc040a7dcb94f327e265"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae11299f8c4cfdc040a7dcb94f327e265">&#9670;&#160;</a></span>setOnReceive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SessionManager::setOnReceive </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; void(const <a class="el" href="structRequest.html">Request</a> &amp;)&gt;</td>          <td class="paramname"><span class="paramname"><em>onReceive</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the callback function to handle received requests. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">onReceive</td><td><a class="el" href="classA.html">A</a> function to be called when a request is received. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>include/interface/INetworkModule/<a class="el" href="SessionManager_8hpp_source.html">SessionManager.hpp</a></li>
+<li>src/interface/<b>SessionManager.cpp</b></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -13,14 +13,12 @@ var hierarchy =
       [ "D", "classD.html", null ]
     ] ],
     [ "Body", "structBody.html", null ],
-    [ "Box", "structBox.html", [
-      [ "HitBox", "structHitBox.html", null ],
-      [ "HurtBox", "structHurtBox.html", null ]
-    ] ],
+    [ "Box", "structBox.html", null ],
     [ "Broker", "classBroker.html", [
       [ "ClientBroker", "classClientBroker.html", null ],
       [ "ServerBroker", "classServerBroker.html", null ]
     ] ],
+    [ "Buffer", "classBuffer.html", null ],
     [ "C1", "classC1.html", null ],
     [ "C2", "classC2.html", null ],
     [ "C3", "classC3.html", null ],
@@ -45,8 +43,10 @@ var hierarchy =
     ] ],
     [ "ComponentManager", "classComponentManager.html", null ],
     [ "CoordStruct", "structCoordStruct.html", null ],
+    [ "Data", "structData.html", null ],
     [ "Ecs", "classEcs.html", null ],
     [ "LE::Engine", "classLE_1_1Engine.html", null ],
+    [ "Entity", "structEntity.html", null ],
     [ "EntityManager", "classEntityManager.html", null ],
     [ "Enum_Test", "classEnum__Test.html", null ],
     [ "LE::EventManager", "classLE_1_1EventManager.html", null ],
@@ -76,9 +76,14 @@ var hierarchy =
     ] ],
     [ "Fn_Test", "classFn__Test.html", null ],
     [ "LE::GUI::Font", "classLE_1_1GUI_1_1Font.html", null ],
+    [ "LE::Game", "classLE_1_1Game.html", [
+      [ "Rtype", "classRtype.html", null ]
+    ] ],
     [ "GameClock", "classGameClock.html", null ],
     [ "Header", "structHeader.html", null ],
     [ "Health", "structHealth.html", null ],
+    [ "HitBox", "structHitBox.html", null ],
+    [ "HurtBox", "structHurtBox.html", null ],
     [ "IClient", "classIClient.html", [
       [ "Client", "classClient.html", null ]
     ] ],
@@ -91,6 +96,9 @@ var hierarchy =
     [ "IListenerUDP", "classIListenerUDP.html", [
       [ "ListenerUDP", "classListenerUDP.html", null ]
     ] ],
+    [ "ILoggable", "classILoggable.html", [
+      [ "Logger", "classLogger.html", null ]
+    ] ],
     [ "Include_Test", "classInclude__Test.html", null ],
     [ "INetworkModule", "classINetworkModule.html", [
       [ "AsioNetworkModule", "classAsioNetworkModule.html", null ]
@@ -102,6 +110,15 @@ var hierarchy =
       [ "Session", "classSession.html", null ]
     ] ],
     [ "Javadoc_Test", "classJavadoc__Test.html", null ],
+    [ "JsonParser", "classJsonParser.html", null ],
+    [ "JsonValue", "classJsonValue.html", [
+      [ "JsonArray", "classJsonArray.html", null ],
+      [ "JsonBool", "classJsonBool.html", null ],
+      [ "JsonNull", "classJsonNull.html", null ],
+      [ "JsonNumber", "classJsonNumber.html", null ],
+      [ "JsonObject", "classJsonObject.html", null ],
+      [ "JsonString", "classJsonString.html", null ]
+    ] ],
     [ "LE::Key", "structLE_1_1Key.html", null ],
     [ "LoaderLib", "classLoaderLib.html", null ],
     [ "LE::Matrix< WIDTH, HEIGHT, T >", "classLE_1_1Matrix.html", null ],
@@ -129,8 +146,8 @@ var hierarchy =
     [ "ResponsibilityChain", "classResponsibilityChain.html", null ],
     [ "LE::Scene", "classLE_1_1Scene.html", [
       [ "GameScene", "classGameScene.html", null ],
-      [ "Menu", "classMenu.html", null ],
-      [ "MyScene", "classMyScene.html", null ]
+      [ "GameScene", "classGameScene.html", null ],
+      [ "Menu", "classMenu.html", null ]
     ] ],
     [ "LE::SceneManager", "classLE_1_1SceneManager.html", null ],
     [ "SessionManager", "classSessionManager.html", null ],
@@ -139,15 +156,21 @@ var hierarchy =
       [ "LE::Shapes::Rectangle", "classLE_1_1Shapes_1_1Rectangle.html", null ],
       [ "LE::Shapes::Triangle", "classLE_1_1Shapes_1_1Triangle.html", null ]
     ] ],
+    [ "ShootPatternComponent", "structShootPatternComponent.html", null ],
     [ "SomeNiceClass", "classSomeNiceClass.html", null ],
     [ "SpriteComponent", "structSpriteComponent.html", null ],
+    [ "StartGame", "structStartGame.html", null ],
     [ "LE::Status", "structLE_1_1Status.html", null ],
     [ "String", "classString.html", null ],
     [ "System", "classSystem.html", [
       [ "CameraSystem", "classCameraSystem.html", null ],
+      [ "CollisionSystem", "classCollisionSystem.html", null ],
+      [ "MoveSystem", "classMoveSystem.html", null ],
+      [ "MoveSystem", "classMoveSystem.html", null ],
       [ "PatternSystem", "classPatternSystem.html", null ],
       [ "Render2DSystem", "classRender2DSystem.html", null ],
-      [ "Render3DSystem", "classRender3DSystem.html", null ]
+      [ "Render3DSystem", "classRender3DSystem.html", null ],
+      [ "ShootPatternSystem", "classShootPatternSystem.html", null ]
     ] ],
     [ "SystemManager", "classSystemManager.html", null ],
     [ "Test< T, i >", "classTest.html", null ],
@@ -162,6 +185,8 @@ var hierarchy =
     [ "LE::Vector2< float >", "classLE_1_1Vector2.html", null ],
     [ "LE::Vector3< T >", "classLE_1_1Vector3.html", null ],
     [ "LE::Vector3< float >", "classLE_1_1Vector3.html", null ],
+    [ "Vector3D", "structVector3D.html", null ],
+    [ "LE::Vector3Data< T >", "structLE_1_1Vector3Data.html", null ],
     [ "LE::Vector4< T >", "classLE_1_1Vector4.html", null ],
     [ "LE::Vector4< float >", "classLE_1_1Vector4.html", null ],
     [ "Vertex", "structVertex.html", null ],

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>R-Type: client/include/ECS/Components/BoxComponent.hpp Source File</title>
+<title>R-Type: include/ECS/Components/BoxComponent.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -110,31 +110,33 @@ $(function(){initNavTree('BoxComponent_8hpp_source.html',''); initResizable(true
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;bitset&gt;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;Vector3.hpp&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define NB_LAYERS 8     </span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#define NB_MASKS NB_LAYERS  </span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;functional&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="Matrix_8hpp.html">Maths/Matrix.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="foldopen" id="foldopen00021" data-start="{" data-end="};">
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structBox.html">   21</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structBox.html">Box</a> {</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="structBox.html#a46c951fd4f07b46a726c8fc38013b0f0">   22</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structBox.html#a46c951fd4f07b46a726c8fc38013b0f0">width</a>;      </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structBox.html#a6851eb8f64b4cbe58488f7dcfe04bdb8">   23</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structBox.html#a6851eb8f64b4cbe58488f7dcfe04bdb8">height</a>;     </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structBox.html#acea7bc9c51c365fb05d37e818f0df701">   24</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structBox.html#acea7bc9c51c365fb05d37e818f0df701">depth</a>;      </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structBox.html#a32483a28a8545192e5a80903180f7fc0">   25</a></span>    std::bitset&lt;NB_LAYERS&gt; <a class="code hl_variable" href="structBox.html#a32483a28a8545192e5a80903180f7fc0">layers</a>;      </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structBox.html#ac7f49762645d9847472896e7bfe7cadd">   26</a></span>    std::bitset&lt;NB_MASKS&gt; <a class="code hl_variable" href="structBox.html#ac7f49762645d9847472896e7bfe7cadd">masks</a>;        </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>};</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#define NB_LAYERS 8     </span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#define NB_MASKS NB_LAYERS  </span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="foldopen" id="foldopen00024" data-start="{" data-end="};">
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structBox.html">   24</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structBox.html">Box</a> {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structBox.html#a46c951fd4f07b46a726c8fc38013b0f0">   25</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structBox.html#a46c951fd4f07b46a726c8fc38013b0f0">width</a>;      </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structBox.html#a6851eb8f64b4cbe58488f7dcfe04bdb8">   26</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structBox.html#a6851eb8f64b4cbe58488f7dcfe04bdb8">height</a>;     </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structBox.html#a32483a28a8545192e5a80903180f7fc0">   27</a></span>    std::bitset&lt;NB_LAYERS&gt; <a class="code hl_variable" href="structBox.html#a32483a28a8545192e5a80903180f7fc0">layers</a>;      </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structBox.html#ac7f49762645d9847472896e7bfe7cadd">   28</a></span>    std::bitset&lt;NB_MASKS&gt; <a class="code hl_variable" href="structBox.html#ac7f49762645d9847472896e7bfe7cadd">masks</a>;        </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>};</div>
 </div>
-<div class="ttc" id="astructBox_html"><div class="ttname"><a href="structBox.html">Box</a></div><div class="ttdoc">A box component.</div><div class="ttdef"><b>Definition</b> BoxComponent.hpp:21</div></div>
-<div class="ttc" id="astructBox_html_a32483a28a8545192e5a80903180f7fc0"><div class="ttname"><a href="structBox.html#a32483a28a8545192e5a80903180f7fc0">Box::layers</a></div><div class="ttdeci">std::bitset&lt; NB_LAYERS &gt; layers</div><div class="ttdoc">The layers of the box.</div><div class="ttdef"><b>Definition</b> BoxComponent.hpp:25</div></div>
-<div class="ttc" id="astructBox_html_a46c951fd4f07b46a726c8fc38013b0f0"><div class="ttname"><a href="structBox.html#a46c951fd4f07b46a726c8fc38013b0f0">Box::width</a></div><div class="ttdeci">int width</div><div class="ttdoc">The width of the box.</div><div class="ttdef"><b>Definition</b> BoxComponent.hpp:22</div></div>
-<div class="ttc" id="astructBox_html_a6851eb8f64b4cbe58488f7dcfe04bdb8"><div class="ttname"><a href="structBox.html#a6851eb8f64b4cbe58488f7dcfe04bdb8">Box::height</a></div><div class="ttdeci">int height</div><div class="ttdoc">The height of the box.</div><div class="ttdef"><b>Definition</b> BoxComponent.hpp:23</div></div>
-<div class="ttc" id="astructBox_html_ac7f49762645d9847472896e7bfe7cadd"><div class="ttname"><a href="structBox.html#ac7f49762645d9847472896e7bfe7cadd">Box::masks</a></div><div class="ttdeci">std::bitset&lt; NB_MASKS &gt; masks</div><div class="ttdoc">The masks of the box.</div><div class="ttdef"><b>Definition</b> BoxComponent.hpp:26</div></div>
-<div class="ttc" id="astructBox_html_acea7bc9c51c365fb05d37e818f0df701"><div class="ttname"><a href="structBox.html#acea7bc9c51c365fb05d37e818f0df701">Box::depth</a></div><div class="ttdeci">int depth</div><div class="ttdoc">The depth of the box.</div><div class="ttdef"><b>Definition</b> BoxComponent.hpp:24</div></div>
+<div class="ttc" id="aMatrix_8hpp_html"><div class="ttname"><a href="Matrix_8hpp.html">Matrix.hpp</a></div><div class="ttdoc">Defines the Matrix class for representing 4D vectors.</div></div>
+<div class="ttc" id="astructBox_html"><div class="ttname"><a href="structBox.html">Box</a></div><div class="ttdoc">A box component.</div><div class="ttdef"><b>Definition</b> BoxComponent.hpp:24</div></div>
+<div class="ttc" id="astructBox_html_a32483a28a8545192e5a80903180f7fc0"><div class="ttname"><a href="structBox.html#a32483a28a8545192e5a80903180f7fc0">Box::layers</a></div><div class="ttdeci">std::bitset&lt; NB_LAYERS &gt; layers</div><div class="ttdoc">The layers of the box.</div><div class="ttdef"><b>Definition</b> BoxComponent.hpp:27</div></div>
+<div class="ttc" id="astructBox_html_a46c951fd4f07b46a726c8fc38013b0f0"><div class="ttname"><a href="structBox.html#a46c951fd4f07b46a726c8fc38013b0f0">Box::width</a></div><div class="ttdeci">int width</div><div class="ttdoc">The width of the box.</div><div class="ttdef"><b>Definition</b> BoxComponent.hpp:25</div></div>
+<div class="ttc" id="astructBox_html_a6851eb8f64b4cbe58488f7dcfe04bdb8"><div class="ttname"><a href="structBox.html#a6851eb8f64b4cbe58488f7dcfe04bdb8">Box::height</a></div><div class="ttdeci">int height</div><div class="ttdoc">The height of the box.</div><div class="ttdef"><b>Definition</b> BoxComponent.hpp:26</div></div>
+<div class="ttc" id="astructBox_html_ac7f49762645d9847472896e7bfe7cadd"><div class="ttname"><a href="structBox.html#ac7f49762645d9847472896e7bfe7cadd">Box::masks</a></div><div class="ttdeci">std::bitset&lt; NB_MASKS &gt; masks</div><div class="ttdoc">The masks of the box.</div><div class="ttdef"><b>Definition</b> BoxComponent.hpp:28</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_5c23080e296bbe846f4ed2d01d7b595d.html">include</a></li><li class="navelem"><a class="el" href="dir_7a3fab111ab468805d91e8419cd701b9.html">ECS</a></li><li class="navelem"><a class="el" href="dir_6fbbabaa899efa9a3e12983b8be91153.html">Components</a></li><li class="navelem"><b>BoxComponent.hpp</b></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_073402b06d831bb0ea44664935cf1ebd.html">ECS</a></li><li class="navelem"><a class="el" href="dir_7b52d6202c19af6951914df083df759a.html">Components</a></li><li class="navelem"><b>BoxComponent.hpp</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>

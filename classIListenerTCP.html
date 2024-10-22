@@ -103,6 +103,11 @@ $(function(){initNavTree('classIListenerTCP.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">IListenerTCP Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Interface for TCP listener modules.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="IListenerTCP_8hpp_source.html">IListenerTCP.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for IListenerTCP:</div>
 <div class="dyncontent">
@@ -115,24 +120,39 @@ Inheritance diagram for IListenerTCP:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:ad9012d3dfc158cf8fd4084bcec6c94e9" id="r_ad9012d3dfc158cf8fd4084bcec6c94e9"><td class="memItemLeft" align="right" valign="top"><a id="ad9012d3dfc158cf8fd4084bcec6c94e9" name="ad9012d3dfc158cf8fd4084bcec6c94e9"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~IListenerTCP</b> ()=default</td></tr>
+<tr class="memdesc:ad9012d3dfc158cf8fd4084bcec6c94e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for <a class="el" href="classIListenerTCP.html" title="Interface for TCP listener modules.">IListenerTCP</a>. <br /></td></tr>
+<tr class="separator:ad9012d3dfc158cf8fd4084bcec6c94e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac967502cd45d96405b7269293703c04d" id="r_ac967502cd45d96405b7269293703c04d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac967502cd45d96405b7269293703c04d">WaitForConnection</a> ()=0</td></tr>
+<tr class="memdesc:ac967502cd45d96405b7269293703c04d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Waits for a TCP connection.  <br /></td></tr>
 <tr class="separator:ac967502cd45d96405b7269293703c04d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6819be5b322623f45264b9c54eb76d11" id="r_a6819be5b322623f45264b9c54eb76d11"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6819be5b322623f45264b9c54eb76d11">run</a> (std::shared_ptr&lt; <a class="el" href="classSessionManager.html">SessionManager</a> &gt; module)=0</td></tr>
+<tr class="memdesc:a6819be5b322623f45264b9c54eb76d11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the TCP listener with the given session manager.  <br /></td></tr>
 <tr class="separator:a6819be5b322623f45264b9c54eb76d11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48f76fb9703b335766a11ca31626b8cf" id="r_a48f76fb9703b335766a11ca31626b8cf"><td class="memItemLeft" align="right" valign="top"><a id="a48f76fb9703b335766a11ca31626b8cf" name="a48f76fb9703b335766a11ca31626b8cf"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setOnClientConnected</b> (std::function&lt; void(<a class="el" href="classISession.html">ISession</a> *)&gt; onClientConnected)</td></tr>
+<tr class="memitem:a48f76fb9703b335766a11ca31626b8cf" id="r_a48f76fb9703b335766a11ca31626b8cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a48f76fb9703b335766a11ca31626b8cf">setOnClientConnected</a> (std::function&lt; void(<a class="el" href="classISession.html">ISession</a> *)&gt; onClientConnected)</td></tr>
+<tr class="memdesc:a48f76fb9703b335766a11ca31626b8cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the callback function to be called when a client connects.  <br /></td></tr>
 <tr class="separator:a48f76fb9703b335766a11ca31626b8cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:af66eaaf209dde58a340e0fb9d6459002" id="r_af66eaaf209dde58a340e0fb9d6459002"><td class="memItemLeft" align="right" valign="top"><a id="af66eaaf209dde58a340e0fb9d6459002" name="af66eaaf209dde58a340e0fb9d6459002"></a>
 std::function&lt; void(<a class="el" href="classISession.html">ISession</a> *)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_onClientConnected</b> = nullptr</td></tr>
+<tr class="memdesc:af66eaaf209dde58a340e0fb9d6459002"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for client connection events. <br /></td></tr>
 <tr class="separator:af66eaaf209dde58a340e0fb9d6459002"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a410348b2b45ea46f792e8393c5382827" id="r_a410348b2b45ea46f792e8393c5382827"><td class="memItemLeft" align="right" valign="top"><a id="a410348b2b45ea46f792e8393c5382827" name="a410348b2b45ea46f792e8393c5382827"></a>
 std::shared_ptr&lt; <a class="el" href="classSessionManager.html">SessionManager</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_sessionManager</b></td></tr>
+<tr class="memdesc:a410348b2b45ea46f792e8393c5382827"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classSession.html" title="Manages a session using Boost.Asio.">Session</a> manager for the listener. <br /></td></tr>
 <tr class="separator:a410348b2b45ea46f792e8393c5382827"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c34f34d952bbef2a64118f4a18238de" id="r_a2c34f34d952bbef2a64118f4a18238de"><td class="memItemLeft" align="right" valign="top"><a id="a2c34f34d952bbef2a64118f4a18238de" name="a2c34f34d952bbef2a64118f4a18238de"></a>
+std::uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_last_id</b> = 0</td></tr>
+<tr class="memdesc:a2c34f34d952bbef2a64118f4a18238de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Last client ID. <br /></td></tr>
+<tr class="separator:a2c34f34d952bbef2a64118f4a18238de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Interface for TCP listener modules. </p>
+<p>The <a class="el" href="classIListenerTCP.html" title="Interface for TCP listener modules.">IListenerTCP</a> interface provides methods for waiting for TCP connections and running the listener with a session manager. It also allows setting a callback function to be called when a client connects. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a6819be5b322623f45264b9c54eb76d11" name="a6819be5b322623f45264b9c54eb76d11"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6819be5b322623f45264b9c54eb76d11">&#9670;&#160;</a></span>run()</h2>
 
@@ -156,7 +176,49 @@ std::shared_ptr&lt; <a class="el" href="classSessionManager.html">SessionManager
 </table>
 </div><div class="memdoc">
 
+<p>Runs the TCP listener with the given session manager. </p>
+<p>This pure virtual function must be implemented by derived classes to run the TCP listener with the provided session manager.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">module</td><td><a class="el" href="classA.html">A</a> shared pointer to the <a class="el" href="classSessionManager.html" title="Manages client sessions in a network module.">SessionManager</a> module. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p>Implemented in <a class="el" href="classListenerTCP.html#af7cb23c7d6f213aeb80eceb7be4e12d1">ListenerTCP</a>.</p>
+
+</div>
+</div>
+<a id="a48f76fb9703b335766a11ca31626b8cf" name="a48f76fb9703b335766a11ca31626b8cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48f76fb9703b335766a11ca31626b8cf">&#9670;&#160;</a></span>setOnClientConnected()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IListenerTCP::setOnClientConnected </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; void(<a class="el" href="classISession.html">ISession</a> *)&gt;</td>          <td class="paramname"><span class="paramname"><em>onClientConnected</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the callback function to be called when a client connects. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">onClientConnected</td><td><a class="el" href="classA.html">A</a> function to be called when a client connects. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -182,6 +244,9 @@ std::shared_ptr&lt; <a class="el" href="classSessionManager.html">SessionManager
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Waits for a TCP connection. </p>
+<p>This pure virtual function must be implemented by derived classes to wait for a TCP connection. </p>
 
 <p>Implemented in <a class="el" href="classListenerTCP.html#aafb64625421ce26fb8536fa48148f8db">ListenerTCP</a>.</p>
 

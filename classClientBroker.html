@@ -126,6 +126,9 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~ClientBroker</b> (void)</td></tr>
 <tr class="memdesc:a542de007a4041f8499ca4495c4670a3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="classClientBroker.html" title="A class that handles client-side network communication.">ClientBroker</a> object. <br /></td></tr>
 <tr class="separator:a542de007a4041f8499ca4495c4670a3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a15cd799012e6f39c78d86f746c4918" id="r_a5a15cd799012e6f39c78d86f746c4918"><td class="memItemLeft" align="right" valign="top"><a id="a5a15cd799012e6f39c78d86f746c4918" name="a5a15cd799012e6f39c78d86f746c4918"></a>
+<a class="el" href="classMessage.html">Message</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getMessageFromTopic</b> (std::uint8_t topic_id)</td></tr>
+<tr class="separator:a5a15cd799012e6f39c78d86f746c4918"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classBroker"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classBroker')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classBroker.html">Broker</a></td></tr>
 <tr class="memitem:ad53697e7a88ce846724ec0c75b2d72e7 inherit pub_methods_classBroker" id="r_ad53697e7a88ce846724ec0c75b2d72e7"><td class="memItemLeft" align="right" valign="top">
 &#160;</td><td class="memItemRight" valign="bottom"><b>Broker</b> (void)=default</td></tr>
@@ -138,18 +141,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a134305d4a07353208c6d32c363865f17 inherit pub_methods_classBroker" id="r_a134305d4a07353208c6d32c363865f17"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBroker.html#a134305d4a07353208c6d32c363865f17">getECSId</a> (void) const</td></tr>
 <tr class="memdesc:a134305d4a07353208c6d32c363865f17 inherit pub_methods_classBroker"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the ECS ID of the broker.  <br /></td></tr>
 <tr class="separator:a134305d4a07353208c6d32c363865f17 inherit pub_methods_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0eebc1f2290bcbe3ec2da17303dd336e inherit pub_methods_classBroker" id="r_a0eebc1f2290bcbe3ec2da17303dd336e"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classTopic.html">Topic</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBroker.html#a0eebc1f2290bcbe3ec2da17303dd336e">getTopic</a> (std::uint32_t ecs_id, std::uint8_t id)</td></tr>
-<tr class="memdesc:a0eebc1f2290bcbe3ec2da17303dd336e inherit pub_methods_classBroker"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a topic from the broker.  <br /></td></tr>
-<tr class="separator:a0eebc1f2290bcbe3ec2da17303dd336e inherit pub_methods_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a306bf7b8864bdbdccdb5a5eaf8f1453f inherit pub_methods_classBroker" id="r_a306bf7b8864bdbdccdb5a5eaf8f1453f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBroker.html#a306bf7b8864bdbdccdb5a5eaf8f1453f">removeTopic</a> (std::uint32_t ecs_id, std::uint8_t id)</td></tr>
-<tr class="memdesc:a306bf7b8864bdbdccdb5a5eaf8f1453f inherit pub_methods_classBroker"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a topic from the broker.  <br /></td></tr>
-<tr class="separator:a306bf7b8864bdbdccdb5a5eaf8f1453f inherit pub_methods_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28b7c01deb92599040bb73d07b4fd06e inherit pub_methods_classBroker" id="r_a28b7c01deb92599040bb73d07b4fd06e"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classTopic.html">Topic</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBroker.html#a28b7c01deb92599040bb73d07b4fd06e">getTopic</a> (std::uint8_t ecs_id, std::uint8_t id)</td></tr>
+<tr class="memdesc:a28b7c01deb92599040bb73d07b4fd06e inherit pub_methods_classBroker"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a topic from the broker.  <br /></td></tr>
+<tr class="separator:a28b7c01deb92599040bb73d07b4fd06e inherit pub_methods_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e1fb242bfdc069cfe99098d6c9c51dd inherit pub_methods_classBroker" id="r_a6e1fb242bfdc069cfe99098d6c9c51dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBroker.html#a6e1fb242bfdc069cfe99098d6c9c51dd">removeTopic</a> (std::uint8_t ecs_id, std::uint8_t id)</td></tr>
+<tr class="memdesc:a6e1fb242bfdc069cfe99098d6c9c51dd inherit pub_methods_classBroker"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a topic from the broker.  <br /></td></tr>
+<tr class="separator:a6e1fb242bfdc069cfe99098d6c9c51dd inherit pub_methods_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a413904c3561ad24acf8579aae2920776 inherit pub_methods_classBroker" id="r_a413904c3561ad24acf8579aae2920776"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBroker.html#a413904c3561ad24acf8579aae2920776">addMessage</a> (std::uint8_t ecs_id, std::uint8_t topic_id, <a class="el" href="classMessage.html">Message</a> *message)</td></tr>
 <tr class="memdesc:a413904c3561ad24acf8579aae2920776 inherit pub_methods_classBroker"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a message to a topic.  <br /></td></tr>
 <tr class="separator:a413904c3561ad24acf8579aae2920776 inherit pub_methods_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52789b945668416dc4fbfedd58eb06d1 inherit pub_methods_classBroker" id="r_a52789b945668416dc4fbfedd58eb06d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMessage.html">Message</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBroker.html#a52789b945668416dc4fbfedd58eb06d1">getMessage</a> (std::uint32_t ecs_id, std::uint8_t topic_id)</td></tr>
-<tr class="memdesc:a52789b945668416dc4fbfedd58eb06d1 inherit pub_methods_classBroker"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a message from a topic.  <br /></td></tr>
-<tr class="separator:a52789b945668416dc4fbfedd58eb06d1 inherit pub_methods_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab49b9da9dead00c16880951ed7efaf02 inherit pub_methods_classBroker" id="r_ab49b9da9dead00c16880951ed7efaf02"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMessage.html">Message</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBroker.html#ab49b9da9dead00c16880951ed7efaf02">getMessage</a> (std::uint8_t ecs_id, std::uint8_t topic_id)</td></tr>
+<tr class="memdesc:ab49b9da9dead00c16880951ed7efaf02 inherit pub_methods_classBroker"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a message from a topic.  <br /></td></tr>
+<tr class="separator:ab49b9da9dead00c16880951ed7efaf02 inherit pub_methods_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -188,9 +191,9 @@ std::uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_ecs_id</b></
 <tr class="memitem:a47763ae7ad630f3c530b287b2d6c045e inherit pro_attribs_classBroker" id="r_a47763ae7ad630f3c530b287b2d6c045e"><td class="memItemLeft" align="right" valign="top">
 <a class="el" href="classINetworkModule.html">INetworkModule</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_network_module</b></td></tr>
 <tr class="separator:a47763ae7ad630f3c530b287b2d6c045e inherit pro_attribs_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa96229cf64bd2c917276808987643415 inherit pro_attribs_classBroker" id="r_aa96229cf64bd2c917276808987643415"><td class="memItemLeft" align="right" valign="top">
-std::map&lt; std::pair&lt; std::uint32_t, std::uint8_t &gt;, std::unique_ptr&lt; <a class="el" href="classTopic.html">Topic</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_topics</b></td></tr>
-<tr class="separator:aa96229cf64bd2c917276808987643415 inherit pro_attribs_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab594b1fc6ed3d062d36c5f834c73990e inherit pro_attribs_classBroker" id="r_ab594b1fc6ed3d062d36c5f834c73990e"><td class="memItemLeft" align="right" valign="top">
+std::map&lt; std::pair&lt; std::uint8_t, std::uint8_t &gt;, std::unique_ptr&lt; <a class="el" href="classTopic.html">Topic</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_topics</b></td></tr>
+<tr class="separator:ab594b1fc6ed3d062d36c5f834c73990e inherit pro_attribs_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d880a071d1925f688e5784fc09f2d64 inherit pro_attribs_classBroker" id="r_a4d880a071d1925f688e5784fc09f2d64"><td class="memItemLeft" align="right" valign="top">
 std::thread&#160;</td><td class="memItemRight" valign="bottom"><b>_thread</b></td></tr>
 <tr class="separator:a4d880a071d1925f688e5784fc09f2d64 inherit pro_attribs_classBroker"><td class="memSeparator" colspan="2">&#160;</td></tr>

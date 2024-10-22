@@ -109,7 +109,7 @@ Inheritance diagram for Client:</div>
  <div class="center">
   <img src="classClient.png" usemap="#Client_map" alt=""/>
   <map id="Client_map" name="Client_map">
-<area href="classIClient.html" alt="IClient" shape="rect" coords="0,0,47,24"/>
+<area href="classIClient.html" title="Interface for client network operations." alt="IClient" shape="rect" coords="0,0,47,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -119,25 +119,40 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Client</b> (const std::string &amp;ip, const int &amp;port)</td></tr>
 <tr class="separator:ae5fbc4717d6533317f536b0e1452a6c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a495a13a010ce2d52fb693641cb3fcc7c" id="r_a495a13a010ce2d52fb693641cb3fcc7c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a495a13a010ce2d52fb693641cb3fcc7c">connectToServer</a> () override</td></tr>
+<tr class="memdesc:a495a13a010ce2d52fb693641cb3fcc7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connects to the server.  <br /></td></tr>
 <tr class="separator:a495a13a010ce2d52fb693641cb3fcc7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54c98a7378a958e85fbe4a8d24ae2f4a" id="r_a54c98a7378a958e85fbe4a8d24ae2f4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54c98a7378a958e85fbe4a8d24ae2f4a">readTCP</a> () override</td></tr>
+<tr class="memdesc:a54c98a7378a958e85fbe4a8d24ae2f4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads data from the server using TCP.  <br /></td></tr>
 <tr class="separator:a54c98a7378a958e85fbe4a8d24ae2f4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a073a9d6d82f2f3b2f4c33bac95267842" id="r_a073a9d6d82f2f3b2f4c33bac95267842"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a073a9d6d82f2f3b2f4c33bac95267842">readUDP</a> () override</td></tr>
+<tr class="memdesc:a073a9d6d82f2f3b2f4c33bac95267842"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads data from the server using UDP.  <br /></td></tr>
 <tr class="separator:a073a9d6d82f2f3b2f4c33bac95267842"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58d36a97e362cab66449edd3b72d5a3e" id="r_a58d36a97e362cab66449edd3b72d5a3e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a58d36a97e362cab66449edd3b72d5a3e">sendTCP</a> (const std::string &amp;request) override</td></tr>
+<tr class="memdesc:a58d36a97e362cab66449edd3b72d5a3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends data to the server using TCP.  <br /></td></tr>
 <tr class="separator:a58d36a97e362cab66449edd3b72d5a3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0f602cdd763dd686da9c41a4ec9ce3c" id="r_ab0f602cdd763dd686da9c41a4ec9ce3c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0f602cdd763dd686da9c41a4ec9ce3c">sendUDP</a> (const std::string &amp;request) override</td></tr>
+<tr class="memdesc:ab0f602cdd763dd686da9c41a4ec9ce3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends data to the server using UDP.  <br /></td></tr>
 <tr class="separator:ab0f602cdd763dd686da9c41a4ec9ce3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3380448d2bc0acedb4e5b9f77ea91323" id="r_a3380448d2bc0acedb4e5b9f77ea91323"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3380448d2bc0acedb4e5b9f77ea91323">handShake</a> () override</td></tr>
+<tr class="memdesc:a3380448d2bc0acedb4e5b9f77ea91323"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a handshake with the server.  <br /></td></tr>
+<tr class="separator:a3380448d2bc0acedb4e5b9f77ea91323"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classIClient"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classIClient')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classIClient.html">IClient</a></td></tr>
-<tr class="memitem:a5327406c0fee2e588dac6159912b29a9 inherit pub_methods_classIClient" id="r_a5327406c0fee2e588dac6159912b29a9"><td class="memItemLeft" align="right" valign="top">
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setOnReceive</b> (std::function&lt; void(const <a class="el" href="structRequest.html">Request</a> &amp;)&gt; onReceive)</td></tr>
+<tr class="memitem:ae4ddb9ff8731dc47b7b2e63a97235b26 inherit pub_methods_classIClient" id="r_ae4ddb9ff8731dc47b7b2e63a97235b26"><td class="memItemLeft" align="right" valign="top">
+virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~IClient</b> ()=default</td></tr>
+<tr class="memdesc:ae4ddb9ff8731dc47b7b2e63a97235b26 inherit pub_methods_classIClient"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for <a class="el" href="classIClient.html" title="Interface for client network operations.">IClient</a>. <br /></td></tr>
+<tr class="separator:ae4ddb9ff8731dc47b7b2e63a97235b26 inherit pub_methods_classIClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5327406c0fee2e588dac6159912b29a9 inherit pub_methods_classIClient" id="r_a5327406c0fee2e588dac6159912b29a9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIClient.html#a5327406c0fee2e588dac6159912b29a9">setOnReceive</a> (std::function&lt; void(const <a class="el" href="structRequest.html">Request</a> &amp;)&gt; onReceive)</td></tr>
+<tr class="memdesc:a5327406c0fee2e588dac6159912b29a9 inherit pub_methods_classIClient"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the callback function for data reception.  <br /></td></tr>
 <tr class="separator:a5327406c0fee2e588dac6159912b29a9 inherit pub_methods_classIClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff88c98c2549e78859dbf1d7e2a06945 inherit pub_methods_classIClient" id="r_aff88c98c2549e78859dbf1d7e2a06945"><td class="memItemLeft" align="right" valign="top">
-virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>getId</b> () const</td></tr>
-<tr class="separator:aff88c98c2549e78859dbf1d7e2a06945 inherit pub_methods_classIClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a668693d252b77848e2a2892de25d776e inherit pub_methods_classIClient" id="r_a668693d252b77848e2a2892de25d776e"><td class="memItemLeft" align="right" valign="top">
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setId</b> (std::uint32_t id)</td></tr>
-<tr class="separator:a668693d252b77848e2a2892de25d776e inherit pub_methods_classIClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad83ca56b9df44dd760b5fab62c6536be inherit pub_methods_classIClient" id="r_ad83ca56b9df44dd760b5fab62c6536be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIClient.html#ad83ca56b9df44dd760b5fab62c6536be">setOnConnect</a> (std::function&lt; void(<a class="el" href="classIClient.html">IClient</a> *)&gt; onConnect)</td></tr>
+<tr class="memdesc:ad83ca56b9df44dd760b5fab62c6536be inherit pub_methods_classIClient"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the callback function for connection events.  <br /></td></tr>
+<tr class="separator:ad83ca56b9df44dd760b5fab62c6536be inherit pub_methods_classIClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8386ef4ed6b45a09a738bc0cdc5114f9 inherit pub_methods_classIClient" id="r_a8386ef4ed6b45a09a738bc0cdc5114f9"><td class="memItemLeft" align="right" valign="top">virtual std::uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIClient.html#a8386ef4ed6b45a09a738bc0cdc5114f9">getId</a> () const</td></tr>
+<tr class="memdesc:a8386ef4ed6b45a09a738bc0cdc5114f9 inherit pub_methods_classIClient"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the client ID.  <br /></td></tr>
+<tr class="separator:a8386ef4ed6b45a09a738bc0cdc5114f9 inherit pub_methods_classIClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af218949f619e1139f01f3ab8319d1781 inherit pub_methods_classIClient" id="r_af218949f619e1139f01f3ab8319d1781"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIClient.html#af218949f619e1139f01f3ab8319d1781">setId</a> (std::uint8_t id)</td></tr>
+<tr class="memdesc:af218949f619e1139f01f3ab8319d1781 inherit pub_methods_classIClient"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the client ID.  <br /></td></tr>
+<tr class="separator:af218949f619e1139f01f3ab8319d1781 inherit pub_methods_classIClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -150,6 +165,9 @@ boost::asio::ip::tcp::endpoint&#160;</td><td class="memItemRight" valign="bottom
 <tr class="memitem:a5b87b9c5b4733dc9c84f3bd5a607cf91" id="r_a5b87b9c5b4733dc9c84f3bd5a607cf91"><td class="memItemLeft" align="right" valign="top"><a id="a5b87b9c5b4733dc9c84f3bd5a607cf91" name="a5b87b9c5b4733dc9c84f3bd5a607cf91"></a>
 boost::asio::ip::udp::endpoint&#160;</td><td class="memItemRight" valign="bottom"><b>_endpointUDPServer</b></td></tr>
 <tr class="separator:a5b87b9c5b4733dc9c84f3bd5a607cf91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa19e3c42c7ae69b2e39379c93af1020e" id="r_aa19e3c42c7ae69b2e39379c93af1020e"><td class="memItemLeft" align="right" valign="top"><a id="aa19e3c42c7ae69b2e39379c93af1020e" name="aa19e3c42c7ae69b2e39379c93af1020e"></a>
+boost::asio::ip::udp::endpoint&#160;</td><td class="memItemRight" valign="bottom"><b>_endpointUDPReceiver</b></td></tr>
+<tr class="separator:aa19e3c42c7ae69b2e39379c93af1020e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76c0471c30a5576c6783ba5c1ad3467a" id="r_a76c0471c30a5576c6783ba5c1ad3467a"><td class="memItemLeft" align="right" valign="top"><a id="a76c0471c30a5576c6783ba5c1ad3467a" name="a76c0471c30a5576c6783ba5c1ad3467a"></a>
 boost::asio::ip::tcp::socket&#160;</td><td class="memItemRight" valign="bottom"><b>_socketTCP</b></td></tr>
 <tr class="separator:a76c0471c30a5576c6783ba5c1ad3467a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -160,17 +178,25 @@ boost::asio::ip::udp::socket&#160;</td><td class="memItemRight" valign="bottom">
 std::thread&#160;</td><td class="memItemRight" valign="bottom"><b>_thread</b></td></tr>
 <tr class="separator:abf0ca86850f895a4a81db1d9ac4c6872"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classIClient"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classIClient')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classIClient.html">IClient</a></td></tr>
-<tr class="memitem:abde34ca4a939ce404bb5145343e0d688 inherit pro_attribs_classIClient" id="r_abde34ca4a939ce404bb5145343e0d688"><td class="memItemLeft" align="right" valign="top">
-std::uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>_id</b></td></tr>
-<tr class="separator:abde34ca4a939ce404bb5145343e0d688 inherit pro_attribs_classIClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f41727a9a04269cc23cbd7ddf00d8fa inherit pro_attribs_classIClient" id="r_a8f41727a9a04269cc23cbd7ddf00d8fa"><td class="memItemLeft" align="right" valign="top">
+std::uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_id</b></td></tr>
+<tr class="memdesc:a8f41727a9a04269cc23cbd7ddf00d8fa inherit pro_attribs_classIClient"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classClient.html">Client</a> ID. <br /></td></tr>
+<tr class="separator:a8f41727a9a04269cc23cbd7ddf00d8fa inherit pro_attribs_classIClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3aae29935e33abac93de2cacd5b11c0 inherit pro_attribs_classIClient" id="r_aa3aae29935e33abac93de2cacd5b11c0"><td class="memItemLeft" align="right" valign="top">
+std::function&lt; void(<a class="el" href="classIClient.html">IClient</a> *)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_onConnect</b></td></tr>
+<tr class="memdesc:aa3aae29935e33abac93de2cacd5b11c0 inherit pro_attribs_classIClient"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for connection events. <br /></td></tr>
+<tr class="separator:aa3aae29935e33abac93de2cacd5b11c0 inherit pro_attribs_classIClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0abfb9d41669f2cdb7f8bde96286061f inherit pro_attribs_classIClient" id="r_a0abfb9d41669f2cdb7f8bde96286061f"><td class="memItemLeft" align="right" valign="top">
 std::function&lt; void(const <a class="el" href="structRequest.html">Request</a> &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_onReceive</b></td></tr>
+<tr class="memdesc:a0abfb9d41669f2cdb7f8bde96286061f inherit pro_attribs_classIClient"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for data reception events. <br /></td></tr>
 <tr class="separator:a0abfb9d41669f2cdb7f8bde96286061f inherit pro_attribs_classIClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7db2bf280267a4f47a20400c14c78ae7 inherit pro_attribs_classIClient" id="r_a7db2bf280267a4f47a20400c14c78ae7"><td class="memItemLeft" align="right" valign="top">
 <a class="el" href="structRequest.html">Request</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_requestTCP</b> = {}</td></tr>
+<tr class="memdesc:a7db2bf280267a4f47a20400c14c78ae7 inherit pro_attribs_classIClient"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structRequest.html">Request</a> object for TCP communication. <br /></td></tr>
 <tr class="separator:a7db2bf280267a4f47a20400c14c78ae7 inherit pro_attribs_classIClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4aa9baaceecdea294268c1ebc51a76a9 inherit pro_attribs_classIClient" id="r_a4aa9baaceecdea294268c1ebc51a76a9"><td class="memItemLeft" align="right" valign="top">
 <a class="el" href="structRequest.html">Request</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_requestUDP</b> = {}</td></tr>
+<tr class="memdesc:a4aa9baaceecdea294268c1ebc51a76a9 inherit pro_attribs_classIClient"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structRequest.html">Request</a> object for UDP communication. <br /></td></tr>
 <tr class="separator:a4aa9baaceecdea294268c1ebc51a76a9 inherit pro_attribs_classIClient"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -186,7 +212,7 @@ std::function&lt; void(const <a class="el" href="structRequest.html">Request</a>
         <tr>
           <td class="memname">void Client::connectToServer </td>
           <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -197,7 +223,40 @@ std::function&lt; void(const <a class="el" href="structRequest.html">Request</a>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classIClient.html">IClient</a>.</p>
+<p>Connects to the server. </p>
+<p>This pure virtual function must be implemented to handle the logic for connecting to a server. </p>
+
+<p>Implements <a class="el" href="classIClient.html#a06c8fec8a29784b36df054ea7b3b096f">IClient</a>.</p>
+
+</div>
+</div>
+<a id="a3380448d2bc0acedb4e5b9f77ea91323" name="a3380448d2bc0acedb4e5b9f77ea91323"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3380448d2bc0acedb4e5b9f77ea91323">&#9670;&#160;</a></span>handShake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Client::handShake </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Performs a handshake with the server. </p>
+<p>This pure virtual function must be implemented to handle the logic for performing a handshake with the server. </p>
+
+<p>Implements <a class="el" href="classIClient.html#a0fc6b9bf2af47714c6088495526d0b06">IClient</a>.</p>
 
 </div>
 </div>
@@ -224,7 +283,10 @@ std::function&lt; void(const <a class="el" href="structRequest.html">Request</a>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classIClient.html">IClient</a>.</p>
+<p>Reads data from the server using TCP. </p>
+<p>This pure virtual function must be implemented to handle the logic for reading data from the server using TCP. </p>
+
+<p>Implements <a class="el" href="classIClient.html#a8671c952c70dab4f52772bbf3e34de37">IClient</a>.</p>
 
 </div>
 </div>
@@ -251,7 +313,10 @@ std::function&lt; void(const <a class="el" href="structRequest.html">Request</a>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classIClient.html">IClient</a>.</p>
+<p>Reads data from the server using UDP. </p>
+<p>This pure virtual function must be implemented to handle the logic for reading data from the server using UDP. </p>
+
+<p>Implements <a class="el" href="classIClient.html#a09f14ddf47817c632e289e210bdf3053">IClient</a>.</p>
 
 </div>
 </div>
@@ -278,7 +343,15 @@ std::function&lt; void(const <a class="el" href="structRequest.html">Request</a>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classIClient.html">IClient</a>.</p>
+<p>Sends data to the server using TCP. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">request</td><td>The data to be sent to the server. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="classIClient.html#a791a275ea2770be5796d47ce67fb938e">IClient</a>.</p>
 
 </div>
 </div>
@@ -305,7 +378,15 @@ std::function&lt; void(const <a class="el" href="structRequest.html">Request</a>
 </table>
 </div><div class="memdoc">
 
-<p>Implements <a class="el" href="classIClient.html">IClient</a>.</p>
+<p>Sends data to the server using UDP. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">request</td><td>The data to be sent to the server. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="classIClient.html#a22b25fbceded0e87611ab4e27065a2a1">IClient</a>.</p>
 
 </div>
 </div>

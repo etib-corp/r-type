@@ -105,47 +105,34 @@ $(function(){initNavTree('Topic_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;queue&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;message/Message.hpp&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classTopic.html">   17</a></span><span class="keyword">class </span><a class="code hl_class" href="classTopic.html">Topic</a></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_function" href="classTopic.html#a5fcd96bb59f4bf2c97c71923e52cf8a7">Topic</a>(std::uint32_t ecs_id, std::uint8_t <span class="keywordtype">id</span>);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <a class="code hl_function" href="classTopic.html#a50a6d47c85650b983741d3a349c03506">~Topic</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="foldopen" id="foldopen00038" data-start="{" data-end="}">
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classTopic.html#a39296224e8e5aec368867c4458f71290">   38</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classTopic.html#a39296224e8e5aec368867c4458f71290">addMessage</a>(<a class="code hl_class" href="classMessage.html">Message</a> *message)</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    {</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        _messages.push(message);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    }</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;mutex&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;message/Message.hpp&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="};">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classTopic.html">   18</a></span><span class="keyword">class </span><a class="code hl_class" href="classTopic.html">Topic</a></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <a class="code hl_function" href="classTopic.html#abaa6ade429639dc05df8b627d3133849">Topic</a>(std::uint8_t ecs_id, std::uint8_t <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <a class="code hl_function" href="classTopic.html#a50a6d47c85650b983741d3a349c03506">~Topic</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classTopic.html#a39296224e8e5aec368867c4458f71290">addMessage</a>(<a class="code hl_class" href="classMessage.html">Message</a> *message);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <a class="code hl_class" href="classMessage.html">Message</a> *<a class="code hl_function" href="classTopic.html#adf2cebb7633b0756ddc83ce1d37b1509">getMessage</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    std::uint8_t _ecs_id;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    std::uint8_t _id;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    std::queue&lt;Message *&gt; _messages;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    std::mutex _mutex;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>};</div>
 </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="foldopen" id="foldopen00048" data-start="{" data-end="}">
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classTopic.html#adf2cebb7633b0756ddc83ce1d37b1509">   48</a></span>    <a class="code hl_class" href="classMessage.html">Message</a> *<a class="code hl_function" href="classTopic.html#adf2cebb7633b0756ddc83ce1d37b1509">getMessage</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    {</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <span class="keywordflow">if</span> (_messages.empty())</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <a class="code hl_class" href="classMessage.html">Message</a> *message = _messages.front();</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        _messages.pop();</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordflow">return</span> message;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    }</div>
-</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    std::uint32_t _ecs_id;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    std::uint8_t _id;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    std::queue&lt;Message *&gt; _messages;</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>};</div>
-</div>
-<div class="ttc" id="aclassMessage_html"><div class="ttname"><a href="classMessage.html">Message</a></div><div class="ttdoc">A class representing a message with an ECS ID and a topic name.</div><div class="ttdef"><b>Definition</b> Message.hpp:19</div></div>
-<div class="ttc" id="aclassTopic_html"><div class="ttname"><a href="classTopic.html">Topic</a></div><div class="ttdoc">A class that represents a topic which holds a queue of messages.</div><div class="ttdef"><b>Definition</b> Topic.hpp:18</div></div>
-<div class="ttc" id="aclassTopic_html_a39296224e8e5aec368867c4458f71290"><div class="ttname"><a href="classTopic.html#a39296224e8e5aec368867c4458f71290">Topic::addMessage</a></div><div class="ttdeci">void addMessage(Message *message)</div><div class="ttdoc">Adds a message to the topic's queue.</div><div class="ttdef"><b>Definition</b> Topic.hpp:38</div></div>
+<div class="ttc" id="aclassMessage_html"><div class="ttname"><a href="classMessage.html">Message</a></div><div class="ttdoc">A class representing a message with an ECS ID and a topic name.</div><div class="ttdef"><b>Definition</b> Message.hpp:20</div></div>
+<div class="ttc" id="aclassTopic_html"><div class="ttname"><a href="classTopic.html">Topic</a></div><div class="ttdoc">A class that represents a topic which holds a queue of messages.</div><div class="ttdef"><b>Definition</b> Topic.hpp:19</div></div>
+<div class="ttc" id="aclassTopic_html_a39296224e8e5aec368867c4458f71290"><div class="ttname"><a href="classTopic.html#a39296224e8e5aec368867c4458f71290">Topic::addMessage</a></div><div class="ttdeci">void addMessage(Message *message)</div><div class="ttdoc">Adds a message to the topic's queue.</div><div class="ttdef"><b>Definition</b> Topic.cpp:12</div></div>
 <div class="ttc" id="aclassTopic_html_a50a6d47c85650b983741d3a349c03506"><div class="ttname"><a href="classTopic.html#a50a6d47c85650b983741d3a349c03506">Topic::~Topic</a></div><div class="ttdeci">~Topic(void)</div><div class="ttdoc">Destroys the Topic object.</div><div class="ttdef"><b>Definition</b> Topic.cpp:8</div></div>
-<div class="ttc" id="aclassTopic_html_a5fcd96bb59f4bf2c97c71923e52cf8a7"><div class="ttname"><a href="classTopic.html#a5fcd96bb59f4bf2c97c71923e52cf8a7">Topic::Topic</a></div><div class="ttdeci">Topic(std::uint32_t ecs_id, std::uint8_t id)</div><div class="ttdoc">Constructs a new Topic object.</div><div class="ttdef"><b>Definition</b> Topic.cpp:3</div></div>
-<div class="ttc" id="aclassTopic_html_adf2cebb7633b0756ddc83ce1d37b1509"><div class="ttname"><a href="classTopic.html#adf2cebb7633b0756ddc83ce1d37b1509">Topic::getMessage</a></div><div class="ttdeci">Message * getMessage(void)</div><div class="ttdoc">Retrieves and removes the next message from the topic's queue.</div><div class="ttdef"><b>Definition</b> Topic.hpp:48</div></div>
+<div class="ttc" id="aclassTopic_html_abaa6ade429639dc05df8b627d3133849"><div class="ttname"><a href="classTopic.html#abaa6ade429639dc05df8b627d3133849">Topic::Topic</a></div><div class="ttdeci">Topic(std::uint8_t ecs_id, std::uint8_t id)</div><div class="ttdoc">Constructs a new Topic object.</div><div class="ttdef"><b>Definition</b> Topic.cpp:3</div></div>
+<div class="ttc" id="aclassTopic_html_adf2cebb7633b0756ddc83ce1d37b1509"><div class="ttname"><a href="classTopic.html#adf2cebb7633b0756ddc83ce1d37b1509">Topic::getMessage</a></div><div class="ttdeci">Message * getMessage(void)</div><div class="ttdoc">Retrieves and removes the next message from the topic's queue.</div><div class="ttdef"><b>Definition</b> Topic.cpp:18</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

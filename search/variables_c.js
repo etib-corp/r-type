@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['masks_0',['masks',['../structBox.html#ac7f49762645d9847472896e7bfe7cadd',1,'Box']]],
+  ['masks_0',['masks',['../structBox.html#ac7f49762645d9847472896e7bfe7cadd',1,'Box::masks'],['../structHitBox.html#ad7bb808272dc7fddcf176c7633775a03',1,'HitBox::masks'],['../structHurtBox.html#a5bf48fb1e5713fc439440620e1b9dc19',1,'HurtBox::masks']]],
   ['maxacceleration_1',['maxAcceleration',['../structMotionComponent.html#a74f52ec48275f97b043df584a41e03ed',1,'MotionComponent']]],
   ['maxvelocity_2',['maxVelocity',['../structMotionComponent.html#ad8028a0ab5aeaba9448527552ce2570a',1,'MotionComponent']]],
   ['message_3',['message',['../structLE_1_1Status.html#a68597a446d7ca475d50ddb8b0804abe6',1,'LE::Status']]],

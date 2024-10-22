@@ -120,40 +120,141 @@ Inheritance diagram for ISession:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:af0f1ff95a63dca900c436d15e4017afe" id="r_af0f1ff95a63dca900c436d15e4017afe"><td class="memItemLeft" align="right" valign="top"><a id="af0f1ff95a63dca900c436d15e4017afe" name="af0f1ff95a63dca900c436d15e4017afe"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ISession</b> ()=default</td></tr>
+<tr class="memdesc:af0f1ff95a63dca900c436d15e4017afe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for <a class="el" href="classISession.html" title="Interface for Session communication.">ISession</a>. <br /></td></tr>
+<tr class="separator:af0f1ff95a63dca900c436d15e4017afe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b273685a90874ec323296bc3c176d55" id="r_a2b273685a90874ec323296bc3c176d55"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b273685a90874ec323296bc3c176d55">read</a> (std::function&lt; void(<a class="el" href="classISession.html">ISession</a> *)&gt; onDisconnected, std::function&lt; void(const <a class="el" href="structRequest.html">Request</a> &amp;request)&gt; onReceive)=0</td></tr>
+<tr class="memdesc:a2b273685a90874ec323296bc3c176d55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads data from the session.  <br /></td></tr>
 <tr class="separator:a2b273685a90874ec323296bc3c176d55"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f041ebf1c2b4f3f504c8e4c22713dfe" id="r_a1f041ebf1c2b4f3f504c8e4c22713dfe"><td class="memItemLeft" align="right" valign="top"><a id="a1f041ebf1c2b4f3f504c8e4c22713dfe" name="a1f041ebf1c2b4f3f504c8e4c22713dfe"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>sendTCP</b> (const std::string &amp;request)=0</td></tr>
+<tr class="memitem:a1f041ebf1c2b4f3f504c8e4c22713dfe" id="r_a1f041ebf1c2b4f3f504c8e4c22713dfe"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1f041ebf1c2b4f3f504c8e4c22713dfe">sendTCP</a> (const std::string &amp;request)=0</td></tr>
+<tr class="memdesc:a1f041ebf1c2b4f3f504c8e4c22713dfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends data over TCP.  <br /></td></tr>
 <tr class="separator:a1f041ebf1c2b4f3f504c8e4c22713dfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7bc6c9ebe63b904d798caaa7d4f2dafa" id="r_a7bc6c9ebe63b904d798caaa7d4f2dafa"><td class="memItemLeft" align="right" valign="top"><a id="a7bc6c9ebe63b904d798caaa7d4f2dafa" name="a7bc6c9ebe63b904d798caaa7d4f2dafa"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>sendUDP</b> (const std::string &amp;request)=0</td></tr>
+<tr class="memitem:a7bc6c9ebe63b904d798caaa7d4f2dafa" id="r_a7bc6c9ebe63b904d798caaa7d4f2dafa"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7bc6c9ebe63b904d798caaa7d4f2dafa">sendUDP</a> (const std::string &amp;request)=0</td></tr>
+<tr class="memdesc:a7bc6c9ebe63b904d798caaa7d4f2dafa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends data over UDP.  <br /></td></tr>
 <tr class="separator:a7bc6c9ebe63b904d798caaa7d4f2dafa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a3e48090308f492d8d9017c48fd1f2a" id="r_a0a3e48090308f492d8d9017c48fd1f2a"><td class="memItemLeft" align="right" valign="top"><a id="a0a3e48090308f492d8d9017c48fd1f2a" name="a0a3e48090308f492d8d9017c48fd1f2a"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>getId</b> () const</td></tr>
-<tr class="separator:a0a3e48090308f492d8d9017c48fd1f2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b023b0715d2bf3c42b4b282b9f9c208" id="r_a8b023b0715d2bf3c42b4b282b9f9c208"><td class="memItemLeft" align="right" valign="top"><a id="a8b023b0715d2bf3c42b4b282b9f9c208" name="a8b023b0715d2bf3c42b4b282b9f9c208"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setId</b> (std::uint32_t id)</td></tr>
-<tr class="separator:a8b023b0715d2bf3c42b4b282b9f9c208"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7fd8e9ec0558bee9711cc41525d316a" id="r_ab7fd8e9ec0558bee9711cc41525d316a"><td class="memItemLeft" align="right" valign="top"><a id="ab7fd8e9ec0558bee9711cc41525d316a" name="ab7fd8e9ec0558bee9711cc41525d316a"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isConnected</b> () const</td></tr>
+<tr class="memitem:aae3ee03ae6a84a5219cc50c3f37a9f03" id="r_aae3ee03ae6a84a5219cc50c3f37a9f03"><td class="memItemLeft" align="right" valign="top">std::uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae3ee03ae6a84a5219cc50c3f37a9f03">getId</a> () const</td></tr>
+<tr class="memdesc:aae3ee03ae6a84a5219cc50c3f37a9f03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the callback function for disconnection events.  <br /></td></tr>
+<tr class="separator:aae3ee03ae6a84a5219cc50c3f37a9f03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fa1ea16748d88b4db81815f33dbfc87" id="r_a6fa1ea16748d88b4db81815f33dbfc87"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fa1ea16748d88b4db81815f33dbfc87">setId</a> (std::uint8_t id)</td></tr>
+<tr class="memdesc:a6fa1ea16748d88b4db81815f33dbfc87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the client ID.  <br /></td></tr>
+<tr class="separator:a6fa1ea16748d88b4db81815f33dbfc87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7fd8e9ec0558bee9711cc41525d316a" id="r_ab7fd8e9ec0558bee9711cc41525d316a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab7fd8e9ec0558bee9711cc41525d316a">isConnected</a> () const</td></tr>
+<tr class="memdesc:ab7fd8e9ec0558bee9711cc41525d316a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the client ID.  <br /></td></tr>
 <tr class="separator:ab7fd8e9ec0558bee9711cc41525d316a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9aeb545ea3661e2b6d797f1b1990f93" id="r_ad9aeb545ea3661e2b6d797f1b1990f93"><td class="memItemLeft" align="right" valign="top"><a id="ad9aeb545ea3661e2b6d797f1b1990f93" name="ad9aeb545ea3661e2b6d797f1b1990f93"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setConnected</b> (bool connected)</td></tr>
+<tr class="memitem:ad9aeb545ea3661e2b6d797f1b1990f93" id="r_ad9aeb545ea3661e2b6d797f1b1990f93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9aeb545ea3661e2b6d797f1b1990f93">setConnected</a> (bool connected)</td></tr>
+<tr class="memdesc:ad9aeb545ea3661e2b6d797f1b1990f93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the connection status.  <br /></td></tr>
 <tr class="separator:ad9aeb545ea3661e2b6d797f1b1990f93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af34d8bd78514fcb3a457ba6953cd4cd8" id="r_af34d8bd78514fcb3a457ba6953cd4cd8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af34d8bd78514fcb3a457ba6953cd4cd8">handShake</a> ()=0</td></tr>
+<tr class="memdesc:af34d8bd78514fcb3a457ba6953cd4cd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a handshake message.  <br /></td></tr>
+<tr class="separator:af34d8bd78514fcb3a457ba6953cd4cd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:aa9937ae8810afa0fc074baa554d739ef" id="r_aa9937ae8810afa0fc074baa554d739ef"><td class="memItemLeft" align="right" valign="top"><a id="aa9937ae8810afa0fc074baa554d739ef" name="aa9937ae8810afa0fc074baa554d739ef"></a>
-std::uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>_id</b></td></tr>
-<tr class="separator:aa9937ae8810afa0fc074baa554d739ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66e7071cdb5d4f4540b857dc5f2cd969" id="r_a66e7071cdb5d4f4540b857dc5f2cd969"><td class="memItemLeft" align="right" valign="top"><a id="a66e7071cdb5d4f4540b857dc5f2cd969" name="a66e7071cdb5d4f4540b857dc5f2cd969"></a>
+std::uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_id</b></td></tr>
+<tr class="memdesc:a66e7071cdb5d4f4540b857dc5f2cd969"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classClient.html">Client</a> ID. <br /></td></tr>
+<tr class="separator:a66e7071cdb5d4f4540b857dc5f2cd969"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c985ddf9132044061542e06d4e31514" id="r_a6c985ddf9132044061542e06d4e31514"><td class="memItemLeft" align="right" valign="top"><a id="a6c985ddf9132044061542e06d4e31514" name="a6c985ddf9132044061542e06d4e31514"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>_isConnected</b></td></tr>
+<tr class="memdesc:a6c985ddf9132044061542e06d4e31514"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connection status. <br /></td></tr>
 <tr class="separator:a6c985ddf9132044061542e06d4e31514"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Interface for <a class="el" href="classSession.html" title="Manages a session using Boost.Asio.">Session</a> communication. </p>
 <p>This interface defines the basic operations for a <a class="el" href="classSession.html" title="Manages a session using Boost.Asio.">Session</a>, including reading data and sending messages over TCP and UDP protocols. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="aae3ee03ae6a84a5219cc50c3f37a9f03" name="aae3ee03ae6a84a5219cc50c3f37a9f03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae3ee03ae6a84a5219cc50c3f37a9f03">&#9670;&#160;</a></span>getId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::uint8_t ISession::getId </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the callback function for disconnection events. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">onDisconnected</td><td><a class="el" href="classA.html">A</a> function to be called when the session is disconnected. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af34d8bd78514fcb3a457ba6953cd4cd8" name="af34d8bd78514fcb3a457ba6953cd4cd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af34d8bd78514fcb3a457ba6953cd4cd8">&#9670;&#160;</a></span>handShake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ISession::handShake </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sends a handshake message. </p>
+<p>This pure virtual function must be implemented to handle the logic for sending a handshake message. </p>
+
+<p>Implemented in <a class="el" href="classSession.html#a8e38e5203e4a9182c228c64adffcd3e4">Session</a>.</p>
+
+</div>
+</div>
+<a id="ab7fd8e9ec0558bee9711cc41525d316a" name="ab7fd8e9ec0558bee9711cc41525d316a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7fd8e9ec0558bee9711cc41525d316a">&#9670;&#160;</a></span>isConnected()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ISession::isConnected </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the client ID. </p>
+<dl class="section return"><dt>Returns</dt><dd>The client ID. </dd></dl>
+
+</div>
+</div>
 <a id="a2b273685a90874ec323296bc3c176d55" name="a2b273685a90874ec323296bc3c176d55"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2b273685a90874ec323296bc3c176d55">&#9670;&#160;</a></span>read()</h2>
 
@@ -181,7 +282,155 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>_isConnected</b></td>
 </table>
 </div><div class="memdoc">
 
+<p>Reads data from the session. </p>
+<p>This pure virtual function must be implemented to handle the logic for reading data from the session.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">onDisconnected</td><td><a class="el" href="classA.html">A</a> function to be called when the session is disconnected. </td></tr>
+    <tr><td class="paramname">onReceive</td><td><a class="el" href="classA.html">A</a> function to be called when data is received. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p>Implemented in <a class="el" href="classSession.html#acf2ddc75112e46fffffce9c1e41375f4">Session</a>.</p>
+
+</div>
+</div>
+<a id="a1f041ebf1c2b4f3f504c8e4c22713dfe" name="a1f041ebf1c2b4f3f504c8e4c22713dfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f041ebf1c2b4f3f504c8e4c22713dfe">&#9670;&#160;</a></span>sendTCP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ISession::sendTCP </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>request</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sends data over TCP. </p>
+<p>This pure virtual function must be implemented to handle the logic for sending data over TCP.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">request</td><td>The data to be sent over TCP. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classSession.html#a10f4500082d96b4eed7f4492cacf0c4c">Session</a>.</p>
+
+</div>
+</div>
+<a id="a7bc6c9ebe63b904d798caaa7d4f2dafa" name="a7bc6c9ebe63b904d798caaa7d4f2dafa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bc6c9ebe63b904d798caaa7d4f2dafa">&#9670;&#160;</a></span>sendUDP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ISession::sendUDP </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>request</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sends data over UDP. </p>
+<p>This pure virtual function must be implemented to handle the logic for sending data over UDP.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">request</td><td>The data to be sent over UDP. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classSession.html#aeef8fc7ca51615d032d813136e00a295">Session</a>.</p>
+
+</div>
+</div>
+<a id="ad9aeb545ea3661e2b6d797f1b1990f93" name="ad9aeb545ea3661e2b6d797f1b1990f93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9aeb545ea3661e2b6d797f1b1990f93">&#9670;&#160;</a></span>setConnected()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ISession::setConnected </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>connected</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the connection status. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">connected</td><td>The connection status to be set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6fa1ea16748d88b4db81815f33dbfc87" name="a6fa1ea16748d88b4db81815f33dbfc87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fa1ea16748d88b4db81815f33dbfc87">&#9670;&#160;</a></span>setId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ISession::setId </td>
+          <td>(</td>
+          <td class="paramtype">std::uint8_t</td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the client ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>The client ID to be set. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

@@ -124,15 +124,15 @@ $(function(){initNavTree('EntityManager_8hpp_source.html',''); initResizable(tru
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <a class="code hl_function" href="classEntityManager.html#a71a36c9fb8d579a1a1ec108e0fccf175">~EntityManager</a>();</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        Entity <a class="code hl_function" href="classEntityManager.html#adb200f1c1441c5a937aa5ad24ead7fdb">createEntity</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <a class="code hl_struct" href="structEntity.html">Entity</a> <a class="code hl_function" href="classEntityManager.html#adb200f1c1441c5a937aa5ad24ead7fdb">createEntity</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        Entity <a class="code hl_function" href="classEntityManager.html#adb200f1c1441c5a937aa5ad24ead7fdb">createEntity</a>(Entity entity);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <a class="code hl_struct" href="structEntity.html">Entity</a> <a class="code hl_function" href="classEntityManager.html#adb200f1c1441c5a937aa5ad24ead7fdb">createEntity</a>(<a class="code hl_struct" href="structEntity.html">Entity</a> entity);</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classEntityManager.html#aacc08e93994c20f37b1388ab81e62e19">destroyEntity</a>(Entity entity);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classEntityManager.html#aacc08e93994c20f37b1388ab81e62e19">destroyEntity</a>(<a class="code hl_struct" href="structEntity.html">Entity</a> entity);</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classEntityManager.html#a2c6e0507876c18d2ee1ed03b65d60c78">setSignature</a>(Entity entity, Signature signature);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classEntityManager.html#a2c6e0507876c18d2ee1ed03b65d60c78">setSignature</a>(<a class="code hl_struct" href="structEntity.html">Entity</a> entity, Signature signature);</div>
 <div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        Signature <a class="code hl_function" href="classEntityManager.html#ad60fd822c39bbe8b0d0cc366a7de965d">getSignature</a>(Entity entity);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        Signature <a class="code hl_function" href="classEntityManager.html#ad60fd822c39bbe8b0d0cc366a7de965d">getSignature</a>(<a class="code hl_struct" href="structEntity.html">Entity</a> entity);</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keyword">private</span>:</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        std::queue&lt;Entity&gt; _availableEntities;              <span class="comment">// Queue of available entities</span></div>
@@ -152,6 +152,7 @@ $(function(){initNavTree('EntityManager_8hpp_source.html',''); initResizable(tru
 <div class="ttc" id="aclassEntityManager_html_adb200f1c1441c5a937aa5ad24ead7fdb"><div class="ttname"><a href="classEntityManager.html#adb200f1c1441c5a937aa5ad24ead7fdb">EntityManager::createEntity</a></div><div class="ttdeci">Entity createEntity(void)</div><div class="ttdoc">Create a new entity.</div><div class="ttdef"><b>Definition</b> EntityManager.cpp:22</div></div>
 <div class="ttc" id="aclassLE_1_1Error_html"><div class="ttname"><a href="classLE_1_1Error.html">LE::Error</a></div><div class="ttdoc">The Error class represents an exception that can be thrown in the Lion engine.</div><div class="ttdef"><b>Definition</b> Error.hpp:20</div></div>
 <div class="ttc" id="aclassLE_1_1Error_html_ab2ed200b714e9dbd8d9be341d80673b5"><div class="ttname"><a href="classLE_1_1Error.html#ab2ed200b714e9dbd8d9be341d80673b5">LE::Error::Error</a></div><div class="ttdeci">Error(const std::string &amp;message)</div><div class="ttdoc">Constructs an Error object with the specified error message.</div><div class="ttdef"><b>Definition</b> Error.hpp:27</div></div>
+<div class="ttc" id="astructEntity_html"><div class="ttname"><a href="structEntity.html">Entity</a></div><div class="ttdef"><b>Definition</b> addBuffer.cpp:18</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

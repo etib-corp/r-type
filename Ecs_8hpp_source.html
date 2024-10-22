@@ -120,11 +120,11 @@ $(function(){initNavTree('Ecs_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <a class="code hl_function" href="classEcs.html#ade244b0d71153520164eebe990d4c341">~Ecs</a>();</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        Entity <a class="code hl_function" href="classEcs.html#ab75a4dc61543523b5c324c25008666cf">createEntity</a>();</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <a class="code hl_struct" href="structEntity.html">Entity</a> <a class="code hl_function" href="classEcs.html#ab75a4dc61543523b5c324c25008666cf">createEntity</a>();</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        Entity <a class="code hl_function" href="classEcs.html#ab75a4dc61543523b5c324c25008666cf">createEntity</a>(Entity entity);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <a class="code hl_struct" href="structEntity.html">Entity</a> <a class="code hl_function" href="classEcs.html#ab75a4dc61543523b5c324c25008666cf">createEntity</a>(<a class="code hl_struct" href="structEntity.html">Entity</a> entity);</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classEcs.html#a56ba6f97abeed71cf5940b926f62963c">destroyEntity</a>(Entity entity);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classEcs.html#a56ba6f97abeed71cf5940b926f62963c">destroyEntity</a>(<a class="code hl_struct" href="structEntity.html">Entity</a> entity);</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
@@ -136,7 +136,7 @@ $(function(){initNavTree('Ecs_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="foldopen" id="foldopen00067" data-start="{" data-end="}">
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classEcs.html#a22ed69ee3f2a8aa6748a66ba3e470775">   67</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classEcs.html#a22ed69ee3f2a8aa6748a66ba3e470775">addComponent</a>(Entity entity, T component)</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classEcs.html#a22ed69ee3f2a8aa6748a66ba3e470775">   67</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classEcs.html#a22ed69ee3f2a8aa6748a66ba3e470775">addComponent</a>(<a class="code hl_struct" href="structEntity.html">Entity</a> entity, T component)</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        {</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            _componentManager-&gt;addComponent&lt;T&gt;(entity, component);</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            <span class="keyword">auto</span> signature = _entityManager-&gt;getSignature(entity);</div>
@@ -148,7 +148,7 @@ $(function(){initNavTree('Ecs_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="foldopen" id="foldopen00082" data-start="{" data-end="}">
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="classEcs.html#a305fa9263bb69d5c8d20e28574a6ddf5">   82</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classEcs.html#a305fa9263bb69d5c8d20e28574a6ddf5">removeComponent</a>(Entity entity)</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="classEcs.html#a305fa9263bb69d5c8d20e28574a6ddf5">   82</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classEcs.html#a305fa9263bb69d5c8d20e28574a6ddf5">removeComponent</a>(<a class="code hl_struct" href="structEntity.html">Entity</a> entity)</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        {</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            _componentManager-&gt;removeComponent&lt;T&gt;(entity);</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            <span class="keyword">auto</span> signature = _entityManager-&gt;getSignature(entity);</div>
@@ -160,63 +160,75 @@ $(function(){initNavTree('Ecs_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="foldopen" id="foldopen00098" data-start="{" data-end="}">
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="classEcs.html#a6ac088b22cae84c4ceba78496cf87e4c">   98</a></span>        T &amp;<a class="code hl_function" href="classEcs.html#a6ac088b22cae84c4ceba78496cf87e4c">getComponent</a>(Entity entity)</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="classEcs.html#a6ac088b22cae84c4ceba78496cf87e4c">   98</a></span>        T &amp;<a class="code hl_function" href="classEcs.html#a6ac088b22cae84c4ceba78496cf87e4c">getComponent</a>(<a class="code hl_struct" href="structEntity.html">Entity</a> entity)</div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        {</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            <span class="keywordflow">return</span> _componentManager-&gt;getComponent&lt;T&gt;(entity);</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        }</div>
 </div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00109" data-start="{" data-end="}">
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="classEcs.html#a4facc01feed1fd634ae83a4c4394f70b">  109</a></span>        ComponentType <a class="code hl_function" href="classEcs.html#a4facc01feed1fd634ae83a4c4394f70b">getComponentType</a>()</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        {</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            <span class="keywordflow">return</span> _componentManager-&gt;getComponentType&lt;T&gt;();</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        std::vector&lt;T&gt; getComponents()</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        {</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            <span class="keywordflow">return</span> _componentManager-&gt;getComponents&lt;T&gt;();</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        }</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00115" data-start="{" data-end="}">
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="classEcs.html#a4facc01feed1fd634ae83a4c4394f70b">  115</a></span>        ComponentType <a class="code hl_function" href="classEcs.html#a4facc01feed1fd634ae83a4c4394f70b">getComponentType</a>()</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        {</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>            <span class="keywordflow">return</span> _componentManager-&gt;getComponentType&lt;T&gt;();</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        }</div>
 </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00123" data-start="{" data-end="}">
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="classEcs.html#a5ba48f04571a846da1705c987a2efd19">  123</a></span>        std::shared_ptr&lt;T&gt; <a class="code hl_function" href="classEcs.html#a5ba48f04571a846da1705c987a2efd19">registerSystem</a>()</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        {</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>            <span class="keywordflow">return</span> _systemManager-&gt;registerSystem&lt;T&gt;();</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        }</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00129" data-start="{" data-end="}">
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="classEcs.html#a5ba48f04571a846da1705c987a2efd19">  129</a></span>        std::shared_ptr&lt;T&gt; <a class="code hl_function" href="classEcs.html#a5ba48f04571a846da1705c987a2efd19">registerSystem</a>()</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        {</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            <span class="keywordflow">return</span> _systemManager-&gt;registerSystem&lt;T&gt;();</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        }</div>
 </div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="foldopen" id="foldopen00135" data-start="{" data-end="}">
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="classEcs.html#ae087552b8938f3af57ac81a7f14870c4">  135</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classEcs.html#ae087552b8938f3af57ac81a7f14870c4">setSignature</a>(Signature signature)</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        {</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>            _systemManager-&gt;setSignature&lt;T&gt;(signature);</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        }</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="foldopen" id="foldopen00141" data-start="{" data-end="}">
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno"><a class="line" href="classEcs.html#ae087552b8938f3af57ac81a7f14870c4">  141</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classEcs.html#ae087552b8938f3af57ac81a7f14870c4">setSignature</a>(Signature signature)</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        {</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>            _systemManager-&gt;setSignature&lt;T&gt;(signature);</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        }</div>
 </div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classEcs.html#a9bf5c609932333a6ded63c73eba3bbd8">update</a>(<span class="keywordtype">float</span> dt);</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classEcs.html#abf3e71019dcfd6d21d01932b4ec636bf">setCameraEntity</a>(Entity entity);</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        Entity <a class="code hl_function" href="classEcs.html#ab6425887b9064a4713992ceb378fa073">getCameraEntity</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        std::unique_ptr&lt;ComponentManager&gt; _componentManager;        </div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        std::unique_ptr&lt;EntityManager&gt; _entityManager;              </div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        std::unique_ptr&lt;SystemManager&gt; _systemManager;              </div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        Entity _cameraEntity;                                       </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>};</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classEcs.html#a9bf5c609932333a6ded63c73eba3bbd8">update</a>(<span class="keywordtype">float</span> dt);</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classEcs.html#abf3e71019dcfd6d21d01932b4ec636bf">setCameraEntity</a>(<a class="code hl_struct" href="structEntity.html">Entity</a> entity);</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        <a class="code hl_struct" href="structEntity.html">Entity</a> <a class="code hl_function" href="classEcs.html#ab6425887b9064a4713992ceb378fa073">getCameraEntity</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        <span class="keywordtype">void</span> *getScene() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        <span class="keywordtype">void</span> setScene(<span class="keywordtype">void</span> *scene);</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        std::unique_ptr&lt;ComponentManager&gt; _componentManager;        </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        std::unique_ptr&lt;EntityManager&gt; _entityManager;              </div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        std::unique_ptr&lt;SystemManager&gt; _systemManager;              </div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        <a class="code hl_struct" href="structEntity.html">Entity</a> _cameraEntity;                                       </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        <span class="keywordtype">void</span> *_scene;                                               </div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>};</div>
 </div>
 <div class="ttc" id="aclassEcs_html"><div class="ttname"><a href="classEcs.html">Ecs</a></div><div class="ttdoc">The Ecs class is the main class of the ECS system. It is responsible for creating and destroying enti...</div><div class="ttdef"><b>Definition</b> Ecs.hpp:19</div></div>
 <div class="ttc" id="aclassEcs_html_a22ed69ee3f2a8aa6748a66ba3e470775"><div class="ttname"><a href="classEcs.html#a22ed69ee3f2a8aa6748a66ba3e470775">Ecs::addComponent</a></div><div class="ttdeci">void addComponent(Entity entity, T component)</div><div class="ttdoc">Add a component to an entity.</div><div class="ttdef"><b>Definition</b> Ecs.hpp:67</div></div>
 <div class="ttc" id="aclassEcs_html_a305fa9263bb69d5c8d20e28574a6ddf5"><div class="ttname"><a href="classEcs.html#a305fa9263bb69d5c8d20e28574a6ddf5">Ecs::removeComponent</a></div><div class="ttdeci">void removeComponent(Entity entity)</div><div class="ttdoc">Remove a component from an entity.</div><div class="ttdef"><b>Definition</b> Ecs.hpp:82</div></div>
 <div class="ttc" id="aclassEcs_html_a3147faa2836c2d7303648054df804b5e"><div class="ttname"><a href="classEcs.html#a3147faa2836c2d7303648054df804b5e">Ecs::Ecs</a></div><div class="ttdeci">Ecs()</div><div class="ttdoc">Construct a new Ecs object.</div><div class="ttdef"><b>Definition</b> Ecs.cpp:10</div></div>
-<div class="ttc" id="aclassEcs_html_a4facc01feed1fd634ae83a4c4394f70b"><div class="ttname"><a href="classEcs.html#a4facc01feed1fd634ae83a4c4394f70b">Ecs::getComponentType</a></div><div class="ttdeci">ComponentType getComponentType()</div><div class="ttdoc">Get a component type.</div><div class="ttdef"><b>Definition</b> Ecs.hpp:109</div></div>
+<div class="ttc" id="aclassEcs_html_a4facc01feed1fd634ae83a4c4394f70b"><div class="ttname"><a href="classEcs.html#a4facc01feed1fd634ae83a4c4394f70b">Ecs::getComponentType</a></div><div class="ttdeci">ComponentType getComponentType()</div><div class="ttdoc">Get a component type.</div><div class="ttdef"><b>Definition</b> Ecs.hpp:115</div></div>
 <div class="ttc" id="aclassEcs_html_a56ba6f97abeed71cf5940b926f62963c"><div class="ttname"><a href="classEcs.html#a56ba6f97abeed71cf5940b926f62963c">Ecs::destroyEntity</a></div><div class="ttdeci">void destroyEntity(Entity entity)</div><div class="ttdoc">Destroy an entity.</div><div class="ttdef"><b>Definition</b> Ecs.cpp:31</div></div>
 <div class="ttc" id="aclassEcs_html_a59438a2834dedee4ec951ad00d1563fa"><div class="ttname"><a href="classEcs.html#a59438a2834dedee4ec951ad00d1563fa">Ecs::registerComponent</a></div><div class="ttdeci">void registerComponent()</div><div class="ttdoc">Register a component.</div><div class="ttdef"><b>Definition</b> Ecs.hpp:55</div></div>
-<div class="ttc" id="aclassEcs_html_a5ba48f04571a846da1705c987a2efd19"><div class="ttname"><a href="classEcs.html#a5ba48f04571a846da1705c987a2efd19">Ecs::registerSystem</a></div><div class="ttdeci">std::shared_ptr&lt; T &gt; registerSystem()</div><div class="ttdoc">Registers a new system of type T.</div><div class="ttdef"><b>Definition</b> Ecs.hpp:123</div></div>
+<div class="ttc" id="aclassEcs_html_a5ba48f04571a846da1705c987a2efd19"><div class="ttname"><a href="classEcs.html#a5ba48f04571a846da1705c987a2efd19">Ecs::registerSystem</a></div><div class="ttdeci">std::shared_ptr&lt; T &gt; registerSystem()</div><div class="ttdoc">Registers a new system of type T.</div><div class="ttdef"><b>Definition</b> Ecs.hpp:129</div></div>
 <div class="ttc" id="aclassEcs_html_a6ac088b22cae84c4ceba78496cf87e4c"><div class="ttname"><a href="classEcs.html#a6ac088b22cae84c4ceba78496cf87e4c">Ecs::getComponent</a></div><div class="ttdeci">T &amp; getComponent(Entity entity)</div><div class="ttdoc">Get a component from an entity.</div><div class="ttdef"><b>Definition</b> Ecs.hpp:98</div></div>
-<div class="ttc" id="aclassEcs_html_a9bf5c609932333a6ded63c73eba3bbd8"><div class="ttname"><a href="classEcs.html#a9bf5c609932333a6ded63c73eba3bbd8">Ecs::update</a></div><div class="ttdeci">void update(float dt)</div><div class="ttdoc">Update the ECS.</div><div class="ttdef"><b>Definition</b> Ecs.cpp:37</div></div>
-<div class="ttc" id="aclassEcs_html_ab6425887b9064a4713992ceb378fa073"><div class="ttname"><a href="classEcs.html#ab6425887b9064a4713992ceb378fa073">Ecs::getCameraEntity</a></div><div class="ttdeci">Entity getCameraEntity() const</div><div class="ttdoc">Function to get the camera entity.</div><div class="ttdef"><b>Definition</b> Ecs.cpp:47</div></div>
+<div class="ttc" id="aclassEcs_html_a9bf5c609932333a6ded63c73eba3bbd8"><div class="ttname"><a href="classEcs.html#a9bf5c609932333a6ded63c73eba3bbd8">Ecs::update</a></div><div class="ttdeci">void update(float dt)</div><div class="ttdoc">Update the ECS.</div><div class="ttdef"><b>Definition</b> Ecs.cpp:38</div></div>
+<div class="ttc" id="aclassEcs_html_ab6425887b9064a4713992ceb378fa073"><div class="ttname"><a href="classEcs.html#ab6425887b9064a4713992ceb378fa073">Ecs::getCameraEntity</a></div><div class="ttdeci">Entity getCameraEntity() const</div><div class="ttdoc">Function to get the camera entity.</div><div class="ttdef"><b>Definition</b> Ecs.cpp:48</div></div>
 <div class="ttc" id="aclassEcs_html_ab75a4dc61543523b5c324c25008666cf"><div class="ttname"><a href="classEcs.html#ab75a4dc61543523b5c324c25008666cf">Ecs::createEntity</a></div><div class="ttdeci">Entity createEntity()</div><div class="ttdoc">Create a new entity.</div><div class="ttdef"><b>Definition</b> Ecs.cpp:21</div></div>
-<div class="ttc" id="aclassEcs_html_abf3e71019dcfd6d21d01932b4ec636bf"><div class="ttname"><a href="classEcs.html#abf3e71019dcfd6d21d01932b4ec636bf">Ecs::setCameraEntity</a></div><div class="ttdeci">void setCameraEntity(Entity entity)</div><div class="ttdoc">Function to set the camera entity.</div><div class="ttdef"><b>Definition</b> Ecs.cpp:42</div></div>
+<div class="ttc" id="aclassEcs_html_abf3e71019dcfd6d21d01932b4ec636bf"><div class="ttname"><a href="classEcs.html#abf3e71019dcfd6d21d01932b4ec636bf">Ecs::setCameraEntity</a></div><div class="ttdeci">void setCameraEntity(Entity entity)</div><div class="ttdoc">Function to set the camera entity.</div><div class="ttdef"><b>Definition</b> Ecs.cpp:43</div></div>
 <div class="ttc" id="aclassEcs_html_ade244b0d71153520164eebe990d4c341"><div class="ttname"><a href="classEcs.html#ade244b0d71153520164eebe990d4c341">Ecs::~Ecs</a></div><div class="ttdeci">~Ecs()</div><div class="ttdoc">Destroy the Ecs object.</div><div class="ttdef"><b>Definition</b> Ecs.cpp:17</div></div>
-<div class="ttc" id="aclassEcs_html_ae087552b8938f3af57ac81a7f14870c4"><div class="ttname"><a href="classEcs.html#ae087552b8938f3af57ac81a7f14870c4">Ecs::setSignature</a></div><div class="ttdeci">void setSignature(Signature signature)</div><div class="ttdoc">Set the signature of a system.</div><div class="ttdef"><b>Definition</b> Ecs.hpp:135</div></div>
+<div class="ttc" id="aclassEcs_html_ae087552b8938f3af57ac81a7f14870c4"><div class="ttname"><a href="classEcs.html#ae087552b8938f3af57ac81a7f14870c4">Ecs::setSignature</a></div><div class="ttdeci">void setSignature(Signature signature)</div><div class="ttdoc">Set the signature of a system.</div><div class="ttdef"><b>Definition</b> Ecs.hpp:141</div></div>
+<div class="ttc" id="astructEntity_html"><div class="ttname"><a href="structEntity.html">Entity</a></div><div class="ttdef"><b>Definition</b> addBuffer.cpp:18</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

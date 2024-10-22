@@ -113,37 +113,73 @@ $(function(){initNavTree('ListenerUDP_8hpp_source.html',''); initResizable(true)
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;thread&gt;</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;interface/INetworkModule/IListenerUDP.hpp&quot;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="foldopen" id="foldopen00033" data-start="{" data-end="};">
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="classListenerUDP.html">   33</a></span><span class="keyword">class </span><a class="code hl_class" href="classListenerUDP.html">ListenerUDP</a> : <span class="keyword">public</span> <a class="code hl_class" href="classIListenerUDP.html">IListenerUDP</a> {</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <a class="code hl_function" href="classListenerUDP.html#aec73f4d2ab25dc95db307cae33b6fef8">ListenerUDP</a>(<span class="keywordtype">int</span> port);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <a class="code hl_class" href="classListenerUDP.html">~ListenerUDP</a>();</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classListenerUDP.html#ad95e62ccb817752d8214f0bdeaa976b9">run</a>(std::shared_ptr&lt;SessionManager&gt; sessionManager) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classListenerUDP.html#a8be26bdfafe517ad8a8ec5c4e24bbc35">startReceive</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classListenerUDP.html#aae050749dd3bcb418393dcca3b50f986">handleReceive</a>(<span class="keyword">const</span> boost::system::error_code &amp;error, std::size_t bytes_transferred);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classListenerUDP.html#a3635389915b113bab33ef0f7f7de730a">   85</a></span>        boost::asio::io_context <a class="code hl_variable" href="classListenerUDP.html#a3635389915b113bab33ef0f7f7de730a">_io_context</a>;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        boost::asio::ip::udp::socket _udpSocket;</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        boost::asio::ip::udp::endpoint _remoteEndpoint;</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        std::array&lt;char, 1024&gt; _recvBuffer;</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        std::thread _threadContext;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>};</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="IListenerUDP_8hpp.html">interface/INetworkModule/IListenerUDP.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;Utils.hpp&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;EnumClass.hpp&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;dllDefine.hpp&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">class </span>LIBRARY_API <a class="code hl_class" href="classListenerUDP.html">ListenerUDP</a> : <span class="keyword">public</span> <a class="code hl_class" href="classIListenerUDP.html">IListenerUDP</a> {</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <a class="code hl_class" href="classListenerUDP.html">ListenerUDP</a>(<span class="keywordtype">int</span> port);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            <a class="code hl_class" href="classListenerUDP.html">~ListenerUDP</a>();</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classIListenerUDP.html#a2d8d6e239d8d6737ccb1377eea06d3b5">run</a>(std::shared_ptr&lt;SessionManager&gt; sessionManager) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classIListenerUDP.html#a485a3112410e94de15c00df4c74f7f31">startReceive</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            <span class="keywordtype">void</span> handleReceive(<span class="keyword">const</span> boost::system::error_code &amp;error, std::size_t bytes_transferred);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            boost::asio::io_context _io_context;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            boost::asio::ip::udp::socket _udpSocket;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            boost::asio::ip::udp::endpoint _remoteEndpoint;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            std::thread _threadContext;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            <a class="code hl_struct" href="structRequest.html">Request</a> _request;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    };</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="foldopen" id="foldopen00117" data-start="{" data-end="};">
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="classListenerUDP.html">  117</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classListenerUDP.html">ListenerUDP</a> : <span class="keyword">public</span> <a class="code hl_class" href="classIListenerUDP.html">IListenerUDP</a> {</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            <a class="code hl_function" href="classListenerUDP.html#aec73f4d2ab25dc95db307cae33b6fef8">ListenerUDP</a>(<span class="keywordtype">int</span> port);</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            <a class="code hl_class" href="classListenerUDP.html">~ListenerUDP</a>();</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classListenerUDP.html#ad95e62ccb817752d8214f0bdeaa976b9">run</a>(std::shared_ptr&lt;SessionManager&gt; sessionManager) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classListenerUDP.html#a8be26bdfafe517ad8a8ec5c4e24bbc35">startReceive</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>            <span class="keywordtype">void</span> <a class="code hl_function" href="classListenerUDP.html#aae050749dd3bcb418393dcca3b50f986">handleReceive</a>(<span class="keyword">const</span> boost::system::error_code &amp;error, std::size_t bytes_transferred);</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno"><a class="line" href="classListenerUDP.html#a3635389915b113bab33ef0f7f7de730a">  169</a></span>            boost::asio::io_context <a class="code hl_variable" href="classListenerUDP.html#a3635389915b113bab33ef0f7f7de730a">_io_context</a>;</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>            boost::asio::ip::udp::socket _udpSocket;</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>            boost::asio::ip::udp::endpoint _remoteEndpoint;</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>            std::thread _threadContext;</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>            <a class="code hl_struct" href="structRequest.html">Request</a> _request;</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    };</div>
 </div>
-<div class="ttc" id="aclassIListenerUDP_html"><div class="ttname"><a href="classIListenerUDP.html">IListenerUDP</a></div><div class="ttdef"><b>Definition</b> IListenerUDP.hpp:15</div></div>
-<div class="ttc" id="aclassListenerUDP_html"><div class="ttname"><a href="classListenerUDP.html">ListenerUDP</a></div><div class="ttdoc">Manages a UDP Listener for network communication.</div><div class="ttdef"><b>Definition</b> ListenerUDP.hpp:33</div></div>
-<div class="ttc" id="aclassListenerUDP_html_a3635389915b113bab33ef0f7f7de730a"><div class="ttname"><a href="classListenerUDP.html#a3635389915b113bab33ef0f7f7de730a">ListenerUDP::_io_context</a></div><div class="ttdeci">boost::asio::io_context _io_context</div><div class="ttdoc">The io_context object provides core I/O functionality for asynchronous operations.</div><div class="ttdef"><b>Definition</b> ListenerUDP.hpp:85</div></div>
-<div class="ttc" id="aclassListenerUDP_html_a8be26bdfafe517ad8a8ec5c4e24bbc35"><div class="ttname"><a href="classListenerUDP.html#a8be26bdfafe517ad8a8ec5c4e24bbc35">ListenerUDP::startReceive</a></div><div class="ttdeci">void startReceive() override</div><div class="ttdoc">Initiates an asynchronous receive operation on the UDP socket.</div><div class="ttdef"><b>Definition</b> ListenerUDP.cpp:30</div></div>
-<div class="ttc" id="aclassListenerUDP_html_aae050749dd3bcb418393dcca3b50f986"><div class="ttname"><a href="classListenerUDP.html#aae050749dd3bcb418393dcca3b50f986">ListenerUDP::handleReceive</a></div><div class="ttdeci">void handleReceive(const boost::system::error_code &amp;error, std::size_t bytes_transferred)</div><div class="ttdoc">Handles the reception of data over UDP.</div><div class="ttdef"><b>Definition</b> ListenerUDP.cpp:40</div></div>
-<div class="ttc" id="aclassListenerUDP_html_ad95e62ccb817752d8214f0bdeaa976b9"><div class="ttname"><a href="classListenerUDP.html#ad95e62ccb817752d8214f0bdeaa976b9">ListenerUDP::run</a></div><div class="ttdeci">void run(std::shared_ptr&lt; SessionManager &gt; sessionManager) override</div><div class="ttdoc">Starts the UDP Listener and runs the IO context in a separate thread.</div><div class="ttdef"><b>Definition</b> ListenerUDP.cpp:22</div></div>
-<div class="ttc" id="aclassListenerUDP_html_aec73f4d2ab25dc95db307cae33b6fef8"><div class="ttname"><a href="classListenerUDP.html#aec73f4d2ab25dc95db307cae33b6fef8">ListenerUDP::ListenerUDP</a></div><div class="ttdeci">ListenerUDP(int port)</div><div class="ttdoc">Constructs a new ListenerUDP object.</div><div class="ttdef"><b>Definition</b> ListenerUDP.cpp:12</div></div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aIListenerUDP_8hpp_html"><div class="ttname"><a href="IListenerUDP_8hpp.html">IListenerUDP.hpp</a></div><div class="ttdoc">Interface for UDP listener module.</div></div>
+<div class="ttc" id="aclassIListenerUDP_html"><div class="ttname"><a href="classIListenerUDP.html">IListenerUDP</a></div><div class="ttdoc">Interface for a UDP listener.</div><div class="ttdef"><b>Definition</b> IListenerUDP.hpp:27</div></div>
+<div class="ttc" id="aclassIListenerUDP_html_a2d8d6e239d8d6737ccb1377eea06d3b5"><div class="ttname"><a href="classIListenerUDP.html#a2d8d6e239d8d6737ccb1377eea06d3b5">IListenerUDP::run</a></div><div class="ttdeci">virtual void run(std::shared_ptr&lt; SessionManager &gt; sessionManager)=0</div><div class="ttdoc">Runs the UDP listener.</div></div>
+<div class="ttc" id="aclassIListenerUDP_html_a485a3112410e94de15c00df4c74f7f31"><div class="ttname"><a href="classIListenerUDP.html#a485a3112410e94de15c00df4c74f7f31">IListenerUDP::startReceive</a></div><div class="ttdeci">virtual void startReceive()=0</div><div class="ttdoc">Starts receiving data.</div></div>
+<div class="ttc" id="aclassListenerUDP_html"><div class="ttname"><a href="classListenerUDP.html">ListenerUDP</a></div><div class="ttdoc">Manages a UDP Listener for network communication.</div><div class="ttdef"><b>Definition</b> ListenerUDP.hpp:117</div></div>
+<div class="ttc" id="aclassListenerUDP_html_a3635389915b113bab33ef0f7f7de730a"><div class="ttname"><a href="classListenerUDP.html#a3635389915b113bab33ef0f7f7de730a">ListenerUDP::_io_context</a></div><div class="ttdeci">boost::asio::io_context _io_context</div><div class="ttdoc">The io_context object provides core I/O functionality for asynchronous operations.</div><div class="ttdef"><b>Definition</b> ListenerUDP.hpp:169</div></div>
+<div class="ttc" id="aclassListenerUDP_html_a8be26bdfafe517ad8a8ec5c4e24bbc35"><div class="ttname"><a href="classListenerUDP.html#a8be26bdfafe517ad8a8ec5c4e24bbc35">ListenerUDP::startReceive</a></div><div class="ttdeci">void startReceive() override</div><div class="ttdoc">Initiates an asynchronous receive operation on the UDP socket.</div><div class="ttdef"><b>Definition</b> ListenerUDP.cpp:32</div></div>
+<div class="ttc" id="aclassListenerUDP_html_aae050749dd3bcb418393dcca3b50f986"><div class="ttname"><a href="classListenerUDP.html#aae050749dd3bcb418393dcca3b50f986">ListenerUDP::handleReceive</a></div><div class="ttdeci">void handleReceive(const boost::system::error_code &amp;error, std::size_t bytes_transferred)</div><div class="ttdoc">Handles the reception of data over UDP.</div><div class="ttdef"><b>Definition</b> ListenerUDP.cpp:43</div></div>
+<div class="ttc" id="aclassListenerUDP_html_ad95e62ccb817752d8214f0bdeaa976b9"><div class="ttname"><a href="classListenerUDP.html#ad95e62ccb817752d8214f0bdeaa976b9">ListenerUDP::run</a></div><div class="ttdeci">void run(std::shared_ptr&lt; SessionManager &gt; sessionManager) override</div><div class="ttdoc">Starts the UDP Listener and runs the IO context in a separate thread.</div><div class="ttdef"><b>Definition</b> ListenerUDP.cpp:24</div></div>
+<div class="ttc" id="aclassListenerUDP_html_aec73f4d2ab25dc95db307cae33b6fef8"><div class="ttname"><a href="classListenerUDP.html#aec73f4d2ab25dc95db307cae33b6fef8">ListenerUDP::ListenerUDP</a></div><div class="ttdeci">ListenerUDP(int port)</div><div class="ttdoc">Constructs a new ListenerUDP object.</div><div class="ttdef"><b>Definition</b> ListenerUDP.cpp:13</div></div>
+<div class="ttc" id="astructRequest_html"><div class="ttname"><a href="structRequest.html">Request</a></div><div class="ttdef"><b>Definition</b> PackUnpack.hpp:157</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -104,6 +104,11 @@ $(function(){initNavTree('classIServer.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">IServer Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Interface for the server module.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="IServer_8hpp_source.html">IServer.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for IServer:</div>
 <div class="dyncontent">
@@ -116,28 +121,137 @@ Inheritance diagram for IServer:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae5e333fb3552a20437fa5230b16b5617" id="r_ae5e333fb3552a20437fa5230b16b5617"><td class="memItemLeft" align="right" valign="top"><a id="ae5e333fb3552a20437fa5230b16b5617" name="ae5e333fb3552a20437fa5230b16b5617"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> (void)=0</td></tr>
+<tr class="memitem:a255cd05883cb2f4c64f0ae2a49c7f743" id="r_a255cd05883cb2f4c64f0ae2a49c7f743"><td class="memItemLeft" align="right" valign="top"><a id="a255cd05883cb2f4c64f0ae2a49c7f743" name="a255cd05883cb2f4c64f0ae2a49c7f743"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~IServer</b> ()=default</td></tr>
+<tr class="memdesc:a255cd05883cb2f4c64f0ae2a49c7f743"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for the <a class="el" href="classIServer.html" title="Interface for the server module.">IServer</a> interface. <br /></td></tr>
+<tr class="separator:a255cd05883cb2f4c64f0ae2a49c7f743"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5e333fb3552a20437fa5230b16b5617" id="r_ae5e333fb3552a20437fa5230b16b5617"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5e333fb3552a20437fa5230b16b5617">run</a> (void)=0</td></tr>
+<tr class="memdesc:ae5e333fb3552a20437fa5230b16b5617"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pure virtual function to run the server.  <br /></td></tr>
 <tr class="separator:ae5e333fb3552a20437fa5230b16b5617"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf5bfd2d8adb1daff663ec0b226703c7" id="r_abf5bfd2d8adb1daff663ec0b226703c7"><td class="memItemLeft" align="right" valign="top"><a id="abf5bfd2d8adb1daff663ec0b226703c7" name="abf5bfd2d8adb1daff663ec0b226703c7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setOnClientConnected</b> (std::function&lt; void(<a class="el" href="classISession.html">ISession</a> *)&gt; onClientConnected)</td></tr>
+<tr class="memitem:abf5bfd2d8adb1daff663ec0b226703c7" id="r_abf5bfd2d8adb1daff663ec0b226703c7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf5bfd2d8adb1daff663ec0b226703c7">setOnClientConnected</a> (std::function&lt; void(<a class="el" href="classISession.html">ISession</a> *)&gt; onClientConnected)</td></tr>
+<tr class="memdesc:abf5bfd2d8adb1daff663ec0b226703c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the callback function for client connections.  <br /></td></tr>
 <tr class="separator:abf5bfd2d8adb1daff663ec0b226703c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d457ad4543f17b7c45b9b75c0b0f33d" id="r_a7d457ad4543f17b7c45b9b75c0b0f33d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d457ad4543f17b7c45b9b75c0b0f33d">setOnReceiveUDP</a> (std::function&lt; void(const <a class="el" href="structRequest.html">Request</a> &amp;)&gt; onReceive)</td></tr>
+<tr class="memdesc:a7d457ad4543f17b7c45b9b75c0b0f33d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the callback function for receiving UDP messages.  <br /></td></tr>
+<tr class="separator:a7d457ad4543f17b7c45b9b75c0b0f33d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a3854f302659b183093f2b1e53edff436" id="r_a3854f302659b183093f2b1e53edff436"><td class="memItemLeft" align="right" valign="top"><a id="a3854f302659b183093f2b1e53edff436" name="a3854f302659b183093f2b1e53edff436"></a>
 std::shared_ptr&lt; <a class="el" href="classSessionManager.html">SessionManager</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_sessionsManager</b></td></tr>
+<tr class="memdesc:a3854f302659b183093f2b1e53edff436"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shared pointer to the session manager. <br /></td></tr>
 <tr class="separator:a3854f302659b183093f2b1e53edff436"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:adec1ad96430d745e2a2831a8496efdca" id="r_adec1ad96430d745e2a2831a8496efdca"><td class="memItemLeft" align="right" valign="top"><a id="adec1ad96430d745e2a2831a8496efdca" name="adec1ad96430d745e2a2831a8496efdca"></a>
 std::shared_ptr&lt; <a class="el" href="classIListenerTCP.html">IListenerTCP</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_listenerTCP</b></td></tr>
+<tr class="memdesc:adec1ad96430d745e2a2831a8496efdca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shared pointer to the TCP listener. <br /></td></tr>
 <tr class="separator:adec1ad96430d745e2a2831a8496efdca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa68207143260d548062c6fd49213306d" id="r_aa68207143260d548062c6fd49213306d"><td class="memItemLeft" align="right" valign="top"><a id="aa68207143260d548062c6fd49213306d" name="aa68207143260d548062c6fd49213306d"></a>
 std::shared_ptr&lt; <a class="el" href="classIListenerUDP.html">IListenerUDP</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_listenerUDP</b></td></tr>
+<tr class="memdesc:aa68207143260d548062c6fd49213306d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shared pointer to the UDP listener. <br /></td></tr>
 <tr class="separator:aa68207143260d548062c6fd49213306d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Interface for the server module. </p>
+<p>The <a class="el" href="classIServer.html" title="Interface for the server module.">IServer</a> class provides an interface for the server module, including methods for running the server and setting callbacks for client connections and UDP message reception. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae5e333fb3552a20437fa5230b16b5617" name="ae5e333fb3552a20437fa5230b16b5617"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5e333fb3552a20437fa5230b16b5617">&#9670;&#160;</a></span>run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void IServer::run </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Pure virtual function to run the server. </p>
+
+<p>Implemented in <a class="el" href="classServer.html#a315fc385bb4e2fefedaca409edbe312c">Server</a>.</p>
+
+</div>
+</div>
+<a id="abf5bfd2d8adb1daff663ec0b226703c7" name="abf5bfd2d8adb1daff663ec0b226703c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf5bfd2d8adb1daff663ec0b226703c7">&#9670;&#160;</a></span>setOnClientConnected()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IServer::setOnClientConnected </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; void(<a class="el" href="classISession.html">ISession</a> *)&gt;</td>          <td class="paramname"><span class="paramname"><em>onClientConnected</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the callback function for client connections. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">onClientConnected</td><td>Function to be called when a client connects. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7d457ad4543f17b7c45b9b75c0b0f33d" name="a7d457ad4543f17b7c45b9b75c0b0f33d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d457ad4543f17b7c45b9b75c0b0f33d">&#9670;&#160;</a></span>setOnReceiveUDP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IServer::setOnReceiveUDP </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; void(const <a class="el" href="structRequest.html">Request</a> &amp;)&gt;</td>          <td class="paramname"><span class="paramname"><em>onReceive</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the callback function for receiving UDP messages. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">onReceive</td><td>Function to be called when a UDP message is received. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/interface/INetworkModule/<a class="el" href="IServer_8hpp_source.html">IServer.hpp</a></li>
 </ul>

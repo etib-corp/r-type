@@ -120,16 +120,50 @@ Inheritance diagram for INetworkModule:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a27e4582ea86d5feb41ff3e9bef8c274e" id="r_a27e4582ea86d5feb41ff3e9bef8c274e"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classIServer.html">IServer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a27e4582ea86d5feb41ff3e9bef8c274e">createServer</a> (int port)=0</td></tr>
-<tr class="memdesc:a27e4582ea86d5feb41ff3e9bef8c274e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs a server <a class="el" href="classIServer.html">IServer</a>.  <br /></td></tr>
+<tr class="memdesc:a27e4582ea86d5feb41ff3e9bef8c274e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs a server <a class="el" href="classIServer.html" title="Interface for the server module.">IServer</a>.  <br /></td></tr>
 <tr class="separator:a27e4582ea86d5feb41ff3e9bef8c274e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a712a404c724e400bc8fd1e39fb98d339" id="r_a712a404c724e400bc8fd1e39fb98d339"><td class="memItemLeft" align="right" valign="top"><a id="a712a404c724e400bc8fd1e39fb98d339" name="a712a404c724e400bc8fd1e39fb98d339"></a>
-virtual <a class="el" href="classIClient.html">IClient</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>createClient</b> (const std::string &amp;ip, int port)=0</td></tr>
+<tr class="memitem:a712a404c724e400bc8fd1e39fb98d339" id="r_a712a404c724e400bc8fd1e39fb98d339"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classIClient.html">IClient</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a712a404c724e400bc8fd1e39fb98d339">createClient</a> (const std::string &amp;ip, int port)=0</td></tr>
+<tr class="memdesc:a712a404c724e400bc8fd1e39fb98d339"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a client <a class="el" href="classIClient.html" title="Interface for client network operations.">IClient</a>.  <br /></td></tr>
 <tr class="separator:a712a404c724e400bc8fd1e39fb98d339"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Abstract base class for network modules. </p>
 <p>This class defines the interface for network modules, providing a pure virtual function <code>run</code> that must be implemented by derived classes. It also includes a virtual destructor to ensure proper cleanup of derived classes. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a712a404c724e400bc8fd1e39fb98d339" name="a712a404c724e400bc8fd1e39fb98d339"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a712a404c724e400bc8fd1e39fb98d339">&#9670;&#160;</a></span>createClient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="classIClient.html">IClient</a> * INetworkModule::createClient </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>ip</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>port</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates a client <a class="el" href="classIClient.html" title="Interface for client network operations.">IClient</a>. </p>
+<p>This pure virtual function must be implemented by derived classes to create a client. It is used to connect to a server and begin sending and receiving data. </p>
+
+<p>Implemented in <a class="el" href="classAsioNetworkModule.html#a72846c7785ae6df840bb2a80d6c8a511">AsioNetworkModule</a>.</p>
+
+</div>
+</div>
 <a id="a27e4582ea86d5feb41ff3e9bef8c274e" name="a27e4582ea86d5feb41ff3e9bef8c274e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a27e4582ea86d5feb41ff3e9bef8c274e">&#9670;&#160;</a></span>createServer()</h2>
 
@@ -153,7 +187,7 @@ virtual <a class="el" href="classIClient.html">IClient</a> *&#160;</td><td class
 </table>
 </div><div class="memdoc">
 
-<p>Runs a server <a class="el" href="classIServer.html">IServer</a>. </p>
+<p>Runs a server <a class="el" href="classIServer.html" title="Interface for the server module.">IServer</a>. </p>
 <p>This pure virtual function must be implemented by derived classes to run the server. It is used to start the server and begin listening for incoming connections. </p>
 
 <p>Implemented in <a class="el" href="classAsioNetworkModule.html#a7fbad4fcfd2f0676ddb07af446fbacda">AsioNetworkModule</a>.</p>

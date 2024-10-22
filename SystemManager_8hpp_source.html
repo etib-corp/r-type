@@ -161,7 +161,7 @@ $(function(){initNavTree('SystemManager_8hpp_source.html',''); initResizable(tru
 </div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
 <div class="foldopen" id="foldopen00095" data-start="{" data-end="}">
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="classSystemManager.html#a8e4d8dfca2326b23e9d0d2567e10d79f">   95</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSystemManager.html#a8e4d8dfca2326b23e9d0d2567e10d79f">entityDestroyed</a>(Entity entity)</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="classSystemManager.html#a8e4d8dfca2326b23e9d0d2567e10d79f">   95</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSystemManager.html#a8e4d8dfca2326b23e9d0d2567e10d79f">entityDestroyed</a>(<a class="code hl_struct" href="structEntity.html">Entity</a> entity)</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        {</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            <span class="keywordflow">for</span> (<span class="keyword">auto</span> <span class="keyword">const</span> &amp;pair : _systems) {</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>                <span class="keyword">auto</span> <span class="keyword">const</span> &amp;system = pair.second;</div>
@@ -172,7 +172,7 @@ $(function(){initNavTree('SystemManager_8hpp_source.html',''); initResizable(tru
 </div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
 <div class="foldopen" id="foldopen00111" data-start="{" data-end="}">
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="classSystemManager.html#af59a78e7d984c50994aab6447883da96">  111</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSystemManager.html#af59a78e7d984c50994aab6447883da96">entitySignatureChanged</a>(Entity entity, Signature entitySignature)</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="classSystemManager.html#af59a78e7d984c50994aab6447883da96">  111</a></span>        <span class="keywordtype">void</span> <a class="code hl_function" href="classSystemManager.html#af59a78e7d984c50994aab6447883da96">entitySignatureChanged</a>(<a class="code hl_struct" href="structEntity.html">Entity</a> entity, Signature entitySignature)</div>
 <div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        {</div>
 <div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            <span class="keywordflow">for</span> (<span class="keyword">auto</span> <span class="keyword">const</span> &amp;pair : _systems) {</div>
 <div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>                <span class="keyword">auto</span> <span class="keyword">const</span> &amp;type = pair.first;</div>
@@ -232,6 +232,7 @@ $(function(){initNavTree('SystemManager_8hpp_source.html',''); initResizable(tru
 <div class="ttc" id="aclassSystem_html"><div class="ttname"><a href="classSystem.html">System</a></div><div class="ttdoc">The System class is the base.</div><div class="ttdef"><b>Definition</b> SystemManager.hpp:18</div></div>
 <div class="ttc" id="aclassSystem_html_a669e06d140158c7d75083d5d0b436845"><div class="ttname"><a href="classSystem.html#a669e06d140158c7d75083d5d0b436845">System::_entities</a></div><div class="ttdeci">std::set&lt; Entity &gt; _entities</div><div class="ttdoc">The entities that the system is responsible for.</div><div class="ttdef"><b>Definition</b> SystemManager.hpp:25</div></div>
 <div class="ttc" id="aclassSystem_html_aac34badcf4f522c0517587c962cf1317"><div class="ttname"><a href="classSystem.html#aac34badcf4f522c0517587c962cf1317">System::update</a></div><div class="ttdeci">virtual void update(Ecs *ecs, float dt)=0</div><div class="ttdoc">Update the system This function will be used to update the system.</div></div>
+<div class="ttc" id="astructEntity_html"><div class="ttname"><a href="structEntity.html">Entity</a></div><div class="ttdef"><b>Definition</b> addBuffer.cpp:18</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

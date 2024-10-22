@@ -107,6 +107,7 @@ $(function(){initNavTree('functions_vars.html',''); initResizable(true); });
 <li>_bgColor&#160;:&#160;<a class="el" href="classLE_1_1GUI_1_1Button.html#affb3ee36f14f0336ddb0bfa3d4f5dfe8">LE::GUI::Button</a></li>
 <li>_bitangent&#160;:&#160;<a class="el" href="structVertex.html#aa2acff1777e1366bc0d14ac91fe466f6">Vertex</a></li>
 <li>_children&#160;:&#160;<a class="el" href="classLE_1_1GUI_1_1Container.html#a3f7f374e97c456a70887467280f9c853">LE::GUI::Container</a></li>
+<li>_clientBroker&#160;:&#160;<a class="el" href="classLE_1_1Scene.html#af47be733e3b5f171bac393a8a54ec8e1">LE::Scene</a></li>
 <li>_color&#160;:&#160;<a class="el" href="classLE_1_1GUI_1_1Text.html#ad6b0cd04c76cde74fcc71a7b3d63aa8f">LE::GUI::Text</a></li>
 <li>_createNetworkModule&#160;:&#160;<a class="el" href="classLoaderLib.html#a0216e1bb6c5073b0e3af79ed7da0dbf0">LoaderLib</a></li>
 <li>_directory&#160;:&#160;<a class="el" href="structModelComponent.html#a9dfc6749d97cf5777794dcf2357ab924">ModelComponent</a></li>
@@ -121,25 +122,38 @@ $(function(){initNavTree('functions_vars.html',''); initResizable(true); });
 <li>_handleCoreModule&#160;:&#160;<a class="el" href="classLoaderLib.html#a1faa71911280b632dbce3358bbff7cf9">LoaderLib</a></li>
 <li>_handleNetworkModule&#160;:&#160;<a class="el" href="classLoaderLib.html#a64bb8c47bcde0f96e05310f8000ed89e">LoaderLib</a></li>
 <li>_height&#160;:&#160;<a class="el" href="classLE_1_1GUI_1_1Component.html#a062bde575539d8a69e850eb6c406b8dd">LE::GUI::Component</a>, <a class="el" href="structTexture.html#a1961677c206e2d4a8af399a33c349daf">Texture</a></li>
-<li>_id&#160;:&#160;<a class="el" href="structTexture.html#adee86d6299670c9c201c3a12d352d40b">Texture</a></li>
+<li>_id&#160;:&#160;<a class="el" href="classIClient.html#a8f41727a9a04269cc23cbd7ddf00d8fa">IClient</a>, <a class="el" href="classISession.html#a66e7071cdb5d4f4540b857dc5f2cd969">ISession</a>, <a class="el" href="structTexture.html#adee86d6299670c9c201c3a12d352d40b">Texture</a></li>
 <li>_indices&#160;:&#160;<a class="el" href="structMesh.html#a79f0d5bbd4dba6a7f6cb3b9eb6854ddf">Mesh</a></li>
 <li>_initialWidth&#160;:&#160;<a class="el" href="classLE_1_1GUI_1_1Container.html#affd381b85c0dde0f386d1e04ba113bd7">LE::GUI::Container</a></li>
 <li>_io_context&#160;:&#160;<a class="el" href="classListenerTCP.html#a0534255fc44e43caf060ff31652db494">ListenerTCP</a>, <a class="el" href="classListenerUDP.html#a3635389915b113bab33ef0f7f7de730a">ListenerUDP</a></li>
+<li>_isConnected&#160;:&#160;<a class="el" href="classISession.html#a6c985ddf9132044061542e06d4e31514">ISession</a></li>
+<li>_last_id&#160;:&#160;<a class="el" href="classIListenerTCP.html#a2c34f34d952bbef2a64118f4a18238de">IListenerTCP</a></li>
+<li>_listenerTCP&#160;:&#160;<a class="el" href="classIServer.html#adec1ad96430d745e2a2831a8496efdca">IServer</a></li>
+<li>_listenerUDP&#160;:&#160;<a class="el" href="classIServer.html#aa68207143260d548062c6fd49213306d">IServer</a></li>
 <li>_memVar&#160;:&#160;<a class="el" href="classpyexample_1_1PyClass.html#a52fff5f5883084b3930be400ae4495a0">pyexample.PyClass</a></li>
 <li>_meshes&#160;:&#160;<a class="el" href="structModelComponent.html#ac9e0d58a4c5aca0bbdd9de192783bbd5">ModelComponent</a></li>
 <li>_message&#160;:&#160;<a class="el" href="classLE_1_1Error.html#a40b6560d4ecb9100fbc5e80a3c6a168c">LE::Error</a></li>
 <li>_modelsLoaded&#160;:&#160;<a class="el" href="structModelComponent.html#a13f10f7eeb5b517786210a36d00930fc">ModelComponent</a></li>
+<li>_mutex&#160;:&#160;<a class="el" href="classSessionManager.html#a05d87c5c88d86aa2852d0e4778275273">SessionManager</a></li>
 <li>_normal&#160;:&#160;<a class="el" href="structVertex.html#a063ddbabb29aa1562f274a605c1951a2">Vertex</a></li>
 <li>_nrChannels&#160;:&#160;<a class="el" href="structTexture.html#ac7c44d77dd2113c701c9430cd088e94a">Texture</a></li>
 <li>_onClick&#160;:&#160;<a class="el" href="classLE_1_1GUI_1_1Button.html#a7b5696784a625c01f2344c01414dc024">LE::GUI::Button</a></li>
+<li>_onClientConnected&#160;:&#160;<a class="el" href="classIListenerTCP.html#af66eaaf209dde58a340e0fb9d6459002">IListenerTCP</a></li>
+<li>_onConnect&#160;:&#160;<a class="el" href="classIClient.html#aa3aae29935e33abac93de2cacd5b11c0">IClient</a></li>
 <li>_onHover&#160;:&#160;<a class="el" href="classLE_1_1GUI_1_1Button.html#a427c52469363d6125cdda18e07ea1bd4">LE::GUI::Button</a></li>
+<li>_onReceive&#160;:&#160;<a class="el" href="classIClient.html#a0abfb9d41669f2cdb7f8bde96286061f">IClient</a>, <a class="el" href="classIListenerUDP.html#aafd5092848a13ee375a219ed554225fa">IListenerUDP</a>, <a class="el" href="classSessionManager.html#a860edac10aa1cfea4d76d0478895c0d2">SessionManager</a></li>
 <li>_onUnhover&#160;:&#160;<a class="el" href="classLE_1_1GUI_1_1Button.html#a0f5b2de67b68667803e84dbb13743bb2">LE::GUI::Button</a></li>
 <li>_path&#160;:&#160;<a class="el" href="structTexture.html#aad2be5faaa0834d29dd369017ff088f8">Texture</a></li>
 <li>_pathCoreModule&#160;:&#160;<a class="el" href="classLoaderLib.html#a632821f3a54132b1b73d67f5ebea68fd">LoaderLib</a></li>
 <li>_pathNetworkModule&#160;:&#160;<a class="el" href="classLoaderLib.html#a35d6f22c7ae3cb659531c7dac09dbc3d">LoaderLib</a></li>
-<li>_port&#160;:&#160;<a class="el" href="classListenerTCP.html#a8cd4614ff081e8ce70c173f7a7f985c1">ListenerTCP</a></li>
+<li>_port&#160;:&#160;<a class="el" href="classIListenerUDP.html#ad439bff53341687f509198045b061c4e">IListenerUDP</a>, <a class="el" href="classListenerTCP.html#a8cd4614ff081e8ce70c173f7a7f985c1">ListenerTCP</a></li>
 <li>_position&#160;:&#160;<a class="el" href="structVertex.html#a3164741cdbb82f272beada39fe9141b5">Vertex</a></li>
 <li>_r&#160;:&#160;<a class="el" href="classLE_1_1Color.html#aa3e2ab4892ac790dc910fbbf6194ef55">LE::Color</a></li>
+<li>_requestTCP&#160;:&#160;<a class="el" href="classIClient.html#a7db2bf280267a4f47a20400c14c78ae7">IClient</a></li>
+<li>_requestUDP&#160;:&#160;<a class="el" href="classIClient.html#a4aa9baaceecdea294268c1ebc51a76a9">IClient</a></li>
+<li>_sessionManager&#160;:&#160;<a class="el" href="classIListenerTCP.html#a410348b2b45ea46f792e8393c5382827">IListenerTCP</a>, <a class="el" href="classIListenerUDP.html#a0c6b6c5880945b8457e3079b7bb10613">IListenerUDP</a></li>
+<li>_sessions&#160;:&#160;<a class="el" href="classSessionManager.html#a90bc23643426e99162ab905d470ec2d9">SessionManager</a></li>
+<li>_sessionsManager&#160;:&#160;<a class="el" href="classIServer.html#a3854f302659b183093f2b1e53edff436">IServer</a></li>
 <li>_tangent&#160;:&#160;<a class="el" href="structVertex.html#a27005651cd498a0c63dccd82e51b111a">Vertex</a></li>
 <li>_texCoords&#160;:&#160;<a class="el" href="structVertex.html#a3a8893a03d1d30bd112dea1f8dc6d958">Vertex</a></li>
 <li>_textColor&#160;:&#160;<a class="el" href="classLE_1_1GUI_1_1Button.html#a5a167e70744f17b78515099b5469d386">LE::GUI::Button</a></li>
@@ -176,9 +190,9 @@ $(function(){initNavTree('functions_vars.html',''); initResizable(true); });
 
 <h3><a id="index_d" name="index_d"></a>- d -</h3><ul>
 <li>data&#160;:&#160;<a class="el" href="structSpriteComponent.html#a8828e8cf98ace73b68a8bf4cc36c242c">SpriteComponent</a></li>
-<li>depth&#160;:&#160;<a class="el" href="structBox.html#acea7bc9c51c365fb05d37e818f0df701">Box</a></li>
 <li>din_0&#160;:&#160;<a class="el" href="classmux__using__with.html#a9fc14b65611c7124d4cab27b963f3011">mux_using_with</a></li>
 <li>din_1&#160;:&#160;<a class="el" href="classmux__using__with.html#aaedccad88ca9b207c86a561342fcbaa1">mux_using_with</a></li>
+<li>direction&#160;:&#160;<a class="el" href="structMotionComponent.html#a5d761863dbc69465ffc78a479357e0d5">MotionComponent</a></li>
 </ul>
 
 
@@ -196,7 +210,7 @@ $(function(){initNavTree('functions_vars.html',''); initResizable(true); });
 
 <h3><a id="index_h" name="index_h"></a>- h -</h3><ul>
 <li>handler&#160;:&#160;<a class="el" href="classJavadoc__Test.html#ace81a523a4eef44501a841a6d338832b">Javadoc_Test</a>, <a class="el" href="classQTstyle__Test.html#a79dd4e5498f09057775a819d911349e2">QTstyle_Test</a></li>
-<li>height&#160;:&#160;<a class="el" href="structBox.html#a6851eb8f64b4cbe58488f7dcfe04bdb8">Box</a>, <a class="el" href="structSpriteComponent.html#a62ae7c4b06bd296958b8311c48e93138">SpriteComponent</a></li>
+<li>height&#160;:&#160;<a class="el" href="structBox.html#a6851eb8f64b4cbe58488f7dcfe04bdb8">Box</a>, <a class="el" href="structHitBox.html#a13df95ee1a220270eb893c2e60e8248f">HitBox</a>, <a class="el" href="structHurtBox.html#aea74615829801f0dc735984feb8e88b3">HurtBox</a>, <a class="el" href="structSpriteComponent.html#a62ae7c4b06bd296958b8311c48e93138">SpriteComponent</a></li>
 <li>hidden&#160;:&#160;<a class="el" href="structModelComponent.html#a2daf4dd7b10a4d1a23db694917f15c41">ModelComponent</a>, <a class="el" href="structSpriteComponent.html#a2a3fbda6715f5f0507b2c4e6c5b51379">SpriteComponent</a></li>
 </ul>
 
@@ -216,16 +230,21 @@ $(function(){initNavTree('functions_vars.html',''); initResizable(true); });
 
 
 <h3><a id="index_l" name="index_l"></a>- l -</h3><ul>
-<li>layers&#160;:&#160;<a class="el" href="structBox.html#a32483a28a8545192e5a80903180f7fc0">Box</a></li>
+<li>layers&#160;:&#160;<a class="el" href="structBox.html#a32483a28a8545192e5a80903180f7fc0">Box</a>, <a class="el" href="structHitBox.html#a88740e71eb881542a87886f9e5160627">HitBox</a>, <a class="el" href="structHurtBox.html#a415514722c6e1a9316e2b94093ac71e2">HurtBox</a></li>
 </ul>
 
 
 <h3><a id="index_m" name="index_m"></a>- m -</h3><ul>
-<li>masks&#160;:&#160;<a class="el" href="structBox.html#ac7f49762645d9847472896e7bfe7cadd">Box</a></li>
+<li>masks&#160;:&#160;<a class="el" href="structBox.html#ac7f49762645d9847472896e7bfe7cadd">Box</a>, <a class="el" href="structHitBox.html#ad7bb808272dc7fddcf176c7633775a03">HitBox</a>, <a class="el" href="structHurtBox.html#a5bf48fb1e5713fc439440620e1b9dc19">HurtBox</a></li>
 <li>maxAcceleration&#160;:&#160;<a class="el" href="structMotionComponent.html#a74f52ec48275f97b043df584a41e03ed">MotionComponent</a></li>
 <li>maxVelocity&#160;:&#160;<a class="el" href="structMotionComponent.html#ad8028a0ab5aeaba9448527552ce2570a">MotionComponent</a></li>
 <li>message&#160;:&#160;<a class="el" href="structLE_1_1Status.html#a68597a446d7ca475d50ddb8b0804abe6">LE::Status</a></li>
 <li>mux_out&#160;:&#160;<a class="el" href="classmux__using__with.html#a6258515f40573285292fdb0b9663c422">mux_using_with</a></li>
+</ul>
+
+
+<h3><a id="index_o" name="index_o"></a>- o -</h3><ul>
+<li>onHit&#160;:&#160;<a class="el" href="structHurtBox.html#a0fbf0a6549ced63932d612d5fcba0c1b">HurtBox</a></li>
 </ul>
 
 
@@ -267,7 +286,7 @@ $(function(){initNavTree('functions_vars.html',''); initResizable(true); });
 
 <h3><a id="index_w" name="index_w"></a>- w -</h3><ul>
 <li>w&#160;:&#160;<a class="el" href="classLE_1_1Vector4.html#af8778d1ade7e629ea0ac14232e2c6522">LE::Vector4&lt; T &gt;</a></li>
-<li>width&#160;:&#160;<a class="el" href="structBox.html#a46c951fd4f07b46a726c8fc38013b0f0">Box</a>, <a class="el" href="structSpriteComponent.html#adc5b11a14b6698556822757f6c4a5376">SpriteComponent</a></li>
+<li>width&#160;:&#160;<a class="el" href="structBox.html#a46c951fd4f07b46a726c8fc38013b0f0">Box</a>, <a class="el" href="structHitBox.html#a704894554c9df4d30f084e7edb4ca2b2">HitBox</a>, <a class="el" href="structHurtBox.html#a545fc46348bdc2a2df2a606608f7f6e7">HurtBox</a>, <a class="el" href="structSpriteComponent.html#adc5b11a14b6698556822757f6c4a5376">SpriteComponent</a></li>
 <li>wrapS&#160;:&#160;<a class="el" href="structSpriteComponent.html#a2836bf7711e86e6da53b373bbf63ed45">SpriteComponent</a></li>
 <li>wrapT&#160;:&#160;<a class="el" href="structSpriteComponent.html#ad497d6a0b616d51e21393baeb23530a5">SpriteComponent</a></li>
 </ul>

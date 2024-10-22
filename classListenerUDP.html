@@ -114,7 +114,7 @@ Inheritance diagram for ListenerUDP:</div>
  <div class="center">
   <img src="classListenerUDP.png" usemap="#ListenerUDP_map" alt=""/>
   <map id="ListenerUDP_map" name="ListenerUDP_map">
-<area href="classIListenerUDP.html" alt="IListenerUDP" shape="rect" coords="0,0,85,24"/>
+<area href="classIListenerUDP.html" title="Interface for a UDP listener." alt="IListenerUDP" shape="rect" coords="0,0,85,24"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -133,6 +133,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aae050749dd3bcb418393dcca3b50f986"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the reception of data over UDP.  <br /></td></tr>
 <tr class="separator:aae050749dd3bcb418393dcca3b50f986"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classIListenerUDP"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classIListenerUDP')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classIListenerUDP.html">IListenerUDP</a></td></tr>
+<tr class="memitem:a252c42b1f360bf0ce07999f56ce6eb08 inherit pub_methods_classIListenerUDP" id="r_a252c42b1f360bf0ce07999f56ce6eb08"><td class="memItemLeft" align="right" valign="top">
+virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~IListenerUDP</b> ()=default</td></tr>
+<tr class="memdesc:a252c42b1f360bf0ce07999f56ce6eb08 inherit pub_methods_classIListenerUDP"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for the <a class="el" href="classIListenerUDP.html" title="Interface for a UDP listener.">IListenerUDP</a> interface. <br /></td></tr>
+<tr class="separator:a252c42b1f360bf0ce07999f56ce6eb08 inherit pub_methods_classIListenerUDP"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a202691b5edf2fda4a1ccc1dffb418d4d inherit pub_methods_classIListenerUDP" id="r_a202691b5edf2fda4a1ccc1dffb418d4d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIListenerUDP.html#a202691b5edf2fda4a1ccc1dffb418d4d">setOnReceive</a> (std::function&lt; void(const <a class="el" href="structRequest.html">Request</a> &amp;)&gt; onReceive)</td></tr>
+<tr class="memdesc:a202691b5edf2fda4a1ccc1dffb418d4d inherit pub_methods_classIListenerUDP"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the callback function to be called when data is received.  <br /></td></tr>
+<tr class="separator:a202691b5edf2fda4a1ccc1dffb418d4d inherit pub_methods_classIListenerUDP"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -145,19 +152,25 @@ boost::asio::ip::udp::socket&#160;</td><td class="memItemRight" valign="bottom">
 <tr class="memitem:a8b12c7d334f7e7d4e6e195c02dedc52c" id="r_a8b12c7d334f7e7d4e6e195c02dedc52c"><td class="memItemLeft" align="right" valign="top"><a id="a8b12c7d334f7e7d4e6e195c02dedc52c" name="a8b12c7d334f7e7d4e6e195c02dedc52c"></a>
 boost::asio::ip::udp::endpoint&#160;</td><td class="memItemRight" valign="bottom"><b>_remoteEndpoint</b></td></tr>
 <tr class="separator:a8b12c7d334f7e7d4e6e195c02dedc52c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a399a5fb62edb5ca808b9dbfd6d6e3765" id="r_a399a5fb62edb5ca808b9dbfd6d6e3765"><td class="memItemLeft" align="right" valign="top"><a id="a399a5fb62edb5ca808b9dbfd6d6e3765" name="a399a5fb62edb5ca808b9dbfd6d6e3765"></a>
-std::array&lt; char, 1024 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_recvBuffer</b></td></tr>
-<tr class="separator:a399a5fb62edb5ca808b9dbfd6d6e3765"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84d784bf7a44a2de6015c8be5e682694" id="r_a84d784bf7a44a2de6015c8be5e682694"><td class="memItemLeft" align="right" valign="top"><a id="a84d784bf7a44a2de6015c8be5e682694" name="a84d784bf7a44a2de6015c8be5e682694"></a>
 std::thread&#160;</td><td class="memItemRight" valign="bottom"><b>_threadContext</b></td></tr>
 <tr class="separator:a84d784bf7a44a2de6015c8be5e682694"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affdbf70e0d83c281a84dd95b092f80f6" id="r_affdbf70e0d83c281a84dd95b092f80f6"><td class="memItemLeft" align="right" valign="top"><a id="affdbf70e0d83c281a84dd95b092f80f6" name="affdbf70e0d83c281a84dd95b092f80f6"></a>
+<a class="el" href="structRequest.html">Request</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_request</b></td></tr>
+<tr class="separator:affdbf70e0d83c281a84dd95b092f80f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classIListenerUDP"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_classIListenerUDP')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classIListenerUDP.html">IListenerUDP</a></td></tr>
 <tr class="memitem:ad439bff53341687f509198045b061c4e inherit pro_attribs_classIListenerUDP" id="r_ad439bff53341687f509198045b061c4e"><td class="memItemLeft" align="right" valign="top">
 int&#160;</td><td class="memItemRight" valign="bottom"><b>_port</b></td></tr>
+<tr class="memdesc:ad439bff53341687f509198045b061c4e inherit pro_attribs_classIListenerUDP"><td class="mdescLeft">&#160;</td><td class="mdescRight">Port number for the listener. <br /></td></tr>
 <tr class="separator:ad439bff53341687f509198045b061c4e inherit pro_attribs_classIListenerUDP"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c6b6c5880945b8457e3079b7bb10613 inherit pro_attribs_classIListenerUDP" id="r_a0c6b6c5880945b8457e3079b7bb10613"><td class="memItemLeft" align="right" valign="top">
 std::shared_ptr&lt; <a class="el" href="classSessionManager.html">SessionManager</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_sessionManager</b></td></tr>
+<tr class="memdesc:a0c6b6c5880945b8457e3079b7bb10613 inherit pro_attribs_classIListenerUDP"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classSession.html" title="Manages a session using Boost.Asio.">Session</a> manager for the listener. <br /></td></tr>
 <tr class="separator:a0c6b6c5880945b8457e3079b7bb10613 inherit pro_attribs_classIListenerUDP"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafd5092848a13ee375a219ed554225fa inherit pro_attribs_classIListenerUDP" id="r_aafd5092848a13ee375a219ed554225fa"><td class="memItemLeft" align="right" valign="top">
+std::function&lt; void(const <a class="el" href="structRequest.html">Request</a> &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_onReceive</b> = nullptr</td></tr>
+<tr class="memdesc:aafd5092848a13ee375a219ed554225fa inherit pro_attribs_classIListenerUDP"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for data reception events. <br /></td></tr>
+<tr class="separator:aafd5092848a13ee375a219ed554225fa inherit pro_attribs_classIListenerUDP"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Manages a UDP Listener for network communication. </p>
@@ -249,7 +262,7 @@ std::shared_ptr&lt; <a class="el" href="classSessionManager.html">SessionManager
 <p>Starts the UDP Listener and runs the IO context in a separate thread. </p>
 <p>This function initiates the receiving process and then creates a new thread to run the IO context. The thread is joined to ensure that the function waits for the thread to complete before returning. </p>
 
-<p>Implements <a class="el" href="classIListenerUDP.html">IListenerUDP</a>.</p>
+<p>Implements <a class="el" href="classIListenerUDP.html#a2d8d6e239d8d6737ccb1377eea06d3b5">IListenerUDP</a>.</p>
 
 </div>
 </div>
@@ -279,7 +292,7 @@ std::shared_ptr&lt; <a class="el" href="classSessionManager.html">SessionManager
 <p>Initiates an asynchronous receive operation on the UDP socket. </p>
 <p>This function starts an asynchronous receive operation using Boost.Asio's async_receive_from method. When data is received, the provided lambda function is called, which in turn calls the handleReceive method with the error code and the number of bytes transferred. </p>
 
-<p>Implements <a class="el" href="classIListenerUDP.html">IListenerUDP</a>.</p>
+<p>Implements <a class="el" href="classIListenerUDP.html#a485a3112410e94de15c00df4c74f7f31">IListenerUDP</a>.</p>
 
 </div>
 </div>

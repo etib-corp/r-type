@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>R-Type: &lt;strong&gt;R-Type&lt;/strong&gt;</title>
+<title>R-Type: README</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -96,13 +96,51 @@ $(function(){initNavTree('md_README.html',''); initResizable(true); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">&lt;strong&gt;R-Type&lt;/strong&gt;</div></div>
+  <div class="headertitle"><div class="title">README</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p>
+<div class="textblock"><p><b>R-Type</b> project:</p>
+<h1><a class="anchor" id="autotoc_md0"></a>
+<b>R-Type</b></h1>
 <hr  />
-<h2><a class="anchor" id="autotoc_md2"></a>
-<b>Tech choices</b></h2>
+<h3><a class="anchor" id="autotoc_md2"></a>
+<b>Description</b></h3>
+<p>R-Type is a classic side-scrolling shoot-em-up arcade game originally produced by Irem in 1987. The player controls the R-9 space fighter to defend humanity against the powerful alien life-form known as the Bydo.</p>
+<hr  />
+<h3><a class="anchor" id="autotoc_md4"></a>
+<b>Requirements</b></h3>
+<h4><a class="anchor" id="autotoc_md5"></a>
+<b>Supported Platforms</b></h4>
+<ul>
+<li><b>Windows</b></li>
+<li><b>Linux</b></li>
+<li><b>MacOS</b></li>
+</ul>
+<h4><a class="anchor" id="autotoc_md6"></a>
+<b>Dependencies</b></h4>
+<ul>
+<li><b>CMake</b></li>
+<li><b>C++20</b></li>
+</ul>
+<hr  />
+<h3><a class="anchor" id="autotoc_md8"></a>
+<b>Build Instructions</b></h3>
+<p>To build the project, follow these steps:</p>
+<div class="fragment"><div class="line">cmake -S . -B build</div>
+<div class="line">cmake --build build</div>
+</div><!-- fragment --><hr  />
+<h3><a class="anchor" id="autotoc_md10"></a>
+<b>Usage</b></h3>
+<h4><a class="anchor" id="autotoc_md11"></a>
+<b>Starting the Server</b></h4>
+<p>Run the following command to start the server:</p>
+<div class="fragment"><div class="line">./build/r-type_server</div>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md12"></a>
+<b>Starting the Client</b></h4>
+<p>Run the following command to start the client:</p>
+<div class="fragment"><div class="line">./build/r-type_client</div>
+</div><!-- fragment --> <h3><a class="anchor" id="autotoc_md13"></a>
+<b>Tech choices</b></h3>
 <p>All the following libraries were chosen for their <b>efficiency</b>, and they are <b>well-known</b> and <b>widely used</b> in the industry:</p>
 <ul>
 <li><b>OpenGL</b>: Used in Minecraft, World of Warcraft, and more.</li>
@@ -110,8 +148,8 @@ $(function(){initNavTree('md_README.html',''); initResizable(true); });
 <li><b>OpenAL</b>: Used in Amnesia: The Dark Descent.</li>
 <li><b>Asio</b>: Part of the Boost library, also used in the JUCE framework.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md3"></a>
-<b>OpenGL</b></h2>
+<h3><a class="anchor" id="autotoc_md14"></a>
+<b>OpenGL</b></h3>
 <p>(<a href="https://www.profolus.com/topics/advantages-disadvantages-of-opengl/">https://www.profolus.com/topics/advantages-disadvantages-of-opengl/</a>)</p>
 <p>We encapsulate the <b>OpenGL API</b> within our own classes, so users don't need to interact directly with OpenGL. To enhance our usage of OpenGL, we integrate the following libraries:</p><ul>
 <li><b>GLFW</b>: <a class="el" href="classA.html">A</a> simple and efficient library that enables easy window creation and input handling.</li>
@@ -119,23 +157,23 @@ $(function(){initNavTree('md_README.html',''); initResizable(true); });
 <li><b>Freetype</b>: <a class="el" href="classA.html">A</a> powerful library that simplifies font loading and text rendering.</li>
 </ul>
 <hr  />
-<h2><a class="anchor" id="autotoc_md5"></a>
-<b>Assimp</b></h2>
+<h3><a class="anchor" id="autotoc_md16"></a>
+<b>Assimp</b></h3>
 <p>(<a href="https://www.modelo.io/damf/article/2024/06/26/0748/understanding-the-advantages-of-assimp-in-3d-model-importing?hl=en">https://www.modelo.io/damf/article/2024/06/26/0748/understanding-the-advantages-of-assimp-in-3d-model-importing?hl=en</a>)</p>
 <p>For 3<a class="el" href="classD.html">D</a> model loading, we use <b>Assimp</b>:</p><ul>
 <li>It offers excellent support for <b>3<a class="el" href="classD.html">D</a> models</b>, making it a perfect fit for our project.</li>
 </ul>
 <hr  />
-<h2><a class="anchor" id="autotoc_md7"></a>
-<b>OpenAL</b></h2>
+<h3><a class="anchor" id="autotoc_md18"></a>
+<b>OpenAL</b></h3>
 <p>(<a href="https://medium.com/@bookmyblogss/what-is-openal-should-i-remove-openal-in-windows-10-or-11-6d4cd04c92d9">https://medium.com/@bookmyblogss/what-is-openal-should-i-remove-openal-in-windows-10-or-11-6d4cd04c92d9</a>)</p>
 <p>For audio handling, we rely on <b>OpenAL</b>:</p><ul>
 <li>OpenAL provides robust support for <b>3<a class="el" href="classD.html">D</a> sound</b>, which is crucial for the immersive audio experience we aim to deliver in the future.</li>
 </ul>
 <p>We encapsulate the <b>OpenAL API</b> within our classes as well, so users won't need to manage OpenAL directly. Currently, we support <b>Device</b>, <b>Sound</b>, and <b>Playlist</b> components.</p>
 <hr  />
-<h2><a class="anchor" id="autotoc_md9"></a>
-<b>Boost Asio</b></h2>
+<h3><a class="anchor" id="autotoc_md20"></a>
+<b>Boost Asio</b></h3>
 <p>(<a href="https://alexott.net/en/cpp/BoostAsioNotes.html">https://alexott.net/en/cpp/BoostAsioNotes.html</a>)</p>
 <p>For networking, we use <b>Boost Asio</b>:</p><ul>
 <li>Asio offers comprehensive support for <b>TCP</b> and <b>UDP</b> protocols.</li>
@@ -146,12 +184,12 @@ $(function(){initNavTree('md_README.html',''); initResizable(true); });
 <blockquote class="doxtable">
 <p>&zwj;<b>Note:</b> We use <b>CMake</b> to build our project. </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md11"></a>
-</h1>
-<h1><a class="anchor" id="autotoc_md12"></a>
-<b>Library Comparisons</b></h1>
-<h2><a class="anchor" id="autotoc_md13"></a>
-<b>Graphics and General Libraries</b></h2>
+<h2><a class="anchor" id="autotoc_md22"></a>
+</h2>
+<h2><a class="anchor" id="autotoc_md23"></a>
+<b>Library Comparisons</b></h2>
+<h3><a class="anchor" id="autotoc_md24"></a>
+<b>Graphics and General Libraries</b></h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Library   </th><th class="markdownTableHeadNone">OpenGL   </th><th class="markdownTableHeadNone">SFML   </th><th class="markdownTableHeadNone">SDL    </th></tr>
@@ -171,8 +209,8 @@ $(function(){initNavTree('md_README.html',''); initResizable(true); });
 <td class="markdownTableBodyNone"><b>Learning Curve</b>   </td><td class="markdownTableBodyNone">Hard   </td><td class="markdownTableBodyNone">Easy   </td><td class="markdownTableBodyNone">Easy   </td></tr>
 </table>
 <hr  />
-<h2><a class="anchor" id="autotoc_md15"></a>
-<b>Sound Libraries</b></h2>
+<h3><a class="anchor" id="autotoc_md26"></a>
+<b>Sound Libraries</b></h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Library   </th><th class="markdownTableHeadNone">OpenAL   </th><th class="markdownTableHeadNone">FMOD   </th><th class="markdownTableHeadNone">SDL    </th></tr>
@@ -188,8 +226,8 @@ $(function(){initNavTree('md_README.html',''); initResizable(true); });
 <td class="markdownTableBodyNone"><b>Learning Curve</b>   </td><td class="markdownTableBodyNone">Hard   </td><td class="markdownTableBodyNone">Easy   </td><td class="markdownTableBodyNone">Easy   </td></tr>
 </table>
 <hr  />
-<h2><a class="anchor" id="autotoc_md17"></a>
-<b>Networking Libraries</b></h2>
+<h3><a class="anchor" id="autotoc_md28"></a>
+<b>Networking Libraries</b></h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">Library   </th><th class="markdownTableHeadNone">Boost Asio   </th><th class="markdownTableHeadNone">ENet   </th><th class="markdownTableHeadNone">RakNet    </th></tr>
@@ -207,46 +245,43 @@ $(function(){initNavTree('md_README.html',''); initResizable(true); });
 <td class="markdownTableBodyNone"><b>Learning Curve</b>   </td><td class="markdownTableBodyNone">Hard   </td><td class="markdownTableBodyNone">Easy   </td><td class="markdownTableBodyNone">Easy   </td></tr>
 </table>
 <hr  />
-<h2><a class="anchor" id="autotoc_md19"></a>
-Conclusion:</h2>
+<h3><a class="anchor" id="autotoc_md30"></a>
+Conclusion:</h3>
 <p>As demonstrated, we have carefully selected the best libraries for our project. While some of these libraries may present a steeper learning curve, they offer significant benefits in terms of performance and capability. We are committed to providing a powerful API for our users, leveraging <b>3<a class="el" href="classD.html">D</a> graphics</b> and <b>3<a class="el" href="classD.html">D</a> sound</b> to deliver a richer and more immersive experience.</p>
 <hr  />
-<h2><a class="anchor" id="autotoc_md21"></a>
-<b>File Architecture Overview</b></h2>
+<h3><a class="anchor" id="autotoc_md32"></a>
+<b>File Architecture Overview</b></h3>
 <ul>
-<li><b><code>client/</code></b> Contains the source code and header files for the client.</li>
-<li><b><code>include/</code></b> Shared header files used by both server and client.</li>
-<li><b><code>lib/</code></b> Directory for shared libraries.</li>
-<li><b><code>server/</code></b> Contains the source code and header files for the server.</li>
-<li><b><code>dependencies/</code></b> Dependencies for the current CMakeLists.txt.</li>
+<li><b><code>client/</code></b>: Source code and headers for the client.</li>
+<li><b><code>server/</code></b>: Source code and headers for the server.</li>
+<li><b><code>include/</code></b>: Shared headers used by both the client and server.</li>
+<li><b><code>lib/</code></b>: Shared libraries.</li>
+<li><b><code>dependencies/</code></b>: External dependencies for CMakeLists.txt.</li>
 </ul>
 <hr  />
-<h2><a class="anchor" id="autotoc_md23"></a>
-<b>Entity Component System</b></h2>
-<p>An entity component system is a design pattern used to create a modular and scalable architecture for video games.</p>
-<ul>
-<li><b><code>Entity</code></b> An entity is a container for components. An entity is a unique identifier.</li>
-<li><b><code>Component</code></b> <a class="el" href="classA.html">A</a> component is a container for data. Components are used to store data for entities.</li>
-<li><b><code><a class="el" href="classSystem.html" title="The System class is the base.">System</a></code></b> <a class="el" href="classA.html">A</a> system is a container for logic. Systems are used to process entities. Systems use components data to process entities.</li>
-</ul>
-<h2><a class="anchor" id="autotoc_md24"></a>
-<b>Entity Component System Overview</b></h2>
-<h3><a class="anchor" id="autotoc_md25"></a>
-<b>Entity</b></h3>
-<p>An entity is an unsigned integer that is used to identify an entity. </p><div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> Entity;</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md26"></a>
-<b>Component</b></h3>
-<p><a class="el" href="classA.html">A</a> component is a structure that contains data. </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;Vector3.hpp&quot;</span></div>
+<h3><a class="anchor" id="autotoc_md34"></a>
+<b>Entity Component System (ECS)</b></h3>
+<p>R-Type uses an <a class="el" href="structEntity.html">Entity</a> Component <a class="el" href="classSystem.html" title="The System class is the base.">System</a> (ECS) architecture, which is a modular and scalable pattern for game development.</p>
+<h4><a class="anchor" id="autotoc_md35"></a>
+<b>Entity</b></h4>
+<p>An entity is a unique identifier for a collection of components.</p>
+<div class="fragment"><div class="line"><span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_struct" href="structEntity.html">Entity</a>;</div>
+<div class="ttc" id="astructEntity_html"><div class="ttname"><a href="structEntity.html">Entity</a></div><div class="ttdef"><b>Definition</b> addBuffer.cpp:18</div></div>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md36"></a>
+<b>Component</b></h4>
+<p>Components are structures that hold data.</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;Vector3.hpp&quot;</span></div>
 <div class="line"><span class="keyword">struct </span><a class="code hl_struct" href="structTransformComponent.html">TransformComponent</a> {</div>
 <div class="line">    <a class="code hl_class" href="classLE_1_1Vector3.html">LE::Vector3&lt;float&gt;</a> position;</div>
 <div class="line">    <a class="code hl_class" href="classLE_1_1Vector3.html">LE::Vector3&lt;float&gt;</a> rotation;</div>
 <div class="line">    <a class="code hl_class" href="classLE_1_1Vector3.html">LE::Vector3&lt;float&gt;</a> scale;</div>
 <div class="line">};</div>
-<div class="ttc" id="aclassLE_1_1Vector3_html"><div class="ttname"><a href="classLE_1_1Vector3.html">LE::Vector3</a></div><div class="ttdoc">A 3D vector class template.</div><div class="ttdef"><b>Definition</b> Vector3.hpp:28</div></div>
+<div class="ttc" id="aclassLE_1_1Vector3_html"><div class="ttname"><a href="classLE_1_1Vector3.html">LE::Vector3</a></div><div class="ttdoc">A 3D vector class template.</div><div class="ttdef"><b>Definition</b> Vector3.hpp:41</div></div>
 <div class="ttc" id="astructTransformComponent_html"><div class="ttname"><a href="structTransformComponent.html">TransformComponent</a></div><div class="ttdef"><b>Definition</b> TransformComponent.hpp:13</div></div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md27"></a>
-<b>System</b></h3>
-<p><a class="el" href="classA.html">A</a> system is a class that contains logic. </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;System.hpp&quot;</span></div>
+</div><!-- fragment --><h4><a class="anchor" id="autotoc_md37"></a>
+<b>System</b></h4>
+<p>Systems contain the logic to process entities. They manipulate component data based on game rules.</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;System.hpp&quot;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">class </span>GravitySystem : <span class="keyword">public</span> LE::System {</div>
 <div class="line"><span class="keyword">public</span>:</div>
@@ -257,20 +292,50 @@ Conclusion:</h2>
 <div class="line">        }</div>
 <div class="line">    }</div>
 <div class="line">};</div>
-<div class="ttc" id="aclassLE_1_1Vector3_html_a89ac85c995b6a38ac1dc5136ed24c2c4"><div class="ttname"><a href="classLE_1_1Vector3.html#a89ac85c995b6a38ac1dc5136ed24c2c4">LE::Vector3::y</a></div><div class="ttdeci">T y</div><div class="ttdef"><b>Definition</b> Vector3.hpp:336</div></div>
-</div><!-- fragment --> <h2><a class="anchor" id="autotoc_md28"></a>
-<b>Module</b></h2>
+<div class="ttc" id="aclassLE_1_1Vector3_html_a89ac85c995b6a38ac1dc5136ed24c2c4"><div class="ttname"><a href="classLE_1_1Vector3.html#a89ac85c995b6a38ac1dc5136ed24c2c4">LE::Vector3::y</a></div><div class="ttdeci">T y</div><div class="ttdef"><b>Definition</b> Vector3.hpp:371</div></div>
+</div><!-- fragment --><hr  />
+<h3><a class="anchor" id="autotoc_md39"></a>
+<b>Modules</b></h3>
 <ul>
-<li><b><code><a class="el" href="classAsioNetworkModule.html" title="A class that implements the INetworkModule interface.">AsioNetworkModule</a></code></b> Module for networking using the Asio library.</li>
-<li><b><code>ClientCoreModule</code></b> Module for the client core.</li>
-<li><b><code>ServerCoreModule</code></b> Module for the server core.</li>
-<li><b><code>TestClientCoreModule</code></b> Module for the test client core.</li>
-<li><b><code>TestNetworkModule</code></b> Module for the test network.</li>
-<li><b><code>TestServerCoreModule</code></b> Module for the test server core.</li>
+<li><b><code><a class="el" href="classAsioNetworkModule.html" title="A class that implements the INetworkModule interface.">AsioNetworkModule</a></code></b>: Networking module using Asio library.</li>
+<li><b><code>ClientCoreModule</code></b>: Core module for the client.</li>
+<li><b><code>ServerCoreModule</code></b>: Core module for the server.</li>
+<li><b><code>TestClientCoreModule</code></b>: Module for testing the client core.</li>
+<li><b><code>TestNetworkModule</code></b>: Module for testing network functionality.</li>
+<li><b><code>TestServerCoreModule</code></b>: Module for testing the server core.</li>
 </ul>
 <hr  />
-<h2><a class="anchor" id="autotoc_md30"></a>
-<b>Graphical User Interface <em>(GUI)</em></b></h2>
+<h3><a class="anchor" id="autotoc_md41"></a>
+<b>Contribute</b></h3>
+<p>To contribute, follow these steps:</p>
+<ol type="1">
+<li><b>Fork</b> the repository.</li>
+<li><b>Clone</b> your fork.</li>
+<li><b>Create</b> a new branch.</li>
+<li><b>Commit</b> your changes.</li>
+<li><b>Push</b> the changes to your fork.</li>
+<li><b>Submit</b> a pull request.</li>
+<li>Once approved, <b>merge</b> the pull request.</li>
+<li><b>Close</b> the pull request.</li>
+<li>Optionally, <b>delete</b> the branch.</li>
+</ol>
+<hr  />
+<h3><a class="anchor" id="autotoc_md43"></a>
+<b>Contributors</b></h3>
+<ul>
+<li><b>SizzleUnrlsd</b></li>
+<li><b>xavierclement</b></li>
+<li><b>MAILLOTNathan</b></li>
+<li><b>ju-lit-hein</b></li>
+<li><b>ElPepitaux</b></li>
+</ul>
+<hr  />
+<h3><a class="anchor" id="autotoc_md45"></a>
+<b>License</b></h3>
+<p>This project is licensed under the MIT License. See the <a href="./LICENSE">LICENSE</a> file for details.</p>
+<hr  />
+<h3><a class="anchor" id="autotoc_md47"></a>
+<b>Graphical User Interface <em>(GUI)</em></b></h3>
 <p>Here’s a more structured and refined version of the provided content:</p>
 <hr  />
 <blockquote class="doxtable">
@@ -289,12 +354,11 @@ Conclusion:</h2>
 <li><b><code>GUI::Manager</code></b> <em>(inherits from <code>GUI::Container</code>)</em> <a class="el" href="classA.html">A</a> manager that holds and manages all GUI components.</li>
 </ul>
 <hr  />
- <h2><a class="anchor" id="autotoc_md33"></a>
-<b>RFC</b></h2>
-<ul>
-<li><b><code>RFC</code></b></li>
-</ul>
-<p><img src="./RFC.md" alt="RFC" class="inline"/> </p>
+ <h3><a class="anchor" id="autotoc_md50"></a>
+<b>RFC</b></h3>
+<p>For more information, refer to the <a class="el" href="md_RFC.html">RFC document</a>.</p>
+<hr  />
+<p>This revised structure offers better readability and consistency. Let me know if you'd like further changes! </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

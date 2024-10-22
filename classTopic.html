@@ -110,9 +110,9 @@ $(function(){initNavTree('classTopic.html',''); initResizable(true); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5fcd96bb59f4bf2c97c71923e52cf8a7" id="r_a5fcd96bb59f4bf2c97c71923e52cf8a7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5fcd96bb59f4bf2c97c71923e52cf8a7">Topic</a> (std::uint32_t ecs_id, std::uint8_t id)</td></tr>
-<tr class="memdesc:a5fcd96bb59f4bf2c97c71923e52cf8a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classTopic.html" title="A class that represents a topic which holds a queue of messages.">Topic</a> object.  <br /></td></tr>
-<tr class="separator:a5fcd96bb59f4bf2c97c71923e52cf8a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abaa6ade429639dc05df8b627d3133849" id="r_abaa6ade429639dc05df8b627d3133849"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abaa6ade429639dc05df8b627d3133849">Topic</a> (std::uint8_t ecs_id, std::uint8_t id)</td></tr>
+<tr class="memdesc:abaa6ade429639dc05df8b627d3133849"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classTopic.html" title="A class that represents a topic which holds a queue of messages.">Topic</a> object.  <br /></td></tr>
+<tr class="separator:abaa6ade429639dc05df8b627d3133849"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50a6d47c85650b983741d3a349c03506" id="r_a50a6d47c85650b983741d3a349c03506"><td class="memItemLeft" align="right" valign="top"><a id="a50a6d47c85650b983741d3a349c03506" name="a50a6d47c85650b983741d3a349c03506"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>~Topic</b> (void)</td></tr>
 <tr class="memdesc:a50a6d47c85650b983741d3a349c03506"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the <a class="el" href="classTopic.html" title="A class that represents a topic which holds a queue of messages.">Topic</a> object. <br /></td></tr>
@@ -128,8 +128,8 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><p><a class="el" href="classA.html">A</a> class that represents a topic which holds a queue of messages. </p>
 <p>The <a class="el" href="classTopic.html" title="A class that represents a topic which holds a queue of messages.">Topic</a> class is responsible for managing a queue of messages. It allows adding messages to the queue and retrieving messages from the queue. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a5fcd96bb59f4bf2c97c71923e52cf8a7" name="a5fcd96bb59f4bf2c97c71923e52cf8a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5fcd96bb59f4bf2c97c71923e52cf8a7">&#9670;&#160;</a></span>Topic()</h2>
+<a id="abaa6ade429639dc05df8b627d3133849" name="abaa6ade429639dc05df8b627d3133849"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abaa6ade429639dc05df8b627d3133849">&#9670;&#160;</a></span>Topic()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -137,7 +137,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">Topic::Topic </td>
           <td>(</td>
-          <td class="paramtype">std::uint32_t</td>          <td class="paramname"><span class="paramname"><em>ecs_id</em></span>, </td>
+          <td class="paramtype">std::uint8_t</td>          <td class="paramname"><span class="paramname"><em>ecs_id</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -164,9 +164,6 @@ Public Member Functions</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void Topic::addMessage </td>
@@ -175,11 +172,6 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Adds a message to the topic's queue. </p>
@@ -197,9 +189,6 @@ Public Member Functions</h2></td></tr>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classMessage.html">Message</a> * Topic::getMessage </td>
@@ -208,11 +197,6 @@ Public Member Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Retrieves and removes the next message from the topic's queue. </p>

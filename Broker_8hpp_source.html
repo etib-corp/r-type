@@ -123,89 +123,56 @@ $(function(){initNavTree('Broker_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classBroker.html#a134305d4a07353208c6d32c363865f17">   39</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="classBroker.html#a134305d4a07353208c6d32c363865f17">getECSId</a>(<span class="keywordtype">void</span>)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _ecs_id; }</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="foldopen" id="foldopen00048" data-start="{" data-end="}">
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classBroker.html#a0eebc1f2290bcbe3ec2da17303dd336e">   48</a></span>    std::unique_ptr&lt;Topic&gt; &amp;<a class="code hl_function" href="classBroker.html#a0eebc1f2290bcbe3ec2da17303dd336e">getTopic</a>(std::uint32_t ecs_id, std::uint8_t <span class="keywordtype">id</span>)</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    {</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        std::lock_guard&lt;std::mutex&gt; lock(_mutex);</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordflow">if</span> (_topics.find(std::make_pair(ecs_id, <span class="keywordtype">id</span>)) == _topics.end())</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Topic not found&quot;</span>);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordflow">return</span> _topics[std::make_pair(ecs_id, <span class="keywordtype">id</span>)];</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    }</div>
-</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="foldopen" id="foldopen00061" data-start="{" data-end="}">
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classBroker.html#a306bf7b8864bdbdccdb5a5eaf8f1453f">   61</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classBroker.html#a306bf7b8864bdbdccdb5a5eaf8f1453f">removeTopic</a>(std::uint32_t ecs_id, std::uint8_t <span class="keywordtype">id</span>)</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    {</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        std::lock_guard&lt;std::mutex&gt; lock(_mutex);</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        _topics.erase(std::make_pair(ecs_id, <span class="keywordtype">id</span>));</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    }</div>
-</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="foldopen" id="foldopen00073" data-start="{" data-end="}">
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="classBroker.html#a413904c3561ad24acf8579aae2920776">   73</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classBroker.html#a413904c3561ad24acf8579aae2920776">addMessage</a>(std::uint8_t ecs_id, std::uint8_t topic_id, <a class="code hl_class" href="classMessage.html">Message</a> *message)</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    {</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        std::uint8_t localEcsId = _ecs_id;</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        std::lock_guard&lt;std::mutex&gt; lock(_mutex);</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        message-&gt;<a class="code hl_function" href="classMessage.html#a47dff35f6cb3eaf577d8a3fbc6477a76">setEmmiterID</a>(localEcsId);</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        message-&gt;<a class="code hl_function" href="classMessage.html#ae554e5832f0fef9b5048cb55ebd9eab1">setReceiverID</a>(ecs_id);</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        message-&gt;<a class="code hl_function" href="classMessage.html#a66b8d4123ebb886963bcbea48c671972">setTopicID</a>(topic_id);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        _outgoing_messages.push(message);</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    }</div>
-</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    std::unique_ptr&lt;Topic&gt; &amp;<a class="code hl_function" href="classBroker.html#a28b7c01deb92599040bb73d07b4fd06e">getTopic</a>(std::uint8_t ecs_id, std::uint8_t <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classBroker.html#a6e1fb242bfdc069cfe99098d6c9c51dd">removeTopic</a>(std::uint8_t ecs_id, std::uint8_t <span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classBroker.html#a413904c3561ad24acf8579aae2920776">addMessage</a>(std::uint8_t ecs_id, std::uint8_t topic_id, <a class="code hl_class" href="classMessage.html">Message</a> *message);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <a class="code hl_class" href="classMessage.html">Message</a> *<a class="code hl_function" href="classBroker.html#ab49b9da9dead00c16880951ed7efaf02">getMessage</a>(std::uint8_t ecs_id, std::uint8_t topic_id);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    std::uint8_t _ecs_id;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <a class="code hl_class" href="classINetworkModule.html">INetworkModule</a> *_network_module;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    std::map&lt;std::pair&lt;std::uint8_t, std::uint8_t&gt;, std::unique_ptr&lt;Topic&gt;&gt; _topics;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    std::thread _thread;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    std::mutex _mutex;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordtype">bool</span> _is_running = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    std::queue&lt;Message *&gt; _outgoing_messages;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    std::queue&lt;Message *&gt; _incomming_messages;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    std::function&lt;void(<a class="code hl_class" href="classMessage.html">Message</a> *)&gt; _sendFunction;</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="foldopen" id="foldopen00090" data-start="{" data-end="}">
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="classBroker.html#a52789b945668416dc4fbfedd58eb06d1">   90</a></span>    <a class="code hl_class" href="classMessage.html">Message</a> *<a class="code hl_function" href="classBroker.html#a52789b945668416dc4fbfedd58eb06d1">getMessage</a>(std::uint32_t ecs_id, std::uint8_t topic_id)</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    {</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="classBroker.html#a0eebc1f2290bcbe3ec2da17303dd336e">getTopic</a>(ecs_id, topic_id)-&gt;getMessage();</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    }</div>
-</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    std::uint8_t _ecs_id;</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <a class="code hl_class" href="classINetworkModule.html">INetworkModule</a> *_network_module;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    std::map&lt;std::pair&lt;std::uint32_t, std::uint8_t&gt;, std::unique_ptr&lt;Topic&gt;&gt; _topics;</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    std::thread _thread;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    std::mutex _mutex;</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordtype">bool</span> _is_running = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    std::queue&lt;Message *&gt; _outgoing_messages;</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    std::queue&lt;Message *&gt; _incomming_messages;</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    std::function&lt;void(<a class="code hl_class" href="classMessage.html">Message</a> *)&gt; _sendFunction;</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keywordtype">void</span> _setNetworkModule(<a class="code hl_class" href="classINetworkModule.html">INetworkModule</a> *network_module) { _network_module = network_module; }</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordtype">void</span> _setECSId(<span class="keywordtype">int</span> ecs_id) { _ecs_id = ecs_id; }</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    <span class="keywordtype">void</span> _setSendFunction(std::function&lt;<span class="keywordtype">void</span>(<a class="code hl_class" href="classMessage.html">Message</a> *)&gt; sendFunction) { _sendFunction = sendFunction; }</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keywordtype">void</span> _networkRoutine(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="keywordtype">void</span> _logicalRoutine(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="keywordtype">void</span> _routine(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="keywordtype">void</span> _run(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordtype">void</span> _stop(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> _sendMessage(<a class="code hl_class" href="classMessage.html">Message</a> *message) = 0;</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keywordtype">void</span> _sendMessages(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>};</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordtype">void</span> _setNetworkModule(<a class="code hl_class" href="classINetworkModule.html">INetworkModule</a> *network_module) { _network_module = network_module; }</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordtype">void</span> _setECSId(<span class="keywordtype">int</span> ecs_id) { _ecs_id = ecs_id; }</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordtype">void</span> _setSendFunction(std::function&lt;<span class="keywordtype">void</span>(<a class="code hl_class" href="classMessage.html">Message</a> *)&gt; sendFunction) { _sendFunction = sendFunction; }</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="keywordtype">void</span> _networkRoutine(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keywordtype">void</span> _logicalRoutine(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keywordtype">void</span> _routine(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordtype">void</span> _run(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordtype">void</span> _stop(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> _sendMessage(<a class="code hl_class" href="classMessage.html">Message</a> *message) = 0;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordtype">void</span> _sendMessages(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>};</div>
 </div>
 <div class="ttc" id="aclassBroker_html"><div class="ttname"><a href="classBroker.html">Broker</a></div><div class="ttdoc">Manages topics and messages in a multi-threaded environment.</div><div class="ttdef"><b>Definition</b> Broker.hpp:23</div></div>
-<div class="ttc" id="aclassBroker_html_a0eebc1f2290bcbe3ec2da17303dd336e"><div class="ttname"><a href="classBroker.html#a0eebc1f2290bcbe3ec2da17303dd336e">Broker::getTopic</a></div><div class="ttdeci">std::unique_ptr&lt; Topic &gt; &amp; getTopic(std::uint32_t ecs_id, std::uint8_t id)</div><div class="ttdoc">Retrieves a topic from the broker.</div><div class="ttdef"><b>Definition</b> Broker.hpp:48</div></div>
 <div class="ttc" id="aclassBroker_html_a134305d4a07353208c6d32c363865f17"><div class="ttname"><a href="classBroker.html#a134305d4a07353208c6d32c363865f17">Broker::getECSId</a></div><div class="ttdeci">int getECSId(void) const</div><div class="ttdoc">Gets the ECS ID of the broker.</div><div class="ttdef"><b>Definition</b> Broker.hpp:39</div></div>
-<div class="ttc" id="aclassBroker_html_a306bf7b8864bdbdccdb5a5eaf8f1453f"><div class="ttname"><a href="classBroker.html#a306bf7b8864bdbdccdb5a5eaf8f1453f">Broker::removeTopic</a></div><div class="ttdeci">void removeTopic(std::uint32_t ecs_id, std::uint8_t id)</div><div class="ttdoc">Removes a topic from the broker.</div><div class="ttdef"><b>Definition</b> Broker.hpp:61</div></div>
-<div class="ttc" id="aclassBroker_html_a413904c3561ad24acf8579aae2920776"><div class="ttname"><a href="classBroker.html#a413904c3561ad24acf8579aae2920776">Broker::addMessage</a></div><div class="ttdeci">void addMessage(std::uint8_t ecs_id, std::uint8_t topic_id, Message *message)</div><div class="ttdoc">Adds a message to a topic.</div><div class="ttdef"><b>Definition</b> Broker.hpp:73</div></div>
-<div class="ttc" id="aclassBroker_html_a52789b945668416dc4fbfedd58eb06d1"><div class="ttname"><a href="classBroker.html#a52789b945668416dc4fbfedd58eb06d1">Broker::getMessage</a></div><div class="ttdeci">Message * getMessage(std::uint32_t ecs_id, std::uint8_t topic_id)</div><div class="ttdoc">Retrieves a message from a topic.</div><div class="ttdef"><b>Definition</b> Broker.hpp:90</div></div>
+<div class="ttc" id="aclassBroker_html_a28b7c01deb92599040bb73d07b4fd06e"><div class="ttname"><a href="classBroker.html#a28b7c01deb92599040bb73d07b4fd06e">Broker::getTopic</a></div><div class="ttdeci">std::unique_ptr&lt; Topic &gt; &amp; getTopic(std::uint8_t ecs_id, std::uint8_t id)</div><div class="ttdoc">Retrieves a topic from the broker.</div><div class="ttdef"><b>Definition</b> Broker.cpp:3</div></div>
+<div class="ttc" id="aclassBroker_html_a413904c3561ad24acf8579aae2920776"><div class="ttname"><a href="classBroker.html#a413904c3561ad24acf8579aae2920776">Broker::addMessage</a></div><div class="ttdeci">void addMessage(std::uint8_t ecs_id, std::uint8_t topic_id, Message *message)</div><div class="ttdoc">Adds a message to a topic.</div><div class="ttdef"><b>Definition</b> Broker.cpp:18</div></div>
+<div class="ttc" id="aclassBroker_html_a6e1fb242bfdc069cfe99098d6c9c51dd"><div class="ttname"><a href="classBroker.html#a6e1fb242bfdc069cfe99098d6c9c51dd">Broker::removeTopic</a></div><div class="ttdeci">void removeTopic(std::uint8_t ecs_id, std::uint8_t id)</div><div class="ttdoc">Removes a topic from the broker.</div><div class="ttdef"><b>Definition</b> Broker.cpp:11</div></div>
 <div class="ttc" id="aclassBroker_html_a76e5f13b99d99c6acd145e51b8ebaf66"><div class="ttname"><a href="classBroker.html#a76e5f13b99d99c6acd145e51b8ebaf66">Broker::~Broker</a></div><div class="ttdeci">~Broker(void)=default</div><div class="ttdoc">Destructor for the Broker class.</div></div>
+<div class="ttc" id="aclassBroker_html_ab49b9da9dead00c16880951ed7efaf02"><div class="ttname"><a href="classBroker.html#ab49b9da9dead00c16880951ed7efaf02">Broker::getMessage</a></div><div class="ttdeci">Message * getMessage(std::uint8_t ecs_id, std::uint8_t topic_id)</div><div class="ttdoc">Retrieves a message from a topic.</div><div class="ttdef"><b>Definition</b> Broker.cpp:28</div></div>
 <div class="ttc" id="aclassBroker_html_ad53697e7a88ce846724ec0c75b2d72e7"><div class="ttname"><a href="classBroker.html#ad53697e7a88ce846724ec0c75b2d72e7">Broker::Broker</a></div><div class="ttdeci">Broker(void)=default</div><div class="ttdoc">constructor for the Broker class.</div></div>
-<div class="ttc" id="aclassINetworkModule_html"><div class="ttname"><a href="classINetworkModule.html">INetworkModule</a></div><div class="ttdoc">Abstract base class for network modules.</div><div class="ttdef"><b>Definition</b> INetworkModule.hpp:30</div></div>
-<div class="ttc" id="aclassMessage_html"><div class="ttname"><a href="classMessage.html">Message</a></div><div class="ttdoc">A class representing a message with an ECS ID and a topic name.</div><div class="ttdef"><b>Definition</b> Message.hpp:19</div></div>
-<div class="ttc" id="aclassMessage_html_a47dff35f6cb3eaf577d8a3fbc6477a76"><div class="ttname"><a href="classMessage.html#a47dff35f6cb3eaf577d8a3fbc6477a76">Message::setEmmiterID</a></div><div class="ttdeci">void setEmmiterID(std::uint8_t emmiter_id)</div><div class="ttdoc">Sets the ECS ID for the message.</div><div class="ttdef"><b>Definition</b> Message.hpp:50</div></div>
-<div class="ttc" id="aclassMessage_html_a66b8d4123ebb886963bcbea48c671972"><div class="ttname"><a href="classMessage.html#a66b8d4123ebb886963bcbea48c671972">Message::setTopicID</a></div><div class="ttdeci">void setTopicID(std::uint8_t topic_id)</div><div class="ttdoc">Sets the topic id for the message.</div><div class="ttdef"><b>Definition</b> Message.hpp:78</div></div>
-<div class="ttc" id="aclassMessage_html_ae554e5832f0fef9b5048cb55ebd9eab1"><div class="ttname"><a href="classMessage.html#ae554e5832f0fef9b5048cb55ebd9eab1">Message::setReceiverID</a></div><div class="ttdeci">void setReceiverID(std::uint8_t receiver_id)</div><div class="ttdoc">Sets the receiver ID for the message.</div><div class="ttdef"><b>Definition</b> Message.hpp:64</div></div>
+<div class="ttc" id="aclassINetworkModule_html"><div class="ttname"><a href="classINetworkModule.html">INetworkModule</a></div><div class="ttdoc">Abstract base class for network modules.</div><div class="ttdef"><b>Definition</b> INetworkModule.hpp:22</div></div>
+<div class="ttc" id="aclassMessage_html"><div class="ttname"><a href="classMessage.html">Message</a></div><div class="ttdoc">A class representing a message with an ECS ID and a topic name.</div><div class="ttdef"><b>Definition</b> Message.hpp:20</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -13,12 +13,13 @@ var searchData=
   ['client_10',['Client',['../classClient.html',1,'']]],
   ['clientbroker_11',['ClientBroker',['../classClientBroker.html',1,'']]],
   ['clock_12',['Clock',['../classLE_1_1Clock.html',1,'LE']]],
-  ['color_13',['Color',['../classLE_1_1Color.html',1,'LE']]],
-  ['colorerror_14',['ColorError',['../classLE_1_1Color_1_1ColorError.html',1,'LE::Color']]],
-  ['component_15',['Component',['../classLE_1_1GUI_1_1Component.html',1,'LE::GUI']]],
-  ['componentarray_16',['ComponentArray',['../classComponentArray.html',1,'']]],
-  ['componentmanager_17',['ComponentManager',['../classComponentManager.html',1,'']]],
-  ['componentmanagererror_18',['ComponentManagerError',['../classComponentManagerError.html',1,'']]],
-  ['container_19',['Container',['../classLE_1_1GUI_1_1Container.html',1,'LE::GUI']]],
-  ['coordstruct_20',['CoordStruct',['../structCoordStruct.html',1,'']]]
+  ['collisionsystem_13',['CollisionSystem',['../classCollisionSystem.html',1,'']]],
+  ['color_14',['Color',['../classLE_1_1Color.html',1,'LE']]],
+  ['colorerror_15',['ColorError',['../classLE_1_1Color_1_1ColorError.html',1,'LE::Color']]],
+  ['component_16',['Component',['../classLE_1_1GUI_1_1Component.html',1,'LE::GUI']]],
+  ['componentarray_17',['ComponentArray',['../classComponentArray.html',1,'']]],
+  ['componentmanager_18',['ComponentManager',['../classComponentManager.html',1,'']]],
+  ['componentmanagererror_19',['ComponentManagerError',['../classComponentManagerError.html',1,'']]],
+  ['container_20',['Container',['../classLE_1_1GUI_1_1Container.html',1,'LE::GUI']]],
+  ['coordstruct_21',['CoordStruct',['../structCoordStruct.html',1,'']]]
 ];

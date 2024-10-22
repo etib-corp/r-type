@@ -104,15 +104,15 @@ $(function(){initNavTree('Message_8hpp_source.html',''); initResizable(true); })
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;cstdint&gt;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;map&gt;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;PackUnpack.hpp&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="foldopen" id="foldopen00018" data-start="{" data-end="};">
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="classMessage.html">   18</a></span><span class="keyword">class </span><a class="code hl_class" href="classMessage.html">Message</a></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>{</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_function" href="classMessage.html#a2ccdab4b2313d398d49f638a53f30103">Message</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;thread&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;PackUnpack.hpp&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="foldopen" id="foldopen00019" data-start="{" data-end="};">
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classMessage.html">   19</a></span><span class="keyword">class </span><a class="code hl_class" href="classMessage.html">Message</a></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_function" href="classMessage.html#a2ccdab4b2313d398d49f638a53f30103">Message</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classMessage.html#a2ce422093306470fa002324c252650a2">   29</a></span>    <a class="code hl_function" href="classMessage.html#a2ce422093306470fa002324c252650a2">~Message</a>(<span class="keywordtype">void</span>) = <span class="keywordflow">default</span>;</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classMessage.html#a166ebf912a5d93b8dd444d63b196ef0d">   36</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMessage.html#a166ebf912a5d93b8dd444d63b196ef0d">setMagicNumber</a>(uint8_t magicNumber) { _magicNumber = magicNumber; }</div>
@@ -135,29 +135,84 @@ $(function(){initNavTree('Message_8hpp_source.html',''); initResizable(true); })
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
 <div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classMessage.html#a47e34256eca0a267ca0c39a779e3fc93">   99</a></span>    [[nodiscard]] std::uint8_t <a class="code hl_function" href="classMessage.html#a47e34256eca0a267ca0c39a779e3fc93">getAction</a>(<span class="keywordtype">void</span>)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _action; }</div>
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="classMessage.html#a029751d4c37fb13ebcaf00d41ce5087a">  106</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMessage.html#a029751d4c37fb13ebcaf00d41ce5087a">setBody</a>(<a class="code hl_struct" href="structBody.html">Body</a> body) { _body = body; }</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="classMessage.html#a8b8d4e69b0719e4c0fe7f265a9749c2b">  113</a></span>    [[nodiscard]] <a class="code hl_struct" href="structBody.html">Body</a> <a class="code hl_function" href="classMessage.html#a8b8d4e69b0719e4c0fe7f265a9749c2b">getBody</a>(<span class="keywordtype">void</span>)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _body; }</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    [[nodiscard]] std::string <a class="code hl_function" href="classMessage.html#a2e746155f82ffbf2176d40e78edf28c3">serialize</a>(<span class="keywordtype">void</span>) <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="classMessage.html#abec5fc98f8716a0f030861578c4caf73">  127</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMessage.html#abec5fc98f8716a0f030861578c4caf73">deserialize</a>(std::string raw_request);</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    std::uint8_t _magicNumber;</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    std::uint8_t _emmiter_id;</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    std::uint8_t _receiver_id;</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    std::uint8_t _topic_id;</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    std::uint8_t _action;</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <a class="code hl_struct" href="structBody.html">Body</a> _body;</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>};</div>
+<div class="foldopen" id="foldopen00106" data-start="{" data-end="}">
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno"><a class="line" href="classMessage.html#ac57989f1b99da6ea7f2f34e087b7c412">  106</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMessage.html#ac57989f1b99da6ea7f2f34e087b7c412">setHeader</a>(<a class="code hl_struct" href="structHeader.html">Header</a> header)</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    {</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        _magicNumber = header.MagicNumber;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        _emmiter_id = header.EmmiterdEcsId;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        _receiver_id = header.ReceiverEcsId;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        _topic_id = header.TopicID;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        _action = header.Action;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    }</div>
 </div>
-<div class="ttc" id="aclassMessage_html"><div class="ttname"><a href="classMessage.html">Message</a></div><div class="ttdoc">A class representing a message with an ECS ID and a topic name.</div><div class="ttdef"><b>Definition</b> Message.hpp:19</div></div>
-<div class="ttc" id="aclassMessage_html_a029751d4c37fb13ebcaf00d41ce5087a"><div class="ttname"><a href="classMessage.html#a029751d4c37fb13ebcaf00d41ce5087a">Message::setBody</a></div><div class="ttdeci">void setBody(Body body)</div><div class="ttdoc">Sets the body for the message.</div><div class="ttdef"><b>Definition</b> Message.hpp:106</div></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="foldopen" id="foldopen00120" data-start="{" data-end="}">
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="classMessage.html#afda52a0dc186e21a1b0f1b672df506fa">  120</a></span>    [[nodiscard]]<a class="code hl_struct" href="structHeader.html">Header</a> <a class="code hl_function" href="classMessage.html#afda52a0dc186e21a1b0f1b672df506fa">getHeader</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    {</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <a class="code hl_struct" href="structHeader.html">Header</a> header = {</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>            .MagicNumber = _magicNumber,</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>            .EmmiterdEcsId = _emmiter_id,</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>            .ReceiverEcsId = _receiver_id,</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            .TopicID = _topic_id,</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            .Action = _action,</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>            .BodyLength = 0</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        };</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <span class="keywordflow">return</span> header;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    }</div>
+</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="classMessage.html#a029751d4c37fb13ebcaf00d41ce5087a">  138</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMessage.html#a029751d4c37fb13ebcaf00d41ce5087a">setBody</a>(<a class="code hl_struct" href="structBody.html">Body</a> body) { _body = body; }</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno"><a class="line" href="classMessage.html#a8b8d4e69b0719e4c0fe7f265a9749c2b">  145</a></span>    [[nodiscard]] <a class="code hl_struct" href="structBody.html">Body</a> <a class="code hl_function" href="classMessage.html#a8b8d4e69b0719e4c0fe7f265a9749c2b">getBody</a>(<span class="keywordtype">void</span>)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _body; }</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="foldopen" id="foldopen00152" data-start="{" data-end="}">
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno"><a class="line" href="classMessage.html#a84029752dc3c9ec285d5f21d419f166a">  152</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMessage.html#a84029752dc3c9ec285d5f21d419f166a">setRequest</a>(<a class="code hl_struct" href="structRequest.html">Request</a> request)</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    {</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        <a class="code hl_function" href="classMessage.html#ac57989f1b99da6ea7f2f34e087b7c412">setHeader</a>(request.header);</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        <a class="code hl_function" href="classMessage.html#a029751d4c37fb13ebcaf00d41ce5087a">setBody</a>(request.body);</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    }</div>
+</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno"><a class="line" href="classMessage.html#a140eb691d5f085360ae18de9ca203e10">  163</a></span>    [[nodiscard]] <span class="keywordtype">bool</span> <a class="code hl_function" href="classMessage.html#a140eb691d5f085360ae18de9ca203e10">isReliable</a>(<span class="keywordtype">void</span>)<span class="keyword"> const </span>{ std::cout &lt;&lt; <span class="stringliteral">&quot;[&quot;</span> &lt;&lt; std::this_thread::get_id() &lt;&lt; <span class="stringliteral">&quot;]&quot;</span> &lt;&lt; std::endl; <span class="keywordflow">return</span> _is_relialbe; }</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno"><a class="line" href="classMessage.html#adc48bbfc4615f0a6f63b2a924c7ef3c3">  170</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMessage.html#adc48bbfc4615f0a6f63b2a924c7ef3c3">setReliable</a>(<span class="keywordtype">bool</span> is_reliable) { _is_relialbe = is_reliable; }</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span> </div>
+<div class="foldopen" id="foldopen00178" data-start="{" data-end="}">
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno"><a class="line" href="classMessage.html#ab2663b4f726ae14d2d29f66684b9ca88">  178</a></span>    [[nodiscard]] <a class="code hl_struct" href="structRequest.html">Request</a> <a class="code hl_function" href="classMessage.html#ab2663b4f726ae14d2d29f66684b9ca88">getRequest</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    {</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        <a class="code hl_struct" href="structRequest.html">Request</a> request = {</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>            .header = <a class="code hl_function" href="classMessage.html#afda52a0dc186e21a1b0f1b672df506fa">getHeader</a>(),</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>            .body = <a class="code hl_function" href="classMessage.html#a8b8d4e69b0719e4c0fe7f265a9749c2b">getBody</a>()</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        };</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        <span class="keywordflow">return</span> request;</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>    }</div>
+</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span> </div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    [[nodiscard]] std::string <a class="code hl_function" href="classMessage.html#a2e746155f82ffbf2176d40e78edf28c3">serialize</a>(<span class="keywordtype">void</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span> </div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno"><a class="line" href="classMessage.html#abec5fc98f8716a0f030861578c4caf73">  199</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classMessage.html#abec5fc98f8716a0f030861578c4caf73">deserialize</a>(std::string raw_request);</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    std::uint8_t _magicNumber;</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    std::uint8_t _emmiter_id;</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    std::uint8_t _receiver_id;</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    std::uint8_t _topic_id;</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    std::uint8_t _action;</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>    <a class="code hl_struct" href="structBody.html">Body</a> _body;</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <span class="keywordtype">bool</span> _is_relialbe;</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>};</div>
+</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span> </div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>std::ostream &amp;<a class="code hl_function" href="Matrix_8hpp.html#af1747b79adefa2b1cfc3b8fec4706e72">operator&lt;&lt;</a>(std::ostream &amp;stream, <span class="keyword">const</span> <a class="code hl_class" href="classMessage.html">Message</a> &amp;message);</div>
+<div class="ttc" id="aMatrix_8hpp_html_af1747b79adefa2b1cfc3b8fec4706e72"><div class="ttname"><a href="Matrix_8hpp.html#af1747b79adefa2b1cfc3b8fec4706e72">operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;os, const LE::Matrix&lt; WIDTH, HEIGHT, T &gt; &amp;matrix)</div><div class="ttdoc">Outputs the matrix to the specified output stream.</div><div class="ttdef"><b>Definition</b> Matrix.hpp:490</div></div>
+<div class="ttc" id="aclassMessage_html"><div class="ttname"><a href="classMessage.html">Message</a></div><div class="ttdoc">A class representing a message with an ECS ID and a topic name.</div><div class="ttdef"><b>Definition</b> Message.hpp:20</div></div>
+<div class="ttc" id="aclassMessage_html_a029751d4c37fb13ebcaf00d41ce5087a"><div class="ttname"><a href="classMessage.html#a029751d4c37fb13ebcaf00d41ce5087a">Message::setBody</a></div><div class="ttdeci">void setBody(Body body)</div><div class="ttdoc">Sets the body for the message.</div><div class="ttdef"><b>Definition</b> Message.hpp:138</div></div>
+<div class="ttc" id="aclassMessage_html_a140eb691d5f085360ae18de9ca203e10"><div class="ttname"><a href="classMessage.html#a140eb691d5f085360ae18de9ca203e10">Message::isReliable</a></div><div class="ttdeci">bool isReliable(void) const</div><div class="ttdoc">Gets the request of the message.</div><div class="ttdef"><b>Definition</b> Message.hpp:163</div></div>
 <div class="ttc" id="aclassMessage_html_a166ebf912a5d93b8dd444d63b196ef0d"><div class="ttname"><a href="classMessage.html#a166ebf912a5d93b8dd444d63b196ef0d">Message::setMagicNumber</a></div><div class="ttdeci">void setMagicNumber(uint8_t magicNumber)</div><div class="ttdoc">Sets the MagicNumber ID for the message.</div><div class="ttdef"><b>Definition</b> Message.hpp:36</div></div>
-<div class="ttc" id="aclassMessage_html_a2ccdab4b2313d398d49f638a53f30103"><div class="ttname"><a href="classMessage.html#a2ccdab4b2313d398d49f638a53f30103">Message::Message</a></div><div class="ttdeci">Message(void)</div><div class="ttdoc">Constructs a new Message object.</div><div class="ttdef"><b>Definition</b> Message.cpp:12</div></div>
+<div class="ttc" id="aclassMessage_html_a2ccdab4b2313d398d49f638a53f30103"><div class="ttname"><a href="classMessage.html#a2ccdab4b2313d398d49f638a53f30103">Message::Message</a></div><div class="ttdeci">Message(void)</div><div class="ttdoc">Constructs a new Message object.</div><div class="ttdef"><b>Definition</b> Message.cpp:11</div></div>
 <div class="ttc" id="aclassMessage_html_a2ce422093306470fa002324c252650a2"><div class="ttname"><a href="classMessage.html#a2ce422093306470fa002324c252650a2">Message::~Message</a></div><div class="ttdeci">~Message(void)=default</div><div class="ttdoc">Destroys the Message object.</div></div>
-<div class="ttc" id="aclassMessage_html_a2e746155f82ffbf2176d40e78edf28c3"><div class="ttname"><a href="classMessage.html#a2e746155f82ffbf2176d40e78edf28c3">Message::serialize</a></div><div class="ttdeci">std::string serialize(void) const</div><div class="ttdoc">Serializes the message.</div><div class="ttdef"><b>Definition</b> Message.cpp:38</div></div>
+<div class="ttc" id="aclassMessage_html_a2e746155f82ffbf2176d40e78edf28c3"><div class="ttname"><a href="classMessage.html#a2e746155f82ffbf2176d40e78edf28c3">Message::serialize</a></div><div class="ttdeci">std::string serialize(void) const</div><div class="ttdoc">Serializes the message.</div><div class="ttdef"><b>Definition</b> Message.cpp:36</div></div>
 <div class="ttc" id="aclassMessage_html_a2e8727680656520bb5b9a8dd13b70b02"><div class="ttname"><a href="classMessage.html#a2e8727680656520bb5b9a8dd13b70b02">Message::getReceiverID</a></div><div class="ttdeci">std::uint8_t getReceiverID(void) const</div><div class="ttdoc">Gets the receiver ID of the message.</div><div class="ttdef"><b>Definition</b> Message.hpp:71</div></div>
 <div class="ttc" id="aclassMessage_html_a3e5b6f70909f3a631935105d7f2952b6"><div class="ttname"><a href="classMessage.html#a3e5b6f70909f3a631935105d7f2952b6">Message::getMagicNumber</a></div><div class="ttdeci">uint8_t getMagicNumber(void)</div><div class="ttdoc">Gets the MagicNumber ID of the message.</div><div class="ttdef"><b>Definition</b> Message.hpp:43</div></div>
 <div class="ttc" id="aclassMessage_html_a3f0858ed81105410bdcb9e0e62ef1ec1"><div class="ttname"><a href="classMessage.html#a3f0858ed81105410bdcb9e0e62ef1ec1">Message::getEmmiterID</a></div><div class="ttdeci">std::uint8_t getEmmiterID(void) const</div><div class="ttdoc">Gets the ECS ID of the message.</div><div class="ttdef"><b>Definition</b> Message.hpp:57</div></div>
@@ -165,11 +220,18 @@ $(function(){initNavTree('Message_8hpp_source.html',''); initResizable(true); })
 <div class="ttc" id="aclassMessage_html_a47e34256eca0a267ca0c39a779e3fc93"><div class="ttname"><a href="classMessage.html#a47e34256eca0a267ca0c39a779e3fc93">Message::getAction</a></div><div class="ttdeci">std::uint8_t getAction(void) const</div><div class="ttdoc">Gets the action of the message.</div><div class="ttdef"><b>Definition</b> Message.hpp:99</div></div>
 <div class="ttc" id="aclassMessage_html_a66b8d4123ebb886963bcbea48c671972"><div class="ttname"><a href="classMessage.html#a66b8d4123ebb886963bcbea48c671972">Message::setTopicID</a></div><div class="ttdeci">void setTopicID(std::uint8_t topic_id)</div><div class="ttdoc">Sets the topic id for the message.</div><div class="ttdef"><b>Definition</b> Message.hpp:78</div></div>
 <div class="ttc" id="aclassMessage_html_a8321b85f3fb889262abeca5baf591de5"><div class="ttname"><a href="classMessage.html#a8321b85f3fb889262abeca5baf591de5">Message::setAction</a></div><div class="ttdeci">void setAction(std::uint8_t action)</div><div class="ttdoc">Sets the action for the message.</div><div class="ttdef"><b>Definition</b> Message.hpp:92</div></div>
-<div class="ttc" id="aclassMessage_html_a8b8d4e69b0719e4c0fe7f265a9749c2b"><div class="ttname"><a href="classMessage.html#a8b8d4e69b0719e4c0fe7f265a9749c2b">Message::getBody</a></div><div class="ttdeci">Body getBody(void) const</div><div class="ttdoc">Gets the body of the message.</div><div class="ttdef"><b>Definition</b> Message.hpp:113</div></div>
+<div class="ttc" id="aclassMessage_html_a84029752dc3c9ec285d5f21d419f166a"><div class="ttname"><a href="classMessage.html#a84029752dc3c9ec285d5f21d419f166a">Message::setRequest</a></div><div class="ttdeci">void setRequest(Request request)</div><div class="ttdoc">Sets the request for the message.</div><div class="ttdef"><b>Definition</b> Message.hpp:152</div></div>
+<div class="ttc" id="aclassMessage_html_a8b8d4e69b0719e4c0fe7f265a9749c2b"><div class="ttname"><a href="classMessage.html#a8b8d4e69b0719e4c0fe7f265a9749c2b">Message::getBody</a></div><div class="ttdeci">Body getBody(void) const</div><div class="ttdoc">Gets the body of the message.</div><div class="ttdef"><b>Definition</b> Message.hpp:145</div></div>
+<div class="ttc" id="aclassMessage_html_ab2663b4f726ae14d2d29f66684b9ca88"><div class="ttname"><a href="classMessage.html#ab2663b4f726ae14d2d29f66684b9ca88">Message::getRequest</a></div><div class="ttdeci">Request getRequest(void)</div><div class="ttdoc">Gets the request of the message.</div><div class="ttdef"><b>Definition</b> Message.hpp:178</div></div>
 <div class="ttc" id="aclassMessage_html_ab2ebeefe4d30d3d11d77d0b3394166ef"><div class="ttname"><a href="classMessage.html#ab2ebeefe4d30d3d11d77d0b3394166ef">Message::getTopicID</a></div><div class="ttdeci">std::uint8_t getTopicID(void) const</div><div class="ttdoc">Gets the topic id of the message.</div><div class="ttdef"><b>Definition</b> Message.hpp:85</div></div>
 <div class="ttc" id="aclassMessage_html_abec5fc98f8716a0f030861578c4caf73"><div class="ttname"><a href="classMessage.html#abec5fc98f8716a0f030861578c4caf73">Message::deserialize</a></div><div class="ttdeci">void deserialize(std::string raw_request)</div><div class="ttdoc">Deserializes the message.</div></div>
+<div class="ttc" id="aclassMessage_html_ac57989f1b99da6ea7f2f34e087b7c412"><div class="ttname"><a href="classMessage.html#ac57989f1b99da6ea7f2f34e087b7c412">Message::setHeader</a></div><div class="ttdeci">void setHeader(Header header)</div><div class="ttdoc">Sets the header for the message.</div><div class="ttdef"><b>Definition</b> Message.hpp:106</div></div>
+<div class="ttc" id="aclassMessage_html_adc48bbfc4615f0a6f63b2a924c7ef3c3"><div class="ttname"><a href="classMessage.html#adc48bbfc4615f0a6f63b2a924c7ef3c3">Message::setReliable</a></div><div class="ttdeci">void setReliable(bool is_reliable)</div><div class="ttdoc">Sets the reliability of the message.</div><div class="ttdef"><b>Definition</b> Message.hpp:170</div></div>
 <div class="ttc" id="aclassMessage_html_ae554e5832f0fef9b5048cb55ebd9eab1"><div class="ttname"><a href="classMessage.html#ae554e5832f0fef9b5048cb55ebd9eab1">Message::setReceiverID</a></div><div class="ttdeci">void setReceiverID(std::uint8_t receiver_id)</div><div class="ttdoc">Sets the receiver ID for the message.</div><div class="ttdef"><b>Definition</b> Message.hpp:64</div></div>
+<div class="ttc" id="aclassMessage_html_afda52a0dc186e21a1b0f1b672df506fa"><div class="ttname"><a href="classMessage.html#afda52a0dc186e21a1b0f1b672df506fa">Message::getHeader</a></div><div class="ttdeci">Header getHeader(void)</div><div class="ttdoc">Gets the header of the message.</div><div class="ttdef"><b>Definition</b> Message.hpp:120</div></div>
 <div class="ttc" id="astructBody_html"><div class="ttname"><a href="structBody.html">Body</a></div><div class="ttdef"><b>Definition</b> PackUnpack.hpp:152</div></div>
+<div class="ttc" id="astructHeader_html"><div class="ttname"><a href="structHeader.html">Header</a></div><div class="ttdef"><b>Definition</b> PackUnpack.hpp:142</div></div>
+<div class="ttc" id="astructRequest_html"><div class="ttname"><a href="structRequest.html">Request</a></div><div class="ttdef"><b>Definition</b> PackUnpack.hpp:157</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

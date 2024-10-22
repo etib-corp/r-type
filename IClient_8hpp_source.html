@@ -99,63 +99,77 @@ $(function(){initNavTree('IClient_8hpp_source.html',''); initResizable(true); })
   <div class="headertitle"><div class="title">IClient.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">** EPITECH PROJECT, 2024</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">** r-type</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">** File description:</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">** IClient</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef ICLIENT_HPP_</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define ICLIENT_HPP_</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;PackUnpack.hpp&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;functional&gt;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="foldopen" id="foldopen00015" data-start="{" data-end="};">
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classIClient.html">   15</a></span><span class="keyword">class </span><a class="code hl_class" href="classIClient.html">IClient</a></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">virtual</span> <a class="code hl_class" href="classIClient.html">~IClient</a>() = <span class="keywordflow">default</span>;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> connectToServer(<span class="keywordtype">void</span>) = 0;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> setOnReceive(std::function&lt;<span class="keywordtype">void</span>(<span class="keyword">const</span> <a class="code hl_struct" href="structRequest.html">Request</a> &amp;)&gt; onReceive) { _onReceive = onReceive; }</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> readTCP() = 0;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> readUDP() = 0;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> sendTCP(<span class="keyword">const</span> std::string &amp;request) = 0;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> sendUDP(<span class="keyword">const</span> std::string &amp;request) = 0;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keyword">virtual</span> <span class="keywordtype">int</span> getId()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _id; }</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> setId(std::uint32_t <span class="keywordtype">id</span>) { _id = id; }</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    std::uint32_t _id;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    std::function&lt;void(<span class="keyword">const</span> <a class="code hl_struct" href="structRequest.html">Request</a> &amp;)&gt; _onReceive;</div>
+<a href="IClient_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;PackUnpack.hpp&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;functional&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="foldopen" id="foldopen00024" data-start="{" data-end="};">
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classIClient.html">   24</a></span><span class="keyword">class </span><a class="code hl_class" href="classIClient.html">IClient</a></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>{</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classIClient.html#ae4ddb9ff8731dc47b7b2e63a97235b26">   31</a></span>    <span class="keyword">virtual</span> <a class="code hl_function" href="classIClient.html#ae4ddb9ff8731dc47b7b2e63a97235b26">~IClient</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classIClient.html#a06c8fec8a29784b36df054ea7b3b096f">   39</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classIClient.html#a06c8fec8a29784b36df054ea7b3b096f">connectToServer</a>(<span class="keywordtype">void</span>) = 0;</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <a class="code hl_struct" href="structRequest.html">Request</a> _requestTCP = {};</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <a class="code hl_struct" href="structRequest.html">Request</a> _requestUDP = {};</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>};</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classIClient.html#a5327406c0fee2e588dac6159912b29a9">   46</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classIClient.html#a5327406c0fee2e588dac6159912b29a9">setOnReceive</a>(std::function&lt;<span class="keywordtype">void</span>(<span class="keyword">const</span> <a class="code hl_struct" href="structRequest.html">Request</a> &amp;)&gt; onReceive) { <a class="code hl_variable" href="classIClient.html#a0abfb9d41669f2cdb7f8bde96286061f">_onReceive</a> = onReceive; }</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classIClient.html#a8671c952c70dab4f52772bbf3e34de37">   54</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classIClient.html#a8671c952c70dab4f52772bbf3e34de37">readTCP</a>() = 0;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="classIClient.html#a09f14ddf47817c632e289e210bdf3053">   62</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classIClient.html#a09f14ddf47817c632e289e210bdf3053">readUDP</a>() = 0;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno"><a class="line" href="classIClient.html#a791a275ea2770be5796d47ce67fb938e">   70</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classIClient.html#a791a275ea2770be5796d47ce67fb938e">sendTCP</a>(<span class="keyword">const</span> std::string &amp;request) = 0;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classIClient.html#a22b25fbceded0e87611ab4e27065a2a1">   77</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classIClient.html#a22b25fbceded0e87611ab4e27065a2a1">sendUDP</a>(<span class="keyword">const</span> std::string &amp;request) = 0;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classIClient.html#ad83ca56b9df44dd760b5fab62c6536be">   85</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classIClient.html#ad83ca56b9df44dd760b5fab62c6536be">setOnConnect</a>(std::function&lt;<span class="keywordtype">void</span>(<a class="code hl_class" href="classIClient.html">IClient</a> *)&gt; onConnect) { <a class="code hl_variable" href="classIClient.html#aa3aae29935e33abac93de2cacd5b11c0">_onConnect</a> = onConnect; }</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="classIClient.html#a8386ef4ed6b45a09a738bc0cdc5114f9">   92</a></span>    <span class="keyword">virtual</span> std::uint8_t <a class="code hl_function" href="classIClient.html#a8386ef4ed6b45a09a738bc0cdc5114f9">getId</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="classIClient.html#a8f41727a9a04269cc23cbd7ddf00d8fa">_id</a>; }</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="classIClient.html#af218949f619e1139f01f3ab8319d1781">   99</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classIClient.html#af218949f619e1139f01f3ab8319d1781">setId</a>(std::uint8_t <span class="keywordtype">id</span>) { <a class="code hl_variable" href="classIClient.html#a8f41727a9a04269cc23cbd7ddf00d8fa">_id</a> = id; }</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="classIClient.html#a0fc6b9bf2af47714c6088495526d0b06">  107</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classIClient.html#a0fc6b9bf2af47714c6088495526d0b06">handShake</a>() = 0;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="classIClient.html#a8f41727a9a04269cc23cbd7ddf00d8fa">  113</a></span>    std::uint8_t <a class="code hl_variable" href="classIClient.html#a8f41727a9a04269cc23cbd7ddf00d8fa">_id</a>;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="classIClient.html#aa3aae29935e33abac93de2cacd5b11c0">  118</a></span>    std::function&lt;void(<a class="code hl_class" href="classIClient.html">IClient</a> *)&gt; <a class="code hl_variable" href="classIClient.html#aa3aae29935e33abac93de2cacd5b11c0">_onConnect</a>;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="classIClient.html#a0abfb9d41669f2cdb7f8bde96286061f">  123</a></span>    std::function&lt;void(<span class="keyword">const</span> <a class="code hl_struct" href="structRequest.html">Request</a> &amp;)&gt; <a class="code hl_variable" href="classIClient.html#a0abfb9d41669f2cdb7f8bde96286061f">_onReceive</a>;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno"><a class="line" href="classIClient.html#a7db2bf280267a4f47a20400c14c78ae7">  128</a></span>    <a class="code hl_struct" href="structRequest.html">Request</a> <a class="code hl_variable" href="classIClient.html#a7db2bf280267a4f47a20400c14c78ae7">_requestTCP</a> = {};</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="classIClient.html#a4aa9baaceecdea294268c1ebc51a76a9">  133</a></span>    <a class="code hl_struct" href="structRequest.html">Request</a> <a class="code hl_variable" href="classIClient.html#a4aa9baaceecdea294268c1ebc51a76a9">_requestUDP</a> = {};</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>};</div>
 </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#endif </span><span class="comment">/* !ICLIENT_HPP_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="aclassIClient_html"><div class="ttname"><a href="classIClient.html">IClient</a></div><div class="ttdef"><b>Definition</b> IClient.hpp:16</div></div>
+<div class="ttc" id="aclassIClient_html"><div class="ttname"><a href="classIClient.html">IClient</a></div><div class="ttdoc">Interface for client network operations.</div><div class="ttdef"><b>Definition</b> IClient.hpp:25</div></div>
+<div class="ttc" id="aclassIClient_html_a06c8fec8a29784b36df054ea7b3b096f"><div class="ttname"><a href="classIClient.html#a06c8fec8a29784b36df054ea7b3b096f">IClient::connectToServer</a></div><div class="ttdeci">virtual void connectToServer(void)=0</div><div class="ttdoc">Connects to the server.</div></div>
+<div class="ttc" id="aclassIClient_html_a09f14ddf47817c632e289e210bdf3053"><div class="ttname"><a href="classIClient.html#a09f14ddf47817c632e289e210bdf3053">IClient::readUDP</a></div><div class="ttdeci">virtual void readUDP()=0</div><div class="ttdoc">Reads data from the server using UDP.</div></div>
+<div class="ttc" id="aclassIClient_html_a0abfb9d41669f2cdb7f8bde96286061f"><div class="ttname"><a href="classIClient.html#a0abfb9d41669f2cdb7f8bde96286061f">IClient::_onReceive</a></div><div class="ttdeci">std::function&lt; void(const Request &amp;)&gt; _onReceive</div><div class="ttdoc">Callback function for data reception events.</div><div class="ttdef"><b>Definition</b> IClient.hpp:123</div></div>
+<div class="ttc" id="aclassIClient_html_a0fc6b9bf2af47714c6088495526d0b06"><div class="ttname"><a href="classIClient.html#a0fc6b9bf2af47714c6088495526d0b06">IClient::handShake</a></div><div class="ttdeci">virtual void handShake()=0</div><div class="ttdoc">Performs a handshake with the server.</div></div>
+<div class="ttc" id="aclassIClient_html_a22b25fbceded0e87611ab4e27065a2a1"><div class="ttname"><a href="classIClient.html#a22b25fbceded0e87611ab4e27065a2a1">IClient::sendUDP</a></div><div class="ttdeci">virtual void sendUDP(const std::string &amp;request)=0</div><div class="ttdoc">Sends data to the server using UDP.</div></div>
+<div class="ttc" id="aclassIClient_html_a4aa9baaceecdea294268c1ebc51a76a9"><div class="ttname"><a href="classIClient.html#a4aa9baaceecdea294268c1ebc51a76a9">IClient::_requestUDP</a></div><div class="ttdeci">Request _requestUDP</div><div class="ttdoc">Request object for UDP communication.</div><div class="ttdef"><b>Definition</b> IClient.hpp:133</div></div>
+<div class="ttc" id="aclassIClient_html_a5327406c0fee2e588dac6159912b29a9"><div class="ttname"><a href="classIClient.html#a5327406c0fee2e588dac6159912b29a9">IClient::setOnReceive</a></div><div class="ttdeci">virtual void setOnReceive(std::function&lt; void(const Request &amp;)&gt; onReceive)</div><div class="ttdoc">Sets the callback function for data reception.</div><div class="ttdef"><b>Definition</b> IClient.hpp:46</div></div>
+<div class="ttc" id="aclassIClient_html_a791a275ea2770be5796d47ce67fb938e"><div class="ttname"><a href="classIClient.html#a791a275ea2770be5796d47ce67fb938e">IClient::sendTCP</a></div><div class="ttdeci">virtual void sendTCP(const std::string &amp;request)=0</div><div class="ttdoc">Sends data to the server using TCP.</div></div>
+<div class="ttc" id="aclassIClient_html_a7db2bf280267a4f47a20400c14c78ae7"><div class="ttname"><a href="classIClient.html#a7db2bf280267a4f47a20400c14c78ae7">IClient::_requestTCP</a></div><div class="ttdeci">Request _requestTCP</div><div class="ttdoc">Request object for TCP communication.</div><div class="ttdef"><b>Definition</b> IClient.hpp:128</div></div>
+<div class="ttc" id="aclassIClient_html_a8386ef4ed6b45a09a738bc0cdc5114f9"><div class="ttname"><a href="classIClient.html#a8386ef4ed6b45a09a738bc0cdc5114f9">IClient::getId</a></div><div class="ttdeci">virtual std::uint8_t getId() const</div><div class="ttdoc">Gets the client ID.</div><div class="ttdef"><b>Definition</b> IClient.hpp:92</div></div>
+<div class="ttc" id="aclassIClient_html_a8671c952c70dab4f52772bbf3e34de37"><div class="ttname"><a href="classIClient.html#a8671c952c70dab4f52772bbf3e34de37">IClient::readTCP</a></div><div class="ttdeci">virtual void readTCP()=0</div><div class="ttdoc">Reads data from the server using TCP.</div></div>
+<div class="ttc" id="aclassIClient_html_a8f41727a9a04269cc23cbd7ddf00d8fa"><div class="ttname"><a href="classIClient.html#a8f41727a9a04269cc23cbd7ddf00d8fa">IClient::_id</a></div><div class="ttdeci">std::uint8_t _id</div><div class="ttdoc">Client ID.</div><div class="ttdef"><b>Definition</b> IClient.hpp:113</div></div>
+<div class="ttc" id="aclassIClient_html_aa3aae29935e33abac93de2cacd5b11c0"><div class="ttname"><a href="classIClient.html#aa3aae29935e33abac93de2cacd5b11c0">IClient::_onConnect</a></div><div class="ttdeci">std::function&lt; void(IClient *)&gt; _onConnect</div><div class="ttdoc">Callback function for connection events.</div><div class="ttdef"><b>Definition</b> IClient.hpp:118</div></div>
+<div class="ttc" id="aclassIClient_html_ad83ca56b9df44dd760b5fab62c6536be"><div class="ttname"><a href="classIClient.html#ad83ca56b9df44dd760b5fab62c6536be">IClient::setOnConnect</a></div><div class="ttdeci">void setOnConnect(std::function&lt; void(IClient *)&gt; onConnect)</div><div class="ttdoc">Sets the callback function for connection events.</div><div class="ttdef"><b>Definition</b> IClient.hpp:85</div></div>
+<div class="ttc" id="aclassIClient_html_ae4ddb9ff8731dc47b7b2e63a97235b26"><div class="ttname"><a href="classIClient.html#ae4ddb9ff8731dc47b7b2e63a97235b26">IClient::~IClient</a></div><div class="ttdeci">virtual ~IClient()=default</div><div class="ttdoc">Virtual destructor for IClient.</div></div>
+<div class="ttc" id="aclassIClient_html_af218949f619e1139f01f3ab8319d1781"><div class="ttname"><a href="classIClient.html#af218949f619e1139f01f3ab8319d1781">IClient::setId</a></div><div class="ttdeci">virtual void setId(std::uint8_t id)</div><div class="ttdoc">Sets the client ID.</div><div class="ttdef"><b>Definition</b> IClient.hpp:99</div></div>
 <div class="ttc" id="astructRequest_html"><div class="ttname"><a href="structRequest.html">Request</a></div><div class="ttdef"><b>Definition</b> PackUnpack.hpp:157</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_fac9ef7fc20ac12aaae6ba4aa5a86afc.html">interface</a></li><li class="navelem"><a class="el" href="dir_099c0143cd93af7ecf1df061b79ba7fb.html">INetworkModule</a></li><li class="navelem"><b>IClient.hpp</b></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_fac9ef7fc20ac12aaae6ba4aa5a86afc.html">interface</a></li><li class="navelem"><a class="el" href="dir_099c0143cd93af7ecf1df061b79ba7fb.html">INetworkModule</a></li><li class="navelem"><a class="el" href="IClient_8hpp.html">IClient.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>

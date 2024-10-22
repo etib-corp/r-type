@@ -103,6 +103,11 @@ $(function(){initNavTree('classIClient.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">IClient Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Interface for client network operations.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="IClient_8hpp_source.html">IClient.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for IClient:</div>
 <div class="dyncontent">
@@ -115,46 +120,385 @@ Inheritance diagram for IClient:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a06c8fec8a29784b36df054ea7b3b096f" id="r_a06c8fec8a29784b36df054ea7b3b096f"><td class="memItemLeft" align="right" valign="top"><a id="a06c8fec8a29784b36df054ea7b3b096f" name="a06c8fec8a29784b36df054ea7b3b096f"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>connectToServer</b> (void)=0</td></tr>
+<tr class="memitem:ae4ddb9ff8731dc47b7b2e63a97235b26" id="r_ae4ddb9ff8731dc47b7b2e63a97235b26"><td class="memItemLeft" align="right" valign="top"><a id="ae4ddb9ff8731dc47b7b2e63a97235b26" name="ae4ddb9ff8731dc47b7b2e63a97235b26"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~IClient</b> ()=default</td></tr>
+<tr class="memdesc:ae4ddb9ff8731dc47b7b2e63a97235b26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for <a class="el" href="classIClient.html" title="Interface for client network operations.">IClient</a>. <br /></td></tr>
+<tr class="separator:ae4ddb9ff8731dc47b7b2e63a97235b26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06c8fec8a29784b36df054ea7b3b096f" id="r_a06c8fec8a29784b36df054ea7b3b096f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a06c8fec8a29784b36df054ea7b3b096f">connectToServer</a> (void)=0</td></tr>
+<tr class="memdesc:a06c8fec8a29784b36df054ea7b3b096f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connects to the server.  <br /></td></tr>
 <tr class="separator:a06c8fec8a29784b36df054ea7b3b096f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5327406c0fee2e588dac6159912b29a9" id="r_a5327406c0fee2e588dac6159912b29a9"><td class="memItemLeft" align="right" valign="top"><a id="a5327406c0fee2e588dac6159912b29a9" name="a5327406c0fee2e588dac6159912b29a9"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setOnReceive</b> (std::function&lt; void(const <a class="el" href="structRequest.html">Request</a> &amp;)&gt; onReceive)</td></tr>
+<tr class="memitem:a5327406c0fee2e588dac6159912b29a9" id="r_a5327406c0fee2e588dac6159912b29a9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5327406c0fee2e588dac6159912b29a9">setOnReceive</a> (std::function&lt; void(const <a class="el" href="structRequest.html">Request</a> &amp;)&gt; onReceive)</td></tr>
+<tr class="memdesc:a5327406c0fee2e588dac6159912b29a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the callback function for data reception.  <br /></td></tr>
 <tr class="separator:a5327406c0fee2e588dac6159912b29a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8671c952c70dab4f52772bbf3e34de37" id="r_a8671c952c70dab4f52772bbf3e34de37"><td class="memItemLeft" align="right" valign="top"><a id="a8671c952c70dab4f52772bbf3e34de37" name="a8671c952c70dab4f52772bbf3e34de37"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>readTCP</b> ()=0</td></tr>
+<tr class="memitem:a8671c952c70dab4f52772bbf3e34de37" id="r_a8671c952c70dab4f52772bbf3e34de37"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8671c952c70dab4f52772bbf3e34de37">readTCP</a> ()=0</td></tr>
+<tr class="memdesc:a8671c952c70dab4f52772bbf3e34de37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads data from the server using TCP.  <br /></td></tr>
 <tr class="separator:a8671c952c70dab4f52772bbf3e34de37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09f14ddf47817c632e289e210bdf3053" id="r_a09f14ddf47817c632e289e210bdf3053"><td class="memItemLeft" align="right" valign="top"><a id="a09f14ddf47817c632e289e210bdf3053" name="a09f14ddf47817c632e289e210bdf3053"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>readUDP</b> ()=0</td></tr>
+<tr class="memitem:a09f14ddf47817c632e289e210bdf3053" id="r_a09f14ddf47817c632e289e210bdf3053"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a09f14ddf47817c632e289e210bdf3053">readUDP</a> ()=0</td></tr>
+<tr class="memdesc:a09f14ddf47817c632e289e210bdf3053"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads data from the server using UDP.  <br /></td></tr>
 <tr class="separator:a09f14ddf47817c632e289e210bdf3053"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a791a275ea2770be5796d47ce67fb938e" id="r_a791a275ea2770be5796d47ce67fb938e"><td class="memItemLeft" align="right" valign="top"><a id="a791a275ea2770be5796d47ce67fb938e" name="a791a275ea2770be5796d47ce67fb938e"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>sendTCP</b> (const std::string &amp;request)=0</td></tr>
+<tr class="memitem:a791a275ea2770be5796d47ce67fb938e" id="r_a791a275ea2770be5796d47ce67fb938e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a791a275ea2770be5796d47ce67fb938e">sendTCP</a> (const std::string &amp;request)=0</td></tr>
+<tr class="memdesc:a791a275ea2770be5796d47ce67fb938e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends data to the server using TCP.  <br /></td></tr>
 <tr class="separator:a791a275ea2770be5796d47ce67fb938e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a22b25fbceded0e87611ab4e27065a2a1" id="r_a22b25fbceded0e87611ab4e27065a2a1"><td class="memItemLeft" align="right" valign="top"><a id="a22b25fbceded0e87611ab4e27065a2a1" name="a22b25fbceded0e87611ab4e27065a2a1"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>sendUDP</b> (const std::string &amp;request)=0</td></tr>
+<tr class="memitem:a22b25fbceded0e87611ab4e27065a2a1" id="r_a22b25fbceded0e87611ab4e27065a2a1"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a22b25fbceded0e87611ab4e27065a2a1">sendUDP</a> (const std::string &amp;request)=0</td></tr>
+<tr class="memdesc:a22b25fbceded0e87611ab4e27065a2a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends data to the server using UDP.  <br /></td></tr>
 <tr class="separator:a22b25fbceded0e87611ab4e27065a2a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff88c98c2549e78859dbf1d7e2a06945" id="r_aff88c98c2549e78859dbf1d7e2a06945"><td class="memItemLeft" align="right" valign="top"><a id="aff88c98c2549e78859dbf1d7e2a06945" name="aff88c98c2549e78859dbf1d7e2a06945"></a>
-virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>getId</b> () const</td></tr>
-<tr class="separator:aff88c98c2549e78859dbf1d7e2a06945"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a668693d252b77848e2a2892de25d776e" id="r_a668693d252b77848e2a2892de25d776e"><td class="memItemLeft" align="right" valign="top"><a id="a668693d252b77848e2a2892de25d776e" name="a668693d252b77848e2a2892de25d776e"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>setId</b> (std::uint32_t id)</td></tr>
-<tr class="separator:a668693d252b77848e2a2892de25d776e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad83ca56b9df44dd760b5fab62c6536be" id="r_ad83ca56b9df44dd760b5fab62c6536be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad83ca56b9df44dd760b5fab62c6536be">setOnConnect</a> (std::function&lt; void(<a class="el" href="classIClient.html">IClient</a> *)&gt; onConnect)</td></tr>
+<tr class="memdesc:ad83ca56b9df44dd760b5fab62c6536be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the callback function for connection events.  <br /></td></tr>
+<tr class="separator:ad83ca56b9df44dd760b5fab62c6536be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8386ef4ed6b45a09a738bc0cdc5114f9" id="r_a8386ef4ed6b45a09a738bc0cdc5114f9"><td class="memItemLeft" align="right" valign="top">virtual std::uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8386ef4ed6b45a09a738bc0cdc5114f9">getId</a> () const</td></tr>
+<tr class="memdesc:a8386ef4ed6b45a09a738bc0cdc5114f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the client ID.  <br /></td></tr>
+<tr class="separator:a8386ef4ed6b45a09a738bc0cdc5114f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af218949f619e1139f01f3ab8319d1781" id="r_af218949f619e1139f01f3ab8319d1781"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af218949f619e1139f01f3ab8319d1781">setId</a> (std::uint8_t id)</td></tr>
+<tr class="memdesc:af218949f619e1139f01f3ab8319d1781"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the client ID.  <br /></td></tr>
+<tr class="separator:af218949f619e1139f01f3ab8319d1781"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fc6b9bf2af47714c6088495526d0b06" id="r_a0fc6b9bf2af47714c6088495526d0b06"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fc6b9bf2af47714c6088495526d0b06">handShake</a> ()=0</td></tr>
+<tr class="memdesc:a0fc6b9bf2af47714c6088495526d0b06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Performs a handshake with the server.  <br /></td></tr>
+<tr class="separator:a0fc6b9bf2af47714c6088495526d0b06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:abde34ca4a939ce404bb5145343e0d688" id="r_abde34ca4a939ce404bb5145343e0d688"><td class="memItemLeft" align="right" valign="top"><a id="abde34ca4a939ce404bb5145343e0d688" name="abde34ca4a939ce404bb5145343e0d688"></a>
-std::uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>_id</b></td></tr>
-<tr class="separator:abde34ca4a939ce404bb5145343e0d688"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f41727a9a04269cc23cbd7ddf00d8fa" id="r_a8f41727a9a04269cc23cbd7ddf00d8fa"><td class="memItemLeft" align="right" valign="top"><a id="a8f41727a9a04269cc23cbd7ddf00d8fa" name="a8f41727a9a04269cc23cbd7ddf00d8fa"></a>
+std::uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_id</b></td></tr>
+<tr class="memdesc:a8f41727a9a04269cc23cbd7ddf00d8fa"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classClient.html">Client</a> ID. <br /></td></tr>
+<tr class="separator:a8f41727a9a04269cc23cbd7ddf00d8fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3aae29935e33abac93de2cacd5b11c0" id="r_aa3aae29935e33abac93de2cacd5b11c0"><td class="memItemLeft" align="right" valign="top"><a id="aa3aae29935e33abac93de2cacd5b11c0" name="aa3aae29935e33abac93de2cacd5b11c0"></a>
+std::function&lt; void(<a class="el" href="classIClient.html">IClient</a> *)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_onConnect</b></td></tr>
+<tr class="memdesc:aa3aae29935e33abac93de2cacd5b11c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for connection events. <br /></td></tr>
+<tr class="separator:aa3aae29935e33abac93de2cacd5b11c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0abfb9d41669f2cdb7f8bde96286061f" id="r_a0abfb9d41669f2cdb7f8bde96286061f"><td class="memItemLeft" align="right" valign="top"><a id="a0abfb9d41669f2cdb7f8bde96286061f" name="a0abfb9d41669f2cdb7f8bde96286061f"></a>
 std::function&lt; void(const <a class="el" href="structRequest.html">Request</a> &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_onReceive</b></td></tr>
+<tr class="memdesc:a0abfb9d41669f2cdb7f8bde96286061f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function for data reception events. <br /></td></tr>
 <tr class="separator:a0abfb9d41669f2cdb7f8bde96286061f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7db2bf280267a4f47a20400c14c78ae7" id="r_a7db2bf280267a4f47a20400c14c78ae7"><td class="memItemLeft" align="right" valign="top"><a id="a7db2bf280267a4f47a20400c14c78ae7" name="a7db2bf280267a4f47a20400c14c78ae7"></a>
 <a class="el" href="structRequest.html">Request</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_requestTCP</b> = {}</td></tr>
+<tr class="memdesc:a7db2bf280267a4f47a20400c14c78ae7"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structRequest.html">Request</a> object for TCP communication. <br /></td></tr>
 <tr class="separator:a7db2bf280267a4f47a20400c14c78ae7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4aa9baaceecdea294268c1ebc51a76a9" id="r_a4aa9baaceecdea294268c1ebc51a76a9"><td class="memItemLeft" align="right" valign="top"><a id="a4aa9baaceecdea294268c1ebc51a76a9" name="a4aa9baaceecdea294268c1ebc51a76a9"></a>
 <a class="el" href="structRequest.html">Request</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_requestUDP</b> = {}</td></tr>
+<tr class="memdesc:a4aa9baaceecdea294268c1ebc51a76a9"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="structRequest.html">Request</a> object for UDP communication. <br /></td></tr>
 <tr class="separator:a4aa9baaceecdea294268c1ebc51a76a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Interface for client network operations. </p>
+<p>The <a class="el" href="classIClient.html" title="Interface for client network operations.">IClient</a> interface provides methods for connecting to a server, sending and receiving data over TCP and UDP, and handling connection and data reception events. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a06c8fec8a29784b36df054ea7b3b096f" name="a06c8fec8a29784b36df054ea7b3b096f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06c8fec8a29784b36df054ea7b3b096f">&#9670;&#160;</a></span>connectToServer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void IClient::connectToServer </td>
+          <td>(</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Connects to the server. </p>
+<p>This pure virtual function must be implemented to handle the logic for connecting to a server. </p>
+
+<p>Implemented in <a class="el" href="classClient.html#a495a13a010ce2d52fb693641cb3fcc7c">Client</a>.</p>
+
+</div>
+</div>
+<a id="a8386ef4ed6b45a09a738bc0cdc5114f9" name="a8386ef4ed6b45a09a738bc0cdc5114f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8386ef4ed6b45a09a738bc0cdc5114f9">&#9670;&#160;</a></span>getId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::uint8_t IClient::getId </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the client ID. </p>
+<dl class="section return"><dt>Returns</dt><dd>The client ID. </dd></dl>
+
+</div>
+</div>
+<a id="a0fc6b9bf2af47714c6088495526d0b06" name="a0fc6b9bf2af47714c6088495526d0b06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fc6b9bf2af47714c6088495526d0b06">&#9670;&#160;</a></span>handShake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void IClient::handShake </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Performs a handshake with the server. </p>
+<p>This pure virtual function must be implemented to handle the logic for performing a handshake with the server. </p>
+
+<p>Implemented in <a class="el" href="classClient.html#a3380448d2bc0acedb4e5b9f77ea91323">Client</a>.</p>
+
+</div>
+</div>
+<a id="a8671c952c70dab4f52772bbf3e34de37" name="a8671c952c70dab4f52772bbf3e34de37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8671c952c70dab4f52772bbf3e34de37">&#9670;&#160;</a></span>readTCP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void IClient::readTCP </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads data from the server using TCP. </p>
+<p>This pure virtual function must be implemented to handle the logic for reading data from the server using TCP. </p>
+
+<p>Implemented in <a class="el" href="classClient.html#a54c98a7378a958e85fbe4a8d24ae2f4a">Client</a>.</p>
+
+</div>
+</div>
+<a id="a09f14ddf47817c632e289e210bdf3053" name="a09f14ddf47817c632e289e210bdf3053"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09f14ddf47817c632e289e210bdf3053">&#9670;&#160;</a></span>readUDP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void IClient::readUDP </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reads data from the server using UDP. </p>
+<p>This pure virtual function must be implemented to handle the logic for reading data from the server using UDP. </p>
+
+<p>Implemented in <a class="el" href="classClient.html#a073a9d6d82f2f3b2f4c33bac95267842">Client</a>.</p>
+
+</div>
+</div>
+<a id="a791a275ea2770be5796d47ce67fb938e" name="a791a275ea2770be5796d47ce67fb938e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a791a275ea2770be5796d47ce67fb938e">&#9670;&#160;</a></span>sendTCP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void IClient::sendTCP </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>request</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sends data to the server using TCP. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">request</td><td>The data to be sent to the server. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classClient.html#a58d36a97e362cab66449edd3b72d5a3e">Client</a>.</p>
+
+</div>
+</div>
+<a id="a22b25fbceded0e87611ab4e27065a2a1" name="a22b25fbceded0e87611ab4e27065a2a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22b25fbceded0e87611ab4e27065a2a1">&#9670;&#160;</a></span>sendUDP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void IClient::sendUDP </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>request</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sends data to the server using UDP. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">request</td><td>The data to be sent to the server. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classClient.html#ab0f602cdd763dd686da9c41a4ec9ce3c">Client</a>.</p>
+
+</div>
+</div>
+<a id="af218949f619e1139f01f3ab8319d1781" name="af218949f619e1139f01f3ab8319d1781"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af218949f619e1139f01f3ab8319d1781">&#9670;&#160;</a></span>setId()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void IClient::setId </td>
+          <td>(</td>
+          <td class="paramtype">std::uint8_t</td>          <td class="paramname"><span class="paramname"><em>id</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the client ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>The client ID to be set. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad83ca56b9df44dd760b5fab62c6536be" name="ad83ca56b9df44dd760b5fab62c6536be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad83ca56b9df44dd760b5fab62c6536be">&#9670;&#160;</a></span>setOnConnect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void IClient::setOnConnect </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; void(<a class="el" href="classIClient.html">IClient</a> *)&gt;</td>          <td class="paramname"><span class="paramname"><em>onConnect</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the callback function for connection events. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">onConnect</td><td><a class="el" href="classA.html">A</a> function to be called when a connection is established. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5327406c0fee2e588dac6159912b29a9" name="a5327406c0fee2e588dac6159912b29a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5327406c0fee2e588dac6159912b29a9">&#9670;&#160;</a></span>setOnReceive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void IClient::setOnReceive </td>
+          <td>(</td>
+          <td class="paramtype">std::function&lt; void(const <a class="el" href="structRequest.html">Request</a> &amp;)&gt;</td>          <td class="paramname"><span class="paramname"><em>onReceive</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sets the callback function for data reception. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">onReceive</td><td><a class="el" href="classA.html">A</a> function to be called when data is received. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/interface/INetworkModule/<a class="el" href="IClient_8hpp_source.html">IClient.hpp</a></li>
 </ul>

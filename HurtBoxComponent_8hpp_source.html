@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>R-Type: client/include/ECS/Components/HurtBoxComponent.hpp Source File</title>
+<title>R-Type: include/ECS/Components/HurtBoxComponent.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -108,20 +108,29 @@ $(function(){initNavTree('HurtBoxComponent_8hpp_source.html',''); initResizable(
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;BoxComponent.hpp&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;ECS/Components/BoxComponent.hpp&quot;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structHurtBox.html">   17</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structHurtBox.html">HurtBox</a> : <span class="keyword">public</span> <a class="code hl_struct" href="structBox.html">Box</a> {</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>};</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structHurtBox.html">   17</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structHurtBox.html">HurtBox</a> {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="structHurtBox.html#a545fc46348bdc2a2df2a606608f7f6e7">   18</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structHurtBox.html#a545fc46348bdc2a2df2a606608f7f6e7">width</a>;      </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structHurtBox.html#aea74615829801f0dc735984feb8e88b3">   19</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="structHurtBox.html#aea74615829801f0dc735984feb8e88b3">height</a>;     </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="structHurtBox.html#a415514722c6e1a9316e2b94093ac71e2">   20</a></span>    std::bitset&lt;NB_LAYERS&gt; <a class="code hl_variable" href="structHurtBox.html#a415514722c6e1a9316e2b94093ac71e2">layers</a>;      </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structHurtBox.html#a5bf48fb1e5713fc439440620e1b9dc19">   21</a></span>    std::bitset&lt;NB_MASKS&gt; <a class="code hl_variable" href="structHurtBox.html#a5bf48fb1e5713fc439440620e1b9dc19">masks</a>;        </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="structHurtBox.html#a0fbf0a6549ced63932d612d5fcba0c1b">   22</a></span>    std::function&lt;void()&gt; <a class="code hl_variable" href="structHurtBox.html#a0fbf0a6549ced63932d612d5fcba0c1b">onHit</a>;     </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>};</div>
 </div>
-<div class="ttc" id="astructBox_html"><div class="ttname"><a href="structBox.html">Box</a></div><div class="ttdoc">A box component.</div><div class="ttdef"><b>Definition</b> BoxComponent.hpp:21</div></div>
 <div class="ttc" id="astructHurtBox_html"><div class="ttname"><a href="structHurtBox.html">HurtBox</a></div><div class="ttdoc">A hurt box component.</div><div class="ttdef"><b>Definition</b> HurtBoxComponent.hpp:17</div></div>
+<div class="ttc" id="astructHurtBox_html_a0fbf0a6549ced63932d612d5fcba0c1b"><div class="ttname"><a href="structHurtBox.html#a0fbf0a6549ced63932d612d5fcba0c1b">HurtBox::onHit</a></div><div class="ttdeci">std::function&lt; void()&gt; onHit</div><div class="ttdoc">The function to call when the hurt box is hit.</div><div class="ttdef"><b>Definition</b> HurtBoxComponent.hpp:22</div></div>
+<div class="ttc" id="astructHurtBox_html_a415514722c6e1a9316e2b94093ac71e2"><div class="ttname"><a href="structHurtBox.html#a415514722c6e1a9316e2b94093ac71e2">HurtBox::layers</a></div><div class="ttdeci">std::bitset&lt; NB_LAYERS &gt; layers</div><div class="ttdoc">The layers of the box.</div><div class="ttdef"><b>Definition</b> HurtBoxComponent.hpp:20</div></div>
+<div class="ttc" id="astructHurtBox_html_a545fc46348bdc2a2df2a606608f7f6e7"><div class="ttname"><a href="structHurtBox.html#a545fc46348bdc2a2df2a606608f7f6e7">HurtBox::width</a></div><div class="ttdeci">int width</div><div class="ttdoc">The width of the box.</div><div class="ttdef"><b>Definition</b> HurtBoxComponent.hpp:18</div></div>
+<div class="ttc" id="astructHurtBox_html_a5bf48fb1e5713fc439440620e1b9dc19"><div class="ttname"><a href="structHurtBox.html#a5bf48fb1e5713fc439440620e1b9dc19">HurtBox::masks</a></div><div class="ttdeci">std::bitset&lt; NB_MASKS &gt; masks</div><div class="ttdoc">The masks of the box.</div><div class="ttdef"><b>Definition</b> HurtBoxComponent.hpp:21</div></div>
+<div class="ttc" id="astructHurtBox_html_aea74615829801f0dc735984feb8e88b3"><div class="ttname"><a href="structHurtBox.html#aea74615829801f0dc735984feb8e88b3">HurtBox::height</a></div><div class="ttdeci">int height</div><div class="ttdoc">The height of the box.</div><div class="ttdef"><b>Definition</b> HurtBoxComponent.hpp:19</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_5c23080e296bbe846f4ed2d01d7b595d.html">include</a></li><li class="navelem"><a class="el" href="dir_7a3fab111ab468805d91e8419cd701b9.html">ECS</a></li><li class="navelem"><a class="el" href="dir_6fbbabaa899efa9a3e12983b8be91153.html">Components</a></li><li class="navelem"><b>HurtBoxComponent.hpp</b></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_073402b06d831bb0ea44664935cf1ebd.html">ECS</a></li><li class="navelem"><a class="el" href="dir_7b52d6202c19af6951914df083df759a.html">Components</a></li><li class="navelem"><b>HurtBoxComponent.hpp</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
