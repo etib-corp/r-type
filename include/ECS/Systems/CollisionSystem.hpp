@@ -22,7 +22,7 @@ class CollisionSystem : public System {
         void update(Ecs *ecs, float dt) override;
 
     protected:
-        std::unique_ptr<LE::Shapes::Rectangle> _rectangle;
+        // std::unique_ptr<LE::Shapes::Rectangle> _rectangle;
     private:
 };
 
