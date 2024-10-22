@@ -53,8 +53,8 @@ namespace LE {
     }
 }
 
-extern LE::Shader *fontShader;
-extern LE::Shader *triangleShader;
+extern LE::Shader *fontShader;      ///< The font shader.
+extern LE::Shader *triangleShader;  ///< The triangle shader.
 
 /**
  * @file Window.hpp
@@ -92,7 +92,7 @@ namespace LE {
              * @param width The width of the window.
              * @param height The height of the window.
              */
-            Window(const std::string& title, std::size_t width, std::size_t height);
+            Window(const std::string& title);
 
             /**
              * @brief Destructor for the Window object.
@@ -119,13 +119,6 @@ namespace LE {
             void close();
 
             /**
-             * @brief Sets the frame rate limit for the window.
-             *
-             * @param limit The frame rate limit.
-             */
-            void setFramerateLimit(std::size_t limit);
-
-            /**
              * @brief Clears the window to the specified color.
              *
              * @param color The color to clear the window to (default is black).
@@ -137,7 +130,7 @@ namespace LE {
              *
              * @param color The color to set as the clear color.
              */
-            void setClearColor(Color *color);
+            void setClearColor(const Color &color);
 
             /**
              * @brief Gets the GLFW window pointer.
@@ -145,6 +138,20 @@ namespace LE {
              * @return The GLFW window pointer.
              */
             GLFWwindow* getWindow();
+
+            /**
+             * @brief Gets the width of the window.
+             *
+             * @return The width of the window.
+             */
+            std::size_t getWidth() const;
+
+            /**
+             * @brief Gets the height of the window.
+             *
+             * @return The height of the window.
+             */
+            std::size_t getHeight() const;
         private:
 
             /**
@@ -158,13 +165,14 @@ namespace LE {
             std::size_t _height;                ///< The height of the window.
             std::string _title;                 ///< The title of the window.
             GLFWwindow* _window;                ///< Pointer to the GLFW window.
-            std::size_t _framerateLimit;        ///< The frame rate limit.
             GLFWmonitor* _monitor;              ///< Pointer to the monitor.
             const GLFWvidmode* _mode;           ///< Pointer to the video mode.
-            std::unique_ptr<Clock> _clock;      ///< Unique pointer to the Clock object.
-            friend class LE::Shapes::Triangle;
-            friend class LE::GUI::Text;
-            friend class LE::GUI::Interactable;
-            friend class LE::GUI::Container;
+            std::size_t _defaultFramerate;      ///< The default framerate.
+            friend class EventManager;          ///< Friend class EventManager.
+            friend class Engine;                ///< Friend class Engine.
+            friend class LE::Shapes::Triangle;  ///< Friend class LE::Shapes::Triangle.
+            friend class LE::GUI::Text;         ///< Friend class LE::GUI::Text.
+            friend class LE::GUI::Interactable; ///< Friend class LE::GUI::Interactable.
+            friend class LE::GUI::Container;    ///< Friend class LE::GUI::Container.
     };
 }

@@ -144,8 +144,25 @@ class Ecs {
          * @param dt The delta time
          */
         void update(float dt);
+
+        /**
+         * @brief Function to set the camera entity.
+         *
+         * This function is used to set the camera entity for the scene.
+         * @param entity The entity representing the camera.
+         */
+        void setCameraEntity(Entity entity);
+
+        /**
+         * @brief Function to get the camera entity.
+         *
+         * This function is used to get the camera entity for the scene.
+         * @return The entity representing the camera.
+         */
+        Entity getCameraEntity() const;
     private:
         std::unique_ptr<ComponentManager> _componentManager;        ///< The component manager
         std::unique_ptr<EntityManager> _entityManager;              ///< The entity manager
         std::unique_ptr<SystemManager> _systemManager;              ///< The system manager
+        Entity _cameraEntity;                                       ///< The entity representing the camera
 };

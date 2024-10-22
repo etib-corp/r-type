@@ -23,9 +23,11 @@ LE::Engine::Engine()
 {
     _debugMode = false;
     _throwError = false;
-    _window = std::make_shared<LE::Window>("Game Window", 1920, 1080);
+    _window = std::make_shared<LE::Window>("The R-Type");
     _sceneManager = std::make_shared<SceneManager>();
     _device = new LE::Sound::Device();
+    _clock = std::make_unique<LE::Clock>();
+    _framerateLimit = _window->_defaultFramerate;
 }
 
 LE::Engine::~Engine()
@@ -47,8 +49,18 @@ void LE::Engine::run(bool throwError)
     if (_configFunc) {
         _configFunc();
     }
+    Color color;
+    color._a = 255.0f;
+    color._r = 255.0f;
+    color._g = 255.0f;
+    color._b = 255.0f;
+    _window->setClearColor(color);
     _sceneManager->init();
     while (_window->isOpen()) {
+        _dt = _clock->getElapsedTime();
+        if (_clock->getElapsedTime() < (1000.0f / _framerateLimit))
+            continue;
+        _clock->restart();
         _sceneManager->play();
         _window->render(_sceneManager->getCurrentScene());
     }
@@ -88,4 +100,23 @@ void LE::Engine::throwError(const LE::Error& error)
 void LE::Engine::setConfig(std::function<void()> func)
 {
     _configFunc = func;
+}
+
+void LE::Engine::setFramerateLimit(std::size_t limit)
+{
+    _framerateLimit = limit;
+}
+std::size_t LE::Engine::getWindowWidth() const
+{
+    return _window->getWidth();
+}
+
+std::size_t LE::Engine::getWindowHeight() const
+{
+    return _window->getHeight();
+}
+
+void LE::Engine::selectScene(const std::string &sceneName)
+{
+    _sceneManager->play(sceneName);
 }

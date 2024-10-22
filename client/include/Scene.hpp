@@ -15,6 +15,8 @@
 #include "ECS/Ecs.hpp"
 #include "ECS/Systems/Render2DSystem.hpp"
 #include "ECS/Systems/Render3DSystem.hpp"
+#include "ECS/Systems/PatternSystem.hpp"
+#include "ECS/Systems/CameraSystem.hpp"
 
 /**
  * @file Scene.hpp
