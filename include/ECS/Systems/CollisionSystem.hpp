@@ -13,7 +13,6 @@
 #include "ECS/Components/HitBoxComponent.hpp"
 #include "ECS/Components/TransformComponent.hpp"
 // #include "Shapes/Rectangle.hpp"
-#include "Color.hpp"
 
 class CollisionSystem : public System {
     public:
