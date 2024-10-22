@@ -35,7 +35,6 @@ GameScene::GameScene() : LE::Scene()
     Signature signaturePattern;
     signaturePattern.set(_ecs->getComponentType<TransformComponent>());
     signaturePattern.set(_ecs->getComponentType<PatternComponent>());
-    signaturePattern.set(_ecs->getComponentType<MotionComponent>());
     std::shared_ptr<PatternSystem> patternSystem = _ecs->registerSystem<PatternSystem>();
     _ecs->setSignature<PatternSystem>(signaturePattern);
 
@@ -59,22 +58,22 @@ GameScene::GameScene() : LE::Scene()
     _ecs->registerSystem<MoveSystem>();
     _ecs->setSignature<MoveSystem>(signatureMove);
 
-    patternSystem->addPattern("line", [](PatternComponent &pattern, TransformComponent &transform, MotionComponent &motion) {
+    patternSystem->addPattern("line", [](PatternComponent &pattern, TransformComponent &transform) {
         if (transform.position.x != pattern.end_pos.x) {
-            motion.velocity.x = pattern.speed * (pattern.end_pos.x - transform.position.x > 0 ? 1 : -1);
+            pattern.velocity.x = pattern.speed * (pattern.end_pos.x - transform.position.x > 0 ? 1 : -1);
         }
         if (transform.position.y != pattern.end_pos.y) {
-            motion.velocity.y = pattern.speed * (pattern.end_pos.y - transform.position.y > 0 ? 1 : -1);
+            pattern.velocity.y = pattern.speed * (pattern.end_pos.y - transform.position.y > 0 ? 1 : -1);
         }
         if (transform.position.z != pattern.end_pos.z) {
-            motion.velocity.z = pattern.speed * (pattern.end_pos.z - transform.position.z > 0 ? 1 : -1);
+            pattern.velocity.z = pattern.speed * (pattern.end_pos.z - transform.position.z > 0 ? 1 : -1);
         }
     });
 
-    patternSystem->addPattern("sinus_x", [](PatternComponent &pattern, TransformComponent &transform, MotionComponent &motion) {
+    patternSystem->addPattern("sinus_x", [](PatternComponent &pattern, TransformComponent &transform) {
         if (transform.position.x != pattern.end_pos.x) {
-            motion.velocity.x = pattern.speed * (pattern.end_pos.x - transform.position.x > 0 ? 1 : -1);
-            motion.velocity.y = sin(pattern.seek) * 10 * pattern.speed;
+            pattern.velocity.x = pattern.speed * (pattern.end_pos.x - transform.position.x > 0 ? 1 : -1);
+            pattern.velocity.y = sin(pattern.seek) * 10 * pattern.speed;
             pattern.seek += 0.1;
         }
     });
