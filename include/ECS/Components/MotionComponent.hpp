@@ -25,5 +25,5 @@ struct MotionComponent {
     LE::Vector3<float> maxVelocity;     ///< The maximum velocity of the entity
     LE::Vector3<float> acceleration;    ///< The acceleration of the entity
     LE::Vector3<float> maxAcceleration; ///< The maximum acceleration of the entity
-    std::bitset<4> movement;            ///< The movement of the entity
+    std::bitset<4> direction;            ///< The direction of the entity
 };

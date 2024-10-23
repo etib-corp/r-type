@@ -12,7 +12,7 @@ bool callbackInputUp(const Request &req, std::shared_ptr<Ecs> _ecs)
     std::uint8_t id = req.header.EmmiterdEcsId;
     rtypeLog->log("{}", "Up");
     auto &motion = _ecs->getComponent<MotionComponent>(id);
-    motion.movement[MOVEMENT_UP] = motion.movement[MOVEMENT_UP] == 0 ? 1 : 0;
+    motion.direction[MOVEMENT_UP] = motion.direction[MOVEMENT_UP] == 0 ? 1 : 0;
     return true;
 }
 
@@ -20,7 +20,7 @@ bool callbackInputDown(const Request &req, std::shared_ptr<Ecs> _ecs)
 {
     std::uint8_t id = req.header.EmmiterdEcsId;
     auto &motion = _ecs->getComponent<MotionComponent>(id);
-    motion.movement[MOVEMENT_DOWN] = motion.movement[MOVEMENT_DOWN] == 0 ? 1 : 0;
+    motion.direction[MOVEMENT_DOWN] = motion.direction[MOVEMENT_DOWN] == 0 ? 1 : 0;
     return true;
 }
 
@@ -28,7 +28,7 @@ bool callbackInputRight(const Request &req, std::shared_ptr<Ecs> _ecs)
 {
     std::uint8_t id = req.header.EmmiterdEcsId;
     auto &motion = _ecs->getComponent<MotionComponent>(id);
-    motion.movement[MOVEMENT_RIGHT] = motion.movement[MOVEMENT_RIGHT] == 0 ? 1 : 0;
+    motion.direction[MOVEMENT_RIGHT] = motion.direction[MOVEMENT_RIGHT] == 0 ? 1 : 0;
     return true;
 }
 
@@ -36,7 +36,7 @@ bool callbackInputLeft(const Request &req, std::shared_ptr<Ecs> _ecs)
 {
     std::uint8_t id = req.header.EmmiterdEcsId;
     auto &motion = _ecs->getComponent<MotionComponent>(id);
-    motion.movement[MOVEMENT_LEFT] = motion.movement[MOVEMENT_LEFT] == 0 ? 1 : 0;
+    motion.direction[MOVEMENT_LEFT] = motion.direction[MOVEMENT_LEFT] == 0 ? 1 : 0;
     return true;
 }
 

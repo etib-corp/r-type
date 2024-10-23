@@ -12,7 +12,7 @@
 #include "ECS/Components/HurtBoxComponent.hpp"
 #include "ECS/Components/HitBoxComponent.hpp"
 #include "ECS/Components/TransformComponent.hpp"
-#include "Shapes/Rectangle.hpp"
+// #include "Shapes/Rectangle.hpp"
 
 class CollisionSystem : public System {
     public:
@@ -22,7 +22,7 @@ class CollisionSystem : public System {
         void update(Ecs *ecs, float dt) override;
 
     protected:
-        std::unique_ptr<LE::Shapes::Rectangle> _rectangle;
+        // std::unique_ptr<LE::Shapes::Rectangle> _rectangle;
     private:
 };
 

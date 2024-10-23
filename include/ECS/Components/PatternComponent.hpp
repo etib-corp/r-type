@@ -10,7 +10,6 @@
 
 #include "Maths/Vector3.hpp"
 #include "ECS/Components/TransformComponent.hpp"
-#include "ECS/Components/MotionComponent.hpp"
 #include <functional>
 
 /**
@@ -29,6 +28,7 @@ enum PatternEnd {
 };
 
 struct PatternComponent {
+    LE::Vector3<float> velocity;
     std::string pattern_name;
     LE::Vector3<float> end_pos;
     double speed;

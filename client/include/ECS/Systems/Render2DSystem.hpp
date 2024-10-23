@@ -13,6 +13,7 @@
 #include "ECS/Components/TransformComponent.hpp"
 #include "ECS/Components/CameraComponent.hpp"
 #include "ECS/Components/PatternComponent.hpp"
+#include "ECS/Components/MotionComponent.hpp"
 
 /**
  * @brief A render 2D system.

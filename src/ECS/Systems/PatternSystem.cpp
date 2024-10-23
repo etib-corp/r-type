@@ -21,13 +21,17 @@ void PatternSystem::update(Ecs *ecs, float dt)
     for (auto &entity : _entities) {
         auto &pattern = ecs->getComponent<PatternComponent>(entity);
         auto &transform = ecs->getComponent<TransformComponent>(entity);
-        auto &motion = ecs->getComponent<MotionComponent>(entity);
+
+        pattern.velocity = {0, 0, 0};
 
         if (pattern.end_pos == transform.position && pattern.end == DESTROY) {
             std::cout << "Destroying entity" << std::endl;
             ecs->destroyEntity(entity);
         }
 
-        _patterns[pattern.pattern_name](pattern, transform, motion);
+        _patterns[pattern.pattern_name](pattern, transform);
+        if (pattern.velocity.length() > 0)
+            pattern.velocity.normalize();
+        transform.position += pattern.velocity;
     }
 }

@@ -33,7 +33,7 @@ bool callbackUp(const Request& req, std::shared_ptr<Ecs> _ecs)
     std::uint8_t id = req.header.EmmiterdEcsId;
     std::cout << "Up : " << static_cast<int>(id) << std::endl;
     auto& motion = _ecs->getComponent<MotionComponent>(id);
-    motion.movement[MOVEMENT_UP] = motion.movement[MOVEMENT_UP] == 0 ? 1 : 0;
+    motion.direction[MOVEMENT_UP] = motion.direction[MOVEMENT_UP] == 0 ? 1 : 0;
     LE::Engine::getInstance()->debug("Up");
     rtypeLog->log<LogType::DEBUG>("{}", "Up");
     return true;
@@ -43,7 +43,7 @@ bool callbackDown(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
     std::uint8_t id = req.header.EmmiterdEcsId;
     auto& motion = _ecs->getComponent<MotionComponent>(id);
-    motion.movement[MOVEMENT_DOWN] = motion.movement[MOVEMENT_DOWN] == 0 ? 1 : 0;
+    motion.direction[MOVEMENT_DOWN] = motion.direction[MOVEMENT_DOWN] == 0 ? 1 : 0;
     rtypeLog->log<LogType::DEBUG>("{}", "Down");
     LE::Engine::getInstance()->debug("Down");
     return true;
@@ -54,7 +54,7 @@ bool callbackRight(const Request& req, std::shared_ptr<Ecs> _ecs)
     std::uint8_t id = req.header.EmmiterdEcsId;
     auto& motion = _ecs->getComponent<MotionComponent>(id);
     auto& transform = _ecs->getComponent<TransformComponent>(id);
-    motion.movement[MOVEMENT_RIGHT] = motion.movement[MOVEMENT_RIGHT] == 0 ? 1 : 0;
+    motion.direction[MOVEMENT_RIGHT] = motion.direction[MOVEMENT_RIGHT] == 0 ? 1 : 0;
     LE::Engine::getInstance()->debug("Right");
     rtypeLog->log<LogType::DEBUG>("{}", "Right");
     return true;
@@ -64,7 +64,7 @@ bool callbackLeft(const Request& req, std::shared_ptr<Ecs> _ecs)
 {
     std::uint8_t id = req.header.EmmiterdEcsId;
     auto& motion = _ecs->getComponent<MotionComponent>(id);
-    motion.movement[MOVEMENT_LEFT] = motion.movement[MOVEMENT_LEFT] == 0 ? 1 : 0;
+    motion.direction[MOVEMENT_LEFT] = motion.direction[MOVEMENT_LEFT] == 0 ? 1 : 0;
     LE::Engine::getInstance()->debug("Left");
     rtypeLog->log<LogType::DEBUG>("{}", "Left");
     return true;
@@ -76,7 +76,9 @@ bool callbackShoot(const Request& req, std::shared_ptr<Ecs> _ecs)
     Entity entity = _ecs->createEntity();
     _ecs->addComponent<TransformComponent>(entity, (TransformComponent){{transform.position.x + 3, transform.position.y + 0.3f, transform.position.z}, {0, 0, 0}, {0.3f, 0.1f, 0.1f}});
     _ecs->addComponent<MotionComponent>(entity, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
-    _ecs->addComponent<PatternComponent>(entity, (PatternComponent){"line", LE::Vector3<float>(transform.position.x + 50, transform.position.y + 0.3f, transform.position.z), 0.1, PatternEnd::DESTROY});
+    auto& motion = _ecs->getComponent<MotionComponent>(entity);
+    motion.direction[MOVEMENT_RIGHT] = 1;
+    _ecs->addComponent<PatternComponent>(entity, (PatternComponent){{0, 0, 0,}, "line", LE::Vector3<float>(transform.position.x + 50, transform.position.y + 0.3f, transform.position.z), 0.1, PatternEnd::DESTROY});
     HitBox hitbox = {5, 5, 0, 0};
     hitbox.masks.set(3);
     _ecs->addComponent<HitBox>(entity, hitbox);

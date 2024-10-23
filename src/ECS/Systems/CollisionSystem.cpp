@@ -10,10 +10,6 @@
 
 CollisionSystem::CollisionSystem()
 {
-    LE::Color c;
-    c.set(LE::Color::CHAR, 255, 0, 0, 255);
-    _rectangle = std::make_unique<LE::Shapes::Rectangle>(10, 10, 5, 5, &c);
-    // _rectangle->init();
 }
 
 CollisionSystem::~CollisionSystem()
