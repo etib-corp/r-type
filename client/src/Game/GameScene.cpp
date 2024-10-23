@@ -5,7 +5,7 @@
 ** GameScene
 */
 
-#include "GameScene.hpp"
+#include "Game/GameScene.hpp"
 #include "Engine.hpp"
 
 GameScene::GameScene() : LE::Scene()
