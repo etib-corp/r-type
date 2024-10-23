@@ -5,7 +5,7 @@
 ** Rtype
 */
 
-#include "Rtype.hpp"
+#include "Game/Rtype.hpp"
 
 static bool parseJsonAndCreateEnemy(std::shared_ptr<Ecs> ecs, std::string path)
 {
@@ -87,8 +87,10 @@ Rtype::Rtype() : LE::Game()
 {
     std::cout << "Rtype constructor" << std::endl;
     std::shared_ptr<LE::Scene> scene = std::make_shared<GameScene>();
+    std::shared_ptr<LE::Scene> menu = std::make_shared<Menu>();
+    addScene("menu", menu);
+    // _sceneManager->setCurrentScene("menu");
     addScene("game", scene);
-    _sceneManager->initScenes();
 }
 
 Rtype::~Rtype()
@@ -98,6 +100,7 @@ Rtype::~Rtype()
 
 bool Rtype::init()
 {
+    _sceneManager->initScenes();
     LE::Game::init();
     std::cout << "Rtype init" << std::endl;
     attributeClientCallback(&_responsibilityChain, _clientBroker);
@@ -112,5 +115,5 @@ bool Rtype::init()
 void Rtype::update()
 {
     LE::Game::update();
-    _sceneManager->play("game"); // ! currently useless
+    // _sceneManager->play("game"); // ! currently useless
 }

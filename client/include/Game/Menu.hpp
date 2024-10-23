@@ -15,6 +15,8 @@
 #include "GUI/Button.hpp"
 #include "GUI/TextField.hpp"
 
+#include <regex>
+
 class Menu : public LE::Scene {
     public:
         /**
@@ -28,6 +30,8 @@ class Menu : public LE::Scene {
          * @brief Destructor for the Menu class.
          */
         ~Menu();
+
+        bool isValidIP(const std::string &ip);
 
         /**
          * @brief Class in which all the GUI elements are stored for the Menu scene.
