@@ -7,7 +7,7 @@
 
 #include "GUI/TextField.hpp"
 
-LE::GUI::TextField::TextField(float x, float y, float width, float height, const std::string &label, LE::Color *bgColor, LE::Color *textColor)
+LE::GUI::TextField::TextField(float x, float y, float width, float height, const std::string &label, LE::Color *bgColor, LE::Color *textColor, const std::string &placeholder)
 {
     _x = x;
     _y = y;
@@ -17,9 +17,11 @@ LE::GUI::TextField::TextField(float x, float y, float width, float height, const
     _initialWidth = _width;
 
     _bgColor = bgColor;
+    _placeholder = placeholder;
 
     _label = std::make_shared<LE::GUI::Text>(280604, "assets/fonts/ARIAL.TTF", 24, label, textColor);
     _content = std::make_shared<LE::GUI::Text>(280602, "assets/fonts/ARIAL.TTF", 32, "", textColor);
+    _content->setContent(placeholder);
     _background = new LE::Shapes::Rectangle(x, y, width, height, _bgColor);
 
     addChildren(_label);
@@ -32,10 +34,15 @@ LE::GUI::TextField::~TextField()
 
 void LE::GUI::TextField::draw()
 {
-    if (_focused)
+    if (_focused) {
+        if (_content->getContent() == _placeholder)
+            _content->setContent("");
         _bgColor->_a = 0.2;
-    else
-        _bgColor->_a = 1.0;
+    } else {
+        if (_content->getContent().empty())
+            _content->setContent(_placeholder);
+       _bgColor->_a = 1.0;
+    }
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
 

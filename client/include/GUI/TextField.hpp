@@ -31,7 +31,7 @@ namespace LE {
                  * @param bgColor The background color of the text field
                  * @param textColor The text color of the text field
                  */
-                TextField(float x, float y, float width, float height, const std::string &label, LE::Color *bgColor, LE::Color *textColor);
+                TextField(float x, float y, float width, float height, const std::string &label, LE::Color *bgColor, LE::Color *textColor, const std::string &placeholder = "Message");
 
                 /**
                  * @brief Destroy the TextField object
@@ -92,6 +92,7 @@ namespace LE {
                 std::shared_ptr<LE::GUI::Text> getText();
 
             protected:
+                std::string _placeholder;           // The placeholder of the text field
                 std::shared_ptr<LE::GUI::Text> _label;          // The label of the text field (short description of the content)
                 std::shared_ptr<LE::GUI::Text> _content;        // The content of the text field
                 bool _focused;                  // The focus state of the text field
