@@ -1,6 +1,6 @@
 #include "AssetManager.hpp"
 
-std::unique_ptr<Asset> &AssetManager::getAsset(const std::string &name)
+std::shared_ptr<Asset> &AssetManager::getAsset(const std::string &name)
 {
     auto asset = _assets.find(name);
     if (asset == _assets.end())
@@ -10,7 +10,7 @@ std::unique_ptr<Asset> &AssetManager::getAsset(const std::string &name)
     return asset->second;
 }
 
-void AssetManager::addAsset(std::unique_ptr<Asset> asset)
+void AssetManager::addAsset(std::shared_ptr<Asset> asset)
 {
     _assets[asset->getName()] = std::move(asset);
 }

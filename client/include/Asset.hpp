@@ -91,11 +91,11 @@ enum class AssetType
     SoundAsset
 };
 
-std::map<std::string, AssetType> asset_type_map = {
-    {"config", AssetType::ConfigAsset},
-    {"font", AssetType::FontAsset},
-    {"image", AssetType::ImageAsset},
-    {"model", AssetType::ModelAsset},
-    {"shader", AssetType::ShaderAsset},
-    {"sound", AssetType::SoundAsset}
+static const std::map<std::string, AssetType> asset_type_map = {
+    {"configs", AssetType::ConfigAsset},
+    {"fonts", AssetType::FontAsset},
+    {"images", AssetType::ImageAsset},
+    {"models", AssetType::ModelAsset},
+    {"shaders", AssetType::ShaderAsset},
+    {"sounds", AssetType::SoundAsset}
 };
