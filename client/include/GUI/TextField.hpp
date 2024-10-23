@@ -87,9 +87,13 @@ namespace LE {
                  */
                 void OnUnhover() override;
 
+                std::string getContent();
+
+                std::shared_ptr<LE::GUI::Text> getText();
+
             protected:
-                LE::GUI::Text *_label;          // The label of the text field (short description of the content)
-                LE::GUI::Text *_content;        // The content of the text field
+                std::shared_ptr<LE::GUI::Text> _label;          // The label of the text field (short description of the content)
+                std::shared_ptr<LE::GUI::Text> _content;        // The content of the text field
                 bool _focused;                  // The focus state of the text field
                 unsigned int _maxChars = 18;    // The max chars of the text field (default: 18)
         };

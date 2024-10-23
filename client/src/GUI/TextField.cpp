@@ -16,9 +16,9 @@ LE::GUI::TextField::TextField(float x, float y, float width, float height, const
     _focused = false;
     _initialWidth = _width;
 
-    _label = new LE::GUI::Text(280604, "assets/fonts/ARIAL.TTF", 24, label, textColor);
+    _label = std::make_shared<LE::GUI::Text>(280604, "assets/fonts/ARIAL.TTF", 24, label, textColor);
     _label->setPos(x, y + height - 24);
-    _content = new LE::GUI::Text(280602, "assets/fonts/ARIAL.TTF", 32, "", textColor);
+    _content = std::make_shared<LE::GUI::Text>(280602, "assets/fonts/ARIAL.TTF", 32, "", textColor);
     _content->setPos(x, y + height - 32 - 24);
     _background = new LE::Shapes::Rectangle(x, y, width, height, bgColor);
 
@@ -201,4 +201,14 @@ void LE::GUI::TextField::init()
     _background = new LE::Shapes::Rectangle(_width, _height, _x, _y);
 
     _background->init();
+}
+
+std::string LE::GUI::TextField::getContent()
+{
+    return _content->getContent();
+}
+
+std::shared_ptr<LE::GUI::Text> LE::GUI::TextField::getText()
+{
+    return _content;
 }

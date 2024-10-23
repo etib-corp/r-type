@@ -63,7 +63,7 @@ namespace LE {
 
                 void setContent(const std::string &content);
 
-                std::string getContent() const;
+                std::string getContent();
 
             protected:
                 std::string _content; /** The text content. */

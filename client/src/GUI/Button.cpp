@@ -9,7 +9,7 @@
 
 LE::GUI::Button::Button(float x, float y, float width, float height, const std::string &content, Color *bgColor, Color *textColor)
 {
-    auto text = new LE::GUI::Text(280604, "assets/fonts/ARIAL.TTF", 24, content, textColor);
+    auto text = std::make_shared<LE::GUI::Text>(280604, "assets/fonts/ARIAL.TTF", 24, content, textColor);
     _x = x;
     _y = y;
     _width = width;
