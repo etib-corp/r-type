@@ -35,9 +35,7 @@ var hierarchy =
           [ "LE::GUI::TextField", "classLE_1_1GUI_1_1TextField.html", null ]
         ] ],
         [ "LE::GUI::Manager", "classLE_1_1GUI_1_1Manager.html", null ],
-        [ "Menu::MainContainer", "classMenu_1_1MainContainer.html", null ],
-        [ "MyContainer", "classMyContainer.html", null ],
-        [ "MyParentContainer", "classMyParentContainer.html", null ]
+        [ "Menu::MainContainer", "classMenu_1_1MainContainer.html", null ]
       ] ],
       [ "LE::GUI::Text", "classLE_1_1GUI_1_1Text.html", null ]
     ] ],
@@ -138,14 +136,12 @@ var hierarchy =
     [ "PackUnpack", "classPackUnpack.html", null ],
     [ "Par_Test", "classPar__Test.html", null ],
     [ "PatternComponent", "structPatternComponent.html", null ],
-    [ "Position", "structPosition.html", null ],
     [ "docstring.PyClass", "classdocstring_1_1PyClass.html", null ],
     [ "pyexample.PyClass", "classpyexample_1_1PyClass.html", null ],
     [ "QTstyle_Test", "classQTstyle__Test.html", null ],
     [ "Request", "structRequest.html", null ],
     [ "ResponsibilityChain", "classResponsibilityChain.html", null ],
     [ "LE::Scene", "classLE_1_1Scene.html", [
-      [ "GameScene", "classGameScene.html", null ],
       [ "GameScene", "classGameScene.html", null ],
       [ "Menu", "classMenu.html", null ]
     ] ],

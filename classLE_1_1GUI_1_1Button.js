@@ -9,7 +9,6 @@ var classLE_1_1GUI_1_1Button =
     [ "setOnClickCallback", "classLE_1_1GUI_1_1Button.html#a0a6b2589811b087741c40880ac1bf9cb", null ],
     [ "setOnHoverCallback", "classLE_1_1GUI_1_1Button.html#a234497ef47efb7396069d3dc90e8fbaa", null ],
     [ "setOnUnhoverCallback", "classLE_1_1GUI_1_1Button.html#aa4c16b70991ac5a99738e48202644f35", null ],
-    [ "_bgColor", "classLE_1_1GUI_1_1Button.html#affb3ee36f14f0336ddb0bfa3d4f5dfe8", null ],
     [ "_onClick", "classLE_1_1GUI_1_1Button.html#a7b5696784a625c01f2344c01414dc024", null ],
     [ "_onHover", "classLE_1_1GUI_1_1Button.html#a427c52469363d6125cdda18e07ea1bd4", null ],
     [ "_onUnhover", "classLE_1_1GUI_1_1Button.html#a0f5b2de67b68667803e84dbb13743bb2", null ],

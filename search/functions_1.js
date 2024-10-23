@@ -1,7 +1,7 @@
 var searchData=
 [
   ['add_0',['add',['../restypedef_8cpp.html#a102acaaa258e937adf910898c6133545',1,'restypedef.cpp']]],
-  ['addchildren_1',['addChildren',['../classLE_1_1GUI_1_1Container.html#a03e6a433ea57838710353f226406593e',1,'LE::GUI::Container']]],
+  ['addchildren_1',['addChildren',['../classLE_1_1GUI_1_1Container.html#a1a5dc9657e41fd41d96d6183af521940',1,'LE::GUI::Container']]],
   ['addclient_2',['addClient',['../classSessionManager.html#ad5885be5a6b6de701abf33e413231f70',1,'SessionManager']]],
   ['addcomponent_3',['addComponent',['../classComponentManager.html#afde9df1aea1b03650c3b154e803be0f0',1,'ComponentManager::addComponent()'],['../classEcs.html#a22ed69ee3f2a8aa6748a66ba3e470775',1,'Ecs::addComponent()']]],
   ['addeventlistener_4',['addEventListener',['../classLE_1_1EventManager.html#ae8b712f983c0b150566cbf3202928fc9',1,'LE::EventManager']]],
