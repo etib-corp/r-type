@@ -87,9 +87,7 @@ namespace LE {
                 std::function<void()> _onClick;     /**< The onClick callback function. */
                 std::function<void()> _onHover;     /**< The onHover callback function. */
                 std::function<void()> _onUnhover;   /**< The onUnhover callback function. */
-                Color *_bgColor;                    /**< The background color of the button. */
                 Color *_textColor;                  /**< The text color of the button. */
-
 
         };
     }

@@ -17,6 +17,7 @@ Menu::Menu()
     std::shared_ptr<LE::GUI::TextField> ipField = std::make_shared<LE::GUI::TextField>(560, 440, 200, 100, "IP :", new LE::Color(LE::Color::CHAR, 255, 255, 255, 255), new LE::Color(LE::Color::CHAR, 0, 0, 0, 255));
     std::shared_ptr<LE::GUI::Button> quit = std::make_shared<LE::GUI::Button>(560, 540, 200, 100, "Quit", new LE::Color(LE::Color::CHAR, 255, 255, 255, 255), new LE::Color(LE::Color::CHAR, 0, 0, 0, 255));
 
+    ipField->getText()->setContent("Input");
     mainContainer->addChildren(play);
     mainContainer->addChildren(ipField);
     mainContainer->addChildren(quit);

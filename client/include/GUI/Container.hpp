@@ -75,6 +75,7 @@ namespace LE {
                 std::vector<std::shared_ptr<Component>> _children; /**< The container's children components. @note Similar to React components. */
                 Shapes::Shape *_background; /**< The container's background. */
                 float _initialWidth; /**< The container's initial width. */
+                Color *_bgColor;    /**< The background color of the container. */
                 friend class Engine;
         };
     }
