@@ -100,6 +100,12 @@ class Ecs {
             return _componentManager->getComponent<T>(entity);
         }
 
+        template <typename T>
+        std::vector<T> getComponents()
+        {
+            return _componentManager->getComponents<T>();
+        }
+
         /**
          * @brief Get a component type
          * @tparam T The component to get the type of
@@ -160,9 +166,14 @@ class Ecs {
          * @return The entity representing the camera.
          */
         Entity getCameraEntity() const;
+
+        void *getScene() const;
+
+        void setScene(void *scene);
     private:
         std::unique_ptr<ComponentManager> _componentManager;        ///< The component manager
         std::unique_ptr<EntityManager> _entityManager;              ///< The entity manager
         std::unique_ptr<SystemManager> _systemManager;              ///< The system manager
         Entity _cameraEntity;                                       ///< The entity representing the camera
+        void *_scene;                                               ///< The scene that contains the ECS
 };

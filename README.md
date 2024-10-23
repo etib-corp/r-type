@@ -1,7 +1,58 @@
+**R-Type** project:
+
 # **R-Type**
 
 ---
 
+### **Description**
+
+R-Type is a classic side-scrolling shoot-em-up arcade game originally produced by Irem in 1987. The player controls the R-9 space fighter to defend humanity against the powerful alien life-form known as the Bydo.
+
+---
+
+### **Requirements**
+
+#### **Supported Platforms**
+
+- **Windows**
+- **Linux**
+- **MacOS**
+
+#### **Dependencies**
+
+- **CMake**
+- **C++20**
+
+---
+
+### **Build Instructions**
+
+To build the project, follow these steps:
+
+```bash
+cmake -S . -B build
+cmake --build build
+```
+
+---
+
+### **Usage**
+
+#### **Starting the Server**
+
+Run the following command to start the server:
+
+```bash
+./build/r-type_server
+```
+
+#### **Starting the Client**
+
+Run the following command to start the client:
+
+```bash
+./build/r-type_client
+```
 ### __Tech choices__
 
 All the following libraries were chosen for their **efficiency**, and they are **well-known** and **widely used** in the industry:
@@ -107,46 +158,30 @@ As demonstrated, we have carefully selected the best libraries for our project. 
 
 ### **File Architecture Overview**
 
-- **`client/`**
-  Contains the source code and header files for the client.
-
-- **`include/`**
-  Shared header files used by both server and client.
-
-- **`lib/`**
-  Directory for shared libraries.
-
-- **`server/`**
-  Contains the source code and header files for the server.
-
-- **`dependencies/`**
-  Dependencies for the current CMakeLists.txt.
-
+- **`client/`**: Source code and headers for the client.
+- **`server/`**: Source code and headers for the server.
+- **`include/`**: Shared headers used by both the client and server.
+- **`lib/`**: Shared libraries.
+- **`dependencies/`**: External dependencies for CMakeLists.txt.
 
 ---
 
-### **Entity Component System**
-An entity component system is a design pattern used to create a modular and scalable architecture for video games.
+### **Entity Component System (ECS)**
 
-- **`Entity`**
-  An entity is a container for components. An entity is a unique identifier.
+R-Type uses an Entity Component System (ECS) architecture, which is a modular and scalable pattern for game development.
 
-- **`Component`**
-  A component is a container for data. Components are used to store data for entities.
-
-- **`System`**
-  A system is a container for logic. Systems are used to process entities.
-  Systems use components data to process entities.
-
-### **Entity Component System Overview**
 #### **Entity**
-An entity is an unsigned integer that is used to identify an entity.
+
+An entity is a unique identifier for a collection of components.
+
 ```cpp
 typedef unsigned int Entity;
 ```
 
 #### **Component**
-A component is a structure that contains data.
+
+Components are structures that hold data.
+
 ```cpp
 #include "Vector3.hpp"
 struct TransformComponent {
@@ -157,7 +192,9 @@ struct TransformComponent {
 ```
 
 #### **System**
-A system is a class that contains logic.
+
+Systems contain the logic to process entities. They manipulate component data based on game rules.
+
 ```cpp
 #include "System.hpp"
 
@@ -171,25 +208,49 @@ public:
     }
 };
 ```
-### **Module**
 
-- **`AsioNetworkModule`**
-  Module for networking using the Asio library.
+---
 
-- **`ClientCoreModule`**
-  Module for the client core.
+### **Modules**
 
-- **`ServerCoreModule`**
-  Module for the server core.
+- **`AsioNetworkModule`**: Networking module using Asio library.
+- **`ClientCoreModule`**: Core module for the client.
+- **`ServerCoreModule`**: Core module for the server.
+- **`TestClientCoreModule`**: Module for testing the client core.
+- **`TestNetworkModule`**: Module for testing network functionality.
+- **`TestServerCoreModule`**: Module for testing the server core.
 
-- **`TestClientCoreModule`**
-  Module for the test client core.
+---
 
-- **`TestNetworkModule`**
-  Module for the test network.
+### **Contribute**
 
-- **`TestServerCoreModule`**
-  Module for the test server core.
+To contribute, follow these steps:
+
+1. **Fork** the repository.
+2. **Clone** your fork.
+3. **Create** a new branch.
+4. **Commit** your changes.
+5. **Push** the changes to your fork.
+6. **Submit** a pull request.
+7. Once approved, **merge** the pull request.
+8. **Close** the pull request.
+9. Optionally, **delete** the branch.
+
+---
+
+### **Contributors**
+
+- **SizzleUnrlsd**
+- **xavierclement**
+- **MAILLOTNathan**
+- **ju-lit-hein**
+- **ElPepitaux**
+
+---
+
+### **License**
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
 
 ---
 
@@ -232,6 +293,8 @@ __Components Overview:__
 ---
 ### **RFC**
 
-- **`RFC`**
+For more information, refer to the [RFC document](./RFC.md).
 
-![RFC](./RFC.md)
+---
+
+This revised structure offers better readability and consistency. Let me know if you'd like further changes!

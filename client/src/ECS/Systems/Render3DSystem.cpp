@@ -34,8 +34,15 @@ for (auto &entity : _entities) {
         if (model.hidden)
             continue;
 
-        transform.position += motion.velocity;
-        motion.velocity = {0, 0, 0};
+        // limit the location of the entity -20,-20,0 to 20,20,0
+        // if (transform.position.x < -20.0f || transform.position.x > 20.0f) {
+        //     motion.velocity.x = 0;
+        // }
+        // if (transform.position.y < -20.0f || transform.position.y > 20.0f) {
+        //     motion.velocity.y = 0;
+        // }
+        // transform.positéion += motion.velocity;
+
 
         _shader->use();
 

@@ -12,8 +12,14 @@ Client::Client(const std::string &ip, const int &port) : _socketTCP(_ioContext),
     _socketUDP.open(boost::asio::ip::udp::v4());
     _endpointTCPServer = boost::asio::ip::tcp::endpoint(
         boost::asio::ip::address::from_string(ip), port);
-    _endpointUDPServer = boost::asio::ip::udp::endpoint(
-        boost::asio::ip::address::from_string(ip), port);
+
+    boost::asio::ip::udp::resolver resolver(_ioContext);
+    boost::asio::ip::udp::resolver::query query(boost::asio::ip::udp::v4(), ip, std::to_string(port + 1));  // Use the UDP port
+    _endpointUDPServer = *resolver.resolve(query);
+
+
+    _onReceive = nullptr;
+    _onConnect = nullptr;
 }
 
 Client::~Client()
@@ -24,9 +30,28 @@ void Client::connectToServer()
 {
     readUDP();
     _socketTCP.connect(_endpointTCPServer);
+    handShake();
+    if (_onConnect)
+        _onConnect(this);
     readTCP();
     _thread = std::thread([this]()
                           { _ioContext.run(); });
+}
+
+void Client::handShake(void)
+{
+    _socketTCP.receive(boost::asio::buffer(&_requestTCP, sizeof(Request)));
+    std::cout << "Handshake received" << std::endl;
+    std::cout << "MagicNumber: " << (int)_requestTCP.header.MagicNumber << std::endl;
+    std::cout << "EmmiterEcsId: " << (int)_requestTCP.header.EmmiterdEcsId << std::endl;
+    std::cout << "ReceiverEcsId: " << (int)_requestTCP.header.ReceiverEcsId << std::endl;
+    std::cout << "TopicID: " << (int)_requestTCP.header.TopicID << std::endl;
+    std::cout << "Action: " << (int)_requestTCP.header.Action << std::endl;
+    std::cout << "BodyLength: " << (int)_requestTCP.header.BodyLength << std::endl;
+    setId(_requestTCP.header.ReceiverEcsId);
+    _requestTCP.header.EmmiterdEcsId = getId();
+    _requestTCP.header.ReceiverEcsId = 0;
+    _socketUDP.send_to(boost::asio::buffer(&_requestTCP, sizeof(Request)), _endpointUDPServer);
 }
 
 void Client::readTCP()
@@ -61,7 +86,7 @@ void Client::readUDP()
 {
     _socketUDP.async_receive_from(
         boost::asio::buffer(&_requestUDP, sizeof(Request)),
-        _endpointUDPServer,
+        _endpointUDPReceiver,
         [this](const boost::system::error_code &error, std::size_t bytes_transferred)
         {
             (void)bytes_transferred;

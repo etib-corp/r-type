@@ -15,6 +15,8 @@
 #include "GUI/Button.hpp"
 #include "GUI/TextField.hpp"
 
+#include <regex>
+
 class Menu : public LE::Scene {
     public:
         /**
@@ -29,15 +31,7 @@ class Menu : public LE::Scene {
          */
         ~Menu();
 
-        /**
-         * @brief Function to play the Menu scene.
-         */
-        void play() override;
-
-        /**
-         * @brief Function to stop the Menu scene.
-         */
-        void stop() override;
+        bool isValidIP(const std::string &ip);
 
         /**
          * @brief Class in which all the GUI elements are stored for the Menu scene.

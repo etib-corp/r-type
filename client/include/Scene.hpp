@@ -9,6 +9,7 @@
 
 #include <memory>
 
+#include "message/ClientBroker.hpp"
 #include "Error.hpp"
 #include "GUI/Manager.hpp"
 #include "EventManager.hpp"
@@ -17,6 +18,8 @@
 #include "ECS/Systems/Render3DSystem.hpp"
 #include "ECS/Systems/PatternSystem.hpp"
 #include "ECS/Systems/CameraSystem.hpp"
+#include "ECS/Systems/CollisionSystem.hpp"
+#include "ECS/Systems/MoveSystem.hpp"
 
 /**
  * @file Scene.hpp
@@ -24,6 +27,7 @@
  */
 
 namespace LE {
+    class Engine;
     /**
      * @class Scene
      * @brief Abstract base class representing a scene in the graphical system.
@@ -61,28 +65,12 @@ namespace LE {
             virtual ~Scene() = default;
 
             /**
-             * @brief Pure virtual function to play the scene.
-             *
-             * This function must be implemented by derived classes to define
-             * the behavior when the scene is played.
-             */
-            virtual void play() = 0;
-
-            /**
              * @brief Function to draw the scene.
              *
              * This function is used to draw the scene. It is implemented by
              * the base class to draw the GUI elements of the scene.
              */
-            void draw();
-
-            /**
-             * @brief Pure virtual function to stop the scene.
-             *
-             * This function must be implemented by derived classes to define
-             * the behavior when the scene is stopped.
-             */
-            virtual void stop() = 0;
+            virtual void draw();
 
             /**
              * @brief Function to initialize the scene.
@@ -90,7 +78,14 @@ namespace LE {
              * This function is used to initialize the scene. It is implemented
              * by the base class to initialize the GUI elements of the scene.
              */
-            void init();
+            virtual void init();
+
+            /**
+             * @brief Sets the ClientBroker instance for the scene.
+             *
+             * @param clientBroker Pointer to the ClientBroker instance.
+             */
+            void setClientBroker(ClientBroker *clientBroker);
 
             /**
              * @brief Shared pointer to an ECS (Entity Component System) instance.
@@ -101,5 +96,6 @@ namespace LE {
             std::shared_ptr<Ecs> _ecs;                          ///< Shared pointer to the ECS instance.
             std::shared_ptr<LE::GUI::Manager> _guiManager;      ///< Shared pointer to the GUI Manager instance.
             std::shared_ptr<LE::EventManager> _eventManager;    ///< Shared pointer to the Event Manager instance.
+            ClientBroker *_clientBroker;                        ///< Pointer to the Client Broker instance.
     };
 }

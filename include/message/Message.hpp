@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <string>
 #include <map>
+#include <thread>
 
 #include "PackUnpack.hpp"
 
@@ -22,7 +23,6 @@ public:
      * @brief Constructs a new Message object.
      */
     Message(void);
-
     /**
      * @brief Destroys the Message object.
      */
@@ -99,6 +99,38 @@ public:
     [[nodiscard]] std::uint8_t getAction(void) const { return _action; }
 
     /**
+     * @brief Sets the header for the message.
+     *
+     * @param header The header to be set.
+     */
+    void setHeader(Header header)
+    {
+        _magicNumber = header.MagicNumber;
+        _emmiter_id = header.EmmiterdEcsId;
+        _receiver_id = header.ReceiverEcsId;
+        _topic_id = header.TopicID;
+        _action = header.Action;
+    }
+
+    /**
+     * @brief Gets the header of the message.
+     *
+     * @return The header of the message.
+     */
+    [[nodiscard]]Header getHeader(void)
+    {
+        Header header = {
+            .MagicNumber = _magicNumber,
+            .EmmiterdEcsId = _emmiter_id,
+            .ReceiverEcsId = _receiver_id,
+            .TopicID = _topic_id,
+            .Action = _action,
+            .BodyLength = 0
+        };
+        return header;
+    }
+
+    /**
      * @brief Sets the body for the message.
      *
      * @param body The body to be set.
@@ -111,6 +143,46 @@ public:
      * @return The body of the message.
      */
     [[nodiscard]] Body getBody(void) const { return _body; }
+
+    /**
+     * @brief Sets the request for the message.
+     *
+     * @param request The request to be set.
+     */
+    void setRequest(Request request)
+    {
+        setHeader(request.header);
+        setBody(request.body);
+    }
+
+    /**
+     * @brief Gets the request of the message.
+     *
+     * @return The request of the message.
+     */
+    [[nodiscard]] bool isReliable(void) const { std::cout << "[" << std::this_thread::get_id() << "]" << std::endl; return _is_relialbe; }
+
+    /**
+     * @brief Sets the reliability of the message.
+     *
+     * @param is_reliable The reliability of the message.
+     */
+    void setReliable(bool is_reliable) { _is_relialbe = is_reliable; }
+
+
+    /**
+     * @brief Gets the request of the message.
+     *
+     * @return The request of the message.
+     */
+    [[nodiscard]] Request getRequest(void)
+    {
+        Request request = {
+            .header = getHeader(),
+            .body = getBody()
+        };
+        return request;
+    }
 
     /**
      * @brief Serializes the message.
@@ -133,4 +205,14 @@ private:
     std::uint8_t _topic_id;
     std::uint8_t _action;
     Body _body;
+    bool _is_relialbe;
 };
+
+/**
+ * @brief Overloads the << operator for the Message class.
+ *
+ * @param stream The output stream.
+ * @param message The message to be output.
+ * @return The output stream.
+ */
+std::ostream &operator<<(std::ostream &stream, const Message &message);

@@ -9,7 +9,7 @@
 
 LE::GUI::Button::Button(float x, float y, float width, float height, const std::string &content, Color *bgColor, Color *textColor)
 {
-    auto text = new LE::GUI::Text(280604, "assets/fonts/ARIAL.TTF", 24, content, textColor);
+    auto text = std::make_shared<LE::GUI::Text>(280604, "assets/fonts/ARIAL.TTF", 24, content, textColor);
     _x = x;
     _y = y;
     _width = width;
@@ -36,7 +36,7 @@ void LE::GUI::Button::draw()
 
     if (isHover()) {
         OnHover();
-        LE::Engine::getInstance()->_sceneManager->getCurrentScene()->_eventManager->addEventListener({LE::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::JUST_PRESSED}, [this](LE::Engine *engine, float dt) {
+        LE::Engine::getInstance()->_game->_sceneManager->getCurrentScene()->_eventManager->addEventListener({LE::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::JUST_PRESSED}, [this](LE::Engine *engine, float dt) {
             if (isHover())
                 OnClick();
         });

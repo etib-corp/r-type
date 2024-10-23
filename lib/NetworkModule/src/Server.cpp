@@ -10,7 +10,7 @@
 Server::Server(int port)
 {
     _listenerTCP = std::make_unique<ListenerTCP>(port);
-    _listenerUDP = std::make_unique<ListenerUDP>(port);
+    _listenerUDP = std::make_unique<ListenerUDP>(port + 1);
     _sessionsManager = std::make_shared<SessionManager>();
 }
 

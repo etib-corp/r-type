@@ -7,7 +7,7 @@
 
 #include "GUI/TextField.hpp"
 
-LE::GUI::TextField::TextField(float x, float y, float width, float height, const std::string &label, LE::Color *bgColor, LE::Color *textColor)
+LE::GUI::TextField::TextField(float x, float y, float width, float height, const std::string &label, LE::Color *bgColor, LE::Color *textColor, const std::string &placeholder)
 {
     _x = x;
     _y = y;
@@ -16,14 +16,16 @@ LE::GUI::TextField::TextField(float x, float y, float width, float height, const
     _focused = false;
     _initialWidth = _width;
 
-    _label = new LE::GUI::Text(280604, "assets/fonts/ARIAL.TTF", 24, label, textColor);
-    _label->setPos(x, y + height - 24);
-    _content = new LE::GUI::Text(280602, "assets/fonts/ARIAL.TTF", 32, "", textColor);
-    _content->setPos(x, y + height - 32 - 24);
-    _background = new LE::Shapes::Rectangle(x, y, width, height, bgColor);
+    _bgColor = bgColor;
+    _placeholder = placeholder;
 
-    addChildren(_content);
+    _label = std::make_shared<LE::GUI::Text>(280604, "assets/fonts/ARIAL.TTF", 24, label, textColor);
+    _content = std::make_shared<LE::GUI::Text>(280602, "assets/fonts/ARIAL.TTF", 32, "", textColor);
+    _content->setContent(placeholder);
+    _background = new LE::Shapes::Rectangle(x, y, width, height, _bgColor);
+
     addChildren(_label);
+    addChildren(_content);
 }
 
 LE::GUI::TextField::~TextField()
@@ -32,6 +34,15 @@ LE::GUI::TextField::~TextField()
 
 void LE::GUI::TextField::draw()
 {
+    if (_focused) {
+        if (_content->getContent() == _placeholder)
+            _content->setContent("");
+        _bgColor->_a = 0.2;
+    } else {
+        if (_content->getContent().empty())
+            _content->setContent(_placeholder);
+       _bgColor->_a = 1.0;
+    }
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
 
@@ -59,6 +70,7 @@ void LE::GUI::TextField::draw()
     glDisable(GL_DEPTH_TEST);
 
     for (auto &child : _children) {
+        child->setPos(_x + (_width / 2) - (child->getWidth() / 2), child->getY());
         child->draw();
     }
 }
@@ -84,10 +96,10 @@ void LE::GUI::TextField::setMaxChars(unsigned int maxChars)
 void LE::GUI::TextField::init()
 {
     LE::Engine *engine = LE::Engine::getInstance();
-    std::shared_ptr<LE::Scene> scene = engine->_sceneManager->getCurrentScene();
+    std::shared_ptr<LE::Scene> scene = engine->_game->_sceneManager->getCurrentScene();
     std::shared_ptr<LE::EventManager> eventManager = scene->_eventManager;
 
-    LE::Engine::getInstance()->_sceneManager->getCurrentScene()->_eventManager->addEventListener({LE::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::JUST_PRESSED}, [this](LE::Engine *engine, float dt) {
+    eventManager->addEventListener({LE::MOUSE, LE_MOUSE_BUTTON_LEFT, LE::JUST_PRESSED}, [this](LE::Engine *engine, float dt) {
         if (isHover()) {
             OnClick();
         } else {
@@ -179,26 +191,15 @@ void LE::GUI::TextField::init()
             _content->setContent(_content->getContent() + "\t");
     });
 
-    float totalHeight = 0.0f;
+    LE::GUI::Container::init();
+}
 
-    for (auto child : _children) {
-        if (child->getWidth() > _width)
-            _width = child->getWidth();
-        totalHeight += child->getHeight();
-    }
-    _height = totalHeight > _height ? totalHeight : _height;
+std::string LE::GUI::TextField::getContent()
+{
+    return _content->getContent();
+}
 
-    auto lastPos = _y;
-    for (auto child : _children) {
-        if (child->getY() < _y || child->getY() > _y + _height) {
-            child->setPos(child->getX(), lastPos);
-        }
-        if (child->getX() < _x || child->getX() > _x + _width)
-            child->setPos(_x, child->getY());
-        lastPos -= child->getHeight();
-        child->init();
-    }
-    _background = new LE::Shapes::Rectangle(_width, _height, _x, _y);
-
-    _background->init();
+std::shared_ptr<LE::GUI::Text> LE::GUI::TextField::getText()
+{
+    return _content;
 }

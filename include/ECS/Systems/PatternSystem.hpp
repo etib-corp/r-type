@@ -21,7 +21,7 @@ class PatternSystem : public System {
 
         void update(Ecs *ecs, float dt) override;
 
-        bool addPattern(const std::string &name, std::function<void(PatternComponent& pattern, TransformComponent& transform, MotionComponent& motion)> pattern)
+        bool addPattern(const std::string &name, std::function<void(PatternComponent& pattern, TransformComponent& transform)> pattern)
         {
             _patterns[name] = pattern;
             return true;
@@ -29,7 +29,7 @@ class PatternSystem : public System {
 
     protected:
     private:
-        std::map<std::string, std::function<void(PatternComponent& pattern, TransformComponent& transform, MotionComponent& motion)>> _patterns;
+        std::map<std::string, std::function<void(PatternComponent& pattern, TransformComponent& transform)>> _patterns;
 };
 
 #endif /* !PATTERNSYSTEM_HPP_ */

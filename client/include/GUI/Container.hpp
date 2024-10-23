@@ -46,7 +46,7 @@ namespace LE {
                  *
                  * @param child The child component to add.
                  */
-                void addChildren(Component *child);
+                void addChildren(std::shared_ptr<Component> child);
 
                 /**
                  * @brief Function to remove a child component from the container.
@@ -72,9 +72,10 @@ namespace LE {
                 void init() override;
 
             protected:
-                std::vector<Component *> _children; /**< The container's children components. @note Similar to React components. */
+                std::vector<std::shared_ptr<Component>> _children; /**< The container's children components. @note Similar to React components. */
                 Shapes::Shape *_background; /**< The container's background. */
                 float _initialWidth; /**< The container's initial width. */
+                Color *_bgColor;    /**< The background color of the container. */
                 friend class Engine;
         };
     }
