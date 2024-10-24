@@ -13,15 +13,6 @@
 
 int main(void)
 {
-    auto asset_manager = std::make_shared<AssetManager>();
-    auto asset_loader = std::make_shared<AssetLoader>(asset_manager, "./assets");
-
-    asset_loader->loadAssets();
-
-    std::shared_ptr<ConfigAsset> config = asset_manager->getAsset<ConfigAsset>("vague_1.");
-
-    return 0;
-
     auto engine = LE::Engine::getInstance();
     auto game  = std::make_shared<Rtype>();
 
