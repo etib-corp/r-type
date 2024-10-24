@@ -52,6 +52,7 @@ void AssetLoader::loadAssets(void)
             try {
                 asset = _asset_factory->createAsset(sub_directory_name, asset_name, asset_file_path);
             } catch (const std::runtime_error &e) {
+                std::cerr << "Error: " << e.what() << std::endl;
                 continue;
             }
             asset->load();

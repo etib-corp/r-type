@@ -18,6 +18,8 @@ int main(void)
 
     asset_loader->loadAssets();
 
+    std::shared_ptr<ConfigAsset> config = asset_manager->getAsset<ConfigAsset>("vague_1.");
+
     return 0;
 
     auto engine = LE::Engine::getInstance();

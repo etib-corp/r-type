@@ -82,6 +82,7 @@ public:
 
     void load(void) override
     {
+        std::cout << "Loading file: " << _file_path << std::endl;
         _config_data = _read_file(_file_path);
     }
 
@@ -101,6 +102,7 @@ public:
 
     void load(void) override
     {
+        std::cout << "Loading file: " << _file_path << std::endl;
         _font_data = _read_file_binary(_file_path);
     }
 
@@ -120,6 +122,7 @@ public:
 
     void load(void) override
     {
+        std::cout << "Loading file: " << _file_path << std::endl;
         _image_data = _read_file_binary(_file_path);
     }
 
@@ -132,30 +135,38 @@ class ModelAsset : public Asset
 public:
     ModelAsset(std::string name, std::string file_path) : Asset(name, file_path)
     {
-        std::string material_file = _get_material_file_path();
+        _model_file = _get_material_file_path();
+        _material_file = _get_material_file_path();
 
-        if (!_file_path.ends_with(".obj"))
-            throw std::runtime_error("Unsupported file format");
+        if (!std::filesystem::exists(_model_file))
+            throw std::runtime_error("Model file: " + _model_file + " not found");
 
-        if (!std::filesystem::exists(material_file))
-            throw std::runtime_error("Material file not found");
+        if (!std::filesystem::exists(_material_file))
+            throw std::runtime_error("Material file: " + _material_file + " not found");
     }
     ~ModelAsset(void) override = default;
 
     void load(void) override
     {
-        std::string material_file = _get_material_file_path();
+        std::cout << "Loading file: " << _model_file << std::endl;
+        std::cout << "Loading file: " << _material_file << std::endl;
 
-        _model_data = _read_file(_file_path);
-        _material_data = _read_file(material_file);
+        _model_data = _read_file(_model_file);
+        _material_data = _read_file(_material_file);
     }
 
 private:
+    std::string _model_file;
+    std::string _material_file;
     std::string _model_data;
     std::string _material_data;
 
+    std::string _get_model_file_path(void) {
+        return _file_path + "/" + _name + ".obj";
+    }
+
     std::string _get_material_file_path(void) {
-        return _file_path.substr(0, _file_path.find_last_of('.')) + ".mtl";
+        return _file_path + "/" + _name + ".mtl";
     }
 };
 
@@ -164,30 +175,38 @@ class ShaderAsset : public Asset
 public:
     ShaderAsset(std::string name, std::string file_path) : Asset(name, file_path)
     {
-        std::string vertice_file = _get_vertice_file_path();
+        _fragment_file = _get_fragment_file_path();
+        _vertice_file = _get_vertice_file_path();
 
-        if (!_file_path.ends_with(".frag"))
-            throw std::runtime_error("Unsupported file format");
+        if (!std::filesystem::exists(_fragment_file))
+            throw std::runtime_error("Fragment file: " + _fragment_file + " not found");
 
-        if (!std::filesystem::exists(vertice_file))
-            throw std::runtime_error("Vertice file not found");
+        if (!std::filesystem::exists(_vertice_file))
+            throw std::runtime_error("Vertice file: " + _vertice_file + " not found");
     }
     ~ShaderAsset(void) override = default;
 
     void load(void) override
     {
-        std::string vertice_file = _get_vertice_file_path();
+        std::cout << "Loading file: " << _fragment_file << std::endl;
+        std::cout << "Loading file: " << _vertice_file << std::endl;
 
-        _fragment_data = _read_file(_file_path);
-        _vertice_data = _read_file(vertice_file);
+        _fragment_data = _read_file(_fragment_file);
+        _vertice_data = _read_file(_vertice_file);
     }
 
 private:
+    std::string _fragment_file;
+    std::string _vertice_file;
     std::string _fragment_data;
     std::string _vertice_data;
 
+    std::string _get_fragment_file_path(void) {
+        return _file_path + "/" + _name + ".frag";
+    }
+
     std::string _get_vertice_file_path(void) {
-        return _file_path.substr(0, _file_path.find_last_of('.')) + ".vert";
+        return _file_path + "/" + _name + ".vert";
     }
 };
 
@@ -203,6 +222,8 @@ public:
 
     void load(void) override
     {
+        std::cout << "Loading file: " << _file_path << std::endl;
+
         _sound_data = _read_file_binary(_file_path);
     }
 

@@ -18,14 +18,6 @@ public:
     ~AssetManager(void) = default;
 
     /**
-     * @brief Retrieves an asset from the asset manager.
-     * @param name The name of the asset.
-     * @return A unique pointer to the asset.
-     * @throws std::runtime_error if the asset is not found.
-     */
-    std::shared_ptr<Asset> &getAsset(const std::string &name);
-
-    /**
      * @brief Adds an asset to the asset manager.
      * @param asset The asset to add.
      */
@@ -36,6 +28,16 @@ public:
      * @param name The name of the asset.
      */
     void removeAsset(const std::string &name);
+
+    /**
+     * @brief Gets an asset from the asset manager.
+     * @param name The name of the asset.
+     * @return The asset.
+     */
+    template <typename AssetType>
+    std::shared_ptr<AssetType> getAsset(const std::string &name) {
+        return std::dynamic_pointer_cast<AssetType>(_assets[name]);
+    }
 
 private:
     std::map<std::string, std::shared_ptr<Asset>> _assets;
