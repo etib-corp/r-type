@@ -10,7 +10,7 @@
 #include "GUI/Interactable.hpp"
 #include "GUI/Text.hpp"
 
-void LE::GUI::Container::addChildren(Component *child)
+void LE::GUI::Container::addChildren(std::shared_ptr<Component> child)
 {
     _children.push_back(child);
 }

@@ -7,17 +7,15 @@
 
 #include "Engine.hpp"
 #include <iostream>
-#include "Rtype.hpp"
-#include "AssetManager.hpp"
-#include "AssetLoader.hpp"
-
+#include "Game/Rtype.hpp"
+>
 int main(void)
 {
     auto engine = LE::Engine::getInstance();
     auto game  = std::make_shared<Rtype>();
 
-    game->init();
     engine->setGame(game);
+    game->init();
     try {
         engine->runWithDebug(); // Change to true to simulate an error
     } catch (const LE::Engine::EngineError &e) {

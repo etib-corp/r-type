@@ -106,7 +106,7 @@ void LE::GUI::Text::setContent(const std::string &content)
     _content = content;
 }
 
-std::string LE::GUI::Text::getContent() const
+std::string LE::GUI::Text::getContent()
 {
     return _content;
 }

@@ -35,7 +35,7 @@ LE::Game::Game()
 
     loaderLib.LoadModule();
     _networkModule = loaderLib.createNetworkModule();
-    _clientBroker = new ClientBroker(_networkModule, "127.0.0.1", 8080);
+    _clientBroker = nullptr;
     _responsibilityChain = ResponsibilityChain();
     _sceneManager = std::make_shared<SceneManager>();
 }
@@ -60,5 +60,8 @@ void LE::Game::addScene(const std::string &name, const std::shared_ptr<Scene> &s
 
 void LE::Game::update()
 {
-    receiveFromServer(_clientBroker, _sceneManager->getCurrentScene()->_ecs, _responsibilityChain);
+    if (_clientBroker) {
+        _sceneManager->getCurrentScene()->setClientBroker(_clientBroker);
+        receiveFromServer(_clientBroker, _sceneManager->getCurrentScene()->_ecs, _responsibilityChain);
+    }
 }

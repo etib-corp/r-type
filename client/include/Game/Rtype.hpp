@@ -8,6 +8,7 @@
 #pragma once
 
 #include "CallbackClient.hpp"
+#include "Game/Menu.hpp"
 #include "message/ClientBroker.hpp"
 #include "Engine.hpp"
 #include "EnumClass.hpp"
