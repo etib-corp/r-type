@@ -95,7 +95,7 @@ class FontAsset : public Asset
 public:
     FontAsset(std::string name, std::string file_path) : Asset(name, file_path)
     {
-        if (!_file_path.ends_with(".TTF"))
+        if (!_file_path.ends_with(".ttf"))
             throw std::runtime_error("Unsupported file format");
     }
     ~FontAsset(void) override = default;
