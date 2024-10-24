@@ -23,7 +23,7 @@ LE::Engine::Engine()
     _debugMode = false;
     _throwError = false;
     _window = std::make_shared<LE::Window>("The R-Type");
-    _sceneManager = std::make_shared<SceneManager>();
+    // _sceneManager = std::make_shared<SceneManager>();
     _device = new LE::Sound::Device();
     _clock = std::make_unique<LE::Clock>();
     _framerateLimit = 60; // _window->_defaultFramerate;
