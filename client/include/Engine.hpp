@@ -16,6 +16,8 @@
 #include "Error.hpp"
 #include "ECS/Components/CameraComponent.hpp"
 
+#include "Sound/Device.hpp"
+
 namespace LE {
     class Window;
     class SceneManager;
@@ -183,6 +185,7 @@ namespace LE {
             std::unique_ptr<Clock> _clock;                  ///< Unique pointer to the Clock object.
             float _dt;                                      ///< The delta time.
             std::size_t _framerateLimit;                    ///< The frame rate limit.
+            LE::Sound::Device *_device; ///< The sound device used by the engine.
             friend class EventManager;                      ///< Friend class EventManager.
             friend class LE::Shapes::Triangle;              ///< Friend class LE::Shapes::Triangle.
             friend class LE::GUI::Text;                     ///< Friend class LE::GUI::Text.
