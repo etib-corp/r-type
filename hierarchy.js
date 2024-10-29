@@ -8,6 +8,17 @@ var hierarchy =
       ] ]
     ] ],
     [ "Afterdoc_Test", "classAfterdoc__Test.html", null ],
+    [ "Asset", "classAsset.html", [
+      [ "ConfigAsset", "classConfigAsset.html", null ],
+      [ "FontAsset", "classFontAsset.html", null ],
+      [ "ImageAsset", "classImageAsset.html", null ],
+      [ "ModelAsset", "classModelAsset.html", null ],
+      [ "ShaderAsset", "classShaderAsset.html", null ],
+      [ "SoundAsset", "classSoundAsset.html", null ]
+    ] ],
+    [ "AssetFactory", "classAssetFactory.html", null ],
+    [ "AssetLoader", "classAssetLoader.html", null ],
+    [ "AssetManager", "classAssetManager.html", null ],
     [ "Autolink_Test", "classAutolink__Test.html", null ],
     [ "B", "classB.html", [
       [ "D", "classD.html", null ]
