@@ -7,10 +7,10 @@
 
 #pragma once
 
-#include "Engine.hpp"
+#include "interface/IEngine.hpp"
 #include "Scene.hpp"
 
-#include "Color.hpp"
+#include "interface/Color.hpp"
 
 #include "GUI/Button.hpp"
 #include "GUI/TextField.hpp"

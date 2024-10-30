@@ -18,9 +18,9 @@ endif()
 add_subdirectory(dependencies/lion-engine)
 
 file(GLOB_RECURSE CLIENT_SOURCES client/src/*.cpp)
-include_directories(client/include client/include/game )
+message("${LION_ENGINE_INCLUDE_DIR}")
+include_directories(client/include client/include/game dependencies/lion-engine/include include)
 
-include_directories(${OPENGL_INCLUDE_DIRS})
 
 if (UNIX OR APPLE)
     add_executable(r-type_client ${CLIENT_SOURCES})
@@ -32,7 +32,4 @@ file(GLOB_RECURSE SERVER_SOURCES server/src/*.cpp)
 include_directories(server/include)
 add_executable(r-type_server ${SERVER_SOURCES})
 
-target_link_libraries(r-type_server r-type)
 target_link_libraries(r-type_server lion-engine)
-
-add_subdirectory(lib)

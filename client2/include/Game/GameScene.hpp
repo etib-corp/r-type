@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include "Scene.hpp"
+#include "SceneManager.hpp"
 
 namespace LE {
     class Engine;

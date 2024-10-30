@@ -1,30 +1,18 @@
 /*
 ** EPITECH PROJECT, 2024
-** Visual Studio Live Share (Workspace)
+** r-type
 ** File description:
 ** CallbackClient
 */
 
-#ifndef CALLBACKCLIENT_HPP_
-#define CALLBACKCLIENT_HPP_
+#pragma once
 
-#include "ResolvingLib.hpp"
-#include "PackUnpack.hpp"
-#include "ECS/Ecs.hpp"
-#include "Engine.hpp"
-#include "ECS/Components/TransformComponent.hpp"
-#include "ECS/Components/ModelComponent.hpp"
-#include "ECS/Components/PatternComponent.hpp"
-#include "ECS/Components/MotionComponent.hpp"
+#include "interface/IEngine.hpp"
 #include "GameClock.hpp"
 #include "message/ClientBroker.hpp"
 #include "EnumClass.hpp"
 #include "Utils.hpp"
 #include "ResponsibilityChain.hpp"
 #include "Common.hpp"
-#include "CallBack.hpp"
 
-void attributeClientCallback(ResponsibilityChain *chain, ClientBroker *client_broker);
-
-
-#endif /* !CALLBACKCLIENT_HPP_ */
+void attributeClientCallback(std::shared_ptr<LE::ResponsibilityChain> chain, std::shared_ptr<LE::ClientBroker> client_broker);

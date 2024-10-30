@@ -6,7 +6,7 @@
 */
 
 #include "Game/GameScene.hpp"
-#include "Engine.hpp"
+#include "interface/IEngine.hpp"
 
 GameScene::GameScene() : LE::Scene()
 {

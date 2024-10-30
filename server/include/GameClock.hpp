@@ -5,8 +5,7 @@
 ** GameClock
 */
 
-#ifndef GAMECLOCK_HPP_
-#define GAMECLOCK_HPP_
+#pragma once
 
 #include <iostream>
 #include <functional>
@@ -85,5 +84,3 @@ private:
         }
     }
 };
-
-#endif /* !GAMECLOCK_HPP_ */

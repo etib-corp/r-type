@@ -16,7 +16,7 @@
 #include "GameScene.hpp"
 #include "Utils.hpp"
 
-class Rtype : public LE::Game {
+class Rtype : public LE::IGame {
     public:
         Rtype();
         ~Rtype();

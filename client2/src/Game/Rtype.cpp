@@ -83,7 +83,7 @@ static bool parseJsonAndCreateEnemy(std::shared_ptr<Ecs> ecs, std::string path)
     return true;
 }
 
-Rtype::Rtype() : LE::Game()
+Rtype::Rtype() : LE::IGame()
 {
     std::cout << "Rtype constructor" << std::endl;
     std::shared_ptr<LE::Scene> scene = std::make_shared<GameScene>();
