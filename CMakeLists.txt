@@ -24,6 +24,7 @@ add_subdirectory(dependencies/freetype-VER-2-13-3)
 add_subdirectory(dependencies/glm)
 add_subdirectory(dependencies/assimp-5.4.3)
 add_subdirectory(dependencies/boost-1.86.0)
+add_subdirectory(dependencies/lion-engine)
 
 file(GLOB_RECURSE SOURCES src/*.cpp)
 include_directories(include)
@@ -51,6 +52,7 @@ if (UNIX OR APPLE)
     target_link_libraries(r-type_client freetype)
     target_link_libraries(r-type_client glm)
     target_link_libraries(r-type_client assimp)
+    target_link_libraries(r-type_client lion-engine)
 
 endif()
 
