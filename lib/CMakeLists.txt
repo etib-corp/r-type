@@ -1,6 +1,0 @@
-add_subdirectory(NetworkModule)
-add_subdirectory(ClientCoreModule)
-add_subdirectory(ServerCoreModule)
-add_subdirectory(TestClientCoreModule)
-add_subdirectory(TestServerCoreModule)
-add_subdirectory(TestNetworkModule)
