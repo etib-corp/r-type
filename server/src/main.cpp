@@ -62,10 +62,12 @@ class ServerGame : public LE::IGame
 
             attributeServerCallback(_serverBroker, _responsibilityChain);
 
-            int nbrPlayer = 0;
-            _responsibilityChain->addActionCallback(asChar(ActionCode::READY), [&nbrPlayer, this](const Request &req, std::shared_ptr<LE::Ecs>& _ecs) -> bool {
-                nbrPlayer++;
-                if (nbrPlayer != 2) {
+            _nbrPlayer = 0;
+
+            _responsibilityChain->addActionCallback(asChar(ActionCode::READY), [this](const Request &req, std::shared_ptr<LE::Ecs>& _ecs) -> bool {
+                _nbrPlayer++;
+                std::cout << "nbrPlayer=" << _nbrPlayer << std::endl;
+                if (_nbrPlayer != 2) {
                     return false;
                 }
                 Entity player1 = _ecs->createEntity();
@@ -84,7 +86,7 @@ class ServerGame : public LE::IGame
                         .BodyLength = 0},
                     .body = {0}};
                 StartGame startGame;
-                startGame.nbrPlayers = nbrPlayer;
+                startGame.nbrPlayers = _nbrPlayer;
                 ::memmove(request.body._buffer, &startGame, sizeof(StartGame));
                 std::shared_ptr<LE::Message> msg = std::make_shared<LE::Message>();
                 msg->setRequest(request);
@@ -94,8 +96,8 @@ class ServerGame : public LE::IGame
                 return true;
             });
 
-            clock.addCallback([this, &nbrPlayer]() {
-                if (nbrPlayer != 2) {
+            clock.addCallback([this]() {
+                if (_nbrPlayer != 2) {
                     return;
                 }
                 Request rq;
@@ -125,10 +127,10 @@ class ServerGame : public LE::IGame
                 _serverBroker->sendToAllClient(msg, 1, 0);
             }, 1000);
 
-            clock.addCallback([this]() {
-                std::shared_ptr<LE::Ecs> _ecs = _sceneManager->getCurrentScene()->getEcs();
-                _ecs->update(0.016);
-            }, 16);
+            // clock.addCallback([this]() {
+            //     std::shared_ptr<LE::Ecs> _ecs = _sceneManager->getCurrentScene()->getEcs();
+            //     _ecs->update(0.016);
+            // }, 16);
 
         }
 
@@ -138,11 +140,12 @@ class ServerGame : public LE::IGame
         }
 
         LE::Clock clock;
+        int _nbrPlayer;
 };
 
 int main()
 {
-    LE::GraphicalLib lib("/home/julithein/delivery/tek3/r-type/build/dependencies/lion-engine/liblion-engine.so");
+    LE::GraphicalLib lib("/home/sleo/etib/r-type/build/dependencies/lion-engine/lib/SFML/liblion-engine-SFML.so");
     g_engine = lib.createEngine();
 
     g_engine->init();
@@ -151,7 +154,9 @@ int main()
 
     g_engine->setGame<ServerGame>();
 
-    g_engine->addScene<LE::Scene>("Default");
+    auto scene = g_engine->addScene<LE::Scene>("Default");
+
+    scene->getEcs()->createEntity();
 
     g_engine->playScene("Default");
 

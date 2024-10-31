@@ -9,6 +9,7 @@
     #define GAMESCENE_HPP_
 
     #include "Scene.hpp"
+    #include "/home/sleo/etib/r-type/dependencies/lion-engine/lib/SFML/include/SFMLKeys.hpp"
 
 class GameScene : public LE::Scene {
     public:
@@ -48,6 +49,181 @@ class GameScene : public LE::Scene {
             _ecs->addComponent<std::shared_ptr<LE::ICameraComponent>>(cameraEntity, camera);
             _ecs->addComponent<MotionComponent>(cameraEntity, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
             _ecs->setCameraEntity(cameraEntity);
+
+            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_A, LE::JUST_PRESSED, false}, [&](LE::IEngine &engine, float dt) {
+                std::cout << "A pressed" << std::endl;
+            });
+
+            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_A, LE::JUST_RELEASED, false}, [&](LE::IEngine &engine, float dt) {
+                std::cout << "A released" << std::endl;
+            });
+
+            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_B, LE::JUST_PRESSED, false}, [&](LE::IEngine &engine, float dt) {
+                std::cout << "B pressed" << std::endl;
+            });
+
+            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_B, LE::JUST_RELEASED, false}, [&](LE::IEngine &engine, float dt) {
+                std::cout << "B released" << std::endl;
+            });
+
+            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_ENTER, LE::JUST_PRESSED, false}, [&](LE::IEngine &engine, float dt) {
+                Request request = {0};
+                request.header.Action = asChar(ActionCode::READY);
+                request.header.BodyLength = 0;
+                request.header.EmmiterdEcsId = _engine->getGame()->getClientBroker()->getECSId();
+                request.header.MagicNumber = 0xFF;
+                request.header.ReceiverEcsId = 0;
+                request.header.TopicID = 1;
+                std::shared_ptr<LE::Message> message = std::make_shared<LE::Message>();
+                message->setRequest(request);
+                message->setReliable(true);
+                _engine->getGame()->getClientBroker()->addMessage(0, 1, message);
+                std::cout << "############### SENT GAME START MESSAGE ###############################" << std::endl;
+            });
+
+            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_UP, LE::JUST_PRESSED, false}, [&](LE::IEngine &engine, float dt) {
+            try {
+                int id =  _engine->getGame()->getClientBroker()->getECSId();
+                Request request = {0};
+                request.header.Action = asChar(ActionCode::UP);
+                request.header.BodyLength = 0;
+                request.header.EmmiterdEcsId = id;
+                request.header.MagicNumber = 0xFF;
+                request.header.ReceiverEcsId = 0;
+                request.header.TopicID = 1;
+                std::shared_ptr<LE::Message> message = std::make_shared<LE::Message>();
+                message->setRequest(request);
+                _engine->getGame()->getClientBroker()->addMessage(0, 1, message);
+            } catch (const std::exception &e) {}
+            });
+
+            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_UP, LE::JUST_RELEASED, false}, [&](LE::IEngine &engine, float dt) {
+            try {
+                int id = _engine->getGame()->getClientBroker()->getECSId();
+                Request request = {0};
+                request.header.Action = asChar(ActionCode::UP);
+                request.header.BodyLength = 0;
+                request.header.EmmiterdEcsId = id;
+                request.header.MagicNumber = 0xFF;
+                request.header.ReceiverEcsId = 0;
+                request.header.TopicID = 1;
+                std::shared_ptr<LE::Message> message = std::make_shared<LE::Message>();
+                message->setRequest(request);
+                _engine->getGame()->getClientBroker()->addMessage(0, 1, message);
+            } catch (const std::exception &e) {}
+            });
+
+            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_DOWN, LE::JUST_PRESSED, false}, [&](LE::IEngine &engine, float dt) {
+            try {
+                int id =  _engine->getGame()->getClientBroker()->getECSId();
+                Request request = {0};
+                request.header.Action = asChar(ActionCode::DOWN);
+                request.header.BodyLength = 0;
+                request.header.EmmiterdEcsId = id;
+                request.header.MagicNumber = 0xFF;
+                request.header.ReceiverEcsId = 0;
+                request.header.TopicID = 1;
+                std::shared_ptr<LE::Message> message = std::make_shared<LE::Message>();
+                message->setRequest(request);
+                _engine->getGame()->getClientBroker()->addMessage(0, 1, message);
+            } catch (const std::exception &e) {}
+            });
+
+            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_DOWN, LE::JUST_RELEASED, false}, [&](LE::IEngine &engine, float dt) {
+            try {
+                int id =  _engine->getGame()->getClientBroker()->getECSId();
+                Request request = {0};
+                request.header.Action = asChar(ActionCode::DOWN);
+                request.header.BodyLength = 0;
+                request.header.EmmiterdEcsId = id;
+                request.header.MagicNumber = 0xFF;
+                request.header.ReceiverEcsId = 0;
+                request.header.TopicID = 1;
+                std::shared_ptr<LE::Message> message = std::make_shared<LE::Message>();
+                message->setRequest(request);
+                _engine->getGame()->getClientBroker()->addMessage(0, 1, message);
+            } catch (const std::exception &e) {}
+            });
+
+            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_LEFT, LE::JUST_PRESSED, false}, [&](LE::IEngine &engine, float dt) {
+            try {
+                int id =  _engine->getGame()->getClientBroker()->getECSId();
+                Request request = {0};
+                request.header.Action = asChar(ActionCode::LEFT);
+                request.header.BodyLength = 0;
+                request.header.EmmiterdEcsId = id;
+                request.header.MagicNumber = 0xFF;
+                request.header.ReceiverEcsId = 0;
+                request.header.TopicID = 1;
+                std::shared_ptr<LE::Message> message = std::make_shared<LE::Message>();
+                message->setRequest(request);
+                _engine->getGame()->getClientBroker()->addMessage(0, 1, message);
+            } catch (const std::exception &e) {}
+            });
+
+            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_LEFT, LE::JUST_RELEASED, false}, [&](LE::IEngine &engine, float dt) {
+            try {
+                int id =  _engine->getGame()->getClientBroker()->getECSId();
+                Request request = {0};
+                request.header.Action = asChar(ActionCode::LEFT);
+                request.header.BodyLength = 0;
+                request.header.EmmiterdEcsId = id;
+                request.header.MagicNumber = 0xFF;
+                request.header.ReceiverEcsId = 0;
+                request.header.TopicID = 1;
+                std::shared_ptr<LE::Message> message = std::make_shared<LE::Message>();
+                message->setRequest(request);
+                _engine->getGame()->getClientBroker()->addMessage(0, 1, message);
+            } catch (const std::exception &e) {}
+            });
+
+            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_RIGHT, LE::JUST_PRESSED, false}, [&](LE::IEngine &engine, float dt) {
+            try {
+                int id =  _engine->getGame()->getClientBroker()->getECSId();
+                Request request = {0};
+                request.header.Action = asChar(ActionCode::RIGHT);
+                request.header.BodyLength = 0;
+                request.header.EmmiterdEcsId = id;
+                request.header.MagicNumber = 0xFF;
+                request.header.ReceiverEcsId = 0;
+                request.header.TopicID = 1;
+                std::shared_ptr<LE::Message> message = std::make_shared<LE::Message>();
+                message->setRequest(request);
+                _engine->getGame()->getClientBroker()->addMessage(0, 1, message);
+            } catch (const std::exception &e) {}
+            });
+
+            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_RIGHT, LE::JUST_RELEASED, false}, [&](LE::IEngine &engine, float dt) {
+            try {
+                int id =  _engine->getGame()->getClientBroker()->getECSId();
+                Request request = {0};
+                request.header.Action = asChar(ActionCode::RIGHT);
+                request.header.BodyLength = 0;
+                request.header.EmmiterdEcsId = id;
+                request.header.MagicNumber = 0xFF;
+                request.header.ReceiverEcsId = 0;
+                request.header.TopicID = 1;
+                std::shared_ptr<LE::Message> message = std::make_shared<LE::Message>();
+                message->setRequest(request);
+                _engine->getGame()->getClientBroker()->addMessage(0, 1, message);
+            } catch (const std::exception &e) {}
+            });
+
+            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_SPACE, LE::JUST_PRESSED, false}, [&](LE::IEngine &engine, float dt) {
+            try {
+                int id =  _engine->getGame()->getClientBroker()->getECSId();
+                Request request = {0};
+                request.header.Action = asChar(ActionCode::SHOOT);
+                request.header.BodyLength = 0;
+                request.header.EmmiterdEcsId = id;
+                request.header.MagicNumber = 0xFF;
+                request.header.ReceiverEcsId = 0;
+                request.header.TopicID = 1;
+                std::shared_ptr<LE::Message> message = std::make_shared<LE::Message>();
+                message->setRequest(request);
+                _engine->getGame()->getClientBroker()->addMessage(0, 1, message);
+            } catch (const std::exception &e) {}
+            });
         }
 
     protected:

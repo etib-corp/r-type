@@ -14,7 +14,7 @@ std::shared_ptr<LE::IEngine> g_engine;
 
 int main(int ac, char **av)
 {
-    LE::GraphicalLib lib("/home/julithein/delivery/etib/lion-engine/build/lib/SFML/liblion-engine-SFML.so");
+    LE::GraphicalLib lib("/home/sleo/etib/r-type/build/dependencies/lion-engine/lib/SFML/liblion-engine-SFML.so");
     try {
         g_engine = lib.createEngine();
     } catch (const LE::IEngineError &e) {

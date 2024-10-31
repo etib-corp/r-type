@@ -52,6 +52,7 @@ void Rtype::init(LE::IEngine& engine)
 {
     _sceneManager = engine.createSceneManager();
     _responsibilityChain = std::make_shared<LE::ResponsibilityChain>();
+    _clientBroker = std::make_shared<LE::ClientBroker>(engine.getNetworkModule(), "127.0.0.1", 8080);
 
     attributeClientCallback(_responsibilityChain, _clientBroker);
 }
