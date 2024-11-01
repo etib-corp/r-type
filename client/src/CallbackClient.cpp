@@ -18,9 +18,9 @@ bool callbackStartGame(const Request& req, const std::shared_ptr<LE::Ecs> &_ecs)
         std::shared_ptr<ImageAsset> image = g_engine->getAssetManager()->getAsset<ImageAsset>("ship_1.png");
         std::shared_ptr<LE::ISpriteComponent> sprite = g_engine->createSpriteComponent(image->getImageFile());
         auto animatedSprite = createAnimatedSpriteComponent(sprite, 263, 116);
-        addAnimation(*animatedSprite, "idle", {0, 1, 2, 3, 4}, [](AnimatedSpriteComponent &animatedSprite) {
+        addAnimation(*animatedSprite, "idle", {0, 1, 2, 3}, [](AnimatedSpriteComponent &animatedSprite) {
 
-        }, 2.0f, true);
+        }, 6.0f, true);
 
         animatedSprite->currentAnimation = "idle";
 
@@ -106,7 +106,7 @@ bool callbackShoot(const Request& req, std::shared_ptr<LE::Ecs> _ecs)
     }, 6.0f, true);
     animatedSprite->currentAnimation = "idle";
     _ecs->addComponent<AnimatedSpriteComponent>(entity, *animatedSprite);
-
+    std::cout << "SHOOT CALLBACK" << std::endl;
     return true;
 }
 

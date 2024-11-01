@@ -1,8 +1,8 @@
 {
     "enemy" : [
         {
-            "texture_obj" : "assets/models/ship2/ship2.obj",
-            "start_pos" : [20, -6, 0],
+            "image" : "r-typesheet24.png",
+            "start_pos" : [0, 0, 0],
             "end_pos" : [-20, -6, 0],
             "speed" : 0.03,
             "life" : 100,
@@ -24,7 +24,7 @@
             }
         },
         {
-            "texture_obj" : "assets/models/ship2/ship2.obj",
+            "image" : "r-typesheet24.png",
             "start_pos" : [20, 2, 0],
             "end_pos" : [-20, 2, 0],
             "speed" : 0.01,
