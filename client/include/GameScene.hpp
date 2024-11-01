@@ -50,22 +50,6 @@ class GameScene : public LE::Scene {
             _ecs->addComponent<MotionComponent>(cameraEntity, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
             _ecs->setCameraEntity(cameraEntity);
 
-            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_A, LE::JUST_PRESSED, false}, [&](LE::IEngine &engine, float dt) {
-                std::cout << "A pressed" << std::endl;
-            });
-
-            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_A, LE::JUST_RELEASED, false}, [&](LE::IEngine &engine, float dt) {
-                std::cout << "A released" << std::endl;
-            });
-
-            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_B, LE::JUST_PRESSED, false}, [&](LE::IEngine &engine, float dt) {
-                std::cout << "B pressed" << std::endl;
-            });
-
-            _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_B, LE::JUST_RELEASED, false}, [&](LE::IEngine &engine, float dt) {
-                std::cout << "B released" << std::endl;
-            });
-
             _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_ENTER, LE::JUST_PRESSED, false}, [&](LE::IEngine &engine, float dt) {
                 Request request = {0};
                 request.header.Action = asChar(ActionCode::READY);

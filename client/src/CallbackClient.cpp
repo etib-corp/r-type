@@ -14,9 +14,17 @@ bool callbackStartGame(const Request& req, const std::shared_ptr<LE::Ecs> &_ecs)
 
     for (int i = 0; i < sg.nbrPlayers; i++) {
         Entity player = _ecs->createEntity();
-        _ecs->addComponent<TransformComponent>(player, {{0, 0, 0}, {0, 90, 0}, {1, 1, 1}});
+        _ecs->addComponent<TransformComponent>(player, {{0, 0, 0}, {0, 90, 0}, {0.2f, 0.2f, 0.2f}});
         std::shared_ptr<ImageAsset> image = g_engine->getAssetManager()->getAsset<ImageAsset>("ship_1.png");
         std::shared_ptr<LE::ISpriteComponent> sprite = g_engine->createSpriteComponent(image->getImageFile());
+        auto animatedSprite = createAnimatedSpriteComponent(sprite, 263, 116);
+        addAnimation(*animatedSprite, "idle", {0, 1, 2, 3, 4}, [](AnimatedSpriteComponent &animatedSprite) {
+
+        }, 2.0f, true);
+
+        animatedSprite->currentAnimation = "idle";
+
+        _ecs->addComponent<AnimatedSpriteComponent>(player, *animatedSprite);
         _ecs->addComponent<std::shared_ptr<LE::ISpriteComponent>>(player, sprite);
         _ecs->addComponent<MotionComponent>(player, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
     }
@@ -77,7 +85,7 @@ bool callbackShoot(const Request& req, std::shared_ptr<LE::Ecs> _ecs)
 {
     auto transform = _ecs->getComponent<TransformComponent>(req.header.EmmiterdEcsId);
     Entity entity = _ecs->createEntity();
-    _ecs->addComponent<TransformComponent>(entity, (TransformComponent){{transform.position.x + 3, transform.position.y + 0.3f, transform.position.z}, {0, 0, 0}, {0.3f, 0.1f, 0.1f}});
+    _ecs->addComponent<TransformComponent>(entity, (TransformComponent){{transform.position.x + 3, transform.position.y + 0.3f, transform.position.z}, {0, 0, 0}, {1.0f, 1.0f, 0.1f}});
     _ecs->addComponent<MotionComponent>(entity, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
     auto& motion = _ecs->getComponent<MotionComponent>(entity);
     motion.direction[MOVEMENT_RIGHT] = 1;
@@ -92,6 +100,13 @@ bool callbackShoot(const Request& req, std::shared_ptr<LE::Ecs> _ecs)
     std::shared_ptr<LE::ISpriteComponent> sprite = g_engine->createSpriteComponent(image->getImageFile());
 
     _ecs->addComponent<std::shared_ptr<LE::ISpriteComponent>>(entity, sprite);
+
+    auto animatedSprite = createAnimatedSpriteComponent(sprite, 19, 6);
+    addAnimation(*animatedSprite, "idle", {0, 1}, [](AnimatedSpriteComponent &animatedSprite) {
+    }, 6.0f, true);
+    animatedSprite->currentAnimation = "idle";
+    _ecs->addComponent<AnimatedSpriteComponent>(entity, *animatedSprite);
+
     return true;
 }
 
