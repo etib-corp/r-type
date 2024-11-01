@@ -65,7 +65,7 @@ void attributeServerCallback(std::shared_ptr<LE::ServerBroker> server, std::shar
 
     // chain->addActionCallback(asChar(ActionCode::UP), checkMagicNumber);
     chain->addActionCallback(asChar(ActionCode::UP), callbackInputUp);
-    chain->addActionCallback(asChar(ActionCode::UP), [&server, message](const Request &req, std::shared_ptr<LE::Ecs> _ecs) -> bool
+    chain->addActionCallback(asChar(ActionCode::UP), [server, message](const Request &req, std::shared_ptr<LE::Ecs> _ecs) -> bool
                              {
         message->setAction(asChar(ActionCode::UP));
         server->sendToAllClient(message, 1, req.header.EmmiterdEcsId);
@@ -74,7 +74,7 @@ void attributeServerCallback(std::shared_ptr<LE::ServerBroker> server, std::shar
 
     // chain->addActionCallback(asChar(ActionCode::DOWN), checkMagicNumber);
     chain->addActionCallback(asChar(ActionCode::DOWN), callbackInputDown);
-    chain->addActionCallback(asChar(ActionCode::DOWN), [&server, message](const Request &req, std::shared_ptr<LE::Ecs> _ecs) -> bool
+    chain->addActionCallback(asChar(ActionCode::DOWN), [server, message](const Request &req, std::shared_ptr<LE::Ecs> _ecs) -> bool
                              {
                 message->setAction(asChar(ActionCode::DOWN));
         server->sendToAllClient(message, 1, req.header.EmmiterdEcsId);
@@ -83,7 +83,7 @@ void attributeServerCallback(std::shared_ptr<LE::ServerBroker> server, std::shar
 
     // chain->addActionCallback(asChar(ActionCode::RIGHT), checkMagicNumber);
     chain->addActionCallback(asChar(ActionCode::RIGHT), callbackInputRight);
-    chain->addActionCallback(asChar(ActionCode::RIGHT), [&server, message](const Request &req, std::shared_ptr<LE::Ecs> _ecs) -> bool
+    chain->addActionCallback(asChar(ActionCode::RIGHT), [server, message](const Request &req, std::shared_ptr<LE::Ecs> _ecs) -> bool
                              {
                message->setAction(asChar(ActionCode::RIGHT));
         server->sendToAllClient(message, 1, req.header.EmmiterdEcsId);
@@ -92,7 +92,7 @@ void attributeServerCallback(std::shared_ptr<LE::ServerBroker> server, std::shar
 
     // chain->addActionCallback(asChar(ActionCode::LEFT), checkMagicNumber);
     chain->addActionCallback(asChar(ActionCode::LEFT), callbackInputLeft);
-    chain->addActionCallback(asChar(ActionCode::LEFT), [&server, message](const Request &req, std::shared_ptr<LE::Ecs> _ecs) -> bool
+    chain->addActionCallback(asChar(ActionCode::LEFT), [server, message](const Request &req, std::shared_ptr<LE::Ecs> _ecs) -> bool
                              {
                 message->setAction(asChar(ActionCode::LEFT));
         server->sendToAllClient(message, 1, req.header.EmmiterdEcsId);
@@ -100,7 +100,7 @@ void attributeServerCallback(std::shared_ptr<LE::ServerBroker> server, std::shar
     });
 
 
-    chain->addActionCallback(asChar(ActionCode::SHOOT), [&server, message](const Request &req, std::shared_ptr<LE::Ecs> _ecs) -> bool
+    chain->addActionCallback(asChar(ActionCode::SHOOT), [server, message](const Request &req, std::shared_ptr<LE::Ecs> _ecs) -> bool
                              {
         message->setAction(asChar(ActionCode::SHOOT));
         server->sendToAllClient(message, 1, req.header.EmmiterdEcsId);
