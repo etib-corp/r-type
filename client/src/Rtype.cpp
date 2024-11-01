@@ -135,18 +135,17 @@ void Rtype::init(LE::IEngine& engine)
 
     attributeClientCallback(_responsibilityChain, _clientBroker);
 
-    _responsibilityChain->addActionCallback(asChar(ActionCode::START_GAME), [&](const Request& req, std::shared_ptr<LE::Ecs> ecs) -> bool {
-        std::cout << "Game start" << std::endl;
-        std::shared_ptr<ConfigAsset> config = engine.getAssetManager()->getAsset<ConfigAsset>("vague_1.json");
-        parseJsonAndCreateEnemy(ecs , config->getConfigFile());
-        return true;
-    });
+    // _responsibilityChain->addActionCallback(asChar(ActionCode::START_GAME), [&](const Request& req, std::shared_ptr<LE::Ecs> ecs) -> bool {
+    //     std::cout << "Game start" << std::endl;
+    //     std::shared_ptr<ConfigAsset> config = engine.getAssetManager()->getAsset<ConfigAsset>("vague_1.json");
+    //     parseJsonAndCreateEnemy(ecs , config->getConfigFile());
+    //     return true;
+    // });
 }
 
 void Rtype::update()
 {
     if (_clientBroker) {
-        std::cout << "toto" << std::endl;
         receiveFromServer(_clientBroker, _sceneManager->getCurrentScene()->getEcs(), _responsibilityChain);
     }
 }
