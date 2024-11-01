@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['joystick_5faxis_0',['JOYSTICK_AXIS',['../EventManager_8hpp.html#a86857615d58faee7e56423da77db2c6fac7791a77292d56ada3ec8472991c7a18',1,'LE']]],
-  ['joystick_5fbutton_1',['JOYSTICK_BUTTON',['../EventManager_8hpp.html#a86857615d58faee7e56423da77db2c6fa065adf9325eb609b44e98dd9eb695762',1,'LE']]],
-  ['just_5fpressed_2',['JUST_PRESSED',['../EventManager_8hpp.html#a6a38d5ec26795c109be9ba947245eef4a5b099a9b2de46ab5fb87e0b374c89807',1,'LE']]],
-  ['just_5freleased_3',['JUST_RELEASED',['../EventManager_8hpp.html#a6a38d5ec26795c109be9ba947245eef4a0b0fbb882a120ae1ffdc6928b583f27d',1,'LE']]]
+  ['tval1_0',['TVal1',['../classJavadoc__Test.html#ae37fd1cbf1af522674cbd33873b786a6a90f0d8d4f07a79342261fb1c191af72b',1,'Javadoc_Test::TVal1'],['../classQTstyle__Test.html#a0525f798cda415a94fedeceb806d2c49a7929af91f99c319ffe2e49c9632bc3fa',1,'QTstyle_Test::TVal1']]],
+  ['tval2_1',['TVal2',['../classJavadoc__Test.html#ae37fd1cbf1af522674cbd33873b786a6a5954e696a652f442d7255af4e0d35d61',1,'Javadoc_Test::TVal2'],['../classQTstyle__Test.html#a0525f798cda415a94fedeceb806d2c49afff89db6859123549579806212d9fd80',1,'QTstyle_Test::TVal2']]],
+  ['tval3_2',['TVal3',['../classJavadoc__Test.html#ae37fd1cbf1af522674cbd33873b786a6ab4a4dc16e1050c9604cf5c46a51e5a8e',1,'Javadoc_Test::TVal3'],['../classQTstyle__Test.html#a0525f798cda415a94fedeceb806d2c49a8227cd0f0c1285d59ff14376fcd00f85',1,'QTstyle_Test::TVal3']]]
 ];

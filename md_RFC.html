@@ -111,9 +111,9 @@ Table of Contents</h1>
 <ol type="1">
 <li>Introduction</li>
 <li>Requirements</li>
-<li><a class="el" href="classMessage.html" title="A class representing a message with an ECS ID and a topic name.">Message</a> Structure<ol type="a">
-<li><a class="el" href="structHeader.html">Header</a></li>
-<li><a class="el" href="structBody.html">Body</a></li>
+<li>Message Structure<ol type="a">
+<li>Header</li>
+<li>Body</li>
 </ol>
 </li>
 <li>Protocol Design<ol type="a">
@@ -138,7 +138,7 @@ Table of Contents</h1>
 <li>Support for TCP for reliable initial connections and player identification.</li>
 <li>Support for UDP for low-latency, real-time communication during gameplay.</li>
 <li>Lightweight message structure to minimize network overhead.</li>
-<li><a class="el" href="structEntity.html">Entity</a> and action synchronization across clients.</li>
+<li>Entity and action synchronization across clients.</li>
 <li>Player identification and authentication via unique client IDs.</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md58"></a>
@@ -146,14 +146,13 @@ Table of Contents</h1>
 <h2><a class="anchor" id="autotoc_md59"></a>
 3.1. Header</h2>
 <p>The header contains essential information about each message, such as the client ID, the action type, and the length of the message body.</p>
-<div class="fragment"><div class="line"><span class="keyword">struct </span><a class="code hl_struct" href="structHeader.html">Header</a> {</div>
+<div class="fragment"><div class="line"><span class="keyword">struct </span>Header {</div>
 <div class="line">    uint8_t MagicNumber;</div>
 <div class="line">    uint8_t EmitterID;</div>
 <div class="line">    uint8_t ReceiverID;</div>
 <div class="line">    uint8_t Action;</div>
 <div class="line">    uint32_t BodyLength;</div>
 <div class="line">};</div>
-<div class="ttc" id="astructHeader_html"><div class="ttname"><a href="structHeader.html">Header</a></div><div class="ttdef"><b>Definition</b> PackUnpack.hpp:142</div></div>
 </div><!-- fragment --><ul>
 <li><b>MagicNumber</b>: <a class="el" href="classA.html">A</a> unique identifier to validate the message format.</li>
 <li><b>EmitterID</b>: The ID of the client or server sending the message.</li>
@@ -166,10 +165,9 @@ Table of Contents</h1>
 <p>The body contains data specific to the action being performed, such as player inputs or entity state updates.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#define BODY_LENGTH 1024</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">struct </span><a class="code hl_struct" href="structBody.html">Body</a> {</div>
+<div class="line"><span class="keyword">struct </span>Body {</div>
 <div class="line">    uint8_t _buffer[BODY_LENGTH + 1];</div>
 <div class="line">};</div>
-<div class="ttc" id="astructBody_html"><div class="ttname"><a href="structBody.html">Body</a></div><div class="ttdef"><b>Definition</b> PackUnpack.hpp:152</div></div>
 </div><!-- fragment --><p>Example message: </p><div class="fragment"><div class="line">header.MagicNumber = 0x77;</div>
 <div class="line">header.EmitterID = 0x01;</div>
 <div class="line">header.ReceiverID = 0x02;</div>
@@ -301,8 +299,8 @@ Both Magic Number (0xFF)</h2>
 6. Security Considerations</h1>
 <p>The protocol includes basic security measures to ensure fair gameplay and protect against tampering:</p>
 <ul>
-<li><b><a class="el" href="classSession.html" title="Manages a session using Boost.Asio.">Session</a> Authentication</b>: Players are authenticated using unique session tokens to prevent unauthorized connections.</li>
-<li><b><a class="el" href="structData.html">Data</a> Validation</b>: All incoming messages are validated by the server to prevent malicious inputs or buffer overflow attacks.</li>
+<li><b>Session Authentication</b>: Players are authenticated using unique session tokens to prevent unauthorized connections.</li>
+<li><b>Data Validation</b>: All incoming messages are validated by the server to prevent malicious inputs or buffer overflow attacks.</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md74"></a>
 7. References</h1>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>R-Type: client/include/CallbackClient.hpp Source File</title>
+<title>R-Type: ServerGame Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -70,7 +70,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function(){initNavTree('CallbackClient_8hpp_source.html',''); initResizable(true); });
+$(function(){initNavTree('classServerGame.html',''); initResizable(true); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -96,33 +96,47 @@ $(function(){initNavTree('CallbackClient_8hpp_source.html',''); initResizable(tr
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">CallbackClient.hpp</div></div>
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="classServerGame-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">ServerGame Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">** EPITECH PROJECT, 2024</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">** r-type</span></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">** File description:</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">** CallbackClient</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">*/</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#pragma once</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;interface/IEngine.hpp&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;GameClock.hpp&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;message/ClientBroker.hpp&quot;</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;EnumClass.hpp&quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;Utils.hpp&quot;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;ResponsibilityChain.hpp&quot;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;Common.hpp&quot;</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keywordtype">void</span> attributeClientCallback(std::shared_ptr&lt;LE::ResponsibilityChain&gt; chain, std::shared_ptr&lt;LE::ClientBroker&gt; client_broker);</div>
-</div><!-- fragment --></div><!-- contents -->
+<div class="dynheader">
+Inheritance diagram for ServerGame:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classServerGame.png" alt=""/>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a99769772959315796c69bcef12a78822" id="r_a99769772959315796c69bcef12a78822"><td class="memItemLeft" align="right" valign="top"><a id="a99769772959315796c69bcef12a78822" name="a99769772959315796c69bcef12a78822"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>init</b> (LE::IEngine &amp;engine) override</td></tr>
+<tr class="separator:a99769772959315796c69bcef12a78822"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a806eef0ed759ba90e7a81e918869e0" id="r_a0a806eef0ed759ba90e7a81e918869e0"><td class="memItemLeft" align="right" valign="top"><a id="a0a806eef0ed759ba90e7a81e918869e0" name="a0a806eef0ed759ba90e7a81e918869e0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> () override</td></tr>
+<tr class="separator:a0a806eef0ed759ba90e7a81e918869e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:aee10adc9a5c5e9d9cfe1cc7dfeea46b6" id="r_aee10adc9a5c5e9d9cfe1cc7dfeea46b6"><td class="memItemLeft" align="right" valign="top"><a id="aee10adc9a5c5e9d9cfe1cc7dfeea46b6" name="aee10adc9a5c5e9d9cfe1cc7dfeea46b6"></a>
+LE::Clock&#160;</td><td class="memItemRight" valign="bottom"><b>clock</b></td></tr>
+<tr class="separator:aee10adc9a5c5e9d9cfe1cc7dfeea46b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a698c68abf028ebde832ad5335b06c739" id="r_a698c68abf028ebde832ad5335b06c739"><td class="memItemLeft" align="right" valign="top"><a id="a698c68abf028ebde832ad5335b06c739" name="a698c68abf028ebde832ad5335b06c739"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>_nbrPlayer</b></td></tr>
+<tr class="separator:a698c68abf028ebde832ad5335b06c739"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>server/src/<b>main.cpp</b></li>
+</ul>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_5c23080e296bbe846f4ed2d01d7b595d.html">include</a></li><li class="navelem"><b>CallbackClient.hpp</b></li>
+    <li class="navelem"><a class="el" href="classServerGame.html">ServerGame</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>

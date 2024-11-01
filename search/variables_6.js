@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['filtermax_0',['filterMax',['../structSpriteComponent.html#a24985918156677b134f5d5fe6c0ccaab',1,'SpriteComponent']]],
-  ['filtermin_1',['filterMin',['../structSpriteComponent.html#a931ce2de33819a15a053cc7ac0a02227',1,'SpriteComponent']]],
-  ['fontshader_2',['fontShader',['../Window_8hpp.html#a24b4642626931da4436c8879635af957',1,'Window.cpp']]]
+  ['handler_0',['handler',['../classJavadoc__Test.html#ace81a523a4eef44501a841a6d338832b',1,'Javadoc_Test::handler'],['../classQTstyle__Test.html#a79dd4e5498f09057775a819d911349e2',1,'QTstyle_Test::handler']]]
 ];

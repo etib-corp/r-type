@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['layers_0',['layers',['../structBox.html#a32483a28a8545192e5a80903180f7fc0',1,'Box::layers'],['../structHitBox.html#a88740e71eb881542a87886f9e5160627',1,'HitBox::layers'],['../structHurtBox.html#a415514722c6e1a9316e2b94093ac71e2',1,'HurtBox::layers']]]
+  ['value_0',['value',['../classAfterdoc__Test.html#a9287a08830e5cdfd9c732bb7932694a0',1,'Afterdoc_Test']]],
+  ['var_1',['var',['../classAutolink__Test.html#a8de85603114bc9b9e53bd40764e9b499',1,'Autolink_Test']]]
 ];

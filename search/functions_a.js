@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['javadoc_5ftest_0',['Javadoc_Test',['../classJavadoc__Test.html#a17313327932ae97596b0a455ba8342cc',1,'Javadoc_Test']]]
+  ['qtstyle_5ftest_0',['QTstyle_Test',['../classQTstyle__Test.html#a14a296ea4e2ad446712f2310bec60766',1,'QTstyle_Test']]]
 ];

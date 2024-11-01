@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['onhit_0',['onHit',['../structHurtBox.html#a0fbf0a6549ced63932d612d5fcba0c1b',1,'HurtBox']]]
+  ['y_0',['y',['../structCoordStruct.html#a1a5966a881bc3e76e9becf00639585ac',1,'CoordStruct']]]
 ];

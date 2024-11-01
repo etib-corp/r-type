@@ -26,7 +26,6 @@ var NAVTREE =
 [
   [ "R-Type", "index.html", [
     [ "pag_example", "pag_example.html", null ],
-    [ "README", "md_lib_2NetworkModule_2README.html", null ],
     [ "README", "md_README.html", [
       [ "R-Type", "md_README.html#autotoc_md0", [
         [ "", "md_README.html#autotoc_md22", null ],
@@ -106,8 +105,8 @@ var NAVTREE =
       [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
-        [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", "functions_func" ],
+        [ "All", "functions.html", null ],
+        [ "Functions", "functions_func.html", null ],
         [ "Variables", "functions_vars.html", null ],
         [ "Enumerations", "functions_enum.html", null ],
         [ "Enumerator", "functions_eval.html", null ],
@@ -132,11 +131,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"AsioNetworkModule_8hpp_source.html",
-"classFontAsset.html",
-"classLE_1_1Scene.html#a84e1e753e487e860614160cbad1721dc",
-"classQTstyle__Test.html#a14a296ea4e2ad446712f2310bec60766",
-"md_README.html"
+"CallbackClient_8hpp_source.html",
+"namespacedocstring.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
