@@ -2,14 +2,14 @@
     "enemy" : [
         {
             "image" : "r-typesheet24.png",
-            "start_pos" : [0, 0, 0],
-            "end_pos" : [-20, -6, 0],
-            "speed" : 0.03,
+            "start_pos" : [500, 50, 0],
+            "end_pos" : [-200, 50, 0],
+            "speed" : 0.5,
             "life" : 100,
             "damage" : 10,
             "pattern" : "sinus_x",
             "scale" : 1,
-            "rotation" : [0, 0, 0],
+            "rotation" : [0, 0, 180],
             "hurtbox": {
                 "height": 5,
                 "width": 5,
@@ -25,14 +25,14 @@
         },
         {
             "image" : "r-typesheet24.png",
-            "start_pos" : [20, 2, 0],
-            "end_pos" : [-20, 2, 0],
-            "speed" : 0.01,
+            "start_pos" : [500, 2, 0],
+            "end_pos" : [-200, 2, 0],
+            "speed" : 0.5,
             "life" : 100,
             "damage" : 10,
             "pattern" : "line",
             "scale" : 1,
-            "rotation" : [0, 0, 0],
+            "rotation" : [0, 0, 180],
             "hurtbox": {
                 "height": 5,
                 "width": 5,

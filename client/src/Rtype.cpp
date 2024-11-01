@@ -76,12 +76,15 @@ static bool parseJsonAndCreateEnemy(std::shared_ptr<LE::Ecs> ecs, std::string pa
         ecs->addComponent<PatternComponent>(entity, pattern);
         ecs->addComponent<MotionComponent>(entity, motion);
         auto images = g_engine->getAssetManager()->getAsset<ImageAsset>(jsonValue->getObjectValue()["image"]->getStringValue());
-        std::vector<uint8_t> imageData = images->getImageData();
-        std::string imageDataStr(imageData.begin(), imageData.end());
-        auto sprite = g_engine->createSpriteComponentFromMemory(imageDataStr);
+        auto sprite = g_engine->createSpriteComponent(images->getImageFile());
         ecs->addComponent<std::shared_ptr<LE::ISpriteComponent>>(entity, sprite);
         ecs->addComponent<HurtBox>(entity, hurtbox);
         ecs->addComponent<HitBox>(entity, hitbox);
+        auto animatedSprite = createAnimatedSpriteComponent(sprite, 65, 66);
+        addAnimation(*animatedSprite, "idle", {0, 1, 2, 3, 4}, [](AnimatedSpriteComponent& animatedSprite) {
+        }, 6.0f, true);
+        animatedSprite->currentAnimation = "idle";
+        ecs->addComponent<AnimatedSpriteComponent>(entity, *animatedSprite);
     }
     return true;
 }
@@ -135,12 +138,12 @@ void Rtype::init(LE::IEngine& engine)
 
     attributeClientCallback(_responsibilityChain, _clientBroker);
 
-    // _responsibilityChain->addActionCallback(asChar(ActionCode::START_GAME), [&](const Request& req, std::shared_ptr<LE::Ecs> ecs) -> bool {
-    //     std::cout << "Game start" << std::endl;
-    //     std::shared_ptr<ConfigAsset> config = engine.getAssetManager()->getAsset<ConfigAsset>("vague_1.json");
-    //     parseJsonAndCreateEnemy(ecs , config->getConfigFile());
-    //     return true;
-    // });
+    _responsibilityChain->addActionCallback(asChar(ActionCode::START_GAME), [&](const Request& req, std::shared_ptr<LE::Ecs> ecs) -> bool {
+        std::cout << "Game start" << std::endl;
+        std::shared_ptr<ConfigAsset> config = engine.getAssetManager()->getAsset<ConfigAsset>("vague_1.json");
+        parseJsonAndCreateEnemy(ecs , config->getConfigFile());
+        return true;
+    });
 }
 
 void Rtype::update()
