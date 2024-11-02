@@ -12,7 +12,7 @@ set(CMAKE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/)
 
 
 if (UNIX OR APPLE)
-    add_compile_options(-g3 -ggdb)
+    add_compile_options(-g3 -ggdb -O0)
 endif()
 
 add_subdirectory(dependencies/lion-engine)

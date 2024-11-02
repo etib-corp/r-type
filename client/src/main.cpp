@@ -9,6 +9,7 @@
 #include "GraphicalLib.hpp"
 #include "Rtype.hpp"
 #include "GameScene.hpp"
+#include "MenuScene.hpp"
 
 std::shared_ptr<LE::IEngine> g_engine;
 
@@ -28,9 +29,11 @@ int main(int ac, char **av)
 
     g_engine->setGame<Rtype>();
 
+    auto sceneMenu = g_engine->addScene<MenuScene>("MenuScene");
+
     auto sceneSnake = g_engine->addScene<GameScene>("GameScene");
 
-    g_engine->playScene("GameScene");
+    g_engine->playScene("MenuScene");
 
     g_engine->run();
     return 0;

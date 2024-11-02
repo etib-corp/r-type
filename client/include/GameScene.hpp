@@ -9,7 +9,6 @@
     #define GAMESCENE_HPP_
 
     #include "Scene.hpp"
-    #include "/home/sleo/etib/r-type/dependencies/lion-engine/lib/SFML/include/SFMLKeys.hpp"
     #include "interface/IEngine.hpp"
     #include "Utils.hpp"
     #include "EnumClass.hpp"
