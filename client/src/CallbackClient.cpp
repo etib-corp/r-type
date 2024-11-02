@@ -6,6 +6,7 @@
 */
 
 #include "CallbackClient.hpp"
+#include "Sound/Sound.hpp"
 
 bool callbackStartGame(const Request& req, const std::shared_ptr<LE::Ecs> &_ecs)
 {
@@ -35,7 +36,6 @@ bool callbackStartGame(const Request& req, const std::shared_ptr<LE::Ecs> &_ecs)
 bool callbackUp(const Request& req, std::shared_ptr<LE::Ecs> _ecs)
 {
     std::uint8_t id = req.header.EmmiterdEcsId;
-    std::cout << "Up : " << static_cast<int>(id) << std::endl;
     auto& motion = _ecs->getComponent<MotionComponent>(id);
     motion.direction[MOVEMENT_UP] = motion.direction[MOVEMENT_UP] == 0 ? 1 : 0;
     return true;
@@ -106,7 +106,8 @@ bool callbackShoot(const Request& req, std::shared_ptr<LE::Ecs> _ecs)
     }, 6.0f, true);
     animatedSprite->currentAnimation = "idle";
     _ecs->addComponent<AnimatedSpriteComponent>(entity, *animatedSprite);
-    std::cout << "SHOOT CALLBACK" << std::endl;
+    LE::Sound::Sound sound("./assets/sounds/retro-laser.mp3");
+    sound.play();
     return true;
 }
 
