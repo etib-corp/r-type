@@ -145,7 +145,7 @@ class ServerGame : public LE::IGame
 
 int main()
 {
-    LE::GraphicalLib lib("/home/sleo/etib/r-type/build/dependencies/lion-engine/lib/SFML/liblion-engine-SFML.so");
+    LE::GraphicalLib lib("/home/julithein/delivery/tek3/r-type/build/dependencies/lion-engine/lib/SFML/liblion-engine-SFML.so");
     g_engine = lib.createEngine();
 
     g_engine->init();
