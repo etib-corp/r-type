@@ -24,11 +24,11 @@ int main(int ac, char **av)
 
     g_engine->setGame<Rtype>();
 
-    // auto sceneMenu = g_engine->addScene<MenuScene>("MenuScene");
+    auto sceneMenu = g_engine->addScene<MenuScene>("MenuScene");
 
     auto sceneSnake = g_engine->addScene<GameScene>("GameScene");
 
-    // g_engine->playScene("MenuScene");
+    g_engine->playScene("MenuScene");
 
     g_engine->run();
     return 0;
