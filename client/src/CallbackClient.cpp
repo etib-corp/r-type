@@ -6,7 +6,6 @@
 */
 
 #include "CallbackClient.hpp"
-#include "Sound/Sound.hpp"
 
 bool callbackStartGame(const Request& req, const std::shared_ptr<LE::Ecs> &_ecs)
 {
@@ -28,6 +27,14 @@ bool callbackStartGame(const Request& req, const std::shared_ptr<LE::Ecs> &_ecs)
         _ecs->addComponent<AnimatedSpriteComponent>(player, *animatedSprite);
         _ecs->addComponent<std::shared_ptr<LE::ISpriteComponent>>(player, sprite);
         _ecs->addComponent<MotionComponent>(player, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
+
+        HurtBox hurtbox = {50, 20, 0, 0, [_ecs, player]() {
+            _ecs->destroyEntity(player);
+        }};
+        hurtbox.layers.set(2);
+        _ecs->addComponent<HurtBox>(player, hurtbox);
+        HitBox hitbox = {12, 5, 0, 0};
+        _ecs->addComponent<HitBox>(player, hitbox);
     }
     g_engine->restartClock();
     return true;
@@ -36,6 +43,7 @@ bool callbackStartGame(const Request& req, const std::shared_ptr<LE::Ecs> &_ecs)
 bool callbackUp(const Request& req, std::shared_ptr<LE::Ecs> _ecs)
 {
     std::uint8_t id = req.header.EmmiterdEcsId;
+    std::cout << "Up : " << static_cast<int>(id) << std::endl;
     auto& motion = _ecs->getComponent<MotionComponent>(id);
     motion.direction[MOVEMENT_UP] = motion.direction[MOVEMENT_UP] == 0 ? 1 : 0;
     return true;
@@ -106,8 +114,7 @@ bool callbackShoot(const Request& req, std::shared_ptr<LE::Ecs> _ecs)
     }, 6.0f, true);
     animatedSprite->currentAnimation = "idle";
     _ecs->addComponent<AnimatedSpriteComponent>(entity, *animatedSprite);
-    LE::Sound::Sound *sound = new LE::Sound::Sound("./assets/sounds/retro-laser.mp3");
-    sound->play();
+    std::cout << "SHOOT CALLBACK" << std::endl;
     return true;
 }
 
