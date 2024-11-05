@@ -106,8 +106,8 @@ bool callbackShoot(const Request& req, std::shared_ptr<LE::Ecs> _ecs)
     }, 6.0f, true);
     animatedSprite->currentAnimation = "idle";
     _ecs->addComponent<AnimatedSpriteComponent>(entity, *animatedSprite);
-    LE::Sound::Sound sound("./assets/sounds/retro-laser.mp3");
-    sound.play();
+    LE::Sound::Sound *sound = new LE::Sound::Sound("./assets/sounds/retro-laser.mp3");
+    sound->play();
     return true;
 }
 
