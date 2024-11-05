@@ -9,16 +9,16 @@
             "damage" : 10,
             "pattern" : "sinus_x",
             "scale" : 1,
-            "rotation" : [0, 0, 180],
+            "rotation" : [0, 0, 0],
             "hurtbox": {
-                "height": 5,
-                "width": 5,
+                "height": 50,
+                "width": 50,
                 "layers": [3],
                 "masks": [1, 2]
             },
             "hitbox": {
-                "height": 10,
-                "width": 10,
+                "height": 50,
+                "width": 50,
                 "layers": [ ],
                 "masks": [ ]
             }
@@ -32,16 +32,16 @@
             "damage" : 10,
             "pattern" : "line",
             "scale" : 1,
-            "rotation" : [0, 0, 180],
+            "rotation" : [0, 0, 0],
             "hurtbox": {
-                "height": 5,
-                "width": 5,
+                "height": 50,
+                "width": 50,
                 "layers": [3],
                 "masks": [1, 2]
             },
             "hitbox": {
-                "height": 10,
-                "width": 10,
+                "height": 50,
+                "width": 50,
                 "layers": [ ],
                 "masks": [ ]
             }

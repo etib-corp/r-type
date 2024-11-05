@@ -45,7 +45,7 @@ void GameScene::init()
     _ecs->addComponent<MotionComponent>(cameraEntity, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
     _ecs->setCameraEntity(cameraEntity);
 
-    _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_ENTER, LE::JUST_PRESSED, false}, [&](LE::IEngine &engine, float dt) {
+    _eventManager->addEventListener({LE::KEYBOARD, LE::Event::KEY_ENTER, LE::JUST_PRESSED, false}, [&](LE::IEngine &engine, float dt) {
         Request request = {0};
         request.header.Action = asChar(ActionCode::READY);
         request.header.BodyLength = 0;
@@ -60,7 +60,7 @@ void GameScene::init()
         std::cout << "############### SENT GAME START MESSAGE ###############################" << std::endl;
     });
 
-    _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_UP, LE::JUST_PRESSED, false}, [&](LE::IEngine &engine, float dt) {
+    _eventManager->addEventListener({LE::KEYBOARD, LE::Event::KEY_UP, LE::JUST_PRESSED, false}, [&](LE::IEngine &engine, float dt) {
     try {
         int id =  _engine->getGame()->getClientBroker()->getECSId();
         Request request = {0};
@@ -76,7 +76,7 @@ void GameScene::init()
     } catch (const std::exception &e) {}
     });
 
-    _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_UP, LE::JUST_RELEASED, false}, [&](LE::IEngine &engine, float dt) {
+    _eventManager->addEventListener({LE::KEYBOARD, LE::Event::KEY_UP, LE::JUST_RELEASED, false}, [&](LE::IEngine &engine, float dt) {
     try {
         int id = _engine->getGame()->getClientBroker()->getECSId();
         Request request = {0};
@@ -92,7 +92,7 @@ void GameScene::init()
     } catch (const std::exception &e) {}
     });
 
-    _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_DOWN, LE::JUST_PRESSED, false}, [&](LE::IEngine &engine, float dt) {
+    _eventManager->addEventListener({LE::KEYBOARD, LE::Event::KEY_DOWN, LE::JUST_PRESSED, false}, [&](LE::IEngine &engine, float dt) {
     try {
         int id =  _engine->getGame()->getClientBroker()->getECSId();
         Request request = {0};
@@ -108,7 +108,7 @@ void GameScene::init()
     } catch (const std::exception &e) {}
     });
 
-    _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_DOWN, LE::JUST_RELEASED, false}, [&](LE::IEngine &engine, float dt) {
+    _eventManager->addEventListener({LE::KEYBOARD, LE::Event::KEY_DOWN, LE::JUST_RELEASED, false}, [&](LE::IEngine &engine, float dt) {
     try {
         int id =  _engine->getGame()->getClientBroker()->getECSId();
         Request request = {0};
@@ -124,7 +124,7 @@ void GameScene::init()
     } catch (const std::exception &e) {}
     });
 
-    _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_LEFT, LE::JUST_PRESSED, false}, [&](LE::IEngine &engine, float dt) {
+    _eventManager->addEventListener({LE::KEYBOARD, LE::Event::KEY_LEFT, LE::JUST_PRESSED, false}, [&](LE::IEngine &engine, float dt) {
     try {
         int id =  _engine->getGame()->getClientBroker()->getECSId();
         Request request = {0};
@@ -140,7 +140,7 @@ void GameScene::init()
     } catch (const std::exception &e) {}
     });
 
-    _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_LEFT, LE::JUST_RELEASED, false}, [&](LE::IEngine &engine, float dt) {
+    _eventManager->addEventListener({LE::KEYBOARD, LE::Event::KEY_LEFT, LE::JUST_RELEASED, false}, [&](LE::IEngine &engine, float dt) {
     try {
         int id =  _engine->getGame()->getClientBroker()->getECSId();
         Request request = {0};
@@ -156,7 +156,7 @@ void GameScene::init()
     } catch (const std::exception &e) {}
     });
 
-    _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_RIGHT, LE::JUST_PRESSED, false}, [&](LE::IEngine &engine, float dt) {
+    _eventManager->addEventListener({LE::KEYBOARD, LE::Event::KEY_RIGHT, LE::JUST_PRESSED, false}, [&](LE::IEngine &engine, float dt) {
     try {
         int id =  _engine->getGame()->getClientBroker()->getECSId();
         Request request = {0};
@@ -172,7 +172,7 @@ void GameScene::init()
     } catch (const std::exception &e) {}
     });
 
-    _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_RIGHT, LE::JUST_RELEASED, false}, [&](LE::IEngine &engine, float dt) {
+    _eventManager->addEventListener({LE::KEYBOARD, LE::Event::KEY_RIGHT, LE::JUST_RELEASED, false}, [&](LE::IEngine &engine, float dt) {
     try {
         int id =  _engine->getGame()->getClientBroker()->getECSId();
         Request request = {0};
@@ -188,7 +188,7 @@ void GameScene::init()
     } catch (const std::exception &e) {}
     });
 
-    _eventManager->addEventListener({LE::KEYBOARD, LE_KEY_SPACE, LE::JUST_PRESSED, false}, [&](LE::IEngine &engine, float dt) {
+    _eventManager->addEventListener({LE::KEYBOARD, LE::Event::KEY_SPACE, LE::JUST_PRESSED, false}, [&](LE::IEngine &engine, float dt) {
     try {
         int id =  _engine->getGame()->getClientBroker()->getECSId();
         Request request = {0};

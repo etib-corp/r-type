@@ -90,7 +90,7 @@ bool callbackShoot(const Request& req, std::shared_ptr<LE::Ecs> _ecs)
     auto& motion = _ecs->getComponent<MotionComponent>(entity);
     motion.direction[MOVEMENT_RIGHT] = 1;
     _ecs->addComponent<PatternComponent>(entity, (PatternComponent){{0, 0, 0,}, "line", LE::Vector3<float>(transform.position.x + 50, transform.position.y + 0.3f, transform.position.z), 0.1, PatternEnd::DESTROY});
-    HitBox hitbox = {5, 5, 0, 0};
+    HitBox hitbox = {12, 5, 0, 0};
     hitbox.masks.set(3);
     _ecs->addComponent<HitBox>(entity, hitbox);
     _ecs->addComponent<HurtBox>(entity, (HurtBox){5, 5, 0, 0, []() {
