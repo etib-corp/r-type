@@ -20,6 +20,7 @@ var annotated_dup =
     [ "CoordStruct", "structCoordStruct.html", "structCoordStruct" ],
     [ "D", "classD.html", null ],
     [ "E", "classE.html", null ],
+    [ "Enemy", "classEnemy.html", "classEnemy" ],
     [ "Enum_Test", "classEnum__Test.html", "classEnum__Test" ],
     [ "Example_Test", "classExample__Test.html", "classExample__Test" ],
     [ "Fn_Test", "classFn__Test.html", "classFn__Test" ],

@@ -11,12 +11,14 @@ var hierarchy =
     [ "B", "classB.html", [
       [ "D", "classD.html", null ]
     ] ],
+    [ "Enemy::Box", "structEnemy_1_1Box.html", null ],
     [ "C1", "classC1.html", null ],
     [ "C2", "classC2.html", null ],
     [ "C3", "classC3.html", null ],
     [ "C4", "classC4.html", null ],
     [ "C5", "classC5.html", null ],
     [ "CoordStruct", "structCoordStruct.html", null ],
+    [ "Enemy", "classEnemy.html", null ],
     [ "Enum_Test", "classEnum__Test.html", null ],
     [ "Example_Test", "classExample__Test.html", [
       [ "Tag", "classTag.html", null ]

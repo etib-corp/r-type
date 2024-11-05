@@ -6,6 +6,7 @@ var searchData=
   ['body_3',['3.2. Body',['../md_RFC.html#autotoc_md60',1,'']]],
   ['boost_20asio_20strong_4',['&lt;strong&gt;Boost Asio&lt;/strong&gt;',['../md_README.html#autotoc_md20',1,'']]],
   ['both_20magic_20number_200xff_5',['Both Magic Number (0xFF)',['../md_RFC.html#autotoc_md64',1,'']]],
-  ['bug_20list_6',['Bug List',['../bug.html',1,'']]],
-  ['build_20instructions_20strong_7',['&lt;strong&gt;Build Instructions&lt;/strong&gt;',['../md_README.html#autotoc_md8',1,'']]]
+  ['box_6',['Box',['../structEnemy_1_1Box.html',1,'Enemy']]],
+  ['bug_20list_7',['Bug List',['../bug.html',1,'']]],
+  ['build_20instructions_20strong_8',['&lt;strong&gt;Build Instructions&lt;/strong&gt;',['../md_README.html#autotoc_md8',1,'']]]
 ];
