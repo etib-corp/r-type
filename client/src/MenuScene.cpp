@@ -41,8 +41,8 @@ void MenuScene::init()
     play->setOnClickCallback([ip, this](){
         std::cout << "IP: " << ip->getInputContent() << std::endl;
         try {
-            auto client = std::make_shared<LE::ClientBroker>(_engine->getNetworkModule(), ip->getInputContent(), 8080);
-            _engine->getGame()->setClientBroker(client);
+            // auto client = std::make_shared<LE::ClientBroker>(_engine->getNetworkModule(), ip->getInputContent(), 8080);
+            // _engine->getGame()->setClientBroker(client);
             _engine->getGame()->getSceneManager()->play("GameScene");
         } catch (const std::exception &e) {
             ip->setLabel("Invalid IP");
