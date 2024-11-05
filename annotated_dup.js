@@ -28,6 +28,7 @@ var annotated_dup =
     [ "Include_Test", "classInclude__Test.html", "classInclude__Test" ],
     [ "Javadoc_Test", "classJavadoc__Test.html", "classJavadoc__Test" ],
     [ "Memgrp_Test", "classMemgrp__Test.html", "classMemgrp__Test" ],
+    [ "MenuScene", "classMenuScene.html", null ],
     [ "mux_using_with", "classmux__using__with.html", "classmux__using__with" ],
     [ "Object", "structObject.html", null ],
     [ "Overload_Test", "classOverload__Test.html", "classOverload__Test" ],

@@ -42,7 +42,8 @@ var hierarchy =
     [ "pyexample.PyClass", "classpyexample_1_1PyClass.html", null ],
     [ "QTstyle_Test", "classQTstyle__Test.html", null ],
     [ "LE::Scene", null, [
-      [ "GameScene", "classGameScene.html", null ]
+      [ "GameScene", "classGameScene.html", null ],
+      [ "MenuScene", "classMenuScene.html", null ]
     ] ],
     [ "SomeNiceClass", "classSomeNiceClass.html", null ],
     [ "StartGame", "structStartGame.html", null ],

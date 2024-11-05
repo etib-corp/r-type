@@ -132,7 +132,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "CallbackClient_8hpp_source.html",
-"namespacedocstring.html"
+"namespaceN1.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
