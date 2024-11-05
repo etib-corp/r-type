@@ -15,17 +15,12 @@ std::shared_ptr<LE::IEngine> g_engine;
 
 int main(int ac, char **av)
 {
-    LE::GraphicalLib lib("/home/sleo/etib/r-type/build/dependencies/lion-engine/lib/SFML/liblion-engine-SFML.so");
     try {
-        g_engine = lib.createEngine();
+        g_engine = instanciateEngine();
     } catch (const LE::IEngineError &e) {
         std::cerr << e.what() << std::endl;
         return 84;
     }
-
-    g_engine->init();
-
-    g_engine->setFramerateLimit(60);
 
     g_engine->setGame<Rtype>();
 
