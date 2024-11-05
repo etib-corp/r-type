@@ -27,6 +27,14 @@ bool callbackStartGame(const Request& req, const std::shared_ptr<LE::Ecs> &_ecs)
         _ecs->addComponent<AnimatedSpriteComponent>(player, *animatedSprite);
         _ecs->addComponent<std::shared_ptr<LE::ISpriteComponent>>(player, sprite);
         _ecs->addComponent<MotionComponent>(player, (MotionComponent){{0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
+
+        HurtBox hurtbox = {50, 20, 0, 0, [_ecs, player]() {
+            _ecs->destroyEntity(player);
+        }};
+        hurtbox.layers.set(2);
+        _ecs->addComponent<HurtBox>(player, hurtbox);
+        HitBox hitbox = {12, 5, 0, 0};
+        _ecs->addComponent<HitBox>(player, hitbox);
     }
     g_engine->restartClock();
     return true;

@@ -15,7 +15,7 @@ std::shared_ptr<LE::IEngine> g_engine;
 
 int main(int ac, char **av)
 {
-    LE::GraphicalLib lib("/home/julithein/delivery/tek3/r-type/build/dependencies/lion-engine/lib/SFML/liblion-engine-SFML.so");
+    LE::GraphicalLib lib("/home/sleo/etib/r-type/build/dependencies/lion-engine/lib/SFML/liblion-engine-SFML.so");
     try {
         g_engine = lib.createEngine();
     } catch (const LE::IEngineError &e) {
@@ -29,11 +29,11 @@ int main(int ac, char **av)
 
     g_engine->setGame<Rtype>();
 
-    auto sceneMenu = g_engine->addScene<MenuScene>("MenuScene");
+    // auto sceneMenu = g_engine->addScene<MenuScene>("MenuScene");
 
     auto sceneSnake = g_engine->addScene<GameScene>("GameScene");
 
-    g_engine->playScene("MenuScene");
+    // g_engine->playScene("MenuScene");
 
     g_engine->run();
     return 0;
